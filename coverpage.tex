@@ -1,0 +1,82 @@
+% Cover page — painting as background, text rendered by XeLaTeX
+
+\newpage
+\thispagestyle{empty}
+\newgeometry{margin=0pt}
+
+\begin{tikzpicture}[remember picture, overlay]
+  % Background painting — full bleed
+  \node[anchor=center, inner sep=0pt] at (current page.center) {%
+    \includegraphics[width=\paperwidth, height=\paperheight]{assets/coverart.jpeg}%
+  };
+
+  % Semi-transparent dark band at top for title readability
+  \fill[black, opacity=0.55]
+    (current page.north west) rectangle
+    ([yshift=-3cm]current page.north east);
+  \fill[black, opacity=0.45]
+    ([yshift=-3cm]current page.north west) rectangle
+    ([yshift=-5cm]current page.north east);
+  \fill[black, opacity=0.3]
+    ([yshift=-5cm]current page.north west) rectangle
+    ([yshift=-6.5cm]current page.north east);
+  \fill[black, opacity=0.15]
+    ([yshift=-6.5cm]current page.north west) rectangle
+    ([yshift=-7.5cm]current page.north east);
+
+  % Semi-transparent dark band at bottom for author name
+  \fill[black, opacity=0.15]
+    ([yshift=4cm]current page.south west) rectangle
+    ([yshift=3cm]current page.south east);
+  \fill[black, opacity=0.3]
+    ([yshift=3cm]current page.south west) rectangle
+    ([yshift=2cm]current page.south east);
+  \fill[black, opacity=0.5]
+    ([yshift=2cm]current page.south west) rectangle
+    (current page.south east);
+
+  % Title — white, bold, drop shadow
+  \node[anchor=north, text=black, opacity=0.4,
+        font=\fontsize{58pt}{66pt}\selectfont\sffamily\bfseries,
+        text width=18cm, align=center]
+    at ([yshift=-1.65cm, xshift=0.08cm]current page.north) {%
+      PROVING\\[4pt]NOTHING%
+    };
+  \node[anchor=north, text=white,
+        font=\fontsize{58pt}{66pt}\selectfont\sffamily\bfseries,
+        text width=18cm, align=center]
+    at ([yshift=-1.7cm]current page.north) {%
+      PROVING\\[4pt]NOTHING%
+    };
+
+  % Gradient accent line
+  \shade[left color=MidnightBlue, right color=MidnightPurple]
+    ([yshift=-6cm, xshift=3cm]current page.north west)
+    rectangle ([yshift=-6.06cm, xshift=-3cm]current page.north east);
+
+  % Subtitle
+  \node[anchor=north, text=white, opacity=0.75,
+        font=\fontsize{16pt}{22pt}\selectfont\sffamily,
+        text width=16cm, align=center]
+    at ([yshift=-6.4cm]current page.north) {%
+      A Layered Guide to Zero-Knowledge Proof Systems%
+    };
+
+  % Author name with drop shadow
+  \node[anchor=south, text=black, opacity=0.5,
+        font=\fontsize{22pt}{28pt}\selectfont\sffamily\bfseries,
+        text width=16cm, align=center]
+    at ([yshift=1.85cm, xshift=0.06cm]current page.south) {%
+      Charles Hoskinson%
+    };
+  \node[anchor=south, text=white,
+        font=\fontsize{22pt}{28pt}\selectfont\sffamily\bfseries,
+        text width=16cm, align=center]
+    at ([yshift=1.9cm]current page.south) {%
+      Charles Hoskinson%
+    };
+
+\end{tikzpicture}
+
+\restoregeometry
+\newpage

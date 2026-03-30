@@ -1,0 +1,7 @@
+<dc:rights>Creative Commons Attribution 4.0 International (CC BY 4.0)</dc:rights>
+<dc:publisher>Midnight Network</dc:publisher>
+<dc:subject>Zero-Knowledge Proofs</dc:subject>
+<dc:subject>Cryptography</dc:subject>
+<dc:subject>Blockchain</dc:subject>
+<dc:subject>Privacy</dc:subject>
+<dc:description>A complete guide to zero-knowledge proof systems, from the mathematical foundations through real-world deployment. Covers the seven layers of every ZK system: setup ceremonies, languages, witness generation, arithmetization, proof systems, cryptographic primitives, and on-chain verification.</dc:description>

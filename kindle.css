@@ -1,0 +1,276 @@
+/* kindle.css — Kindle-compliant reflowable stylesheet
+ * For: Proving Nothing
+ * Per Amazon Kindle Publishing Guidelines v2025.1, Section 10
+ *
+ * KEY RULES:
+ * - Body text: NO forced font-size, NO forced colors, NO background
+ * - Use ems/percentages, not px/pt
+ * - Let Enhanced Typesetting handle color adaptation
+ */
+
+/* ── Body: use defaults per Amazon 10.3.2 ── */
+body {
+  font-family: serif;
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  line-height: 1.4;
+}
+
+/* ── Chapter headings: page break before, centered ── */
+h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  page-break-before: always;
+}
+
+/* ── Section headings ── */
+h2 {
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+}
+
+h3 {
+  text-align: left;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+h4 {
+  text-align: left;
+  font-size: 1em;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 1em;
+  margin-bottom: 0.4em;
+}
+
+/* ── Paragraphs: indent, no double-spacing (Amazon 10.3.3) ── */
+p {
+  text-indent: 1.5em;
+  margin-top: 0;
+  margin-bottom: 0.3em;
+}
+
+/* No indent after headings, blockquotes, lists */
+h1 + p, h2 + p, h3 + p, h4 + p,
+blockquote + p, ul + p, ol + p, pre + p, table + p,
+div.part-divider + p {
+  text-indent: 0;
+}
+
+/* ── Blockquotes / Epigraphs ── */
+blockquote {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-style: italic;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+blockquote p {
+  text-indent: 0;
+}
+
+/* Epigraph styling */
+div.epigraph {
+  margin-left: 10%;
+  margin-right: 5%;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  font-style: italic;
+}
+
+div.epigraph .attribution {
+  text-align: right;
+  font-style: normal;
+  font-size: 0.9em;
+  margin-top: 0.3em;
+}
+
+/* ── Part Dividers ── */
+div.part-divider {
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  page-break-before: always;
+}
+
+div.part-divider p {
+  text-indent: 0;
+  font-size: 1.6em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+/* ── Code blocks: light background (not dark mode) ── */
+pre, code {
+  font-family: monospace;
+  font-size: 0.85em;
+}
+
+pre {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0.8em;
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  background-color: #f0f0f0;
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* ── Tables: simple, no dark backgrounds (Amazon 10.5) ── */
+table {
+  border-collapse: collapse;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+  font-size: 0.9em;
+}
+
+th, td {
+  border: 1px solid #999;
+  padding: 0.4em 0.6em;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  font-weight: bold;
+  background-color: #eee;
+}
+
+/* ── Content boxes (technical, insight, caution, example) ── */
+div.technical-box,
+div.insight-box,
+div.caution-box,
+div.example-box {
+  border-left: 3px solid #999;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+div.technical-box {
+  border-left-color: #3b82f6;
+}
+
+div.insight-box {
+  border-left-color: #8756ff;
+}
+
+div.caution-box {
+  border-left-color: #f59e0b;
+}
+
+div.example-box {
+  border-left-color: #0000fe;
+}
+
+div.technical-box p,
+div.insight-box p,
+div.caution-box p,
+div.example-box p {
+  text-indent: 0;
+}
+
+/* ── Horizontal rules ── */
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+/* ── Lists ── */
+ul, ol {
+  margin-left: 5%;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-left: 1em;
+}
+
+li {
+  margin-bottom: 0.3em;
+}
+
+li p {
+  text-indent: 0;
+}
+
+/* ── Math: let MathML handle rendering ── */
+math {
+  font-size: 1em;
+}
+
+/* ── Images ── */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Title page ── */
+div.title-page {
+  text-align: center;
+  margin-top: 20%;
+  page-break-after: always;
+}
+
+div.title-page h1 {
+  font-size: 2.2em;
+  page-break-before: avoid;
+}
+
+div.title-page .subtitle {
+  font-size: 1.2em;
+  font-style: italic;
+  margin-top: 0.5em;
+}
+
+div.title-page .author {
+  font-size: 1.1em;
+  margin-top: 2em;
+}
+
+div.title-page .edition {
+  font-size: 0.9em;
+  margin-top: 1em;
+}
+
+/* ── Sudoku grid (in running example) ── */
+pre.sudoku {
+  font-family: monospace;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+}
+
+/* ── Footnotes ── */
+aside[epub|type="footnote"] {
+  font-size: 0.85em;
+  margin-top: 0.5em;
+}

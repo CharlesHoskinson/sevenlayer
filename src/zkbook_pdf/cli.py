@@ -30,11 +30,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     latex_parser.add_argument(
         "--source",
-        default=str(root / "the-seven-layer-magic-trick.md"),
+        default=str(root / "proving-nothing.md"),
     )
     latex_parser.add_argument(
         "--output",
-        default=str(root / "the-seven-layer-magic-trick.pdf"),
+        default=str(root / "proving-nothing.pdf"),
     )
     latex_parser.add_argument(
         "--log",

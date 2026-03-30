@@ -59,7 +59,8 @@ class LatexBuildConfig:
     def asset_paths(self) -> dict[str, Path]:
         return {
             "preamble.tex": self.assets_dir / "preamble.tex",
-            "titlepage.tex": self.assets_dir / "titlepage.tex",
+            "coverpage.tex": self.assets_dir / "coverpage.tex",
+            "licensepage.tex": self.assets_dir / "licensepage.tex",
             "box-filter.lua": self.assets_dir / "box-filter.lua",
         }
 
@@ -343,7 +344,8 @@ def render_pdf(config: LatexBuildConfig, log: BuildLog) -> None:
         "-o",
         str(config.temp_tex_path),
         "--standalone",
-        f"--include-before-body={config.asset_paths['titlepage.tex']}",
+        f"--include-before-body={config.asset_paths['coverpage.tex']}",
+        f"--include-before-body={config.asset_paths['licensepage.tex']}",
         f"--include-in-header={config.asset_paths['preamble.tex']}",
         f"--lua-filter={config.asset_paths['box-filter.lua']}",
         "--toc",
@@ -358,7 +360,7 @@ def render_pdf(config: LatexBuildConfig, log: BuildLog) -> None:
         "-V",
         "mainfont=STIX Two Text",
         "-V",
-        "monofont=Consolas",
+        "monofont=DejaVu Sans Mono",
         "-V",
         "mathfont=STIX Two Math",
         "-V",

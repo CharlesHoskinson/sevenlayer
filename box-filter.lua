@@ -1,5 +1,5 @@
 -- box-filter.lua
--- Pandoc Lua filter for The Seven-Layer Magic Trick
+-- Pandoc Lua filter for Proving Nothing
 -- Handles: Part dividers, epigraphs, styled boxes, horizontal rules.
 -- Design pass: suppresses redundant HRs adjacent to headings/parts.
 
