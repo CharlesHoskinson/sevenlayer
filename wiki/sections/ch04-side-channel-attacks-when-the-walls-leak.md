@@ -4,9 +4,9 @@ slug: ch04-side-channel-attacks-when-the-walls-leak
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1393, 1480]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [1393, 1474]
+source_commit: 8b894477fca68f8420de3f8ba0e5301ba00fbb0a
+status: reviewed
 word_count: 2220
 ---
 
@@ -16,7 +16,7 @@ The mathematical definition of zero-knowledge is precise: the proof reveals noth
 
 The process can leak.
 
-The most vivid demonstration came in a 2020 USENIX Security paper by Tramer, Boneh, and Paterson. They showed that Zcash's Groth16 prover leaked information about transaction amounts through proof generation time. The attack was simple in concept: the prover's multi-scalar exponentiation (MSM) implementation optimized away terms where the witness coefficient was zero. More zeros in the binary representation of the transaction amount meant fewer curve multiplications, which meant faster proof generation. By measuring how long proof generation took -- remotely, across the network -- an attacker could estimate the Hamming weight of the transaction amount.
+The most vivid demonstration came in Tramer, Boneh, and Paterson's "Remote Side-Channel Attacks on Anonymous Transactions" (USENIX Security 2020). They showed that Zcash's Groth16 prover leaked information about transaction amounts through proof generation time. The attack was simple in concept: the prover's multi-scalar exponentiation (MSM) implementation optimized away terms where the witness coefficient was zero. More zeros in the binary representation of the transaction amount meant fewer curve multiplications, which meant faster proof generation. By measuring how long proof generation took -- remotely, across the network -- an attacker could estimate the Hamming weight of the transaction amount.
 
 The correlation coefficient was R = 0.57. Not perfect, but far from zero. A timing measurement that should have been meaningless -- how long did the proof take? -- revealed information about the secret that the proof was supposed to protect.
 
@@ -44,15 +44,15 @@ The second attack class is subtler, and in some ways more disturbing, because it
 
 Poseidon is an "algebraic" hash function. Unlike SHA-256, which was designed for general-purpose hashing and happens to be usable (expensively) inside ZK circuits, Poseidon was built from the ground up to minimize the number of constraints required to express its computation as a polynomial relation. Where SHA-256 requires approximately 25,000 constraints per hash in a Groth16 circuit, Poseidon requires approximately 300. This 80x reduction in constraint count translates directly into faster proving and smaller proofs. Poseidon is, by design, the ideal hash function for zero-knowledge systems. Every major ZK project uses it or a close variant.
 
-But Poseidon's S-box -- the nonlinear component that provides cryptographic security -- involves computing $x^5$ (or $x^7$, depending on the variant) over a large prime field. In software, this is typically implemented using lookup tables that map input values to output values. The S-box computation accesses these tables at indices determined by the internal state of the hash, which depends on the secret input being hashed.
+Poseidon's S-box -- the nonlinear component that provides cryptographic security -- is a power map: $x \mapsto x^5$ or $x \mapsto x^7$ over a large prime field, depending on the parameter choice. In software, this is computed as a sequence of field multiplications: one squaring, one more squaring, and a multiply gives $x^5$ in three multiplications; one further multiplication gives $x^7$. There are no lookup tables involved in Poseidon's S-box. That matters, because lookup tables are the structural ingredient that makes a primitive vulnerable to cache-timing attacks.
 
-This is where cache timing enters. Modern CPUs use a hierarchy of caches (L1, L2, L3) to speed up memory access. When a program accesses a memory location, the CPU loads the surrounding cache line (typically 64 bytes) into the L1 cache. Subsequent accesses to the same cache line are fast (a few cycles). Accesses to different cache lines that map to the same cache set can evict earlier entries, making them slow again (hundreds of cycles).
+Mukherjee, Rechberger, and Schofnegger (2024) published the first systematic study of cache-timing leakages in zero-knowledge protocols. They examined ZK-friendly hash functions (Poseidon, Reinforced Concrete, Tip5, Monolith) and popular proof systems (Groth16, Plonky2, Plonky3, halo2, Circle STARKs). The hash function whose design exposes the cache-timing channel is *Reinforced Concrete*, not Poseidon. Reinforced Concrete's "Bars" function uses a 256 KB lookup table indexed by secret-dependent data. Those table lookups create cache access patterns that vary with the secret. In a shared cloud environment, where the attacker runs on the same physical machine as the prover, those patterns are observable.
 
-An attacker sharing the same physical CPU -- a realistic scenario in cloud computing environments where virtual machines share hardware -- can observe which cache lines the victim's Poseidon computation accesses. The attacker primes the cache (fills it with known data), waits for the victim's hash computation to execute, then probes the cache to see which of the attacker's entries were evicted. The eviction pattern reveals which table entries the victim accessed, which reveals information about the internal state of the hash, which reveals information about the secret input.
+The mechanics are familiar from decades of work against AES. Modern CPUs use a hierarchy of caches (L1, L2, L3) to speed up memory access. When a program accesses a memory location, the CPU loads the surrounding cache line (typically 64 bytes) into the L1 cache. Subsequent accesses to the same cache line are fast (a few cycles). Accesses that evict a different cache line become slow again (hundreds of cycles). An attacker sharing the same physical CPU -- a realistic scenario in cloud computing -- primes the cache with known data, waits for the victim's hash computation to execute, then probes to see which of the attacker's entries were evicted. The eviction pattern reveals which table entries the victim accessed, which reveals information about the internal state of the hash, which reveals information about the secret input.
 
-The hash function was designed to be ZK-friendly in algebra. It was not designed to be constant-time in hardware. The algebraic design and the implementation security were treated as separate concerns, and the gap between them is exploitable.
+Poseidon's power-map S-box has no such table. It leaks through different channels -- the Goldilocks field's conditional reduction after multiplication produces a timing signal on branch-dependent implementations -- but not through cache patterns on the S-box itself. The attack that broke Reinforced Concrete does not mechanically break Poseidon. The broader point survives: ZK-friendly hash functions were designed for *algebraic* efficiency -- minimizing constraints inside a circuit. Nobody designed them for *implementation* security outside the circuit. Each primitive has to be audited for its own side-channel surface, and the move toward lookup-based designs in some ZK-friendly constructions -- motivated by the algebraic efficiency gains that Lasso and Jolt demonstrated -- actively increases that surface.
 
-This is not hypothetical. Cache-timing attacks are a well-studied attack class with decades of published results against AES, RSA, and other cryptographic primitives. The novelty of Mukherjee et al.'s work is showing that the same attack class applies to ZK-specific constructions -- and that the ZK community's emphasis on algebraic efficiency has, in some cases, actively increased vulnerability by encouraging table-based designs.
+The irony cuts deep: the very optimization that makes proving faster makes the proving process less private, for the subset of constructions that rely on tables.
 
 ### The Electromagnetic Channel
 
@@ -69,12 +69,6 @@ Electromagnetic side-channel attacks are a published, demonstrated attack class.
 For zero-knowledge provers running on commodity hardware -- laptops, desktops, even data center servers without electromagnetic shielding -- the EM channel is an open question. No major ZK implementation has published an electromagnetic side-channel analysis. The attack surface is real, the equipment is cheap, and the countermeasures (electromagnetic shielding, randomized execution ordering, amplitude-flattening power regulation) are not part of any ZK prover's design requirements.
 
 The three attack channels -- timing, cache, electromagnetic -- form a hierarchy of increasing physical intimacy. Timing attacks can be mounted remotely, across a network. Cache attacks require co-location on the same physical machine. Electromagnetic attacks require physical proximity to the hardware. But all three extract information from the same fundamental source: the fact that computation is a physical process, and physical processes leave physical traces. The mathematical abstraction of a zero-knowledge proof exists in a world of pure information. The implementation exists in a world of transistors, cache lines, and electromagnetic fields. The gap between those worlds is where privacy leaks.
-
-The attack extended beyond timing. Mukherjee, Rechberger, and Schofnegger published the first systematic study of cache timing leakages in zero-knowledge protocols in 2024. They examined ZK-friendly hash functions (Poseidon, Reinforced Concrete, Tip5, Monolith) and popular proof systems (Groth16, Plonky2, Plonky3, halo2, Circle STARKs). Here is what they found.
-
-ZK-friendly hash functions were designed for *algebraic* efficiency -- they minimize the number of constraints required to express a hash computation inside a circuit. But nobody designed them for *implementation* security. Reinforced Concrete uses large lookup tables (256 KB for its Bars function) indexed by secret-dependent data. These table lookups create cache access patterns that vary with the secret. In a shared cloud environment, where the attacker runs on the same physical machine as the prover, these cache patterns are observable.
-
-The irony cuts deep: the move toward lookup-based designs in ZK hash functions -- motivated by the algebraic efficiency gains that Lasso and Jolt demonstrated -- actively increases the side-channel attack surface. The very optimization that makes proving faster makes the proving process less private.
 
 Field arithmetic itself leaks. The Goldilocks field ($2^{64} - 2^{32} + 1$, a prime chosen for fast 64-bit arithmetic) uses conditional reductions after arithmetic operations. If the result exceeds the modulus, a reduction step is needed; if not, it is skipped. This conditional branch creates a timing signal. Assembly implementations with branch-free code mitigate this, but many deployed field arithmetic libraries use branch-dependent paths for performance.
 
@@ -148,9 +142,8 @@ Zero-knowledge is a property of the proof, not the prover: the process of genera
 
 ## Improvement notes
 
-- [P0] (A) The section states Poseidon's S-box computes $x^5$ or $x^7$ and uses "lookup tables that map input values to output values." This is misleading: Poseidon's S-box is a power map over a prime field — it is not typically implemented with lookup tables in software (unlike AES S-boxes). The cache-timing attack described by Mukherjee et al. targets Reinforced Concrete's "Bars" function (which uses 256 KB tables), not Poseidon's S-box directly. The text blurs the two and could cause readers to misattribute the vulnerability.
-- [P1] (A) "Mukherjee, Rechberger, and Schofnegger published the first systematic study of cache timing leakages in zero-knowledge protocols in 2024" — this paragraph appears after the "three attack channels" synthesis paragraph at line 71, which already references the same paper. The ordering creates a structural echo: the paper is effectively introduced twice. The second block (lines 73–79) should come before the synthesis.
-- [P1] (B) Tramer, Boneh, and Paterson (2020) is the central citation but "Remote Side-Channel Attacks on Anonymous Transactions" may not be the exact USENIX Security 2020 title — verify the title. The venue and year appear in Sources cited, but the precise paper title should be confirmed.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) "EM attacks can reconstruct the scalar values used in multi-scalar exponentiation" is stated as "published, demonstrated" but no specific ZK-system EM attack paper is cited — only the general prior work on AES smartcards and ECDSA HSMs. The claim that ZK MSM is vulnerable to EM is extrapolated, not directly demonstrated in the literature cited.
 - [P2] (C) The "detective story" sub-framing ("told as the detective story it was") is an AI-smell: framing a sub-section as a narrative genre. Retitle or remove the genre label.
 - [P3] (E) The GPU SIMT thread-divergence paragraph is the only place in ch04 that connects side-channel defenses to GPU architecture. It raises an important open problem but does not cite any work that has measured the performance cost of constant-time GPU proving. Noting this gap explicitly would strengthen the open-questions section.

@@ -4,7 +4,7 @@ slug: ch09-real-world-deployments-five-case-studies
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4158, 4197]
+source_lines: [4152, 4191]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 806

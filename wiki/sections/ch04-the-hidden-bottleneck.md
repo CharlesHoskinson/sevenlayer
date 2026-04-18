@@ -5,8 +5,8 @@ chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1207, 1222]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 8b894477fca68f8420de3f8ba0e5301ba00fbb0a
+status: reviewed
 word_count: 271
 ---
 
@@ -18,7 +18,7 @@ Here is a number that should have been a scandal: 50-70%.
 
 That is the fraction of total proving time consumed by witness generation in modern GPU-accelerated systems. Not 10-25%, as the field commonly claimed until recently. The outright majority. If witness generation accounts for more than half the cost of producing a zero-knowledge proof, why has the field treated it as a minor backstage interlude? Why have billions of dollars in optimization effort focused on the cryptographic proving step while the dominant bottleneck hid in plain sight?
 
-The answer reveals something important about how technology communities deceive themselves. When GPU acceleration made the cryptographic proving step 10 times faster, witness generation did not get faster. It stayed the same speed. But its *share* of total time climbed from a modest 20% to a dominant 67%. The better the proof system got, the worse the witness gap became. The field celebrated its proving breakthroughs while the actual bottleneck quietly grew.
+The answer reveals something about how technology communities deceive themselves. When GPU acceleration made the cryptographic proving step ten times faster, witness generation did not get faster. It stayed the same speed. But its *share* of total time climbed from a modest 20% to a dominant 67%. The better the proof system got, the worse the witness gap became. The field celebrated its proving breakthroughs while the actual bottleneck quietly grew. The figure is from ZKPoG (Li, Yu, Wang, Fan, and Deng, ePrint 2025/765), the first end-to-end GPU system to treat witness generation as a first-class optimization target.
 
 This chapter is about what happens backstage. The curtain has closed. The audience (the verifier) cannot see what the magician does next. She takes her private data -- your bank balance, your identity, your vote -- and runs the computation, recording every step. This recording is the witness: the complete execution trace. Later layers will prove properties about it without revealing its contents.
 
@@ -59,7 +59,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (B) The 50–70% figure is attributed to "the field" in the prose but the only named source in ch04-witness-generation-costs is ZKPOG; first use of this number here has no inline citation. Add "(ZKPOG)" at first occurrence.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) "10-25%, as the field commonly claimed until recently" — the attribution is vague; the section should identify what publication or period originated this estimate (the prose in ch04-witness-generation-costs pins it to 2023 specifically).
 - [P2] (C) "The choreography is written and compiled" — metaphor intro is effective but "Now the magician goes backstage" restates the theatrical frame used at the end of ch03; minor repetition for readers moving straight through.
 - [P3] (D) The section ends with three named problems but does not give them names yet (Performance/Memory/Security/Correctness labels only land in ch04-the-witness-as-a-multi-dimensional-problem). A forward-reference sentence would orient readers without spoiling the structure.

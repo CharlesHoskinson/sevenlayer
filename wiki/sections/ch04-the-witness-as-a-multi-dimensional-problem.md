@@ -4,9 +4,9 @@ slug: ch04-the-witness-as-a-multi-dimensional-problem
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1577, 1614]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [1571, 1608]
+source_commit: 8b894477fca68f8420de3f8ba0e5301ba00fbb0a
+status: reviewed
 word_count: 772
 ---
 
@@ -14,13 +14,13 @@ word_count: 772
 
 The research literature reveals that the "Witness Gap" is not a single bottleneck but a convergence of four distinct challenges, each requiring different solutions.
 
-**The Performance Gap.** Witness generation has been neglected relative to MSM and NTT optimization because it does not parallelize in the same way. ZKPOG shows that GPU-accelerated witness generation is possible (3-10x speedups) but requires analyzing the circuit's dependency graph and topologically sorting gates to identify independent clusters. The parallelism exists, but extracting it is harder than parallelizing polynomial arithmetic.
+**The Performance Gap.** Witness generation has been neglected relative to MSM and NTT optimization because it does not parallelize in the same way. ZKPoG shows that GPU-accelerated witness generation is possible (3-10x speedups) but requires analyzing the circuit's dependency graph and topologically sorting gates to identify independent clusters. The parallelism exists, but extracting it is harder than parallelizing polynomial arithmetic.
 
-**The Memory Gap.** The full witness for a large computation can require hundreds of gigabytes of RAM. Streaming witness generation -- never materializing the full witness, instead generating chunks on the fly and consuming them immediately -- is the path forward. Nair, Thaler, and Zhu showed this can be achieved with $O(\sqrt{T})$ space and less than 2x time overhead, using checkpoints at regular intervals for parallel regeneration.
+**The Memory Gap.** The full witness for a large computation can require hundreds of gigabytes of RAM. Streaming witness generation -- never materializing the full witness, instead generating chunks on the fly and consuming them immediately -- is the path forward. Nair, Thaler, and Zhu showed this can be achieved with $O(\sqrt{KT})$ space (or $O(\sqrt{T})$ for a small constant number of checkpoint segments $K$) and less than 2x time overhead, using checkpoints at regular intervals for parallel regeneration.
 
-**The Security Gap.** The witness is the most sensitive artifact in the system. It contains the private inputs. Side-channel attacks can leak witness information through timing (R=0.57 in Zcash), cache patterns (Mukherjee et al. 2024), and network metadata. Constant-time implementation is a security requirement, not a performance optimization.
+**The Security Gap.** The witness is the most sensitive artifact in the system. It contains the private inputs. Side-channel attacks can leak witness information through timing (R=0.57 in Zcash), cache patterns (Mukherjee, Rechberger, and Schofnegger 2024 against Reinforced Concrete's Bars table), and network metadata. Constant-time implementation is a security requirement, not a performance optimization.
 
-**The Correctness Gap.** The witness generator and the constraint system must compute identical functions. When they disagree, the result is a soundness bug. Static analysis tools like ZKAP (F1 score 0.82, 34 previously unknown vulnerabilities discovered) can detect divergence, but they currently work only on Circom. Extending them to Rust-based systems (halo2, Plonky3) remains an open problem.
+**The Correctness Gap.** The witness generator and the constraint system must compute identical functions. When they disagree, the result is a soundness bug. Static analysis tools like ZKAP (F1 score 0.82, 34 previously unknown vulnerabilities discovered) and fuzzing tools like zkFuzz can detect divergence, but they currently work only on Circom. Extending them to Rust-based systems (halo2, Plonky3) remains an open problem.
 
 These four gaps interact. Solving the performance gap (GPU acceleration) can worsen the security gap (GPU thread divergence from constant-time code reduces SIMT utilization). Solving the memory gap (streaming) changes the architecture in ways that affect the correctness gap (streaming provers must handle state differently than batch provers). There is no single fix. The witness problem is systemic.
 
@@ -91,6 +91,8 @@ The Witness Gap is four overlapping problems: a Performance Gap (witness generat
 - Extending correctness analysis tools (ZKAP) to Rust-based systems (halo2, Plonky3) is flagged as an open problem.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [P2] (A) "~96% of the world's population cannot perform client-side ZK proving" is repeated from ch04-memory-the-binding-constraint verbatim. If the smartphone ownership base number there is inaccurate (see that section's notes), the error propagates here too.
 - [P2] (C) "The mathematics is beautiful. The engineering is brutal." — closing aphorism is an AI-smell stock contrast. Cut or vary.

@@ -4,7 +4,7 @@ slug: ch07-four-families-of-commitment-schemes
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3053, 3155]
+source_lines: [3047, 3149]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 3227

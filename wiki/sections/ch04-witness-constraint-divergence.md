@@ -4,9 +4,9 @@ slug: ch04-witness-constraint-divergence
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1481, 1514]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [1475, 1508]
+source_commit: 8b894477fca68f8420de3f8ba0e5301ba00fbb0a
+status: reviewed
 word_count: 843
 ---
 
@@ -18,7 +18,7 @@ Remember the dual-track problem from Chapter 3: in many ZK systems, the witness 
 
 Two real-world examples illustrate the stakes.
 
-RISC Zero disclosed CVE-2025-52484: a missing constraint in the RISC-V circuit that allowed confusion between the rs1 and rs2 register operands. The witness generator computed the correct values for both registers. The constraint system did not enforce that the registers were distinct. A malicious prover could substitute one register for another, and the proof would still verify. The computation would appear valid -- the proof would pass -- but the result would be wrong.
+RISC Zero disclosed CVE-2025-52484: a missing constraint in the RISC-V circuit that allowed confusion between the rs1 and rs2 source-register operands. According to the GitHub security advisory, the circuit failed to constrain the case where a three-register RISC-V instruction named the same register for both source operands. The advisory identifies 3-register instructions generally -- the `remu` and `divu` instructions are cited as examples -- without naming a single instruction as the whole class. The witness generator computed the correct values for both registers; the constraint system did not enforce that rs1 and rs2 carried the same value when they referenced the same register. A malicious prover could substitute one register for another, and the proof would still verify. The computation would appear valid, but the result would be wrong. The fix shipped in risc0-zkvm 2.1.0.
 
 The zkSync Era MemoryWriteQuery bug was worse. The struct that handled memory write operations failed to call `lc.enforce_zero(cs)` on the highest 128 bits of a 256-bit value, leaving those bits unconstrained. A malicious prover could modify the highest 128 bits of any memory write -- including withdrawal amounts. The proof system would accept the modification. An attacker could change a withdrawal of 0.00002 ETH to a withdrawal of 100,000 ETH, and the proof would verify.
 
@@ -30,13 +30,13 @@ Multiple valid witnesses can exist for the same statement, and the proof system 
 
 This property -- that multiple valid witnesses exist -- is fundamental, not a bug. The proof system guarantees that the prover knows *some* valid witness. It does not guarantee which one. For most applications, this is exactly right: if you prove you know a valid password, it does not matter whether you know the first password in the hash table or the last.
 
-Non-deterministic hints exploit this deliberately. Instead of computing a square root step by step -- which is expensive inside a circuit -- the prover *guesses* the answer (as a witness value) and the circuit verifies that the square of the guess equals 25. The computation goes from expensive (sequential square root algorithm) to cheap (one multiplication and one comparison). This "guess and check" pattern is a standard programming technique in ZK systems, not a bug. But it requires that the checking constraints are complete. If the check only verifies $x \cdot x = 25$ without constraining that x is in the correct range, a malicious prover might find a field element that satisfies the equation but is not the intended square root.
+Non-deterministic hints exploit this deliberately. Instead of computing a square root step by step -- which is expensive inside a circuit -- the prover *guesses* the answer (as a witness value) and the circuit verifies that the square of the guess equals 25. The computation goes from expensive (sequential square root algorithm) to cheap (one multiplication and one comparison). This "guess and check" pattern is a standard programming technique in ZK systems, not a bug. But it requires that the checking constraints are complete. If the check only verifies $x \cdot x = 25$ without constraining that $x$ is in the correct range, a malicious prover might find a field element that satisfies the equation but is not the intended square root.
 
 ### Closing the Correctness Gap
 
 The correctness gap -- the distance between what the developer meant and what the constraints enforce -- is identified, but what do teams actually do about it?
 
-The most common approach is *property-based testing*: generate thousands of random inputs, run them through both the witness generator and the constraint checker, and verify that the constraint system is satisfied for every valid witness and violated for every invalid one. This is the ZK equivalent of fuzzing, and tools like zkFuzz (which found 66 bugs including 38 zero-days) automate it. The limitation is coverage: random testing exercises the common cases but may miss the adversarial corner cases that matter most.
+The most common approach is *property-based testing*: generate thousands of random inputs, run them through both the witness generator and the constraint checker, and verify that the constraint system is satisfied for every valid witness and violated for every invalid one. This is the ZK equivalent of fuzzing. Takahashi, Kim, and collaborators built zkFuzz (IEEE S&P 2026, arXiv 2504.11961) to automate it against Circom; on 354 real-world circuits their tool identified 66 bugs including 38 zero-days, of which 18 were confirmed by developers and 6 were fixed for bug bounties. The limitation is coverage: random testing exercises the common cases but may miss the adversarial corner cases that matter most.
 
 *Differential testing* takes a different angle. You implement the same computation twice -- once as a witness generator, once as an independent reference implementation -- and check that they agree on all inputs. If the constraint system accepts a witness that the reference implementation rejects, you have found a bug. This approach catches the class of errors where the witness generator and the constraint system silently diverge (the dominant failure mode in Circom).
 
@@ -82,8 +82,8 @@ None.
 
 ## Improvement notes
 
-- [P1] (A) CVE-2025-52484 is cited as a RISC Zero disclosure but "rs1 and rs2 register operands" confusion is described without specifying which RISC-V instruction(s) were affected. The severity is unclear — this matters because some register operand confusions are exploitable for arbitrary value substitution (critical) while others affect only specific instruction classes. The summary should state the affected instruction or instruction class.
-- [P1] (B) "zkFuzz found 66 bugs including 38 zero-days" — the source for this is not identified in the prose (only in Sources cited as "zkFuzz"). The paper reference needs a year and venue to be verifiable.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) "ZKAP achieves F1 score 0.82 and discovered 34 previously unknown vulnerabilities via static analysis (Circom only)" — the F1 score is for a detection task that should be specified (under-constrained circuit detection? completeness checking?). Without the task definition, F1=0.82 is uninterpretable.
 - [P2] (B) NAVe (for Noir) and Picus (for Circom) are mentioned without citations or publication years. These are research tools; a reader wanting to follow up has no entry point.
 - [P2] (C) "The correctness gap: the distance between what the developer meant and what the constraints actually enforce. It is measured not in bits of security but in lines of code that were not written." — well-phrased but the final clause ("lines of code not written") is a rhetorical flourish that imprecisely conflates missing constraints with missing code; the zkSync bug was a method that existed but wasn't called.

@@ -5,8 +5,8 @@ chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1223, 1267]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 8b894477fca68f8420de3f8ba0e5301ba00fbb0a
+status: reviewed
 word_count: 751
 ---
 
@@ -87,6 +87,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [P2] (B) No sources cited for the claim that "the execution trace for a block proved by SP1 or RISC Zero might contain billions of field elements." SP1 and RISC Zero benchmarks exist; a reference would anchor this.
 - [P2] (A) "roughly 80 field elements in total" for a 4×4 Sudoku trace is stated without showing the accounting. The table shows 4 rows for x²+x=12; for Sudoku the derivation (16 values + intermediate checks) is asserted. A brief worked breakdown or explicit "approximately" would clarify.

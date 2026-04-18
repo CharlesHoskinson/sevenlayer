@@ -4,7 +4,7 @@ slug: ch07-the-one-way-door
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3498, 3525]
+source_lines: [3492, 3519]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 534

@@ -2,7 +2,7 @@
 title: "The Secret Performance"
 chapter: 4
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 4: The Secret Performance
@@ -18,7 +18,13 @@ status: untouched
 - [[ch04-the-disclose-boundary-midnight-s-witness-architecture]]
 - [[ch04-the-witness-as-a-multi-dimensional-problem]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-18 per `wiki/drafts/ch04-v2.md`. 1 P0 + 10 P1 resolved. Draft preserved. P2 (18) and P3 (6) deferred.
+
+**Notes:** Poseidon S-box correctly characterized as a field power map ($x^5/x^7$); cache-timing vulnerability re-attributed to Reinforced Concrete's Bars table. Midnight proving-time figure softened to "20-60 seconds on desktop hardware" — no formal benchmark page exists at `docs.midnight.network`; sourced to Midnight community/forum reports.
+
+## Audit rollup (pre-revision)
 
 **Totals:** P0=1, P1=9, P2=18, P3=6 — 34 findings across 8 sections.
 

@@ -4,7 +4,7 @@ slug: ch05-the-constraint-system-evolution-r1cs-air-plonkish
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1690, 1881]
+source_lines: [1684, 1875]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 5095

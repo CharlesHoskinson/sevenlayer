@@ -4,7 +4,7 @@ slug: ch05-the-spreadsheet-metaphor-and-where-it-works
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1647, 1689]
+source_lines: [1641, 1683]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 1230

@@ -4,7 +4,7 @@ slug: ch05-ccs-the-rosetta-stone
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1882, 1954]
+source_lines: [1876, 1948]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 2077

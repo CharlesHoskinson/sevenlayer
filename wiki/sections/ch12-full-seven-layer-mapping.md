@@ -4,7 +4,7 @@ slug: ch12-full-seven-layer-mapping
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4806, 4897]
+source_lines: [4800, 4891]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 2897

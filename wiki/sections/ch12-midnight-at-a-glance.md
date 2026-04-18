@@ -4,7 +4,7 @@ slug: ch12-midnight-at-a-glance
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4791, 4805]
+source_lines: [4785, 4799]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 178

@@ -4,7 +4,7 @@ slug: ch05-layer-4-arithmetization
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1617, 1646]
+source_lines: [1611, 1640]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 701

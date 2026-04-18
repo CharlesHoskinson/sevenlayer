@@ -4,7 +4,7 @@ slug: ch10-the-three-path-table
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4432, 4439]
+source_lines: [4426, 4433]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 108
