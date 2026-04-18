@@ -5,7 +5,7 @@ chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [282, 308]
-source_commit: b933209bc74dbc4253ecfd9814aa87712b628a3e
+source_commit: b965c2493b961bc9b2103781f78f2c7e98e4521f
 status: reviewed
 word_count: 799
 ---
