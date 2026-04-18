@@ -5,7 +5,7 @@ chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [410, 434]
-source_commit: 11fdb9b24e8a6276b781005a7fe5f0c10a377012
+source_commit: 29475f3770e85700685f72ef97723a324b0994c0
 status: reviewed
 word_count: 998
 ---
