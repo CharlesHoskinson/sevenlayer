@@ -155,5 +155,37 @@ Sidecar index with both Obsidian-style `[[wiki-links]]` and portable markdown pa
 
 ## Concepts
 
-_(empty)_
+| Title | Wiki link | Path |
+|-------|-----------|------|
+| Ajtai commitments | [[ajtai]] | [concepts/ajtai.md](./concepts/ajtai.md) |
+| BabyBear | [[babybear]] | [concepts/babybear.md](./concepts/babybear.md) |
+| Beanstalk | [[beanstalk]] | [concepts/beanstalk.md](./concepts/beanstalk.md) |
+| BLS12-381 | [[bls12-381]] | [concepts/bls12-381.md](./concepts/bls12-381.md) |
+| BN254 | [[bn254]] | [concepts/bn254.md](./concepts/bn254.md) |
+| Trusted setup ceremonies | [[ceremony]] | [concepts/ceremony.md](./concepts/ceremony.md) |
+| Circle STARKs | [[circle-stark]] | [concepts/circle-stark.md](./concepts/circle-stark.md) |
+| Fiat-Shamir transform | [[fiat-shamir]] | [concepts/fiat-shamir.md](./concepts/fiat-shamir.md) |
+| Folding schemes | [[folding]] | [concepts/folding.md](./concepts/folding.md) |
+| FRI | [[fri]] | [concepts/fri.md](./concepts/fri.md) |
+| Goldilocks field | [[goldilocks]] | [concepts/goldilocks.md](./concepts/goldilocks.md) |
+| Groth16 | [[groth16]] | [concepts/groth16.md](./concepts/groth16.md) |
+| Halo 2 | [[halo2]] | [concepts/halo2.md](./concepts/halo2.md) |
+| HyperNova | [[hypernova]] | [concepts/hypernova.md](./concepts/hypernova.md) |
+| Jolt zkVM | [[jolt]] | [concepts/jolt.md](./concepts/jolt.md) |
+| Jubjub curve | [[jubjub]] | [concepts/jubjub.md](./concepts/jubjub.md) |
+| KZG | [[kzg]] | [concepts/kzg.md](./concepts/kzg.md) |
+| Lasso | [[lasso]] | [concepts/lasso.md](./concepts/lasso.md) |
+| Lattice cryptography | [[lattice]] | [concepts/lattice.md](./concepts/lattice.md) |
+| LogUp | [[logup]] | [concepts/logup.md](./concepts/logup.md) |
+| Mersenne-31 / M31 | [[mersenne]] | [concepts/mersenne.md](./concepts/mersenne.md) |
+| Midnight | [[midnight]] | [concepts/midnight.md](./concepts/midnight.md) |
+| Nova | [[nova]] | [concepts/nova.md](./concepts/nova.md) |
+| PLONK | [[plonk]] | [concepts/plonk.md](./concepts/plonk.md) |
+| Poseidon hash | [[poseidon]] | [concepts/poseidon.md](./concepts/poseidon.md) |
+| Small-field revolution | [[small-field]] | [concepts/small-field.md](./concepts/small-field.md) |
+| Spartan | [[spartan]] | [concepts/spartan.md](./concepts/spartan.md) |
+| STARKs | [[starks]] | [concepts/starks.md](./concepts/starks.md) |
+| Sudoku running example | [[sudoku]] | [concepts/sudoku.md](./concepts/sudoku.md) |
+| Tornado Cash | [[tornado-cash]] | [concepts/tornado-cash.md](./concepts/tornado-cash.md) |
+| Zcash | [[zcash]] | [concepts/zcash.md](./concepts/zcash.md) |
 
