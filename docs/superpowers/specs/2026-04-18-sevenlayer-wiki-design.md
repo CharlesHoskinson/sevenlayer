@@ -135,7 +135,8 @@ Chapter hubs and concept hubs share the frontmatter but replace `## Body` with n
 3. Write `_meta/schema.md` (the node template).
 4. Commit: `chore: scaffold wiki skeleton`.
 
-**Dispatch (single message, 14 parallel Explore-type subagents):**
+**Dispatch (single message, 14 parallel `general-purpose` subagents):**
+*Note: must be `general-purpose` (not `Explore`) because extraction requires the `Write` tool, which the `Explore` agent type cannot use.*
 Each agent receives its chapter number, manifest slice, path to `schema.md`, target directory, source file path, and source commit sha. Each produces:
 - One `chNN-<slug>.md` per section in its chapter, with frontmatter mechanically populated and verbatim body. All rich fields left as empty placeholder headings (`## Summary`, `## Key claims`, etc.). Status: `untouched`.
 - One `chapters/NN-<slug>.md` stub listing its sections.
@@ -161,13 +162,13 @@ Enrichment needs global visibility, so parallelism is structured.
 - Auto-detect additional candidates: any capitalized proper noun or acronym appearing in ≥4 sections.
 - Commit.
 
-**2.2 — Chapter-parallel enrichment (14 parallel agents):**
+**2.2 — Chapter-parallel enrichment (14 parallel `general-purpose` agents):**
 Each agent fills, for every section in its chapter: `## Summary`, `## Key claims`, `## Entities` (from entity-map), `## Dependencies`, `## Sources cited`, `## Open questions`, `## Links`. Status transitions `untouched → drafted`. Does **not** yet write `## Improvement notes`.
 
 **2.3 — Concept hubs (main agent, sequential):**
 From `entity-map.json`, generate each `concepts/<entity>.md`: summary, canonical definition (may pull from `GLOSSARY.md`), "Where it appears" linking every mentioning section, "Major claims across the book" rollup. Commit.
 
-**2.4 — Per-chapter audit (14 parallel agents):**
+**2.4 — Per-chapter audit (14 parallel `general-purpose` agents):**
 Each agent ingests its chapter's sections + all concept hubs + other chapters' summaries. For every section it writes `## Improvement notes` across the five dimensions with severity tags `P0 | P1 | P2 | P3`. Also writes a chapter-level audit report into the chapter hub.
 
 **2.5 — Backlog synthesis (main agent, sequential):**
