@@ -5,7 +5,7 @@ chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1611, 1640]
-source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+source_commit: eb72fd8bb82cecd60e59036b27847eea5797a886
 status: reviewed
 word_count: 701
 ---
