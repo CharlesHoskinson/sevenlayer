@@ -4,9 +4,9 @@ slug: ch03-the-four-philosophies
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [823, 1041]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [827, 1043]
+source_commit: bcc3759e2dfc992ab66b2b1f5f18bbcff59f5d65
+status: reviewed
 word_count: 3720
 ---
 
@@ -28,19 +28,19 @@ The lesson is not that EVM compatibility is wrong. Scroll and Linea are thriving
 
 **Philosophy B: ZK-Native ISA.** Design a new instruction set from scratch, optimized for proving. The developer learns a new language, but every instruction translates efficiently into polynomial constraints. Cairo is the canonical example. Its instruction set was co-designed with StarkWare's STARK proof system. Layer 2 was literally shaped by Layer 4 -- the language exists *because* of the arithmetization.
 
-Cairo's execution trace model -- columns for program counter, flags, operands, with polynomial constraints between adjacent rows -- became the template for every subsequent zkVM. The Goldilocks prime field ($2^{64} - 2^{32} + 1$) that Cairo adopted has since been used by RISC Zero, SP1, and others. Cairo bet on algebraic efficiency over developer familiarity, and for the Starknet ecosystem, that bet paid off: it is the most battle-tested ZK system after Circom, handling real assets on mainnet since 2020.
+Cairo works over the Stark prime -- $p = 2^{251} + 17 \cdot 2^{192} + 1$ -- a 252-bit field sized for elliptic-curve scalars. Its execution trace model, with columns for program counter, flags, and operands, and polynomial constraints between adjacent rows, became the template for every subsequent zkVM. The small-field successors -- Goldilocks (Plonky2, Plonky3, RISC Zero), BabyBear (SP1), M31 (Stwo) -- inherited the trace model but replaced the large prime with a word-sized one so that multiplication maps onto native CPU instructions. Cairo bet on algebraic efficiency over developer familiarity, and for the Starknet ecosystem, that bet paid off: it is the most battle-tested ZK system after Circom, handling real assets on mainnet since 2020.
 
 The cost is ecosystem isolation. Cairo programs do not run anywhere except Starknet. The tooling, libraries, and developer community are Cairo-specific. Every line of code is a bet on one ecosystem. But that bet has paid returns: Starknet processes real assets, real DeFi, real NFTs. Cairo is not a research project. It is production infrastructure.
 
 The evolution from Cairo 0 to Cairo 1.0 is itself instructive. The original Cairo was barely recognizable as a programming language -- it looked more like assembly with syntactic sugar. Cairo 1.0 aligned with mainstream language features: Rust-like syntax, a borrow checker, generic types. The lesson for the field: even a language designed for proof efficiency eventually converges toward familiar developer ergonomics, because adoption requires accessibility.
 
-**Philosophy C: General-Purpose ISA.** Prove a standard processor. RISC-V has won this category so decisively that it is no longer a competition. SP1 (Succinct), RISC Zero (with its R0VM 2.0 reducing Ethereum block proving from 35 minutes to 44 seconds), Airbender (ZKsync), ZisK (the ex-Polygon team), and Pico Prism all target RISC-V.
+**Philosophy C: General-Purpose ISA.** Prove a standard processor. RISC-V has won this category so decisively that it is no longer a competition. SP1 (Succinct), RISC Zero, Airbender (ZKsync), ZisK, Jolt, and Pico Prism all target RISC-V.
 
 Why RISC-V and not some other instruction set? Three properties converged. First, RISC-V is an open standard with no licensing fees -- any team can build a zkVM around it without negotiating with a chip vendor. Second, the RISC-V instruction set is small and regular: roughly 40 base instructions, each with a predictable structure, which makes the arithmetization (the process of encoding each instruction as polynomial constraints) manageable. Contrast this with x86, whose instruction set has thousands of opcodes with variable-length encoding. Third, and most importantly, the existing compiler infrastructure already targets RISC-V. The LLVM backend, GCC, and the Rust compiler all produce RISC-V machine code. This means the developer writes standard Rust, C, or C++, the compiler produces RISC-V machine code, the zkVM executes that code, and the proof system proves the execution. Standard toolchains, standard debuggers, standard testing frameworks. The ZK-specific complexity hides entirely behind the compilation boundary.
 
 The architectural insight is worth stating explicitly: instead of designing constraints around a custom instruction set (as Cairo does), Philosophy C proves a standard processor and lets decades of compiler engineering handle the optimization. Cairo aligns its ISA with the algebraic structure of the proof system -- every instruction maps cleanly to polynomial constraints -- which minimizes the proving overhead per instruction. RISC-V does not have this alignment. A RISC-V multiply instruction produces more constraints than a Cairo multiply. But the tradeoff is ecosystem reach: Cairo requires learning Cairo. RISC-V requires learning nothing new. For a field where the developer talent pool is measured in thousands, not millions, this tradeoff has decisively favored RISC-V.
 
-Airbender, ZKsync's RISC-V prover, illustrates the performance frontier: 21.8 million RISC-V cycles proven per second on a single NVIDIA H100 GPU. For context, a typical Ethereum block involves roughly 100-400 million cycles, meaning a single GPU can prove a block in 5-20 seconds. Even projects that started with EVM compatibility are converging on RISC-V. ZKsync's Airbender proves RISC-V execution and layers EVM compatibility on top. The trend is clear: RISC-V is the assembly language of the zero-knowledge world.
+Airbender, ZKsync's RISC-V prover, illustrates the performance frontier: 21.8 million RISC-V cycles proven per second on a single NVIDIA H100 GPU (ZKsync, "Airbender: GPU-Accelerated RISC-V Proving," June 2025). For context, a typical Ethereum block involves roughly 100-400 million cycles, meaning a single GPU can prove a block in 5-20 seconds. Even projects that started with EVM compatibility are converging on RISC-V. ZKsync's Airbender proves RISC-V execution and layers EVM compatibility on top. The trend is clear: RISC-V is the assembly language of the zero-knowledge world.
 
 **Philosophy D: Application-Specific DSL.** This is the philosophy that does not fit the evolutionary narrative. Instead of proving a processor, these languages prove *state transitions*. Instead of hiding ZK complexity behind a compilation boundary, they make privacy a first-class language concept.
 
@@ -50,9 +50,9 @@ Three languages define this category.
 
 *Noir* (Aztec Labs) is a Rust-inspired, backend-agnostic ZK language. It compiles to an Abstract Circuit Intermediate Representation (ACIR). Noir does not target a specific proof system -- it targets multiple backends. This makes it the closest thing the ZK world has to a "write once, prove anywhere" language.
 
-Noir 1.0 was pre-released in late 2025. It became an officially recognized language on GitHub. NoirCon conferences have been held (NoirCon0 in November 2024). The ecosystem includes over 600 projects and 900 GitHub stars. Key adopters include zkEmail, zkPassport, and zkLogin. Aztec's Ignition Chain went live in November 2025 as the first decentralized L2 on Ethereum, with 185+ operators across 5 continents and 3,400+ sequencers -- and its core cryptography was rewritten in Noir.
+Noir 1.0 was pre-released in late 2025. It became an officially recognized language on GitHub. NoirCon conferences have been held (NoirCon0 in November 2024). The ecosystem includes over 600 projects and 900 GitHub stars. Key adopters include zkEmail, zkPassport, and zkLogin. Aztec's Ignition Chain launched in November 2025 as a decentralized L2 on Ethereum, with 185+ operators across five continents and thousands of sequencers -- and its core cryptography was written in Noir (Aztec Network, "Aztec Ignition Chain Update," 2025).
 
-Noir breaks the three-philosophy taxonomy because it is neither ISA-based nor chain-specific: it is a universal circuit language. Its privacy model is straightforward -- all inputs are private unless explicitly declared `pub` -- but it lacks the compile-time disclosure analysis that Compact provides. The developer bears responsibility for correctly managing the public/private boundary. In exchange, Noir programs can target any proving backend that accepts ACIR, making them portable across proof systems in a way that no other ZK language achieves.
+Noir breaks the three-philosophy taxonomy because it is neither ISA-based nor chain-specific: it is a universal circuit language. Its privacy model is annotation-based -- all inputs are private unless explicitly declared `pub` -- but it lacks the compile-time disclosure analysis that Compact provides. The developer bears responsibility for correctly managing the public/private boundary. In exchange, Noir programs can target any proving backend that accepts ACIR, making them portable across proof systems in a way that no other ZK language achieves.
 
 *Leo* (Aleo) is a privacy-first language for the Aleo blockchain, with syntax borrowing from Rust and TypeScript. Leo targets Aleo's record-based (UTXO-like -- a UTXO, or Unspent Transaction Output, is a model where each digital coin is a discrete object created by one transaction and consumed by another, like physical bills in a wallet) privacy model and includes hooks for formal verification. With over 400,000 CLI downloads, Leo represents the privacy-specialized variant of the application DSL approach.
 
@@ -103,7 +103,7 @@ export circuit verify_sudoku(
 }
 ```
 
-The `disclose(get_solution())` call is the key line. The solution -- the completed 4x4 grid -- is a witness value, retrieved from the prover's private state. The `disclose()` makes it available to the circuit's constraints. The puzzle is a public input, visible to the verifier. The proof certifies: "I know a valid completion of this puzzle." The verifier learns nothing about the solution itself -- not a single filled-in cell.
+The `disclose(get_solution())` call is the load-bearing line. The solution -- the completed 4x4 grid -- is a witness value, retrieved from the prover's private state. The `disclose()` makes it available to the circuit's constraints. The puzzle is a public input, visible to the verifier. The proof certifies: "I know a valid completion of this puzzle." The verifier learns nothing about the solution itself -- not a single filled-in cell.
 
 ### Noir: Write Once, Prove Anywhere
 
@@ -199,13 +199,11 @@ The tradeoff is the same one that appears throughout Philosophy D: Leo programs 
 
 ### The Philosophy D Synthesis
 
-What unites these three languages is a conviction that privacy cannot be an afterthought. In Philosophies A, B, and C, the proof system guarantees computational integrity -- it proves the computation was done correctly. But it says nothing about what information the computation reveals. Privacy depends on the developer correctly managing which values are public and which are private. A mistake does not produce a compiler error. It produces a privacy leak.
-
-Philosophy D languages treat privacy as a compiler concern. The language itself knows the difference between public and private. And in Compact's case, the compiler physically prevents the developer from accidentally crossing that boundary.
-
 What unites Philosophies A, B, and C is a shared assumption: the developer does not need to think about privacy. The proof system guarantees computational integrity -- it proves the computation was done correctly. But it says nothing about what information the computation reveals. Whether to encrypt inputs, hide outputs, or shield metadata is left to the application layer, if it is considered at all.
 
-Philosophy D breaks this assumption. Privacy is not a layer above the language -- it is embedded in the language itself.
+What unites the three Philosophy D languages is the opposite conviction: privacy cannot be an afterthought. The language itself knows the difference between public and private. Each takes a different route to that guarantee. Compact runs a disclosure-analysis pass and rejects programs where private values might reach a public surface without explicit consent. Noir puts the privacy boundary in the function signature and enforces what the developer declared -- but does not try to detect what they forgot. Leo encodes privacy structurally, in an encrypted record model where everything is private by default and publicity is the exception.
+
+Philosophy D breaks the shared assumption of A, B, and C. Privacy is not a layer above the language -- it is embedded in the language itself.
 
 The following table summarizes the four philosophies:
 
@@ -214,7 +212,7 @@ The following table summarizes the four philosophies:
 | **A: EVM-Compatible** | Scroll, Linea | EVM execution | None (transparent) | Familiar (Solidity) | Proving the EVM is expensive |
 | **B: ZK-Native ISA** | Cairo (Starknet) | Custom CPU trace | None (transparent) | New language required | Locked to one ecosystem |
 | **C: General-Purpose ISA** | SP1, RISC Zero, Airbender | RISC-V execution | None (transparent) | Familiar (Rust, C++) | Arithmetization overhead |
-| **D: Application DSL** | Compact, Noir, Leo | State transitions or circuits | Compiler-enforced | Domain-specific syntax | Locked to one chain (Compact/Leo) or one IR (Noir) |
+| **D: Application DSL** | Compact / Noir / Leo | State transitions or circuits | Compact: compiler-enforced (disclosure analysis); Noir: annotation-based (developer responsibility); Leo: structural (record model) | Domain-specific syntax | Locked to one chain (Compact/Leo) or one IR (Noir) |
 
 The taxonomy is not a ranking. Each philosophy serves a different constituency. The following decision guide distills each philosophy's sweet spot:
 
@@ -282,10 +280,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) "The Goldilocks prime field ($2^{64} - 2^{32} + 1$) that Cairo adopted has since been used by RISC Zero, SP1, and others" — Cairo does not use Goldilocks; it uses the Stark prime. Same error as in `ch03-from-circuits-to-virtual-machines-a-brief-evolution`; must be corrected in both places.
-- [P1] (A) The Philosophy D summary table marks all three DSLs (Compact, Noir, Leo) as "Compiler-enforced" privacy. Noir enforces public/private via annotations but lacks a disclosure-analysis pass that rejects accidental leakage; Leo's privacy is structural/record-based. Only Compact provides compile-time disclosure analysis. The table overstates Noir's and Leo's guarantees.
-- [P1] (B) "Airbender proves 21.8 million RISC-V cycles/second on a single NVIDIA H100" — no source. "RISC Zero's R0VM 2.0 reduced Ethereum block proving from 35 minutes to 44 seconds" — no source. "Aztec's Ignition Chain went live in November 2025 as the first decentralized L2 on Ethereum, with 185+ operators and 3,400+ sequencers" — "first decentralized L2" is a strong claim with no citation.
-- [P1] (D) Two "What unites…" paragraphs appear in the wrong order (lines ~202 and ~206): the paragraph describing what unites Philosophy D languages is immediately followed by a paragraph describing what unites Philosophies A/B/C, then the table. The A/B/C paragraph should precede the D synthesis to maintain logical flow; as written it feels like a structural remnant.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (B) Scroll TVL ($748 million), Linea TVL ($2 billion), Polygon/Hermez acquisition ($250 million), and NoirCon0 date (November 2024) are all uncited specific figures. At least the acquisition figure should reference a primary source.
 - [P2] (C) "Noir 1.0 was pre-released in late 2025" — calling something "1.0 pre-released" is contradictory; a pre-release is not 1.0. Clarify whether this is a release candidate, a versioned release, or a beta.
 - [P2] (C) The "Sources cited" field is empty despite numerous specific quantitative claims throughout this section (cycle counts, TVL, sequencer counts). This is the longest section in the chapter and the most citation-sparse.

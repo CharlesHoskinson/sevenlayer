@@ -4,9 +4,9 @@ slug: ch03-midnight-compiler-ir-circuit
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [1162, 1191]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [1162, 1200]
+source_commit: bcc3759e2dfc992ab66b2b1f5f18bbcff59f5d65
+status: reviewed
 word_count: 520
 ---
 
@@ -16,7 +16,16 @@ Compact's three-part compilation architecture illustrates a principle that appli
 
 From a single `.compact` source file, the compiler produces three distinct artifacts:
 
-**Artifact 1: ZKIR circuits.** ZKIR (Zero-Knowledge Intermediate Representation) is a JSON-formatted circuit description with 24 typed instructions organized into eight categories: arithmetic (`add`, `mul`, `neg`), constraints (`assert`, `constrain_bits`, `constrain_eq`), control flow (`cond_select`, `copy`), type encoding (`decode`, `encode`), cryptographic operations (`ec_mul`, `hash_to_curve`, `persistent_hash`), and I/O (`impact`, `output`, `private_input`, `public_input`).
+**Artifact 1: ZKIR circuits.** ZKIR (Zero-Knowledge Intermediate Representation) is a JSON-formatted circuit description with 24 typed instructions organized into eight categories:
+
+- *arithmetic* (3): `add`, `mul`, `neg`
+- *constraints* (4): `assert`, `constrain_eq`, `constrain_bits`, `constrain_to_boolean`
+- *comparison* (2): `test_eq`, `less_than`
+- *control flow* (2): `cond_select`, `copy`
+- *type encoding* (3): `reconstitute_field`, `encode`, `decode`
+- *division* (1): `div_mod_power_of_two`
+- *cryptographic* (5): `transient_hash`, `persistent_hash`, `ec_mul_generator`, `ec_mul`, `hash_to_curve`
+- *I/O* (4): `private_input`, `public_input`, `output`, `impact`
 
 Every ZKIR circuit has two transcript channels. The `publicTranscript` records ledger operations -- reads, writes, comparisons -- visible to the on-chain verifier. The `privateTranscriptOutputs` contains witness-derived values visible only to the prover. The ZKIR checker verifies that the serialized public transcript matches exactly what the circuit computed. Tampering with either transcript causes rejection with specific, diagnostic error messages.
 
@@ -77,7 +86,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) The body claims "24 typed instructions organized into eight categories" and then lists: arithmetic (3), constraints (3), control flow (2), type encoding (2), cryptographic operations (3), and I/O (4) = 17 instructions. Seven instructions are unaccounted for. Either the count is wrong or the category listing is incomplete; reconcile the total with the enumerated list.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) "Cairo produces execution traces but no privacy separation" — Cairo's *compiler* does not produce execution traces; execution traces are a runtime artifact of the CairoVM. The compiler produces Sierra/CASM bytecode. The comparison is technically imprecise.
 - [P2] (B) No citations in "Sources cited" for any of the ZKIR specifics (24 instructions, 8 categories, two transcript channels). These are verifiable implementation details that should reference Midnight's technical documentation or the Compact spec.
 - [P2] (C) "No other ZK language generates all three from one source" is a strong uniqueness claim that appears in both this section and in `ch03-the-four-philosophies`. The repetition is intentional for emphasis but risks feeling like padding; consider consolidating.

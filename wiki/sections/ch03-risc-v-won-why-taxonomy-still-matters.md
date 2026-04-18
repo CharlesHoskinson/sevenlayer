@@ -4,9 +4,9 @@ slug: ch03-risc-v-won-why-taxonomy-still-matters
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [767, 798]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [767, 800]
+source_commit: bcc3759e2dfc992ab66b2b1f5f18bbcff59f5d65
+status: reviewed
 word_count: 375
 ---
 
@@ -14,9 +14,11 @@ word_count: 375
 
 Chapter 2 closed with a question: who writes the script? The answer is the developer -- but the language she writes in determines what mistakes she can make, and some mistakes break everything.
 
-If RISC-V has won -- if eight of ten major zero-knowledge virtual machines now target the same general-purpose instruction set -- why bother presenting a taxonomy of competing philosophies at all? Why not just say "write Rust, compile to RISC-V, the proof system handles the rest"?
+If RISC-V has won -- if most of the zero-knowledge virtual machines in production now target the same general-purpose instruction set -- why bother presenting a taxonomy of competing philosophies at all? Why not just say "write Rust, compile to RISC-V, the proof system handles the rest"?
 
-Because the taxonomy is not about which instruction set the machine runs. It is about what *the developer sees*. And what the developer sees determines what bugs the developer makes. Those bugs -- not cryptographic breaks, not quantum computers, not governance attacks -- are the single largest source of real-world failures in zero-knowledge systems. Sixty-seven percent of all known SNARK vulnerabilities are under-constrained circuits: programs where the developer said less than they meant, and the proof system happily proved false statements as a result.
+Because the taxonomy is not about which instruction set the machine runs. It is about what *the developer sees*. And what the developer sees determines what bugs the developer makes. Those bugs -- not cryptographic breaks, not quantum computers, not governance attacks -- are the single largest source of real-world failures in zero-knowledge systems. Sixty-seven percent of all catalogued SNARK vulnerabilities are under-constrained circuits: programs where the developer said less than they meant, and the proof system happily proved false statements as a result (Chaliasos et al., "SoK: What Don't We Know?", USENIX Security 2024).
+
+The commitment to RISC-V is uneven. The book's own landscape in Chapter 11 catalogues SP1, RISC Zero, Jolt, Airbender, ZisK, and Pico Prism as RISC-V targets; Stwo keeps Cairo; other zkVMs use their own instruction sets. Most of the new production work lands on RISC-V, but "won" does not mean "only." The taxonomy below survives either way, because it is about expression, not execution.
 
 The language layer is where the magician writes the choreography for the act. The choice of notation determines what mistakes are possible. Some notations let the performer accidentally step into the audience's view. Others physically prevent it. That distinction is worth understanding, even in a world where RISC-V has won the instruction set war.
 
@@ -75,7 +77,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (B) "Eight of ten major zkVMs target RISC-V" and "67% of all known SNARK vulnerabilities" are stated in the body as facts but no primary source is cited in this section; the 67% is attributed by internal cross-reference only to `ch03-under-constrained-circuits`, not to Chaliasos SoK directly.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) "Eight of ten major zero-knowledge virtual machines now target the same general-purpose instruction set" — no timestamp anchors this count; the claim is stale-prone and should be dated or qualified.
 - [P2] (C) The opening question "who writes the script?" repeats the closing rhetorical device of chapter 2 without acknowledging it; readers who skip sections may find the callback opaque.
 - [P3] (E) The Sudoku running-example box describes only the constraint structure; it does not say what the proof *hides* (the solution) versus what it *reveals* (the puzzle), missing an opportunity to introduce the public/private input distinction at Layer 2.

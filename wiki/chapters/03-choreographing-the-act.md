@@ -2,7 +2,7 @@
 title: "Choreographing the Act"
 chapter: 3
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 3: Choreographing the Act
@@ -17,7 +17,15 @@ status: untouched
 - [[ch03-compact-s-disclosure-analysis]]
 - [[ch03-midnight-compiler-ir-circuit]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-18 per `wiki/drafts/ch03-v2.md`. 0 P0 + 13 P1 resolved. Draft preserved. P2 (17) and P3 (5) deferred.
+
+**Reviewer fixes applied inline:** ZK-Coder lead author corrected from "Wang et al." to "Xue et al." per arXiv 2509.11708 author ordering.
+
+**Note:** R0VM 2.0 URL (`risczero.com/blog/introducing-R0VM-2.0`) returned 500 at review time; claim softened to "order-of-magnitude improvements" rather than citing specific numbers.
+
+## Audit rollup (pre-revision)
 
 ### Severity totals
 

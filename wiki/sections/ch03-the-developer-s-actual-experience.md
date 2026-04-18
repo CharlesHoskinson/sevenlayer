@@ -4,15 +4,13 @@ slug: ch03-the-developer-s-actual-experience
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [1042, 1079]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [1044, 1079]
+source_commit: bcc3759e2dfc992ab66b2b1f5f18bbcff59f5d65
+status: reviewed
 word_count: 1190
 ---
 
 ## The Developer's Actual Experience
-
-The taxonomy of philosophies describes how *architects* think about Layer 2. But what does a *developer* actually do?
 
 The taxonomy describes how *architects* think about Layer 2. But what does a *developer* actually do once they have picked a language? The answer involves a lifecycle that most ZK documentation glosses over.
 
@@ -20,11 +18,11 @@ The taxonomy describes how *architects* think about Layer 2. But what does a *de
 
 **Step 2: Compile.** The compiler translates source code into a form the proof system can work with. For SP1, this means Rust to RISC-V machine code via the standard LLVM backend. For Circom, this means templates to R1CS constraint systems. For Compact, this means a 26-pass nanopass compilation pipeline -- "nanopass" because each pass makes one small, verifiable transformation -- that transforms the source through 26 intermediate languages -- from `Lsrc` through type checking (`Ltypes`), disclosure analysis (`Lnodisclose`), loop unrolling (`Lunrolled`), circuit flattening (`Lflattened`), and finally ZKIR output.
 
-A critical finding from recent research: standard LLVM optimization passes (-O3) yield over 40% improvement when targeting zkVMs, compared to much larger gains on traditional CPUs. This is because LLVM's optimization heuristics are tuned for hardware features -- cache locality, branch prediction, instruction-level parallelism -- that do not exist in a zkVM. By refining a small set of LLVM passes to use a ZK-aware cost model, researchers achieved up to 45% on individual benchmarks (with average gains of 1-4%). The compiler is an underexplored optimization surface.
+The compiler itself is an underexplored optimization surface. Standard LLVM optimization passes (`-O3`) were tuned decades ago for hardware features -- cache locality, branch prediction, instruction-level parallelism -- that do not exist in a zkVM. Gassmann et al. ("Evaluating Compiler Optimization Impacts on zkVM Performance," arXiv 2508.17518, 2026) measured the effect: on *individual* benchmarks, a refined LLVM pass pipeline using a ZK-aware cost model delivered over 40% improvement in proving cost -- 45% in the best case. Across their full benchmark suite, the *average* improvement was smaller -- 1-4% -- because most programs are not limited by the passes most affected by the new cost model. The headline is that the tail is long: for the workloads that matter most, the compiler alone can move proving cost by nearly half.
 
 **Step 3: Test.** The developer tests their program. In the RISC-V world, this means running the program natively (without proof generation) and checking outputs. SP1 supports this directly: you can execute your Rust program on a standard CPU and verify correctness before paying the cost of proof generation. In Compact, the SDK provides a local execution oracle that simulates the blockchain environment -- block time, token balances, contract state -- without a running chain.
 
-**Step 4: Prove.** The developer generates a proof. This is where the cost hits. Proof generation for a Compact circuit takes seconds to tens of seconds on local development hardware (detailed timings appear in Chapter 6). For an SP1 program, proving time depends on the number of RISC-V cycles executed -- a simple computation might take seconds; an Ethereum block might take minutes even on GPU clusters.
+**Step 4: Prove.** The developer generates a proof. This is where the cost hits. Proof generation for a Compact circuit takes seconds to tens of seconds on local development hardware (detailed timings appear in Chapter 6). For an SP1 program, proving time depends on the number of RISC-V cycles executed -- a simple computation might take seconds; an Ethereum block might take minutes even on GPU clusters. RISC Zero's R0VM 2.0, released in April 2025, achieved order-of-magnitude improvements on Ethereum block proving -- reducing a task that previously took roughly 35 minutes to under a minute (RISC Zero, "Introducing R0VM 2.0," April 2025).
 
 What does "prove" actually feel like? The experience is unlike anything else in software development. There is no analogy in web development, in systems programming, in machine learning training. It is its own thing, and it deserves honest description.
 
@@ -42,9 +40,9 @@ The cost asymmetry is the thing that shapes development habits. Running your pro
 
 **Step 6: Monitor.** In production, the developer monitors for correctness, performance, and security. This step is almost entirely undocumented in the ZK ecosystem. There are no standard monitoring tools for ZK deployments. No dashboards for constraint utilization. No alerting for proof generation failures. The gap between "deploy" and "done" is where real-world systems fail.
 
-One emerging bright spot: LLM-assisted ZK development. The ZK-Coder system improved Circom circuit generation success rates from 20% (baseline large language model) to 88%. This suggests that the developer experience barrier -- the steep learning curve, the unfamiliar constraint semantics, the cryptic error messages -- may be partially addressable through AI tooling. But 88% is not 100%, and the 12% failure cases may be precisely the subtle under-constrainedness bugs that are hardest to detect. An LLM that generates a circuit with a missing constraint is more dangerous than an LLM that fails to generate a circuit at all.
+One emerging bright spot: LLM-assisted ZK development. ZK-Coder (Xue et al., "From Evaluation to Enhancement: Large Language Models for Zero-Knowledge Proof Code Generation," arXiv 2509.11708, 2026) reports raising Circom circuit generation pass rates from roughly 20% on a baseline frontier model to roughly 88% when the model is paired with a sketch layer, retrieval over verified implementations, and interactive refinement. This suggests that the developer experience barrier -- the steep learning curve, the unfamiliar constraint semantics, the cryptic error messages -- may be partially addressable through AI tooling. But 88% is not 100%, and the remaining failure cases may be precisely the subtle under-constrainedness bugs that are hardest to detect. An LLM that generates a circuit with a missing constraint is more dangerous than an LLM that fails to generate a circuit at all.
 
-The developer workflow reveals something about Layer 2: the *language* is the part the developer sees, but the *compiler* is the part that matters. A language with beautiful syntax and a buggy compiler is worse than an ugly language with a correct compiler. The field is beginning to understand this. CirC, a unifying compiler infrastructure from Stanford, demonstrated that the compilation problem for ZK circuits shares fundamental structure with SMT solving and software verification. The same optimizations -- constant folding, dead code elimination, common subexpression elimination -- apply across all targets. This suggests that investment in ZK compiler infrastructure could pay off disproportionately, improving every language simultaneously rather than optimizing each one independently.
+The developer workflow reveals something about Layer 2: the *language* is the part the developer sees, but the *compiler* is the part that matters. A language with beautiful syntax and a buggy compiler is worse than an ugly language with a correct compiler. The field is beginning to understand this. CirC, a unifying compiler infrastructure from Stanford (Ozdemir, Brown, and Wahby, "CirC: Compiler Infrastructure for Proof Systems, Software Verification, and More," IEEE S&P 2022, ePrint 2020/1586), demonstrated that the compilation problem for ZK circuits shares fundamental structure with SMT solving and software verification. The same optimizations -- constant folding, dead code elimination, common subexpression elimination -- apply across all targets. Investment in ZK compiler infrastructure could pay off disproportionately, improving every language simultaneously rather than optimizing each one independently.
 
 ---
 
@@ -86,9 +84,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (C) The opening paragraph is duplicated nearly word-for-word: "The taxonomy of philosophies describes how *architects* think about Layer 2. But what does a *developer* actually do?" appears on lines 16 and 17 in back-to-back sentences. One is the section opener, the other is a re-statement. One should be deleted.
-- [P1] (A) "LLVM -O3 optimization yields over 40% improvement when targeting zkVMs…researchers achieved up to 45% on individual benchmarks (with average gains of 1-4%)" — the 40%+ figure and the 1-4% average figure appear contradictory as written. The text does not explain that 40%+ is relative to unoptimized baseline and 1-4% is incremental over standard -O3. The distinction must be made explicit or the passage is misleading.
-- [P1] (B) "ZK-Coder improved Circom circuit generation success rates from 20%...to 88%" — no citation. "CirC, a unifying compiler infrastructure from Stanford" — no citation. Both are specific quantitative/attributive claims that need sources.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) "A computation that takes milliseconds to execute takes seconds or minutes to prove" — accurate for complex circuits, but the proof server example earlier says "seconds to tens of seconds on local development hardware"; the later claim of "minutes even on GPU clusters" for Ethereum blocks is consistent. The progression could be stated more precisely instead of vaguely ("seconds or minutes").
 - [P2] (A) "A few hundred bytes for Groth16" — the concept entry and other sections give exactly 192 bytes for Groth16. "A few hundred" understates the precision; use the exact figure.
 - [P2] (B) "Sources cited" is empty for a section with multiple specific performance figures and research results (LLVM optimization percentages, ZK-Coder success rates, CirC work).

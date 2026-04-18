@@ -4,7 +4,7 @@ slug: ch04-the-witness-as-a-multi-dimensional-problem
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1568, 1605]
+source_lines: [1577, 1614]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 772

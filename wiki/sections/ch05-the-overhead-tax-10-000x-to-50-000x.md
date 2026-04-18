@@ -4,7 +4,7 @@ slug: ch05-the-overhead-tax-10-000x-to-50-000x
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2119, 2234]
+source_lines: [2128, 2243]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 3325

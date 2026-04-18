@@ -4,7 +4,7 @@ slug: ch06-snark-recursion-vs-folding-the-full-picture
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2908, 2942]
+source_lines: [2917, 2951]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 557

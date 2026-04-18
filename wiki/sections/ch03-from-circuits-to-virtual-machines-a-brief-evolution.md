@@ -4,9 +4,9 @@ slug: ch03-from-circuits-to-virtual-machines-a-brief-evolution
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [799, 822]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [801, 826]
+source_commit: bcc3759e2dfc992ab66b2b1f5f18bbcff59f5d65
+status: reviewed
 word_count: 575
 ---
 
@@ -18,17 +18,19 @@ The first generation of zero-knowledge programming looked nothing like programmi
 
 Imagine asking a playwright to write both the script and the stage directions in a single document, using two different notations that had to be perfectly synchronized, with no compiler to check whether they matched. That is what early ZK development felt like.
 
-Circom was powerful. It gave developers complete control over the constraint system. But that control came at a cost. The Chaliasos SoK confirmed the scale of the problem: 95 of 141 catalogued vulnerabilities were under-constrained circuits -- the epidemic described at the opening of this chapter. The Tornado Cash bug was a single character: `=` where `<==` was needed. One character. Complete soundness break. A malicious prover could generate proofs for false statements, and the verifier would accept them.
+Circom was powerful. It gave developers complete control over the constraint system. But that control came at a cost. Chaliasos et al., in "SoK: What Don't We Know? Understanding Security Vulnerabilities in SNARKs" (USENIX Security 2024), catalogued the scale of the problem: 95 of 141 real-world vulnerabilities were under-constrained circuits -- the epidemic described at the opening of this chapter. The Tornado Cash bug was a single character: `=` where `<==` was needed. One character. Complete soundness break. A malicious prover could generate proofs for false statements, and the verifier would accept them.
 
 The second generation asked a different question: what if the developer never saw the constraints at all? What if they wrote a program in a language they already knew, and a compiler handled the translation to mathematics?
 
 Cairo, created by StarkWare in 2021, pioneered this approach. Cairo defined a new instruction set architecture -- a virtual CPU designed from the ground up so that every instruction's execution could be efficiently encoded as polynomial constraints. The developer wrote programs. The compiler generated constraints. The proof system verified the constraints. The developer never touched a mathematical equation.
 
+Cairo settled on the so-called Stark prime -- $p = 2^{251} + 17 \cdot 2^{192} + 1$ -- a 252-bit field chosen to hold elliptic-curve scalars natively. This was a *large-field* STARK. A later wave of provers went the other way: *small-field* STARKs working over 64-bit Goldilocks ($2^{64} - 2^{32} + 1$), 31-bit BabyBear, or Mersenne-31 (M31). Goldilocks arrived with Plonky2, moved through Plonky3, and now underpins RISC Zero; BabyBear and M31 power SP1 and Stwo respectively. The arithmetic shrank because the hardware did not: 32-bit integer multiply is a native CPU instruction, and small-field STARKs exploit that fact. Cairo was the large-field template. Goldilocks-class provers are the small-field descendants.
+
 But Cairo required learning a new language, a new toolchain, a new way of thinking about computation. The programs you had already written -- in Rust, in C++, in Python -- could not run on Cairo. You had to rewrite everything.
 
 The third generation asked the obvious follow-up: what if we proved a processor that developers already targeted? What if the instruction set was not some exotic ZK-native design, but plain RISC-V -- the open standard that Rust, C, and C++ compilers already produce code for?
 
-This is the generation we live in now. SP1 (Succinct), RISC Zero, Airbender (ZKsync), ZisK (the team formerly known as Polygon Hermez), and Pico Prism all prove RISC-V execution. The developer writes standard Rust. The compiler targets standard RISC-V. The proof system proves the execution trace. The developer may never know they are working with zero-knowledge proofs at all.
+This is the generation we live in now. SP1 (Succinct), RISC Zero, Airbender (ZKsync), ZisK (the team formerly known as Polygon Hermez), Jolt, and Pico Prism all prove RISC-V execution. The developer writes standard Rust. The compiler targets standard RISC-V. The proof system proves the execution trace. The developer may never know they are working with zero-knowledge proofs at all.
 
 But this triumphant narrative -- circuits to custom VMs to RISC-V -- leaves out a fourth thread. There is another approach, one that does not fit the evolutionary story. It does not prove a processor at all. It proves *state transitions*. And its compiler does something no instruction-set-based approach can do: it prevents privacy leaks at compile time.
 
@@ -72,8 +74,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) "The Goldilocks prime field ($2^{64} - 2^{32} + 1$) that Cairo adopted" is factually wrong. Cairo uses the Stark prime (p = 2^251 + 17·2^192 + 1), not Goldilocks. Goldilocks is used by Plonky2/Plonky3 and later by RISC Zero; the same error propagates to `ch03-the-four-philosophies`. Fix both instances.
-- [P1] (B) "95 of 141 catalogued vulnerabilities were under-constrained circuits (Chaliasos SoK)" — no paper title, author list, year, or URL. Cited by label only throughout the chapter; a full reference is needed at first use.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) Cairo's creation date is given as 2021; the Cairo whitepaper appeared in late 2021 but an earlier prototype shipped in 2020. "Created by StarkWare in 2021" may be defensible but should be qualified as the public/whitepaper release date.
 - [P2] (C) "Imagine asking a playwright to write both the script and the stage directions in a single document…" — the theater metaphor is used heavily in chapter 1; its reuse here without advancement adds padding rather than insight.
 - [P2] (D) The Tornado Cash bug description ("The witness generator computed the correct value. The constraint system did not enforce it") is correct here, but `ch03-under-constrained-circuits` describes the same bug in more detail. The two accounts should agree on framing; currently section 2 says "one character" while section 5 also says "one character" — consistent, but the duplication of the anecdote across two sections is unnecessary.

@@ -5,8 +5,8 @@ chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
 source_lines: [1108, 1161]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: bcc3759e2dfc992ab66b2b1f5f18bbcff59f5d65
+status: reviewed
 word_count: 576
 ---
 
@@ -100,6 +100,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [P2] (B) "The Midnight developer guide documents that the first attempt at implementing a private voting contract…was rejected with 11 disclosure errors" — attributed to "the Midnight developer guide" but no URL, version, or section is given. Should link or date the source.
 - [P2] (B) No citations in "Sources cited" despite specific implementation details (26-pass pipeline, three leakage categories, 11-error voting contract redesign). These are Compact-specific engineering claims that should trace to documentation or a technical paper.
