@@ -5,7 +5,7 @@ chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
 source_lines: [827, 1043]
-source_commit: bcc3759e2dfc992ab66b2b1f5f18bbcff59f5d65
+source_commit: c9e43022aec66b2d2daf6a69767a4389b8d854c8
 status: reviewed
 word_count: 3720
 ---
