@@ -1,0 +1,57 @@
+---
+title: "The Quantum Shelf Life"
+slug: ch02-the-quantum-shelf-life
+chapter: 2
+chapter_title: "Layer 1 -- Building the Stage"
+heading_level: 2
+source_lines: [632, 660]
+source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
+status: untouched
+word_count: 1003
+---
+
+## The Quantum Shelf Life
+
+The stage is built. The universal SRS is published. The economic case for ceremonies is clear. The question now is how long the stage lasts.
+
+Every pairing-based proof system -- Groth16, PLONK, Marlin, Sonic, KZG -- rests on the hardness of the discrete logarithm problem on elliptic curves. Shor's algorithm, running on a sufficiently powerful quantum computer, solves the discrete logarithm problem in polynomial time.
+
+This is not "might break." This is "does break, given sufficient hardware." The question is when, not whether. Conservative estimates place cryptographically relevant quantum computers -- machines with enough stable qubits to run Shor's algorithm on 256-bit curves -- in the 2032-2035 timeframe. NIST finalized its post-quantum standards in August 2024 and published a deprecation roadmap (IR 8547) targeting 2035 for the retirement of all pre-quantum cryptographic algorithms. That is less than ten years from the time of writing.
+
+The implications for Layer 1 are stark. A quantum computer would not need to compromise any ceremony participant. It would not need to break into anyone's hardware or bribe anyone. It would simply take the *public SRS* -- the list of elliptic curve points that everyone can see -- and extract the original trapdoor from it. Mathematically, irreversibly, without detection.
+
+Once the trapdoor is extracted, every proof ever generated under that SRS becomes suspect. The attacker can forge proofs of false statements indistinguishable from legitimate ones. The six-figure ceremony becomes irrelevant. The toxic waste was not in anyone's memory or on anyone's hard drive -- it was encoded in the public parameters all along, waiting for a quantum computer powerful enough to read it.
+
+This creates a concept we will call the *quantum shelf life* of a trusted setup. A KZG ceremony conducted in 2023 produces an SRS that is secure against classical computers indefinitely but has a finite lifespan against quantum adversaries. If that SRS secures a blockchain expected to operate for 20 years, the setup's shelf life may expire before the system's intended lifetime ends.
+
+STARKs, by contrast, rely on collision-resistant hash functions, which are believed to resist quantum computers. The caveat "believed to" deserves scrutiny. Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, which effectively halves the security level of hash functions: 256-bit classical security becomes 128-bit quantum security. This is a quantitative adjustment, not a qualitative break -- you double your hash output size and move on. More subtly, the BHT algorithm can reduce collision resistance further, but it requires quantum random-access memory (qRAM), which is widely considered physically impracticable with current technology. The honest assessment: hash-based systems *probably* survive quantum computers with parameter adjustments, but the unqualified claim that they are "post-quantum secure" gives false confidence. What we can say is that no known quantum algorithm breaks them in the way Shor's algorithm breaks elliptic curves -- completely, efficiently, and with mathematical certainty.
+
+A transparent STARK-based setup has no quantum shelf life problem because there is no trapdoor to extract. The "stage" is made of hash functions, and hash functions do not have secrets.
+
+This brings us to the concept of *option value*. A transparent setup preserves the option to migrate to post-quantum cryptography without re-ceremony. A trusted setup on a pairing-friendly curve burns this option: if the post-quantum deadline arrives and your SRS lives on BLS12-381, you need a new setup from scratch. Given the NIST 2035 timeline, systems designed today with 10+ year lifespans should seriously consider whether the performance advantages of pairing-based setups justify the loss of post-quantum migration flexibility.
+
+Midnight's choice of BLS12-381 illustrates this tension concretely. BLS12-381 provides approximately 128-bit classical security but offers zero post-quantum security. Every component of Midnight's proof system -- the SRS, the polynomial commitments, the proof verification -- rests on assumptions that quantum computers break. Midnight originally experimented with Pluto-Eris curves (which enabled recursive proof composition), but switched back to BLS12-381 for pragmatic reasons: faster proof generation, wider ecosystem compatibility, and better tooling support. The switch was a deliberate choice to optimize for present-day deployment at the cost of future quantum vulnerability.
+
+The alternative approach -- exemplified by systems like Neo [Nguyen, Setty, 2025] -- uses lattice-based cryptography. Instead of relying on the discrete logarithm problem (which Shor's algorithm breaks), lattice-based systems rely on the difficulty of finding short vectors in high-dimensional geometric structures -- mathematical problems that no known quantum algorithm significantly accelerates. The tradeoff: larger proofs, more expensive verification, and a transparent setup that requires no ceremony at all. The trust assumption shrinks from "1-of-N ceremony participants were honest" to "the lattice problem is hard" -- a purely mathematical assumption with no sociological component. NIST chose lattice problems as the foundation for its post-quantum encryption and signature standards (FIPS 203, 204) in August 2024, lending institutional weight to the conjecture.
+
+Neither choice is unambiguously correct. They represent different bets on the future, and the stakes of the bet are not symmetric. If Midnight is right -- if quantum computers are 20+ years away -- it gains years of performance advantage and ecosystem maturity. If Midnight is wrong -- if a cryptographically relevant quantum computer arrives in 2032 -- every shielded transaction, every private token transfer, every confidential smart contract ever executed on Midnight becomes retroactively decryptable. The privacy guarantees the system offered its users will have been temporary, not permanent, and the users will not have known this when they made their deposits.
+
+Lattice-based systems face the opposite asymmetry. If they are right about the quantum timeline, they will have been prepared while pairing-based systems scramble to migrate. If they are wrong -- if quantum computers are 30+ years away -- they will have paid a performance and proof-size penalty for decades, competing against faster, more mature systems that had the luxury of ignoring the threat. Nobody knows which bet is right, because nobody knows when quantum computers will arrive at cryptographic scale. But the asymmetry of consequences favors caution for any system whose privacy guarantees are meant to outlast its designers' careers.
+
+
+
+## Summary
+
+## Key claims
+
+## Entities
+
+## Dependencies
+
+## Sources cited
+
+## Open questions
+
+## Improvement notes
+
+## Links

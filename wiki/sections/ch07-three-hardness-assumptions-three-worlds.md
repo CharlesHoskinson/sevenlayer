@@ -1,0 +1,66 @@
+---
+title: "Three Hardness Assumptions, Three Worlds"
+slug: ch07-three-hardness-assumptions-three-worlds
+chapter: 7
+chapter_title: "Layer 6 -- The Deep Craft"
+heading_level: 2
+source_lines: [3000, 3037]
+source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
+status: untouched
+word_count: 945
+---
+
+## Three Hardness Assumptions, Three Worlds
+
+Every cryptographic system rests on a *hardness assumption*: a belief that a specific mathematical problem cannot be solved efficiently. The entire security guarantee is conditional. "This proof system is sound" really means "this proof system is sound *assuming* that problem X is hard." If someone finds a fast algorithm for problem X, the security guarantee vanishes. Not slowly. Immediately.
+
+There is a useful way to think about this. A hardness assumption is like a combination lock. Classical computers try every combination one at a time -- for a lock with a trillion trillion combinations, they will never finish. Quantum computers do not try faster. They exploit the lock's internal structure to narrow the possibilities. Shor's algorithm does exactly this to the discrete logarithm problem: it uses quantum interference to find the answer directly. The lock opens. For hash-based problems, quantum computers get a modest advantage but the lock still holds if you make it big enough. For lattice problems (Module-SIS), no one has found a quantum trick that exploits the lock's structure at all. The tumblers do not vibrate. The lock holds.
+
+Three hardness assumptions dominate zero-knowledge cryptography. Each creates a different world of possibilities and constraints.
+
+### The Discrete Logarithm Problem
+
+The oldest and most widely deployed assumption. Given a number $g$ and a value $h = g^x$, find $x$. On ordinary computers, the best known algorithms require roughly $2^{128}$ operations for carefully chosen groups -- effectively impossible. This assumption powers all elliptic curve cryptography, which in turn powers KZG commitments, Groth16 proofs, PLONK, and every pairing-based SNARK.
+
+The DLP (Discrete Logarithm Problem -- the mathematical puzzle of figuring out how many times a number was multiplied by itself to produce a given result, which is easy to state but very hard to solve) world offers deep algebraic richness. Elliptic curve groups have a bilinear pairing operation -- a special function that takes two curve points and produces an element in a "target group." This pairing is the engine behind KZG polynomial commitments, which produce constant-size proofs (a single curve point, about 48 bytes) and enable constant-time verification (one pairing check). Nothing else in cryptography achieves this combination of succinctness and speed.
+
+The cost is existential. A quantum computer running Shor's algorithm solves the discrete logarithm problem in polynomial time. Not "might solve" -- *does solve*, given enough qubits. The DLP world has an expiration date. We do not know the day. But the clock is ticking, and the hands do not run backward.
+
+### Collision-Resistant Hash Functions
+
+A completely different kind of assumption. A hash function takes arbitrary input and produces a fixed-size output. "Collision resistance" means it is hard to find two different inputs that produce the same output. SHA-256, BLAKE3, and Poseidon are all collision-resistant hash functions (we believe).
+
+The CRHF world is simpler and more conservative. Hash functions require no algebraic structure -- no groups, no pairings, no special number theory. This simplicity is both a strength (fewer assumptions to break) and a weakness (fewer mathematical tools to work with). FRI-based commitment schemes and STARKs live in this world. They are transparent (no trusted setup) and plausibly post-quantum, since hash functions are not broken by Shor's algorithm.
+
+But "plausibly post-quantum" deserves scrutiny, and scrutiny reveals cracks. Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, halving the effective security level of hash preimage resistance: a 256-bit hash drops to 128-bit quantum security. More subtly, the BHT algorithm (Brassard-Hoyer-Tapp) can reduce collision resistance by a factor of three: SHA-256's 128-bit classical collision resistance becomes roughly 85-bit quantum collision resistance, though this attack requires impractical amounts of quantum random-access memory. And the FRI protocol's post-quantum security depends on the soundness of the Fiat-Shamir transform in the quantum random oracle model -- a reduction that is known but carries non-tight security bounds.
+
+The honest statement is that hash-based systems *probably* survive quantum computers with appropriate parameter adjustments, but the unqualified claim that they are "post-quantum secure" gives false confidence. Intellectual honesty demands we say: this is not yet fully understood.
+
+### Module-SIS (Module Short Integer Solution)
+
+The newest and most mathematically demanding assumption. Given a matrix $M$ over a polynomial ring, find a short nonzero vector $z$ such that $M \cdot z = 0$. "Short" means the coefficients of $z$ are small. The best known algorithms (both classical and quantum) require exponential time for properly chosen parameters.
+
+Module-SIS is the foundation of lattice-based cryptography -- the family that the post-quantum community has rallied around. NIST's post-quantum standards (FIPS 203, 204, and 205, published August 2024) are built on lattice problems. The assumption has been studied for over two decades, and no quantum algorithm significantly outperforms classical ones against it.
+
+The lattice world offers a distinctive property: *module homomorphism*. An Ajtai commitment (the lattice analogue of a Pedersen commitment -- a Pedersen commitment is a cryptographic method for "sealing" a number using elliptic curve arithmetic, so the committed value can be verified later but cannot be changed after commitment) satisfies the equation $\rho \cdot \text{Com}(Z) = \text{Com}(\rho \cdot Z)$, where $\rho$ is a ring element. This is the algebraic structure that makes lattice-based folding schemes possible. It is weaker than what pairings provide (no bilinear map to a target group) but stronger than what hash functions provide (which have no algebraic structure at all).
+
+The upshot is that lattice-based schemes occupy a useful middle ground: they have enough algebraic structure for folding and efficient composition, plus post-quantum security, plus transparent setup. Whether they can match the succinctness of pairing-based schemes is the open research question -- and the answer is converging toward "close enough."
+
+---
+
+
+## Summary
+
+## Key claims
+
+## Entities
+
+## Dependencies
+
+## Sources cited
+
+## Open questions
+
+## Improvement notes
+
+## Links
