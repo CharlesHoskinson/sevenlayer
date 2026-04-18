@@ -4,7 +4,7 @@ slug: ch04-execution-traces
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1210, 1254]
+source_lines: [1214, 1258]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 751

@@ -4,9 +4,9 @@ slug: ch02-the-141-416-person-question
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [558, 605]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [562, 609]
+source_commit: 11fdb9b24e8a6276b781005a7fe5f0c10a377012
+status: reviewed
 word_count: 1146
 ---
 
@@ -91,6 +91,8 @@ None in this section.
 - How large must N be for the sociological bar to exceed any plausible adversary's capacity? No clean mathematical answer exists; it depends on the threat model.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (A) No factual errors found.
 - [P2] (B) The Luhmann reference ("Niklas Luhmann distinguished between trust and confidence") has no citation; the relevant work is "Trust and Power" (1979) or "Risk: A Sociological Theory" (1993) — the latter is more directly relevant to confidence in systems.

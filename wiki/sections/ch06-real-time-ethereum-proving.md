@@ -4,7 +4,7 @@ slug: ch06-real-time-ethereum-proving
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2788, 2807]
+source_lines: [2792, 2811]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 385

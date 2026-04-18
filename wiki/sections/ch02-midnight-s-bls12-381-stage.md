@@ -4,15 +4,15 @@ slug: ch02-midnight-s-bls12-381-stage
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [693, 709]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [697, 713]
+source_commit: 11fdb9b24e8a6276b781005a7fe5f0c10a377012
+status: reviewed
 word_count: 522
 ---
 
 ## Midnight's BLS12-381 Stage
 
-The ADOPT framework gives us a lens for evaluating any ceremony. Midnight -- a privacy-focused blockchain built on the Cardano ecosystem -- provides a concrete case study that illustrates how Layer 1 choices cascade through every subsequent layer. It uses BLS12-381 with a PLONK-family proof system. Here is how its Layer 1 choices cascade through the stack:
+The ADOPT framework gives us a lens for evaluating any ceremony. Midnight -- a privacy-focused blockchain built on the Cardano ecosystem -- provides a concrete case study that illustrates how Layer 1 choices cascade through every subsequent layer. It uses BLS12-381 with a PLONK-family proof system (Halo 2 / UltraPlonk, per the Universal versus Circuit-Specific section above). Here is how its Layer 1 choices cascade through the stack:
 
 **The ceremony.** Midnight operates a `midnight-trusted-setup` repository for conducting its Powers-of-Tau ceremony. The ceremony produces a universal SRS on BLS12-381 -- a set of elliptic curve points encoding powers of a secret trapdoor. The SRS bounds the maximum circuit size: you cannot prove statements about circuits larger than the SRS supports.
 
@@ -20,7 +20,7 @@ The ADOPT framework gives us a lens for evaluating any ceremony. Midnight -- a p
 
 **Deployment flow.** The proving key goes to the proof server (running locally at localhost:6300 -- witnesses never cross the network). The verification key reaches the blockchain via `submitInsertVerifierKeyTx`. Every node that validates transactions uses this key to check proofs.
 
-**The Pluto-Eris detour.** Midnight originally adopted Pluto-Eris, a cycle of curves that enabled recursive proof composition (KZG on Pluto, IPA on Eris). A curve cycle lets you verify a proof *inside* another proof -- the mathematical equivalent of a Russian nesting doll, where each layer confirms the one inside it. This is powerful for building chains of trust, but it comes with a cost: arithmetic on the second curve is slower, parameter selection is constrained, and the ecosystem tooling is immature. In April 2025, the Midnight team announced a switch back to BLS12-381 -- a single, well-supported curve with faster proof generation, broader ecosystem compatibility, and better tooling. Theoretical optimality yielded to engineering pragmatism. The choices that win in production are not always the choices that win in papers.
+**The Pluto-Eris detour.** Midnight originally adopted Pluto-Eris, a cycle of curves that enabled recursive proof composition (KZG on Pluto, IPA on Eris). A curve cycle lets you verify a proof *inside* another proof -- the mathematical equivalent of a Russian nesting doll, where each layer confirms the one inside it. This is powerful for building chains of trust, but it comes with a cost: arithmetic on the second curve is slower, parameter selection is constrained, and the ecosystem tooling is immature. In April 2025, the Midnight team announced a switch back to BLS12-381 [Midnight Network, "Midnight's Proving System is Switching from Pluto Eris to BLS," docs.midnight.network/blog/zkp]. The reasons, stated in the announcement, were concrete: a well-understood standardized curve in place of a bespoke Pluto-Eris trusted setup, proof verification times halved from 12 ms to 6 ms, smaller proofs, and broader ecosystem compatibility. Theoretical optimality yielded to engineering pragmatism. The choices that win in production are not always the choices that win in papers.
 
 **The quantum exposure.** BLS12-381 provides approximately 128-bit classical security but zero post-quantum security. Every ZK proof in Midnight -- state transitions, shielded transfers, Zswap privacy operations -- becomes forgeable if a quantum computer extracts the trapdoor from the SRS. The migration path is not a software update. It is a new ceremony, a new SRS, new proving and verification keys for every contract, new wallet software for every user, and a transition period during which the old and new systems must coexist. For a privacy-focused blockchain whose users chose it specifically to protect sensitive data, the quantum exposure is not merely a technical risk. It is an existential one.
 
@@ -67,8 +67,8 @@ None in this section.
 
 ## Improvement notes
 
-- [P1] (A) The section describes Midnight's proof system as "PLONK-family (a variant of Halo2)" but ch06-case-study-midnight-s-sealed-certificate identifies it specifically as "Halo 2 / UltraPlonk with custom gates." The ch02 description is vague where a more precise characterization exists; the term "Halo2 variant" is used in ch02-universal-versus-circuit-specific-setups as well, but "UltraPlonk" is the specific variant and should be named here.
-- [P1] (A) The April 2025 Pluto-Eris → BLS12-381 switch claim has no source citation (same issue as in ch02-the-quantum-shelf-life); the `midnight-trusted-setup` repository reference also lacks a URL.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (B) The proof server URL (localhost:6300) and the 13.7 KB / 1.3 KB proving/verification key sizes appear to be sourced from Midnight devnet documentation, but no source is cited.
 - [none] (C) No AI-smell or style issues. Concrete, specific, and direct.
 - [none] (D) No contradictions with other chapters found.

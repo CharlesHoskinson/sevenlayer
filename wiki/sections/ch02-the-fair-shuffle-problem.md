@@ -5,8 +5,8 @@ chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [393, 409]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 11fdb9b24e8a6276b781005a7fe5f0c10a377012
+status: reviewed
 word_count: 391
 ---
 
@@ -58,6 +58,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [P2] (A) The opening analogy says "141,416 people each add a bit of randomness" but contributions are multiplicative, not additive; the algebra section later corrects this, but the introductory framing plants a misconception.
 - [P2] (B) No citation for the 141,416 participant count; the Ethereum KZG ceremony has a verifiable public transcript — a footnote URL would anchor this claim.

@@ -4,9 +4,9 @@ slug: ch02-the-capex-opex-framework
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [538, 557]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [542, 561]
+source_commit: 11fdb9b24e8a6276b781005a7fe5f0c10a377012
+status: reviewed
 word_count: 511
 ---
 
@@ -14,14 +14,14 @@ word_count: 511
 
 The most useful lens for understanding setup economics is the capital expenditure / operating expenditure distinction.
 
-**Ceremony costs are capex.** The Ethereum KZG ceremony required approximately $2-5 million in coordination, engineering, and security auditing. This is a one-time cost. Because the resulting SRS is universal, every system that uses it amortizes that cost. With fifty or more rollups sharing the same SRS, the per-rollup cost converges to approximately $60,000 -- trivial relative to the annual operating budget of any serious blockchain project.
+**Ceremony costs are capex.** The Ethereum KZG Summoning, run by the Ethereum Foundation over 208 days, cost an order of magnitude of a few million dollars in coordination, engineering, grants, and security auditing -- a figure consistent with the public grant round and the scale of the coordinating infrastructure [Ethereum Foundation, "KZG Ceremony Grant Round," December 2022; Ethereum Foundation, "Wrapping up the KZG Ceremony," January 2024]. Whatever the precise number, ceremonies like this are one-time events. Because the resulting SRS is universal, every system that builds on it amortizes the cost. L2Beat's registry lists dozens of live rollups as of early 2026, many of which verify Groth16 or KZG-based proofs against the same family of SRSes. Per-rollup, the amortized share of the ceremony cost is trivial relative to any serious project's annual budget.
 
 **Per-proof costs are opex.** Once the stage is built, the cost that matters is the cost of each proof. Here the gap between trusted and transparent setups opens wide:
 
 - **Groth16 on-chain verification**: approximately 200,000-300,000 gas, which at typical Ethereum gas prices translates to about $0.50-$1.00. This is the cheapest on-chain verification available. Groth16 proofs are exactly 192 bytes -- three elliptic curve group elements. Smaller than a tweet.
 - **Raw STARK on-chain verification**: approximately 2-5 million gas, translating to $5-$25. STARK proofs run roughly 100 KB -- about 500 times larger than Groth16 proofs.
 
-To see what this means in practice, consider a rollup operator posting 1,000 proofs per day to Ethereum. With Groth16, each verification costs roughly 200,000 gas -- about $0.75 at typical prices. That is $750 per day, roughly $274,000 per year. With raw STARKs posted directly on-chain, each verification costs roughly 3 million gas -- about $11. That is $11,000 per day, roughly $4 million per year. The ceremony costs $2-5 million. But the annual savings from using Groth16 over raw STARKs are $3.7 million. The payback period is under 18 months. After that, it is pure savings.
+To see what this means in practice, consider a rollup operator posting 1,000 proofs per day to Ethereum. With Groth16, each verification costs roughly 200,000 gas -- about $0.75 at typical prices. That is $750 per day, roughly $274,000 per year. With raw STARKs posted directly on-chain, each verification costs roughly 3 million gas -- about $11. That is $11,000 per day, roughly $4 million per year. Against a ceremony cost in the low millions, the payback period for even a single operator is well under two years. After that, it is pure savings.
 
 These numbers explain why trusted setups persist despite their trust assumptions. The argument is not philosophical. It is economic. And it explains why the dominant production pattern in 2026 is neither pure trusted nor pure transparent, but *hybrid*: use a transparent STARK as the inner proof (no ceremony required, post-quantum security for the computation), then wrap it in a Groth16 or KZG-based outer proof for cheap on-chain verification. You get the transparency of STARKs and the economics of SNARKs.
 
@@ -70,7 +70,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) The $2–5M ceremony cost and per-rollup $60K amortization figures are presented without a source; they are cited as approximate but the basis (engineering, auditing, coordination breakdown) is unexplained. The "50+ rollups sharing the SRS" count also needs a source or date anchor.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) The STARK verification gas estimate (~2–5M gas) and Groth16 estimate (~200K–300K gas) are Ethereum mainnet figures; gas costs fluctuate significantly and the text should note the date or price assumption (the section mentions "typical Ethereum gas prices" without anchoring).
 - [none] (B) No citation issues beyond those noted in A.
 - [P2] (C) "Smaller than a tweet" (192 bytes) is a recurring motif across multiple sections; it is used more naturally here than elsewhere, but the phrase's repetition across the wiki creates slight staleness.

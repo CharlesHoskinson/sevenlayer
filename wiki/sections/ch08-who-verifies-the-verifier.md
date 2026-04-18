@@ -4,7 +4,7 @@ slug: ch08-who-verifies-the-verifier
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3938, 3969]
+source_lines: [3942, 3973]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 432

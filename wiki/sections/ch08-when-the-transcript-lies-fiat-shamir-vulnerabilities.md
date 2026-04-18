@@ -4,7 +4,7 @@ slug: ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3625, 3680]
+source_lines: [3629, 3684]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 891

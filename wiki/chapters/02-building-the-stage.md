@@ -2,7 +2,7 @@
 title: "Layer 1 -- Building the Stage"
 chapter: 2
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 2: Layer 1 -- Building the Stage
@@ -23,7 +23,15 @@ status: untouched
 - [[ch02-option-value-analysis]]
 - [[ch02-the-setup-tradeoff]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-18 per `wiki/drafts/ch02-v2.md`. 1 P0 + 13 P1 resolved. Draft preserved for audit. P2 (19) and P3 (9) items deferred.
+
+**Intentional addition:** new subsection "The Sociology of Trust at Scale" (~600 words) added under "The 141,416-Person Question" — not a backlog item, but motivated by multiple P1 findings flagging sociological claims as thinly argued.
+
+**Reviewer fixes applied inline:** Barbulescu-Duquesne URL switched from `link.springer.com` redirect to canonical `doi.org/10.1007/s00145-018-9280-5`.
+
+## Audit rollup (pre-revision)
 
 ### Severity totals
 

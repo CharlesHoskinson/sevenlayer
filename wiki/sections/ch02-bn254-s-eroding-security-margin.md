@@ -4,9 +4,9 @@ slug: ch02-bn254-s-eroding-security-margin
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [663, 675]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [667, 679]
+source_commit: 11fdb9b24e8a6276b781005a7fe5f0c10a377012
+status: reviewed
 word_count: 289
 ---
 
@@ -14,9 +14,9 @@ word_count: 289
 
 There is a more immediate security concern than quantum computers, and it affects the most widely deployed curve in the ZK ecosystem.
 
-BN254 (also called alt_bn128 or BN128) is the curve hardcoded into Ethereum's elliptic curve precompile opcodes. Every Groth16 proof verified on Ethereum's base layer uses BN254. But the estimated security of BN254 has been eroding. The Tower Number Field Sieve (Tower NFS) -- a family of discrete log algorithms that exploits the tower structure of extension fields -- has reduced BN254's estimated security from 128 bits to approximately 100 bits [Kim, Barbulescu, 2016; Menezes, Sarkar, Singh, 2016].
+BN254 (also called alt_bn128 or BN128) is the curve hardcoded into Ethereum's elliptic curve precompile opcodes. Every Groth16 proof verified on Ethereum's base layer uses BN254. But the estimated security of BN254 has been eroding. The Tower Number Field Sieve (Tower NFS) -- a family of discrete log algorithms that exploits the tower structure of extension fields -- cut BN254's estimated security from 128 bits toward roughly 100 bits in the 2016 round of analysis [Kim, Barbulescu, "Extended Tower Number Field Sieve," *CRYPTO 2016* / IACR ePrint 2015/1027; Menezes, Sarkar, Singh, 2016]. Barbulescu and Duquesne refined the Tower NFS analysis for pairing-friendly curves in 2017-2019 and proposed updated key-size recommendations; on their numbers, BN254 sits at approximately 100-110 bits of security [Barbulescu, Duquesne, "Updating Key Size Estimations for Pairings," *Journal of Cryptology* 32:1298-1336, 2019; HAL preprint hal-01534101, 2017].
 
-One hundred bits of security is not broken. But it sits below the 128-bit threshold that NIST mandates for new cryptographic deployments. The ZK ecosystem has been slowly migrating from BN254 to BLS12-381, which provides a comfortable 128-bit security margin even under Tower NFS analysis. Migration is slow, though: existing smart contracts reference the BN254 precompile directly, and changing the curve means changing the verification logic, which means upgrading every contract that verifies proofs.
+One hundred-odd bits of security is not broken. But it sits below the 128-bit threshold that NIST mandates for new cryptographic deployments. The ZK ecosystem has been slowly migrating from BN254 to BLS12-381, which provides a comfortable 128-bit security margin even under Tower NFS analysis. Migration is slow, though: existing smart contracts reference the BN254 precompile directly, and changing the curve means changing the verification logic, which means upgrading every contract that verifies proofs.
 
 The setup layer casts a long shadow. Choices made at Layer 1 -- which curve, which parameters, which ceremony -- propagate forward through years or decades of deployment. The curve choice that was state-of-the-art in 2018 shows its age by 2026. The ceremony that was sufficient in 2023 may be insufficient by 2035. Building the stage is not a one-time act. It is a commitment with a time horizon.
 
@@ -60,7 +60,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) The section states Tower NFS reduced BN254's security "from 128 bits to approximately 100 bits" citing Kim & Barbulescu 2016 and Menezes, Sarkar, Singh 2016. The current best estimate after Barbulescu-Duquesne 2018 is closer to 100–110 bits; the 2016 citations are not the latest word. The claim is broadly correct but the specific figure is conservative and should note that later analysis (Barbulescu, Duquesne 2018) refined it.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (B) Kim & Barbulescu 2016 lacks a venue; the paper is "Extended Tower Number Field Sieve: A New Complexity for the Medium Prime Case" (CRYPTO 2016). Similarly Menezes, Sarkar, Singh 2016 is "Challenges with Assessing the Impact of NFS Advances on the Security of Pairing-Based Cryptography" (MathCrypt 2016).
 - [none] (C) No AI-smell or style issues. The section is notably concise and well-written.
 - [none] (D) No contradictions with other chapters found.

@@ -4,7 +4,7 @@ slug: ch03-risc-v-won-why-taxonomy-still-matters
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [763, 794]
+source_lines: [767, 798]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 375

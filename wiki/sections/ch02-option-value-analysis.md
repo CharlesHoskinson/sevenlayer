@@ -4,9 +4,9 @@ slug: ch02-option-value-analysis
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [710, 734]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [714, 738]
+source_commit: 11fdb9b24e8a6276b781005a7fe5f0c10a377012
+status: reviewed
 word_count: 598
 ---
 
@@ -16,13 +16,13 @@ The economic analysis of Layer 1 has one more dimension, borrowed from financial
 
 In finance, an option is the right -- but not the obligation -- to take an action at a future date. You pay a premium today for the flexibility to act later. The premium is the option's cost. The flexibility is its value. The concept applies directly to setup choices.
 
-A trusted setup on BLS12-381 buys performance today but forecloses certain futures. When -- not if -- post-quantum migration becomes necessary, every system on BLS12-381 will need a new setup. New ceremony. New coordination. New toxic waste. If the system has accumulated ten years of state and ten million users, the migration cost is not just the $2-5 million of the ceremony. It is the coordination cost of upgrading every node, every contract, every verifier key -- a cost that grows with every year the system has been running.
+A trusted setup on BLS12-381 buys performance today but forecloses certain futures. When -- not if -- post-quantum migration becomes necessary, every system on BLS12-381 will need a new setup. New ceremony. New coordination. New toxic waste. If the system has accumulated ten years of state and ten million users, the migration cost is not just the ceremony. It is the coordination cost of upgrading every node, every contract, every verifier key, plus wallet migration for every user -- a cost that grows with every year the system has been running.
 
 A transparent setup on hash-based primitives costs more per proof today but preserves the option to migrate without re-ceremony. The hash function can be swapped. The security parameters can be adjusted. No toxic waste needs to be re-destroyed because none was ever created. The transparent setup is the option premium. The post-quantum flexibility is the option value.
 
-What is this option worth? The calculation is sensitive to assumptions, so consider three scenarios:
+What is this option worth? The calculation is sensitive to assumptions, so consider three scenarios. The migration-cost column below is an *illustrative order-of-magnitude* figure -- the aggregate of a new ceremony, node and contract upgrades, wallet migration across a ten-year-old chain, and the forked-state transition period. It is meant to anchor the arithmetic, not to substitute for a project-specific cost model.
 
-| Scenario | Quantum probability (15yr) | Migration cost | Expected cost of trusted path | Break-even premium |
+| Scenario | Quantum probability (15yr) | Illustrative migration cost | Expected cost of trusted path | Break-even premium |
 |---|---|---|---|---|
 | Optimistic | 10% | $50M | $5M | ~$500K/yr for 10 years |
 | Base case | 30% | $50M | $15M | ~$1.5M/yr for 10 years |
@@ -30,9 +30,9 @@ What is this option worth? The calculation is sensitive to assumptions, so consi
 
 At the base case -- a 30% probability that cryptographically relevant quantum computers arrive within 15 years -- the expected cost of the trusted-setup path is $15 million. That is a real liability sitting on the balance sheet of every system built on BLS12-381 or BN254 today. Compare that to the annual cost premium of transparent proofs (perhaps $3-4 million more per year in on-chain verification, shrinking as STARKs get cheaper). Even in the base case, the option is expensive enough to take seriously. In the cautious case, it dominates.
 
-There is also the "Harvest Now, Decrypt Later" threat, and it may be the most urgent variant of the quantum risk. Adversaries who record the public SRS today do not need a quantum computer now. They need one *eventually*. Intelligence agencies routinely archive encrypted communications for future decryption -- the NSA's upstream collection programs, disclosed in 2013, were built on exactly this logic. Are they recording SRS parameters? The Federal Reserve's FEDS 2025-093 working paper on quantum threats to financial infrastructure takes this possibility seriously enough to recommend that systems with 10+ year lifespans use post-quantum or post-quantum-ready primitives. For a privacy blockchain whose users chose it specifically to protect sensitive data, the HNDL threat means that today's shielded transactions could become tomorrow's open records -- not because the cryptography was broken in real time, but because it was archived and broken later.
+There is also the "Harvest Now, Decrypt Later" threat, and it may be the most urgent variant of the quantum risk. Adversaries who record the public SRS today do not need a quantum computer now. They need one *eventually*. Intelligence agencies routinely archive encrypted communications for future decryption -- the NSA's upstream collection programs, disclosed in 2013, were built on exactly this logic. Are they recording SRS parameters? The Federal Reserve's FEDS working paper on post-quantum risk for distributed ledger networks takes this possibility seriously enough to recommend that systems with 10+ year lifespans use post-quantum or post-quantum-ready primitives [Mascelli, Rodden, "'Harvest Now Decrypt Later': Examining Post-Quantum Cryptography and the Data Privacy Risks for Distributed Ledger Networks," FEDS 2025-093, Federal Reserve Board, 2025; https://www.federalreserve.gov/econres/feds/harvest-now-decrypt-later-examining-post-quantum-cryptography-and-the-data-privacy-risks-for-distributed-ledger-networks.htm]. For a privacy blockchain whose users chose it specifically to protect sensitive data, HNDL means that today's shielded transactions could become tomorrow's open records -- not because the cryptography was broken in real time, but because it was archived and broken later.
 
-The answer depends on your estimate of the quantum timeline. If you believe cryptographically relevant quantum computers are 20+ years away, the option has low present value, and the performance advantage of pairing-based setups dominates. If you believe the timeline is 10-15 years -- consistent with NIST's 2035 deprecation target -- the option is substantial. Transparent setups satisfy the Federal Reserve's criterion by default. Trusted setups on pairing-friendly curves do not.
+The answer depends on your estimate of the quantum timeline. If you believe cryptographically relevant quantum computers are 20+ years away, the option has low present value, and the performance advantage of pairing-based setups dominates. If you believe the timeline is 10-15 years -- consistent with the NIST 2035 migration target and the NSA's CNSA 2.0 transition schedule -- the option is substantial. Transparent setups satisfy the Federal Reserve's criterion by default. Trusted setups on pairing-friendly curves do not.
 
 
 
@@ -76,8 +76,8 @@ A trusted setup on BLS12-381 or BN254 buys performance today but forecloses post
 
 ## Improvement notes
 
-- [P1] (A) The option-value table uses a $50M migration cost figure with no sourcing; the basis for this estimate (new ceremony + $X in node upgrades + $Y in wallet software + $Z coordination) is not explained. The figure dominates the expected-cost calculation, making the table's conclusions highly sensitive to an unsourced assumption.
-- [P1] (A) The Federal Reserve FEDS 2025-093 citation is a specific working paper; verify that this paper number is correct (FEDS working paper numbering is sequential, and 2025-093 would be a late-2025 paper). If the document date is April 2026 and the paper was published in 2025, the number should be verifiable — a DOI or URL is needed.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (B) The NSA upstream collection program reference lacks a source beyond "(disclosed in 2013)"; the Snowden disclosures are public record but a specific document or report would strengthen the citation.
 - [P2] (C) "There is also the 'Harvest Now, Decrypt Later' threat, and it may be the most urgent variant" — "it is worth noting" pattern avoided, but "it may be the most urgent" is a claim that needs qualification (urgent relative to what horizon?). Tighten.
 - [none] (D) No structural contradictions found.

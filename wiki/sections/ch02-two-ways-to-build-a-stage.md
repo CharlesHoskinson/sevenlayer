@@ -4,9 +4,9 @@ slug: ch02-two-ways-to-build-a-stage
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [433, 537]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [435, 541]
+source_commit: 11fdb9b24e8a6276b781005a7fe5f0c10a377012
+status: reviewed
 word_count: 2963
 ---
 
@@ -27,12 +27,12 @@ Why would you want 141,416 participants instead of six? The mathematics says one
 The evolution of ceremonies tells the story of this insight pushed to its limit:
 
 - **2016 -- Zcash Sprout.** Six pre-selected participants. Air-gapped machines physically destroyed. Two days. The first trusted setup ceremony in production.
-- **2018 -- Zcash Sapling.** Approximately ninety participants across two phases (87 in phase 1, 91 in phase 2) via the BGM17 "MMORPG" framework [Bowe, Gabizon, Miers, 2017]. 2.5 hours per contribution. The first scalable ceremony protocol.
+- **2018 -- Zcash Sapling.** Approximately ninety participants across two phases (87 in phase 1, 91 in phase 2) via the BGM17 "MMORPG" framework [Bowe, Gabizon, Miers, "Scalable Multi-party Computation for zk-SNARK Parameters in the Random Beacon Model," IACR ePrint 2017/1050]. 2.5 hours per contribution. The first scalable ceremony protocol.
 - **2019-2022 -- Proliferation.** Dozens of projects (Tornado Cash, Hermez, Aztec, Loopring) ran their own ceremonies, mostly for Groth16 circuits on the BN254 curve.
 - **2023 -- Ethereum KZG Summoning.** 141,416 contributors. Permissionless. Web-based. Anyone could participate. The ceremony ran for months. The "more-the-merrier" model at maximum scale.
-- **2025+ -- On-chain ceremonies.** Smart-contract-mediated setups where contributions are verified on-chain and no coordinator is needed [Nikolaenko, Ragsdale, Bonneau, Boneh, 2022].
+- **2025+ -- On-chain ceremonies.** Smart-contract-mediated setups where contributions are verified on-chain and no coordinator is needed [Nikolaenko, Ragsdale, Bonneau, Boneh, "Powers-of-Tau to the People: Decentralizing Setup Ceremonies," ACNS 2024 / IACR ePrint 2022/1592].
 
-The SRS that emerged from the Ethereum KZG ceremony is *universal*: it works for any circuit up to a certain size. This distinction matters. The older Groth16 system [Groth, 2016] required a *circuit-specific* setup -- every new program needed a new ceremony. PLONK [Gabizon, Williamson, Ciobotaru, 2019] and its descendants changed this: one ceremony, one universal SRS, and then deterministic, public key derivation for each specific circuit. The ceremony is the capital expenditure. Everything after it is operating expense.
+The SRS that emerged from the Ethereum KZG ceremony is *universal*: it works for any circuit up to a certain size. This distinction matters. The older Groth16 system [Groth, "On the Size of Pairing-Based Non-interactive Arguments," *EUROCRYPT 2016*] required a *circuit-specific* setup -- every new program needed a new ceremony. PLONK [Gabizon, Williamson, Ciobotaru, "PLONK," IACR ePrint 2019/953] and its descendants changed this: one ceremony, one universal SRS, and then deterministic, public key derivation for each specific circuit. The ceremony is the capital expenditure. Everything after it is operating expense.
 
 
 ### What It Felt Like: The Human Interior of a Ceremony
@@ -70,7 +70,7 @@ The ceremony did not need any of its participants to understand the mathematics.
 
 ### How the Algebra Works
 
-The human stories explain why 141,416 people participated. But they do not explain why one honest participant is *mathematically* sufficient. For that, we need to see what happens to the numbers. The algebra is brief -- one key idea -- and the core concept is a single word: multiplication.
+The human stories explain why 141,416 people participated. But they do not explain why one honest participant is *mathematically* sufficient. For that, we need to see what happens to the numbers. The algebra is brief -- one idea -- and the core concept is a single word: multiplication.
 
 Start with the building blocks. $G$ is a fixed point on the elliptic curve that everyone agrees on -- the zero mark on our ruler. The notation $[s]G$ means "start at $G$ and take $s$ steps along the curve." Given $[s]G$, you cannot figure out what $s$ is. That is the discrete logarithm problem: easy to step forward, impossible (in practice) to count backward.
 
@@ -89,17 +89,17 @@ The alternative is to build the stage from glass.
 
 Everything described above -- the SRS, the toxic waste, the ceremony, the multiplicative secret structure -- exists because KZG commitments need a trapdoor. But what if you could build a commitment scheme that needed no trapdoor at all? What if the "stage" were made of material so transparent that there was nothing inside to hide and nothing to destroy?
 
-STARKs -- Scalable Transparent ARguments of Knowledge -- were introduced by Ben-Sasson, Bentov, Horesh, and Riabzev in 2018 [Ben-Sasson et al., 2018]. The word "transparent" is the operative one. A STARK requires no trusted setup at all. The only "setup" is agreeing on a hash function -- a publicly known algorithm like SHA-256 or BLAKE3.
+STARKs -- Scalable Transparent ARguments of Knowledge -- were introduced by Ben-Sasson, Bentov, Horesh, and Riabzev in 2018 [Ben-Sasson et al., "Scalable, Transparent, and Post-Quantum Secure Computational Integrity," IACR ePrint 2018/046]. The word "transparent" is the operative one. A STARK requires no trusted setup at all. The only "setup" is agreeing on a hash function -- a publicly known algorithm like SHA-256 or BLAKE3.
 
 There is no secret. There is no toxic waste. There is no ceremony. There is nothing to destroy because nothing dangerous was ever created.
 
 How does a glass stage work in practice? The prover executes the computation and records every step in an execution trace -- a giant table of intermediate values. Instead of sealing this trace with elliptic curve commitments (which require the SRS), the prover commits to it using a Merkle tree: a hash-based data structure where a single short hash at the root summarizes the entire table. The verifier picks random rows to check. The prover opens those rows with Merkle proofs (short paths through the hash tree), and the verifier confirms they are consistent with the claimed computation. If any step was wrong, the random spot-checks will catch it with overwhelming probability.
 
-The key innovation that makes STARKs practical is the FRI protocol (Fast Reed-Solomon Interactive Oracle Proof). FRI tests whether the committed data is "close to" a low-degree polynomial by repeatedly halving the problem: at each step, the prover folds the polynomial in half, commits to the smaller version, and the verifier checks consistency. After enough folds, the polynomial is small enough to inspect directly. If the prover cheated -- if the original data was not actually a low-degree polynomial -- the folding process amplifies the inconsistency, and the verifier catches it.
+The innovation that makes STARKs practical is the FRI protocol (Fast Reed-Solomon Interactive Oracle Proof). FRI tests whether the committed data is "close to" a low-degree polynomial by repeatedly halving the problem: at each step, the prover folds the polynomial in half, commits to the smaller version, and the verifier checks consistency. After enough folds, the polynomial is small enough to inspect directly. If the prover cheated -- if the original data was not actually a low-degree polynomial -- the folding process amplifies the inconsistency, and the verifier catches it.
 
 The security of all this rests on a single mathematical assumption: collision resistance of the hash function. It must be computationally infeasible to find two inputs that produce the same hash output. This is a weaker trust assumption than the discrete logarithm problem underlying KZG, and it has a property that shapes every architectural decision in the ZK ecosystem: collision-resistant hash functions are believed to resist quantum computers.
 
-A third family deserves mention: Bulletproofs [Bunz et al., 2017]. Bulletproofs are transparent (no ceremony needed) and produce logarithmic-size proofs, but they require linear verification time. Monero adopted Bulletproofs for its confidential transactions. The Inner Product Argument (IPA) at the core of Bulletproofs inspired the Halo approach to recursion without pairings. But Bulletproofs' linear verification cost makes them unsuitable for on-chain verification of large circuits, and -- importantly -- they rely on the discrete logarithm assumption. They are *not* quantum-resistant.
+A third family deserves mention: Bulletproofs [Bunz et al., "Bulletproofs: Short Proofs for Confidential Transactions and More," *IEEE S&P 2018*]. Bulletproofs are transparent (no ceremony needed) and produce logarithmic-size proofs, but they require linear verification time. Monero adopted Bulletproofs for its confidential transactions. The Inner Product Argument (IPA) at the core of Bulletproofs inspired the Halo approach to recursion without pairings. But Bulletproofs' linear verification cost makes them unsuitable for on-chain verification of large circuits, and -- importantly -- they rely on the discrete logarithm assumption. They are *not* quantum-resistant.
 
 The setup spectrum, ordered from most to least trust required, looks like this:
 
@@ -107,12 +107,14 @@ The setup spectrum, ordered from most to least trust required, looks like this:
 |---|---|---|---|---|
 | Circuit-specific trusted | 1-of-N honest in ceremony | Groth16 | 192 bytes | No |
 | Universal trusted | 1-of-N honest in ceremony | PLONK, Marlin | ~880 bytes | No |
-| Transparent (DL-based) | Discrete log hard | Bulletproofs | ~700 bytes | No |
+| Transparent (DL-based) | Discrete log hard | Bulletproofs | ~1-5 KB (logarithmic) | No |
 | Transparent (hash-based) | Collision resistance | STARKs | ~100 KB | Yes |
+
+Bulletproofs are logarithmic in the statement size: a 64-bit range proof fits in roughly 700 bytes, but general-purpose proofs for realistic circuits run 1-5 KB, consistent with the figures discussed in Chapter 7.
 
 Notice the pattern: as you move down the table, trust decreases but proof size increases. Groth16 gives you 192 bytes but demands a ceremony. STARKs give you no ceremony but hand you 100 kilobytes. Bulletproofs sit in between, transparent and compact, but with a linear verification cost that makes them impractical for on-chain use.
 
-Each row represents a different bet. The top rows bet that the ceremony was honest and that quantum computers are far enough away. The bottom row bets that hash functions are secure and that proof size does not matter enough to justify the risks above. No row is unambiguously correct. No known construction breaks this tradeoff. The SoK paper on trusted setups [Wang, Cohney, Bonneau, 2025] identifies the "ideal polynomial commitment scheme" -- transparent setup, constant-size proofs, constant-time verification -- as the central open problem in the field. Nobody has built it. Nobody has proved it impossible.
+Each row represents a different bet. The top rows bet that the ceremony was honest and that quantum computers are far enough away. The bottom row bets that hash functions are secure and that proof size does not matter enough to justify the risks above. No row is unambiguously correct. No known construction breaks this tradeoff. The SoK paper on trusted setups [Wang, Cohney, Bonneau, "SoK: Trusted Setups for Powers-of-Tau Strings," *Financial Cryptography 2025* / IACR ePrint 2025/064] identifies the "ideal polynomial commitment scheme" -- transparent setup, constant-size proofs, constant-time verification -- as the central open problem in the field. Nobody has built it. Nobody has proved it impossible.
 
 
 
@@ -169,8 +171,8 @@ Ceremony-based (trusted) setups and hash-based transparent setups represent the 
 
 ## Improvement notes
 
-- [P1] (A) The setup spectrum table lists Bulletproofs at "~700 bytes"; ch07-four-families-of-commitment-schemes gives IPA/Bulletproofs as "O(log n), ~1–5 KB" — a direct numerical contradiction; 700 bytes assumes a small fixed circuit, while the logarithmic growth makes the 700-byte figure misleading without a constraint count qualifier.
-- [P1] (B) The BGM17 citation "Bowe, Gabizon, Miers, 2017" needs a venue/title; the paper is "Multi-Party Protocol for the Groth16 zk-SNARK" (IACR ePrint 2017/1050). The Nikolaenko et al. 2022 and Wang, Cohney, Bonneau 2025 citations also lack venues.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (C) The human-interior subsection is gripping but contains the phrase "key property" (line on pairings); replace with plain language. The repeated "Todd's furnace and Miller's volatile memory" callback is good, but the preceding narrative has minor redundancy ("The ceremony did not need any of them to understand" appears twice in adjacent paragraphs).
 - [none] (D) No structural contradictions with other chapters found.
 - [P3] (E) The Sprout ceremony used the BCTV14 protocol but the text does not note that BCTV14 was later found vulnerable (CVE-2019-7167, covered in a subsequent section) — a forward reference here would strengthen the narrative arc.

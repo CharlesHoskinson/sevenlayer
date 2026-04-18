@@ -4,15 +4,15 @@ slug: ch02-the-bug-that-was-not-a-ceremony-failure
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [606, 618]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [610, 622]
+source_commit: 11fdb9b24e8a6276b781005a7fe5f0c10a377012
+status: reviewed
 word_count: 350
 ---
 
 ## The Bug That Was Not a Ceremony Failure
 
-In 2019, a vulnerability designated CVE-2019-7167 surfaced in the BCTV14 construction used by Zcash [BCTV14]. The bug was devastating: it would have allowed unlimited counterfeiting of Zcash tokens. And it had nothing to do with the trusted setup ceremony.
+In 2019, a vulnerability designated CVE-2019-7167 surfaced in the BCTV14 construction used by Zcash. The bug was devastating: it would have allowed unlimited counterfeiting of Zcash tokens. And it had nothing to do with the trusted setup ceremony.
 
 The flaw lived in the cryptographic construction itself. The BCTV14 protocol's SRS included additional group elements beyond what the proof system strictly needed. These extra elements were included for generality, but they created an opening: an attacker could combine them to produce forged proofs for statements outside the intended circuit. Specifically, the attacker could craft a proof that would pass verification even though the underlying computation was never performed. The counterfeiting was not approximate. It was exact. Forged proofs would be indistinguishable from legitimate ones.
 
@@ -20,7 +20,7 @@ The vulnerability had existed for roughly three years, from the system's deploym
 
 This case study carries a lesson that extends far beyond Layer 1: *ceremony integrity is necessary but not sufficient*. You can build a perfect stage and still get the show wrong. The construction must be correct independently of the ceremony. Security is not a chain where one strong link compensates for a weak one. It is a conjunction: every link must hold simultaneously.
 
-Sean Bowe and Ariel Gabizon discovered the bug before anyone exploited it. The team deployed a fix transparently. But the episode foreshadows a pattern that Chapter 3 will document in detail: 67% of real-world zero-knowledge vulnerabilities are not in the ceremony or the cryptography. They are in the mathematical specification -- the script, not the stage. The BCTV14 bug is the first concrete example of that statistic.
+Sean Bowe, Ariel Gabizon, and Daira Hopwood discovered the bug before anyone exploited it, and disclosed it coordinated with the Zcash team [Electric Coin Company, "Zcash Counterfeiting Vulnerability Successfully Remediated," February 2019; CVE-2019-7167]. The team deployed a fix transparently. But the episode foreshadows a pattern that Chapter 3 will document in detail: 67% of real-world zero-knowledge vulnerabilities are not in the ceremony or the cryptography. They are in the mathematical specification -- the script, not the stage [Chaliasos et al., "SoK: What Don't We Know? Understanding Security Vulnerabilities in SNARKs," USENIX Security 2024]. The BCTV14 bug is the first concrete example of that statistic.
 
 
 
@@ -58,8 +58,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P0] (A) The section states the BCTV14 bug "had existed for roughly three years, from the system's deployment in 2016 until its discovery in early 2019." CVE-2019-7167 was publicly disclosed in February 2019; this is consistent. However, the key claim asserts "Sean Bowe and Ariel Gabizon discovered the bug" — Gabizon is Ariel Gabizon; the discoverers per the official disclosure are Sean Bowe, Ariel Gabizon, and Daira Hopwood. Omitting Hopwood is a factual omission.
-- [P1] (A) The 67% statistic ("67% of real-world zero-knowledge vulnerabilities are not in the ceremony or the cryptography — they are in the mathematical specification") is sourced in ch01 to "Chaliasos et al., USENIX Security 2024" but this section cites no source for the same statistic; the citation is missing and should be added.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (B) The BCTV14 source is cited only as "(referenced as CVE-2019-7167)" — the original paper is Bitansky, Chiesa, Tromer, Virza, "Succinct Non-Interactive Arguments via Linear Interactive Proofs" (2013); the 2014 extension is the one deployed in Zcash Sprout. A fuller citation improves traceability.
 - [none] (C) No AI-smell or style issues found.
 - [none] (D) No structural contradictions found.

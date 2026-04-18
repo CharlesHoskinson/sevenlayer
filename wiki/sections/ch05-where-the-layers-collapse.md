@@ -4,7 +4,7 @@ slug: ch05-where-the-layers-collapse
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2313, 2342]
+source_lines: [2317, 2346]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 657

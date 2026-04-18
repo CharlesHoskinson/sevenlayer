@@ -4,9 +4,9 @@ slug: ch02-the-setup-tradeoff
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [735, 756]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [739, 760]
+source_commit: 11fdb9b24e8a6276b781005a7fe5f0c10a377012
+status: reviewed
 word_count: 388
 ---
 
@@ -20,7 +20,7 @@ The stage is ready. The mathematical parameters are in place. The SRS is publish
 
 The magician needs a script. She needs to express her computation -- the thing she wants to prove -- in a language the proof system can understand. That language choice turns out to be the single most consequential decision for the security of the entire system. Not because of the cryptography. Because of the bugs.
 
-Sixty-seven percent of real-world SNARK vulnerabilities are under-constrained circuits: programs whose mathematical rules fail to pin down the correct answer, leaving room for a cheater to slip through. Missing range checks. Forgotten equality constraints. A single `=` where `<==` was needed. The proof system does not know the program is wrong -- it faithfully proves whatever the program says, true or false. The stage can be perfect. The script is where the mistakes live.
+Sixty-seven percent of real-world SNARK vulnerabilities are under-constrained circuits: programs whose mathematical rules fail to pin down the correct answer, leaving room for a cheater to slip through [Chaliasos et al., "SoK: What Don't We Know? Understanding Security Vulnerabilities in SNARKs," USENIX Security 2024]. Missing range checks. Forgotten equality constraints. A single `=` where `<==` was needed. The proof system does not know the program is wrong -- it faithfully proves whatever the program says, true or false. The stage can be perfect. The script is where the mistakes live.
 
 Who writes the script?
 
@@ -68,10 +68,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) The section claims "every major production system has chosen" the universal BLS12-381 + STARK inner + Groth16 outer architecture, but several major systems (e.g., Polygon's Plonky2/Plonky3, which wraps to PLONK rather than Groth16) do not exactly match this description; the "every major" claim is slightly overbroad.
 - [none] (B) No citation issues; the section appropriately references prior sections rather than introducing new sources.
 - [P2] (C) The closing line "Who writes the script?" is effective but the preceding Part II header break within the section file is unusual — structural dividers (# Part II) that appear mid-section suggest this content may belong at a different boundary in the compiled manuscript.
-- [P1] (D) The 67% under-constrained circuits figure is cited here without a source; in ch01-the-deepest-question it is sourced to "Chaliasos et al., USENIX Security 2024" and in ch03-risc-v-won it is cited similarly. This section uses it as a concluding statistic without a citation, inconsistently with the rest of the book.
 - [P3] (E) The section summarizes the chapter's recommendations but does not note the emerging alternative of on-chain ceremony verification (Nikolaenko et al. 2022, already cited in ch02-two-ways-to-build-a-stage) as a potential third path that avoids both the sociological-trust problem and the proof-size penalty.
 
 ## Links

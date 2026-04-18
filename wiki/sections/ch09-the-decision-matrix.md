@@ -4,7 +4,7 @@ slug: ch09-the-decision-matrix
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4265, 4295]
+source_lines: [4269, 4299]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 280
