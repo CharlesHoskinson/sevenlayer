@@ -4,7 +4,7 @@ slug: ch12-five-lessons-for-zk-system-design
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4936, 4971]
+source_lines: [4938, 4973]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 725

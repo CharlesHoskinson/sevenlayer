@@ -4,7 +4,7 @@ slug: ch02-the-fair-shuffle-problem
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [391, 407]
+source_lines: [393, 409]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 391

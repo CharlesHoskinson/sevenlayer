@@ -2,7 +2,7 @@
 title: "The Promise of Provable and Programmable Secrets"
 chapter: 1
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 1: The Promise of Provable and Programmable Secrets
@@ -18,7 +18,15 @@ status: untouched
 - [[ch01-the-first-decision]]
 - [[ch01-how-to-read-this-guide]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-18. All 2 P0 and 16 P1 findings resolved per `wiki/drafts/ch01-v2.md` ledger. Draft preserved for audit. Remaining P2 (23) and P3 (6) items deferred to future polish pass.
+
+**Two new items introduced during revision:**
+- SP1 Hypercube block-coverage claim corrected to 93% (from 99.7%) per reviewer check against source.
+- Stwo 940x figure softened to "order-of-magnitude" pending primary-source verification — citation remains unresolved.
+
+## Audit rollup (pre-revision)
 
 **Total findings by severity:** P0: 2, P1: 16, P2: 23, P3: 6
 

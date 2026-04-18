@@ -4,9 +4,9 @@ slug: ch01-the-seven-layers-at-a-glance
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [280, 306]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [282, 308]
+source_commit: b933209bc74dbc4253ecfd9814aa87712b628a3e
+status: reviewed
 word_count: 799
 ---
 
@@ -14,11 +14,11 @@ word_count: 799
 
 Every zero-knowledge system, from the simplest proof to the most complex rollup, decomposes into seven layers. These are not independent floors in a building. They are organs in a body -- deeply interdependent, each shaping what the others can do.
 
-**Layer 1 -- The Setup (Building the Stage).** Before the magician can perform, someone must construct the mathematical parameters that make proving and verifying possible -- and who builds them, and whether you must trust them, determines the system's deepest guarantees. You will meet the 141,416 people who built the most widely used stage, and ask what happens if none of them were honest.
+**Layer 1 -- The Setup (Building the Stage).** Before the magician can perform, someone must construct the mathematical parameters that make proving and verifying possible -- and who builds them, and whether you must trust them, determines the system's deepest guarantees. You will meet the 141,416 people who built the most widely used stage -- the Ethereum KZG Summoning of 2023 -- and ask what happens if none of them were honest.
 
-**Layer 2 -- The Language (Writing the Script).** The magician needs a script: a programming language in which to express the computation she wants to prove. Her choice of language determines what bugs she can make and what assurances the compiler can enforce. You will see how a single missing character -- one `=` sign -- broke Tornado Cash's entire soundness guarantee.
+**Layer 2 -- The Language (Writing the Script).** The magician needs a script: a programming language in which to express the computation she wants to prove. Her choice of language determines what bugs she can make and what assurances the compiler can enforce. You will see how a single character -- `=` where `<==` was needed -- broke Tornado Cash's entire soundness guarantee.
 
-**Layer 3 -- The Witness (The Secret Backstage Preparation).** The magician goes backstage to run the computation with her private data, recording every step in an execution trace that no one else will ever see. This preparation, not the proof itself, is the most underestimated bottleneck in the entire stack. You will learn why a stopwatch held to a Zcash prover revealed the transaction amounts the mathematics promised to hide.
+**Layer 3 -- The Witness (The Secret Backstage Preparation).** The magician goes backstage to run the computation with her private data, recording every step in an execution trace that no one else will ever see. This preparation, not the proof itself, is the most underestimated bottleneck in the entire stack. You will learn why a stopwatch held to a Zcash prover leaked information about transaction amounts the mathematics had promised to hide.
 
 The first three layers are about *preparation* -- building the stage, writing the script, rehearsing backstage. The next two are about *transformation* -- converting human-readable computation into something mathematics can verify. The final two are about *foundations and consequences* -- the cryptographic bedrock the system rests on and the real-world stage where the proof faces its audience. This three-act structure mirrors the workflow of every team that builds a ZK system: design, encode, deploy.
 
@@ -81,8 +81,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) "Layer 2 — a single `=` sign broke Tornado Cash's entire soundness guarantee" — the Tornado Cash bug involved using `=` (JavaScript assignment in a Circom template) where `<==` (constrained assignment) was needed, but calling it a single "missing `=` sign" is imprecise; it was an operator substitution (`=` for `<==`), not a missing character. The ch03 section correctly describes it; ch01 should match.
-- [P1] (D) The "141,416" participant count is stated here as Layer 1 context but the chapter elsewhere (ch01-the-deepest-question, ch01-the-first-decision) attributes the same number to the Ethereum KZG ceremony and to Zcash's ceremony separately in ways that could confuse. Confirm every instance consistently refers to KZG 2023, not the Zcash Sprout ceremony (6 participants) or Sapling (~90 participants).
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) "A stopwatch held to a Zcash prover revealed the transaction amounts" — ch04-side-channel confirms the attack correlated proof-generation time with Hamming weight, allowing *estimation* of amounts; saying it "revealed" the amounts overstates the attack's precision (R = 0.57, not 1.0). Soften to "allowed inference of" or "correlated with."
 - [P2] (C) The three-act structural description ("preparation … transformation … foundations and consequences") has a slightly formulaic, outline-style quality that interrupts the flow mid-section; integrating it as a transitional sentence rather than a standalone paragraph would read better.
 - [P2] (E) Layer 6 description mentions quantum threat but does not name the specific hardness assumptions at stake (discrete log, hash collision resistance); the Entities list includes `[[lattice]]` but the body does not mention lattices, leaving the entity tag unanchored.

@@ -5,8 +5,8 @@ chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [154, 176]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b933209bc74dbc4253ecfd9814aa87712b628a3e
+status: reviewed
 word_count: 584
 ---
 
@@ -18,7 +18,7 @@ For most of human history, this seemed inevitable. To prove is to show. To show 
 
 Then, in 1985, three researchers at MIT wrote a paper that broke the pattern.
 
-Shafi Goldwasser, Silvio Micali, and Charles Rackoff demonstrated something that sounds, on first hearing, like a contradiction: it is possible to prove a statement is true while revealing *nothing* about *why* it is true. Not approximately nothing. Not mostly nothing. Nothing -- in a sense that can be stated as a theorem and checked by anyone. The proof convinces. It does not inform. The audience sees the trick succeed and learns nothing about how it was performed.
+Shafi Goldwasser, Silvio Micali, and Charles Rackoff demonstrated something that sounds, on first hearing, like a contradiction: it is possible to prove a statement is true while revealing *nothing* about *why* it is true [GMR 1985, SICOMP 18(1):186-208]. Not approximately nothing. Not mostly nothing. Nothing -- in a sense that can be stated as a theorem and checked by anyone. The proof convinces. It does not inform. The audience sees the trick succeed and learns nothing about how it was performed.
 
 Clarke was half right. This technology is indistinguishable from magic -- until you understand it. Then it is more astonishing than magic, because magic relies on deception while this relies on its opposite. The magician hides the mechanism. The zero-knowledge proof hides the data *and lets you verify the mechanism is honest*.
 
@@ -65,6 +65,8 @@ None.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [P2] (B) GMR 1985 paper is named but no ePrint/DOI or ACM DL link is given; cite "STOC 1985, pp. 291–304" or add ACM doi.
 - [P2] (C) "Clarke was half right" — the Arthur C. Clarke allusion is dropped without naming Clarke or the quote it subverts; a reader unfamiliar with the aphorism loses the reference entirely.

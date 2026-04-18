@@ -4,7 +4,7 @@ slug: ch03-from-circuits-to-virtual-machines-a-brief-evolution
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [793, 816]
+source_lines: [795, 818]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 575

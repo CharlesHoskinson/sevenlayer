@@ -4,7 +4,7 @@ slug: ch06-recursion-vs-folding-russian-dolls-and-snowballs
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2533, 2572]
+source_lines: [2535, 2574]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 1078

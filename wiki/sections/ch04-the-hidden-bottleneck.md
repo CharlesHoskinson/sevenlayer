@@ -4,7 +4,7 @@ slug: ch04-the-hidden-bottleneck
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1192, 1207]
+source_lines: [1194, 1209]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 271

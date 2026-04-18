@@ -4,7 +4,7 @@ slug: ch02-the-bug-that-was-not-a-ceremony-failure
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [604, 616]
+source_lines: [606, 618]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 350

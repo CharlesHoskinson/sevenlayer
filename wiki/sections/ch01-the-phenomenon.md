@@ -4,9 +4,9 @@ slug: ch01-the-phenomenon
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [204, 240]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [204, 242]
+source_commit: b933209bc74dbc4253ecfd9814aa87712b628a3e
+status: reviewed
 word_count: 1224
 ---
 
@@ -20,9 +20,11 @@ But why did it take twenty years? Because the original proofs were *interactive*
 
 The barrier was not just engineering. It was conceptual. The randomness that made zero-knowledge possible -- the verifier's unpredictable questions -- seemed to require a live verifier. If the prover knew the questions in advance, she could prepare fake answers. The entire security argument depended on surprise.
 
-In 1986, Amos Fiat and Adi Shamir found the way through. Their insight was deceptively simple: replace the verifier with a hash function. Instead of waiting for a human to ask a random question, the prover feeds her own partial computation into a cryptographic hash -- a deterministic function that produces output so unpredictable it is indistinguishable from randomness. The prover cannot cheat because she cannot predict what the hash will produce, any more than she could predict what a human verifier would ask. The hash function plays the verifier's role, and it plays it without being present. The Fiat-Shamir transform, as it came to be known, turned a conversation into a calculation. Every non-interactive zero-knowledge proof deployed on a blockchain today uses some version of this trick.
+In 1986, Amos Fiat and Adi Shamir found the way through [Fiat-Shamir, Crypto '86, LNCS 263]. Their insight was deceptively simple: replace the verifier with a hash function. Instead of waiting for a human to ask a random question, the prover feeds her own partial computation into a cryptographic hash -- a deterministic function that produces output so unpredictable it is indistinguishable from randomness. The prover cannot cheat because she cannot predict what the hash will produce, any more than she could predict what a human verifier would ask. The hash function plays the verifier's role, and it plays it without being present. The Fiat-Shamir transform, as it came to be known, turned a conversation into a calculation. Every non-interactive zero-knowledge proof deployed on a blockchain today uses some version of this trick.
 
-But the Fiat-Shamir transform alone was not enough. It removed the interaction, but the resulting proofs were still large and expensive to verify. Two decades of incremental progress followed -- better algebraic structures, tighter security reductions, more efficient encodings. The real breakthrough came between 2010 and 2013, when Jens Groth and separately Rosario Gennaro, Craig Gentry, Bryan Parno, and Mariana Rabin constructed proof systems that compressed the entire verification into a handful of algebraic operations on elliptic curves. The proofs were not just non-interactive. They were *succinct*: tiny enough to fit in a single network packet, fast enough to verify in milliseconds.
+But the Fiat-Shamir transform alone was not enough. It removed the interaction, but the resulting proofs were still large and expensive to verify. Two decades of incremental progress followed -- better algebraic structures, tighter security reductions, more efficient encodings.
+
+Two papers separated by three years bracket the breakthrough. In 2013, Rosario Gennaro, Craig Gentry, Bryan Parno, and Mariana Raykova introduced Quadratic Arithmetic Programs -- the first algebraic framework that made succinct non-interactive arguments practical [GGPR, Eurocrypt 2013; ePrint 2012/215]. In 2016, Jens Groth built on that lineage and produced the proof that made the theory hit hardware: three elliptic-curve points, 192 bytes total [Groth 2016; ePrint 2016/260]. QAPs were the precursor. Groth16 is the one people cite when they say "192 bytes."
 
 What does such a proof actually look like? Not a page of equations. Not an argument in English. A Groth16 proof is exactly three points on an elliptic curve -- three pairs of coordinates in a mathematical space where arithmetic is easy to perform but impossible to reverse. Serialized, each point takes about 48 bytes. The entire proof fits in 192 bytes. Smaller than a tweet. Less data than your phone transmits when it pings a cell tower. Yet those 192 bytes can certify that a computation involving millions of steps was performed correctly -- every memory access checked, every arithmetic operation verified, every constraint satisfied. The disproportion between what is proved and what is transmitted is the source of the word "succinct" in SNARK (Succinct Non-interactive ARgument of Knowledge). The entire field of practical zero-knowledge begins with that compression ratio.
 
@@ -87,9 +89,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) The Groth16 attribution is muddled: the body credits "Jens Groth and separately Rosario Gennaro, Craig Gentry, Bryan Parno, and Mariana Rabin" for constructions "between 2010 and 2013," then the canonical 192-byte proof is called "Groth16" (i.e., Groth's 2016 paper). The GGPR13 work (2013) is a distinct system; Groth16 postdates it by three years. The phrasing implies they co-produced it. Separate the two threads: GGPR (2013) for the first practical succinct construction, Groth (2016) for the 192-byte proof specifically.
-- [P1] (B) The Fiat-Shamir 1986 paper (Crypto 1986, Springer LNCS 263) has no citation; add the standard ePrint or proceedings reference given the centrality of the claim.
-- [P1] (B) The GGPR paper (Gennaro, Gentry, Parno, Rabin, Eurocrypt 2013) has no citation; the Groth16 ePrint is 2016/260.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) "Groth16 proof is exactly three points on an elliptic curve — three pairs of coordinates" — technically a Groth16 proof is two $\mathbb{G}_1$ elements and one $\mathbb{G}_2$ element; the $\mathbb{G}_2$ element is a pair of $\mathbb{F}_{p^2}$ points and takes 96 bytes, not 48. The total 192 bytes is correct but "three points of 48 bytes each" oversimplifies and is inconsistent with the BLS12-381 curve geometry used in practice.
 - [P2] (C) "Smaller than a tweet" — Twitter/X raised the character limit to 280 in 2017 (which is ~280 bytes UTF-8); the comparison still works but should say "smaller than a short tweet" or use a more stable comparator.
 - [P2] (C) The hospital scenario ("filling a prescription") spans four paragraphs and repeats the same pattern established in the bank and supply-chain scenarios without adding new analytical content; condense or cut the third use-case to reduce repetition.

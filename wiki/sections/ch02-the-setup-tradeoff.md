@@ -4,7 +4,7 @@ slug: ch02-the-setup-tradeoff
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [733, 754]
+source_lines: [735, 756]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 388

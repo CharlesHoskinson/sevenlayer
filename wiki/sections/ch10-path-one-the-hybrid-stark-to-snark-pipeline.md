@@ -4,7 +4,7 @@ slug: ch10-path-one-the-hybrid-stark-to-snark-pipeline
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4377, 4392]
+source_lines: [4379, 4394]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 485

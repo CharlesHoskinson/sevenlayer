@@ -4,7 +4,7 @@ slug: ch02-the-141-416-person-question
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [556, 603]
+source_lines: [558, 605]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 1146

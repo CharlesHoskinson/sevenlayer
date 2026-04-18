@@ -4,7 +4,7 @@ slug: ch03-the-four-philosophies
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [817, 1035]
+source_lines: [819, 1037]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 3720

@@ -4,7 +4,7 @@ slug: ch11-the-landscape-table-march-2026
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4557, 4589]
+source_lines: [4559, 4591]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 626

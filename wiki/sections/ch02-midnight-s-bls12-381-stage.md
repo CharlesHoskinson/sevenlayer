@@ -4,7 +4,7 @@ slug: ch02-midnight-s-bls12-381-stage
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [691, 707]
+source_lines: [693, 709]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 522

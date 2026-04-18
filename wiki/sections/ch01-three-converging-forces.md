@@ -4,15 +4,15 @@ slug: ch01-three-converging-forces
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [241, 279]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [243, 281]
+source_commit: b933209bc74dbc4253ecfd9814aa87712b628a3e
+status: reviewed
 word_count: 1343
 ---
 
 ## Three Converging Forces
 
-In January 2024, a data broker called National Public Data suffered a breach that exposed the Social Security numbers, addresses, and birth dates of approximately 2.9 billion records. The data had been collected for background-check services. The people in those records had never been asked whether they consented to the collection. They had no way to revoke it. And now their most sensitive identifiers were available on the dark web for pennies.
+In April 2024, a 2.9-billion-record database scraped by a data broker called National Public Data surfaced on a dark-web forum called Breached, offered for sale at $3.5 million by an actor operating under the alias USDoD. The underlying breach had been ongoing since late 2023; National Public Data did not publicly disclose the incident until August 2024 [see Wikipedia, "2024 National Public Data breach"; Bleeping Computer coverage; the figure of 2.9 billion records comes from the original hacker-forum listing]. The data had been collected for background-check services. The people in those records had never been asked whether they consented to the collection. They had no way to revoke it. And now their most sensitive identifiers -- Social Security numbers, addresses, birth dates -- were available on the dark web for pennies.
 
 What does that mean for the people in those records? You cannot change your Social Security number. Unlike a password or a credit card number, it is permanent and irreplaceable. Each person in that database faces a lifetime of vulnerability from a collection they never authorized. And the structural problem runs deeper than any single breach: the current verification model requires assembling a dossier in order to check a fact. Once the dossier exists, it can be stolen. The breach is not the disease. It is the symptom.
 
@@ -26,13 +26,13 @@ The regulatory response arrived in 2024, when the European Parliament finalized 
 
 ZK rollups solve this by moving computation off the main chain. A rollup operator collects hundreds or thousands of transactions, executes them on a separate machine, and posts a single zero-knowledge proof back to Ethereum. That proof certifies: "All of these transactions were executed correctly. Here is the resulting state." Ethereum's validators check the proof -- a few milliseconds of work -- instead of re-executing every transaction. The rollup inherits the security of the main chain (because the proof is verified there) without inheriting its throughput limitation (because the computation happens elsewhere). The proof is sufficient.
 
-By early 2026, the total value locked in ZK rollups exceeded $20 billion. These are not research projects. They are financial infrastructure securing real capital, and every dollar locked is a dollar betting that the proof system works.
+By early 2026, the total value locked in ZK rollups crossed into the tens of billions of dollars, on an L2 ecosystem that L2Beat tracks at roughly $47 billion in aggregate value secured [L2Beat, https://l2beat.com/scaling/tvs, retrieved early 2026]. These are not research projects. They are financial infrastructure securing real capital, and every dollar locked is a dollar betting that the proof system works.
 
-**The cost curve collapsed.** In December 2023, generating a single zero-knowledge proof of a meaningful computation cost approximately $80. By December 2025, it cost $0.04. A 2,000-fold reduction in twenty-four months. Solar energy costs dropped 99% over four decades. DNA sequencing outran Moore's Law, but its steepest plunge took a decade. Zero-knowledge proving compressed a comparable cost collapse into two years.
+**The cost curve collapsed.** In December 2023, generating a single zero-knowledge proof of a meaningful computation cost approximately $80. By December 2025, it cost $0.04 -- a 2,000-fold reduction in twenty-four months, measured end-to-end across the public prover tracker at ethproofs.org [Ethproofs, https://ethproofs.org; Castle Labs, "ZK Proofs: Is Privacy Cheap Enough to Be Mainstream?" 2025]. Solar energy costs dropped 99% over four decades. DNA sequencing outran Moore's Law, but its steepest plunge took a decade. Zero-knowledge proving compressed a comparable cost collapse into two years.
 
 The difference is structural. Solar panels got cheaper because manufacturers learned to deposit thinner layers of silicon on larger substrates -- a physical process requiring new materials and new factories. DNA sequencing got cheaper because chemists developed new fluorescent tags and new optical readers. Each improvement required new laboratory equipment. Zero-knowledge proving got cheaper because researchers found better algorithms and better ways to use existing GPUs. No new atoms. No new lab equipment. Just better mathematics applied to commodity hardware. Software eats its own cost curve faster than hardware ever can.
 
-What drove it? Four independent teams raced to prove Ethereum blocks in real time -- meaning the proof could be generated before the next block arrived, roughly every twelve seconds. Succinct's SP1 Hypercube built a prover that shards an Ethereum block's execution trace across 16 GPUs, each proving a segment in parallel, then stitching the segment proofs together. By late 2025, SP1 proved a block in 6.9 seconds, handling 99.7% of Ethereum L1 blocks in under 12 seconds. RISC Zero took a different approach: a RISC-V virtual machine whose proof system was co-designed with the instruction set, achieving similar speeds through architectural elegance rather than brute parallelism. StarkWare's Stwo rewrote their prover around Circle STARKs -- a mathematical construction that enables efficient proving over small number fields -- and achieved a 940x throughput improvement over their previous system. The Ethereum Foundation's own zkEVM effort aimed to prove the Ethereum Virtual Machine directly, opcode by opcode.
+What drove it? Four independent teams raced to prove Ethereum blocks in real time -- meaning the proof could be generated before the next block arrived, roughly every twelve seconds. Succinct's SP1 Hypercube, first published in May 2025 and benchmarked through December 2025, built a prover that shards an Ethereum block's execution trace across GPUs, each proving a segment in parallel, then stitches the segment proofs together [Succinct Labs, "SP1 Hypercube: Proving Ethereum in Real-Time," https://blog.succinct.xyz/sp1-hypercube/, May 2025]. By late 2025, the updated cluster proved a block in 6.9 seconds on 16 GPUs, proving roughly 93% of Ethereum L1 blocks inside the 12-second slot. RISC Zero took a different approach: a RISC-V virtual machine whose proof system was co-designed with the instruction set, achieving similar speeds through architectural elegance rather than brute parallelism. StarkWare's Stwo rewrote their prover around Circle STARKs -- a mathematical construction that enables efficient proving over small number fields -- and reported an order-of-magnitude throughput improvement over the previous Stone prover at launch [StarkWare, "Stwo Prover: The next-gen of STARK scaling is here," https://starkware.co/blog/stwo-prover-the-next-gen-of-stark-scaling-is-here/; see also StarkWare's Stwo v0.2 benchmarks post for the specific 940x comparison]. The Ethereum Foundation's own zkEVM effort aimed to prove the Ethereum Virtual Machine directly, opcode by opcode.
 
 The improvements compounded across the entire stack: smaller fields reduced per-operation cost, Circle STARKs enabled efficient proving over those fields, better arithmetization reduced constraint counts, and GPU parallelization accelerated everything. The seven-layer model we build in this book is a map of where those cost reductions came from.
 
@@ -94,11 +94,8 @@ None in this section.
 
 ## Improvement notes
 
-- [P0] (A) The National Public Data breach is dated "January 2024" but the breach became public in August 2024 (USDoJ complaint, August 2024); the data appears to have been collected and sold starting in 2023, with public disclosure in mid-2024. "January 2024" is unverified and likely wrong; verify and correct the date.
-- [P1] (A) "$20 billion TVL in ZK rollups by early 2026" — no source cited; this is a forward-looking figure (relative to the source commit) and should reference L2Beat or DeFiLlama data as of a specific date.
-- [P1] (A) The SP1 Hypercube claim ("6.9 seconds, 99.7% of L1 blocks under 12 seconds, 16 GPUs, late 2025") lacks a citation; add a Succinct Labs blog post or benchmarking report reference.
-- [P1] (A) The Stwo "940x throughput improvement" claim lacks a citation; add the StarkWare blog post or paper reference.
-- [P1] (B) The $80 → $0.04 cost collapse is the section's central quantitative claim and carries no source; cite a benchmarking report or public blog post with a retrieval date.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) eIDAS 2.0 is described as "finalized 2024"; the regulation was passed by the European Parliament in February 2024 and published in the Official Journal in May 2024. "Finalized 2024" is broadly correct but a specific citation (OJ L 2024/1183) would strengthen accuracy.
 - [P2] (A) "Ethereum processes roughly 15 transactions per second" — the correct baseline for Ethereum post-merge mainnet is closer to 12–15 TPS; the claim is in-range but stating ~12–15 TPS would be more precise.
 - [P2] (C) The three bold headers ("The privacy crisis became quantifiable," "The scaling problem acquired a price tag," "The cost curve collapsed") use a listicle structure that feels AI-generated; consider folding these into running prose with transitional sentences instead.

@@ -5,8 +5,8 @@ chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [177, 203]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b933209bc74dbc4253ecfd9814aa87712b628a3e
+status: reviewed
 word_count: 630
 ---
 
@@ -28,7 +28,7 @@ Three properties make this work. They recur at every layer of the story, and you
 
 The first: *the honest succeed*. If you genuinely are twenty-one, the proof will always verify. No glitch, no false rejection, no edge case where valid credentials fail. Cryptographers call this **completeness**. Without it, honest people get turned away, and the technology dies on contact with reality.
 
-The second: *the dishonest fail*. A nineteen-year-old cannot forge this proof. They cannot borrow your credential and make it work -- the proof is bound to a secret key only you possess. They cannot manipulate the computation to make nineteen appear as twenty-one -- the underlying mathematics will not verify. Cryptographers call this **soundness**, and the word "cannot" is doing real work: the probability of a successful forgery is roughly one in $2^{128}$ -- two multiplied by itself 128 times, a number with thirty-nine digits. The sun will burn out first.
+The second: *the dishonest fail*. A nineteen-year-old cannot forge this proof. They cannot borrow your credential and make it work -- the proof is bound to a secret key only you possess. They cannot manipulate the computation to make nineteen appear as twenty-one -- the underlying mathematics will not verify. Cryptographers call this **soundness**, and the word "cannot" is doing real work: the system targets 128-bit security, meaning an adversary needs on the order of $2^{128}$ operations to produce a forged proof -- a number with thirty-nine digits. The sun will burn out first.
 
 The third: *nothing leaks*. Not a partial hint about your birth month. Not a statistical correlation that narrows your age range. An adversary who intercepts the proof learns exactly what the bouncer learned -- you are old enough -- and nothing more. The proof is *simulatable*: anyone could generate something that looks identical to it without knowing your date of birth at all. Cryptographers call this **zero-knowledge**. It is the property that makes the trick feel impossible, and the one this book exists to explain.
 
@@ -69,7 +69,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) The soundness bound is stated as "roughly $1/2^{128}$" in both body and summary, but that figure describes the security *parameter*, not the per-round soundness error of the interactive protocol; for a non-interactive proof the forging probability should reference the proof system's concrete soundness bound (depends on field size and number of rounds), not simply the security-parameter target. Worth clarifying to avoid misleading technically literate readers.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (B) The claim "mathematicians assumed these three properties were incompatible" is asserted without citation; the GMR paper itself is the source and should be named here rather than only in the previous section.
 - [P2] (C) "The sun will burn out first" — vivid but used identically in the Key claims block ("the sun will burn out first"); one instance is enough.
 - [P2] (E) Soundness is described only as "dishonest provers fail"; knowledge-soundness (the extractor argument) — which is what the "K" in SNARK refers to — is not distinguished from plain soundness, an omission that will confuse readers who later encounter the distinction in Chapter 5.

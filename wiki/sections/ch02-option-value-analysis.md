@@ -4,7 +4,7 @@ slug: ch02-option-value-analysis
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [708, 732]
+source_lines: [710, 734]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 598

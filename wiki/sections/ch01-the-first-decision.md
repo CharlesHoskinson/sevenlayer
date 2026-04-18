@@ -4,9 +4,9 @@ slug: ch01-the-first-decision
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [334, 366]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [336, 368]
+source_commit: b933209bc74dbc4253ecfd9814aa87712b628a3e
+status: reviewed
 word_count: 572
 ---
 
@@ -38,7 +38,7 @@ Now we need to build the stage.
 
 Every magic show requires one. In zero-knowledge proof systems, "building the stage" means creating the mathematical parameters that both characters will use -- the prover to generate proofs, the verifier to check them. This step happens before any proof is ever created. The most important question about the stage is not how it is built but *who builds it, and whether you have to trust them*.
 
-In 2016, the Zcash ceremony involved six participants, each generating a share of the secret parameters and then destroying their share. If even one of the six was honest, the system is secure. By 2023, the Ethereum KZG Summoning had scaled that to six figures -- the same principle, applied at the population level. The alternative -- transparent setups that require no ceremony at all -- avoids the problem entirely, at a cost in proof size and verification expense.
+The ceremonies scaled from intimate to planetary in seven years. In 2016, the Zcash Sprout ceremony involved six participants, each generating a share of the secret parameters and then destroying their share; if even one of the six was honest, the system was secure. Two years later, the Zcash Sapling ceremony used the BGM17 multi-party protocol and grew to roughly ninety contributors, proving the trick could scale past a small team. By 2023, the Ethereum KZG Summoning had scaled that to six figures -- 141,416 participants, same principle, applied at the population level. The alternative -- transparent setups that require no ceremony at all -- avoids the problem entirely, at a cost in proof size and verification expense.
 
 That question -- trusted setup or transparent setup, ceremony or glass stage, hidden trapdoors or none -- is the subject of Chapter 2. It is the first fork in the road. Its consequences echo through every layer that follows.
 
@@ -79,8 +79,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) The Zcash Sprout ceremony is described as "six participants" in both this section and ch01-the-deepest-question; ch02-two-ways-to-build-a-stage confirms six participants used the BCTV14 protocol. However the section calls it a "2016" ceremony — ch02 confirms 2016 for Sprout. Consistent, but the section should also note that the Zcash Sapling 2018 ceremony (~90 participants) exists, since omitting it makes the jump to 141,416 feel more abrupt than it is.
-- [P1] (D) The section states the Ethereum KZG Summoning "scaled to six figures" and "141,416" by 2023; this is consistent with ch01-the-seven-layers-at-a-glance and ch02. However, the section's key claims list says "141,416 participants" but attributes them to "Ethereum's KZG Summoning" without the year; the year (2023) should be explicit for traceability.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (B) No source is cited for either the Zcash Sprout ceremony details or the Ethereum KZG Summoning participant count; add a reference to the KZG ceremony attestation page or the Ethereum Foundation blog post.
 - [P2] (C) "Eight cells are given; eight are blank" — the puzzle ASCII art shows a 4×4 grid; the claim that "eight cells are given" is correct (1, 4, 4, 1, 1, 4, 1 — actually count: top row: 1,_,_,4 = 2 given; row 2: _,4,1,_ = 2 given; row 3: _,1,_,_ = 1 given; row 4: 4,_,_,1 = 2 given = 7 given, not 8). Verify the cell count.
 - [P3] (E) The section introduces "transparent setup" as the alternative but gives only one sentence on the trade-off; a brief mention of FRI-based systems (STARKs) as the canonical transparent approach would reduce the abstraction here without adding length.

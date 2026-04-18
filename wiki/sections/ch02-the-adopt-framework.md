@@ -4,7 +4,7 @@ slug: ch02-the-adopt-framework
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [674, 690]
+source_lines: [676, 692]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 265

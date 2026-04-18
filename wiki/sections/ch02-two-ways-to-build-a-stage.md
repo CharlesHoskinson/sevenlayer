@@ -4,7 +4,7 @@ slug: ch02-two-ways-to-build-a-stage
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [431, 535]
+source_lines: [433, 537]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 2963
