@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [708, 732]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 598
 ---
 
@@ -38,16 +38,46 @@ The answer depends on your estimate of the quantum timeline. If you believe cryp
 
 ## Summary
 
+A trusted setup on BLS12-381 or BN254 buys performance today but forecloses post-quantum migration without a new ceremony; a transparent setup pays a per-proof premium but preserves that option. At a 30% probability of cryptographically relevant quantum computers within 15 years (the base case), the expected migration cost is $15M, dominating the annual per-proof premium for most systems. The "Harvest Now, Decrypt Later" threat — adversaries archiving the public SRS for future quantum decryption — may be the most urgent variant, particularly for privacy systems with long-lived secrets.
+
 ## Key claims
+
+- Base case (30% quantum probability in 15 years): expected migration cost for trusted-setup path = $15M.
+- Optimistic case (10%): $5M expected cost. Cautious case (50%): $25M expected cost.
+- Annual on-chain verification premium for transparent vs. trusted: approximately $3–4M/year, shrinking as STARKs get cheaper.
+- The Federal Reserve's FEDS 2025-093 working paper recommends post-quantum or PQ-ready primitives for systems with 10+ year lifespans.
+- NIST's 2035 deprecation target: systems designed today with 10+ year lifespans should weigh post-quantum migration flexibility against performance.
+- "Harvest Now, Decrypt Later": intelligence agencies archive encrypted data for future decryption; NSA upstream collection programs (disclosed 2013) operated on this logic.
+- Transparent setups satisfy FEDS 2025-093 by default; trusted setups on pairing-friendly curves do not.
 
 ## Entities
 
+- [[bls12-381]]
+- [[bn254]]
+- [[ceremony]]
+- [[fri]]
+- [[kzg]]
+- [[nist]]
+- [[starks]]
+
 ## Dependencies
+
+- [[ch02-the-quantum-shelf-life]] — the quantum timeline analysis underlying the option-value calculation
+- [[ch02-the-capex-opex-framework]] — the per-proof cost differential that the option premium is weighed against
 
 ## Sources cited
 
+- Federal Reserve FEDS 2025-093 (quantum threats to financial infrastructure)
+- NSA upstream collection programs (disclosed 2013, cited as precedent for HNDL threat)
+
 ## Open questions
+
+- What is the correct probability of cryptographically relevant quantum computers within 15 years? The option-value calculation is highly sensitive to this estimate, and no consensus exists.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-midnight-s-bls12-381-stage]]
+- Next: [[ch02-the-setup-tradeoff]]

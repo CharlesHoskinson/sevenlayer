@@ -6,7 +6,7 @@ chapter_title: "Choreographing the Act"
 heading_level: 2
 source_lines: [793, 816]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 575
 ---
 
@@ -37,16 +37,43 @@ But this triumphant narrative -- circuits to custom VMs to RISC-V -- leaves out 
 
 ## Summary
 
+ZK programming evolved in three generations: hand-written Circom circuits (2018), ZK-native ISAs like Cairo (2021), and RISC-V-targeting zkVMs (present). Each generation hid more mathematical detail from the developer, but a fourth thread — application-specific DSLs that prove state transitions and enforce privacy at compile time — does not fit the linear story.
+
 ## Key claims
+
+- First generation (Circom, ~2018): developer writes dual-track code — witness computation and constraints in one file; 95 of 141 catalogued vulnerabilities were under-constrained circuits (Chaliasos SoK).
+- Tornado Cash exploit: one character (`=` instead of `<==`) caused a complete soundness break.
+- Second generation (Cairo, 2021): compiler hides constraints; developer writes programs, not equations.
+- Third generation (SP1, RISC Zero, Airbender, ZisK, Pico Prism): prove standard RISC-V execution; developer writes plain Rust.
+- A fourth, non-evolutionary thread proves state transitions and enforces privacy at compile time.
 
 ## Entities
 
+- [[airbender]]
+- [[pico]]
+- [[polygon]]
+- [[prism]]
+- [[tornado cash]]
+- [[zisk]]
+
 ## Dependencies
+
+- [[ch03-risc-v-won-why-taxonomy-still-matters]] — frames why language choice matters despite RISC-V convergence
+- [[ch03-the-four-philosophies]] — expands the four-philosophy taxonomy sketched here
+- [[ch03-under-constrained-circuits-the-dominant-failure-mode]] — quantifies the Circom vulnerability epidemic referenced here
 
 ## Sources cited
 
+- Chaliasos SoK: 95 of 141 catalogued vulnerabilities were under-constrained circuits.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[03-choreographing-the-act]]
+- Prev: [[ch03-risc-v-won-why-taxonomy-still-matters]]
+- Next: [[ch03-the-four-philosophies]]

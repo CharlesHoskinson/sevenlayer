@@ -6,7 +6,7 @@ chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4109, 4142]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1219
 ---
 
@@ -47,16 +47,43 @@ Each layer addresses a different threat. Each has a different cost. And like net
 
 ## Summary
 
+Walks through a four-step healthcare scenario (MPC → DP → FHE → ZKP) to show that PETs compose in theory but each handoff requires protocol engineering that is often harder than either component alone. Introduces three composition patterns — ZKP+MPC for verified inputs, ZKP+FHE (zkFHE) for verifiable encrypted computation, and a layered "privacy stack" analogous to the network stack — and argues that architects should think in stacks rather than single-tool selections.
+
 ## Key claims
+
+- MPC-to-FHE handoff requires either plaintext exposure or active-research share-to-ciphertext conversion.
+- ZKP+MPC: ZKPs certify input integrity (honest inputs to MPC); MPC provides computation privacy. The two address orthogonal problems.
+- zkFHE current prototypes handle only a few hundred multiplication gates; proving overhead adds another order of magnitude atop FHE's cost.
+- Privacy stack layers: DP (statistical/aggregate) < MPC (computation on multi-party inputs) < FHE (outsourced computation) < ZKPs (verifiable claims).
+- ZKP-verified inputs to MPC appear in private auctions, private voting, and collaborative ML.
+- "Privacy without integrity is a system that computes correctly on lies. Integrity without privacy is a system that reveals everything it verifies."
 
 ## Entities
 
+- [[fhe]]
+- [[mpc]]
+- [[zkps]]
+
 ## Dependencies
+
+- [[ch09-the-four-pillars]] — defines the four PETs being composed
+- [[ch09-open-problems]] — zkFHE and collaborative proving are flagged as open frontiers
+- [[ch09-the-decision-matrix]] — composition logic feeds into selection criteria
+- [[ch09-privacy-architectures-for-smart-contracts-kachina-and-zexe]] — Midnight/Aztec as deployed composition examples
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+- MPC-to-FHE direct share-to-ciphertext conversion protocol (active research frontier, no production implementation cited).
+- zkFHE beyond small circuits (a few hundred multiplication gates) is not yet production-ready.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[09-privacy-enhancing-technologies]]
+- Prev: [[ch09-three-kinds-of-security]]
+- Next: [[ch09-real-world-deployments-five-case-studies]]

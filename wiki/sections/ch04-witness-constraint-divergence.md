@@ -6,7 +6,7 @@ chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1466, 1499]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 843
 ---
 
@@ -47,16 +47,43 @@ The most common approach is *property-based testing*: generate thousands of rand
 
 ## Summary
 
+When the witness generator and the constraint system compute different functions, the result is either a soundness bug (false proofs accepted) or a completeness bug (true proofs rejected). Two real vulnerabilities illustrate the stakes: RISC Zero CVE-2025-52484 (unconstrained register operands) and zkSync Era's MemoryWriteQuery bug (unconstrained high 128 bits of a 256-bit write, potentially enabling arbitrary withdrawal inflation). Property-based testing, differential testing, and formal verification each close part of the gap; no production system achieves all three.
+
 ## Key claims
+
+- RISC Zero CVE-2025-52484: missing constraint allowed rs1/rs2 register confusion; witness was correct, constraint system was not.
+- zkSync Era MemoryWriteQuery: `lc.enforce_zero(cs)` not called on high 128 bits of a 256-bit value — a malicious prover could modify withdrawal amounts and the proof would still verify.
+- Multiple valid witnesses can exist for the same statement; this is by design (soundness, not uniqueness).
+- Non-deterministic hints ("guess and check") are valid but require complete checking constraints.
+- zkFuzz found 66 bugs including 38 zero-days via property-based testing.
+- ZKAP achieves F1 score 0.82 and discovered 34 previously unknown vulnerabilities via static analysis (Circom only).
+- Formal verification tools (NAVe for Noir, Picus for Circom) cannot yet handle circuits with millions of constraints.
 
 ## Entities
 
+None.
+
 ## Dependencies
+
+- [[ch03-under-constrained-circuits-the-dominant-failure-mode]] — the upstream chapter section that introduces this failure mode
+- [[ch04-the-witness-as-a-multi-dimensional-problem]] — synthesizes correctness as the fourth gap
 
 ## Sources cited
 
+- RISC Zero CVE-2025-52484 (disclosed; rs1/rs2 register operand confusion)
+- zkSync Era MemoryWriteQuery bug (missing `lc.enforce_zero(cs)` on high 128 bits)
+- zkFuzz — 66 bugs found, 38 zero-days
+- ZKAP — F1 score 0.82, 34 previously unknown vulnerabilities, Circom only
+
 ## Open questions
+
+- Extending static analysis tools (ZKAP) to Rust-based systems (halo2, Plonky3) is flagged as an open problem.
+- No production system combines compile-time prevention and post-hoc verification for comprehensive correctness coverage.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[04-the-secret-performance]]
+- Prev: [[ch04-side-channel-attacks-when-the-walls-leak]]
+- Next: [[ch04-the-disclose-boundary-midnight-s-witness-architecture]]

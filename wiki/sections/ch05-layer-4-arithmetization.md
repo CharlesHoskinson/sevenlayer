@@ -6,7 +6,7 @@ chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1602, 1631]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 701
 ---
 
@@ -43,16 +43,42 @@ The story has five acts. First, we establish the spreadsheet metaphor that makes
 
 ## Summary
 
+Arithmetization is the conversion of a computation into polynomial equations over a finite field, enabling mathematical verification without re-execution. The chapter's five acts cover the spreadsheet model, the R1CS/AIR/PLONKish genealogy, CCS unification, the lookup revolution, and the overhead tax. A witness that satisfies all polynomial equations is indistinguishable from an honest execution to any verifier using random evaluation.
+
 ## Key claims
+
+- The witness can have many valid assignments for a given public statement — ZK proofs assert membership in a set, not uniqueness.
+- Arithmetization encodes every operation as polynomial equations; operations not natively polynomial (comparisons, bitwise) must be translated, adding constraints.
+- The Schwartz-Zippel lemma underlies verification: a nonzero degree-$d$ polynomial over a field of size $q$ is zero at a random point with probability at most $d/q$.
+- The chapter covers five techniques: spreadsheet model, R1CS/AIR/PLONKish evolution, CCS, lookup arguments, and the overhead breakdown.
+- Verifier work is proportional to constraint complexity, not trace size — the asymmetry that makes arithmetization practical for large computations.
 
 ## Entities
 
+- [[arithmetization]]
+- [[jolt]]
+- [[plonk]]
+- [[sudoku]]
+
 ## Dependencies
+
+- [[ch05-the-spreadsheet-metaphor-and-where-it-works]] — introduces the spreadsheet mental model developed here
+- [[ch04-execution-traces]] — execution traces are the raw material arithmetization encodes
+- [[ch05-the-constraint-system-evolution-r1cs-air-plonkish]] — develops the specific constraint systems introduced
+- [[ch05-lookup-arguments]] — the lookup revolution referenced as the fourth act
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[05-encoding-the-performance]]
+- Prev: —
+- Next: [[ch05-the-spreadsheet-metaphor-and-where-it-works]]

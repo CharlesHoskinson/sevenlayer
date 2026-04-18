@@ -6,7 +6,7 @@ chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4143, 4182]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 806
 ---
 
@@ -53,16 +53,50 @@ These deployments demonstrate that differential privacy is the only PET to have 
 
 ## Summary
 
+Five case studies spanning finance, identity, on-chain privacy, and telemetry illustrate the deployment breadth of PETs. DP is the only PET at planetary scale (Apple, Google, US Census); ZKP-based Privacy Pools launched on Ethereum mainnet April 1, 2025, processing over $6 million and 1,500+ users by early 2026 as a compliance-aware answer to Tornado Cash.
+
 ## Key claims
+
+- Decentriq/Swiss National Bank pilot (2021–2022): MPC + hardware TEE for cross-institution cybersecurity threat detection without raw data sharing.
+- DTCC partnered with Digital Asset's Canton Network in December 2025 to tokenize US Treasuries on a privacy-preserving permissioned blockchain.
+- Toppan Edge + Partisia digital student IDs: MPC ensures biometric data is never held by a single party; PoC at OIST June–September 2025, deployment targeted April 2026.
+- Privacy Pools (Vitalik Buterin co-author, 0xbow implementation): launched Ethereum mainnet April 1, 2025; uses Association Set Provider (ASP) ZK compliance proofs; >$6M volume, >1,500 users by early 2026.
+- Apple DP: iOS 10 (2016), ε = 2/day most data types; Google RAPPOR: randomized response for Chrome usage.
+- US Census Bureau 2020 TopDown Algorithm: first national-scale DP deployment, motivated by Dinur-Nissim reconstruction theorem.
+- DP has orders-of-magnitude greater deployment footprint than ZKPs, MPC, or FHE.
 
 ## Entities
 
+- [[mpc]]
+- [[nova]]
+- [[tornado cash]]
+- [[zkps]]
+
 ## Dependencies
+
+- [[ch09-the-four-pillars]] — introduces the PETs instantiated in these case studies
+- [[ch09-the-regulatory-intersection]] — Privacy Pools directly addresses the regulatory tension explored there
+- [[ch08-governance-the-achilles-heel]] — Tornado Cash governance/regulatory context
+- [[ch09-the-decision-matrix]] — case studies are evidence for DP-first recommendation for statistical releases
 
 ## Sources cited
 
+- Decentriq / Swiss National Bank pilot project (2021–2022).
+- DTCC + Digital Asset Canton Network partnership announcement (December 2025).
+- Toppan Edge + Partisia digital student ID announcement (2025); OIST proof-of-concept (June–September 2025).
+- Buterin, V. et al. Privacy Pools. Launched Ethereum mainnet April 1, 2025.
+- Apple iOS 10 differential privacy (2016).
+- Google RAPPOR deployment.
+- US Census Bureau 2020 Census TopDown Algorithm.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[09-privacy-enhancing-technologies]]
+- Prev: [[ch09-composability-when-one-pet-is-not-enough]]
+- Next: [[ch09-privacy-architectures-for-smart-contracts-kachina-and-zexe]]

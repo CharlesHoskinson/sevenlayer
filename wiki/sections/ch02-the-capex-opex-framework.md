@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [536, 555]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 511
 ---
 
@@ -33,16 +33,45 @@ The cost of this hybrid approach is complexity: you maintain two proof systems, 
 
 ## Summary
 
+Ceremony costs are one-time capital expenditure (~$2–5M for the Ethereum KZG setup); amortized across 50+ rollups, the per-rollup cost is ~$60K. Per-proof verification costs are the recurring operating expense: Groth16 runs ~200K–300K gas ($0.50–$1.00 on Ethereum) vs. raw STARK ~2–5M gas ($5–$25), making the ceremony's payback period under 18 months for a rollup posting 1,000 proofs/day. Every major 2026 production system uses a hybrid: transparent STARK inner proof wrapped in Groth16 for on-chain economics.
+
 ## Key claims
+
+- Ethereum KZG ceremony coordination cost: approximately $2–5 million one-time.
+- With 50+ rollups sharing the SRS, per-rollup amortized ceremony cost: ~$60,000.
+- Groth16 on-chain verification: ~200,000–300,000 gas, ~$0.50–$1.00 per proof; 192 bytes.
+- Raw STARK on-chain verification: ~2–5 million gas, ~$5–$25 per proof; ~100 KB.
+- At 1,000 proofs/day, Groth16 costs ~$274K/year vs. STARKs ~$4M/year; ceremony payback under 18 months.
+- Hybrid architecture (STARK inner + Groth16 outer): used by SP1 Hypercube, Stwo, RISC Zero, Airbender, ZisK.
+- SP1 Hypercube and Stwo use BabyBear (31-bit) and Mersenne-31 fields respectively for the inner STARK.
 
 ## Entities
 
+- [[airbender]]
+- [[babybear]]
+- [[ceremony]]
+- [[groth16]]
+- [[mersenne]]
+- [[starks]]
+- [[zisk]]
+
 ## Dependencies
+
+- [[ch02-two-ways-to-build-a-stage]] — establishes the trusted vs. transparent spectrum
+- [[ch02-the-structured-reference-string]] — defines the SRS whose cost is being amortized
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-two-ways-to-build-a-stage]]
+- Next: [[ch02-the-141-416-person-question]]

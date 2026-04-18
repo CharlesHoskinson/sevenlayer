@@ -6,7 +6,7 @@ chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3936, 3967]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 432
 ---
 
@@ -45,16 +45,45 @@ Neither choice dominates. Immutable verifiers maximize cryptographic integrity a
 
 ## Summary
 
+The verifier contract itself is a supply chain with five distinct failure surfaces — specification, reference implementation, deployment configuration, precompiles, and compiler — any of which can produce a verifier that accepts false proofs. The choice between immutable and upgradeable verifier deployment is the sharpest architectural decision at Layer 7, with no dominant answer.
+
 ## Key claims
+
+- FOOM Club exploit: misconfigured snarkjs deployment where `delta_2 == gamma_2` weakened the Groth16 verification equation — the proof system was correct but the deployment was wrong.
+- Supply chain layers: (1) proof system spec, (2) reference implementation (Frozen Heart class), (3) deployment configuration (FOOM Club class), (4) Ethereum precompiles, (5) Solidity/Yul/Vyper compiler.
+- Analogy to XZ Utils (CVE-2024-3094): a compromised maintainer of snarkjs, gnark, arkworks, or halo2 could introduce a subtle verification bypass passing all existing tests.
+- Immutable verifier: immune to governance capture; L2Beat Stage 2 candidate; bug fixes require full contract migration; quantum migration requires system replacement.
+- Upgradeable verifier: Beanstalk/Tornado Cash-style capture risk; Stage 0–1; can patch bugs and migrate to PQ verifier via governance.
+- Neither choice dominates; selection reflects whether the system fears bugs more or governance capture more.
 
 ## Entities
 
+- [[groth16]]
+- [[halo2]]
+- [[tornado cash]]
+- [[beanstalk]]
+- [[l2beat]]
+- [[midnight]]
+
 ## Dependencies
+
+- [[ch08-governance-the-achilles-heel]] — governance capture risk on upgradeable verifiers
+- [[ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities]] — reference implementation bugs (Frozen Heart)
+- [[ch08-case-study-midnight-and-the-three-token-architecture]] — Midnight as the immutable-verifier example
 
 ## Sources cited
 
+- XZ Utils supply-chain attack (CVE-2024-3094)
+- FOOM Club exploit (snarkjs misconfiguration)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[08-the-verdict]]
+- Prev: [[ch08-pricing-attacks]]
+- Next: [[ch08-on-chain-verification-in-2026]]

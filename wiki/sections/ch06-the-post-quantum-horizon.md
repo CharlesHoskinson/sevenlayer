@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2937, 2952]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 329
 ---
 
@@ -29,16 +29,54 @@ The remaining gap is on-chain verification. No post-quantum on-chain verifier ex
 
 ## Summary
 
+Shor's algorithm makes all elliptic-curve-based proof systems (Groth16, PLONK, Halo 2, KZG, Nova) insecure once a cryptographically relevant quantum computer exists. NIST IR 8547 targets 2035 for deprecation; Q-Day estimates range 2032--2035. STARKs are partially quantum-resistant but the hybrid pipeline's Groth16 wrapper reintroduces vulnerability. LatticeFold/Neo/Symphony offer the most direct post-quantum path; no post-quantum on-chain verifier yet exists.
+
 ## Key claims
+
+- Shor's algorithm breaks discrete logarithm; all pairing-based systems (Groth16, PLONK, Halo 2, KZG, Nova) become insecure.
+- NIST IR 8547 targets 2035 for pre-quantum deprecation; Q-Day estimates: 2032--2035.
+- STARKs are partially PQ (hash-based); Grover reduces SHA-256 collision resistance from 128 to ~85 bits, but requires quantum RAM (physically impracticable).
+- Hybrid pipeline reintroduces quantum vulnerability at the Groth16 wrapper step (BN254 pairings).
+- Neo achieves 127-bit security under Module-SIS/Module-LWE over Goldilocks field.
+- No post-quantum on-chain verifier exists in production; lattice proofs are tens of KB vs. hundreds of bytes.
+- Closing the on-chain verification gap is an open problem at the frontier.
 
 ## Entities
 
+- [[lattice]]
+- [[nova]]
+- [[hypernova]]
+- [[groth16]]
+- [[plonk]]
+- [[halo2]]
+- [[kzg]]
+- [[fri]]
+- [[goldilocks]]
+- [[ntts]]
+- [[symphony]]
+- [[nist]]
+- [[bn254]]
+- [[folding]]
+
 ## Dependencies
+
+- [[ch06-the-folding-genealogy]] — LatticeFold/Neo/Symphony genealogy is the PQ path
+- [[ch07-the-quantum-threat-horizon]] — Chapter 7 covers quantum timeline in detail
+- [[ch10-path-three-post-quantum-folding]] — Chapter 10 places this as Path Three in the three-path synthesis
+- [[ch02-the-quantum-shelf-life]] — quantum shelf-life framing from Chapter 2
 
 ## Sources cited
 
+- NIST IR 8547, "Transition to Post-Quantum Cryptography Standards," 2024.
+
 ## Open questions
+
+- No post-quantum on-chain verifier exists; closing this gap (lattice-friendly L1 precompiles or novel compression) is an open problem flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-snark-recursion-vs-folding-the-full-picture]]
+- Next: [[ch06-from-speed-race-to-security-race]]

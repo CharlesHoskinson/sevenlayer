@@ -6,7 +6,7 @@ chapter_title: "The Market Landscape"
 heading_level: 2
 source_lines: [5058, 5087]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1170
 ---
 
@@ -43,16 +43,42 @@ Where did the trust go? From self-hosted proving infrastructure to proving marke
 
 ## Summary
 
+The proving-as-a-service market shifts proof generation from self-hosted infrastructure to competitive marketplaces. Succinct's network exceeded 6 million proofs and $4B secured value; RISC Zero Boundless processed 542.7 trillion cycles by December 2025 before forcing decentralization. Trust is not eliminated but priced: providers charge a premium for track record and stake at risk, and the witness-privacy problem has no market solution — only engineering trade-offs.
+
 ## Key claims
+
+- Succinct Network: >6M proofs on mainnet, >$4B secured, $PROVE token launched by early 2026.
+- RISC Zero Boundless processed 542.7 trillion cycles by December 2025 then shut centralized prover to force marketplace adoption.
+- Aligned Layer uses EigenLayer restaking ($11B+ ETH) for proof verification as a service.
+- Rollup proving costs: $200,000–$500,000/year for major rollups; per-L2-tx proving fee is now fractions of a cent.
+- Gross margins: 40–60% for owned-hardware operators, 15–25% for cloud-GPU operators.
+- Trust is priced, not eliminated: longer track record and slashing stake command higher fees.
+- Witness privacy (who sees the inputs) has no market solution; TEEs and MPC-based proving move but do not eliminate that trust.
 
 ## Entities
 
+- [[h100]]
+- [[mpc]]
+
 ## Dependencies
+
+- [[ch04-the-disclose-boundary-midnight-s-witness-architecture]] — Chapter 4 privacy paradox: client-side vs. delegated proving
+- [[ch06-the-three-families]] — cost-collapse figures (2,000x) referenced from Chapter 6
+- [[ch13-zk-rollups-the-proving-grounds-production]] — rollup operators are primary current paying customers
+- [[ch13-market-sizing]] — $97M proving-services sub-market and Chorus One projections
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[13-the-market-landscape]]
+- Prev: [[ch13-zk-identity-growth-regulatory-mandate]]
+- Next: [[ch13-enterprise-pilots-pilot]]

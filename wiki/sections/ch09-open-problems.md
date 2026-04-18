@@ -6,7 +6,7 @@ chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4294, 4305]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 252
 ---
 
@@ -25,16 +25,43 @@ Three capabilities sit at the frontier of PET research and will likely shape the
 
 ## Summary
 
+Three frontier capabilities likely to define the next privacy architecture generation: verifiable FHE (zkFHE, closing the integrity gap for encrypted computation), collaborative/threshold ZK proving via MPC (no single server holds the full witness), and Private Information Retrieval (querying a database without revealing which record was accessed). EUROCRYPT 2026 advances moved PIR toward practical deployment for billion-entry databases.
+
 ## Key claims
+
+- zkFHE: ZK proof that FHE computation was performed correctly; SherLOCKED prototype uses RISC Zero's Bonsai zkVM.
+- Collaborative proving (Ozdemir and Boneh, USENIX Security 2022; improvements 2024): proof generation distributed across MPC servers — a fifth proving model combining client privacy with delegated performance.
+- PIR advances at EUROCRYPT 2026: information-theoretic PIR with sublinear server time and quasilinear space.
+- PIR relevance: Aztec client-side provers need to retrieve encrypted notes without revealing ownership.
 
 ## Entities
 
+- [[boneh]]
+- [[fhe]]
+- [[mpc]]
+
 ## Dependencies
+
+- [[ch09-composability-when-one-pet-is-not-enough]] — zkFHE introduced as active research frontier there
+- [[ch09-the-four-pillars]] — FHE integrity gap motivates zkFHE
+- [[ch09-privacy-architectures-for-smart-contracts-kachina-and-zexe]] — Aztec note retrieval as PIR use case
 
 ## Sources cited
 
+- Ozdemir, A., Boneh, D. Experimenting with Collaborative zk-SNARKs. USENIX Security 2022.
+- EUROCRYPT 2026: information-theoretic PIR with sublinear server time and quasilinear space (specific paper not named in text).
+- zkFHE / SherLOCKED prototype using RISC Zero Bonsai zkVM.
+
 ## Open questions
+
+- zkFHE beyond toy circuits remains an open research problem.
+- Collaborative proving performance improvements post-2024 not yet production-deployed.
+- PIR at billion-entry scale: practical deployment conditions not yet established.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[09-privacy-enhancing-technologies]]
+- Prev: [[ch09-the-decision-matrix]]
+- Next: [[ch09-the-incomplete-stack]]

@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3279, 3332]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 927
 ---
 
@@ -67,16 +67,51 @@ This algebraic trifecta -- homomorphism, sum-check compatibility, and decomposit
 
 ## Summary
 
+The lattice proving research program compressed a decade of development into two years (2024–2026) through five stages: Greyhound (first practical lattice SNARK, ~50 KB), LatticeFold (Nova-style folding on cyclotomic rings, 2024), LatticeFold+ (5–10× faster prover, Goldilocks with Φ₈₁, 2025), Neo (rotation matrix encoding enabling native Goldilocks + 127-bit PQ security, 2025), and Symphony (high-arity folding of 1,024+ instances, handles 2³² R1CS constraints, 2026). The entire line rests on Ajtai module homomorphism: ρ · Com(Z) = Com(ρ · Z).
+
 ## Key claims
+
+- Greyhound (2024): ~50 KB proofs, sublinear (√N) verification, built entirely on Module-SIS — first practical lattice SNARK.
+- LatticeFold (2024, Boneh and Chen): three composable reductions (Π_CCS, Π_RLC, Π_DEC) adapt Nova folding to cyclotomic rings with Ajtai commitments; limited to power-of-two cyclotomics.
+- LatticeFold+ (2025): 5–10× prover speedup; uses Φ₈₁ = X⁵⁴ + X²⁷ + 1 over Goldilocks giving degree-2 irreducible factors and $\mathbb{F}_{q^2}$ extension with 128-bit NTT slots.
+- Neo (2025): rotation matrix "bar transform" — ring element a maps to d×d rotation matrix rot(a), making commitment S-homomorphic; Φ₈₁, d=54, κ=16, m=2²⁴, 127-bit PQ security; guard condition (k+1)·T·(b−1) = 2,808 < 4,096 = B ensures bounded norm growth.
+- Symphony (2026): high-arity folding (1,024+ instances per step), approximate range proofs, handles 2³² R1CS constraints; final proof is constant-size if wrapped with Groth16, or fully PQ if wrapped with lattice SNARK.
+- Algebraic trifecta enabling lattice folding: homomorphism (norm control), sum-check compatibility, and decomposition (unbounded recursion without norm blowup).
 
 ## Entities
 
+- [[ajtai]]
+- [[boneh]]
+- [[folding]]
+- [[goldilocks]]
+- [[latticefold]]
+- [[lattice]]
+- [[nova]]
+- [[ntt]]
+- [[pedersen]]
+- [[symphony]]
+
 ## Dependencies
+
+- [[ch07-three-hardness-assumptions-three-worlds]] — Module-SIS foundation for Ajtai commitments
+- [[ch07-the-quantum-threat-horizon]] — motivation for the post-quantum program
+- [[ch06-the-folding-genealogy]] — Nova and HyperNova lineage that LatticeFold adapts
+- [[ch06-nightstream-what-a-folding-engine-looks-like-from-the-inside]] — Neo/Nightstream implementation context
 
 ## Sources cited
 
+- Boneh and Chen, LatticeFold — ASIACRYPT 2025
+- LatticeFold+ — CRYPTO 2025
+- Symphony — ePrint 2025/1905
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-the-quantum-threat-horizon]]
+- Next: [[ch07-case-study-midnight]]

@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [632, 660]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1003
 ---
 
@@ -42,16 +42,50 @@ Lattice-based systems face the opposite asymmetry. If they are right about the q
 
 ## Summary
 
+Every pairing-based proof system rests on the discrete logarithm problem, which Shor's algorithm breaks completely on a quantum computer; NIST's deprecation roadmap (IR 8547) targets 2035 for retirement of all pre-quantum algorithms. A quantum adversary would extract the trapdoor directly from the public SRS, rendering all historical proofs forgeable without touching any ceremony participant. Transparent STARK setups avoid this: no trapdoor exists, and hash functions degrade only quadratically under Grover's algorithm.
+
 ## Key claims
+
+- Conservative estimates place cryptographically relevant quantum computers at 2032–2035.
+- NIST finalized post-quantum standards in August 2024 and targets 2035 for deprecation of pre-quantum algorithms (IR 8547).
+- A quantum computer extracts the trapdoor from the public SRS — the ceremony becomes irrelevant.
+- Grover's algorithm halves hash security (256-bit → 128-bit effective); BHT further reduces it but requires impractical quantum RAM.
+- Midnight chose BLS12-381 over Pluto-Eris in April 2025 for faster proofs and ecosystem compatibility, accepting the quantum exposure.
+- Lattice-based systems (e.g., Neo, Nguyen and Setty, 2025) require no ceremony; trust reduces to "the lattice problem is hard."
+- NIST chose lattice problems as the foundation for FIPS 203 and FIPS 204 (August 2024).
 
 ## Entities
 
+- [[bls12-381]]
+- [[ceremony]]
+- [[fri]]
+- [[kzg]]
+- [[lattice]]
+- [[midnight]]
+- [[nist]]
+- [[plonk]]
+- [[setty]]
+- [[starks]]
+
 ## Dependencies
+
+- [[ch02-the-structured-reference-string]] — the SRS is what a quantum computer would attack
+- [[ch02-two-ways-to-build-a-stage]] — transparent setups have no trapdoor to extract
 
 ## Sources cited
 
+- NIST IR 8547 (post-quantum deprecation roadmap, 2024)
+- NIST FIPS 203, 204 (August 2024, lattice-based post-quantum standards)
+- Nguyen, Setty, 2025 (Neo lattice-based folding scheme)
+
 ## Open questions
+
+- When will cryptographically relevant quantum computers arrive? Nobody knows; the asymmetry of consequences favors caution for systems with 10+ year privacy horizons.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-universal-versus-circuit-specific-setups]]
+- Next: [[ch02-bn254-s-eroding-security-margin]]

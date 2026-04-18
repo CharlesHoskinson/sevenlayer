@@ -6,7 +6,7 @@ chapter_title: "Choreographing the Act"
 heading_level: 2
 source_lines: [1074, 1101]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 651
 ---
 
@@ -41,16 +41,47 @@ The evidence is clear: the most common failure mode in zero-knowledge systems is
 
 ## Summary
 
+Under-constrained circuits — where the witness generator computes a value the constraint system does not enforce — account for 95 of 141 catalogued real-world ZK vulnerabilities. Static analysis tools (ZKAP, Picus, zkFuzz) exist for Circom but not for the Rust-based systems (halo2, Plonky3, Jolt) where production code is now written.
+
 ## Key claims
+
+- 95 of 141 real-world ZK vulnerabilities (Chaliasos SoK) are under-constrained circuits.
+- Tornado Cash: one `=` instead of `<==` caused a complete soundness break.
+- ZKAP found 34 previously unknown vulnerabilities in 258 circuits across 15 projects; F1 score 0.82 vs 0.64 for Circomspect.
+- Division-by-zero accounts for 41% of ZKAP's findings.
+- zkFuzz found 66 bugs including 38 zero-days; MTZK found 21 bugs across 4 ZK compilers.
+- Automated detection tools cover Circom but not halo2, Plonky3, or Jolt.
+- NAVe (2025) formalizes Noir's ACIR using cvc5; full-scale formal verification for millions of constraints is not yet practical.
 
 ## Entities
 
+- [[halo2]]
+- [[jolt]]
+- [[plonk]]
+- [[plonky3]]
+- [[tornado cash]]
+
 ## Dependencies
+
+- [[ch03-risc-v-won-why-taxonomy-still-matters]] — introduces the 67% SNARK vulnerability statistic this section expands
+- [[ch03-from-circuits-to-virtual-machines-a-brief-evolution]] — establishes Circom's dual-track architecture as root cause
+- [[ch03-compact-s-disclosure-analysis]] — the compile-time prevention approach that addresses this failure mode
 
 ## Sources cited
 
+- Chaliasos SoK: 95 of 141 catalogued vulnerabilities were under-constrained circuits.
+- ZKAP: 34 previously unknown vulnerabilities in 258 circuits, 15 projects; F1 0.82.
+- zkFuzz: 66 bugs, 38 zero-days.
+- MTZK: 21 bugs across 4 ZK compilers.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[03-choreographing-the-act]]
+- Prev: [[ch03-the-developer-s-actual-experience]]
+- Next: [[ch03-compact-s-disclosure-analysis]]

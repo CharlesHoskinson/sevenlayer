@@ -6,7 +6,7 @@ chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
 source_lines: [4897, 4917]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 398
 ---
 
@@ -34,16 +34,47 @@ The following table crystallizes what the Midnight case study proves and what it
 
 ## Summary
 
+Midnight stresses the seven-layer model in three ways: the Compact compiler blurs Layers 2--4 in a single 26-stage nanopass pipeline; the SDK orchestrates Layers 3, 5, 6, and 7 in one pipeline with no layer boundary; and privacy is a cross-cutting property at every layer rather than a Layer 3 concern. A summary table maps what the system validates versus what remains unresolved across six dimensions.
+
 ## Key claims
+
+- The Compact compiler's nanopass architecture spans 26 intermediate languages, blurring the L2/L3/L4 boundary inseparably.
+- The SDK four-phase pipeline (`callTx`/`proveTx`/`balanceTx`/`submitTx`) touches L3, L5, L6, and L7 in sequence.
+- Privacy propagates through all seven layers: curve choice (L1/6), disclosure analysis (L2), dual transcripts (L3/4), local proof server (L5), UTXO shielding model (L7).
+- Cross-contract token transfers between DApps remain unsupported.
+- Governance key management and upgrade path remain centralized; no migration strategy for affected users is documented.
+- Post-quantum migration would require full redesign; no lattice-based commitment path exists.
+- Proof times of 17-28 s and absence of GPU acceleration constitute a UX barrier.
 
 ## Entities
 
+- [[bls12-381]]
+- [[lattice]]
+- [[midnight]]
+- [[sdk]]
+- [[utxo]]
+
 ## Dependencies
+
+- [[ch03-compact-s-disclosure-analysis]] — nanopass compiler pipeline spanning L2--L4
+- [[ch04-the-disclose-boundary-midnight-s-witness-architecture]] — two-transcript model (L3/4)
+- [[ch08-case-study-midnight-and-the-three-token-architecture]] — governance key management gaps
+- [[ch10-trust-decomposition-seven-weaker-assumptions]] — trust decomposition framework Midnight is measured against
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+- Cross-contract token transfers between DApps are unsupported; no roadmap is given.
+- Post-quantum migration path: how would Midnight transition to lattice-based commitments?
+- Centralized governance: who controls verifier key upgrades, and what protects users during transitions?
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[12-midnight-the-privacy-theater]]
+- Prev: [[ch12-where-midnight-validates-the-model]]
+- Next: [[ch12-the-privacy-theater-analogy]]

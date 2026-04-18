@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [691, 707]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 522
 ---
 
@@ -30,16 +30,45 @@ The Midnight case study illustrates a broader truth about Layer 1: the setup cho
 
 ## Summary
 
+Midnight's Layer 1 uses a Powers-of-Tau ceremony on BLS12-381 with a PLONK-family (Halo2) proof system; the Compact compiler derives per-circuit proving and verification keys deterministically from the universal SRS with no new trust. In April 2025 Midnight switched back from Pluto-Eris (a curve cycle enabling recursive composition) to BLS12-381 for pragmatic reasons — faster proofs, better tooling — accepting that all shielded transactions become forgeable if a quantum computer extracts the trapdoor. The quantum migration path is not a software update: it requires a new ceremony, new keys for every contract, and new wallet software.
+
 ## Key claims
+
+- Midnight runs a `midnight-trusted-setup` Powers-of-Tau ceremony producing a universal SRS on BLS12-381.
+- A simple counter contract produces a 13.7 KB proving key and a 1.3 KB verification key from the universal SRS.
+- The proof server runs locally at localhost:6300; witnesses never cross the network.
+- Midnight originally used Pluto-Eris curves for recursive composition; switched to BLS12-381 in April 2025.
+- BLS12-381 provides ~128-bit classical security but zero post-quantum security.
+- Quantum migration requires: new ceremony, new SRS, new proving/verification keys for every contract, new wallet software, and a transition period.
 
 ## Entities
 
+- [[bls12-381]]
+- [[ceremony]]
+- [[fri]]
+- [[ipa]]
+- [[kzg]]
+- [[midnight]]
+- [[plonk]]
+
 ## Dependencies
+
+- [[ch02-the-adopt-framework]] — the ADOPT lens for evaluating Midnight's ceremony
+- [[ch02-universal-versus-circuit-specific-setups]] — the universal setup model Midnight uses
+- [[ch02-the-quantum-shelf-life]] — the quantum exposure Midnight accepted with BLS12-381
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+- Whether Midnight's quantum migration is feasible at scale before cryptographically relevant quantum computers arrive remains open.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-the-adopt-framework]]
+- Next: [[ch02-option-value-analysis]]

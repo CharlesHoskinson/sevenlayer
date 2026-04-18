@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [617, 631]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 511
 ---
 
@@ -28,16 +28,46 @@ The capex/opex distinction introduced above applies with full force: every new c
 
 ## Summary
 
+Groth16 produces the most compact proofs ever (192 bytes, three pairings) but requires a new ceremony per circuit — unsustainable for evolving systems. PLONK and Marlin broke this constraint with a universal SRS: one ceremony serves any circuit up to a maximum size, with per-circuit key derivation that is fully deterministic and public. Midnight uses this universal model with a PLONK-family system (Halo2 variant) on BLS12-381, where adding any new contract requires compilation only, no new trust.
+
 ## Key claims
+
+- Groth16 setup is circuit-specific: changing any circuit requires a new ceremony at $2–5M per run.
+- PLONK (Gabizon, Williamson, Ciobotaru, 2019) and Marlin (Chiesa et al., 2019) introduced universal SRS: one ceremony for any circuit up to a fixed size.
+- Per-circuit key derivation from a universal SRS is deterministic and public — no new trust enters.
+- Midnight uses a PLONK-family system (Halo2 variant) with a universal SRS on BLS12-381.
+- Groth16 proofs are exactly 192 bytes; verification uses three pairing operations.
+- Marginal cost of adding a new application to a universal-SRS ecosystem converges to compilation cost — effectively zero.
 
 ## Entities
 
+- [[ceremony]]
+- [[gabizon]]
+- [[groth16]]
+- [[halo2]]
+- [[midnight]]
+- [[plonk]]
+- [[sudoku]]
+
 ## Dependencies
+
+- [[ch02-the-bug-that-was-not-a-ceremony-failure]] — motivates why circuit-specific ceremonies are a liability when circuits change
+- [[ch02-the-capex-opex-framework]] — the capex/opex model that universal setups optimize
 
 ## Sources cited
 
+- Groth, 2016 (Groth16)
+- Gabizon, Williamson, Ciobotaru, 2019 (PLONK)
+- Chiesa et al., 2019 (Marlin)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-the-bug-that-was-not-a-ceremony-failure]]
+- Next: [[ch02-the-quantum-shelf-life]]

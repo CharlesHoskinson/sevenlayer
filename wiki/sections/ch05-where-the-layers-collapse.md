@@ -6,7 +6,7 @@ chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [2311, 2340]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 657
 ---
 
@@ -43,16 +43,47 @@ A concrete example of this coupling: RISC Zero originally used a 254-bit field w
 
 ## Summary
 
+Three concrete cross-layer collapses show the seven-layer model is descriptive, not prescriptive. In Jolt, witness generation and arithmetization are fused. In Cairo, the instruction set was designed to match AIR constraints. The proof core (field, commitment scheme, polynomial representation) is a single coupled design decision that spans Layers 4, 5, and 6 — changing any one component requires changing all three.
+
 ## Key claims
+
+- Jolt: witness generation is arithmetization; decomposition into subtable lookups happens simultaneously with trace generation.
+- Cairo: write-once memory model was chosen because it dramatically reduces AIR memory-consistency constraint cost vs. read-write memory.
+- Proof-core triad: {31-bit field, FRI, AIR/multilinear} vs. {254-bit field, KZG, univariate Lagrange} vs. {64-bit Goldilocks, lattice, CCS+sumcheck} — three coherent bundles, not three independent choices.
+- RISC Zero's 2023 migration changed field (BN254 → BabyBear), commitment scheme (KZG → FRI), and constraint format (R1CS → AIR) simultaneously — the three components cannot move independently.
+- The seven-layer model separates concerns; the engineering reality has bidirectional edges between Layers 4, 5, and 6. Chapter 10 draws the honest DAG.
 
 ## Entities
 
+- [[babybear]]
+- [[bn254]]
+- [[folding]]
+- [[fri]]
+- [[goldilocks]]
+- [[jolt]]
+- [[kzg]]
+- [[lattice]]
+- [[mersenne]]
+
 ## Dependencies
+
+- [[ch05-lookup-arguments]] — Jolt's architecture is the Layer 3/4 collapse example
+- [[ch05-the-sumcheck-protocol-the-hidden-foundation]] — sumcheck is the Layer 5 component of the proof core
+- [[ch05-the-overhead-tax-10-000x-to-50-000x]] — field and commitment choice drive the overhead numbers
+- [[ch05-midnight-s-zkir-a-concrete-layer-4]] — Midnight's BLS12-381 choice is a proof-core decision
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[05-encoding-the-performance]]
+- Prev: [[ch05-midnight-s-zkir-a-concrete-layer-4]]
+- Next: [[ch05-where-the-analogies-break]]

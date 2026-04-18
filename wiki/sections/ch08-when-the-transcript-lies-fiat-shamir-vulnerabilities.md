@@ -6,7 +6,7 @@ chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3623, 3678]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 891
 ---
 
@@ -69,16 +69,46 @@ Every on-chain SNARK verifier -- Groth16, PLONK, FFLONK, any KZG-based scheme --
 
 ## Summary
 
+Omitting public inputs from the Fiat-Shamir hash causes total soundness failure: a malicious prover can forge proofs for arbitrary false statements with certainty. Three independent incidents (Frozen Heart 2022, Last Challenge Attack 2024, Solana ZK ElGamal 2025) hit different systems but share an identical root cause, making Fiat-Shamir transcript completeness the first-order audit check for every on-chain SNARK verifier.
+
 ## Key claims
+
+- The Fiat-Shamir heuristic converts interactive proofs to non-interactive; every blockchain ZK proof uses it.
+- Frozen Heart (April 2022): six production implementations across three proof systems (PLONK, Groth16, Bulletproofs) omitted public inputs from the hash — total soundness failure in all cases.
+- Affected libraries: Dusk Network (PLONK), Iden3/SnarkJS (Groth16), ConsenSys/gnark (PLONK), ING Bank zkrp (Bulletproofs), SECBIT Labs ckb-zkp (Groth16), Adjoint Inc. bulletproofs.
+- Last Challenge Attack (2024): gnark's KZG batching challenge computed from a truncated transcript; attacker solves a linear system to forge proof with probability 1. (gnark advisory GHSA-7p92-x423-vwj6)
+- Solana ZK ElGamal (2025): prover's challenge omitted from transcript hash; zero-token transfer provable as million-token transfer.
+- On-chain verifiers are permissionless — exploitation is automated and instantaneous with no human review loop.
 
 ## Entities
 
+- [[fiat-shamir]]
+- [[groth16]]
+- [[plonk]]
+- [[kzg]]
+- [[bulletproofs]]
+
 ## Dependencies
+
+- [[ch06-fiat-shamir-vulnerabilities]] — earlier treatment of the transform mechanism
+- [[ch08-the-social-layer]] — Layer 7 framing; implementation bugs are one of four concerns
+- [[ch08-who-verifies-the-verifier]] — supply-chain attack surface including library bugs
+- [[ch08-on-chain-verification-in-2026]] — current audit posture
 
 ## Sources cited
 
+- Trail of Bits, "Frozen Heart" disclosure (April 2022)
+- gnark advisory GHSA-7p92-x423-vwj6 (Last Challenge Attack, 2024)
+- Solana ZK ElGamal vulnerability report (early 2025)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[08-the-verdict]]
+- Prev: [[ch08-the-price-of-a-verdict]]
+- Next: [[ch08-governance-the-achilles-heel]]

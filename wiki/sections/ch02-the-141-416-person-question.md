@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [556, 603]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1146
 ---
 
@@ -61,16 +61,39 @@ But even if the ceremony is perfect -- even if all 141,416 participants were hon
 
 ## Summary
 
+Mathematically, one honest participant suffices; operationally, 141,416 anonymous contributors make the attack surface for compromise unmanageable against any known adversary model. The 1-of-N ceremony model converts personal trust into statistical confidence (Luhmann's distinction): security is determined by the population's strongest link rather than its weakest. But the model is trust-minimized, not trustless, and a perfect ceremony still does not protect against bugs in the construction itself.
+
 ## Key claims
+
+- Mathematical marginal value of participant 141,417: zero; one honest participant is sufficient.
+- Sociological value: with 141,416 anonymous global contributors, simultaneous compromise is operationally infeasible for any adversary including nation-states.
+- A ceremony's security is determined by its strongest link (1-of-N), the inverse of the chain metaphor.
+- The Ethereum KZG ceremony used four credibility mechanisms: radical openness, permissionless participation, diversity of entropy sources, and unforgeable cost of participation.
+- "Trustless" does not apply; "trust-minimized" is the accurate term — the gap matters.
+- Against a coalition of nation-states, a population of hundreds of thousands is a plausible but not provable bar.
 
 ## Entities
 
+- [[ceremony]]
+- [[kzg]]
+
 ## Dependencies
+
+- [[ch02-two-ways-to-build-a-stage]] — provides the mathematical basis for the 1-of-N multiplicative structure
+- [[ch02-the-structured-reference-string]] — defines the SRS these 141,416 participants were building
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+- How large must N be for the sociological bar to exceed any plausible adversary's capacity? No clean mathematical answer exists; it depends on the threat model.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-the-capex-opex-framework]]
+- Next: [[ch02-the-bug-that-was-not-a-ceremony-failure]]

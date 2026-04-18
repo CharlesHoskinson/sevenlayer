@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2493, 2532]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1107
 ---
 
@@ -53,16 +53,50 @@ Two years earlier, the same pipeline took minutes and cost tens of dollars. Two 
 
 ## Summary
 
+In production, Groth16, PLONK, and STARKs are not competitors but sequential pipeline stages. The dominant architecture uses a STARK over a small field (BabyBear or Mersenne-31) for transparent inner proving, recursive compression to shrink the proof, then Groth16 over BN254 as the on-chain wrapper. A batch of 1,000 transactions can be proven and posted for under $1 in under 15 seconds.
+
 ## Key claims
+
+- The hybrid pipeline: STARK (inner, transparent) → recursive compression → Groth16 (outer, 192 bytes, ~250K gas).
+- All major production systems follow this architecture: SP1, Stwo, Polygon, ZKM.
+- BabyBear (31-bit) or Mersenne-31 is used for inner STARK arithmetic; BN254 for the Groth16 wrapper.
+- Four NVIDIA A100 GPUs generate the STARK proof in 3--5 seconds; Groth16 wrapping takes 5--10 seconds.
+- Verification on Ethereum costs ~250,000 gas ($0.50--$1.00); end-to-end pipeline under 15 seconds, under $1.
+- Cost improvements compound multiplicatively across stages, explaining why cost curves exceed Moore's Law.
+- The outer Groth16 wrapper remains quantum-vulnerable; replacing it with a post-quantum equivalent is an open problem.
 
 ## Entities
 
+- [[groth16]]
+- [[starks]]
+- [[fri]]
+- [[bn254]]
+- [[babybear]]
+- [[mersenne]]
+- [[small-field]]
+- [[nvidia]]
+- [[polygon]]
+- [[eip]]
+
 ## Dependencies
+
+- [[ch06-the-three-families]] — establishes the three families whose roles in the pipeline are explained here
+- [[ch04-execution-traces]] — execution trace generation is Step 1 of the pipeline
+- [[ch06-recursion-vs-folding-russian-dolls-and-snowballs]] — recursive compression (Step 3) is explained in the next section
+- [[ch10-path-one-the-hybrid-stark-to-snark-pipeline]] — Chapter 10 places this pipeline in the three-path synthesis
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-the-three-families]]
+- Next: [[ch06-recursion-vs-folding-russian-dolls-and-snowballs]]

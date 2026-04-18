@@ -6,7 +6,7 @@ chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
 source_lines: [4729, 4745]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 337
 ---
 
@@ -30,16 +30,43 @@ zkWASM (Delphinus Lab) targets WebAssembly, offering the broadest language suppo
 
 ## Summary
 
+Eight of ten major zkVMs converged on RISC-V by March 2026, driven by its clean register-transfer fit with AIR traces, deep LLVM toolchain, and royalty-free openness. Cairo (Stwo) and zkWASM are purpose-fit holdouts: Cairo eliminates the arithmetization tax by design; zkWASM trades proving performance for maximum language coverage.
+
 ## Key claims
+
+- 8 of 10 major zkVMs target RISC-V as of March 2026.
+- RISC-V's register-transfer architecture maps one instruction to one trace row, fitting AIR and lookup arithmetization directly.
+- Standard LLVM optimizations yield >40% improvement on RISC-V zkVMs (Gassmann et al., 2025) because LLVM targets hardware features absent in ZK.
+- Cairo avoids the LLVM arithmetization tax by collapsing ISA and constraint system.
+- zkWASM uses PLONKish/KZG (pairing-based) -- the sole remaining non-hash-based outlier.
+- zkWASM has not demonstrated Ethereum block proving.
 
 ## Entities
 
+- [[arithmetization]]
+- [[kzg]]
+- [[plonk]]
+- [[starknet]]
+
 ## Dependencies
+
+- [[ch11-the-landscape-table-march-2026]] — ISA column of the landscape table
+- [[ch11-three-zkvms-through-seven-layers]] — SP1 and Stwo Layer 2 analysis
+- [[ch03-risc-v-won-why-taxonomy-still-matters]] — Chapter 3's treatment of ISA taxonomy
+- [[ch03-the-four-philosophies]] — the three-philosophy taxonomy referenced here
 
 ## Sources cited
 
+- Gassmann et al. (2025) — compiler optimization study: >40% LLVM improvement on RISC-V zkVMs
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[11-zkvms-the-universal-stage]]
+- Prev: [[ch11-performance-the-cost-collapse]]
+- Next: [[ch11-the-stage-is-set]]

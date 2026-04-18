@@ -6,7 +6,7 @@ chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
 source_lines: [4791, 4882]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 2897
 ---
 
@@ -105,16 +105,69 @@ Ethereum rollups handle this through proxy contracts and multisig governance -- 
 
 ## Summary
 
+This section maps all seven layers of the ZK stack onto Midnight's concrete architecture. Layers 1--7 are instantiated with BLS12-381/Halo 2 (trusted universal SRS), Compact's disclosure-analysis DSL, the `disclose()` boundary separating witness from circuit, ZKIR's 24-opcode typed IR, the four-phase proof pipeline (17--28 s), the Jubjub/Poseidon/BLS12-381 commitment stack, and the NIGHT/DUST/custom three-token fee model with on-chain verifier key lifecycle.
+
 ## Key claims
+
+- Layer 1: BLS12-381 + Halo 2 with a universal SRS; originally Pluto-Eris curves, switched to BLS12-381 for mainnet.
+- Layer 1: ~128-bit classical security; zero post-quantum security; Shor's algorithm breaks both DL and pairing simultaneously.
+- Layer 2: Compact is a fourth philosophy (application-specific DSL), distinct from EVM-compatible, ZK-native ISA, and general-purpose ISA approaches.
+- Layer 2: Disclosure analysis (`track-witness-data`) rejects programs at compile time where private data can reach public surfaces without `disclose()`; a private voting prototype triggered 11 errors.
+- Layer 3: `publicTranscript` and `privateTranscriptOutputs` are the two ZKIR channels; `disclose()` is the only gateway between them.
+- Layer 3: Side-channel gaps (Poseidon cache timing, indexer GraphQL metadata, 20-second submission fingerprint) are unaddressed in documentation.
+- Layer 4: ZKIR has 24 base instructions in 8 categories; `persistent_hash` expands to ~300 PLONKish gates; `ec_mul` (Jubjub) to hundreds of gates.
+- Layer 5: Four-phase pipeline -- `callTx` (ms), `proveTx` (17--28 s), `balanceTx` (sub-second), `submitTx` (sub-second).
+- Layer 6: BLS12-381 scalar field (~2^253); 10--100x arithmetic penalty vs. BabyBear/Goldilocks; Poseidon costs ~300 constraints vs. ~25,000 for SHA-256.
+- Layer 7: DUST accrues from staking rather than open-market purchase, making fee payment a weak signal for chain analysts; ~490 trillion SPECK per circuit call.
+- Layer 7: `submitInsertVerifierKeyTx`/`submitRemoveVerifierKeyTx` enable on-chain key management; orphaned proofs and frozen shielded tokens are unaddressed risks during key transitions.
 
 ## Entities
 
+- [[beanstalk]]
+- [[bls12-381]]
+- [[ceremony]]
+- [[folding]]
+- [[goldilocks]]
+- [[halo]]
+- [[halo2]]
+- [[jubjub]]
+- [[kzg]]
+- [[mersenne]]
+- [[midnight]]
+- [[ntt]]
+- [[plonk]]
+- [[poseidon]]
+- [[sdk]]
+- [[sudoku]]
+- [[tornado cash]]
+- [[utxo]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch02-midnight-s-bls12-381-stage]] — BLS12-381 curve choice and SRS ceremony context
+- [[ch03-compact-s-disclosure-analysis]] — disclosure analysis pass detail
+- [[ch04-the-disclose-boundary-midnight-s-witness-architecture]] — `disclose()` operator and transcript channels
+- [[ch05-midnight-s-zkir-a-concrete-layer-4]] — ZKIR instruction set taxonomy
+- [[ch07-case-study-midnight]] — Jubjub/Poseidon/field-size tradeoff analysis
+- [[ch08-case-study-midnight-and-the-three-token-architecture]] — three-token economic model at Layer 7
 
 ## Sources cited
 
+- Midnight Developer Guide, p.8 (architecture diagram, `midnight-trusted-setup` repository)
+- Midnight Developer Guide (per-circuit key sizes: `increment.prover` 13.7 KB, `increment.verifier` 1.3 KB)
+- ZKIR Specification (24 base instructions, 8 categories)
+- MidnightJS SDK Reference (`submitInsertVerifierKeyTx`, `submitRemoveVerifierKeyTx`)
+
 ## Open questions
+
+- Side-channel completeness: no documentation addresses constant-time proof generation, indexer query privacy, network timing fingerprinting, or Poseidon/Jubjub cache-timing resistance.
+- Verifier key upgrade migration: documentation is silent on how affected users with orphaned proofs or frozen shielded-token commitments are handled during a circuit upgrade.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[12-midnight-the-privacy-theater]]
+- Prev: [[ch12-midnight-at-a-glance]]
+- Next: [[ch12-where-midnight-validates-the-model]]

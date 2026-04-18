@@ -6,7 +6,7 @@ chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1675, 1866]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 5095
 ---
 
@@ -205,16 +205,52 @@ The field needed a unifier. Not a compromise format that sacrificed efficiency f
 
 ## Summary
 
+R1CS (2012), AIR (2018), and PLONKish (2019) each solved a specific limitation of its predecessor: R1CS introduced bilinear constraints, AIR added uniformity for repetitive traces, and PLONKish added selector-gated custom gates with copy constraints. By 2022 the three formats were locked into separate proof system ecosystems, motivating CCS. Groth16 proofs remain unbeaten at 192 bytes (3 group elements) despite R1CS's expressiveness limits.
+
 ## Key claims
+
+- R1CS has one constraint per multiplication gate; addition is free. Witness vector $\mathbf{z}$ satisfies $(\mathbf{A}\mathbf{z}) \circ (\mathbf{B}\mathbf{z}) = \mathbf{C}\mathbf{z}$.
+- AIR transition constraints apply uniformly to every consecutive row pair; a single polynomial equation describes an arbitrarily long trace. Boundary constraints fix start/end values.
+- PLONKish separates gate constraints (selector-weighted) from copy constraints (permutation argument); different rows can enforce different operations.
+- For 1,000 hash rounds: R1CS ~30,000,000 constraints; AIR ~30,000 (description size only); PLONKish ~15,000,000 with custom hash gates.
+- AIR and FRI are structurally coupled — the uniform polynomial structure of AIR matches the folding-based reduction in FRI.
+- Choosing a constraint system was a one-way door that locked in a proof system family until CCS.
+- R1CS was introduced by GGPR (2012), AIR by Ben-Sasson et al. (2018), PLONKish by Gabizon, Williamson, Ciobotaru (2019).
 
 ## Entities
 
+- [[folding]]
+- [[groth16]]
+- [[halo2]]
+- [[nova]]
+- [[plonk]]
+- [[polygon]]
+- [[poseidon]]
+- [[spartan]]
+- [[starks]]
+- [[tornado cash]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch05-the-spreadsheet-metaphor-and-where-it-works]] — spreadsheet model is the prerequisite intuition
+- [[ch05-ccs-the-rosetta-stone]] — CCS is the unifier that resolves the three-family fragmentation
+- [[ch05-lookup-arguments]] — lookup arguments emerged as a fix to arithmetic-hostile ops in all three systems
 
 ## Sources cited
 
+- [R-L4-2] Ben-Sasson, Bentov, Horesh, Riabzev. "Scalable, Transparent, and Post-Quantum Secure Computational Integrity." ePrint 2018/046.
+- [R-L4-3] Gabizon, Williamson, Ciobotaru. "PLONK." ePrint 2019/953.
+- [R-L4-1] Gennaro, Gentry, Parno, Raykova. "Quadratic Span Programs and Succinct NIZKs without PCPs." EUROCRYPT 2013.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[05-encoding-the-performance]]
+- Prev: [[ch05-the-spreadsheet-metaphor-and-where-it-works]]
+- Next: [[ch05-ccs-the-rosetta-stone]]

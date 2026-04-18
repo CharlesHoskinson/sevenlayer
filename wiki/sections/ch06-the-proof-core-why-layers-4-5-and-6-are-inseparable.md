@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2806, 2823]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 371
 ---
 
@@ -31,16 +31,48 @@ The layered model is still useful for understanding. It separates concerns that 
 
 ## Summary
 
+Layers 4 (arithmetization), 5 (proof system), and 6 (cryptographic primitives) co-evolve as a tightly coupled triad: field choice determines arithmetic speed, commitment scheme determines trust model and proof size, and arithmetization format determines which proof protocol applies. These three are the "proof core" -- a single design unit forged together, not assembled from independent components.
+
 ## Key claims
+
+- Field choice (Layer 6) propagates through all layers: M31 enables SIMD 32-bit; Goldilocks enables GPU 64-bit; BN254 requires expensive multi-precision arithmetic.
+- Commitment scheme (Layer 6) determines trust model: KZG (constant-size, trusted setup), FRI (logarithmic, transparent), Ajtai (post-quantum, larger).
+- Arithmetization (Layer 4) determines proof protocol: CCS folding requires sumcheck; AIR/STARKs require FRI.
+- Field, commitment, and arithmetization form an inseparable triad; changing one requires adapting the other two.
+- Chapter 10 redraws the seven-layer model as a DAG; the proof core is the densest cluster of edges.
 
 ## Entities
 
+- [[kzg]]
+- [[fri]]
+- [[ajtai]]
+- [[lattice]]
+- [[mersenne]]
+- [[goldilocks]]
+- [[bn254]]
+- [[hypernova]]
+- [[starks]]
+- [[plonk]]
+
 ## Dependencies
+
+- [[ch05-layer-4-arithmetization]] — arithmetization (Layer 4) is one leg of the triad
+- [[ch07-four-families-of-commitment-schemes]] — commitment schemes (Layer 6) are the second leg
+- [[ch06-the-three-families]] — the three proof system families are instantiations of different triad choices
+- [[ch10-the-causal-web-why-it-is-a-dag-not-a-stack]] — Chapter 10 formalizes the DAG view referenced here
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-real-time-ethereum-proving]]
+- Next: [[ch06-fiat-shamir-vulnerabilities]]

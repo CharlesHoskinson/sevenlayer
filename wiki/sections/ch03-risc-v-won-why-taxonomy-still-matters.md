@@ -6,7 +6,7 @@ chapter_title: "Choreographing the Act"
 heading_level: 2
 source_lines: [761, 792]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 375
 ---
 
@@ -45,16 +45,38 @@ The language layer is where the magician writes the choreography for the act. Th
 
 ## Summary
 
+Language choice at Layer 2 determines what class of bugs a developer can make, not merely which instruction set runs. Eight of ten major zkVMs target RISC-V, yet 67% of all known SNARK vulnerabilities are under-constrained circuits — a failure rooted in developer notation, not cryptography. The taxonomy of philosophies that follows is therefore about what the developer sees, not what the machine executes.
+
 ## Key claims
+
+- 8 of 10 major zkVMs target RISC-V as of the time of writing.
+- 67% of all known SNARK vulnerabilities are under-constrained circuits.
+- The dominant real-world failure mode is a bug in the program, not a cryptographic break.
+- Language choice determines what classes of mistake are structurally possible or impossible.
+- The running Sudoku example (4×4 grid, prove knowledge of solution without revealing it) threads through all subsequent layers.
 
 ## Entities
 
+- [[sudoku]]
+
 ## Dependencies
+
+- [[ch02-universal-versus-circuit-specific-setups]] — establishes Layer 1 setup decisions that Chapter 3 builds upon
+- [[ch03-under-constrained-circuits-the-dominant-failure-mode]] — supplies the 67% statistic referenced here
+- [[ch03-the-four-philosophies]] — the taxonomy this section motivates
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[03-choreographing-the-act]]
+- Prev: —
+- Next: [[ch03-from-circuits-to-virtual-machines-a-brief-evolution]]

@@ -6,7 +6,7 @@ chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3797, 3866]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1211
 ---
 
@@ -83,16 +83,48 @@ Midnight's approach is not without its own Layer 7 vulnerabilities:
 
 ## Summary
 
+Midnight integrates ZK verification into consensus — every node verifies proofs — rather than delegating to an upgradeable contract, making verifier keys immutable after deployment. Its three-token model (Night for staking/governance, DUST for fees, shielded tokens for privacy) creates a spam-resistant, flash-loan-immune fee economy with compiler-enforced privacy boundaries.
+
 ## Key claims
+
+- Verification is performed by every Midnight node as part of consensus, not by a governance-controlled proxy contract; verifier keys are immutable at the contract address.
+- Bug response requires contract migration, not governance upgrade — trades operational convenience for immunity to Beanstalk-style admin-key attacks.
+- Night (transparent UTXO token): staking, governance, and DUST backing.
+- DUST (fee token): deterministically computed from Night holdings over time; no gas auction, rate-limited by regeneration.
+- Shielded tokens: ZK-private, UTXO with Pedersen commitments, custom type identifiers per Compact contract.
+- Compact compiler enforces privacy at compile time via `disclose()` annotations; private by default.
+- Private governance: anonymous weighted voting via hash commitments; per-proposal nullifier domains prevent double-voting; counter-based irreversible state machines prevent rollbacks.
+- Flash-loan governance attacks fail — borrowing tokens does not transfer the secret key bound to the hash commitment.
+- Known gaps: protocol-level upgrade governance undocumented; single-oracle authorization; fixed 2-3 participant slots in current governance contracts; no emergency pause.
 
 ## Entities
 
+- [[midnight]]
+- [[nova]]
+- [[pedersen]]
+- [[sdk]]
+- [[beanstalk]]
+
 ## Dependencies
+
+- [[ch08-governance-the-achilles-heel]] — Beanstalk/Tornado Cash attacks that Midnight's architecture responds to
+- [[ch08-who-verifies-the-verifier]] — immutable verifier tradeoff table includes Midnight as example
+- [[ch03-compact-s-disclosure-analysis]] — Compact compiler and disclosure analysis
+- [[ch04-the-disclose-boundary-midnight-s-witness-architecture]] — witness architecture underlying the privacy boundary
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+- How are consensus-level parameters (fee rates, dust generation, consensus rules) governed? Not described in current documentation.
+- No multi-oracle or threshold-oracle pattern documented.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[08-the-verdict]]
+- Prev: [[ch08-proof-aggregation-the-missing-layer]]
+- Next: [[ch08-the-deepest-symmetry]]

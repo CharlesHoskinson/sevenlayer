@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3176, 3228]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 961
 ---
 
@@ -66,16 +66,52 @@ Changing the field after deployment means rewriting the compiler, the prover, th
 
 ## Summary
 
+The finite field choice is the "which numbers" decision that cascades through every layer above it. Switching from 254-bit primes (BN254, BLS12-381) to 31- or 64-bit primes (BabyBear, M31, Goldilocks) yields roughly 100× faster prover arithmetic because multiplications become single CPU instructions; security is recovered via extension fields. BN254's security margin has additionally eroded from 128 bits to ~100 bits via Tower NFS advances, but it cannot be changed without an Ethereum hard fork.
+
 ## Key claims
+
+- BN254: 254-bit prime, embedded in Ethereum EVM precompiles (2017), now estimated at ~100-bit security (down from 128) via Tower NFS [Kim and Barbulescu, 2016].
+- BLS12-381: ~253-bit prime, retains 128-bit security estimate; used by Zcash, Filecoin, Midnight, EIP-4844.
+- BabyBear ($2^{31} - 2^{27} + 1$, 31-bit): SIMD-friendly; natural FRI commitment; used by RISC Zero and Plonky3.
+- Mersenne-31 ($2^{31} - 1$): cheapest modular reduction (single addition); Circle STARKs; used by Stwo.
+- Goldilocks ($2^{64} - 2^{32} + 1$, 64-bit): native 64-bit arithmetic; high 2-adicity ($2^{32}$) for large NTT domains; used by Plonky2 and Neo/Nightstream.
+- 31-bit arithmetic is ~100× faster than 254-bit arithmetic [Haboeck, Levit, Papini, Circle STARKs ePrint 2024/278; SP1 Hypercube benchmarks, Succinct Labs, 2025].
+- Extension fields (degree 2–4) restore security: Stwo uses degree-4 (~124 bits); Neo uses $\mathbb{F}_{q^2}$ over Goldilocks (128 bits).
+- Field choice is a one-way door: it determines commitment scheme, proof system, arithmetization, and compiler.
 
 ## Entities
 
+- [[babybear]]
+- [[bls12-381]]
+- [[bn254]]
+- [[ceremony]]
+- [[goldilocks]]
+- [[mersenne]]
+- [[ntt]]
+- [[plonky3]]
+- [[small-field]]
+
 ## Dependencies
+
+- [[ch07-four-families-of-commitment-schemes]] — which commitment schemes pair with which fields
+- [[ch07-the-cascade-effect]] — how this field choice propagates upward
+- [[ch06-circle-starks-and-stwo-a-generational-leap]] — M31 in production (Stwo)
+- [[ch02-bn254-s-eroding-security-margin]] — earlier treatment of the BN254 erosion
 
 ## Sources cited
 
+- Kim and Barbulescu, "Extended Tower Number Field Sieve," Mathematics of Computation, 2016 — BN254 security revision to ~100 bits
+- Haboeck, Levit, Papini, "Circle STARKs," ePrint 2024/278 — 100× performance claim for 31-bit vs 254-bit arithmetic
+- SP1 Hypercube benchmarks, Succinct Labs, 2025 — confirming 100× figure
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-the-trilemma-and-its-dissolution]]
+- Next: [[ch07-the-quantum-threat-horizon]]

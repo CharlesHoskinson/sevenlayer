@@ -6,7 +6,7 @@ chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4330, 4337]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 120
 ---
 
@@ -21,16 +21,36 @@ It did not die because one side won. It died because the winning move turned out
 
 ## Summary
 
+The SNARK-vs-STARK binary that organized ZK discourse for three years collapsed not because one side won, but because production systems merged both sides simultaneously. A third path — lattice-based post-quantum folding — then appeared outside the original framing entirely. Chapter 10 redraws the map.
+
 ## Key claims
+
+- The SNARK/STARK dichotomy was the dominant organizing frame for ZK architecture from roughly 2020–2023.
+- The binary did not die through competitive victory; it died because combining both sides proved more practical than choosing either.
+- A third architectural path emerged (lattice-based post-quantum folding) that neither side of the original binary anticipated.
+- The seven-layer model from earlier chapters must be revised to accommodate this three-path reality.
 
 ## Entities
 
+None.
+
 ## Dependencies
+
+- [[ch01-the-seven-layers-at-a-glance]] — introduces the layer model this section says must bend
+- [[ch06-the-three-families]] — earlier framing of proof-system families now superseded
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[10-the-synthesis-three-paths-not-two]]
+- Prev: —
+- Next: [[ch10-the-map-redrawn]]

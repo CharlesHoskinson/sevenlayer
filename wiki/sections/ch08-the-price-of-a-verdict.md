@@ -6,7 +6,7 @@ chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3537, 3622]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1775
 ---
 
@@ -99,16 +99,50 @@ The choice of DA strategy is, in practice, one of the most consequential governa
 
 ## Summary
 
+Groth16 verification on Ethereum costs roughly 207,700 gas (~$1) regardless of computation size, but this cheapness reflects decisions made five layers below (BN254 curve, pairing precompiles). The dominant rollup cost shifted from data availability to verification after EIP-4844 reduced blob fees 10–100×, making proof aggregation the key optimization target for 2026.
+
 ## Key claims
+
+- Groth16 gas breakdown: 181,000 (4 pairings via EIP-1108) + 4,096 (calldata) + ~1,600 (EVM) + ~7,160 per public input ≈ 207,700 total fixed cost.
+- Nobody posts raw STARKs on-chain; production pipelines (SHARP, SP1, Polygon CDK) wrap STARKs in Groth16, converging STARK and SNARK on-chain costs to within ~2×.
+- Ethereum block gas limit of 30M allows roughly 150–225 Groth16 verifications per block.
+- FFLONK costs ~236,000 gas but uses a universal trusted setup, avoiding per-circuit ceremonies.
+- EIP-4844 (March 2024) reduced rollup DA costs 10–100× via blob transactions with a separate fee market.
+- Pectra (May 2025) doubled blob targets (3→6); Fusaka (December 2025) raised target to 14 via PeerDAS — 8× total increase over original EIP-4844.
+- Post-EIP-4844, verification cost (~200K gas) is now the dominant L1 settlement expense for many ZK rollups.
+- Celestia charges ~$0.07/MB vs Ethereum's ~$3.83/MB; EigenDA V2 targets 100 MB/s throughput.
+- Data availability means any participant can reconstruct full rollup state from public data; without it a ZK proof attests to computation correctness but not starting-state integrity.
 
 ## Entities
 
+- [[bn254]]
+- [[groth16]]
+- [[starknet]]
+- [[starks]]
+
 ## Dependencies
+
+- [[ch08-the-social-layer]] — establishes Layer 7 framing and the four concerns
+- [[ch08-proof-aggregation-the-missing-layer]] — aggregation amortizes the ~200K gas cost
+- [[ch08-pricing-attacks]] — DA cost structure creates exploitable seams
+- [[ch06-the-three-families]] — STARK vs SNARK tradeoffs that converge at Layer 7
 
 ## Sources cited
 
+- EIP-1108 (Istanbul, 2019) — pairing precompile gas reduction
+- EIP-4844 (Dencun, March 2024) — blob transactions
+- Pectra upgrade (May 2025) — blob target doubled
+- Fusaka upgrade (December 2025) — PeerDAS, blob target 14
+- Mustafa Al-Bassam, LazyLedger (2019)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[08-the-verdict]]
+- Prev: [[ch08-the-social-layer]]
+- Next: [[ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities]]

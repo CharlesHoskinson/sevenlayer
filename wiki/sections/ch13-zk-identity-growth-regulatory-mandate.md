@@ -6,7 +6,7 @@ chapter_title: "The Market Landscape"
 heading_level: 2
 source_lines: [5042, 5057]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 546
 ---
 
@@ -29,16 +29,41 @@ The trust shift here is the cleanest in the book: from credential presenter (sho
 
 ## Summary
 
+ZK identity offers the clearest trust minimization of all six market segments: selective disclosure replaces full-document exposure without revealing underlying data. EU eIDAS 2.0 mandates identity wallets for ~450 million citizens by late 2026, creating a regulatory-driven market. The remaining trust surface is enrollment hardware -- the orbs and scanners that issue credentials -- which no cryptographic proof can secure.
+
 ## Key claims
+
+- ZK selective disclosure is the clearest case of genuine trust replacement: the verifier learns only the asserted attribute, not the underlying document.
+- EU eIDAS 2.0 mandates ZK-capable identity wallets for all EU citizens by late 2026; ~450M potential users across 27 member states.
+- Four LSPs (POTENTIAL, EU Digital Identity Wallet Consortium, NOBID, DC4EU) have been piloting since 2023.
+- World (formerly Worldcoin) has millions of enrollments; iris-scanning creates a trust surface the proofs cannot eliminate.
+- Humanity Protocol valued at ~$1.1B (2025); uses palm-vein biometrics.
+- Privacy Pools (0xbow) processed >$6M volume across >1,500 users by early 2026; 35+ teams pursuing 13 approaches to compliant private transfers.
+- Market projected to reach $7.4B, driven by regulatory mandates and GDPR tension with blockchain transparency.
 
 ## Entities
 
+None.
+
 ## Dependencies
+
+- [[ch04-the-disclose-boundary-midnight-s-witness-architecture]] — selective disclosure architecture analysed in depth
+- [[ch09-privacy-architectures-for-smart-contracts-kachina-and-zexe]] — ZEXE/Kachina credential-issuance design patterns
+- [[ch13-enterprise-pilots-pilot]] — Privacy Pools discussed in enterprise context; cross-reference
+- [[ch13-market-sizing]] — $7.4B identity segment projection in aggregate market numbers
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[13-the-market-landscape]]
+- Prev: [[ch13-zkml-provable-machine-learning-research]]
+- Next: [[ch13-proving-as-a-service-the-prover-market-production]]

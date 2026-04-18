@@ -6,7 +6,7 @@ chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3887, 3935]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1160
 ---
 
@@ -62,16 +62,41 @@ The root cause is fundamental: current rollup fee mechanisms use a single-dimens
 
 ## Summary
 
+Two novel attack classes exploit mismatches in how rollups price their three independent cost dimensions: L2 execution, L1 data availability, and L1 proving. DA-saturation floods blob space with incompressible data at near-zero execution cost; prover-killer attacks submit EVM-cheap but ZK-expensive operations that can delay finality by 94× and crash provers. Both are defeated only by multidimensional fee pricing.
+
 ## Key claims
+
+- DA-saturation attack: data-heavy, compute-light transactions fill L1 blob slots with incompressible calldata; sustained DoS on Linea cost as little as 0.87 ETH/hour; on Optimism ~2 ETH/30 min.
+- DA-saturation increases finality delays 1.45×–2.73× over direct L1 blob stuffing; all major rollups studied were susceptible.
+- Prover-killer attack exploits "cycles per gas" mismatches: JUMPDEST = 1,039.79 cycles/gas; MODEXP = 2,961.72 cycles/gas; BN_PAIRING = 1,642.15 cycles/gas.
+- A block stuffed with MODEXP calls delayed finality 94× (>8 hours) and cost the operator $42.26/attack block; prover crashed after 10,266 seconds.
+- Single-dimensional gas pricing necessarily misprices at least one of the three resources (L2 execution, DA, proving).
+- Fix: separate EIP-1559-style base fees for each resource type; several rollups have added dynamic DA fee components post-Chaliasos.
+- Source: Chaliasos et al. (2025 study); four bug bounties paid in the tens of thousands of dollars.
 
 ## Entities
 
+- [[eip]]
+- [[groth16]]
+
 ## Dependencies
+
+- [[ch08-the-price-of-a-verdict]] — DA cost structure and blob fee dynamics that attacks exploit
+- [[ch08-the-social-layer]] — Layer 7 concerns framing
+- [[ch08-on-chain-verification-in-2026]] — current state of rollup fee markets
 
 ## Sources cited
 
+- Chaliasos et al. (2025) — DA-saturation and prover-killer attack study; four bug bounties paid
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[08-the-verdict]]
+- Prev: [[ch08-the-deepest-symmetry]]
+- Next: [[ch08-who-verifies-the-verifier]]

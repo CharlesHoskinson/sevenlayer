@@ -6,7 +6,7 @@ chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4467, 4528]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 2483
 ---
 
@@ -75,16 +75,61 @@ That is not a marketing slogan. It is a structural transformation.
 
 ## Summary
 
+Zero-knowledge proofs do not eliminate trust; they decompose a single monolithic trust assumption into seven independent, weaker, and individually auditable assumptions mapped to each layer. The section catalogs every assumption, a concrete failure scenario with real exploits (Tornado Cash, Zcash CVE-2019-7167, Frozen Heart, Beanstalk, Tower NFS), and the cascade structure explaining which failures propagate across layers and which are contained. The central conclusion is that the threat landscape is inverted: the deepest failures (Layer 6 math) are most catastrophic in scope but least likely; the shallowest (Layer 2 bugs, Layer 7 governance) are most common but most recoverable.
+
 ## Key claims
+
+- Layer 1 (setup): ≥1 of N ceremony participants was honest, or hash functions are collision-resistant.
+- Layer 2 (circuit): circuit was correctly written and audited — under-constrained circuits are the dominant production vulnerability class.
+- Layer 3 (witness): hardware does not leak witness through side channels; timing attacks on Zcash's Groth16 prover leaked transaction amounts with R = 0.57 correlation.
+- Layer 4 (arithmetization): translation from program to polynomial constraints is faithful.
+- Layer 5 (proof system): Fiat-Shamir is correctly implemented — the Frozen Heart bug (2022) broke three independent implementations (Bellman, Gnark, academic reference) simultaneously.
+- Layer 6 (hardness): discrete logs / lattice problems / hash preimages are hard — Tower NFS reduced BN254 security from ~128 bits to ~100 bits.
+- Layer 7 (governance): the multisig or governance mechanism will not override the cryptography — Beanstalk flash-loan attack ($182M, April 2022); Tornado Cash CREATE2 replacement (May 2023).
+- A Layer 6 failure cascades into Layers 5 and 1 for pairing-based systems but does not corrupt Layers 2, 3, or 4.
+- A Layer 2 failure is contained: fix the circuit, redeploy, recover — Zcash InternalH (CVE-2019-7167) patched in a single release.
+- A Layer 7 failure is maximally isolated (requires no interaction with any other layer) and cannot be fixed by improving cryptography alone.
+- Most deployed ZK rollups are Stage 0 or Stage 1 on L2Beat's framework — a multisig can override the verifier.
 
 ## Entities
 
+- [[beanstalk]]
+- [[bn254]]
+- [[ceremony]]
+- [[fiat-shamir]]
+- [[folding]]
+- [[fri]]
+- [[groth16]]
+- [[l2beat]]
+- [[lattice]]
+- [[poseidon]]
+- [[tornado cash]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch02-the-quantum-shelf-life]] — BN254 erosion from ~128 to ~100 bits via Tower NFS
+- [[ch04-side-channel-attacks-when-the-walls-leak]] — Layer 3 witness leakage and Zcash timing attack detail
+- [[ch08-governance-the-achilles-heel]] — Layer 7 governance failure context
+- [[ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities]] — Frozen Heart / Fiat-Shamir failure mode
+- [[ch03-under-constrained-circuits-the-dominant-failure-mode]] — Layer 2 Circom under-constraint bugs
 
 ## Sources cited
 
+- Zcash CVE-2019-7167 "InternalH" bug — February 2019
+- Frozen Heart vulnerability — 2022 (Bellman, Gnark, academic reference)
+- Beanstalk flash-loan governance attack — $182M, April 2022
+- Tornado Cash CREATE2 contract replacement — May 2023
+- Tower NFS — BN254 security reduction to ~100 bits
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[10-the-synthesis-three-paths-not-two]]
+- Prev: [[ch10-the-causal-web-why-it-is-a-dag-not-a-stack]]
+- Next: [[ch10-trustless-versus-trust-minimized]]

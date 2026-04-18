@@ -6,7 +6,7 @@ chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [307, 333]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1131
 ---
 
@@ -40,16 +40,54 @@ A ceremony with 141,416 participants and a governance multisig with 6 keyholders
 
 ## Summary
 
+Each of the seven layers introduces a distinct trust assumption that is independently falsifiable but coupled in practice. The deepest structural observation is a symmetry: Layer 1 (setup) and Layer 7 (verification) are both social trust, flanking four layers of mathematical certainty — the cryptography is a bridge between two shores of human judgment. The question "how many must be honest?" reduces to the same problem at both ends.
+
 ## Key claims
+
+- Layer 1: 67% of ZK vulnerabilities are under-constrained circuits (Chaliasos et al., USENIX Security 2024).
+- Layer 1: Ethereum's KZG Summoning drew 141,416 participants; billions of ZK rollup dollars rest on "almost certainly" one was honest.
+- Layer 2: a single `=` vs. `<==` caused a complete soundness break in Tornado Cash; at its peak Tornado Cash held over $200 million.
+- Layer 3: Zcash's Groth16 prover leaked transaction amounts through proof-generation timing.
+- Layer 3: client-side proving maximizes privacy but is unaffordable for most users; delegated proving is accessible but requires trusting a third party.
+- Layer 4/5: arithmetizing a simple lending comparison generates ~50,000 polynomial constraints over a field of $2^{64}$ elements.
+- Layer 4/5: proving overhead is 1,000x–5,000x for well-engineered systems (down from a baseline 10,000x).
+- Layer 5/6: BN254's security has eroded from ~128 bits to ~100 bits; NIST targets 2035 for retiring pre-quantum algorithms.
+- Layer 7: most ZK rollups operate at Stage 0 or Stage 1 on L2Beat's scale, meaning a small multisig can replace the verifier contract.
+- Layer 7: Beanstalk lost $182 million in 13 seconds via flash-loan governance capture; the mechanism worked as designed.
+- The symmetry: Layer 1 and Layer 7 are social trust; Layers 2–6 are mathematical; the question at both ends is "how many must be honest?"
 
 ## Entities
 
+- [[beanstalk]]
+- [[bn254]]
+- [[groth16]]
+- [[kzg]]
+- [[l2beat]]
+- [[lattice]]
+- [[midnight]]
+- [[nist]]
+- [[tornado cash]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch01-the-seven-layers-at-a-glance]] — the seven-layer structure that this section interrogates layer by layer
+- [[ch01-the-phenomenon]] — Groth16 proof mechanics and the SNARK/STARK distinction
+- [[ceremony]] — trusted-setup terminology used throughout
+- [[fiat-shamir]] — context for how Layer 3 non-interactivity works
 
 ## Sources cited
 
+- Chaliasos et al., USENIX Security 2024 (cited by author name and venue)
+
 ## Open questions
+
+- Whether the coupling between layers makes each assumption independently replaceable in practice, not just in principle.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[01-the-promise-of-provable-and-programmable-secrets]]
+- Prev: [[ch01-the-seven-layers-at-a-glance]]
+- Next: [[ch01-the-first-decision]]

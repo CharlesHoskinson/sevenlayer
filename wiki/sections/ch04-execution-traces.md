@@ -6,7 +6,7 @@ chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1208, 1252]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 751
 ---
 
@@ -58,16 +58,38 @@ Here is why witness generation is CPU-bound. Polynomial arithmetic -- the core o
 
 ## Summary
 
+The witness is a complete execution trace — every register value, memory access, and intermediate result captured during the computation. A trivial $x^2+x=12$ trace has four rows; an Ethereum block has billions of field elements. Witness generation is inherently sequential because each instruction depends on the previous one, making it CPU-bound while the cryptographic proving step is GPU-friendly and parallelizable.
+
 ## Key claims
+
+- The witness for a 4×4 Sudoku is ~80 field elements; for an Ethereum block, potentially billions.
+- Each row of the trace corresponds to one clock cycle of execution in a zkVM.
+- VM emulation is inherently sequential: instruction N depends on instruction N−1, blocking parallelism.
+- Polynomial arithmetic (NTT, MSM) is naturally parallel; witness generation is not — this asymmetry is structural, not accidental.
+- The distinction between the computation (milliseconds) and its recording (vastly larger) explains the Witness Gap.
 
 ## Entities
 
+- [[sudoku]]
+
 ## Dependencies
+
+- [[ch04-the-hidden-bottleneck]] — establishes the Witness Gap context
+- [[ch04-witness-generation-costs]] — follows with cost quantification and mitigation strategies
+- [[ch05-layer-4-arithmetization]] — this trace is what Layer 4 arithmetizes into constraints
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[04-the-secret-performance]]
+- Prev: [[ch04-the-hidden-bottleneck]]
+- Next: [[ch04-witness-generation-costs]]

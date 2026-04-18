@@ -6,7 +6,7 @@ chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
 source_lines: [5334, 5377]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 729
 ---
 
@@ -57,16 +57,54 @@ Beyond constant-time proving, the privacy frontier includes three additional dim
 
 ## Summary
 
+The ZK field moves through three sequential frontiers: Performance (2023-2025, largely crossed — real-time Ethereum proving at sub-cent costs), Security (2026-2028, active — EF targets 128-bit provable security by December 2026), and Privacy (2027+, approaching — constant-time proving and compiler-enforced disclosure boundaries). Each frontier is harder than the last; Privacy requires solving problems across all seven layers simultaneously.
+
 ## Key claims
+
+- Performance frontier largely crossed: SP1 Hypercube proves an Ethereum block in 6.9s on 16 GPUs; proving cost fell from $80 to $0.04 in 24 months (2,000x)
+- Airbender achieves 21.8M RISC-V cycles/sec on a single H100 (2025)
+- EF declared the speed race "effectively won" in December 2025 and pivoted to security targets
+- Security frontier is active: EF 2026 targets are 100-bit provable security by May and 128-bit by December
+- ARGUZZ (Hochrainer, Wustholz, Christakis, 2025) found 11 bugs across 6 major zkVMs
+- Privacy frontier requires all-layer solutions; Midnight's disclosure analysis is the first production compiler-level privacy enforcement
+- Monero's constant-time Bulletproofs prover achieves $R = 0.04$ timing correlation, proving constant-time proving is achievable at a performance cost
 
 ## Entities
 
+- [[airbender]]
+- [[bulletproofs]]
+- [[fiat-shamir]]
+- [[h100]]
+- [[jolt]]
+- [[midnight]]
+- [[sdk]]
+- [[starks]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch06-real-time-ethereum-proving]] — SP1 Hypercube and Airbender benchmarks establishing Performance frontier closure
+- [[ch04-side-channel-attacks-when-the-walls-leak]] — Zcash timing correlations and Monero constant-time baseline cited as Privacy frontier evidence
+- [[ch03-compact-s-disclosure-analysis]] — Midnight's 11 compile-time privacy errors, first production compiler-enforced disclosure boundary
+- [[ch14-the-seven-questions-that-remain-open]] — Q6 (constant-time proving) is the critical Privacy frontier blocker flagged here
 
 ## Sources cited
 
+- Succinct Labs. "SP1 Hypercube: Proving Ethereum in Real-Time." Blog post, May 2025. https://blog.succinct.xyz/sp1-hypercube/
+- ZKsync. "Airbender: GPU-Accelerated RISC-V Proving." Product announcement, June 2025. https://www.zksync.io/airbender
+- Hochrainer, Christoph, Valentin Wustholz, and Maria Christakis. "Arguzz: Testing zkVMs for Soundness and Completeness Bugs." arXiv 2509.10819, 2025.
+- Kadianakis, George. "Shipping an L1 zkEVM #2: The Security Foundations." Ethereum Foundation Blog, December 2025. https://blog.ethereum.org/2025/12/18/zkevm-security-foundations
+- European Union. "Regulation (EU) 2024/1183 -- European Digital Identity Framework (eIDAS 2.0)." *Official Journal of the European Union*, 2024.
+
 ## Open questions
+
+- When will the Security frontier be fully crossed — i.e., when will 128-bit provable soundness (without conjectured proximity gaps) be achieved across leading zkVMs?
+- What is the first production system to meaningfully address the Privacy frontier beyond compiler-level disclosure analysis?
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[14-open-questions-and-the-road-ahead]]
+- Prev: [[ch14-the-seven-questions-that-remain-open]]
+- Next: [[ch14-convergence]]

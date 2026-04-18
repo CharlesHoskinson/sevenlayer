@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2840, 2901]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 940
 ---
 
@@ -75,16 +75,54 @@ None of this is meant to criticize Midnight. Its choices are appropriate for a p
 
 ## Summary
 
+Midnight uses Halo 2 (UltraPlonk with custom gates) over BLS12-381 with KZG commitments -- a mature classical SNARK with a Powers-of-Tau ceremony. Proof generation dominates latency at 17--28 seconds per transaction on devnet (CPU-only, no GPU acceleration). The four-phase pipeline (callTx, proveTx, balanceTx, submitTx) makes Layer 5 concrete: the 17-second pause is the proof server pressing the seal into wax.
+
 ## Key claims
+
+- Midnight: Halo 2 / UltraPlonk over BLS12-381, KZG commitments, Powers-of-Tau universal setup.
+- BLS12-381 provides ~128-bit security vs. BN254's ~100-bit after Tower NFS; deployment is not post-quantum.
+- Four-phase pipeline: callTx (local circuit execution) → proveTx (proof server, localhost:6300) → balanceTx (<1s) → submitTx.
+- Proof generation: 17--18s (simple increment), 22--24s (sealed bid), 23.8s (escrow execution); accounts for >95% of latency.
+- Witness never leaves the client machine; proof server is CPU-only with no GPU acceleration.
+- Comparison table: Midnight (PLONK, discrete log, 255-bit) vs. Neo/Symphony (folding, lattice, 64-bit) vs. SP1 (STARK, hashing, 31-bit).
+- Midnight's choices prioritize maturity and correctness; they are a deliberate point in the design space, not a performance failure.
 
 ## Entities
 
+- [[midnight]]
+- [[plonk]]
+- [[halo2]]
+- [[kzg]]
+- [[bls12-381]]
+- [[bn254]]
+- [[ceremony]]
+- [[goldilocks]]
+- [[babybear]]
+- [[mersenne]]
+- [[lattice]]
+- [[folding]]
+- [[ntt]]
+- [[groth16]]
+
 ## Dependencies
+
+- [[ch03-midnight-compiler-ir-circuit]] — Compact compiler and ZKIR are Layer 3; their output feeds Phase 1 here
+- [[ch06-the-three-families]] — Midnight is in the PLONK family
+- [[ch06-snark-recursion-vs-folding-the-full-picture]] — Midnight's recursion strategy vs. folding alternatives
+- [[ch07-case-study-midnight]] — Chapter 7 Layer 6 treatment of Midnight's cryptographic choices
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-fiat-shamir-vulnerabilities]]
+- Next: [[ch06-snark-recursion-vs-folding-the-full-picture]]

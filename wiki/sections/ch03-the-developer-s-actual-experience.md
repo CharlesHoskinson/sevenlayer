@@ -6,7 +6,7 @@ chapter_title: "Choreographing the Act"
 heading_level: 2
 source_lines: [1036, 1073]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1190
 ---
 
@@ -51,16 +51,43 @@ The developer workflow reveals something about Layer 2: the *language* is the pa
 
 ## Summary
 
+The ZK development lifecycle has six steps — write, compile, test, prove, deploy, monitor — each with sharp asymmetries relative to conventional software development. Proof generation is orders of magnitude slower than execution, debugging failures requires reasoning backward from constraint indices, and production monitoring tools are almost entirely absent.
+
 ## Key claims
+
+- LLVM -O3 optimization yields 40%+ improvement on zkVM targets; ZK-aware cost models achieved up to 45% on individual benchmarks.
+- Groth16 proofs are a few hundred bytes; STARK proofs are a few hundred kilobytes.
+- Circom error messages report constraint indices (e.g., "Constraint 4,217 is not satisfied"), not variable names.
+- Compact's proof server runs at localhost:6300; Compact uses a 26-pass nanopass pipeline.
+- ZK-Coder improved Circom circuit generation success rates from 20% (baseline LLM) to 88%.
+- CirC (Stanford) showed ZK compilation shares structure with SMT solving; same optimizations apply across constraint targets.
+- Step 6 (monitor) is almost entirely undocumented; no standard monitoring tools exist for ZK deployments.
 
 ## Entities
 
+- [[folding]]
+- [[groth16]]
+- [[midnight]]
+- [[sdk]]
+
 ## Dependencies
+
+- [[ch03-the-four-philosophies]] — language taxonomy that defines the writing/compile experience
+- [[ch03-midnight-compiler-ir-circuit]] — details on Compact's 26-pass pipeline and ZKIR output
+- [[ch06-case-study-midnight-s-sealed-certificate]] — provides measured proof latencies referenced in Step 4 and Step 5
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[03-choreographing-the-act]]
+- Prev: [[ch03-the-four-philosophies]]
+- Next: [[ch03-under-constrained-circuits-the-dominant-failure-mode]]

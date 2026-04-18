@@ -6,7 +6,7 @@ chapter_title: "The Market Landscape"
 heading_level: 2
 source_lines: [5118, 5160]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 956
 ---
 
@@ -56,16 +56,43 @@ The market is growing. The technology works. The money is real. But beneath ever
 
 ## Summary
 
+The total ZKP market was $1.54B in 2025 (Grand View Research, 22.1% CAGR to $7.59B by 2033); the proving-services sub-market was $97M in 2025 (Chorus One, ~55% CAGR to $1.34B by 2030). ZK rollups account for ~60% of current revenue; proving-as-a-service and identity are the fastest-growing segments. Market size measures adoption but not trust quality — the chapter's thesis is that those two metrics diverge across segments.
+
 ## Key claims
+
+- Total ZKP market: $1.28B (2024) → $1.54B (2025) → $7.59B (2033) at 22.1% CAGR (Grand View Research [42]).
+- Proving-services sub-market: $97M (2025) → $1.34B (2030) at ~55% CAGR (Chorus One).
+- ZK rollups hold ~60% of 2025 revenue; proving-as-a-service ~20%; identity ~10%; enterprise ~5%; coprocessors ~3%; ZKML ~2%.
+- No authoritative segment breakdown exists; rollup proving costs and PaaS revenue overlap across sources.
+- Rollups and PaaS are production-grade with measurable trust reduction; identity and enterprise rely on regulatory mandates; coprocessors and ZKML have incomplete trust stories.
+- Both growth projections assume no major cryptographic break and continued regulatory tailwinds from eIDAS 2.0 and MiCA.
+- Enterprise market is the largest long-term opportunity but 3-5 years from revenue scale.
 
 ## Entities
 
+None.
+
 ## Dependencies
+
+- [[ch13-zk-rollups-the-proving-grounds-production]] — largest segment (~60% revenue)
+- [[ch13-proving-as-a-service-the-prover-market-production]] — $97M sub-market data from Chorus One
+- [[ch13-zk-identity-growth-regulatory-mandate]] — $7.4B identity projection and eIDAS 2.0 mandate
+- [[ch13-enterprise-pilots-pilot]] — enterprise segment context and DTCC/MiCA regulatory drivers
+- [[ch14-the-seven-questions-that-remain-open]] — open questions that aggregate market figures do not answer
 
 ## Sources cited
 
+- Grand View Research, "Zero-Knowledge Proof Market Size Report" (2025) — [42]; total ZKP market $1.28B (2024), $1.54B (2025), $7.59B (2033), 22.1% CAGR.
+- Chorus One, "The Economics of ZK-Proving: Market Size and Future Projections" (2025) — proving services sub-market $97M (2025), $1.34B (2030).
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[13-the-market-landscape]]
+- Prev: [[ch13-enterprise-pilots-pilot]]
+- Next: —

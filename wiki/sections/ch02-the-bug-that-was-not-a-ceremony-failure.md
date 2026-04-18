@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [604, 616]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 350
 ---
 
@@ -26,16 +26,40 @@ Sean Bowe and Ariel Gabizon discovered the bug before anyone exploited it. The t
 
 ## Summary
 
+CVE-2019-7167 in Zcash's BCTV14 construction allowed unlimited token counterfeiting despite a correctly conducted ceremony: the flaw was in the cryptographic specification, not the trusted setup. The extra SRS elements included for generality created an opening for forged proofs that would pass verification, exploitable from deployment in 2016 until discovery in early 2019. Ceremony integrity is necessary but not sufficient — the construction must be independently correct.
+
 ## Key claims
+
+- CVE-2019-7167 would have allowed exact, undetectable counterfeiting of Zcash tokens.
+- The vulnerability existed for approximately 3 years (2016–2019) before Sean Bowe and Ariel Gabizon discovered it.
+- The flaw was in the BCTV14 mathematical specification: extra SRS elements allowed proof forgery outside the intended circuit.
+- A perfect ceremony with all toxic waste destroyed would not have prevented this attack.
+- 67% of real-world zero-knowledge vulnerabilities are in the mathematical specification, not the ceremony or cryptography.
 
 ## Entities
 
+- [[ceremony]]
+- [[gabizon]]
+- [[groth16]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch02-the-structured-reference-string]] — defines the SRS elements whose over-inclusion created the attack surface
+- [[ch02-the-141-416-person-question]] — establishes that ceremony quality alone does not guarantee system security
 
 ## Sources cited
 
+- BCTV14 construction (referenced as CVE-2019-7167)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-the-141-416-person-question]]
+- Next: [[ch02-universal-versus-circuit-specific-setups]]

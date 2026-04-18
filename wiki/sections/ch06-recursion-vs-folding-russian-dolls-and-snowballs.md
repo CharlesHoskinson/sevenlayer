@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2533, 2572]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1078
 ---
 
@@ -53,16 +53,45 @@ The practical penalty comes from the size of the accumulated instance. In classi
 
 ## Summary
 
+Incrementally Verifiable Computation has two approaches: recursion (each step generates a proof verified by the next step -- Russian dolls) and folding (steps accumulate unverified claims via random linear combination, sealed by a single final decider -- a growing snowball). Nova's relaxed R1CS makes folding tractable: the per-step verifier costs ~10,000 gates vs. millions for full SNARK recursion.
+
 ## Key claims
+
+- IVC was formalized by Valiant (2008); it is the mechanism behind zkVMs, rollups, and any multi-step computation proof.
+- Recursive composition (Zexe, 2018) achieves constant 968-byte proofs but incurs full SNARK verifier cost (~millions of gates) per step.
+- Nova (Kothapalli, Setty, Tzialla, 2022) introduced folding via relaxed R1CS: $Az \circ Bz = u \cdot Cz + E$, closed under random linear combinations.
+- Folding verifier: ~10,000 gates (one scalar multiplication + hashing); full SNARK verifier: millions of gates.
+- Folding defers the expensive proof ("decider") to the very end; claims accumulate cheaply at each step.
+- CycleFold (Kothapalli and Setty, 2023) reduced the folding verifier's non-native scalar multiplication to ~1,500 gates.
+- Folding alone does not provide soundness; the decider SNARK at the end of the chain does.
 
 ## Entities
 
+- [[nova]]
+- [[folding]]
+- [[groth16]]
+
 ## Dependencies
+
+- [[ch06-the-hybrid-pipeline]] — hybrid pipeline introduces recursion; this section explains the two strategies
+- [[ch06-the-folding-genealogy]] — traces how Nova evolved into HyperNova, Neo, Symphony
+- [[ch05-ccs-the-rosetta-stone]] — relaxed R1CS and CCS are explained in Chapter 5
+- [[ch06-snark-recursion-vs-folding-the-full-picture]] — later section gives decision rules for choosing between them
 
 ## Sources cited
 
+- Kothapalli, Setty, Tzialla, "Nova: Recursive Zero-Knowledge Arguments from Folding Schemes," CRYPTO 2022.
+- Kothapalli, Setty, "CycleFold: Folding-scheme-based recursive arguments over a cycle of elliptic curves," ePrint 2023/1192.
+- Bowe, Chiesa, Green, Miers, Mishra, Wu, "Zexe: Enabling Decentralized Private Computation," IEEE S&P 2020.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-the-hybrid-pipeline]]
+- Next: [[ch06-the-folding-genealogy]]

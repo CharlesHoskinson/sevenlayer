@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3483, 3510]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 534
 ---
 
@@ -41,16 +41,48 @@ The physical laws are set. The field is chosen, the commitment scheme determined
 
 ## Summary
 
+Layer 6 is the only layer in the ZK stack that cannot be upgraded after deployment. The rubric maps five field choices (BN254, BLS12-381, BabyBear, Mersenne-31, Goldilocks) to their PQ status, commitment options, and sweet spots. A system deployed in 2026 with BN254 or BLS12-381 foundations will still be running in 2036; HNDL means its privacy guarantees were never real — they were deferred revelations waiting for a CRQC.
+
 ## Key claims
+
+- Layers above Layer 6 (sequencer, compiler, arithmetization, proof system) can be upgraded; the cryptographic foundations cannot.
+- Field rubric: BN254 (254-bit, quantum-vulnerable, KZG, legacy Ethereum rollups); BLS12-381 (253-bit, quantum-vulnerable, KZG, privacy systems); BabyBear (31-bit, hash-PQ + lattice-PQ, FRI/Ajtai, RISC-V zkVMs); Mersenne-31 (31-bit, hash-PQ, FRI Circle STARK, Stwo/Starknet); Goldilocks (64-bit, hash-PQ + lattice-PQ, FRI/Ajtai, Neo/Nightstream).
+- "Crypto-agility" for ZK systems means complete architectural redesign, not parameter swap.
+- A system with BN254 foundations deployed in 2026 will still be running in 2036; if CRQC arrives in 2035, HNDL means retroactive de-anonymization of the entire history.
+- The lattice revolution builds new foundations supporting the same architectural weight (folding, recursion, composition) without the quantum expiration date.
 
 ## Entities
 
+- [[babybear]]
+- [[bls12-381]]
+- [[bn254]]
+- [[circle stark]]
+- [[folding]]
+- [[fri]]
+- [[goldilocks]]
+- [[kzg]]
+- [[mersenne]]
+- [[starknet]]
+
 ## Dependencies
+
+- [[ch07-the-cascade-effect]] — the technical mechanism making this a one-way door
+- [[ch07-the-quantum-threat-horizon]] — the HNDL threat driving the urgency
+- [[ch07-maturity-and-readiness]] — what the lattice alternative looks like today
+- [[ch07-case-study-midnight]] — concrete example of walking through this door
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-maturity-and-readiness]]
+- Next: —

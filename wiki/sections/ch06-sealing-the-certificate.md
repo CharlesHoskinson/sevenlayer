@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2411, 2434]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 615
 ---
 
@@ -37,16 +37,44 @@ A forged certificate does not look like a convincing imitation that might fool s
 
 ## Summary
 
+Layer 5 is the proof system: the mechanism that presses a wax seal onto the polynomial puzzle produced by arithmetization. The sealed certificate is compact, unforgeable, and verifiable by strangers who never saw the original computation. Soundness rests on the Schwartz-Zippel lemma: a cheating prover cannot consistently fake polynomial evaluations at a verifier-chosen random point.
+
 ## Key claims
+
+- The certificate attests correct computation -- "this transaction is valid," "this person is over 18" -- without revealing private inputs.
+- Soundness error is at most $d/|\mathbb{F}|$, exponentially small for field sizes used in practice.
+- A Groth16 proof is 192 bytes; a STARK proof is ~50 KB; lattice-based proofs are larger.
+- Forged certificates are impossible objects, not convincing imitations.
+- The Fiat-Shamir transform derives verifier challenges from transcript hashes, making the proof non-interactive.
+- Layer 5 choices propagate directly into cost, speed, and quantum resistance at the application layer.
 
 ## Entities
 
+- [[groth16]]
+- [[kzg]]
+- [[fri]]
+- [[fiat-shamir]]
+- [[sudoku]]
+
 ## Dependencies
+
+- [[ch05-layer-4-arithmetization]] — arithmetization produces the polynomial puzzle that Layer 5 seals
+- [[ch05-the-constraint-system-evolution-r1cs-air-plonkish]] — constraint formats determine which proof system applies
+- [[ch06-the-three-families]] — next section enumerates Groth16, PLONK, STARK families
+- [[ch04-execution-traces]] — execution trace is the raw material fed into the proof system
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: —
+- Next: [[ch06-the-three-families]]

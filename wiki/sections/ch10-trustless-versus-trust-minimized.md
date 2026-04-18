@@ -6,7 +6,7 @@ chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4529, 4544]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 307
 ---
 
@@ -29,16 +29,36 @@ The remaining chapters of this book will use "trust-minimized" rather than "trus
 
 ## Summary
 
+The word "trustless" is inaccurate: ZK proofs still require trust in ceremony participants, circuit correctness, hardware side-channel resistance, mathematical hardness, and governance behavior — they minimize and distribute trust rather than eliminate it. From Chapter 11 onward this book uses "trust-minimized" instead of "trustless," not because it sounds better but because it is accurate, and naming things accurately is where understanding begins.
+
 ## Key claims
+
+- "Trustless" flatters the technology and misleads users; ZK proofs have at least five residual trust assumptions (ceremony, circuit, hardware, math, governance).
+- Trust decomposition replaces one monolithic trust point with seven weaker, independently auditable, independently replaceable assumptions.
+- The thesis stated in Chapter 1 ("trust decomposition, not trust elimination") is now confirmed with full precision: seven assumptions, 14 causal edges, three architectural paths.
+- From Chapter 11 onward: "trust-minimized" replaces "trustless" in this book's vocabulary.
 
 ## Entities
 
+- [[ceremony]]
+
 ## Dependencies
+
+- [[ch01-the-deepest-question]] — original trust decomposition thesis stated here
+- [[ch10-trust-decomposition-seven-weaker-assumptions]] — the seven assumptions whose existence this section summarizes
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[10-the-synthesis-three-paths-not-two]]
+- Prev: [[ch10-trust-decomposition-seven-weaker-assumptions]]
+- Next: —

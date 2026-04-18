@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3431, 3448]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 374
 ---
 
@@ -31,16 +31,42 @@ The choice between algebraic and traditional hash functions is itself a Layer 6 
 
 ## Summary
 
+Traditional hash functions (SHA-256, BLAKE3, Keccak) are fast on CPUs but cost tens of thousands of constraints inside ZK circuits; algebraic hash functions (Poseidon, Poseidon2, Rescue, Griffin) use native field operations and cost hundreds of constraints — a 100× difference. Algebraic hashes are less mature: Poseidon's original (2019) parameters were tightened after algebraic attacks, and they carry side-channel risks (secret-dependent memory access in S-box computations) not present in traditional hashes.
+
 ## Key claims
+
+- Traditional hashes use bitwise rotations and XOR — cheap on CPUs, expensive in circuits (tens of thousands of constraints per SHA-256 invocation).
+- Algebraic hashes use field multiplications and exponentiations — native to ZK circuits; Poseidon costs hundreds of constraints.
+- Performance difference: 100× or more in constraint count.
+- Poseidon original parameters (2019) were revised after algebraic attacks (Gröbner basis, interpolation) demonstrated higher-than-expected efficiency; function was not broken but maturity gap is real.
+- SHA-256: ~20 years of cryptanalysis. Poseidon: ~5 years.
+- Side-channel risk: algebraic hashes' lookup-table S-boxes create secret-dependent memory access patterns vulnerable to cache-timing attacks in shared cloud environments.
+- This choice is itself a Layer 6 cascade decision: Midnight uses Poseidon; STARK systems can use either, but algebraic hashes reduce recursion/wrapping circuit size.
 
 ## Entities
 
+- [[fiat-shamir]]
+- [[midnight]]
+- [[poseidon]]
+
 ## Dependencies
+
+- [[ch07-the-cascade-effect]] — hash function choice as another cascade decision
+- [[ch04-side-channel-attacks-when-the-walls-leak]] — cache-timing risk for algebraic hashes
+- [[ch07-case-study-midnight]] — Midnight's Poseidon deployment
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-the-cascade-effect]]
+- Next: [[ch07-the-structural-advantage-of-lattices]]

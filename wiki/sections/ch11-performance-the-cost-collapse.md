@@ -6,7 +6,7 @@ chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
 source_lines: [4700, 4728]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 458
 ---
 
@@ -42,16 +42,46 @@ This pivot validates systems with strong formal security guarantees. It also shi
 
 ## Summary
 
+By late 2025, four independent teams achieved real-time Ethereum block proving (>99% of blocks under 12 s). The 2025 cost reduction reached 45x within the year alone, bringing cluster cost to $60K–$100K. The Ethereum Foundation responded by pivoting the primary metric from speed to 128-bit provable security, due December 2026.
+
 ## Key claims
+
+- SP1 Hypercube, ZisK, Pico Prism, and OpenVM 2.0 each prove >99% of Ethereum mainnet blocks within the 12 s slot.
+- ZisK achieves 6.6 s average block time on 24x RTX 5090 GPUs.
+- Airbender: 35 s per block on a single H100 GPU at 21.8 million cycles/second.
+- 2025 alone: 45x cost reduction ($1.69 → $0.04 per block); ~10x per year trend.
+- Real-time proving cluster cost: $60K–$100K (16x RTX 5090 ~$32K + server + 512 GB RAM).
+- Witness generation is now the dominant bottleneck; ZKPOG achieves up to 52x GPU speedup for witness generation.
+- EF December 2025 pivot: 128-bit provable security by end of 2026; energy per proof becomes primary metric.
+- EF rejects proximity gap conjectures for production soundness.
 
 ## Entities
 
+- [[airbender]]
+- [[h100]]
+- [[lattice]]
+- [[ntt]]
+- [[zisk]]
+
 ## Dependencies
+
+- [[ch11-the-landscape-table-march-2026]] — the benchmark table this section narrates
+- [[ch06-real-time-ethereum-proving]] — Chapter 6's treatment of the same trajectory
+- [[ch04-witness-generation-costs]] — Witness Gap established there
+- [[ch10-path-one-the-hybrid-stark-to-snark-pipeline]] — pipeline context for GPU proving
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[11-zkvms-the-universal-stage]]
+- Prev: [[ch11-the-proof-core-triad]]
+- Next: [[ch11-risc-v-convergence]]

@@ -6,7 +6,7 @@ chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4306, 4327]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 377
 ---
 
@@ -35,16 +35,40 @@ Part III steps back from the individual layers and asks: when you put all seven 
 
 ## Summary
 
+Closing argument for chapter 9: privacy is an architectural property that cannot be retrofitted, the four PETs are complementary not competing, and the regulatory environment (GDPR, eIDAS 2.0) is for the first time pulling in the same direction as the technology. The chapter closes by bridging to Part III, which examines the full seven-layer system.
+
 ## Key claims
+
+- Privacy cannot be added to a transparent system after construction — it must be present from the first design document.
+- ZKPs, MPC, FHE, and DP are not competing; they are complementary tools for distinct trust problems.
+- Regulators now mandate the capabilities PETs provide, shifting the question from "should we?" to "which combination, and how do we prove it works?"
+- Proving to regulators that the privacy technology works is itself a zero-knowledge problem.
 
 ## Entities
 
+- [[fhe]]
+- [[mpc]]
+- [[zkps]]
+
 ## Dependencies
+
+- [[ch09-the-four-pillars]] — the four pillars summarised here
+- [[ch09-the-regulatory-intersection]] — regulatory pull argument developed there
+- [[ch09-the-decision-matrix]] — composition as the engineering answer
+- [[ch10-the-causal-web-why-it-is-a-dag-not-a-stack]] — Part III entry point referenced at section close
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[09-privacy-enhancing-technologies]]
+- Prev: [[ch09-open-problems]]
+- Next: —

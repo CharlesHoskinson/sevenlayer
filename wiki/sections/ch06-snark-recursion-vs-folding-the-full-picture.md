@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2902, 2936]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 557
 ---
 
@@ -48,16 +48,50 @@ The key decision variable is step count. For computations under approximately 1,
 
 ## Summary
 
+Recursion suits short computation chains with per-step proof requirements and mature tooling; folding suits long VM execution chains where per-step SNARK verification overhead is unacceptable. The crossover is approximately 1,000--10,000 steps. In practice the boundary dissolves: production systems fold cheaply in the inner loop and apply a single SNARK decider (Spartan, Groth16) at the end.
+
 ## Key claims
+
+- Recursion wins for: short chains (<~1,000 steps), per-step proof requirements, mature tooling (e.g., Midnight).
+- Folding wins for: long chains (>~10,000 steps), zkVMs, post-quantum (lattice folding), parallel proving (ProtoGalaxy).
+- Folding per-step cost: $O(|F|)$ + ~1,500 gates (CycleFold); recursion per-step cost: $O(|F| + |V|)$ where $|V|$ may be millions.
+- Nova uses Spartan as its decider SNARK.
+- Mangrove (Nguyen, Datta, Chen, Tyagi, Boneh, 2024): k-arity PCD tree with folding at leaves, SNARK at root.
+- Dominant production architecture: folding inner loop + single SNARK decider compression.
+- Crossover point (1,000--10,000 steps) varies by constraint system, field size, and hardware.
 
 ## Entities
 
+- [[nova]]
+- [[folding]]
+- [[groth16]]
+- [[plonk]]
+- [[halo2]]
+- [[spartan]]
+- [[symphony]]
+- [[boneh]]
+- [[ipa]]
+- [[midnight]]
+
 ## Dependencies
+
+- [[ch06-recursion-vs-folding-russian-dolls-and-snowballs]] — introduces the recursion vs. folding distinction
+- [[ch06-the-folding-genealogy]] — genealogy of folding schemes referenced in this section
+- [[ch06-case-study-midnight-s-sealed-certificate]] — Midnight's recursion approach is contrasted here
+- [[ch06-the-post-quantum-horizon]] — lattice-based folding for post-quantum is one of the folding win conditions
 
 ## Sources cited
 
+- Nguyen, Datta, Chen, Tyagi, Boneh, "Mangrove: A Scalable Framework for Folding-based SNARKs," ePrint 2024.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-case-study-midnight-s-sealed-certificate]]
+- Next: [[ch06-the-post-quantum-horizon]]

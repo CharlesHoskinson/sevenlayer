@@ -6,7 +6,7 @@ chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
 source_lines: [5163, 5333]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 6042
 ---
 
@@ -184,16 +184,80 @@ The OSI model survived not because seven was the right number of layers for netw
 
 ## Summary
 
+Seven concrete research blockers define the field's near-term ceiling: GPU witness parallelism, post-quantum proof-size lower bounds, Stage 2 governance binding, reduction of trust assumptions, streaming-folding integration, constant-time proving, and the correct layer count. Each has quantified timelines and executive-level risk assessments; none is solved as of early 2026.
+
 ## Key claims
+
+- Witness generation accounts for 50-70% of total GPU proving time; ZKPOG achieved 22.8x speedup but the general case remains open (timeline: 2-4 years)
+- KZG proofs are 48 bytes; best lattice proofs are 50-100 KB — a 3-order-of-magnitude gap with no proven lower bound on whether $O(1)$ post-quantum proofs are possible
+- As of early 2026, most ZK rollups are Stage 0 or Stage 1; >$20B TVL remains governance-overridable, negating Layers 1-6 cryptographic guarantees
+- System-level trust is the conjunction of all seven layers: seven layers each at 99.9% reliability yield only 99.3% system confidence ($0.999^7$)
+- Frozen Heart vulnerability affected 6 implementations across 3 proof systems; ARGUZZ found 11 bugs across 6 zkVMs
+- Zcash's Groth16 prover exhibits $R = 0.57$ timing correlation with transaction amounts; Monero's Bulletproofs achieves $R = 0.04$ with constant-time implementation at higher CPU cost
+- Layers 3-4 collapse in Jolt (witness = arithmetization); Layers 4-5-6 form an inseparable proof core — the seven-layer model is pedagogically useful but architecturally approximate
 
 ## Entities
 
+- [[arithmetization]]
+- [[beanstalk]]
+- [[boneh]]
+- [[bulletproofs]]
+- [[fiat-shamir]]
+- [[folding]]
+- [[fri]]
+- [[groth16]]
+- [[hypernova]]
+- [[jolt]]
+- [[kzg]]
+- [[l2beat]]
+- [[lasso]]
+- [[latticefold]]
+- [[lattice]]
+- [[nova]]
+- [[ntt]]
+- [[ntts]]
+- [[nvidia]]
+- [[poseidon]]
+- [[setty]]
+- [[starks]]
+- [[tornado cash]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch04-witness-generation-costs]] — establishes the 50-70% witness share in GPU proving pipelines that motivates Q1
+- [[ch07-the-trilemma-and-its-dissolution]] — introduces the transparency/post-quantum/succinctness trilemma underlying Q2
+- [[ch08-governance-the-achilles-heel]] — Stages framework (L2Beat) and governance-override risk behind Q3
+- [[ch10-trust-decomposition-seven-weaker-assumptions]] — the seven-layer trust conjunction that Q4 quantifies
+- [[ch06-the-folding-genealogy]] — Nova/HyperNova/LatticeFold state accumulation that makes Q5's streaming interaction non-trivial
+- [[ch04-side-channel-attacks-when-the-walls-leak]] — Zcash timing correlation ($R = 0.57$) and GPU SIMT divergence problem behind Q6
 
 ## Sources cited
 
+- Nair, Vineet, Justin Thaler, and Michael Zhu. "Proving CPU Executions in Small Space." ePrint 2025/611. [Q1, Q5]
+- Ozdemir, Alex, Evan Laufer, and Dan Boneh. "Volatile and Persistent Memory for zkSNARKs via Algebraic Interactive Proofs." *IEEE S&P 2025*. ePrint 2024/979. [Q1]
+- Pailoor, Shankara, et al. "Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs." *PLDI 2023*. ePrint 2023/512. [Q4]
+- Wen, Hongbo, et al. "Practical Security Analysis of Zero-Knowledge Proof Circuits." *USENIX Security 2024*. ePrint 2023/190. [Q4]
+- Hochrainer, Christoph, Valentin Wustholz, and Maria Christakis. "Arguzz: Testing zkVMs for Soundness and Completeness Bugs." arXiv 2509.10819, 2025. [Q4]
+- Wee, Hoeteck and David J. Wu. "Lattice-Based Functional Commitments: Fast Verification and Cryptanalysis." *ASIACRYPT 2023*. ePrint 2024/028. [Q2]
+- L2Beat. "Stages Framework for L2 Maturity." https://l2beat.com/stages. Accessed March 2026. [Q3]
+- Trail of Bits. "Frozen Heart: Forgery of Zero Knowledge Proofs." Blog post, April 2022. [Q4]
+- Chaliasos, Stefanos, et al. "SoK: What Don't We Know? Understanding Security Vulnerabilities in SNARKs." *USENIX Security Symposium*, 2024. [Q4]
+
 ## Open questions
+
+- Q1: Can witness generation be made fully parallel on GPUs? (Timeline: 2-4 years)
+- Q2: What is the proven lower bound on post-quantum proof size? Is $O(1)$-size post-quantum proof possible? (Timeline: 5-10 years theoretical)
+- Q3: When will Stage 2 governance binding occur for ZK rollups? (Timeline: 1-3 years)
+- Q4: When will "trustless" become a measurable engineering target with a defined trust floor? (Timeline: ongoing)
+- Q5: How do streaming witness approaches interact with folding scheme state accumulation? (Timeline: 2-3 years)
+- Q6: Can constant-time ZK proving be made practical on GPU hardware? (Timeline: 3-5 years)
+- Q7: Is seven the right number of layers, or should the model be four macro-layers, nine layers, or something else?
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[14-open-questions-and-the-road-ahead]]
+- Prev: —
+- Next: [[ch14-the-three-frontiers]]

@@ -6,7 +6,7 @@ chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1192, 1207]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 271
 ---
 
@@ -29,16 +29,38 @@ But three problems lurk behind that curtain. The recording is expensive to make.
 
 ## Summary
 
+Witness generation — recording every step of a computation before cryptographic proving begins — consumes 50–70% of total proving time in GPU-accelerated systems, yet the field spent years treating it as a minor cost. GPU acceleration of the proving step made the bottleneck worse in proportion: the faster proving got, the larger the witness share became. Three problems live behind the curtain: generation is expensive, the recording room has thin walls (side channels), and a wrong recording breaks the entire system.
+
 ## Key claims
+
+- Witness generation accounts for 50–70% of total proving time in modern GPU-accelerated systems.
+- The field historically quoted 10–25%, a figure accurate only when the proving step was slow.
+- GPU acceleration of proving does not accelerate witness generation, so the witness share grows as proving speeds up.
+- Three distinct problems lurk in witness generation: cost, side-channel leakage, and witness-constraint divergence.
 
 ## Entities
 
+None.
+
 ## Dependencies
+
+- [[ch04-witness-generation-costs]] — quantifies the Witness Gap with numbers and mitigation research
+- [[ch04-side-channel-attacks-when-the-walls-leak]] — the "thin walls" problem introduced here
+- [[ch04-witness-constraint-divergence]] — the "wrong recording" problem introduced here
+- [[ch03-the-four-philosophies]] — upstream: the choreography that is now compiled
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[04-the-secret-performance]]
+- Prev: —
+- Next: [[ch04-execution-traces]]

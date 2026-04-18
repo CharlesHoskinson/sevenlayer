@@ -6,7 +6,7 @@ chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1253, 1329]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1966
 ---
 
@@ -90,16 +90,52 @@ The key performance numbers tell the story:
 
 ## Summary
 
+GPU acceleration reduced proving time 10–100× but left witness generation unchanged, pushing its share of total time from ~20% to 50–70% — Amdahl's Law applied to ZK. Three research directions attack this: pipelining (BatchZK overlaps witness and proving phases), streaming (Nair, Thaler, Zhu reduce space to $O(\sqrt{T})$), and algebraic RAM reduction (Ozdemir, Laufer, Boneh cut memory-checking constraints up to 51.3×).
+
 ## Key claims
+
+- Witness generation share rose from ~20% to ~71% after 10× GPU acceleration; at 100× acceleration it reaches ~96%.
+- NTTs account for up to 90% of GPU proving time (ZKProphet).
+- BatchZK achieves 3,040× GPU speedup over CPU for the sum-check protocol and 793× for Merkle tree operations.
+- Streaming witness generation (Nair et al.) reduces space from $O(T)$ to $O(\sqrt{KT})$ with <2× time overhead.
+- Algebraic RAM reduction (Ozdemir, Laufer, Boneh) cuts constraints from $600 \cdot A \cdot \log(N)$ to $3N+2A+O(1)$ — up to 51.3× fewer.
+- ZKPOG achieves 22.8× average end-to-end GPU speedup by treating witness generation as a first-class target.
+- Amdahl's Law: if witness generation is 71% of total time and cannot be parallelized, infinite proving acceleration yields at most 3.4× overall speedup.
 
 ## Entities
 
+- [[boneh]]
+- [[h100]]
+- [[jolt]]
+- [[ntt]]
+- [[ntts]]
+- [[nvidia]]
+- [[poseidon]]
+- [[sudoku]]
+
 ## Dependencies
+
+- [[ch04-execution-traces]] — establishes what the witness is and why generation is sequential
+- [[ch04-memory-the-binding-constraint]] — the memory dimension of the same bottleneck
+- [[ch05-the-overhead-tax-10-000x-to-50-000x]] — proving-step costs that the Witness Gap now exceeds
+- [[ch05-the-sumcheck-protocol-the-hidden-foundation]] — sumcheck is the protocol that streaming feeds
 
 ## Sources cited
 
+- ZKPOG (end-to-end GPU acceleration, 22.8× speedup, 50–70% witness share)
+- ZKProphet (NTT share up to 90% of GPU proving time)
+- BatchZK (3,040× sum-check speedup, 793× Merkle tree speedup, 0.08–0.44 GB memory per proof)
+- Nair, Thaler, Zhu — streaming prover, $O(\sqrt{KT})$ space
+- Ozdemir, Laufer, Boneh — algebraic RAM reduction, up to 51.3×
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[04-the-secret-performance]]
+- Prev: [[ch04-execution-traces]]
+- Next: [[ch04-memory-the-binding-constraint]]

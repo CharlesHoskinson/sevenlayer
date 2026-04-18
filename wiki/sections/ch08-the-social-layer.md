@@ -6,7 +6,7 @@ chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3517, 3536]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 406
 ---
 
@@ -33,16 +33,39 @@ Layer 7 carries four distinct responsibilities, and this chapter treats each in 
 
 ## Summary
 
+Layer 7 is the point where all six mathematical layers converge into a public verdict rendered by a piece of software. The verifier can be replaced without breaking any cryptography — by changing the software through governance — which makes the social and institutional layer above the math the binding security constraint.
+
 ## Key claims
+
+- The verifier (smart contract, node, or service) is the only entity whose verdict matters; Layers 1–6 exist solely to satisfy it.
+- An admin key or governance multisig can replace the verifier contract, bypassing 128-bit proof security entirely.
+- Layer 7 has four distinct responsibilities: verification economics, implementation vulnerabilities, governance structures, and aggregation/DA infrastructure.
+- These four concerns are operationally convergent but logically separable; a system can have perfect economics and catastrophic governance.
 
 ## Entities
 
+- [[fiat-shamir]]
+- [[midnight]]
+
 ## Dependencies
+
+- [[ch08-the-price-of-a-verdict]] — details the economics of on-chain verification
+- [[ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities]] — implementation vulnerabilities at Layer 7
+- [[ch08-governance-the-achilles-heel]] — governance as architectural attack surface
+- [[ch08-proof-aggregation-the-missing-layer]] — aggregation and DA infrastructure
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[08-the-verdict]]
+- Prev: —
+- Next: [[ch08-the-price-of-a-verdict]]

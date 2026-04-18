@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3395, 3430]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 886
 ---
 
@@ -49,16 +49,56 @@ Each path is internally consistent. Each forecloses the others. You cannot start
 
 ## Summary
 
+Layer 6 is not a layer — it is a foundation. Every primitive choice propagates upward with algebraic necessity: Neo's parameter cascade runs Field → Ring → Commitment → Folding → Challenge → Security → Guard condition, and changing any one parameter shifts everything downstream. "Crypto-agility" is largely fictional for ZK systems because the field determines the commitment scheme determines the proof system determines the arithmetization, with no swap points.
+
 ## Key claims
+
+- Neo's cascade: Goldilocks (q=2⁶⁴−2³²+1) → Φ₈₁, d=54 → κ=16, m=2²⁴ → b=2, k=12, B=4,096 → T=216, |C|≈2¹²⁵ → 127-bit MSIS → guard (k+1)·T·(b−1) = 2,808 < 4,096.
+- BLS12-381's cascade: prime → Jubjub embedding → efficient in-circuit EC ops → pairing → KZG → PLONKish → ZKIR compiler.
+- BabyBear path: SIMD-friendly 31-bit arithmetic → FRI → AIR/CCS → transparent; proof size 50–200 KB; prover fast (one machine instruction per multiply).
+- Goldilocks path: native 64-bit arithmetic → FRI or Ajtai → CCS/R1CS → transparent; Ajtai branch adds PQ security and folding.
+- BLS12-381 path: bilinear pairings → KZG (48-byte proofs) → PLONKish → SRS required; prover 100× slower; quantum-vulnerable.
+- Mersenne-31 path: simplest reduction (carry bit subtraction) → Circle STARKs/FRI → transparent; fastest STARK prover (Stwo).
+- The decision tree is not a menu — once a tunnel is entered, the others seal behind you.
 
 ## Entities
 
+- [[ajtai]]
+- [[babybear]]
+- [[bls12-381]]
+- [[bn254]]
+- [[circle stark]]
+- [[eip]]
+- [[folding]]
+- [[fri]]
+- [[goldilocks]]
+- [[jubjub]]
+- [[kzg]]
+- [[mersenne]]
+- [[midnight]]
+- [[plonky3]]
+- [[starks]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch07-small-fields]] — field options and their performance properties
+- [[ch07-the-one-way-door]] — irreversibility of this cascade
+- [[ch07-case-study-midnight]] — BLS12-381 cascade in a live system
+- [[ch07-lattice-based-proving]] — Neo cascade parameters
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-case-study-midnight]]
+- Next: [[ch07-algebraic-vs-traditional-hash-functions]]

@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3000, 3037]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 945
 ---
 
@@ -51,16 +51,50 @@ The upshot is that lattice-based schemes occupy a useful middle ground: they hav
 
 ## Summary
 
+Three hardness assumptions underpin all ZK cryptography: DLP (powers all pairing-based SNARKs, broken by Shor's), collision-resistant hash functions (underpins STARKs/FRI, weakened but likely survivable by quantum computers with parameter adjustment), and Module-SIS (lattice-based, no known quantum advantage). Each assumption creates a distinct world of algebraic possibilities, performance trade-offs, and security lifespans.
+
 ## Key claims
+
+- DLP provides bilinear pairings enabling constant-size KZG proofs, but Shor's algorithm breaks it in polynomial time given enough qubits.
+- CRHF-based systems (FRI, STARKs) are "plausibly post-quantum" but not proven so; Grover halves security level and BHT reduces collision resistance to ~85-bit quantum security for SHA-256.
+- FRI's post-quantum security depends on Fiat-Shamir soundness in the quantum random oracle model — valid but non-tight.
+- Module-SIS hardness has been studied for over two decades with no quantum algorithm significantly outperforming classical ones.
+- Lattice schemes occupy a middle ground: algebraic structure sufficient for folding, post-quantum security, transparent setup.
+- NIST FIPS 203, 204, 205 (August 2024) standardize lattice-based primitives, validating Module-LWE/Module-SIS as the post-quantum foundation.
 
 ## Entities
 
+- [[ajtai]]
+- [[fiat-shamir]]
+- [[fri]]
+- [[groth16]]
+- [[kzg]]
+- [[lattice]]
+- [[nist]]
+- [[pedersen]]
+- [[plonk]]
+- [[poseidon]]
+
 ## Dependencies
+
+- [[ch07-the-laws-that-break]] — introduces the framing motivating this taxonomy
+- [[ch07-four-families-of-commitment-schemes]] — the concrete schemes built on these three worlds
+- [[ch07-lattice-based-proving]] — deep dive on the Module-SIS world
+- [[ch02-the-quantum-shelf-life]] — earlier discussion of quantum timelines
 
 ## Sources cited
 
+- Brassard, Hoyer, Tapp (BHT algorithm) — quantum collision resistance reduction
+- NIST FIPS 203, 204, 205 (August 2024) — post-quantum standards based on Module-LWE/Module-SIS
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-the-laws-that-break]]
+- Next: [[ch07-four-families-of-commitment-schemes]]

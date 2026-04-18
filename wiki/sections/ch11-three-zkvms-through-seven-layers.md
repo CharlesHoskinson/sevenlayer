@@ -6,7 +6,7 @@ chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
 source_lines: [4590, 4673]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 2326
 ---
 
@@ -97,16 +97,64 @@ Jolt's current absence of a production on-chain verifier is not merely an engine
 
 ## Summary
 
+SP1, Stwo/Cairo, and Jolt each traverse the seven layers by a distinct route: SP1 via modular multi-table AIR with horizontal sharding; Stwo via a ZK-native ISA that collapses Layers 2 and 4; Jolt via lookup-based arithmetization that merges Layers 3 and 4. The seven-layer model does not break under this pressure -- it reveals that layers fuse differently in each design.
+
 ## Key claims
+
+- SP1 witness generation consumes ~60-70% of total proving time (CPU-bound while proving is GPU-accelerated).
+- SP1 Jagged PCS commits only to occupied trace rows, eliminating padding overhead.
+- SP1 four-stage pipeline: core STARK per shard → recursive compression → field-transition shrink → Groth16 wrap.
+- Stwo M31 field arithmetic is ~125x faster than the 252-bit Stark field used by Stone.
+- Cairo Layer 4 requirements shaped Layer 2: the ISA is the constraint system.
+- Gassmann et al. (2025) found standard LLVM optimizations yield >40% improvement on RISC-V zkVMs.
+- Jolt Layers 3 and 4 merge: witness generation is the arithmetization (lookup decomposition).
+- Jolt BN254 field ops are ~100x more expensive per operation than 31-bit fields.
+- Jolt has no production on-chain verifier as of March 2026.
+- SP1 99.7% of Ethereum L1 blocks proved under 12 s on 16 RTX 5090 GPUs.
 
 ## Entities
 
+- [[arithmetization]]
+- [[babybear]]
+- [[bls12-381]]
+- [[bn254]]
+- [[circle stark]]
+- [[ceremony]]
+- [[fri]]
+- [[groth16]]
+- [[jolt]]
+- [[kzg]]
+- [[lasso]]
+- [[logup]]
+- [[mersenne]]
+- [[midnight]]
+- [[pedersen]]
+- [[plonk]]
+- [[poseidon]]
+- [[spartan]]
+- [[starks]]
+- [[starknet]]
+
 ## Dependencies
+
+- [[ch11-the-landscape-table-march-2026]] — this section elaborates the SP1/Stwo/Jolt rows
+- [[ch11-the-proof-core-triad]] — the coupling observed here is formalized there
+- [[ch10-path-one-the-hybrid-stark-to-snark-pipeline]] — SP1's four-stage pipeline in prior-chapter context
+- [[ch06-circle-starks-and-stwo-a-generational-leap]] — Circle STARK background for the Stwo section
+- [[ch05-lookup-arguments]] — Lasso and LogUp underpinning Jolt and SP1
 
 ## Sources cited
 
+- Gassmann et al. (2025) — compiler optimization study finding >40% LLVM improvement on RISC-V zkVMs
+
 ## Open questions
+
+- Can Jolt ship a production on-chain verifier without switching from sumcheck to a STARK-to-SNARK pipeline (Jolt-b)?
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[11-zkvms-the-universal-stage]]
+- Prev: [[ch11-the-landscape-table-march-2026]]
+- Next: [[ch11-the-proof-core-triad]]

@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2965, 2981]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 358
 ---
 
@@ -30,16 +30,51 @@ These are the questions of Layer 6. The seal works because certain mathematical 
 
 ## Summary
 
+Chapter 6 closing: the three proof system families (Groth16, PLONK, STARKs) have converged into a hybrid pipeline; folding genealogy now reaches post-quantum lattice security; Circle STARKs and Stwo delivered 940x throughput; costs dropped three orders of magnitude in two years. Fiat-Shamir implementation vulnerabilities remain the dominant real-world attack surface. Layer 6 examines the mathematical hardness assumptions underpinning the seal.
+
 ## Key claims
+
+- Three families converge: STARK (inner, transparent) + Groth16 (outer, 192 bytes) is the dominant pipeline.
+- Folding genealogy: Nova (2022) → HyperNova (2023) → LatticeFold/Neo/Symphony (2024--2026), spanning R1CS to CCS to lattice PQ.
+- Circle STARKs / Stwo: 940x throughput improvement, 31-bit M31 arithmetic ~100x faster than 254-bit BN254.
+- Proving costs: three orders of magnitude reduction in two years; real-time Ethereum block proving achieved.
+- Fiat-Shamir implementation bugs (Frozen Heart, Last Challenge Attack) are the dominant practical attack vector.
+- Proof core (field, commitment, arithmetization) is an inseparable triad; Layer 5 cannot be understood in isolation.
+- Layer 6 examines the hardness assumptions that make the seal unforgeable.
 
 ## Entities
 
+- [[groth16]]
+- [[plonk]]
+- [[starks]]
+- [[folding]]
+- [[nova]]
+- [[circle stark]]
+- [[halo2]]
+- [[midnight]]
+- [[fiat-shamir]]
+- [[lattice]]
+
 ## Dependencies
+
+- [[ch06-the-three-families]] — the three families surveyed in this chapter
+- [[ch06-the-folding-genealogy]] — folding lineage referenced in the closing
+- [[ch06-circle-starks-and-stwo-a-generational-leap]] — 940x improvement referenced
+- [[ch06-fiat-shamir-vulnerabilities]] — Frozen Heart and Last Challenge Attack referenced
+- [[ch07-three-hardness-assumptions-three-worlds]] — Layer 6 hardness assumptions that this section hands off to
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-from-speed-race-to-security-race]]
+- Next: —

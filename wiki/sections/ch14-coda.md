@@ -6,7 +6,7 @@ chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
 source_lines: [5396, 5511]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1850
 ---
 
@@ -129,16 +129,57 @@ The magician performs. The audience verifies. And between them, seven layers of 
 
 ## Summary
 
+The Coda grounds the book's technical arc in three concrete human scenarios — a loan applicant, a pharmacy patient, and a car-rental user under eIDAS 2.0 — to illustrate what trust-minimization means in practice. The remaining open questions (GPU parallelism, post-quantum compactness, governance binding, constant-time proving) are the residual engineering work; the trajectory toward trust-minimization is unambiguous even if zero trust is unreachable. This section also contains the book's complete bibliography.
+
 ## Key claims
+
+- Trust has been "decomposed, distributed, and minimized" into a conjunction of independently testable mathematical facts
+- Three concrete scenarios demonstrate the practical value: loan qualification (3 proofs, no data exposure), pharmacy prescription (3 proofs, no dossier), car rental under eIDAS 2.0 (2 facts proven, no identity disclosed)
+- Remaining open questions have a 3-5 year timeline for the hardest problems; some may resist solution entirely
+- The goal is trust-minimization, not trustlessness; progress, not perfection
+- The seven-layer model's value is the shared vocabulary it provides, independent of whether production systems have exactly seven layers
 
 ## Entities
 
+- [[airbender]]
+- [[boneh]]
+- [[bulletproofs]]
+- [[circle stark]]
+- [[folding]]
+- [[gabizon]]
+- [[groth16]]
+- [[hypernova]]
+- [[jolt]]
+- [[lasso]]
+- [[latticefold]]
+- [[lattice]]
+- [[l2beat]]
+- [[midnight]]
+- [[nist]]
+- [[nova]]
+- [[plonk]]
+- [[setty]]
+- [[starks]]
+- [[symphony]]
+
 ## Dependencies
+
+- [[ch01-three-converging-forces]] — privacy crisis, scaling, cost collapse that the Coda's Alice/patient/eIDAS scenarios resolve
+- [[ch14-the-seven-questions-that-remain-open]] — the open questions named as "engineering work that remains"
+- [[ch14-convergence]] — the trust-minimization trajectory summarized in the Coda's closing lines
 
 ## Sources cited
 
+The Coda itself contains no inline citations; this section contains the book's complete bibliography (refs 1-64, including refs 45-64 assigned to Chapter 14). See bibliography above.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[14-open-questions-and-the-road-ahead]]
+- Prev: [[ch14-convergence]]
+- Next: —

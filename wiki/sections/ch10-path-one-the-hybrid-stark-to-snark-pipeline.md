@@ -6,7 +6,7 @@ chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4377, 4392]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 485
 ---
 
@@ -29,16 +29,52 @@ The hybrid path has a structural weakness that deserves a name: the outer Groth1
 
 ## Summary
 
+The dominant production pattern in 2026 is STARK wrapped in Groth16: a transparent, large inner proof compressed into a 192-byte outer proof for cheap on-chain verification. Every major production zkVM — SP1, Stwo, RISC Zero, Airbender, ZisK, Pico Prism — follows this pattern because Ethereum gas economics make raw STARK verification ($5–$25) unaffordable versus Groth16 (~$0.50–$1.00). The structural weakness is that the outer Groth16 wrapper is not post-quantum, making the entire chain quantum-vulnerable despite a quantum-resistant inner STARK.
+
 ## Key claims
+
+- Raw STARK proofs are 50–200 KB and cost 1–5 million gas (~$5–$25) to verify on Ethereum.
+- Groth16 proofs are 192 bytes and cost ~250–300K gas (~$0.50–$1.00) to verify on Ethereum.
+- SP1 Hypercube: multilinear STARK over BabyBear → recursive compression → Groth16 over BN254.
+- Stwo: Circle STARK over Mersenne-31 → SHARP aggregation → Groth16 via Herodotus for Ethereum.
+- RISC Zero, Airbender, ZisK, and Pico Prism all follow the same hybrid pipeline.
+- Even StarkWare wraps to Groth16 for Ethereum L1 settlement.
+- The wrapping pipeline simultaneously touches Layer 5 (proof system switch), Layer 6 (field transition BabyBear/M31 → BN254), and Layer 7 (verification target shifts to EVM).
+- The outer Groth16 wrapper is not post-quantum; BN254 pairings are broken by Shor's algorithm.
 
 ## Entities
 
+- [[airbender]]
+- [[babybear]]
+- [[bn254]]
+- [[ceremony]]
+- [[circle stark]]
+- [[groth16]]
+- [[mersenne]]
+- [[pico]]
+- [[prism]]
+- [[starks]]
+- [[zisk]]
+
 ## Dependencies
+
+- [[ch02-two-ways-to-build-a-stage]] — foundational SNARK vs STARK tradeoffs
+- [[ch06-the-hybrid-pipeline]] — earlier detailed treatment of the STARK-to-SNARK pipeline
+- [[ch07-the-quantum-threat-horizon]] — BN254 quantum vulnerability context
+- [[ch08-the-price-of-a-verdict]] — Ethereum gas economics driving the pattern
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[10-the-synthesis-three-paths-not-two]]
+- Prev: [[ch10-the-map-redrawn]]
+- Next: [[ch10-path-two-pure-transparent]]

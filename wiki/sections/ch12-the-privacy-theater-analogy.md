@@ -6,7 +6,7 @@ chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
 source_lines: [4918, 4935]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 742
 ---
 
@@ -31,16 +31,43 @@ Penrose argued that the geometry of spacetime is not a backdrop against which ph
 
 ## Summary
 
+The section develops a full architectural reading of Midnight's privacy theater metaphor: open stage (unshielded), curtained stage (shielded), stage manager (Compact compiler), rehearsal room (local proof server), trapdoors (governance/verifier-key management), and DUST as the uniformly-priced ticket. The closing Penrose analogy argues that privacy in Midnight is not a feature but the geometry of the system itself.
+
 ## Key claims
+
+- The open stage (NIGHT tokens, unshielded transactions) is fully transparent to validators by design.
+- The curtained stage (shielded tokens) hides performer identity and transaction values; the ZK proof is the sole output visible to the audience.
+- Compact's disclosure analysis is a structural enforcement mechanism, not a guideline -- locked doors, not posted reminders.
+- The proof server at `localhost:6300` is an air-gapped rehearsal room; witnesses never leave the performer's machine.
+- Verifier key management (`submitInsertVerifierKeyTx`, `submitRemoveVerifierKeyTx`) are trapdoors -- documented but not adequately governed.
+- DUST fees (~490 trillion SPECK per circuit call) are uniform for same-type performances, weakening ticket-stub metadata attacks.
+- Privacy is the geometry of the system; removing it would require redesigning the curve, language, token model, and proof architecture.
 
 ## Entities
 
+- [[midnight]]
+- [[sdk]]
+- [[utxo]]
+
 ## Dependencies
+
+- [[ch03-compact-s-disclosure-analysis]] — disclosure analysis as compiler-enforced privacy boundary
+- [[ch04-the-disclose-boundary-midnight-s-witness-architecture]] — proof server / witness locality
+- [[ch08-case-study-midnight-and-the-three-token-architecture]] — DUST ticket-price and NIGHT staking mechanics
+- [[ch12-where-midnight-challenges-the-model]] — governance trapdoor analysis
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+- Whether the trapdoor governance mechanisms (verifier key management) are adequately controlled is explicitly left open by the section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[12-midnight-the-privacy-theater]]
+- Prev: [[ch12-where-midnight-challenges-the-model]]
+- Next: [[ch12-five-lessons-for-zk-system-design]]

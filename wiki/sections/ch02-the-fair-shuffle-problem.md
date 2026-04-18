@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [391, 407]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 391
 ---
 
@@ -30,16 +30,37 @@ This hybrid architecture -- glass on the inside, paper on the outside -- is the 
 
 ## Summary
 
+The fundamental choice at Layer 1 is between a ceremony-based trusted setup (compact proofs, sociological trust) and a transparent hash-based setup (no ceremony, larger proofs, plausible post-quantum resistance). The Ethereum KZG Summoning Ceremony — 141,416 participants in 2023 — represents the ceremony model at maximum scale. The dominant 2026 production pattern uses both: a transparent STARK inner proof wrapped in a ceremony-derived outer shell.
+
 ## Key claims
+
+- The Ethereum KZG Summoning Ceremony had exactly 141,416 participants (2023), the largest cryptographic ceremony in history.
+- The "1-of-N" trust model: security holds if even one participant out of N genuinely destroyed their contribution.
+- The ceremony produces a Structured Reference String (SRS) — the mathematical stage on which all subsequent proofs are performed.
+- Transparent setups use only hash functions; no secret exists to destroy; proof sizes are ~100 KB vs ~192 bytes for Groth16.
+- The 2026 hybrid architecture uses a transparent STARK inner proof wrapped in a ceremony-based outer proof for cheap on-chain verification.
 
 ## Entities
 
+- [[kzg]]
+
 ## Dependencies
+
+- [[ch02-the-structured-reference-string]] — defines what an SRS is and why the trapdoor is called toxic waste
+- [[ch02-two-ways-to-build-a-stage]] — details the ceremony mechanics and transparent alternative
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: —
+- Next: [[ch02-the-structured-reference-string]]

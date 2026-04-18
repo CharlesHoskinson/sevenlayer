@@ -6,7 +6,7 @@ chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3867, 3886]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 429
 ---
 
@@ -33,16 +33,38 @@ He would be right. And the fact that he would be right is itself the deepest ins
 
 ## Summary
 
+Layer 1 (ceremony) and Layer 7 (verifier governance) are structurally symmetric: both rest on social claims about human behavior rather than mathematical guarantees, sandwiching the purely mathematical Layers 2–6. ZK proofs do not eliminate trust — they compress it into two smaller social assumptions at the endpoints of the stack.
+
 ## Key claims
+
+- Layer 1 security claim: "at least one of N ceremony participants destroyed their toxic waste" — a statement about human behavior, not mathematics.
+- Layer 7 security claim: "the governance mechanism will not be captured by an adversary" — equally social.
+- Layers 2–6 provide computational guarantees against polynomial-time adversaries; the endpoints do not.
+- The honest framing is "trust-minimized," not "trustless."
+- The remaining trust assumptions — ceremony integrity and governance integrity — are weaker than trusting a single counterparty for every transaction, but they are non-zero.
 
 ## Entities
 
+- [[ceremony]]
+
 ## Dependencies
+
+- [[ch08-governance-the-achilles-heel]] — governance as the Layer 7 social claim
+- [[ch02-the-structured-reference-string]] — ceremony as the Layer 1 social claim
+- [[ch08-the-social-layer]] — framing for Layer 7 as the verdict layer
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[08-the-verdict]]
+- Prev: [[ch08-case-study-midnight-and-the-three-token-architecture]]
+- Next: [[ch08-pricing-attacks]]

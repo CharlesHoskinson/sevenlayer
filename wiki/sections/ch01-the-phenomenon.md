@@ -6,7 +6,7 @@ chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [204, 240]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1224
 ---
 
@@ -50,16 +50,45 @@ That is privacy as an engineering constraint -- enforced by polynomial equations
 
 ## Summary
 
+Zero-knowledge proofs moved from theory to practice through two enabling steps: the Fiat-Shamir transform (1986) made them non-interactive, and the Groth–Gennaro–Gentry–Parno–Rabin constructions (2010–2013) made them succinct — a Groth16 proof is exactly 192 bytes verifiable for ~250,000 gas. The pattern that emerges across banking, supply chain, and healthcare scenarios is always the same: ZK severs the coupling between verification and disclosure.
+
 ## Key claims
+
+- Original ZK proofs (post-1985) were interactive and impractical for roughly twenty years.
+- The Fiat-Shamir transform (1986) replaced a live verifier with a hash function, producing non-interactive proofs.
+- Groth (and Gennaro, Gentry, Parno, Rabin) produced succinct proofs between 2010 and 2013.
+- A Groth16 proof is exactly 192 bytes — three elliptic curve points of 48 bytes each.
+- Verifying a Groth16 proof on Ethereum costs roughly 250,000 gas (a few dollars).
+- A STARK proof is 50–200 kilobytes but requires no trusted setup ceremony.
+- The reserve-audit use case: a bank proves "sum of deposits ≤ sum of reserves" in milliseconds without exposing individual accounts.
+- The pharmaceutical supply-chain use case: compliance proved without revealing the recipe or supplier identities.
+- The prescription use case: a patient proves age, prescription validity, and insurance coverage without revealing name, diagnosis, or policy number.
 
 ## Entities
 
+- [[fiat-shamir]]
+- [[groth16]]
+
 ## Dependencies
+
+- [[ch01-the-proof-at-the-door]] — completeness/soundness/zero-knowledge used throughout
+- [[ch01-the-trick]] — prover/verifier framing and the disclosure-vs-proof distinction
 
 ## Sources cited
 
+- Goldwasser, Micali, and Rackoff, "The Knowledge Complexity of Interactive Proof Systems," 1985 (named)
+- Fiat and Shamir, 1986 (named; no ePrint given)
+- Groth, 2016 (Groth16 — named by system name and attributed to "Jens Groth")
+- Gennaro, Gentry, Parno, and Rabin (named; no ePrint given)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[01-the-promise-of-provable-and-programmable-secrets]]
+- Prev: [[ch01-the-proof-at-the-door]]
+- Next: [[ch01-three-converging-forces]]

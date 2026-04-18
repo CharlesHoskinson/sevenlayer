@@ -6,7 +6,7 @@ chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1940, 1986]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1291
 ---
 
@@ -60,16 +60,53 @@ The sumcheck protocol also illustrates a recurring theme in this book: the most 
 
 ## Summary
 
+The sumcheck protocol (Lund, Fortnow, Karloff, Nisan 1992) reduces verification of a multivariate polynomial sum over $2^n$ binary inputs to $n$ rounds of interaction plus one point evaluation — an exponential compression that makes modern ZK verification practical. It is the backbone of Spartan, HyperNova, Jolt, Lasso, LogUp-GKR, SP1 Hypercube, and Binius.
+
 ## Key claims
+
+- Sumcheck reduces $\sum_{(x_1,\ldots,x_n)\in\{0,1\}^n} g(x_1,\ldots,x_n) = T$ to $n$ univariate polynomial checks and one field evaluation.
+- Each round: prover sends a univariate polynomial; verifier checks consistency and sends a random challenge binding one variable.
+- For $n=30$: 30 polynomial checks replace $2^{30} \approx 10^9$ evaluations.
+- CCS constraint verification reduces to a sumcheck: check that the multilinear polynomial encoding the constraint sums to zero over the boolean hypercube.
+- Spartan (Setty, 2019) uses sumcheck directly for R1CS; HyperNova uses it for CCS folding; Jolt and Lasso reduce lookup proofs to sumcheck.
+- Sumcheck-based architectures avoid NTTs entirely, using structured summations that are more GPU-friendly than butterfly transforms.
+- Layers 4, 5, and 6 are causally entangled: field choice determines which polynomial representation is efficient; commitment scheme determines which proof technique is viable.
 
 ## Entities
 
+- [[fiat-shamir]]
+- [[folding]]
+- [[groth16]]
+- [[hypernova]]
+- [[jolt]]
+- [[lasso]]
+- [[logup]]
+- [[midnight]]
+- [[nova]]
+- [[plonk]]
+- [[setty]]
+- [[spartan]]
+
 ## Dependencies
+
+- [[ch05-ccs-the-rosetta-stone]] — CCS is the primary consumer of sumcheck for constraint verification
+- [[ch05-lookup-arguments]] — LogUp-GKR and Lasso both verify through sumcheck
+- [[ch05-the-overhead-tax-10-000x-to-50-000x]] — NTT dominance explained; sumcheck avoids NTTs
+- [[ch05-where-the-layers-collapse]] — the proof-core inseparability discussed here
 
 ## Sources cited
 
+- Lund, Fortnow, Karloff, Nisan. "Algebraic Methods for Interactive Proof Systems." JCSS 1992.
+- [R-L4-5] Setty. "Spartan: Efficient and General-Purpose zkSNARKs without Trusted Setup." ePrint 2019/550.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[05-encoding-the-performance]]
+- Prev: [[ch05-ccs-the-rosetta-stone]]
+- Next: [[ch05-lookup-arguments]]

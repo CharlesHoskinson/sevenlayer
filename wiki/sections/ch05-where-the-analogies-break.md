@@ -6,7 +6,7 @@ chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [2341, 2408]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1313
 ---
 
@@ -81,16 +81,66 @@ From this point forward, the magician-and-audience framing will recede. Layers 5
 
 ## Summary
 
+Layer 4 is a lossy translation: native computation (64-bit integers, floats, pointers, exceptions) becomes fixed-size field elements and deterministic polynomial constraints, and the gap costs 10,000–50,000x overhead. The overhead is falling — CCS, LogUp, Lasso, small fields, and Binius each reduced one component — but a theoretical lower bound remains: provable computation is inherently more expensive than unprovable computation.
+
 ## Key claims
+
+- Native 64-bit overflow wrapping costs ~dozens of polynomial constraints (bit decomposition, boolean checks, reconstruction) vs. zero CPU cycles.
+- Each gap between native and field computation generates constraints; the overhead is structurally necessary, not a design flaw.
+- Current trajectory: 10,000–50,000x (2024–2025) → 1,000–5,000x (2027–2028) for general-purpose zkVMs.
+- Overhead milestones: AIR replaced R1CS for VMs; PLONKish added custom gates; CCS unified formats; LogUp eliminated sorting; Lasso made table size irrelevant; small fields gave ~100x per-op savings.
+- Binius (2025): 100x reduction for bit-heavy workloads by working natively in binary tower fields.
+- Mersenne-31 modular reduction: two shifts and two additions — faster than any other prime reduction.
+- An information-theoretic lower bound exists: $n$ bits of output requires $\Omega(n)$ communication. Whether the cryptographic overhead can approach $O(1)$ multiplicative factor is open.
 
 ## Entities
 
+- [[arithmetization]]
+- [[bls12-381]]
+- [[groth16]]
+- [[halo2]]
+- [[hypernova]]
+- [[jolt]]
+- [[lasso]]
+- [[logup]]
+- [[mersenne]]
+- [[midnight]]
+- [[nova]]
+- [[plonk]]
+- [[spartan]]
+- [[starks]]
+
 ## Dependencies
+
+- [[ch05-the-overhead-tax-10-000x-to-50-000x]] — quantitative overhead analysis this section synthesizes
+- [[ch05-the-constraint-system-evolution-r1cs-air-plonkish]] — each system improved the overhead at some dimension
+- [[ch05-ccs-the-rosetta-stone]] — CCS is one of the "it fell when" milestones
+- [[ch05-lookup-arguments]] — LogUp and Lasso are the other milestones
+- [[ch05-where-the-layers-collapse]] — the proof-core coupling is the architectural punchline
 
 ## Sources cited
 
+- [R-L4-1] Gennaro, Gentry, Parno, Raykova. "Quadratic Span Programs and Succinct NIZKs without PCPs." EUROCRYPT 2013.
+- [R-L4-2] Ben-Sasson, Bentov, Horesh, Riabzev. ePrint 2018/046.
+- [R-L4-3] Gabizon, Williamson, Ciobotaru. "PLONK." ePrint 2019/953.
+- [R-L4-4] Setty, Thaler, Wahby. "CCS." ePrint 2023/552.
+- [R-L4-5] Setty. "Spartan." ePrint 2019/550.
+- [R-L4-6] Gabizon, Williamson. "Plookup." ePrint 2020/315.
+- [R-L4-7] Haboeck. "LogUp." ePrint 2022/1530.
+- [R-L4-8] Papini, Haboeck. "LogUp-GKR." ePrint 2023/1284.
+- [R-L4-9] Setty, Thaler, Wahby. "Lasso." ePrint 2023/1216.
+- [R-L4-10] Arun, Setty, Thaler. "Jolt." ePrint 2023/1217.
+- Lund, Fortnow, Karloff, Nisan. "Algebraic Methods for Interactive Proof Systems." JCSS 1992.
+- Midnight ZKIR Reference (v2/v3). Compact compiler v0.29.0.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[05-encoding-the-performance]]
+- Prev: [[ch05-where-the-layers-collapse]]
+- Next: —

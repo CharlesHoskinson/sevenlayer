@@ -6,7 +6,7 @@ chapter_title: "The Market Landscape"
 heading_level: 2
 source_lines: [5006, 5023]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 535
 ---
 
@@ -31,16 +31,40 @@ The coprocessor market matters because it extends ZK proofs beyond transaction e
 
 ## Summary
 
+ZK coprocessors extend proof generation to historical blockchain data queries, letting smart contracts obtain verified computation results without on-chain gas costs ($0.10–$1.00 per query). Trust moves from oracle operators and on-chain execution to off-chain proving hardware and data availability guarantees. The category was not anticipated in the original seven-layer framework and is in growth-stage deployment as of early 2026.
+
 ## Key claims
+
+- Coprocessors execute queries off-chain and return ZK-proven results to on-chain verifiers.
+- Axiom raised $20M Series A and leads the segment; can access any historical Ethereum block header, account, storage slot, or receipt.
+- Brevis (Pico Prism zkVM) launched decentralized ProverNet mainnet beta in December 2025.
+- Lagrange extends coprocessing to cross-chain state proofs, removing bridge-operator trust.
+- Per-query cost is roughly $0.10–$1.00, replacing centralized oracle trust with mathematical guarantees.
+- New trust surface: prover hardware correctness and DA layer availability remain unproven assumptions.
 
 ## Entities
 
+- [[pico]]
+- [[prism]]
+
 ## Dependencies
+
+- [[ch06-the-sealed-certificate]] — "sealed certificate" concept applied to coprocessor results
+- [[ch08-on-chain-verification-in-2026]] — on-chain verification cost context
+- [[ch13-zk-rollups-the-proving-grounds-production]] — rollup context; coprocessors extend beyond tx execution
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[13-the-market-landscape]]
+- Prev: [[ch13-zk-rollups-the-proving-grounds-production]]
+- Next: [[ch13-zkml-provable-machine-learning-research]]

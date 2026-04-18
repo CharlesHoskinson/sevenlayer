@@ -6,7 +6,7 @@ chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [2113, 2228]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 3325
 ---
 
@@ -129,16 +129,66 @@ For architects comparing systems, the following table normalizes the overhead by
 
 ## Summary
 
+The 10,000x–50,000x proving overhead over native execution comes from three multiplicative sources: field arithmetic encoding (10–100x), constraint expansion per instruction (50–100x), and polynomial commitment (10–50x). None of the sources is fundamental: small fields, algebraic memory checking, lookup architectures, and GPU parallelism are each attacking one component, with the combined trajectory pointing toward 1,000–5,000x by 2027–2028.
+
 ## Key claims
+
+- Ethereum block proving: native ~100 ms; best 2025/2026 zkVMs (SP1 Hypercube, Stwo) achieve 6–15 s on 16-GPU clusters, ~60–350x overhead.
+- Midnight shielded transfer: ~20 s proof time over BLS12-381; nominal ~4,000,000x vs. raw arithmetic, ~1,000x vs. full security computation it replaces.
+- Single 64-bit ADD: 10,000–100,000x overhead (fixed costs dominate small computations).
+- Field arithmetic: 254-bit primes require multi-precision arithmetic (~50–100 cycles/op); Mersenne-31 requires ~2–3 cycles/op — roughly 100x faster.
+- NTT dominates proving time at 40–60%; polynomial commitment (MSM/FRI) 15–30%; witness generation 10–20%.
+- Algebraic memory checking (Ozdemir et al.) reduces per-access cost by 50–150x vs. Merkle proofs.
+- Binius (Irreducible, 2025): 100x reduction in bit-level embedding overhead using binary tower fields.
+- Benchmark table: RISC Zero v0.x ~60 s (BN254); SP1 v1 ~15 s (BabyBear); SP1 Hypercube 6.9 s; Stwo ~10 s (Mersenne-31); Airbender ~35 s (single H100).
 
 ## Entities
 
+- [[airbender]]
+- [[babybear]]
+- [[bn254]]
+- [[bls12-381]]
+- [[circle stark]]
+- [[fiat-shamir]]
+- [[folding]]
+- [[goldilocks]]
+- [[groth16]]
+- [[h100]]
+- [[halo2]]
+- [[hypernova]]
+- [[jolt]]
+- [[logup]]
+- [[mersenne]]
+- [[midnight]]
+- [[nova]]
+- [[ntt]]
+- [[ntts]]
+- [[nvidia]]
+- [[plonk]]
+- [[poseidon]]
+- [[small-field]]
+- [[spartan]]
+- [[starks]]
+
 ## Dependencies
+
+- [[ch05-lookup-arguments]] — Jolt's lookup-based architecture is one overhead reduction strategy
+- [[ch05-the-sumcheck-protocol-the-hidden-foundation]] — sumcheck-based systems avoid NTTs
+- [[ch05-midnight-s-zkir-a-concrete-layer-4]] — Midnight transaction example grounds the abstract numbers
+- [[ch05-where-the-layers-collapse]] — field/commitment/constraint co-design is the overhead context
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[05-encoding-the-performance]]
+- Prev: [[ch05-lookup-arguments]]
+- Next: [[ch05-midnight-s-zkir-a-concrete-layer-4]]

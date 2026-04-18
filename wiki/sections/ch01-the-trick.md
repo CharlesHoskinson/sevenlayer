@@ -6,7 +6,7 @@ chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [154, 176]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 584
 ---
 
@@ -36,16 +36,38 @@ The mapping between stage magic and proof systems is precise enough to be useful
 
 ## Summary
 
+Goldwasser, Micali, and Rackoff's 1985 result broke the assumption that proof requires disclosure: you can convince without informing. Zero-knowledge proofs do not eliminate trust — they decompose one monolithic act of faith into seven independent, auditable assumptions, each replaceable. The accurate word for the result is "trust-minimized," not "trustless."
+
 ## Key claims
+
+- Prior to 1985 every civilization assumed proof required disclosure: "to prove is to show."
+- Goldwasser, Micali, and Rackoff showed a proof can convince while revealing nothing about why the statement is true.
+- Zero-knowledge proofs decompose one monolithic trust assumption into seven independent, weaker assumptions.
+- "Trustless" is marketing; "trust-minimized" is accurate.
+- The prover/verifier exchange — two characters, one verdict — underlies every ZK system ever built.
+- The magician metaphor carries the book through Chapter 5; by Chapter 10 the model becomes a DAG with fourteen causal edges.
+- Verification today requires assembling a dossier; ZK makes it possible to send a single bit of verified truth instead.
 
 ## Entities
 
+None.
+
 ## Dependencies
+
+- [[ch01-the-proof-at-the-door]] — completeness/soundness/zero-knowledge as informal properties introduced just after this section
 
 ## Sources cited
 
+- Goldwasser, Micali, and Rackoff, "The Knowledge Complexity of Interactive Proof Systems," 1985 (cited by name only; no ePrint or DOI given in this section)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[01-the-promise-of-provable-and-programmable-secrets]]
+- Prev: —
+- Next: [[ch01-the-proof-at-the-door]]

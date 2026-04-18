@@ -6,7 +6,7 @@ chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
 source_lines: [4936, 4971]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 725
 ---
 
@@ -49,16 +49,51 @@ Midnight is one theater. The zero-knowledge ecosystem has built dozens more -- e
 
 ## Summary
 
+Five generalizable lessons emerge from the Midnight case study: privacy is a cross-cutting concern spanning all seven layers (not just L3); compiler enforcement raises the security floor without guaranteeing correctness; the three-token economic model makes fee payment itself a privacy mechanism; the application-specific DSL is a fourth ZK language philosophy; and production arithmetization benefits from typed instructions with semantic meaning and cost annotations. A maturity assessment places Midnight at approximately L2Beat Stage 0-1.
+
 ## Key claims
+
+- Privacy must be traced through all seven layers independently, mirroring the OSI model's treatment of security.
+- Compact eliminates accidental disclosure bugs at compile time; it cannot prevent deliberate over-disclosure or application-logic errors.
+- Circom requires manual constraint authoring (under-constrained bugs thrive); Compact auto-generates constraints (disclosure bugs caught at compile time).
+- Midnight's DUST fee model makes fee payment a weak signal for chain analysts -- an economic privacy mechanism, not just a gas accounting system.
+- Compact's vendor lock-in (contracts run only on Midnight) is the trade-off for compiler-enforced privacy and first-class blockchain state.
+- `persistent_hash` carries a known cost (~300 gates), security property, and semantic meaning; 300 bare multiplication gates carry none of these.
+- Midnight maturity: cross-contract token transfers fail with SDK errors; `>` and `<=` operators have a documented compiler bug.
+- L2Beat Stages framework: Midnight sits at approximately Stage 0-1.
 
 ## Entities
 
+- [[arithmetization]]
+- [[l2beat]]
+- [[midnight]]
+- [[plonk]]
+- [[sdk]]
+- [[utxo]]
+
 ## Dependencies
+
+- [[ch03-under-constrained-circuits-the-dominant-failure-mode]] — under-constrained bug epidemic Compact is compared against
+- [[ch03-the-four-philosophies]] — three-philosophy taxonomy extended to four here
+- [[ch05-midnight-s-zkir-a-concrete-layer-4]] — ZKIR typed instructions as the lesson's evidence
+- [[ch08-case-study-midnight-and-the-three-token-architecture]] — three-token economic model detail
+- [[ch08-governance-the-achilles-heel]] — L2Beat Stages framework context
+- [[ch08-who-verifies-the-verifier]] — governance centralization context for Stage 0-1 assessment
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+- Cross-contract token transfers between DApps fail with SDK errors; no resolution timeline given.
+- `>` and `<=` compiler bug is documented but unresolved as of the writing.
+- No GPU acceleration for proof generation is discussed; no roadmap to close the 17-28 s latency gap.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[12-midnight-the-privacy-theater]]
+- Prev: [[ch12-the-privacy-theater-analogy]]
+- Next: —

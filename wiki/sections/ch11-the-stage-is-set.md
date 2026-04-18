@@ -6,7 +6,7 @@ chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
 source_lines: [4746, 4759]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 344
 ---
 
@@ -27,16 +27,49 @@ Midnight does not appear in this landscape table because it is not a zkVM. It is
 
 ## Summary
 
+The ISA war ended with RISC-V; the speed race ended with four teams achieving real-time Ethereum proving in 2025. The seven-layer model fused under zkVM pressure rather than breaking: Layers 2–3 merged around Rust/RISC-V, Layers 4–6 became the proof core triad. The next competitive axis is 128-bit provable security and formal verification.
+
 ## Key claims
+
+- RISC-V won; Cairo and zkWASM serve niches, not the general-purpose market.
+- Philosophy C (general-purpose ISA) absorbed Philosophies A and B as compatibility layers.
+- Field choice cascades: BabyBear/M31/Goldilocks/BN254 → commitment → arithmetization → proof system.
+- Speed race ended: four teams achieved real-time Ethereum block proving in 2025.
+- Next axis: 128-bit provable security with formal verification (EF target by December 2026).
+- Layer 1 (setup) and Layer 7 (verification governance) remain the two genuinely separable layers.
+- Midnight is excluded from this chapter; it is a privacy-first execution model, not a zkVM.
 
 ## Entities
 
+- [[babybear]]
+- [[bn254]]
+- [[ceremony]]
+- [[circle stark]]
+- [[fri]]
+- [[goldilocks]]
+- [[kzg]]
+- [[midnight]]
+
 ## Dependencies
+
+- [[ch11-the-landscape-table-march-2026]] — the landscape table this section summarizes
+- [[ch11-the-proof-core-triad]] — the proof core triad formalized
+- [[ch11-performance-the-cost-collapse]] — speed race conclusion detailed there
+- [[ch11-risc-v-convergence]] — ISA war conclusion detailed there
+- [[ch12-midnight-as-test-case]] — Midnight chapter referenced as the next audit
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[11-zkvms-the-universal-stage]]
+- Prev: [[ch11-risc-v-convergence]]
+- Next: —

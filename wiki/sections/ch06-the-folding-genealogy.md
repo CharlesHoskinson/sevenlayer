@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2573, 2635]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1197
 ---
 
@@ -76,16 +76,57 @@ Each step in the genealogy broadened the reach of folding without sacrificing it
 
 ## Summary
 
+The folding research lineage advances along four axes: constraint generality (R1CS→CCS), instance generality (single→multi), instruction generality (uniform→non-uniform IVC), and cryptographic generality (elliptic curves→lattices). Nova (2022) started it; HyperNova (2023) generalized to CCS via sumcheck; LatticeFold/Neo/Symphony (2024--2026) reached post-quantum security over small fields.
+
 ## Key claims
+
+- Four axes of progress: constraint generality, instance generality, instruction generality, cryptographic generality.
+- Nova (2022): R1CS folding, ~10,000-gate verifier, linear prover cost.
+- SuperNova (2022): non-uniform IVC -- different circuits per VM instruction, pay-per-instruction.
+- HyperNova (2023): generalized folding to CCS using sumcheck; verifier cost $O(\log m)$ plus one scalar multiplication.
+- CycleFold (2023): reduced non-native scalar multiplication from ~10,000 to ~1,500 gates via secondary-curve co-processor.
+- LatticeFold (Boneh and Chen, ASIACRYPT 2025): first lattice-based folding scheme, Ajtai commitments over $q \approx 2^{128}$.
+- Neo (Nguyen and Setty, 2025): CCS folding over Goldilocks field with pay-per-bit commitments; SuperNeo adds non-uniform IVC.
+- Symphony (2026): production-grade lattice folding with GPU-optimized NTTs and formal Module-SIS/Module-LWE soundness bridge.
 
 ## Entities
 
+- [[nova]]
+- [[hypernova]]
+- [[folding]]
+- [[lattice]]
+- [[ajtai]]
+- [[goldilocks]]
+- [[ntts]]
+- [[symphony]]
+- [[setty]]
+- [[boneh]]
+- [[gabizon]]
+
 ## Dependencies
+
+- [[ch06-recursion-vs-folding-russian-dolls-and-snowballs]] — introduces folding concept and relaxed R1CS
+- [[ch05-ccs-the-rosetta-stone]] — CCS framework that HyperNova generalizes to
+- [[ch05-the-sumcheck-protocol-the-hidden-foundation]] — sumcheck is the technical enabler of HyperNova
+- [[ch06-the-post-quantum-horizon]] — post-quantum implications of the lattice folding branch
+- [[ch07-lattice-based-proving]] — Chapter 7 details the lattice assumptions underlying LatticeFold/Neo/Symphony
 
 ## Sources cited
 
+- Kothapalli, Setty, Tzialla, "Nova: Recursive Zero-Knowledge Arguments from Folding Schemes," CRYPTO 2022.
+- Kothapalli, Setty, "HyperNova: Recursive Arguments for Customizable Constraint Systems," CRYPTO 2024.
+- Kothapalli, Setty, "CycleFold: Folding-scheme-based recursive arguments over a cycle of elliptic curves," ePrint 2023/1192.
+- Boneh, Chen, "LatticeFold: A Lattice-based Folding Scheme and its Applications," ASIACRYPT 2025.
+- Nguyen, Setty, "Neo: Lattice-based Folding over Small Fields," ePrint 2025.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-recursion-vs-folding-russian-dolls-and-snowballs]]
+- Next: [[ch06-nightstream-what-a-folding-engine-looks-like-from-the-inside]]

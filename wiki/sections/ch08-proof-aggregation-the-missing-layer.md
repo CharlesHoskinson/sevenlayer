@@ -6,7 +6,7 @@ chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3781, 3796]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 256
 ---
 
@@ -29,16 +29,41 @@ But aggregation introduces a new trust assumption. Users must trust that the agg
 
 ## Summary
 
+Between prover and on-chain verifier an aggregation infrastructure layer has emerged that the seven-layer model does not account for. Batching 100 proofs into a single on-chain verification reduces per-proof cost from ~$1 to ~$0.01, but centralized aggregators are single points of failure that reintroduce trust assumptions at the same layer they appear to solve.
+
 ## Key claims
+
+- SHARP (StarkWare/Starknet): multiple applications submit traces; single STARK proof covers all, wrapped in Groth16; gas cost amortized across participants.
+- Aligned Layer: launched with >$11B restaked ETH (EigenLayer); provides verification-as-a-service across rollups and applications.
+- NEBRA (live August 2024): universal aggregation supporting Groth16, PLONK, and STARK in one layer.
+- At 100-proof batches, per-proof verification cost drops from ~$1 to ~$0.01.
+- Centralized aggregators (e.g., SHARP) are a single Layer 7 failure point that can undermine the proof system's decentralization guarantees.
 
 ## Entities
 
+- [[groth16]]
+- [[plonk]]
+- [[starknet]]
+- [[starks]]
+
 ## Dependencies
+
+- [[ch08-the-price-of-a-verdict]] — the ~200K gas cost that aggregation amortizes
+- [[ch08-the-social-layer]] — aggregation infrastructure as one of four Layer 7 concerns
+- [[ch08-governance-the-achilles-heel]] — centralized aggregators need governance analysis analogous to verifier contracts
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[08-the-verdict]]
+- Prev: [[ch08-governance-the-achilles-heel]]
+- Next: [[ch08-case-study-midnight-and-the-three-token-architecture]]

@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2725, 2785]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1611
 ---
 
@@ -74,16 +74,51 @@ The Mersenne prime M31 is not the only small field in production. BabyBear ($p =
 
 ## Summary
 
+Circle STARKs (Haboeck, Levit, Papini, 2024) replace the multiplicative subgroup FFT with the circle group of the Mersenne-31 field, whose order is exactly $2^{31}$ -- a perfect power of 2 enabling a clean radix-2 FFT. Stwo, the production implementation deployed on Starknet mainnet in 2025, achieved a 940x throughput improvement over Stone because 31-bit arithmetic is ~100x faster than 254-bit arithmetic and maps directly onto CPU SIMD and GPU hardware.
+
 ## Key claims
+
+- Mersenne-31 circle group has order $p+1 = 2^{31}$, enabling a clean radix-2 Circle FFT (CFFT).
+- M31 multiplicative group order is $2^{31}-2 = 2 \times 3 \times 357{,}913{,}941$ -- useless for FFTs; the circle group fixes this.
+- Stwo: 940x improvement over Stone, 50x over ethSTARK, live on Starknet mainnet 2025.
+- ICICLE GPU backend adds 3.25x--7x on top of CPU SIMD.
+- M31 field multiplication: 2 machine instructions vs. 20--30 for BN254; AVX-512 processes 16 M31 elements per instruction.
+- BabyBear ($2^{31} - 2^{27} + 1$) is the alternative small field (used by SP1) with multiplicative-subgroup FFTs instead of circle FFTs.
+- The biggest optimization is using a smaller number, not a cleverer algorithm.
 
 ## Entities
 
+- [[circle stark]]
+- [[starks]]
+- [[fri]]
+- [[mersenne]]
+- [[babybear]]
+- [[small-field]]
+- [[poseidon]]
+- [[starknet]]
+- [[polygon]]
+- [[folding]]
+- [[bn254]]
+
 ## Dependencies
+
+- [[ch06-the-three-families]] — STARKs family context for where Circle STARKs fit
+- [[ch07-small-fields]] — detailed treatment of small-field arithmetic advantages
+- [[ch06-the-hybrid-pipeline]] — Stwo is the inner prover in the hybrid pipeline
+- [[ch06-real-time-ethereum-proving]] — Circle STARKs enabling real-time proving benchmarks follow
 
 ## Sources cited
 
+- Haboeck, Levit, Papini, "Circle STARKs," ePrint 2024/278.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-nightstream-what-a-folding-engine-looks-like-from-the-inside]]
+- Next: [[ch06-real-time-ethereum-proving]]

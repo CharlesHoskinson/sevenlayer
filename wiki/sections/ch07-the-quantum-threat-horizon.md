@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3229, 3278]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 640
 ---
 
@@ -63,16 +63,49 @@ Any zero-knowledge system deployed today that relies on DLP-based cryptography f
 
 ## Summary
 
+A cryptographically relevant quantum computer (CRQC) would simultaneously break every KZG commitment, Groth16 proof, elliptic curve signature, and Pedersen commitment ever published — not gradually but as a cliff event. The HNDL (Harvest Now, Decrypt Later) threat means on-chain data recorded today is vulnerable retroactively. NIST IR 8547 (November 2024) requires federal agencies to deprecate pre-quantum algorithms by 2035.
+
 ## Key claims
+
+- Shor's algorithm requires ~2,500 logical qubits for BLS12-381; error correction means millions of physical qubits — ~3 orders of magnitude beyond current devices.
+- When a CRQC exists: KZG forgeable, Groth16 suspect, all pairing-based systems fail simultaneously.
+- Timeline estimates: optimistic "Q-Day" by 2030; academic consensus 2032–2035; NIST IR 8547 (November 2024) recommends federal migration complete by 2035.
+- NIST published FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), FIPS 205 (SLH-DSA) in August 2024 — finalized mandatory standards.
+- HNDL: blockchain records are permanent and public; every BLS12-381 commitment and BN254 proof is preserved waiting for a future CRQC.
+- Federal Reserve FEDS 2025-093 explicitly identified HNDL as a risk to financial infrastructure.
+- Three response options: accept expiration, migrate proactively, or ignore — with "crypto-agility" being practically equivalent to "complete architectural redesign."
 
 ## Entities
 
+- [[bls12-381]]
+- [[bn254]]
+- [[groth16]]
+- [[kzg]]
+- [[nist]]
+- [[pedersen]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch07-three-hardness-assumptions-three-worlds]] — Shor's impact on DLP explained there
+- [[ch07-lattice-based-proving]] — the alternative being built against this threat
+- [[ch07-the-one-way-door]] — why migration is not "crypto-agility" but full redesign
+- [[ch02-the-quantum-shelf-life]] — earlier overview of quantum timeline and shelf-life framing
 
 ## Sources cited
 
+- NIST IR 8547 (November 2024) — federal deprecation deadline 2035
+- NIST FIPS 203, 204, 205 (August 2024) — finalized post-quantum standards
+- Federal Reserve FEDS 2025-093 — HNDL risk to financial infrastructure
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-small-fields]]
+- Next: [[ch07-lattice-based-proving]]

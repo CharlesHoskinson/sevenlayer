@@ -6,7 +6,7 @@ chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [280, 306]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 799
 ---
 
@@ -40,16 +40,49 @@ In practice, some layers fuse. Jolt merges witness generation and arithmetizatio
 
 ## Summary
 
+Every zero-knowledge system decomposes into seven interdependent layers — setup, language, witness, arithmetization, proof system, cryptographic bedrock, and verification — whose dependencies do not follow their numbering. A single field choice (e.g., Goldilocks vs. BLS12-381) cascades through all seven. The seven-layer stack is a provisional map; by Chapter 10 it is redrawn as a DAG with fourteen causal edges.
+
 ## Key claims
+
+- The seven layers are organs in a body, not independent floors — deeply interdependent.
+- Layer 1 (setup): 141,416 participants built Ethereum's KZG stage; any one honest participant suffices for security.
+- Layer 2 (language): a single missing `=` sign broke Tornado Cash's soundness.
+- Layer 3 (witness): a stopwatch held to Zcash's Groth16 prover revealed transaction amounts.
+- Layers 4–5 transform human-readable computation into polynomial equations; a 4×4 Sudoku becomes 72 polynomial constraints.
+- A 192-byte SNARK proof and a 200-kilobyte STARK proof are both "succinct."
+- Layer 6 choices (field, curve) cascade: choosing Goldilocks over BLS12-381 reshapes all seven layers.
+- Jolt merges witness generation and arithmetization; Cairo co-designs language and constraint system — layers 4, 5, and 6 behave as one design unit in every production system.
+- The final model (Chapter 10) has fourteen causal edges, not seven tidy floors.
 
 ## Entities
 
+- [[arithmetization]]
+- [[goldilocks]]
+- [[jolt]]
+- [[lattice]]
+- [[starks]]
+- [[sudoku]]
+- [[tornado cash]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch01-the-trick]] — the prover/verifier framing that motivates why layers exist
+- [[ch01-the-phenomenon]] — SNARK/STARK distinction and succinct proof sizes introduced there
+- [[ceremony]] — trusted-setup concept (Layer 1) referenced directly
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[01-the-promise-of-provable-and-programmable-secrets]]
+- Prev: [[ch01-three-converging-forces]]
+- Next: [[ch01-the-deepest-question]]

@@ -6,7 +6,7 @@ chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [2229, 2310]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1203
 ---
 
@@ -95,16 +95,58 @@ The field choice at Layer 6 determines the arithmetic cost at Layer 4. There is 
 
 ## Summary
 
+Midnight's ZKIR (Zero-Knowledge Intermediate Representation) is a 24-opcode typed instruction DAG sitting above PLONKish constraints in the Compact compiler stack. It provides a high-abstraction layer 4 where the Compact developer writes contract logic while ZKIR opcodes generate the underlying PLONKish gates. The BLS12-381 scalar field (~$2^{253}$) is necessary for Jubjub curve embedding and KZG commitments but is the primary performance cost — ~20 s proof time per transaction.
+
 ## Key claims
+
+- ZKIR has 24 opcodes in 8 categories: Arithmetic (3), Constraints (4), Comparison (2), Control flow (2), Type encoding (3), Division (1), Cryptographic (5), I/O (4).
+- Compilation stack: Compact → Compact IR → ZKIR → PLONKish (Halo2-style) → ZK proof over BLS12-381.
+- `constrain_eq` enforces equality and fails the circuit on violation; `test_eq` produces a boolean result without enforcement — confusing them produces under-constrained circuits.
+- `constrain_bits` enforces a field element lies in $[0, 2^N-1]$; every `Uint<N>` value in Compact includes a corresponding range check.
+- BLS12-381 scalar field: ~$2^{253}$, ~4x wider than Goldilocks (64-bit), ~8x wider than BabyBear/Mersenne-31 (31-bit).
+- ZKIR could in principle target CCS instead of PLONKish; migration depends on lattice-based folding scheme maturity.
+- In constraint systems, everything not explicitly constrained is implicitly allowed — the dominant failure mode is under-constrained circuits.
 
 ## Entities
 
+- [[babybear]]
+- [[bls12-381]]
+- [[folding]]
+- [[fri]]
+- [[goldilocks]]
+- [[groth16]]
+- [[halo2]]
+- [[jubjub]]
+- [[kzg]]
+- [[lattice]]
+- [[mersenne]]
+- [[midnight]]
+- [[pedersen]]
+- [[plonk]]
+- [[small-field]]
+- [[spartan]]
+- [[starks]]
+- [[sudoku]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch05-the-constraint-system-evolution-r1cs-air-plonkish]] — ZKIR lowers to PLONKish; that taxonomy is prerequisite
+- [[ch05-ccs-the-rosetta-stone]] — CCS migration path for ZKIR discussed
+- [[ch05-the-overhead-tax-10-000x-to-50-000x]] — BLS12-381 field cost explains the 20-s proof time
 
 ## Sources cited
 
+- Midnight ZKIR Reference (v2/v3), 119 oracle traces. Compact compiler v0.29.0.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[05-encoding-the-performance]]
+- Prev: [[ch05-the-overhead-tax-10-000x-to-50-000x]]
+- Next: [[ch05-where-the-layers-collapse]]

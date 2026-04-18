@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [674, 690]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 265
 ---
 
@@ -30,16 +30,39 @@ The transparent alternative -- STARKs, hash-based commitments, no ceremony at al
 
 ## Summary
 
+Wang, Cohney, and Bonneau's SoK survey of 40+ real-world ceremonies defines five ADOPT properties (Available, Decentralized, Open, Persistent, Transparent) and finds that no existing ceremony satisfies all five. The Ethereum KZG ceremony scores well on openness and availability but still relied on an Ethereum Foundation coordinator; many older ceremonies already fail on persistence, with transcript data becoming unrecoverable within years. Transparent setups (STARKs) avoid the entire problem class by having no ceremony to evaluate.
+
 ## Key claims
+
+- The ADOPT framework has five properties: Available, Decentralized, Open, Persistent, Transparent.
+- No existing ceremony satisfies all five properties (Wang, Cohney, Bonneau, 2025).
+- Ethereum KZG: passes on openness and availability; fails decentralization (Ethereum Foundation coordinator).
+- Many older ceremonies already fail persistence — e.g., Hermez transcript data is already unrecoverable.
+- Transparent setups trade proof size and verification time for total elimination of ceremony coordination risk.
 
 ## Entities
 
+- [[ceremony]]
+- [[kzg]]
+- [[starks]]
+
 ## Dependencies
+
+- [[ch02-two-ways-to-build-a-stage]] — establishes both paths being evaluated
+- [[ch02-the-141-416-person-question]] — the sociological dimension of why ceremony quality is hard to guarantee
 
 ## Sources cited
 
+- Wang, Cohney, Bonneau, 2025 (SoK on trusted setup ceremonies, ADOPT framework)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-bn254-s-eroding-security-margin]]
+- Next: [[ch02-midnight-s-bls12-381-stage]]

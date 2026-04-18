@@ -6,7 +6,7 @@ chapter_title: "The Market Landscape"
 heading_level: 2
 source_lines: [5024, 5041]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 647
 ---
 
@@ -31,16 +31,40 @@ The ZKML market is pre-revenue and research-heavy, but the applications are clea
 
 ## Summary
 
+ZKML proves that a neural network ran correctly on a given input, but says nothing about whether the model itself is fair or appropriate. Lagrange's DeepProve claims 700x speed improvement over prior approaches; EZKL provides open-source tooling via halo2. The segment is entirely pre-commercial as of early 2026, blocked by the overhead tax of mapping floating-point neural-network arithmetic into finite fields.
+
 ## Key claims
+
+- ZKML proves inference correctness given a model; it cannot prove the model is trustworthy or appropriate.
+- Overhead tax for ML workloads exceeds the 10,000–50,000x general figure because neural-network arithmetic maps poorly to finite fields.
+- Lagrange DeepProve claims 700x speedup over generic zkVM approaches (e.g., EZKL on halo2); drops 100M-parameter transformer inference from hours to seconds.
+- EZKL converts ONNX models to ZK circuits for halo2; most accessible entry point for ML engineers.
+- No production system uses ZK-proven inference for revenue-generating decisions as of early 2026.
+- Applications: verifiable content moderation, model privacy, regulatory AI audits.
 
 ## Entities
 
+- [[fri]]
+- [[halo2]]
+
 ## Dependencies
+
+- [[ch05-the-overhead-tax-10-000x-to-50-000x]] — overhead tax analysis directly applies to ML workloads
+- [[ch05-layer-4-arithmetization]] — arithmetization difficulty for non-standard operations
+- [[ch13-zk-coprocessors-off-chain-computation-on-chain-verification-growth]] — coprocessors as adjacent off-chain computation category
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[13-the-market-landscape]]
+- Prev: [[ch13-zk-coprocessors-off-chain-computation-on-chain-verification-growth]]
+- Next: [[ch13-zk-identity-growth-regulatory-mandate]]

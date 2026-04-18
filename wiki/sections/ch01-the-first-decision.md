@@ -6,7 +6,7 @@ chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [334, 366]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 572
 ---
 
@@ -46,16 +46,41 @@ That question -- trusted setup or transparent setup, ceremony or glass stage, hi
 
 ## Summary
 
+A 4×4 Sudoku puzzle — 16 cells, four values, 72 polynomial constraints — serves as the running example through Chapters 3–6, tracing each layer of the proof stack in miniature. "Building the stage" (the mathematical parameters both prover and verifier use) is the first fork in any ZK design: trusted setup (ceremony) or transparent setup, each with distinct cost and trust trade-offs.
+
 ## Key claims
+
+- The Sudoku example is chosen because it is small enough to hold in your head, complex enough to exercise every layer, and requires no mathematical background.
+- The same 4×4 Sudoku undergoes four transformations: program → witness → 72 polynomial constraints → a compact proof.
+- The 2016 Zcash ceremony involved 6 participants; if any one was honest, the system is secure.
+- Ethereum's KZG Summoning scaled the same principle to 141,416 participants by 2023.
+- Transparent setups avoid the ceremony entirely at a cost in proof size and verification expense.
+- Trusted vs. transparent setup is the first fork in the road; its consequences echo through every layer.
 
 ## Entities
 
+- [[ceremony]]
+- [[kzg]]
+- [[sudoku]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch01-the-seven-layers-at-a-glance]] — Layer 1 (setup) introduced as the first layer
+- [[ch01-the-deepest-question]] — Layer-by-layer trust analysis that frames why setup choice matters
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[01-the-promise-of-provable-and-programmable-secrets]]
+- Prev: [[ch01-the-deepest-question]]
+- Next: [[ch01-how-to-read-this-guide]]

@@ -6,7 +6,7 @@ chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
 source_lines: [4674, 4699]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 978
 ---
 
@@ -39,16 +39,54 @@ The practical consequence is that AIR systems scale with constraint complexity (
 
 ## Summary
 
+Layers 4, 5, and 6 form an inseparable "proof core" in every production zkVM: field choice determines commitment scheme, which determines polynomial representation, which determines arithmetization. Production systems cluster into three self-consistent triads; swapping a single element forces changes throughout the rest.
+
 ## Key claims
+
+- Three production triads as of March 2026: {small field, FRI, AIR}; {small field, FRI, AIR+lookup}; {large field, MSM, sumcheck+lookup}.
+- M31 → Circle groups → Circle AIR (Stwo triad).
+- BabyBear → multilinear PCS → LogUp-GKR → Jagged AIR (SP1 triad).
+- BN254 → Hyrax → sumcheck → Lasso (Jolt triad).
+- Swapping M31 for Hyrax-compatible commitments destroys the throughput advantage that motivated M31.
+- BN254 field ops are ~100x slower than BabyBear; AIR over BN254 is not viable at scale.
+- The decisive Layer 6 fork: small (31-bit, hash-universe) vs. large (256-bit, pairing-universe).
+- Cairo shows bidirectional Layer 4 → Layer 2 dependency (model's clean top-down flow inverts).
+- STARK-to-SNARK wrapping pierces Layers 5, 6, and 7 as one vertical shaft.
 
 ## Entities
 
+- [[airbender]]
+- [[babybear]]
+- [[bn254]]
+- [[circle stark]]
+- [[fri]]
+- [[jolt]]
+- [[lasso]]
+- [[logup]]
+- [[mersenne]]
+- [[pico]]
+- [[prism]]
+- [[zisk]]
+
 ## Dependencies
+
+- [[ch11-three-zkvms-through-seven-layers]] — the empirical basis for the triad observation
+- [[ch11-the-landscape-table-march-2026]] — the clustering claim is verifiable from that table
+- [[ch06-the-proof-core-why-layers-4-5-and-6-are-inseparable]] — prior chapter treatment of the same concept
+- [[ch10-the-causal-web-why-it-is-a-dag-not-a-stack]] — causal structure between layers
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[11-zkvms-the-universal-stage]]
+- Prev: [[ch11-three-zkvms-through-seven-layers]]
+- Next: [[ch11-performance-the-cost-collapse]]

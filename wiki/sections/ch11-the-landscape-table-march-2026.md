@@ -6,7 +6,7 @@ chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
 source_lines: [4557, 4589]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 626
 ---
 
@@ -46,16 +46,64 @@ For architects choosing a zkVM, the landscape table above describes *what exists
 
 ## Summary
 
+As of March 2026, eight of ten major zkVMs target RISC-V; Cairo (Stwo) and WebAssembly (zkWASM) are the holdouts. The Ethereum Foundation declared the speed race won in December 2025 and pivoted to 128-bit provable security. A selection rubric maps system goals to recommended platforms.
+
 ## Key claims
+
+- 8 of 10 major zkVMs target RISC-V as of March 2026.
+- EF declared speed race "effectively won" December 2025; new target: 128-bit provable security by end of 2026.
+- SP1 Hypercube and ZisK achieve Ethereum block proving at 6.9 s and 6.6 s respectively on 16–24 RTX 5090 GPUs.
+- Airbender proves an Ethereum block in 35 s on a single H100 GPU.
+- Nexus 3.0 abandoned Nova folding after observing a 1000x speed penalty vs. Stwo backend.
+- Midnight is excluded from this table (it is not a zkVM; Chapter 12 audits it).
+- SP1 has 62 RISC-V opcodes formally verified against the Sail specification.
 
 ## Entities
 
+- [[airbender]]
+- [[arithmetization]]
+- [[babybear]]
+- [[bn254]]
+- [[ceremony]]
+- [[circle stark]]
+- [[fri]]
+- [[goldilocks]]
+- [[groth16]]
+- [[jolt]]
+- [[kzg]]
+- [[lasso]]
+- [[lattice]]
+- [[logup]]
+- [[mersenne]]
+- [[midnight]]
+- [[nova]]
+- [[ntt]]
+- [[plonky3]]
+- [[plonk]]
+- [[spartan]]
+- [[starknet]]
+- [[zisk]]
+
 ## Dependencies
+
+- [[ch11-three-zkvms-through-seven-layers]] — deep-dives SP1, Stwo, and Jolt rows of this table
+- [[ch11-the-proof-core-triad]] — explains why field/commitment/arithmetization columns cluster
+- [[ch11-performance-the-cost-collapse]] — performance numbers behind Eth-block column
+- [[ch11-risc-v-convergence]] — explains the 8-of-10 RISC-V result
+- [[ch10-the-three-path-table]] — prior chapter's path taxonomy maps onto this table
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[11-zkvms-the-universal-stage]]
+- Prev: [[ch11-zkvms-across-the-stack]]
+- Next: [[ch11-three-zkvms-through-seven-layers]]

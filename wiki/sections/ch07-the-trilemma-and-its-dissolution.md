@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3141, 3175]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 643
 ---
 
@@ -48,16 +48,44 @@ The answer, as of 2026, is no. No one has proven that the ideal PCS is impossibl
 
 ## Summary
 
+The "cryptographic primitives trilemma" claims no commitment scheme can simultaneously achieve algebraic functionality, post-quantum security, and succinctness. As of 2026 the lattice revolution (Greyhound, LatticeFold, LatticeFold+, Neo, Symphony) is systematically closing the succinctness gap, suggesting the trilemma is an engineering artifact rather than a mathematical law — no impossibility proof exists for a scheme that is transparent, constant-size, constant-verification, and post-quantum.
+
 ## Key claims
+
+- The trilemma: any PCS achieves at most two of {algebraic functionality, post-quantum security, succinctness}.
+- KZG: functionality + succinctness, not PQ. FRI: PQ + moderate succinctness, no algebraic homomorphism. IPA: transparency + log proofs, but linear verification. Lattice: functionality + PQ, succinctness gap.
+- Greyhound (2024): ~50 KB proofs with sublinear verification from Module-SIS alone.
+- LaBRADOR: 58 KB for large constraint systems.
+- Symphony (2026): high-arity folding can compress final proof to constant size via a compact SNARK, optionally pairing-based or fully post-quantum.
+- The lattice succinctness gap is ~1,000× versus KZG but shrinks with each generation; the trilemma is a spectrum being compressed, not a fixed partition.
+- No impossibility theorem has been proven for the ideal PCS; the barriers are engineering, not mathematical.
 
 ## Entities
 
+- [[fri]]
+- [[ipa]]
+- [[kzg]]
+- [[latticefold]]
+- [[lattice]]
+
 ## Dependencies
+
+- [[ch07-four-families-of-commitment-schemes]] — establishes the four families this trilemma maps
+- [[ch07-lattice-based-proving]] — the lattice revolution dissolving the succinctness gap
+- [[ch07-three-hardness-assumptions-three-worlds]] — the hardness landscape the trilemma sits within
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+- Whether an impossibility theorem for the "ideal PCS" (transparent + constant-size + constant-verification + post-quantum) can be proven or refuted.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-four-families-of-commitment-schemes]]
+- Next: [[ch07-small-fields]]

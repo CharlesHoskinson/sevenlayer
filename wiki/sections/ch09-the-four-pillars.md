@@ -6,7 +6,7 @@ chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [3999, 4080]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 3079
 ---
 
@@ -95,16 +95,51 @@ The composition problem is the silent killer of differential privacy deployments
 
 ## Summary
 
+Introduces the four major privacy-enhancing technology families — ZKPs, MPC, FHE, and DP — each answering a distinct trust question. MPC (via Shamir secret sharing or garbled circuits) enables multi-party computation without revealing inputs; FHE enables outsourced computation on encrypted data at 10,000–1,000,000× plaintext cost; DP adds calibrated noise to protect individuals in statistical releases with a finite privacy budget parameterised by epsilon.
+
 ## Key claims
+
+- ZKPs provide selective disclosure: the proof reveals the truth of a statement, which is itself information.
+- MPC honest-majority (Shamir) achieves information-theoretic security; SPDZ handles dishonest majority with computational security.
+- Garbled circuits transmit ~4 ciphertexts per gate; network bandwidth is the primary MPC bottleneck.
+- FHE noise grows multiplicatively with multiplications; bootstrapping resets noise at ~10M× plaintext operation cost.
+- BFV/BGV/CKKS ciphertexts are ~32 KB for a 64-bit plaintext value (n = 2^13–2^14, q = 200–800 bits).
+- Apple deployed DP in iOS 10 (2016) at ε = 2 per day for most data types.
+- US Census Bureau 2020 TopDown Algorithm was motivated by the Dinur-Nissim reconstruction theorem.
+- Zama reportedly achieved a $1 billion valuation in June 2025 and launched its Confidential Blockchain Protocol testnet in July 2025.
 
 ## Entities
 
+- [[fhe]]
+- [[lattice]]
+- [[mpc]]
+- [[zkps]]
+
 ## Dependencies
+
+- [[ch09-three-kinds-of-security]] — classifies the security types that each pillar provides
+- [[ch09-composability-when-one-pet-is-not-enough]] — shows how the four pillars compose in practice
+- [[ch09-the-decision-matrix]] — maps pillars to use-case selection criteria
+- [[ch08-on-chain-verification-in-2026]] — prior chapter context on ZKP deployment
 
 ## Sources cited
 
+- Yao, A. C. (1982). Protocols for secure computations. FOCS 1982. (Millionaires' Problem / garbled circuits)
+- Gentry, C. (2009). A fully homomorphic encryption scheme. PhD thesis, Stanford. (FHE / bootstrapping)
+- Dwork, C., Rothblum, G., Vadhan, S. (2010). Boosting and differential privacy. FOCS 2010. (advanced composition)
+- Dinur, I., Nissim, K. (2003). Revealing information while preserving privacy. PODS 2003. (reconstruction theorem)
+- Apple iOS 10 differential privacy deployment (2016).
+- US Census Bureau 2020 TopDown Algorithm.
+- Zama Confidential Blockchain Protocol testnet (July 2025).
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[09-privacy-enhancing-technologies]]
+- Prev: —
+- Next: [[ch09-three-kinds-of-security]]

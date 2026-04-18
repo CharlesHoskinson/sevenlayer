@@ -6,7 +6,7 @@ chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
 source_lines: [5378, 5395]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 581
 ---
 
@@ -31,16 +31,44 @@ Trust-minimized, not trustless -- and getting better every day.
 
 ## Summary
 
+As of March 2026, real-time proving is solved, costs are negligible, and seven production zkVMs compete on a standardized benchmark. The seven-layer model's core insight — ZK systems are stacks not monoliths — holds; the seven open questions map directly onto three sequential frontiers (Performance, Security, Privacy), each a concrete blocker with quantified failure risks including ecosystem bifurcation, >$20B TVL exposure, and privacy side-channel leakage.
+
 ## Key claims
+
+- March 2026 state: real-time proving solved, proving cost ~$0.04/block, seven production zkVMs on standardized Ethereum benchmark
+- Market: $97M projected to grow to $7.59B in seven years
+- The seven open questions are frontier blockers, not independent problems: Q1 blocks Performance, Q2/Q3/Q6-formal-verification block Security, Q6 blocks Privacy
+- If Q2 is unsolvable, the ecosystem permanently bifurcates into quantum-vulnerable fast path and quantum-safe slow path with no migration bridge
+- If Q3 takes >3-5 years, >$20B TVL remains governance-dependent
+- If Q6 is unsolved, Midnight, Aztec, and Zcash leak information through timing channels the proofs cannot prevent
+- Chapter 1's three converging forces (privacy crisis, scaling, cost collapse) map onto the three frontiers but not one-to-one
 
 ## Entities
 
+- [[jolt]]
+- [[lattice]]
+- [[midnight]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch01-three-converging-forces]] — the three forces (privacy crisis, Ethereum scaling, cost collapse) that this section maps onto the three frontiers
+- [[ch14-the-three-frontiers]] — the Performance/Security/Privacy frontier taxonomy that this section synthesizes with the open questions
+- [[ch14-the-seven-questions-that-remain-open]] — the seven questions whose frontier-blocker roles are analyzed here
+- [[ch13-market-sizing]] — the $97M → $7.59B market projection cited
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[14-open-questions-and-the-road-ahead]]
+- Prev: [[ch14-the-three-frontiers]]
+- Next: [[ch14-coda]]

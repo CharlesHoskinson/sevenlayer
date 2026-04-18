@@ -6,7 +6,7 @@ chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1562, 1599]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 772
 ---
 
@@ -51,16 +51,49 @@ That transformation is the subject of Layer 4: the most technically demanding la
 
 ## Summary
 
+The Witness Gap is four overlapping problems: a Performance Gap (witness generation neglected relative to MSM/NTT optimization), a Memory Gap (full witness can require hundreds of GB), a Security Gap (side-channel leakage through timing, cache, EM), and a Correctness Gap (divergence between witness generator and constraint system). A fifth dimension underlies all four: the equity gap, where every technical improvement requiring more expensive hardware widens the distance between users who can prove privately and those who must delegate.
+
 ## Key claims
+
+- The Performance Gap: GPU-accelerated witness generation (ZKPOG) achieves 3–10× speedup but requires topological sorting of gate dependency graphs — harder to extract than polynomial arithmetic parallelism.
+- The Memory Gap: streaming witness generation achieves $O(\sqrt{T})$ space with <2× time overhead.
+- The Security Gap: constant-time implementation is a security requirement; timing leakage reached R=0.57 in Zcash.
+- The Correctness Gap: ZKAP static analysis achieves F1=0.82 for Circom but does not yet cover Rust-based systems (halo2, Plonky3).
+- Solving the Performance Gap (GPU acceleration) can worsen the Security Gap (SIMT thread divergence from constant-time code).
+- Solving the Memory Gap (streaming) changes architecture in ways that affect the Correctness Gap (streaming provers handle state differently).
+- The equity gap: ~96% of the world's population cannot perform client-side ZK proving.
 
 ## Entities
 
+- [[halo2]]
+- [[ntt]]
+- [[plonk]]
+- [[plonky3]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch04-witness-generation-costs]] — Performance Gap details
+- [[ch04-memory-the-binding-constraint]] — Memory Gap and equity gap details
+- [[ch04-side-channel-attacks-when-the-walls-leak]] — Security Gap details
+- [[ch04-witness-constraint-divergence]] — Correctness Gap details
+- [[ch05-layer-4-arithmetization]] — the next layer that this witness must feed
 
 ## Sources cited
 
+- ZKPOG (3–10× GPU speedup for witness generation)
+- Nair, Thaler, Zhu (streaming, $O(\sqrt{T})$ space)
+- Mukherjee et al. 2024 (cache-timing, Security Gap)
+- ZKAP (F1=0.82, Circom static analysis)
+
 ## Open questions
+
+- Extending correctness analysis tools (ZKAP) to Rust-based systems (halo2, Plonky3) is flagged as an open problem.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[04-the-secret-performance]]
+- Prev: [[ch04-the-disclose-boundary-midnight-s-witness-architecture]]
+- Next: —

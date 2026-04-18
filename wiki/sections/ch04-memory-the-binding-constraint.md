@@ -6,7 +6,7 @@ chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1330, 1377]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1646
 ---
 
@@ -61,16 +61,48 @@ The memory question also intersects with the privacy question. If client-side pr
 
 ## Summary
 
+The Witness Gap is also a memory problem: GPU proving requires ≥24 GB VRAM, Jolt and ZKM can need 128 GB of system RAM, and a Groth16 circuit with $2^{25}$ constraints needs ~200 GB. This creates a hardware ladder where client-side (privacy-maximizing) proving is available only to the ~4% of users who own Tier-2+ hardware, making privacy a luxury good in 2026.
+
 ## Key claims
+
+- Minimum 24 GB VRAM for GPU proving excludes every consumer GPU below the RTX 4090 (~$2,000).
+- Groth16 at $2^{25}$ constraints requires ~200 GB RAM; Ethereum block traces can exceed 512 GB.
+- Jolt and ZKM can require 128 GB of system RAM.
+- ~96% of the world's population cannot perform client-side ZK proving and must delegate (exposing their witness to a third party).
+- The H100's HBM3 provides 3.35 TB/s memory bandwidth — the binding constraint for NTT performance at large polynomial sizes.
+- NTT is memory-bandwidth-limited, not compute-limited, at large sizes.
+- Privacy-maximizing architecture (client-side) requires the most expensive hardware; privacy-minimizing (delegated) works on any device.
+- TEE-based delegation is a middle path but carries its own vulnerability history (Foreshadow, AEPIC Leak, Downfall).
 
 ## Entities
 
+- [[folding]]
+- [[groth16]]
+- [[h100]]
+- [[midnight]]
+- [[nova]]
+- [[ntt]]
+- [[nvidia]]
+
 ## Dependencies
+
+- [[ch04-witness-generation-costs]] — establishes the cost structure that drives memory demand
+- [[ch06-nightstream-what-a-folding-engine-looks-like-from-the-inside]] — folding as a technique that reduces per-step memory cost
+- [[ch08-case-study-midnight-and-the-three-token-architecture]] — Midnight's proof server targets Tier-2 hardware
 
 ## Sources cited
 
+- ZKPOG — targets NVIDIA RTX 4090 (24 GB VRAM) as the democratized proving tier
+- Nair, Thaler, Zhu — streaming reduces space from $O(T)$ to $O(\sqrt{T})$
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[04-the-secret-performance]]
+- Prev: [[ch04-witness-generation-costs]]
+- Next: [[ch04-side-channel-attacks-when-the-walls-leak]]

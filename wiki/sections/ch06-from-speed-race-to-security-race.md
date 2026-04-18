@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2953, 2964]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 285
 ---
 
@@ -25,16 +25,40 @@ SP1 Hypercube's formal verification of all 62 RISC-V opcode constraints against 
 
 ## Summary
 
+Layer 5's arc from 2022--2025 was the speed race: real-time Ethereum proving, costs to single-digit cents. The December 2025 Ethereum Foundation pivot marks the start of the security race: 128-bit provable security, formal verification of implementations end-to-end. SP1 Hypercube's 62-opcode formal verification is a milestone, but the full Fiat-Shamir→commitment→field arithmetic stack remains to be verified.
+
 ## Key claims
+
+- Speed race (2022--2025): real-time proving achieved, costs in single-digit cents, hardware stack mobilized.
+- Security race (2025 onward): Ethereum Foundation targets 128-bit provable security, formal implementation verification.
+- SP1 Hypercube formally verified all 62 RISC-V opcodes against the RISC-V Sail specification -- current state of the art.
+- Gap: random oracle model (Fiat-Shamir with ideal hash) vs. reality (SHA-256 / Poseidon) remains unformalized.
+- Full end-to-end stack verification (Fiat-Shamir + commitment + field arithmetic) is the open challenge defining the next phase.
 
 ## Entities
 
+- [[fiat-shamir]]
+- [[poseidon]]
+
 ## Dependencies
+
+- [[ch06-real-time-ethereum-proving]] — speed race benchmarks and Ethereum Foundation pivot establish context
+- [[ch06-fiat-shamir-vulnerabilities]] — Fiat-Shamir gap is the specific security target named here
+- [[ch06-the-post-quantum-horizon]] — PQ security is another dimension of the security race
+- [[ch06-the-sealed-certificate]] — chapter closing section follows
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+- Full end-to-end formal verification of the Layer 5 stack (Fiat-Shamir transform through field arithmetic) is explicitly flagged as the open problem defining the next several years.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-the-post-quantum-horizon]]
+- Next: [[ch06-the-sealed-certificate]]

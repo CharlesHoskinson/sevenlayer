@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2824, 2839]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 479
 ---
 
@@ -29,16 +29,42 @@ Fiat-Shamir vulnerabilities are the "SQL injection" of zero-knowledge cryptograp
 
 ## Summary
 
+The Fiat-Shamir transform replaces interactive verifier challenges with hash-derived challenges over the full protocol transcript. Omitting any public value from the transcript allows a prover to retroactively choose commitments, breaking soundness. Three real incidents -- Frozen Heart (2022, six implementations), Last Challenge Attack (2024, gnark PLONK), Solana ZK ElGamal (2025) -- confirm this is a recurring production vulnerability class.
+
 ## Key claims
+
+- Fiat-Shamir converts interactive proofs to non-interactive by hashing the transcript; completeness of that transcript is the security invariant.
+- Omitting any public value (input, commitment, prior challenge) allows retroactive commitment selection and vacates the soundness proof.
+- "Frozen Heart" (Trail of Bits, 2022): affected six implementations across three proof systems.
+- "Last Challenge Attack" (2024): compromised gnark's PLONK verifier used by multiple Ethereum rollups.
+- Solana ZK ElGamal (2025): repeated the same pattern.
+- Fiat-Shamir bugs are the "SQL injection" of ZK cryptography -- well-understood, hard to detect, repeatedly recur.
+- SP1 Hypercube formally verified all 62 RISC-V opcodes against the RISC-V Sail spec; this is the current state of the art.
 
 ## Entities
 
+- [[fiat-shamir]]
+- [[plonk]]
+
 ## Dependencies
+
+- [[ch06-the-three-families]] — all three families rely on Fiat-Shamir, making this vulnerability universal
+- [[ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities]] — Chapter 8 catalogs incidents in forensic detail
+- [[ch06-from-speed-race-to-security-race]] — formal security as the next frontier follows from this section
+- [[ch06-nightstream-what-a-folding-engine-looks-like-from-the-inside]] — Nightstream's transcript ordering bugs are the engineering manifestation
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-the-proof-core-why-layers-4-5-and-6-are-inseparable]]
+- Next: [[ch06-case-study-midnight-s-sealed-certificate]]

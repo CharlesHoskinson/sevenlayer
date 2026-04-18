@@ -6,7 +6,7 @@ chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [177, 203]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 630
 ---
 
@@ -40,16 +40,37 @@ That you can convince without informing -- that proof and knowledge can be decou
 
 ## Summary
 
+A bar-age-check scenario concretizes the three properties every ZK proof must satisfy: completeness (honest provers always succeed), soundness (dishonest provers cannot forge — probability roughly $1/2^{128}$), and zero-knowledge (the proof leaks nothing beyond the single verified fact). Goldwasser, Micali, and Rackoff showed that interaction and randomness can substitute for disclosure, decoupling proof from knowledge.
+
 ## Key claims
+
+- Current ID checks disclose six pieces of PII to answer a one-bit question (are you 21 or older?).
+- Completeness: a valid credential always verifies — no false rejections.
+- Soundness: forgery probability is roughly $1/2^{128}$ (a 39-digit number); the sun will burn out first.
+- Zero-knowledge: the proof is simulatable — an adversary who intercepts it learns only that the statement is true.
+- The security argument depends on the randomness of the verifier's questions; interaction and randomness substitute for disclosure.
+- Mathematicians assumed these three properties were incompatible until the 1985 GMR result.
 
 ## Entities
 
+None.
+
 ## Dependencies
+
+- [[ch01-the-trick]] — the framing of proof-without-disclosure and the prover/verifier characters introduced there
 
 ## Sources cited
 
+- Goldwasser, Micali, and Rackoff (named in body; no ePrint or DOI given in this section)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[01-the-promise-of-provable-and-programmable-secrets]]
+- Prev: [[ch01-the-trick]]
+- Next: [[ch01-the-phenomenon]]

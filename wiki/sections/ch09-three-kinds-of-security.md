@@ -6,7 +6,7 @@ chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4081, 4108]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 972
 ---
 
@@ -41,16 +41,43 @@ The magician's guarantee depends on which lock protects the trick. Information-t
 
 ## Summary
 
+Distinguishes information-theoretic, computational, and heuristic security guarantees across the PET families. TEEs (Intel SGX, AMD SEV) provide heuristic security that has been repeatedly broken by side-channel attacks including Foreshadow (2018), AEPIC Leak (2022), Downfall (2023), and commodity-price physical attacks Battering Ram and Wiretap (2025); Intel deprecated SGX on consumer processors from 12th generation onward.
+
 ## Key claims
+
+- Information-theoretic security (e.g., Shamir MPC with honest majority) holds against unbounded adversaries including quantum computers.
+- Computational security (ZKPs, FHE) falls if the underlying hardness assumption is broken — Shor's algorithm breaks discrete log retroactively.
+- TEE security is heuristic: SGX broken by Spectre, Meltdown, Foreshadow, Plundervolt, SGAxe, AEPIC Leak, Downfall.
+- AEPIC Leak (August 2022) gave architecturally guaranteed data reads from enclave memory via a hardware register bug.
+- Downfall (August 2023) caused up to 50% performance degradation from Intel's Gather-instruction mitigation.
+- Battering Ram (~$50) and Wiretap (~$1,000) demonstrated physical TEE attacks at commodity prices in 2025.
+- Intel SGX deprecated on consumer processors (12th generation+) from 2021; remains on server Xeons.
+- Stacking a TEE on top of MPC + ZKP does not strengthen privacy — and may weaken it if the TEE is compromised.
 
 ## Entities
 
+- [[fhe]]
+- [[mpc]]
+- [[zkps]]
+
 ## Dependencies
+
+- [[ch09-the-four-pillars]] — establishes the four PETs whose security types are classified here
+- [[ch09-the-decision-matrix]] — uses this taxonomy as input to the trust-model question
+- [[ch07-three-hardness-assumptions-three-worlds]] — underlying hardness for computational security
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[09-privacy-enhancing-technologies]]
+- Prev: [[ch09-the-four-pillars]]
+- Next: [[ch09-composability-when-one-pet-is-not-enough]]

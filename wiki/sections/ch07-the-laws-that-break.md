@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [2984, 2999]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 397
 ---
 
@@ -29,16 +29,39 @@ Here the metaphor reaches its limit. We cannot avoid the mathematics. But we can
 
 ## Summary
 
+Chapter 7 descends to the cryptographic foundations beneath every ZK layer: the hardness assumptions that make proof systems secure. Shor's algorithm does not attack these assumptions faster — it exploits a different kind of physics, rendering discrete-logarithm problems trivially easy while leaving lattice problems untouched. The chapter introduces concrete primitives — fields, commitment schemes, hardness families — as real engineering decisions with real consequences.
+
 ## Key claims
+
+- ZK security guarantees are conditional on hardness assumptions; if an assumption breaks, the entire tower collapses immediately.
+- Quantum computers do not accelerate classical attacks on DLP — they use a structurally different algorithm (Shor's) that solves DLP in polynomial time.
+- Hash-based hardness (CRHF) is not similarly threatened; quantum computers give only a quadratic speedup via Grover's algorithm.
+- Lattice problems (Module-SIS) have no known quantum attack exploiting their structure; the tumblers do not vibrate.
+- Every abstraction in this chapter (Goldilocks field, Module-SIS) corresponds to a concrete engineering choice made by real teams.
 
 ## Entities
 
+- [[goldilocks]]
+- [[lattice]]
+
 ## Dependencies
+
+- [[ch07-three-hardness-assumptions-three-worlds]] — details the three assumption families introduced here
+- [[ch07-four-families-of-commitment-schemes]] — the primitives built from those assumptions
+- [[ch06-the-post-quantum-horizon]] — earlier treatment of the quantum reckoning
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: —
+- Next: [[ch07-three-hardness-assumptions-three-worlds]]

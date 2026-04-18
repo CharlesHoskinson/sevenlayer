@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [733, 754]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 388
 ---
 
@@ -35,16 +35,41 @@ Who writes the script?
 
 ## Summary
 
+The chapter's recommended architecture — universal BLS12-381 trusted setup with a transparent STARK inner proof and a concrete quantum migration plan — is what every major production system has independently converged on. But the 1-of-N model is trust-minimized, not trustless; the BCTV14 bug shows ceremony integrity alone is insufficient; and the ADOPT framework confirms no ceremony achieves the ideal. The next question — how the prover encodes the computation the stage must verify — is where 67% of real-world vulnerabilities live.
+
 ## Key claims
+
+- Consensus architecture: universal BLS12-381 trusted setup + transparent STARK inner proof + quantum migration plan.
+- The 1-of-N trust model is trust-minimized, not trustless.
+- No pairing-based setup is permanent: quantum shelf life compounds over time.
+- No existing ceremony satisfies all five ADOPT properties.
+- 67% of real-world SNARK vulnerabilities are under-constrained circuits, not ceremony or cryptography failures.
 
 ## Entities
 
+- [[bls12-381]]
+- [[ceremony]]
+- [[groth16]]
+- [[kzg]]
+
 ## Dependencies
+
+- [[ch02-the-adopt-framework]] — the evaluation framework that reveals no ceremony is ideal
+- [[ch02-the-bug-that-was-not-a-ceremony-failure]] — ceremony integrity is necessary but not sufficient
+- [[ch02-the-quantum-shelf-life]] — no pairing-based setup is permanent
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-option-value-analysis]]
+- Next: —

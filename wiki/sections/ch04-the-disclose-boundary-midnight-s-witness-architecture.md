@@ -6,7 +6,7 @@ chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1500, 1561]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1045
 ---
 
@@ -75,16 +75,48 @@ What the on-chain verifier sees per vote: a nullifier hash and updated vote tall
 
 ## Summary
 
+Midnight's Compact language enforces the witness/circuit boundary via a `disclose()` operator: witness functions are arbitrary TypeScript programs running off-chain that never reach the chain; `disclose()` is the sole gateway that moves a value into the ZKIR circuit as a `private_input`. A two-transcript model (publicTranscript for ledger changes, privateTranscriptOutputs for witness values) ensures the verifier sees what changed but not why. The 18-second PLONK proving step provides accidental timing uniformity, but Midnight's implementation-level side-channel analysis is undocumented.
+
 ## Key claims
+
+- Witness functions are implemented in TypeScript, declared in Compact, and never leave the user's device.
+- `disclose()` is the sole gateway from the witness world into the ZKIR circuit.
+- The publicTranscript records all ledger operations; the privateTranscriptOutputs contains witness values consumed during proving and then discarded.
+- The ZKIR checker verifies both transcripts are fully consumed — no extra values, no missing values, no tampering.
+- A Midnight transaction follows four steps: `callTx` → `proveTx` → `balanceTx` → `submitTx`.
+- The 18-second PLONK proving step provides natural (unintentional) timing padding that masks witness computation variation.
+- Domain-separated Poseidon hashing (`persistentHash`) makes nullifiers cryptographically unlinkable to voter identity.
+- Midnight has the most rigorous compile-time privacy guarantees (disclosure analysis) but the least documented runtime privacy analysis.
 
 ## Entities
 
+- [[midnight]]
+- [[plonk]]
+- [[poseidon]]
+- [[sdk]]
+- [[utxo]]
+
 ## Dependencies
+
+- [[ch03-compact-s-disclosure-analysis]] — the compile-time disclosure analysis that enforces the boundary
+- [[ch03-midnight-compiler-ir-circuit]] — ZKIR structure the `disclose()` operator targets
+- [[ch04-side-channel-attacks-when-the-walls-leak]] — the implementation-level leakage Midnight does not address
+- [[ch05-midnight-s-zkir-a-concrete-layer-4]] — ZKIR internals including `private_input` instruction
 
 ## Sources cited
 
+- Midnight developer guide (witness/circuit separation, `disclose()` operator, transaction pipeline)
+- Midnight private voting dApp example (Poseidon-based nullifier construction)
+
 ## Open questions
+
+- Network timing correlation: a user who queries the indexer immediately before submitting a transaction may reveal which contract state they are acting on — not analyzed in Midnight documentation.
+- Transaction structure analysis (segment count could reveal which circuit was called) is not addressed.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[04-the-secret-performance]]
+- Prev: [[ch04-witness-constraint-divergence]]
+- Next: [[ch04-the-witness-as-a-multi-dimensional-problem]]

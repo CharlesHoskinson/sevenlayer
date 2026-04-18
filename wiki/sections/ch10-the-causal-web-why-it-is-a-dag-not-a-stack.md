@@ -6,7 +6,7 @@ chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4425, 4466]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1164
 ---
 
@@ -55,16 +55,48 @@ A seven-layer model that acknowledges this bidirectionality is more accurate tha
 
 ## Summary
 
+The seven-layer model is not a stack but a DAG with 14 directed design-time edges — six forming the upward chain and eight representing downward and cross-cutting pressures that the pedagogical ordering hides. The absence of cycles is explained by the distinction between design-time constraints (acyclic, asymmetric) and runtime data flow (cyclic), and this structure accounts for why parameter changes propagate unpredictably through the system via multiple independent paths.
+
 ## Key claims
+
+- The most consequential upward chain: Layer 6 (small fields) → Layer 5 (Circle STARKs) → Layer 4 (lookup/AIR) → Layer 3 (shard-based witness) → Layer 2 (RISC-V ISAs) → Layer 1 (zkVM amortization).
+- Four key downward pressures: Layer 7 → Layer 6 (Ethereum gas forces BN254); Layer 7 → Layer 5 (gas forces STARK-to-SNARK wrapping); Layer 4 → Layer 2 (Cairo ISA shaped by constraint cost); Layer 3 collapses into Layer 4 (Jolt's lookup singularity).
+- Full edge count: 14 directed edges among 7 nodes, no cycles — a DAG with width.
+- Layer 6 reaches Layer 7 via two independent paths (direct: field determines proof size; indirect via Layer 5: field → proof system → verifier contract).
+- The absence of cycles arises because design-time constraints are asymmetric: choosing M31 forces Circle STARKs, but choosing Circle STARKs does not force M31.
+- Runtime data flow is cyclic (user → witness → arithmetization → proof → verification → next transaction) but design-time constraints are acyclic.
+- A seven-layer stack is the simplest correct projection of the seven-layer DAG: it loses the downward arrows but preserves acyclicity.
+- Every layer is connected to every other layer through at most two hops.
 
 ## Entities
 
+- [[babybear]]
+- [[bn254]]
+- [[circle stark]]
+- [[jolt]]
+- [[mersenne]]
+- [[small-field]]
+- [[starks]]
+
 ## Dependencies
+
+- [[ch10-the-map-redrawn]] — the diagram that this section elaborates in prose
+- [[ch07-the-cascade-effect]] — earlier treatment of field-to-commitment-to-proof causality
+- [[ch05-layer-4-arithmetization]] — Layer 4 behavior referenced in edge catalogue
+- [[ch04-memory-the-binding-constraint]] — Layer 3 behavior and Jolt fusion context
 
 ## Sources cited
 
+- Penrose, Roger — *The Road to Reality* (distinction between complicated and irreducibly entangled structures)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[10-the-synthesis-three-paths-not-two]]
+- Prev: [[ch10-the-three-path-table]]
+- Next: [[ch10-trust-decomposition-seven-weaker-assumptions]]

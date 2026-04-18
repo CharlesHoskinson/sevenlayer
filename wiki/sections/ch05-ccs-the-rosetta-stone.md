@@ -6,7 +6,7 @@ chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1867, 1939]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 2077
 ---
 
@@ -86,16 +86,52 @@ At this point you understand three constraint system dialects (R1CS, AIR, PLONKi
 
 ## Summary
 
+Customizable Constraint Systems (Setty, Thaler, Wahby 2023) unify R1CS, AIR, and PLONKish as special cases of a single sparse matrix-vector framework, with no size overhead in the translation. CCS is the native target for HyperNova, ProtoStar, ProtoGalaxy, Neo, and LatticeFold+. Production systems still predominantly use PLONKish or AIR, but CCS adoption is the clear direction as folding-based provers mature.
+
 ## Key claims
+
+- A CCS instance: sparse matrices $M_1,\ldots,M_t$, multisets $S_1,\ldots,S_q$, constants $c_1,\ldots,c_q$; satisfying condition $\sum_i c_i \cdot \bigcirc_{j\in S_i}(M_j\cdot\mathbf{z}) = \mathbf{0}$.
+- R1CS is CCS with $q=2$, $S_1=\{1,2\}$, $S_2=\{3\}$: recovers $(M_1\mathbf{z})\circ(M_2\mathbf{z}) = M_3\mathbf{z}$.
+- AIR is CCS with shift matrices encoding consecutive-row relationships; PLONKish is CCS with selector-weighted matrix entries.
+- CCS accepts degree parameter $d$; R1CS has $d=2$; higher $d$ encodes more computation per constraint.
+- HyperNova (Kothapalli and Setty, 2023): multi-folding for CCS via sumcheck. Neo (Nguyen and Setty, 2025): first lattice-based CCS folding. LatticeFold+ (Boneh and Chen, 2025): shorter lattice proofs.
+- Translation from any of the three formats to CCS is lossless — no increase in constraint count or witness size.
+- Production lag: CCS-native stack is ~2–3 years behind the research frontier as of early 2026.
 
 ## Entities
 
+- [[boneh]]
+- [[folding]]
+- [[groth16]]
+- [[halo2]]
+- [[hypernova]]
+- [[latticefold]]
+- [[nova]]
+- [[plonk]]
+- [[setty]]
+- [[small-field]]
+- [[spartan]]
+- [[starks]]
+
 ## Dependencies
+
+- [[ch05-the-constraint-system-evolution-r1cs-air-plonkish]] — the three dialects CCS unifies
+- [[ch05-the-sumcheck-protocol-the-hidden-foundation]] — sumcheck is CCS's verification engine
+- [[ch05-lookup-arguments]] — HyperNova/Lasso use CCS as their constraint format
+- [[ch05-where-the-layers-collapse]] — CCS is part of the proof-core triad discussion
 
 ## Sources cited
 
+- [R-L4-4] Setty, Thaler, Wahby. "Customizable Constraint Systems for Succinct Arguments." ePrint 2023/552.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[05-encoding-the-performance]]
+- Prev: [[ch05-the-constraint-system-evolution-r1cs-air-plonkish]]
+- Next: [[ch05-the-sumcheck-protocol-the-hidden-foundation]]

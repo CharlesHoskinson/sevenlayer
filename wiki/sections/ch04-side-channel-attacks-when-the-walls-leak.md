@@ -6,7 +6,7 @@ chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1378, 1465]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 2220
 ---
 
@@ -101,16 +101,55 @@ For the reader who wants a single mental model: the backstage walls are made of 
 
 ## Summary
 
+Zero-knowledge is a property of the proof, not the prover: the process of generating a proof can leak private information through timing, cache access patterns, and electromagnetic emanations. Tramer, Boneh, and Paterson showed Zcash's Groth16 prover leaked transaction amount magnitude via MSM timing (R=0.57); Mukherjee et al. (2024) showed ZK-friendly hash functions including Poseidon introduce cache-timing leakage through their lookup-table S-boxes; constant-time implementation is a security requirement that conflicts with performance optimization at nearly every turn.
+
 ## Key claims
+
+- Zcash's Groth16 prover leaked transaction amount through MSM timing: R=0.57 correlation (Tramer, Boneh, Paterson 2020).
+- Monero's Bulletproofs was safe: R=0.04, due to constant-time binary decomposition that includes both the value and its complement.
+- Poseidon's S-box uses lookup tables indexed by secret-dependent state, creating observable cache access patterns in shared cloud environments.
+- Mukherjee et al. (2024) examined Groth16, Plonky2, Plonky3, halo2, Circle STARKs — all have implementation-level privacy risks.
+- The Goldilocks field's conditional reduction after arithmetic creates a timing signal; branch-free assembly is required.
+- Electromagnetic side-channel attacks can reconstruct MSM scalar values (witness coefficients) from a few centimeters away with <$5,000 equipment.
+- GPU SIMT execution conflicts with constant-time requirements: warp divergence reduces GPU utilization when threads take different branches.
+- The move toward lookup-based ZK hash designs (motivated by Lasso/Jolt efficiency) actively increases the side-channel attack surface.
 
 ## Entities
 
+- [[bulletproofs]]
+- [[circle stark]]
+- [[fri]]
+- [[goldilocks]]
+- [[groth16]]
+- [[halo2]]
+- [[jolt]]
+- [[lasso]]
+- [[nvidia]]
+- [[plonk]]
+- [[plonky3]]
+- [[poseidon]]
+- [[starks]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch04-the-hidden-bottleneck]] — introduces the "thin walls" problem
+- [[ch04-the-witness-as-a-multi-dimensional-problem]] — synthesizes side-channel as the Security Gap
+- [[ch07-algebraic-vs-traditional-hash-functions]] — the algebraic vs. constant-time tension explored at Layer 6
 
 ## Sources cited
 
+- Tramer, Boneh, Paterson — "Remote Side-Channel Attacks on Anonymous Transactions," USENIX Security 2020; Zcash timing attack, R=0.57
+- Mukherjee, Rechberger, Schofnegger — cache-timing leakages in ZK protocols, 2024
+
 ## Open questions
+
+- Whether witness generation can be made fully constant-time on GPUs without unacceptable performance loss is an open question (flagged explicitly in the section).
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[04-the-secret-performance]]
+- Prev: [[ch04-memory-the-binding-constraint]]
+- Next: [[ch04-witness-constraint-divergence]]

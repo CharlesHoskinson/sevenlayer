@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2435, 2492]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1859
 ---
 
@@ -71,16 +71,55 @@ But notice: the three envelope types are not competing products on a shelf. They
 
 ## Summary
 
+Every production ZK proof system belongs to one of three families: Groth16 (192-byte proofs, per-circuit trusted setup), PLONK (universal setup, slightly larger proofs), and STARKs (no setup, hash-based security, ~100x larger proofs). In practice these are not competitors but pipeline stages -- STARKs prove computation with transparency, Groth16 wraps the result for cheap on-chain verification.
+
 ## Key claims
+
+- Groth16 produces the smallest proofs: 192 bytes (two G1 + one G2 on BLS12-381), ~250,000 gas to verify via EIP-1108.
+- Groth16 requires a per-circuit trusted setup; toxic waste in the SRS enables forgery if any participant retains it.
+- PLONK (Gabizon, Williamson, Ciobotaru, 2019) introduced a universal SRS: one ceremony covers all circuits up to a fixed size.
+- Halo 2, as deployed by Midnight and Zcash Orchard, uses KZG commitments (trusted setup) despite the original Halo paper using IPA (no setup).
+- STARKs rely only on collision-resistant hash functions -- no elliptic curves, no trusted setup, plausibly post-quantum.
+- STARK proofs are ~1,000x larger than Groth16 proofs; this bulk trades for transparency and quantum resistance.
+- Production systems use STARKs inside and Groth16 outside -- each contributing what it does best.
 
 ## Entities
 
+- [[groth16]]
+- [[plonk]]
+- [[starks]]
+- [[fri]]
+- [[kzg]]
+- [[ipa]]
+- [[halo2]]
+- [[ceremony]]
+- [[bn254]]
+- [[bls12-381]]
+- [[zcash]]
+- [[eip]]
+- [[gabizon]]
+
 ## Dependencies
+
+- [[ch06-sealing-the-certificate]] — introduces the certificate concept this section enumerates
+- [[ch02-universal-versus-circuit-specific-setups]] — 1-of-N trust model for ceremonies
+- [[ch06-the-hybrid-pipeline]] — next section explains how the three families compose in production
+- [[ch07-four-families-of-commitment-schemes]] — commitment schemes (KZG, FRI, IPA) underlying each family
 
 ## Sources cited
 
+- Groth, "On the Size of Pairing-Based Non-interactive Arguments," EUROCRYPT 2016.
+- Gabizon, Williamson, Ciobotaru, "PLONK: Permutations over Lagrange-bases for Oecumenical Noninteractive arguments of Knowledge," ePrint 2019/953.
+- Ben-Sasson, Bentov, Horesh, Riabzev, "Scalable, transparent, and post-quantum secure computational integrity," ePrint 2018/046.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-sealing-the-certificate]]
+- Next: [[ch06-the-hybrid-pipeline]]

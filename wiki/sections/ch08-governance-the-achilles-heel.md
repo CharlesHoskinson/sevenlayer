@@ -6,7 +6,7 @@ chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3679, 3780]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 2734
 ---
 
@@ -115,16 +115,46 @@ Stage 2 is where the cryptographic guarantees from Layers 1 through 6 actually b
 
 ## Summary
 
+Governance vulnerabilities are architectural, not implementational — they cannot be fixed with better code review. Two incidents (Beanstalk $182M April 2022; Tornado Cash May 2023) show that flash-loan-rented voting power and post-approval code replacement can completely capture a protocol whose cryptography remains unbroken. L2Beat's three-stage framework quantifies how far current ZK rollups fall short of governance-resistant operation.
+
 ## Key claims
+
+- Beanstalk (April 2022, $182M): attacker flash-loaned ~$1B, acquired >67% Stalk governance power, passed BIP-18 under the emergency-commit rule, and drained all protocol reserves in one atomic transaction of 13 seconds.
+- Flash loans dissolve the assumption that token holders are long-term stakeholders; governance power can be rented for the cost of a gas fee.
+- Tornado Cash (May 2023): attacker used `CREATE2` + `selfdestruct` to replace approved proposal code at the same address post-vote, minting 1.2M TORN tokens — permanent DAO takeover worth ~$2.17M direct drain; TORN dropped 36%.
+- ZK rollup verifier contracts are almost always behind upgradeable proxy patterns (EIP-1967, EIP-1822, EIP-2535, Beacon), making governance the critical security variable.
+- L2Beat Stage 0: governance can override everything; Stage 1: permissionless proof submission, Security Council multisig (e.g., 6-of-8, 7-day delay); Stage 2: governance cannot override the proof system, 30+ day exit windows.
+- As of early 2026, no major ZK rollup has reached Stage 2.
+- Below Stage 2, cryptographic strength is advisory; a Stage 0 rollup with 256-bit proof security is only as secure as its multisig.
 
 ## Entities
 
+- [[beanstalk]]
+- [[tornado cash]]
+- [[fiat-shamir]]
+- [[l2beat]]
+
 ## Dependencies
+
+- [[ch08-the-social-layer]] — governance is one of the four Layer 7 concerns
+- [[ch08-who-verifies-the-verifier]] — immutable vs upgradeable verifier tradeoffs
+- [[ch08-case-study-midnight-and-the-three-token-architecture]] — Midnight's architectural response to governance attacks
+- [[ch08-on-chain-verification-in-2026]] — current Stage distribution
 
 ## Sources cited
 
+- Meisami and Bodell (2023) — survey of EIP-1967, EIP-1822, EIP-2535, Beacon proxy patterns
+- Beanstalk post-mortem (April 2022)
+- Tornado Cash governance attack analysis (May 2023)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[08-the-verdict]]
+- Prev: [[ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities]]
+- Next: [[ch08-proof-aggregation-the-missing-layer]]

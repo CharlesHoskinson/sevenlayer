@@ -6,7 +6,7 @@ chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [367, 383]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 301
 ---
 
@@ -30,16 +30,40 @@ The field is crossing three sequential frontiers. *Performance* (2023-2025) is l
 
 ## Summary
 
+Three reading paths calibrate depth to role: Executive (~45 min), Engineer (~2 hours), Researcher (~4+ hours). All paths must include Chapter 2 and the trust decomposition in Chapter 10. The field is crossing three sequential frontiers — Performance (largely done by 2025), Security (2026–2028), Privacy (2027+) — and entry point depends on which frontier matters most.
+
 ## Key claims
+
+- Executive Path: Chapter 1, opening of Chapter 2, opening of Chapter 8, Chapter 11 landscape table, Chapter 14 (~45 minutes).
+- Engineer Path: Chapters 1–2 in full, Chapters 3–5 core sections, Chapter 6 through "Folding: The Snowball," Chapter 7 through "Four Families," Chapters 10, 11, 13 (~2 hours).
+- Researcher Path: everything, plus seven open questions in Chapter 14 (~4+ hours).
+- Do not skip Chapter 2 or the trust decomposition in Chapter 10 regardless of path.
+- Performance frontier (2023–2025): real-time proving achieved, costs sub-cent.
+- Security frontier (2026–2028): formal verification, 128-bit provable security, post-quantum readiness.
+- Privacy frontier (2027+): compiler-enforced disclosure boundaries, constant-time implementations, metadata protection.
 
 ## Entities
 
+- [[folding]]
+- [[lattice]]
+
 ## Dependencies
+
+- [[ch01-the-deepest-question]] — seven-layer trust analysis that motivates why Chapter 2 and Chapter 10 are mandatory
+- [[ch01-three-converging-forces]] — the three sequential frontiers described there are the same three used to orient entry points here
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[01-the-promise-of-provable-and-programmable-secrets]]
+- Prev: [[ch01-the-first-decision]]
+- Next: —

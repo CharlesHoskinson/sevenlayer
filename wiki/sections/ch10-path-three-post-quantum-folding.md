@@ -6,7 +6,7 @@ chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4405, 4416]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 352
 ---
 
@@ -25,16 +25,56 @@ The post-quantum folding path has a structural advantage that maps directly onto
 
 ## Summary
 
+The third path abandons both pairing-based and hash-based cryptography in favor of lattice-based constructions (Module-SIS) that provide additive homomorphism for folding alongside post-quantum security. Proof sizes — ~50–58 KB for Greyhound and LaBRADOR — are orders of magnitude larger than Groth16's 192 bytes but competitive with raw STARK proofs, and the performance trajectory suggests practical production within 3–5 years. This path is the only one that survives quantum computing without caveats: Path One's Groth16 wrapper and Path Two's hash functions both degrade under quantum attack, while Module-LWE/SIS is NIST-validated for the post-quantum era.
+
 ## Key claims
+
+- Key systems: LatticeFold (Boneh & Chen, ASIACRYPT 2025), LatticeFold+ (CRYPTO 2025), Neo/SuperNeo (Nguyen & Setty, ePrint 2025/294), Symphony (Chen, ePrint 2025/1905).
+- Commitment basis: Module-SIS, whose hardness NIST validated via FIPS 203/204 standardization.
+- Greyhound (Nguyen & Seiler, CRYPTO 2024): ~50 KB proofs with lattice-based commitments.
+- LaBRADOR (CRYPTO 2023): ~58 KB proofs.
+- Both are orders of magnitude larger than Groth16 (192 bytes) but competitive with raw STARK proofs.
+- Path One is quantum-vulnerable at the Groth16 wrapper; Path Two's SHA-256 drops from 128-bit classical to ~85-bit quantum collision resistance via the BHT algorithm.
+- Module-LWE/SIS is the same assumption family NIST chose for its post-quantum standards.
+- The Chapter 7 trilemma (algebraic functionality vs. post-quantum security vs. succinctness) is being actively compressed but not yet fully dissolved — KZG's O(1) proof size with full homomorphism has no post-quantum match yet.
 
 ## Entities
 
+- [[boneh]]
+- [[folding]]
+- [[groth16]]
+- [[kzg]]
+- [[lattice]]
+- [[latticefold]]
+- [[nist]]
+- [[setty]]
+- [[symphony]]
+
 ## Dependencies
+
+- [[ch06-the-post-quantum-horizon]] — earlier survey of lattice-based proof systems
+- [[ch07-the-trilemma-and-its-dissolution]] — the trilemma (algebraic functionality, PQ security, succinctness) this path compresses
+- [[ch07-lattice-based-proving]] — Module-SIS commitment construction detail
+- [[ch07-three-hardness-assumptions-three-worlds]] — hardness landscape context
 
 ## Sources cited
 
+- Boneh & Chen — LatticeFold, ASIACRYPT 2025
+- LatticeFold+, CRYPTO 2025
+- Nguyen & Setty — Neo/SuperNeo, ePrint 2025/294
+- Chen — Symphony, ePrint 2025/1905
+- Nguyen & Seiler — Greyhound, CRYPTO 2024
+- LaBRADOR, CRYPTO 2023
+- NIST FIPS 203/204
+
 ## Open questions
+
+- Whether the Chapter 7 trilemma can be fully dissolved (KZG-level O(1) succinctness + post-quantum security) remains unresolved.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[10-the-synthesis-three-paths-not-two]]
+- Prev: [[ch10-path-two-pure-transparent]]
+- Next: [[ch10-the-three-path-table]]

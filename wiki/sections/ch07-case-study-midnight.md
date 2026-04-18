@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3333, 3394]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 785
 ---
 
@@ -75,16 +75,53 @@ For a system deployed today that needs maximum on-chain efficiency and whose pri
 
 ## Summary
 
+Midnight is a full-stack example of the pairing-based, pre-quantum playbook: BLS12-381 scalar field, KZG commitments, Jubjub embedded curve for in-circuit elliptic curve operations, Poseidon-family algebraic hashes, and UTXO-based shielded tokens. Every component — KZG verification, Jubjub key derivation, Pedersen commitments — is broken by Shor's algorithm; the proof system's BLS12-381 dependency makes a post-quantum migration equivalent to building a new system.
+
 ## Key claims
+
+- Scalar field: BLS12-381, ~253-bit prime; commitment: KZG (implied by pairing-friendly curve); wallet SDK caches BLS12-381 SRS locally.
+- Embedded curve: Jubjub (twisted Edwards, order divides BLS12-381 scalar field r) — enables native in-circuit elliptic curve operations without non-native arithmetic overhead.
+- Hash functions: Poseidon-family (transient_hash, persistent_hash, hash_to_curve ZKIR opcodes); algebraic hashes cost hundreds of constraints vs. tens of thousands for SHA-256.
+- Token model: UTXO-based shielded triples (nonce, color, value) committed to a global Merkle tree via persistent_hash; nullifiers prevent double-spending; Pedersen commitments on Jubjub hide values.
+- Post-quantum vulnerability is total: KZG (q-SDH on BLS12-381), Jubjub key derivation (ECDLP), Pedersen commitments (DLP) all broken by Shor; Poseidon and Merkle roots likely survive.
+- Contrast with Neo/Nightstream: Midnight trades PQ security and transparent setup for constant-size proofs and native in-circuit EC operations.
+- For systems needing >15-year data privacy or complying with NIST's 2035 deprecation deadline, Neo's design is the only viable path.
 
 ## Entities
 
+- [[ajtai]]
+- [[bls12-381]]
+- [[ceremony]]
+- [[goldilocks]]
+- [[jubjub]]
+- [[kzg]]
+- [[midnight]]
+- [[nist]]
+- [[pedersen]]
+- [[poseidon]]
+- [[sdk]]
+- [[utxo]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch07-small-fields]] — BLS12-381 vs. Goldilocks field choice
+- [[ch07-four-families-of-commitment-schemes]] — KZG properties used here
+- [[ch07-the-quantum-threat-horizon]] — quantifies the threat Midnight faces
+- [[ch06-case-study-midnight-s-sealed-certificate]] — Layer 5 case study of same system
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-lattice-based-proving]]
+- Next: [[ch07-the-cascade-effect]]

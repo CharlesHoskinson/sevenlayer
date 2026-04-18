@@ -6,7 +6,7 @@ chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1987, 2112]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 3722
 ---
 
@@ -139,16 +139,56 @@ Three advances -- CCS, sumcheck, and lookups -- form a complete verification sta
 
 ## Summary
 
+Lookup arguments replace constraint-by-constraint polynomial encoding of arithmetic-hostile operations (XOR, range checks, hashes) with membership proofs in precomputed tables. The genealogy runs Plookup (2020, sorting-based) → LogUp (2022, logarithmic-derivative sums) → LogUp-GKR (2023, log-time verifier) → Lasso (2023, table-size-independent) → Jolt (2023, full RISC-V ISA as lookups). By 2024 lookups had shifted from optimization to primary computation paradigm.
+
 ## Key claims
+
+- XOR of two 8-bit numbers costs ~32 polynomial constraints but 1 machine cycle; SHA-256 costs ~25,000 constraints vs. ~300 for Poseidon.
+- Plookup (Gabizon and Williamson, 2020): grand-product sorting; $O(n \log n)$ prover cost.
+- LogUp (Haboeck, 2022): replaces sorting with logarithmic-derivative rational function identity $\sum_i \frac{1}{X-f_i} = \sum_j \frac{m_j}{X-t_j}$; $O(n+T)$ prover, parallelizable.
+- LogUp-GKR (Papini and Haboeck, 2023): applies GKR protocol to reduce verifier work to $O(\log n)$; used in Polygon Plonky3 and SP1 Hypercube.
+- Lasso (Setty, Thaler, Wahby, 2023): decomposes lookups into $c$ subtable lookups; prover cost independent of table size $N$. Enables $2^{128}$-entry tables.
+- Jolt (Arun, Setty, Thaler, 2023): entire RISC-V ISA as Lasso-based lookups; ~18 field element commitments per instruction vs. ~50–80 constraints in traditional zkVMs.
+- Offline memory checking (Blum et al., adapted by Setty) handles read-write memory in Jolt without per-access Merkle proofs.
 
 ## Entities
 
+- [[fri]]
+- [[gabizon]]
+- [[jolt]]
+- [[lasso]]
+- [[logup]]
+- [[nova]]
+- [[plonk]]
+- [[plonky3]]
+- [[polygon]]
+- [[poseidon]]
+- [[setty]]
+- [[spartan]]
+
 ## Dependencies
+
+- [[ch05-the-sumcheck-protocol-the-hidden-foundation]] — LogUp-GKR, Lasso, and Jolt all verify via sumcheck
+- [[ch05-ccs-the-rosetta-stone]] — Lasso and Jolt use CCS as underlying constraint format
+- [[ch05-the-overhead-tax-10-000x-to-50-000x]] — lookup-based architectures are one of the overhead reduction strategies
+- [[ch05-where-the-layers-collapse]] — Jolt fuses witness generation and arithmetization
 
 ## Sources cited
 
+- [R-L4-6] Gabizon, Williamson. "Plookup." ePrint 2020/315.
+- [R-L4-7] Haboeck. "LogUp." ePrint 2022/1530.
+- [R-L4-8] Papini, Shahar and Ulrich Haboeck. "LogUp-GKR." ePrint 2023/1284.
+- [R-L4-9] Setty, Thaler, Wahby. "Lasso." ePrint 2023/1216.
+- [R-L4-10] Arun, Setty, Thaler. "Jolt." ePrint 2023/1217.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[05-encoding-the-performance]]
+- Prev: [[ch05-the-sumcheck-protocol-the-hidden-foundation]]
+- Next: [[ch05-the-overhead-tax-10-000x-to-50-000x]]

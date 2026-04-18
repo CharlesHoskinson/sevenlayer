@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2636, 2724]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1973
 ---
 
@@ -102,16 +102,53 @@ Nightstream is a research prototype, not a production system. But the engineerin
 
 ## Summary
 
+Nightstream is a 15-crate Rust implementation of CCS-native lattice folding over the Goldilocks field with a Lean 4 formal model. Its architecture -- shared bus trace spine, three algebraic reductions (Pi_CCS, Pi_RLC, Pi_DEC), two-lane obligation model for soundness amplification -- makes concrete the engineering reality that witness layout alignment, not algorithm invention, dominates implementation effort.
+
 ## Key claims
+
+- Nightstream uses 15 Rust crates organized as a pipeline; breaking any inter-crate agreement produces no proof at all.
+- The shared bus trace spine is a single columnar layout: one source of truth consumed by memory arguments, folding runtime, and finalizer.
+- Three reductions: Pi_CCS (constraint→evaluation), Pi_RLC (random linear combination folding), Pi_DEC (lattice norm decomposition).
+- Two-lane obligation model (main lane + val lane, independent challenges $\alpha$ and $\beta$) reduces soundness error to $\leq d/|K|^2 < 2^{-127}$.
+- Lean 4 formal model closes the soundness chain from folded claims to original CCS satisfiability; it does not verify implementation fidelity.
+- `neo-spartan-bridge` and `neo-midnight-bridge` are experimental; the core proving runtime is maintained and tested.
+- The dominant source of integration failures is transcript ordering bugs and column layout mismatches, not cryptographic errors.
 
 ## Entities
 
+- [[nova]]
+- [[hypernova]]
+- [[folding]]
+- [[lattice]]
+- [[ajtai]]
+- [[goldilocks]]
+- [[poseidon]]
+- [[fiat-shamir]]
+- [[kzg]]
+- [[plonk]]
+- [[spartan]]
+- [[midnight]]
+
 ## Dependencies
+
+- [[ch06-the-folding-genealogy]] — genealogy leading to Neo/lattice folding that Nightstream implements
+- [[ch04-execution-traces]] — execution trace format that the shared bus consumes
+- [[ch05-ccs-the-rosetta-stone]] — CCS constraint system underlying Pi_CCS reduction
+- [[ch06-fiat-shamir-vulnerabilities]] — transcript ordering bugs are the dominant failure mode here
+- [[ch06-the-proof-core-why-layers-4-5-and-6-are-inseparable]] — proof core triad concept manifested in Nightstream's crate structure
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+- The gap between Lean-verified mathematical reductions and Rust implementation fidelity is flagged as the real remaining assurance boundary; neither Nightstream nor SP1 has closed the full spec-to-code-to-hardware loop.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-the-folding-genealogy]]
+- Next: [[ch06-circle-starks-and-stwo-a-generational-leap]]

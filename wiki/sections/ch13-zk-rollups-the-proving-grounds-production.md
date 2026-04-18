@@ -6,7 +6,7 @@ chapter_title: "The Market Landscape"
 heading_level: 2
 source_lines: [4980, 5005]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 745
 ---
 
@@ -39,16 +39,53 @@ The economics have improved sharply. The 2,000-fold cost collapse described in C
 
 ## Summary
 
+ZK rollups are the most mature market segment: over $20 billion in TVL by early 2026, with proving costs down ~2,000-fold since 2022. Every production rollup operates at Stage 0 or Stage 1, meaning governance multisigs can still override the proof system; no major rollup has reached Stage 2. Trust is genuinely minimized at the cryptographic layer but largely preserved at the institutional layer.
+
 ## Key claims
+
+- ZK rollups collectively held >$20B TVL by early 2026.
+- No major ZK rollup had reached Stage 2 as of this writing; all remain at Stage 0 or Stage 1.
+- Scroll held $748M TVL (halo2/KZG); Linea held $2B TVL (PLONK/Fiat-Shamir).
+- Starknet (Stwo/Circle STARKs) is the only major rollup without a trusted setup, at the cost of larger proof sizes.
+- ZKsync Era's Airbender prover achieved 21.8 million cycles/second on a single H100.
+- Polygon zkEVM was shut down after ~$250M investment; the core team founded ZisK.
+- Continuously proving every Ethereum block costs roughly $102,000/year at current rates.
 
 ## Entities
 
+- [[airbender]]
+- [[circle stark]]
+- [[fiat-shamir]]
+- [[groth16]]
+- [[h100]]
+- [[halo2]]
+- [[kzg]]
+- [[midnight]]
+- [[plonk]]
+- [[polygon]]
+- [[starknet]]
+- [[zisk]]
+
 ## Dependencies
+
+- [[ch01-the-phenomenon]] — TVL figures and production context introduced in Chapter 1
+- [[ch06-circle-starks-and-stwo-a-generational-leap]] — Stwo/Circle STARKs technical basis
+- [[ch06-the-three-families]] — proof family taxonomy referenced (Groth16, PLONK, STARKs)
+- [[ch12-midnight-at-a-glance]] — Midnight's rollup-adjacent position analysed in Chapter 12
+- [[ch11-the-landscape-table-march-2026]] — Stage 0/1/2 maturity classification
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[13-the-market-landscape]]
+- Prev: —
+- Next: [[ch13-zk-coprocessors-off-chain-computation-on-chain-verification-growth]]

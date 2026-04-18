@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3467, 3482]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 228
 ---
 
@@ -29,16 +29,58 @@ The adoption trajectory suggests lattice-based proof systems will move from rese
 
 ## Summary
 
+As of early 2026: pairing-based and FRI/STARK systems are deployed and battle-tested; LatticeFold and LatticeFold+ are peer-reviewed with a Rust prototype (Nightstream, 15 crates); Symphony exists only as a paper. The concrete blockers to production lattice deployment are GPU-optimized NTT kernels for cyclotomic rings, head-to-head benchmarks against Groth16/Stwo, and standardized audit tooling for lattice parameter selection.
+
 ## Key claims
+
+- Deployed and battle-tested: KZG (BN254, BLS12-381), FRI/STARK (Goldilocks, BabyBear, M31), IPA/Bulletproofs (Pasta curves).
+- Peer-reviewed and prototyped: LatticeFold (ASIACRYPT 2025), LatticeFold+ (CRYPTO 2025); Neo implemented in Rust (Nightstream, 15 crates) with emerging benchmarks.
+- Proposed and promising: Symphony (ePrint 2025/1905) — no implementation yet.
+- NIST FIPS 203/204/205 (August 2024) standardize lattice-based key encapsulation and signatures; no standard yet for lattice ZK proof systems.
+- Lattice estimator is the established tool for parameter security levels but auditors lack standardized validation methods equivalent to those for elliptic curve parameters.
+- Expected production readiness window: 2026–2027 for Neo/Nightstream-class systems.
 
 ## Entities
 
+- [[babybear]]
+- [[bls12-381]]
+- [[bn254]]
+- [[boneh]]
+- [[bulletproofs]]
+- [[fri]]
+- [[goldilocks]]
+- [[groth16]]
+- [[ipa]]
+- [[kzg]]
+- [[latticefold]]
+- [[mersenne]]
+- [[nist]]
+- [[ntts]]
+- [[starknet]]
+- [[symphony]]
+
 ## Dependencies
+
+- [[ch07-lattice-based-proving]] — the schemes being assessed here
+- [[ch07-the-quantum-threat-horizon]] — NIST standards that give the policy backdrop
+- [[ch07-the-structural-advantage-of-lattices]] — why simplicity accelerates the path to production
 
 ## Sources cited
 
+- LatticeFold — ASIACRYPT 2025 (Boneh and Chen)
+- LatticeFold+ — CRYPTO 2025
+- Symphony — ePrint 2025/1905
+- NIST FIPS 203, 204, 205 — August 2024
+
 ## Open questions
+
+- When will production-grade GPU kernels for lattice NTTs over cyclotomic rings be available?
+- What standardized audit methodology for lattice parameter validation will emerge equivalent to current elliptic curve tools?
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-the-structural-advantage-of-lattices]]
+- Next: [[ch07-the-one-way-door]]

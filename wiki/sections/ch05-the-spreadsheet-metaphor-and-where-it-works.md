@@ -6,7 +6,7 @@ chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1632, 1674]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1230
 ---
 
@@ -56,16 +56,40 @@ With the spreadsheet image in hand, we can state the central question of this ch
 
 ## Summary
 
+A constraint system is a set of polynomial equations over a finite field that must all hold for a valid computation. The spreadsheet metaphor — rows as time steps, columns as variables, rules as polynomial equations — captures the structure of every major constraint format. Verification works by the Schwartz-Zippel lemma: checking the equations at a few random points is almost as good as checking everywhere.
+
 ## Key claims
+
+- Every cell in the "spreadsheet" holds a finite field element; rules are polynomial equations relating cells.
+- A single wrong value propagates and breaks at least one rule, so errors cannot be hidden.
+- Only polynomial rules can be directly verified; comparison, bitwise ops, and other non-polynomial operations require indirect encoding via auxiliary constraints.
+- Schwartz-Zippel: a nonzero polynomial of degree $d$ is zero at a random field point with probability at most $d/q$ — the foundation of all ZK spot-checking.
+- The Sudoku running example requires 72 constraints: 16 range constraints + 8 given-cell constraints + 48 uniqueness checks; R1CS expansion yields roughly 120 total.
+- The central design question — one rule per row vs. uniform rules vs. selector-switched rules vs. one unified framework — organizes the constraint system genealogy.
 
 ## Entities
 
+- [[plonk]]
+- [[sudoku]]
+
 ## Dependencies
+
+- [[ch05-layer-4-arithmetization]] — this section is the opening mental model for that chapter
+- [[ch05-the-constraint-system-evolution-r1cs-air-plonkish]] — each constraint system is a different answer to the central design question posed here
+- [[ch05-ccs-the-rosetta-stone]] — CCS is the unified framework alluded to at the close
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[05-encoding-the-performance]]
+- Prev: [[ch05-layer-4-arithmetization]]
+- Next: [[ch05-the-constraint-system-evolution-r1cs-air-plonkish]]

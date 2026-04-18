@@ -6,7 +6,7 @@ chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2786, 2805]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 385
 ---
 
@@ -33,16 +33,43 @@ This cost drop matters for reasons beyond Ethereum. When proving costs $80, ZK p
 
 ## Summary
 
+Ethereum block proving cost fell from $80.21 (December 2023) to $0.04 (December 2025) -- a 2,000x reduction. By late 2025, SP1 Hypercube proved 99.7% of blocks under 12 seconds (16 RTX 5090 GPUs); ZKsync Airbender proved blocks in ~35 seconds on one H100. The Ethereum Foundation declared the speed race won and pivoted to formal 128-bit security guarantees.
+
 ## Key claims
+
+- Ethereum block proving: ~$80.21 in December 2023 → ~$0.04 in December 2025, 2,000x reduction (CastleLabs/Ethproofs).
+- Airbender achieved $0.0001 per transfer.
+- SP1 Hypercube: 99.7% of L1 blocks under 12 seconds on 16 NVIDIA RTX 5090 GPUs (~$32,000 hardware).
+- ZKsync Airbender: 21.8 million cycles/second on a single H100; blocks in ~35 seconds.
+- Ethereum Foundation December 2025 targets: <10 seconds/block, <$100K hardware, <10 kW power, 128-bit provable security, <300 KB proofs.
+- The pivot from speed to security marks the end of the "speed race" as the dominant proving challenge.
+- Cost threshold shift: from luxury ($80) to infrastructure ($0.04) changes ZK from optional to default.
 
 ## Entities
 
+- [[nvidia]]
+- [[h100]]
+- [[airbender]]
+
 ## Dependencies
+
+- [[ch06-circle-starks-and-stwo-a-generational-leap]] — Circle STARKs are the core technology enabling these benchmarks
+- [[ch06-from-speed-race-to-security-race]] — the "speed race won" narrative continues directly in that section
+- [[ch06-the-hybrid-pipeline]] — pipeline architecture enabling sub-$1 proving
 
 ## Sources cited
 
+- CastleLabs benchmarks, December 2023 and December 2025.
+- Ethproofs benchmarks, December 2025.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[06-the-sealed-certificate]]
+- Prev: [[ch06-circle-starks-and-stwo-a-generational-leap]]
+- Next: [[ch06-the-proof-core-why-layers-4-5-and-6-are-inseparable]]

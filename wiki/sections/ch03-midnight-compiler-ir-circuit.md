@@ -6,7 +6,7 @@ chapter_title: "Choreographing the Act"
 heading_level: 2
 source_lines: [1156, 1185]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 520
 ---
 
@@ -43,16 +43,42 @@ The recording is where the real cost lives. And it is where the real vulnerabili
 
 ## Summary
 
+Compact compiles a single `.compact` source file into three artifacts: ZKIR circuits (24 typed instructions, two transcript channels), TypeScript bindings (dApp API and witness providers), and PLONK proving keys on BLS12-381. No other ZK language unifies all three from one source, making Layer 2 language choice a decision about the entire downstream toolchain.
+
 ## Key claims
+
+- ZKIR has 24 typed instructions in 8 categories: arithmetic, constraints, control flow, type encoding, cryptographic operations, and I/O.
+- Two transcript channels: `publicTranscript` (on-chain verifier visible) and `privateTranscriptOutputs` (prover only); tampering causes rejection.
+- TypeScript bindings include witness provider interfaces, field serialization, and transaction submission pipeline.
+- Proving keys are circuit-specific; the proof server and validators both require them.
+- Circom outputs R1CS + witness generator (no API); Noir outputs ACIR (no bindings, no integration); Cairo outputs execution traces (no privacy separation).
+- Language choice determines compilation target, tooling, privacy model, and deployment pipeline — not just syntax.
 
 ## Entities
 
+- [[bls12-381]]
+- [[midnight]]
+- [[plonk]]
+- [[starknet]]
+
 ## Dependencies
+
+- [[ch03-compact-s-disclosure-analysis]] — the disclosure analysis pass that feeds into the ZKIR output
+- [[ch03-the-four-philosophies]] — places Compact's three-artifact output in the Philosophy D context
+- [[ch05-midnight-s-zkir-a-concrete-layer-4]] — Layer 4 view of ZKIR structure and instruction set
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[03-choreographing-the-act]]
+- Prev: [[ch03-compact-s-disclosure-analysis]]
+- Next: —

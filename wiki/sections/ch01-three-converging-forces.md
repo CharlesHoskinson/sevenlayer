@@ -6,7 +6,7 @@ chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [241, 279]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1343
 ---
 
@@ -52,16 +52,50 @@ Understanding how the flywheel works requires understanding what a zero-knowledg
 
 ## Summary
 
+Privacy demand, scaling need, and a 2,000-fold cost collapse in two years pulled zero-knowledge proofs from theory into production. The cost curve — from $80 per proof in December 2023 to $0.04 in December 2025 — is structurally different from hardware-driven cost reductions because it came entirely from better algorithms on commodity GPUs. These three forces form a flywheel already visible in zkSync, Starknet, eIDAS 2.0 wallets, and Midnight.
+
 ## Key claims
+
+- The January 2024 National Public Data breach exposed ~2.9 billion records including Social Security numbers — permanent, irreplaceable identifiers.
+- eIDAS 2.0 (finalized 2024) mandates selective-disclosure digital identity wallets for all 450 million EU citizens by 2026.
+- Ethereum processes ~15 transactions per second; Visa handles ~65,000 at peak.
+- By early 2026, total value locked in ZK rollups exceeded $20 billion.
+- Proof cost fell from ~$80 (December 2023) to ~$0.04 (December 2025) — a 2,000-fold reduction in 24 months.
+- SP1 proved an Ethereum block in 6.9 seconds by late 2025, handling 99.7% of L1 blocks under 12 seconds across 16 GPUs.
+- StarkWare's Stwo achieved a 940x throughput improvement over its predecessor.
+- Projections for 2027 suggest sub-cent proofs for computations exceeding one billion cycles.
+- The Ethereum Foundation declared the speed race won in December 2025 and pivoted to 128-bit provable security by end of 2026.
+- The author discloses founding Input Output Global, which built Midnight, the primary case study.
 
 ## Entities
 
+- [[circle stark]]
+- [[midnight]]
+- [[plonk]]
+- [[starks]]
+- [[starknet]]
+
 ## Dependencies
+
+- [[ch01-the-phenomenon]] — non-interactive ZK and the Groth16/STARK choice introduced there
+- [[ch01-the-proof-at-the-door]] — the disclosure-vs-verification problem that motivates privacy demand
+- [[ceremony]] — trusted-setup context for understanding why transparent setups matter to the scaling use case
 
 ## Sources cited
 
+- Chaliasos et al., USENIX Security 2024 (cited in a neighboring section — not in this section's body; none explicitly in this section)
+
+None in this section.
+
 ## Open questions
+
+- Whether sub-cent proofs will arrive by 2027 as projected.
+- Whether 128-bit provable security will be achieved by end of 2026 as the Ethereum Foundation targets.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[01-the-promise-of-provable-and-programmable-secrets]]
+- Prev: [[ch01-the-phenomenon]]
+- Next: [[ch01-the-seven-layers-at-a-glance]]

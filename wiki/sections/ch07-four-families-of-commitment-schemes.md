@@ -6,7 +6,7 @@ chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3038, 3140]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 3227
 ---
 
@@ -116,16 +116,57 @@ The Module-SIS formulation adds one more layer. Instead of vectors over a field,
 
 ## Summary
 
+Polynomial commitment schemes are the concrete tools built from hardness assumptions. The four families — KZG, FRI, IPA/Bulletproofs, and Lattice/Ajtai — each inherit the geometry of their underlying assumption: KZG gives ~48-byte constant-size proofs via bilinear pairings but requires a trusted setup and is quantum-vulnerable; FRI gives transparent, plausibly post-quantum proofs (~50–200 KB) via Merkle trees alone; IPA gives logarithmic transparent proofs (~1–5 KB) but linear verification time; Ajtai gives post-quantum, transparent, folding-capable proofs (~50–60 KB) via Module-SIS.
+
 ## Key claims
+
+- KZG proof size: O(1), ~48 bytes on BLS12-381; verification: one pairing check; requires SRS; not post-quantum.
+- FRI proof size: O(log² n), ~50–200 KB; transparent; plausibly post-quantum; no algebraic homomorphism so no direct folding.
+- IPA/Bulletproofs: O(log n) proof size (~1–5 KB); transparent; O(n) verification (linear); not post-quantum; Halo proved IPA supports recursion without pairings.
+- Ajtai: O(log n) proof size (~50–60 KB); transparent; post-quantum (Module-SIS); module-homomorphic enabling lattice folding.
+- Module homomorphism: ρ · Com(Z) = Com(ρ · Z) for ring element ρ — the algebraic fact enabling LatticeFold, Neo, Symphony.
+- The four-family comparison table: KZG wins on succinctness; FRI and Ajtai win on transparency; Ajtai alone offers all three of: transparency, post-quantum, and algebraic structure for folding.
 
 ## Entities
 
+- [[ajtai]]
+- [[babybear]]
+- [[bulletproofs]]
+- [[ceremony]]
+- [[fri]]
+- [[goldilocks]]
+- [[groth16]]
+- [[halo]]
+- [[halo2]]
+- [[ipa]]
+- [[kzg]]
+- [[latticefold]]
+- [[pedersen]]
+- [[plonk]]
+- [[plonky3]]
+- [[polygon]]
+- [[starks]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch07-three-hardness-assumptions-three-worlds]] — DLP, CRHF, Module-SIS assumptions underlying these families
+- [[ch07-the-trilemma-and-its-dissolution]] — the trilemma these four families illustrate
+- [[ch06-the-three-families]] — earlier overview of proof-system families that uses the same taxonomy
+- [[ch06-snark-recursion-vs-folding-the-full-picture]] — how IPA's Halo recursion fits the broader folding picture
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[07-the-deep-craft]]
+- Prev: [[ch07-three-hardness-assumptions-three-worlds]]
+- Next: [[ch07-the-trilemma-and-its-dissolution]]

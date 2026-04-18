@@ -6,7 +6,7 @@ chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4263, 4293]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 280
 ---
 
@@ -44,16 +44,42 @@ No single PET answers all four questions. The art is in composition -- and the e
 
 ## Summary
 
+A four-question framework for selecting PETs: trust model (information-theoretic vs. computational vs. heuristic), data ownership (single holder vs. multi-party vs. outsourced vs. aggregate), acceptable performance, and applicable regulatory regime. No single PET answers all four; the answer is almost always a composed stack.
+
 ## Key claims
+
+- Trust model: MPC honest-majority → information-theoretic; ZKP/FHE → computational; TEE → heuristic.
+- Data ownership: prove a property → ZKP; joint multi-party compute → MPC; untrusted third-party compute → FHE; aggregate statistics → DP.
+- Performance: ZKP proving seconds–minutes, verification milliseconds; MPC bottleneck is communication rounds; FHE 10,000–1,000,000× overhead; DP negligible; TEE <5% overhead.
+- GDPR/eIDAS 2.0 regime: ZKP selective disclosure, off-chain storage + on-chain hash, right-to-erasure compatible.
+- Financial regulation (AML/KYC): zKYC, Privacy Pools, MPC for inter-institutional analysis.
+- Healthcare (HIPAA, EU Clinical Trials Regulation): MPC for multi-site, DP for statistical releases, FHE for outsourced AI training.
 
 ## Entities
 
+- [[fhe]]
+- [[mpc]]
+- [[zkps]]
+
 ## Dependencies
+
+- [[ch09-the-four-pillars]] — performance and trust model data for each PET
+- [[ch09-three-kinds-of-security]] — trust model taxonomy
+- [[ch09-the-regulatory-intersection]] — regulatory regime detail (GDPR, eIDAS 2.0)
+- [[ch09-composability-when-one-pet-is-not-enough]] — composition as the expected answer
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[09-privacy-enhancing-technologies]]
+- Prev: [[ch09-the-regulatory-intersection]]
+- Next: [[ch09-open-problems]]

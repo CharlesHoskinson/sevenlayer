@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [408, 430]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 998
 ---
 
@@ -36,16 +36,37 @@ The analogy to physical infrastructure is not casual. A traditional stage in a t
 
 ## Summary
 
+A Structured Reference String (SRS) is a sequence of elliptic curve points — each derived from a secret trapdoor via the KZG scheme — that acts as the public mathematical stage for all subsequent proofs. The trapdoor is called "toxic waste": if anyone retains it, they can forge arbitrary proofs, but the structure of the SRS can be verified without knowing the secret. Verifiers use bilinear pairings to check polynomial identities against the SRS in milliseconds, never seeing the underlying values.
+
 ## Key claims
+
+- The SRS exploits the discrete logarithm problem: easy to step forward along an elliptic curve, impossible to reverse.
+- The KZG scheme was invented by Kate, Zaverucha, and Goldberg in 2010.
+- The Ethereum KZG SRS contains roughly 65 million curve points, stored as a several-gigabyte file.
+- Proofs verified against the SRS are 192 bytes (three curve points) for Groth16.
+- The SRS structure is publicly checkable; the secrecy of the trapdoor is not checkable — this is the fundamental tension of trusted setups.
 
 ## Entities
 
+- [[kzg]]
+
 ## Dependencies
+
+- [[ch02-the-fair-shuffle-problem]] — motivates why the SRS needs a ceremony
+- [[ch02-two-ways-to-build-a-stage]] — the transparent alternative that needs no trapdoor
 
 ## Sources cited
 
+- Kate, Zaverucha, Goldberg, 2010 (KZG polynomial commitment scheme)
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-the-fair-shuffle-problem]]
+- Next: [[ch02-two-ways-to-build-a-stage]]

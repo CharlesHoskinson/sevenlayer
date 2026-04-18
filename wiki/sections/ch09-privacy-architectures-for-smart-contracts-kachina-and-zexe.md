@@ -6,7 +6,7 @@ chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4183, 4224]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 741
 ---
 
@@ -55,16 +55,46 @@ For the system architect choosing between these approaches, the key question is:
 
 ## Summary
 
+Contrasts Kachina (UC-secure, account-based, parameterisable leakage via Lambda function) and Zexe (UTXO-based, full function privacy, constant 968-byte on-chain footprint) as the two theoretical foundations for private smart contracts. Midnight follows the Kachina model most closely; Aztec follows Zexe.
+
 ## Key claims
+
+- Kachina splits state into shared public (on-chain) and individual private (off-chain); proving complexity is O(|transcript|), not O(full state).
+- Kachina leakage function Lambda is tunable from full transparency (Ethereum-equivalent) to near-zero leakage (Zerocash-equivalent).
+- Zexe on-chain footprint is constant: 968 bytes for a 2-input/2-output transaction regardless of off-chain computation complexity.
+- Zexe uses recursive proof composition (bounded depth 2) with BLS-12 inner SNARKs and a Cocks-Pinch curve for outer composition.
+- Zexe proof generation: ~1 minute + computation-dependent time; verification: tens of milliseconds.
+- Midnight's `disclose()` mechanism is the practical instantiation of Kachina's information-flow control.
+- Aztec's Private Execution Environment (PXE) handles client-side proving in the Zexe/UTXO model.
+- Design decision: need function privacy (all txs indistinguishable) → Zexe/UTXO; tolerating visible function identity → Kachina/account.
 
 ## Entities
 
+- [[midnight]]
+- [[mpc]]
+- [[nova]]
+- [[utxo]]
+
 ## Dependencies
+
+- [[ch03-the-disclose-boundary-midnight-s-witness-architecture]] — Midnight's `disclose()` as Kachina instantiation
+- [[ch09-composability-when-one-pet-is-not-enough]] — ZKP+MPC composition context
+- [[ch09-the-four-pillars]] — ZKPs as underlying PET for both systems
+- [[ch04-the-disclose-boundary-midnight-s-witness-architecture]] — witness architecture detail
 
 ## Sources cited
 
+- Kerber, T., Kiayias, A., Kohlweiss, M. Kachina: Foundations of Private Smart Contracts. University of Edinburgh / IOHK.
+- Bowe, S., Chiesa, A., Green, M., Miers, I., Mishra, P., Wu, H. Zexe: Enabling Decentralized Private Computation. 2018.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[09-privacy-enhancing-technologies]]
+- Prev: [[ch09-real-world-deployments-five-case-studies]]
+- Next: [[ch09-the-regulatory-intersection]]

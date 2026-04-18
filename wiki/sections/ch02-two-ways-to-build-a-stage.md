@@ -6,7 +6,7 @@ chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [431, 535]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 2963
 ---
 
@@ -118,16 +118,59 @@ Each row represents a different bet. The top rows bet that the ceremony was hone
 
 ## Summary
 
+Ceremony-based (trusted) setups and hash-based transparent setups represent the two ends of the Layer 1 spectrum, trading proof size and verification cost against trust assumptions and quantum resistance. The ceremony lineage evolved from Zcash Sprout's 6 participants (2016) to Ethereum KZG's 141,416 (2023); the mathematics requires only one honest participant, but sociological scale makes collusion infeasible. STARKs and FRI offer a glass-stage alternative with no toxic waste and plausible post-quantum security, at the cost of ~100 KB proofs versus 192 bytes.
+
 ## Key claims
+
+- Zcash Sprout (2016): 6 participants, air-gapped machines physically destroyed; Sapling (2018): ~90 participants via BGM17 "MMORPG" protocol, 2.5 hours per contribution.
+- Ethereum KZG Summoning (2023): 141,416 permissionless contributors via a web browser.
+- The 1-of-N multiplicative structure: effective secret is the product of all participants' secrets; recovering it requires knowing every individual secret.
+- STARKs (Ben-Sasson et al., 2018): transparent, hash-based, no ceremony; FRI protocol provides the polynomial proximity test.
+- Bulletproofs (Bünz et al., 2017): transparent, logarithmic proofs, but linear verification time and not quantum-resistant.
+- Setup spectrum: Groth16 (192 bytes, ceremony) → PLONK (880 bytes, universal ceremony) → Bulletproofs (~700 bytes, DL-based, no ceremony) → STARKs (~100 KB, hash-based, no ceremony).
+- The "ideal polynomial commitment scheme" (transparent, constant-size, constant-time verification) is the central open problem per Wang, Cohney, Bonneau, 2025.
 
 ## Entities
 
+- [[bn254]]
+- [[bulletproofs]]
+- [[ceremony]]
+- [[folding]]
+- [[fri]]
+- [[gabizon]]
+- [[groth16]]
+- [[halo]]
+- [[ipa]]
+- [[kzg]]
+- [[nova]]
+- [[plonk]]
+- [[starks]]
+- [[zcash]]
+
 ## Dependencies
+
+- [[ch02-the-structured-reference-string]] — defines the SRS and the trapdoor that ceremonies must destroy
+- [[ch02-the-fair-shuffle-problem]] — introduces the ceremony vs. transparent framing
 
 ## Sources cited
 
+- Zcash Sprout ceremony (2016), BCTV14 protocol
+- Bowe, Gabizon, Miers, 2017 (BGM17 "MMORPG" ceremony protocol)
+- Groth, 2016 (Groth16)
+- Gabizon, Williamson, Ciobotaru, 2019 (PLONK)
+- Ben-Sasson et al., 2018 (STARKs)
+- Bünz et al., 2017 (Bulletproofs)
+- Nikolaenko, Ragsdale, Bonneau, Boneh, 2022 (on-chain ceremonies)
+- Wang, Cohney, Bonneau, 2025 (SoK on trusted setups)
+
 ## Open questions
+
+- The SoK paper identifies the "ideal polynomial commitment scheme" (transparent, constant-size proofs, constant-time verification) as an open problem; no known construction achieves it and none has been proved impossible.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[02-building-the-stage]]
+- Prev: [[ch02-the-structured-reference-string]]
+- Next: [[ch02-the-capex-opex-framework]]

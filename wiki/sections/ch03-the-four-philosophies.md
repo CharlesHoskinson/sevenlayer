@@ -6,7 +6,7 @@ chapter_title: "Choreographing the Act"
 heading_level: 2
 source_lines: [817, 1035]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 3720
 ---
 
@@ -232,16 +232,58 @@ To make these four philosophies concrete: **Philosophy A** is like translating a
 
 ## Summary
 
+Four philosophies govern how developers express computations for ZK proving: EVM-compatible (Scroll, Linea), ZK-native ISA (Cairo/Starknet), general-purpose ISA (RISC-V via SP1, RISC Zero, Airbender, ZisK, Pico), and application-specific DSLs (Compact, Noir, Leo). Philosophies A–C treat privacy as the application's problem; Philosophy D embeds privacy in the language, with Compact's compiler rejecting accidental leakage at compile time.
+
 ## Key claims
+
+- Polygon acquired Hermez for ~$250 million; the project was sunsetted in 2025 after proving EVM opcodes directly proved commercially unviable.
+- RISC-V has ~40 base instructions versus thousands of x86 opcodes, making arithmetization manageable.
+- Airbender proves 21.8 million RISC-V cycles/second on a single H100; a typical Ethereum block (~100–400 million cycles) takes 5–20 seconds.
+- RISC Zero's R0VM 2.0 reduced Ethereum block proving from 35 minutes to 44 seconds.
+- Compact's 26-pass nanopass pipeline includes a `Lnodisclose` disclosure-analysis stage that rejects accidental leakage at compile time.
+- Noir 1.0 pre-released late 2025; Aztec's Ignition Chain launched November 2025 with 185+ operators and 3,400+ sequencers.
+- Leo (Aleo): 400,000+ CLI downloads; privacy modeled via encrypted records (UTXO lifecycle).
+- Goldilocks prime ($2^{64} - 2^{32} + 1$) adopted by Cairo and reused by RISC Zero, SP1, and others.
 
 ## Entities
 
+- [[airbender]]
+- [[arithmetization]]
+- [[bn254]]
+- [[fri]]
+- [[goldilocks]]
+- [[h100]]
+- [[midnight]]
+- [[nvidia]]
+- [[pico]]
+- [[plonk]]
+- [[polygon]]
+- [[poseidon]]
+- [[prism]]
+- [[starknet]]
+- [[sudoku]]
+- [[utxo]]
+- [[zisk]]
+
 ## Dependencies
+
+- [[ch03-from-circuits-to-virtual-machines-a-brief-evolution]] — evolutionary context for the four philosophies
+- [[ch03-compact-s-disclosure-analysis]] — deep-dive on Compact's disclosure analysis pass
+- [[ch03-midnight-compiler-ir-circuit]] — details on ZKIR output and three-artifact compilation
+- [[ch05-layer-4-arithmetization]] — arithmetization overhead referenced for Philosophy C
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[03-choreographing-the-act]]
+- Prev: [[ch03-from-circuits-to-virtual-machines-a-brief-evolution]]
+- Next: [[ch03-the-developer-s-actual-experience]]

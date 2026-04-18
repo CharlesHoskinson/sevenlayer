@@ -6,7 +6,7 @@ chapter_title: "The Market Landscape"
 heading_level: 2
 source_lines: [5088, 5117]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1416
 ---
 
@@ -43,16 +43,42 @@ The trust calculus for enterprise is mixed: centralized audit and compliance pro
 
 ## Summary
 
+Enterprise ZK adoption is regulation-first: MiCA, eIDAS 2.0, Basel III, and SEC digital-asset rules create compliance obligations that ZK proofs satisfy more cheaply than legacy correspondent-banking chains. Deutsche Bank's Project Guardian pilot reduced per-transaction compliance costs from $100K–$300K to $50–200; DTCC cleared $2.5 quadrillion annually and partnered with Canton in December 2025. Trust is not eliminated — it migrates to credential-issuance infrastructure and key management — but visibility of trust assumptions increases.
+
 ## Key claims
+
+- Deutsche Bank (Project Guardian/MAS) used ZK-verified KYC attestations to settle FX and government bond transactions; compliance cost dropped from 0.1–0.3% notional to ~$50–200 per transaction.
+- DTCC partnered with Canton Network in December 2025 for ZK-verified privacy-preserving settlement of tokenized Treasuries; DTCC clears ~$2.5 quadrillion annually.
+- Canton Network uses ZK proofs as a bridge between privacy partitions — proving aggregate capital adequacy without exposing individual transactions.
+- Partisia Blockchain + Danish government: student credentials proving degree/GPA thresholds to employers without exposing full transcripts; creates new trust pathway rather than improving an existing one.
+- Privacy Pools (0xbow) launched April 2025: proves fund provenance (not sanctioned) without revealing full transaction history; direct response to Tornado Cash sanctions.
+- Enterprise adoption is regulation-driven (eIDAS 2.0, MiCA, Basel III, SEC); technology follows legal mandate, not enthusiasm.
+- Trust assumptions increase in number but gain in visibility; visible trust assumptions are better than invisible ones.
 
 ## Entities
 
+- [[ceremony]]
+- [[tornado cash]]
+
 ## Dependencies
+
+- [[ch04-the-disclose-boundary-midnight-s-witness-architecture]] — credential issuance and selective disclosure architecture
+- [[ch08-the-social-layer]] — governance and regulatory context for on-chain compliance
+- [[ch13-zk-identity-growth-regulatory-mandate]] — eIDAS 2.0 and Privacy Pools cross-referenced between identity and enterprise segments
+- [[ch13-proving-as-a-service-the-prover-market-production]] — proving cost figures ($50–200/tx) connect to prover economics
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[13-the-market-landscape]]
+- Prev: [[ch13-proving-as-a-service-the-prover-market-production]]
+- Next: [[ch13-market-sizing]]

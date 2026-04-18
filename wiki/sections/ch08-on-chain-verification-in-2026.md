@@ -6,7 +6,7 @@ chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3968, 3988]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 461
 ---
 
@@ -34,16 +34,47 @@ Layer 7 is the last layer. The seven-layer tour -- from setup ceremony to on-cha
 
 ## Summary
 
+As of early 2026 verification costs have stabilized (200–250K gas, Groth16/BN254), DA is abundant after three Ethereum upgrades expanding capacity 16×, but governance maturity lags — no major ZK rollup has reached L2Beat Stage 2. Governance remains the binding constraint on the security ZK proofs can actually deliver.
+
 ## Key claims
+
+- Verification cost floor set by pairing precompile gas schedule; changes only through Ethereum governance (EIPs/hard forks).
+- Three Ethereum upgrades in two years (Dencun, Pectra, Fusaka) expanded DA capacity ~16×.
+- Alternative DA layers (Celestia, EigenDA, Avail) provide cheaper options with different trust models.
+- Most ZK rollups remain Stage 0 or Stage 1; no major ZK rollup at Stage 2 as of writing.
+- Fiat-Shamir transcript completeness is now a first-order audit property following Frozen Heart, Last Challenge Attack, and Solana ZK ElGamal.
+- New implementations continue to be written; the Fiat-Shamir pattern will recur until proof system libraries converge on battle-tested implementations.
+- SHARP, Aligned Layer, and NEBRA demonstrate 10–100× per-proof cost reduction via aggregation; aggregation services are themselves centralization points needing governance analysis.
+- Below Stage 2, the verdict is provisional: the audience serves at the pleasure of a committee that can replace it.
 
 ## Entities
 
+- [[groth16]]
+- [[bn254]]
+- [[fiat-shamir]]
+- [[l2beat]]
+- [[mpc]]
+- [[fhe]]
+
 ## Dependencies
+
+- [[ch08-the-price-of-a-verdict]] — verification and DA cost baseline
+- [[ch08-governance-the-achilles-heel]] — Stage framework and governance maturity
+- [[ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities]] — Fiat-Shamir audit posture
+- [[ch08-proof-aggregation-the-missing-layer]] — aggregation services status
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[08-the-verdict]]
+- Prev: [[ch08-who-verifies-the-verifier]]
+- Next: —

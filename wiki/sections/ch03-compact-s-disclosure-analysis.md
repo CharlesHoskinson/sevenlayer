@@ -6,7 +6,7 @@ chapter_title: "Choreographing the Act"
 heading_level: 2
 source_lines: [1102, 1155]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 576
 ---
 
@@ -67,16 +67,42 @@ The tradeoff is clear: Compact contracts are locked to Midnight's proof system (
 
 ## Summary
 
+Compact's disclosure analysis rejects at compile time any program where a witness value reaches a public surface without an explicit `disclose()` call, making privacy a compiler guarantee rather than a developer responsibility. No other ZK language provides this guarantee; the tradeoff is lock-in to Midnight's PLONK-on-BLS12-381 stack and Zswap token model.
+
 ## Key claims
+
+- Witness values are private by default; `disclose()` is the explicit consent mechanism, not a prohibition.
+- The `Lnodisclose` pass runs before any code generation; compilation fails if any undeclared disclosure path exists.
+- Three leakage categories caught: ledger operations, circuit return values, kernel operations (token transfers, balance queries).
+- A naive private voting contract generated 11 disclosure errors; compiler-forced redesign (Merkle trees + nullifiers) was architecturally superior.
+- No other ZK language (Circom, Noir, Cairo) provides compile-time privacy guarantees.
+- Lock-in: PLONK on BLS12-381, Zswap token model, Midnight ledger only.
 
 ## Entities
 
+- [[bls12-381]]
+- [[midnight]]
+- [[plonk]]
+
 ## Dependencies
+
+- [[ch03-under-constrained-circuits-the-dominant-failure-mode]] — the failure mode this approach addresses
+- [[ch03-the-four-philosophies]] — positions Compact within Philosophy D
+- [[ch03-midnight-compiler-ir-circuit]] — full 26-pass pipeline and three-artifact output this analysis feeds into
+- [[ch04-the-disclose-boundary-midnight-s-witness-architecture]] — Layer 3 view of the same disclose boundary
 
 ## Sources cited
 
+None in this section.
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[03-choreographing-the-act]]
+- Prev: [[ch03-under-constrained-circuits-the-dominant-failure-mode]]
+- Next: [[ch03-midnight-compiler-ir-circuit]]

@@ -6,7 +6,7 @@ chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4225, 4262]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: untouched
+status: drafted
 word_count: 1163
 ---
 
@@ -51,16 +51,45 @@ The implication for system architects: the choice of PET is not merely a technic
 
 ## Summary
 
+GDPR Article 17 (right to erasure) conflicts with blockchain immutability; the EDPB Guidelines 02/2025 resolution is off-chain storage with on-chain hashing — deleting off-chain data and keys orphans the on-chain hash. eIDAS 2.0 (effective 2024) mandates selective-disclosure digital identity wallets for all 450 million EU citizens by 2026, transforming ZKPs from optional to compliance-required. GDPR violations can reach 4% of global annual revenue or €20 million.
+
 ## Key claims
+
+- EDPB Guidelines 02/2025 (April 2025 plenary): do not store PII on-chain; use off-chain storage + on-chain hash.
+- Orphaned hash: delete off-chain data and linking keys → 32-byte on-chain string points to nothing; right to erasure satisfied.
+- zKYC pattern (Galactica Network, zyphe, hyli): selective disclosure ZKPs for regulatory compliance without surveillance.
+- Age verification example: ZK proof of "age ≥ 21" from government-signed credential reveals one bit; no name, address, or licence number crosses.
+- eIDAS 2.0: EU Digital Identity Wallet mandated for all member states by 2026; ~450 million potential users; must support selective disclosure by design.
+- EU Large Scale Pilots (POTENTIAL, EU Digital Identity Wallet Consortium, NOBID, DC4EU) testing since 2023.
+- GDPR max fine: 4% global annual revenue or €20M, whichever is greater.
+- For $10B-revenue company: potential $400M GDPR liability from a privacy architecture failure.
 
 ## Entities
 
+- [[zkps]]
+
 ## Dependencies
+
+- [[ch09-the-four-pillars]] — ZKPs as the technical foundation for zKYC and selective disclosure
+- [[ch09-real-world-deployments-five-case-studies]] — Privacy Pools as the on-chain compliance deployment
+- [[ch09-the-decision-matrix]] — GDPR/eIDAS as regulatory regime input to PET selection
+- [[ch08-governance-the-achilles-heel]] — governance risk context for regulatory compliance
 
 ## Sources cited
 
+- EDPB Guidelines 02/2025 on personal data and blockchain (adopted April 2025 plenary).
+- EU eIDAS 2.0 Regulation (effective 2024).
+- eIDAS 2.0 Architecture and Reference Framework (ARF).
+- EU Large Scale Pilots: POTENTIAL, EU Digital Identity Wallet Consortium, NOBID, DC4EU (2023–).
+
 ## Open questions
+
+None flagged by this section.
 
 ## Improvement notes
 
 ## Links
+
+- Up: [[09-privacy-enhancing-technologies]]
+- Prev: [[ch09-privacy-architectures-for-smart-contracts-kachina-and-zexe]]
+- Next: [[ch09-the-decision-matrix]]
