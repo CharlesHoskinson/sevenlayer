@@ -84,6 +84,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) No sources cited for specific figures: Scroll $748M TVL, Linea $2B TVL, ZKsync Airbender 21.8M cycles/sec, $102K/year proving cost, blob capacity increase figures. These are verifiable claims that should carry citations.
+- [P2] (A) "Fiat-Shamir-based PLONK" for Linea is imprecise; Linea uses a gnark-based custom SNARK. The description conflates the non-interactivity transform with the underlying proof system family.
+- [P3] (D) "Philosophy A in the original taxonomy" references a ch03 classification not defined here and not wikilinked; a dependency link to the relevant ch03 section is missing.
+- [P3] (A) "Atlas upgrade" for ZKsync Era's Airbender deployment is a specific named event with no citation or wikilink; if the name is wrong or contested it will be unverifiable.
+
 ## Links
 
 - Up: [[13-the-market-landscape]]

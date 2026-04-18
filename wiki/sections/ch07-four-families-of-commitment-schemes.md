@@ -165,6 +165,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) Comparison table lists Lattice/Ajtai verification as `O(√n) or O(log n)` — Greyhound achieves √N but LatticeFold/Neo verification is not generally O(log n) without further compression; the "or O(log n)" entry is optimistic and should cite which specific scheme achieves it.
+- [P2] (A) "One pairing check" for KZG verification — technically two pairing evaluations are computed (e(C − yG, H) and e(π, H_s − zH)) then compared; "one pairing check" elides this. Minor but could confuse readers checking against the equation shown.
+- [P2] (B) Sources cited lists "None in this section" despite the section making specific performance claims (48 bytes on BLS12-381, 50–200 KB for FRI, 1–5 KB for IPA). These figures should cite primary papers (KZG: Kate et al. 2010; FRI: Ben-Sasson et al. 2018; Bulletproofs: Bünz et al. 2018).
+- [P3] (D) At 3,227 words this is the longest section in ch07 by far. The intuition blocks for FRI (proximity testing) and IPA (recursive halving) are valuable but could be split into dedicated depth-sections rather than buried here, to match the word-count pattern of sibling sections (~300–950 words).
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

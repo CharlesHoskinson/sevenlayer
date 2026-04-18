@@ -65,6 +65,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "algebraic hash functions like Poseidon often use lookup-table-based S-box computations that create secret-dependent memory access patterns" — Poseidon uses power-map S-boxes (x^α field exponentiation), not lookup tables. Lookup tables are an implementation optimization that some engineers apply, not an inherent property of Poseidon or algebraic hashes. The sentence conflates the algorithm with one possible implementation and incorrectly attributes the side-channel risk to the algorithm design. Rescue-Prime and Griffin also use algebraic S-boxes. The claim needs to be reframed: "implementations of algebraic hashes that use lookup tables for S-box evaluation…"
+- [P2] (A) "Poseidon, in particular, has seen several parameter revisions in response to improved attacks" — "several" is vague; the main known revision was in response to the Poseidon-Gröbner attack (Bouvier et al. 2022 and related work). Citing the specific attack would make this concrete.
+- [P2] (B) Sources cited lists "None" despite the specific "2019" publication date for Poseidon and the claim about parameter revisions in response to named attack types (Gröbner basis, interpolation). The Poseidon paper (Grassi et al., USENIX Security 2021, ePrint 2019/458) should be cited.
+- [P3] (C) "There is also a side-channel dimension, discussed in Chapter 4" — this should be a wiki-link `[[ch04-side-channel-attacks-when-the-walls-leak]]` rather than a prose chapter reference.
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

@@ -63,6 +63,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "Pico Prism zkVM" merges two distinct Brevis products: Pico (a zkVM) and Prism (a coprocessor framework). The entities list correctly separates them ([[pico]], [[prism]]) but the body text conflates them into a single compound name, which is inaccurate.
+- [P2] (B) No sources cited for Axiom's $20M Series A, Brevis ProverNet Dec 2025 launch date, or the $0.10–$1.00 per-query cost estimate.
+- [P2] (C) The DeFi lending example (30-day average balance, TWAP query) is stated in nearly identical terms in both paragraph 5 and paragraph 6, creating redundant prose. One instance should be removed or condensed.
+
 ## Links
 
 - Up: [[13-the-market-landscape]]

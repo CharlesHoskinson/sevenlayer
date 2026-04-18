@@ -57,6 +57,8 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] A The body paragraph enumerates only five residual trust assumptions — (a) ceremony participants, (b) circuit correctness, (c) hardware side channels, (d) discrete logs, (e) governance multisig — but the section and Key claims reference "seven assumptions." Two layers are missing from the inline enumeration: Layer 4 (arithmetization faithfully encodes computation) and Layer 5 (proof system soundness / Fiat-Shamir implementation). The closing paragraph should either list all seven or acknowledge the compression explicitly.
+
 ## Links
 
 - Up: [[10-the-synthesis-three-paths-not-two]]

@@ -65,6 +65,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "Pre-quantum recursive proof systems (exemplified by Zexe)" — Zexe is a privacy framework (Bowe et al., S&P 2020) that uses Groth16, not the canonical example of curve-cycle recursion. The curve-cycle recursion requirement was introduced and demonstrated by Halo (Bowe, Grigg, Hopwood, 2019) and productized in Pickles/Mina Protocol. Zexe does not require curve cycles for its own operation. The attribution should reference Halo or Mina as the canonical example.
+- [P2] (A) "arithmetic on the second curve is typically 2x or more expensive" — this claim about curve cycle overhead should cite a source; the actual overhead varies by implementation and the "2x" figure is an approximation without backing.
+- [P2] (B) Sources cited lists "None" despite the specific architecture claims about Zexe and curve cycle requirements. Bowe et al. (S&P 2020) for Zexe and Bowe et al. (2019) for Halo should be cited.
+- [P3] (E) The section makes a strong architectural point (lattice simplicity as a security property) but does not quantify the simplification — e.g., how many fewer parameters, what the circuit size savings from eliminating non-native arithmetic are in practice for Neo vs Halo2.
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

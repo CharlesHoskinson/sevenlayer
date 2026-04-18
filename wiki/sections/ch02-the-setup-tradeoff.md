@@ -68,6 +68,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) The section claims "every major production system has chosen" the universal BLS12-381 + STARK inner + Groth16 outer architecture, but several major systems (e.g., Polygon's Plonky2/Plonky3, which wraps to PLONK rather than Groth16) do not exactly match this description; the "every major" claim is slightly overbroad.
+- [none] (B) No citation issues; the section appropriately references prior sections rather than introducing new sources.
+- [P2] (C) The closing line "Who writes the script?" is effective but the preceding Part II header break within the section file is unusual — structural dividers (# Part II) that appear mid-section suggest this content may belong at a different boundary in the compiled manuscript.
+- [P1] (D) The 67% under-constrained circuits figure is cited here without a source; in ch01-the-deepest-question it is sourced to "Chaliasos et al., USENIX Security 2024" and in ch03-risc-v-won it is cited similarly. This section uses it as a concluding statistic without a citation, inconsistently with the rest of the book.
+- [P3] (E) The section summarizes the chapter's recommendations but does not note the emerging alternative of on-chain ceremony verification (Nikolaenko et al. 2022, already cited in ch02-two-ways-to-build-a-stage) as a potential third path that avoids both the sociological-trust problem and the proof-size penalty.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

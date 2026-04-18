@@ -60,6 +60,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) "Polygon zkEVM's shutdown at Layer 2" stated without citation; this is a specific empirical claim that needs a source or date.
+- [P2] (B) No sources cited anywhere in the section despite making specific cross-layer causal claims (Witness Gap amplification, LogUp/CCS emergence as zkVM consequences). At minimum, forward references to sourced sections should anchor these claims.
+
 ## Links
 
 - Up: [[11-zkvms-the-universal-stage]]

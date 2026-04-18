@@ -62,6 +62,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (C) The sentence "The market does not need to be created. It has been mandated." appears verbatim in both the eIDAS paragraph and the closing paragraph. One instance is a copy-paste artifact and should be removed.
+- [P2] (B) The $7.4B market projection is stated in the body without attribution; it appears in the key claims without a source either. The market-sizing section cites Grand View Research for total ZKP figures but does not reconcile with this $7.4B identity-specific number — the source needs to be identified and cited here or in ch13-market-sizing.
+- [P2] (B) Privacy Pools ">$6M volume, >1,500 users" and Humanity Protocol "$1.1B valuation" are specific figures without citations.
+
 ## Links
 
 - Up: [[13-the-market-landscape]]

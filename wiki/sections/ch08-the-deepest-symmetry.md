@@ -63,6 +63,8 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) The Layer 1 ↔ Layer 7 symmetry argument assumes all proof systems require a ceremony with social trust, but STARK-based systems (transparent setups) do not — the symmetry holds only for SNARKs with trusted setups; the text should qualify this.
+
 ## Links
 
 - Up: [[08-the-verdict]]

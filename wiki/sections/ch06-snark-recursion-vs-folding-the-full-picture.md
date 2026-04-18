@@ -90,6 +90,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (D) The 1,000–10,000 step crossover threshold is stated twice: once mid-section and then again in the final paragraph, nearly verbatim; one occurrence should be cut
+- [P2] (B) Mangrove citation lists "Nguyen, Datta, Chen, Tyagi, Boneh, 2024" — the ePrint should be cited with its number; also the author order should be verified against the actual paper
+- [P3] (A) "Halo 2 does for its IPA-based verification" — Midnight's Halo 2 deployment uses KZG not IPA (as correctly noted in ch06-case-study-midnight); saying Halo 2 has a "cheap IPA-based verifier" without qualification is inconsistent with the Midnight case study
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

@@ -147,6 +147,11 @@ None in this section.
 
 ## Improvement notes
 
+- [P1] (D) The Lean boundary discussion is repeated nearly verbatim in two consecutive paragraphs (the "Lean Boundary" subsection contains both a general statement and a near-duplicate "to be concrete" paragraph saying essentially the same thing); one should be cut or merged
+- [P2] (A) "Twist and Shout memory arguments" — "Twist" is a recognizable memory-consistency argument name; "Twist and Shout" appears to be an invented informal label; clarify whether this is the actual protocol name used in the Nightstream codebase or an editorial gloss
+- [P2] (B) No sources cited; the section would benefit from a link to the Nightstream repository or its README, since the section relies on specific crate names and architectural details that readers cannot verify without a pointer
+- [P3] (C) "Not glamorous, but essential" and "slow, patient, unglamorous work" — light AI-style rhetorical framing; could be tightened
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

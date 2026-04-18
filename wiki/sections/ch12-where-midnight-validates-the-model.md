@@ -61,6 +61,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (E) The section lists five validation points but gives only one sentence each; Layers 3 and 6 are noted as not clean fits but there is no brief explanation of why — even a parenthetical would improve completeness.
+- [P3] (B) "~18 s / ~490 trillion SPECK" is repeated without a source; should inherit the citation from the full-mapping section rather than float uncited here.
+
 ## Links
 
 - Up: [[12-midnight-the-privacy-theater]]

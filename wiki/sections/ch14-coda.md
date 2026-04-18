@@ -178,6 +178,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (D) The complete bibliography skips reference number 33 — the sequence runs 32, 34, skipping 33 entirely. Either a reference was deleted without renumbering or a citation was omitted. The gap should be resolved.
+- [P2] (A) The Coda states "3-5 years for the hardest problems," but Q2 in ch14-the-seven-questions sets a "5-10 years for theoretical resolution" timeline and Q6 sets "3-5 years." The Coda's single range flattens the spread and understates Q2's horizon.
+
 ## Links
 
 - Up: [[14-open-questions-and-the-road-ahead]]

@@ -80,6 +80,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (B) No sources cited for any benchmark numbers in the section — block proving times, GPU configs, cost figures, ZKPOG 52x speedup, OpenVM SWIRL 3.8 GHz, Nexus 3.0 two-pass approach, and EF pivot targets. This is the most data-dense section in the chapter and every quantitative claim is unsourced.
+- [P2] (A) "a further 45x reduction (from $1.69 to four cents per block)" — $1.69 ÷ $0.04 = 42.25x, not 45x; the stated multiplier is inconsistent with the stated prices.
+- [P3] (A) "the 2,000-fold cost collapse described in Chapter 6" — needs verification that ch6 uses this exact figure; if ch6 says a different number, this is an internal inconsistency.
+
 ## Links
 
 - Up: [[11-zkvms-the-universal-stage]]

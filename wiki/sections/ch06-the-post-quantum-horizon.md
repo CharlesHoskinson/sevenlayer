@@ -75,6 +75,9 @@ Shor's algorithm makes all elliptic-curve-based proof systems (Groth16, PLONK, H
 
 ## Improvement notes
 
+- [P2] (A) "Shor's algorithm breaks the discrete logarithm problem in polynomial time. This means every proof system built on elliptic curve cryptography … becomes insecure. Not 'might become insecure.' Becomes insecure." — the certainty is slightly overstated; Shor's algorithm requires a cryptographically relevant quantum computer (fault-tolerant, large-scale) that does not yet exist; the phrasing conflates mathematical implication with practical threat; a hedge ("once a sufficiently powerful quantum computer exists") would be more precise
+- [P3] (E) "No post-quantum on-chain verifier exists in production" — accurate, but the section could briefly mention NIST PQC standardization (CRYSTALS-Dilithium, FALCON) and why none of those directly apply to on-chain ZK verifiers, to help readers understand the gap
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

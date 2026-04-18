@@ -62,6 +62,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "Performance (2023–2025) is largely crossed: real-time proving is achieved, costs are sub-cent" — ch01-three-converging-forces states cost fell to $0.04 by December 2025, which is not yet sub-cent; the guide claims costs are "sub-cent" in the performance frontier description, creating a minor internal contradiction. Align with the $0.04 figure or note sub-cent is a 2027 projection.
+- [P2] (C) The reading-path structure (three bold headers, bulleted chapter lists) is functional but reads more like a table of contents than prose; if the guide is aimed at a general reader, integrating at least the Executive and Engineer paths into a short paragraph each would reduce the outline feel.
+- [P2] (D) "Chapter 14" is cited as the terminus for both the Executive path (to evaluate governance and quantum risk) and the Researcher path (seven open questions); but Chapter 14 is not introduced anywhere in Chapter 1's body sections, making the reference opaque for a first-time reader. A one-sentence descriptor of what Chapter 14 contains would help.
+- [P2] (E) The three frontiers (Performance, Security, Privacy) are stated but not grounded in any specific evidence within this section; the section relies entirely on the reader having just read ch01-three-converging-forces. Readers using this section as a standalone entry point (as the Executive path implies) will find the frontier claims unanchored.
+- [none] B — all claims in this section are definitional/structural with no quantitative assertions requiring citation beyond what is covered in other sections.
+
 ## Links
 
 - Up: [[01-the-promise-of-provable-and-programmable-secrets]]

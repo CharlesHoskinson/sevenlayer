@@ -73,6 +73,8 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P3] (E) Closing section is appropriately brief as a chapter summary, but the transition sentence "the seal works because certain mathematical problems are hard" could name one or two of those problems (discrete log, Module-SIS) to give readers a more concrete handoff into Chapter 7
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

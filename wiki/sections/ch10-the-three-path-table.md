@@ -54,6 +54,8 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P3] C "Pure Transparent" row: "Large on-chain proof or alternative verification" is vague — no explanation of what "alternative verification" means (recursive aggregation to a non-BN254 verifier? off-chain settlement?). Could be sharpened.
+
 ## Links
 
 - Up: [[10-the-synthesis-three-paths-not-two]]

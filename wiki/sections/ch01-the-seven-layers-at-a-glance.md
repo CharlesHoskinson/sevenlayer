@@ -81,6 +81,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "Layer 2 — a single `=` sign broke Tornado Cash's entire soundness guarantee" — the Tornado Cash bug involved using `=` (JavaScript assignment in a Circom template) where `<==` (constrained assignment) was needed, but calling it a single "missing `=` sign" is imprecise; it was an operator substitution (`=` for `<==`), not a missing character. The ch03 section correctly describes it; ch01 should match.
+- [P1] (D) The "141,416" participant count is stated here as Layer 1 context but the chapter elsewhere (ch01-the-deepest-question, ch01-the-first-decision) attributes the same number to the Ethereum KZG ceremony and to Zcash's ceremony separately in ways that could confuse. Confirm every instance consistently refers to KZG 2023, not the Zcash Sprout ceremony (6 participants) or Sapling (~90 participants).
+- [P2] (A) "A stopwatch held to a Zcash prover revealed the transaction amounts" — ch04-side-channel confirms the attack correlated proof-generation time with Hamming weight, allowing *estimation* of amounts; saying it "revealed" the amounts overstates the attack's precision (R = 0.57, not 1.0). Soften to "allowed inference of" or "correlated with."
+- [P2] (C) The three-act structural description ("preparation … transformation … foundations and consequences") has a slightly formulaic, outline-style quality that interrupts the flow mid-section; integrating it as a transitional sentence rather than a standalone paragraph would read better.
+- [P2] (E) Layer 6 description mentions quantum threat but does not name the specific hardness assumptions at stake (discrete log, hash collision resistance); the Entities list includes `[[lattice]]` but the body does not mention lattices, leaving the entity tag unanchored.
+- [P3] (E) The DAG with "fourteen causal edges" is promised for Chapter 10 but no preview of what those edges represent is given; a one-sentence hint would build anticipation more concretely.
+
 ## Links
 
 - Up: [[01-the-promise-of-provable-and-programmable-secrets]]

@@ -60,6 +60,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) Section says "this chapter descends to the deepest layer of the zero-knowledge stack" but this is Layer 6; Layer 1 (the setup/ceremony layer) sits beneath it in the stack numbering — phrasing is loose but defensible as "deepest in this book's treatment" rather than "lowest in the stack."
+- [P2] (B) Dependency lists `[[ch06-the-post-quantum-horizon]]` — verify this slug exists and covers the same material claimed; the quantum reckoning topic may be split differently in ch06.
+- [P3] (C) Feynman framing is effective but the rhetorical question in italics ("*What happens when quantum computers change these 'laws'?*") and the em-dash heavy prose lean toward polished AI-introduction style; could be trimmed.
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

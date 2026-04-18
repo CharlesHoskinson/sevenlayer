@@ -68,6 +68,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) "Two additional teams from the Ethereum Foundation's proving ecosystem demonstrated sub-12-second proving" — unnamed, unsourced; either name the teams or remove the vague claim
+- [P2] (A) SP1 Hypercube described as "a multilinear polynomial stack built entirely on the sumcheck protocol" — while broadly accurate, "entirely on" overstates; the system also uses a STARK wrapper and Groth16 for on-chain posting; the description should note these layers
+- [P3] (E) Very short section (385 words); the pivot from speed to security is stated but not developed — that development is delegated entirely to ch06-from-speed-race-to-security-race, but the handoff could name the specific formal-verification milestone (SP1's 62-opcode check) to give readers a concrete anchor before the next section
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

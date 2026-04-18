@@ -86,6 +86,14 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (C) The opening paragraph is duplicated nearly word-for-word: "The taxonomy of philosophies describes how *architects* think about Layer 2. But what does a *developer* actually do?" appears on lines 16 and 17 in back-to-back sentences. One is the section opener, the other is a re-statement. One should be deleted.
+- [P1] (A) "LLVM -O3 optimization yields over 40% improvement when targeting zkVMs…researchers achieved up to 45% on individual benchmarks (with average gains of 1-4%)" — the 40%+ figure and the 1-4% average figure appear contradictory as written. The text does not explain that 40%+ is relative to unoptimized baseline and 1-4% is incremental over standard -O3. The distinction must be made explicit or the passage is misleading.
+- [P1] (B) "ZK-Coder improved Circom circuit generation success rates from 20%...to 88%" — no citation. "CirC, a unifying compiler infrastructure from Stanford" — no citation. Both are specific quantitative/attributive claims that need sources.
+- [P2] (A) "A computation that takes milliseconds to execute takes seconds or minutes to prove" — accurate for complex circuits, but the proof server example earlier says "seconds to tens of seconds on local development hardware"; the later claim of "minutes even on GPU clusters" for Ethereum blocks is consistent. The progression could be stated more precisely instead of vaguely ("seconds or minutes").
+- [P2] (A) "A few hundred bytes for Groth16" — the concept entry and other sections give exactly 192 bytes for Groth16. "A few hundred" understates the precision; use the exact figure.
+- [P2] (B) "Sources cited" is empty for a section with multiple specific performance figures and research results (LLVM optimization percentages, ZK-Coder success rates, CirC work).
+- [P3] (E) Step 6 (Monitor) is noted as "almost entirely undocumented" but receives only a single short paragraph. Given that the section is titled "The Developer's Actual Experience," this known gap in the field deserves more concrete framing of what is missing and why it matters.
+
 ## Links
 
 - Up: [[03-choreographing-the-act]]

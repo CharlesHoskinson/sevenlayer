@@ -63,6 +63,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (C) The 10,000–50,000x overhead tax and the floating-point-to-finite-field mapping problem are stated twice in consecutive paragraphs (once in the DeepProve paragraph, once in the "technical difficulty" breakdown paragraph). The repetition is an editing artifact; one of the two instances should be trimmed.
+- [P2] (B) DeepProve's 700x speedup claim is attributed only to Lagrange ("claiming") with no external citation. Given this is a central quantitative claim, a source or caveat about independent verification is needed.
+- [P3] (A) "hours to seconds" for a 100M-parameter transformer inference at 700x improvement is stated without a baseline proof time, making the improvement claim unverifiable from the text alone.
+
 ## Links
 
 - Up: [[13-the-market-landscape]]

@@ -79,6 +79,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The Zcash Sprout ceremony is described as "six participants" in both this section and ch01-the-deepest-question; ch02-two-ways-to-build-a-stage confirms six participants used the BCTV14 protocol. However the section calls it a "2016" ceremony — ch02 confirms 2016 for Sprout. Consistent, but the section should also note that the Zcash Sapling 2018 ceremony (~90 participants) exists, since omitting it makes the jump to 141,416 feel more abrupt than it is.
+- [P1] (D) The section states the Ethereum KZG Summoning "scaled to six figures" and "141,416" by 2023; this is consistent with ch01-the-seven-layers-at-a-glance and ch02. However, the section's key claims list says "141,416 participants" but attributes them to "Ethereum's KZG Summoning" without the year; the year (2023) should be explicit for traceability.
+- [P2] (B) No source is cited for either the Zcash Sprout ceremony details or the Ethereum KZG Summoning participant count; add a reference to the KZG ceremony attestation page or the Ethereum Foundation blog post.
+- [P2] (C) "Eight cells are given; eight are blank" — the puzzle ASCII art shows a 4×4 grid; the claim that "eight cells are given" is correct (1, 4, 4, 1, 1, 4, 1 — actually count: top row: 1,_,_,4 = 2 given; row 2: _,4,1,_ = 2 given; row 3: _,1,_,_ = 1 given; row 4: 4,_,_,1 = 2 given = 7 given, not 8). Verify the cell count.
+- [P3] (E) The section introduces "transparent setup" as the alternative but gives only one sentence on the trade-off; a brief mention of FRI-based systems (STARKs) as the canonical transparent approach would reduce the abstraction here without adding length.
+- [none] D — no cross-chapter contradictions found beyond those noted above.
+
 ## Links
 
 - Up: [[01-the-promise-of-provable-and-programmable-secrets]]

@@ -169,6 +169,12 @@ Ceremony-based (trusted) setups and hash-based transparent setups represent the 
 
 ## Improvement notes
 
+- [P1] (A) The setup spectrum table lists Bulletproofs at "~700 bytes"; ch07-four-families-of-commitment-schemes gives IPA/Bulletproofs as "O(log n), ~1–5 KB" — a direct numerical contradiction; 700 bytes assumes a small fixed circuit, while the logarithmic growth makes the 700-byte figure misleading without a constraint count qualifier.
+- [P1] (B) The BGM17 citation "Bowe, Gabizon, Miers, 2017" needs a venue/title; the paper is "Multi-Party Protocol for the Groth16 zk-SNARK" (IACR ePrint 2017/1050). The Nikolaenko et al. 2022 and Wang, Cohney, Bonneau 2025 citations also lack venues.
+- [P2] (C) The human-interior subsection is gripping but contains the phrase "key property" (line on pairings); replace with plain language. The repeated "Todd's furnace and Miller's volatile memory" callback is good, but the preceding narrative has minor redundancy ("The ceremony did not need any of them to understand" appears twice in adjacent paragraphs).
+- [none] (D) No structural contradictions with other chapters found.
+- [P3] (E) The Sprout ceremony used the BCTV14 protocol but the text does not note that BCTV14 was later found vulnerable (CVE-2019-7167, covered in a subsequent section) — a forward reference here would strengthen the narrative arc.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

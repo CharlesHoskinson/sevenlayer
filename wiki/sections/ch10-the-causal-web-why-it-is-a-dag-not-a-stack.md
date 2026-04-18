@@ -95,6 +95,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] A "Every layer is connected to every other layer through at most two hops" — this claim is not demonstrated and appears false given the stated edge set. Layer 1 to Layer 3 requires at minimum the path 1→5→4→3, which is three hops, not two. The claim needs either a proof or qualification (e.g., "most pairs are within two hops").
+- [P3] B Penrose reference (*The Road to Reality*) paraphrases a distinction without a page number or chapter reference, making it unverifiable. Low priority given it is used illustratively, not as a technical claim.
+
 ## Links
 
 - Up: [[10-the-synthesis-three-paths-not-two]]

@@ -93,6 +93,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (B) Zexe cited as "(2018)" in prose and Sources cited — this is the ePrint date; the published venue is IEEE S&P 2020 (confirmed by ch06 bibliography). Should read "Bowe et al. IEEE S&P 2020" or at minimum note the ePrint vs. publication distinction.
+- [P1] (A) "BLS-12 curve for inner SNARKs" is ambiguous — Zexe uses BLS12-377 for inner proofs; "BLS-12" does not identify a specific curve and could be confused with BLS12-381.
+- [P2] (B) Dependencies lists both `[[ch03-the-disclose-boundary-midnight-s-witness-architecture]]` and `[[ch04-the-disclose-boundary-midnight-s-witness-architecture]]` for the same conceptual section — duplicate or stale link that should be resolved to the correct slug.
+- [P3] (B) Kachina affiliation "University of Edinburgh and IOHK" — the bibliography entry (IEEE CSF 2021) does not list an affiliation; worth verifying that all three authors were at those institutions.
+
 ## Links
 
 - Up: [[09-privacy-enhancing-technologies]]

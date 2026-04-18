@@ -256,6 +256,11 @@ Seven concrete research blockers define the field's near-term ceiling: GPU witne
 
 ## Improvement notes
 
+- [P1] (A) Q2 describes Wee-Wu's work as "compact functional encryption and related primitives" but ePrint 2024/028 is titled "Lattice-Based Functional Commitments: Fast Verification and Cryptanalysis" — not functional encryption. The characterisation is imprecise and should be corrected to functional commitments.
+- [P2] (A) Q1 states GPU proving achieves "10-50x speedups via NTT and MSM parallelism"; ch04 consistently states "10 to 100 times faster." The upper bound is understated.
+- [P3] (B) Wee-Wu citation lists venue as "ASIACRYPT 2023" with ePrint 2024/028 — the ePrint number postdates the conference year by a year. The ePrint number should be verified (likely 2023/xxx for a 2023 proceedings paper).
+- [P3] (C) "ARGUZZ" in Q4 body text is inconsistent with "Arguzz" in the Sources cited block and the title in the bibliography. Use consistent capitalisation throughout.
+
 ## Links
 
 - Up: [[14-open-questions-and-the-road-ahead]]

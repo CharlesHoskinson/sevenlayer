@@ -66,6 +66,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) The section says "verified with three pairing operations" for Groth16; technically Groth16 verification requires two pairing checks (each involving two pairings), or more precisely three pairings total (one of which is precomputed). The phrasing "three pairing operations" is loose and could be tightened.
+- [P2] (B) Marlin (Chiesa et al., 2019) is cited but the paper title and venue are absent; "Marlin: Preprocessing zkSNARKs with Universal and Updatable SRS" (EUROCRYPT 2020) should be noted. The year in the citation (2019) refers to the ePrint date, but the published venue is 2020.
+- [P2] (C) The final paragraph introduces Midnight somewhat abruptly — the transition "To see how the capex/opex distinction plays out in practice ... we need a concrete example. The Sudoku puzzle ... For the architectural layers ... we need a production system" reads like a bridge that stalls rather than moves.
+- [none] (D) No contradictions with other chapters found.
+- [P3] (E) The section could note Sonic (Maller et al., 2019) as the earliest universal SNARK (predating PLONK by months), which would complete the historical picture; Marlin and PLONK are mentioned but Sonic is the first universal updateable reference string construction.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

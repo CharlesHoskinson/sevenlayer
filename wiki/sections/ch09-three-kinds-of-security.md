@@ -76,6 +76,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) Body says "Battering RAM (~50 euros)" but Key claims say "~$50" — currency and amount are inconsistent; one must be wrong.
+- [P1] (B) "Sources cited: None" despite multiple specific dated claims (Foreshadow Aug 2018, AEPIC Leak Aug 2022, Downfall Aug 2023, SGAxe, Plundervolt, Battering Ram/Wiretap 2025, SGX deprecation 2021). At minimum, CVE advisories or security-conference papers should be listed.
+- [P2] (D) TEE deprecation discussion (last three paragraphs) is detailed and accurate but never reconnects to how the three security tiers interact in PET selection — the coherence back to "heuristic security" as a taxonomy term is implicit, not stated.
+
 ## Links
 
 - Up: [[09-privacy-enhancing-technologies]]

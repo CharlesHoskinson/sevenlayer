@@ -148,6 +148,13 @@ Zero-knowledge is a property of the proof, not the prover: the process of genera
 
 ## Improvement notes
 
+- [P0] (A) The section states Poseidon's S-box computes $x^5$ or $x^7$ and uses "lookup tables that map input values to output values." This is misleading: Poseidon's S-box is a power map over a prime field — it is not typically implemented with lookup tables in software (unlike AES S-boxes). The cache-timing attack described by Mukherjee et al. targets Reinforced Concrete's "Bars" function (which uses 256 KB tables), not Poseidon's S-box directly. The text blurs the two and could cause readers to misattribute the vulnerability.
+- [P1] (A) "Mukherjee, Rechberger, and Schofnegger published the first systematic study of cache timing leakages in zero-knowledge protocols in 2024" — this paragraph appears after the "three attack channels" synthesis paragraph at line 71, which already references the same paper. The ordering creates a structural echo: the paper is effectively introduced twice. The second block (lines 73–79) should come before the synthesis.
+- [P1] (B) Tramer, Boneh, and Paterson (2020) is the central citation but "Remote Side-Channel Attacks on Anonymous Transactions" may not be the exact USENIX Security 2020 title — verify the title. The venue and year appear in Sources cited, but the precise paper title should be confirmed.
+- [P2] (A) "EM attacks can reconstruct the scalar values used in multi-scalar exponentiation" is stated as "published, demonstrated" but no specific ZK-system EM attack paper is cited — only the general prior work on AES smartcards and ECDSA HSMs. The claim that ZK MSM is vulnerable to EM is extrapolated, not directly demonstrated in the literature cited.
+- [P2] (C) The "detective story" sub-framing ("told as the detective story it was") is an AI-smell: framing a sub-section as a narrative genre. Retitle or remove the genre label.
+- [P3] (E) The GPU SIMT thread-divergence paragraph is the only place in ch04 that connects side-channel defenses to GPU architecture. It raises an important open problem but does not cite any work that has measured the performance cost of constant-time GPU proving. Noting this gap explicitly would strengthen the open-questions section.
+
 ## Links
 
 - Up: [[04-the-secret-performance]]

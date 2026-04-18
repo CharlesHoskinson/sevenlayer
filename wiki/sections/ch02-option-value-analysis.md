@@ -76,6 +76,13 @@ A trusted setup on BLS12-381 or BN254 buys performance today but forecloses post
 
 ## Improvement notes
 
+- [P1] (A) The option-value table uses a $50M migration cost figure with no sourcing; the basis for this estimate (new ceremony + $X in node upgrades + $Y in wallet software + $Z coordination) is not explained. The figure dominates the expected-cost calculation, making the table's conclusions highly sensitive to an unsourced assumption.
+- [P1] (A) The Federal Reserve FEDS 2025-093 citation is a specific working paper; verify that this paper number is correct (FEDS working paper numbering is sequential, and 2025-093 would be a late-2025 paper). If the document date is April 2026 and the paper was published in 2025, the number should be verifiable — a DOI or URL is needed.
+- [P2] (B) The NSA upstream collection program reference lacks a source beyond "(disclosed in 2013)"; the Snowden disclosures are public record but a specific document or report would strengthen the citation.
+- [P2] (C) "There is also the 'Harvest Now, Decrypt Later' threat, and it may be the most urgent variant" — "it is worth noting" pattern avoided, but "it may be the most urgent" is a claim that needs qualification (urgent relative to what horizon?). Tighten.
+- [none] (D) No structural contradictions found.
+- [P3] (E) The option-value framework does not account for the possibility of SNARK-to-STARK migration without a new ceremony — the hybrid pipeline already uses a transparent inner proof, so a plausible upgrade path exists that the analysis ignores.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

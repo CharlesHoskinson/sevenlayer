@@ -73,6 +73,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] B No sources cited for any system-specific claims: SP1 Hypercube over BabyBear, Stwo's SHARP aggregation, the Groth16 wrapping via Herodotus, or gas-cost figures ($5–$25 / $0.50–$1.00). The Herodotus attribution in particular is unusual — Herodotus is a storage-proofs project, not a wrapping pipeline provider; this claim needs a citation or correction.
+- [P2] A Entities list splits "Pico Prism" into `[[pico]]` and `[[prism]]` as separate entries, misrepresenting the product name and creating a broken entity reference.
+
 ## Links
 
 - Up: [[10-the-synthesis-three-paths-not-two]]

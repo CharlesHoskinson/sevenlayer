@@ -82,6 +82,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) "RISC Zero originally used a 254-bit field with KZG commitments and R1CS constraints. In 2023, they migrated to BabyBear (31-bit field) with FRI commitments and AIR constraints." The claim that RISC Zero originally used R1CS is imprecise — RISC Zero's original architecture (v0.x) used a STARK-based system over a 254-bit field, not R1CS/Groth16. The migration was from a 254-bit field STARK to BabyBear FRI, not from R1CS. This should be corrected to avoid implying RISC Zero was a Groth16 system.
+- [P2] (A) The proof-core triad bullet lists "64-bit Goldilocks, lattice, CCS+sumcheck" as one coherent bundle. Neo (referenced in the CCS section) uses Goldilocks but not lattice-based commitments in its published form; LatticeFold uses NTRU lattices. The association of "lattice" specifically with Goldilocks may be inaccurate — LatticeFold targets general fields including small fields, not specifically Goldilocks.
+- [P3] (D) The "Layers 2 and 4: Cairo's Co-Design" subsection is the most interesting cross-layer collapse but gets the least space. The write-once memory model example is compelling; it deserves an additional paragraph explaining the proof-cost difference numerically (e.g., sorted-access check vs. Merkle tree cost).
+- [P3] (B) No sources cited for any of the three collapse examples, including Cairo's write-once memory model. The Cairo paper (Goldberg et al., 2021) should be referenced.
+
 ## Links
 
 - Up: [[05-encoding-the-performance]]

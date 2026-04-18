@@ -62,6 +62,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) No sources cited for any of the three named aggregation services (SHARP, Aligned Layer, NEBRA); the Aligned Layer ">$11B restaked ETH" figure and NEBRA "live August 2024" date are unanchored.
+- [P2] (E) Section does not explain how aggregation fits (or fails to fit) the seven-layer model beyond a single sentence; the trust-analysis of the aggregation layer is thin relative to the governance section's depth.
+
 ## Links
 
 - Up: [[08-the-verdict]]

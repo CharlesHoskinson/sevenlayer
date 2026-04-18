@@ -87,6 +87,14 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The Groth16 attribution is muddled: the body credits "Jens Groth and separately Rosario Gennaro, Craig Gentry, Bryan Parno, and Mariana Rabin" for constructions "between 2010 and 2013," then the canonical 192-byte proof is called "Groth16" (i.e., Groth's 2016 paper). The GGPR13 work (2013) is a distinct system; Groth16 postdates it by three years. The phrasing implies they co-produced it. Separate the two threads: GGPR (2013) for the first practical succinct construction, Groth (2016) for the 192-byte proof specifically.
+- [P1] (B) The Fiat-Shamir 1986 paper (Crypto 1986, Springer LNCS 263) has no citation; add the standard ePrint or proceedings reference given the centrality of the claim.
+- [P1] (B) The GGPR paper (Gennaro, Gentry, Parno, Rabin, Eurocrypt 2013) has no citation; the Groth16 ePrint is 2016/260.
+- [P2] (A) "Groth16 proof is exactly three points on an elliptic curve — three pairs of coordinates" — technically a Groth16 proof is two $\mathbb{G}_1$ elements and one $\mathbb{G}_2$ element; the $\mathbb{G}_2$ element is a pair of $\mathbb{F}_{p^2}$ points and takes 96 bytes, not 48. The total 192 bytes is correct but "three points of 48 bytes each" oversimplifies and is inconsistent with the BLS12-381 curve geometry used in practice.
+- [P2] (C) "Smaller than a tweet" — Twitter/X raised the character limit to 280 in 2017 (which is ~280 bytes UTF-8); the comparison still works but should say "smaller than a short tweet" or use a more stable comparator.
+- [P2] (C) The hospital scenario ("filling a prescription") spans four paragraphs and repeats the same pattern established in the bank and supply-chain scenarios without adding new analytical content; condense or cut the third use-case to reduce repetition.
+- [P3] (E) The STARK size range "50 to 200 kilobytes" is mentioned but no explanation is given for what drives the variance; a single sentence noting that proof size scales with log of computation depth would add useful texture without bloating the section.
+
 ## Links
 
 - Up: [[01-the-promise-of-provable-and-programmable-secrets]]

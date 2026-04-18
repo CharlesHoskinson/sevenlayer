@@ -63,6 +63,8 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] B Three specific claims lack citations: (1) the EF's "December 2025 pivot" and its exact security targets (100-bit by May 2026, 128-bit by December 2026); (2) SP1 Hypercube eliminating proximity gap conjectures; (3) Brevis Pico Prism achieving 99%+ real-time proving on 16 RTX 5090 GPUs. The bibliography (ref 55: Kadianakis, December 2025) covers the EF security post but is not cited in-section.
+
 ## Links
 
 - Up: [[10-the-synthesis-three-paths-not-two]]

@@ -77,6 +77,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (C) "key insight that makes the entire field of zero-knowledge proofs possible" — stock AI-smell phrase; reword as plain statement.
+- [P2] (A) Schwartz-Zippel is named in Key claims but not in the body of this intro section — the body only paraphrases it; the named lemma should appear in the prose where first invoked, not just in the metadata.
+- [P3] (E) Five-act roadmap is described but "act 4" (lookup revolution) is listed as fourth in the prose yet appears as the fourth item in a five-item list with sumcheck as third — the ordering implied (spreadsheet, R1CS/AIR/PLONKish, CCS+sumcheck, lookups, overhead) is slightly inconsistent with the section sequence (sumcheck precedes lookups but the intro paragraph pairs them as "act three").
+- [P3] (B) No sources cited; acceptable for an intro section, but a forward-reference to [R-L4-1] for the GGPR/QAP origin would anchor the historical claim made in the body.
+
 ## Links
 
 - Up: [[05-encoding-the-performance]]

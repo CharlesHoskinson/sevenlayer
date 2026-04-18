@@ -67,6 +67,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) "Sources cited: None" — all quantitative claims (market size, TVL, zkVM count) rely solely on cross-references with no independent citations. Key figures like "seven production zkVMs" and ">$20B TVL" should have at least one direct source here.
+- [P3] (A) "seven production zkVMs compete on a standardized benchmark" — the exact count of seven is not sourced in this section; it is asserted without a pointer to the ch11 landscape table or an external reference.
+
 ## Links
 
 - Up: [[14-open-questions-and-the-road-ahead]]

@@ -118,6 +118,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (C) Excessive bolding on the "Three Envelopes" subsection headers ("Groth16 is the smallest possible envelope", "PLONK is the universal envelope", "STARKs are glass envelopes") — the bold labels are redundant with the prose that follows and create a numbered-proof-steps feel
+- [P2] (C) "It is worth spelling out" — AI smell in hybrid pipeline paragraph
+- [P2] (A) BN254 security described as "~100 bits after Tower NFS advances" — consensus is 100–110 bits depending on the model; the claim is defensible but should cite Kim-Barbulescu (2016) or equivalent
+- [P3] (B) No citation for the EVM pairing cost of "250,000 gas via EIP-1108"; should cite EIP-1108 directly
+- [P3] (E) The envelope analogy is extended over three long paragraphs; it crowds out technical comparison of prover complexity and concrete proof-size numbers for PLONK variants (a few hundred bytes to a few KB is mentioned but not broken down by variant)
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

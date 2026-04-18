@@ -128,6 +128,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P0] D Frozen Heart count contradicts ch08: this section says the bug "affected three independent implementations simultaneously" and Key claims lists "Bellman, Gnark, academic reference." But ch08-when-the-transcript-lies (the canonical treatment) says six implementations across three proof systems (Dusk Network PLONK, Iden3/SnarkJS Groth16, ConsenSys/gnark PLONK, ING Bank zkrp Bulletproofs, SECBIT Labs ckb-zkp Groth16, Adjoint Inc. Bulletproofs). The number is wrong (three vs. six) and the named implementations don't match — "Bellman" is not listed in ch08's six. Must be corrected to six implementations, and the three named instances replaced with the canonical ch08 list.
+- [P1] A The Layer 2 Tornado Cash example conflates the circuit-bug narrative with the 2022 governance exploit. The actual Tornado Cash governance attack ($~$1M TORN, April 2023) was a governance takeover, not a circuit vulnerability. A missing-constraint circuit exploit in Tornado Cash would be a separate event. The text should identify the specific CVE or audit finding it is referencing, or use a cleaner example (e.g., the Zcash InternalH bug, already mentioned, is a better standalone Layer 2 illustration).
+- [P2] E The cascade structure section notes that a Layer 6 failure "does not cascade into Layer 2, 3, or 4," but does not explain why a quantum break of discrete logs would leave the circuit logic (Layer 2) or arithmetization (Layer 4) intact even though the proof system (Layer 5) using those layers becomes unsound. The reasoning is correct but the isolation argument would benefit from one sentence of elaboration.
+
 ## Links
 
 - Up: [[10-the-synthesis-three-paths-not-two]]

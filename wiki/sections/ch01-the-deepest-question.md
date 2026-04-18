@@ -86,6 +86,15 @@ Each of the seven layers introduces a distinct trust assumption that is independ
 
 ## Improvement notes
 
+- [P0] (D) The Key claims block places the 67% under-constrained circuit statistic under "Layer 1" ("Layer 1: 67% of ZK vulnerabilities are under-constrained circuits"), but the body correctly assigns it to Layer 2 ("At Layer 2, you trust that the program was written correctly… 67%"). This is a direct label error in the Key claims that will propagate to any automated summary.
+- [P1] (A) Overhead figures are stated as "1,000x–5,000x for well-engineered systems (down from a baseline 10,000x)," but ch05-the-overhead-tax-10-000x-to-50-000x gives the range as 10,000x–50,000x with current optimizations bringing it down for specific workloads. The ch01 framing understates the upper bound and should align with ch05.
+- [P1] (B) Chaliasos et al., USENIX Security 2024 is cited by author and venue but without a title, ePrint number, or DOI; cite the full title "SoK: Security of ZK Proof Systems" (or the actual title once verified) and add ePrint 2024/XXX or the USENIX proceedings URL.
+- [P1] (B) The Beanstalk $182 million figure and the "13 seconds" flash-loan attack are asserted without citation; add a reference to the April 2022 post-mortem (Halborn or Beanstalk's own report).
+- [P2] (A) "Layer 4/5: arithmetizing a simple lending comparison generates ~50,000 polynomial constraints over a field of $2^{64}$ elements" — $2^{64}$ is the Goldilocks field, but the example is presented generically; if the figure is field-specific it should say so, and if it is for a 254-bit field the number would be different.
+- [P2] (C) "I'm not entirely sure the seven-layer framing does justice to what happens next" — first-person hedge mid-section reads as an authorial aside that undermines the section's analytical authority; either commit to the framing or restructure the transition.
+- [P2] (C) "There is a symmetry worth noting" — "worth noting" is a classic AI-smell filler phrase; drop it and state the observation directly.
+- [P3] (E) The client-side vs. delegated proving asymmetry ("people with the most to hide have the least ability to hide it") is stated as a conclusion but not quantified; a brief hardware-cost data point (e.g., SNARK proving requires ~4 GB RAM and ~10s on a modern phone) would make the claim concrete.
+
 ## Links
 
 - Up: [[01-the-promise-of-provable-and-programmable-secrets]]

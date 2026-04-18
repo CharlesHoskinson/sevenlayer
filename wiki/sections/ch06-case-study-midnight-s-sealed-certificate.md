@@ -121,6 +121,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) Comparison table cell for Neo/Symphony "Proof time (simple circuit)" reads "GPU-accelerated NTT" — this is a description of the mechanism, not a time value; the cell is inconsistent with the other rows that give actual durations; either provide a time estimate or label the cell differently
+- [P2] (B) Performance figures are stated as "measured on devnet (development hardware)" with no source or link; a pointer to a public benchmark or the Midnight devnet documentation would let readers verify
+- [P3] (A) BLS12-381 described as providing "roughly 128-bit security vs. BN254's ~100 bits after Tower NFS advances" — "roughly 128-bit" for BLS12-381 is standard, but Ethereum's rationale for BN254 is cost not security; noting that BN254 was chosen for EVM compatibility (not as the best security choice) would prevent the comparison from appearing as a criticism of Midnight's curve selection
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

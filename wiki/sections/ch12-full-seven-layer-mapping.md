@@ -166,6 +166,13 @@ This section maps all seven layers of the ZK stack onto Midnight's concrete arch
 
 ## Improvement notes
 
+- [P1] (A) Layer 6 states the BLS12-381 scalar field is "~2^253"; the scalar field prime for BLS12-381 is ~2^255 (255-bit prime). The same approximation appears in ch07-case-study-midnight, so this is a systemic error — both sections need correction.
+- [P1] (A) Layer 5 labels Halo 2 as "UltraPlonk" (parenthetical): Halo 2 uses a UltraPLONK arithmetization but is not itself branded "UltraPlonk"; calling the proof system "UltraPlonk" conflates the arithmetization with the overall proof system name.
+- [P1] (D) Layer 7 describes `submitInsertVerifierKeyTx`/`submitRemoveVerifierKeyTx` enabling on-chain key changes, but ch08 characterises Midnight verifier keys as "immutable — once deployed, a contract's verification logic cannot be changed." The two sections are in tension; one of them must qualify the other.
+- [P2] (A) Layer 7 states "~490 trillion SPECK per circuit call": SPECK is a non-standard sub-unit denomination not defined in the wiki; no source is cited. Either source this or note it as an approximation from documentation.
+- [P2] (B) The Pluto-Eris curve history (Layer 1) is a specific factual claim with no citation; the Halo 2 backend rationale (Layer 5) likewise cites no source. These are strong claims that need anchoring.
+- [P3] (C) Layer 3 contains an extended Asimov analogy and a theater-lighting metaphor that add length without information gain; the core point (disclosure analysis = compile-time hard error) is made adequately in the first paragraph of that sub-section.
+
 ## Links
 
 - Up: [[12-midnight-the-privacy-theater]]

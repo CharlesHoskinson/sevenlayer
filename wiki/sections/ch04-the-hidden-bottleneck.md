@@ -59,6 +59,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (B) The 50–70% figure is attributed to "the field" in the prose but the only named source in ch04-witness-generation-costs is ZKPOG; first use of this number here has no inline citation. Add "(ZKPOG)" at first occurrence.
+- [P2] (A) "10-25%, as the field commonly claimed until recently" — the attribution is vague; the section should identify what publication or period originated this estimate (the prose in ch04-witness-generation-costs pins it to 2023 specifically).
+- [P2] (C) "The choreography is written and compiled" — metaphor intro is effective but "Now the magician goes backstage" restates the theatrical frame used at the end of ch03; minor repetition for readers moving straight through.
+- [P3] (D) The section ends with three named problems but does not give them names yet (Performance/Memory/Security/Correctness labels only land in ch04-the-witness-as-a-multi-dimensional-problem). A forward-reference sentence would orient readers without spoiling the structure.
+
 ## Links
 
 - Up: [[04-the-secret-performance]]

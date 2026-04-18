@@ -103,6 +103,11 @@ The ZK field moves through three sequential frontiers: Performance (2023-2025, l
 
 ## Improvement notes
 
+- [P2] (B) "SP1: formal verification of 62 RISC-V opcodes against Sail specification" appears in the Security frontier evidence block with no source listed; the sources section cites only the Kadianakis EF blog post and the Arguzz paper. The "62 opcodes" figure needs a dedicated citation.
+- [P2] (A) SP1 Hypercube performance claim (6.9s, 16 GPUs) is tagged "Dec 2025" in the body but the SP1 Hypercube source is a May 2025 blog post; the EF security pivot post is Dec 2025. The date attribution conflates two separate announcements.
+- [P3] (B) "soundcalc: automated soundness margin calculator" is presented as evidence with no citation anywhere in the section or sources block.
+- [P3] (C) The paper is cited as "Arguzz" in Sources cited and bibliography but as "ARGUZZ" in ch14-the-seven-questions. Standardise capitalisation across both files.
+
 ## Links
 
 - Up: [[14-open-questions-and-the-road-ahead]]

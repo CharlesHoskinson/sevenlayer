@@ -102,6 +102,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) ZisK is listed under org "SilentSig" — ZisK (Polygon's ZK prover) is associated with the Polygon team, not a company named SilentSig. Needs verification; if wrong, a factual error in the primary landscape table.
+- [P2] (B) No sources cited for any benchmark numbers (Eth block times, GPU configs) or the EF "speed race won" declaration (December 2025). These are high-value claims that need traceability.
+- [P2] (B) "SP1 has 62 RISC-V opcodes formally verified against the Sail specification" — no source; this specific count needs a citation to the SP1 formal verification work.
+- [P2] (D) "Neo/SuperNeo (watch)" appears in the selection rubric without introduction — these systems are not in the landscape table above and are not defined anywhere in this section. Reader has no context for the recommendation.
+- [P3] (B) "Nexus 3.0 abandoned Nova-based folding... 1000x speed penalty" — no citation; this is a strong empirical claim about a competitor's technical decision.
+
 ## Links
 
 - Up: [[11-zkvms-the-universal-stage]]

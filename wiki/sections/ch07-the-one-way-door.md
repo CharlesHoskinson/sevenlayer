@@ -81,6 +81,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P0] (A) The field rubric table lists BLS12-381 as "253-bit" — the scalar field of BLS12-381 is 255 bits. This is the same error as in ch07-small-fields and ch07-case-study-midnight and must be fixed consistently.
+- [P2] (D) The closing transition paragraph ("Layer 7 is where the mathematics meets its audience…") is a book-level bridge to Chapter 8 embedded in this section file. In a wiki structure where sections are independently navigable, this bridge may be misread as part of this section's argument rather than a chapter transition; it could be marked or moved to the chapter hub.
+- [P3] (C) "The data is patient" (from ch07-the-quantum-threat-horizon) and the similar "secrets written in ink that merely required a light that had not yet been invented" here are vivid but slightly overwrought; consistency of tone with other closing sections in the chapter varies.
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

@@ -73,6 +73,8 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "Three Ethereum upgrades in two years… expanded DA capacity by roughly 16×" is inconsistent with the numbers given in ch08-the-price-of-a-verdict: blob target goes from 3 (EIP-4844) to 14 (Fusaka), which is ~4.7×, not 16×. If the 16× is computed against pre-EIP-4844 calldata capacity, that denominator and methodology should be stated explicitly.
+
 ## Links
 
 - Up: [[08-the-verdict]]

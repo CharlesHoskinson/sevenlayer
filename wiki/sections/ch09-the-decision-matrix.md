@@ -78,6 +78,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) "TEE: near-native performance (<5% overhead for many workloads)" conflicts with the section's own ch09-three-kinds-of-security, which reports Downfall mitigations causing up to 50% degradation for affected workloads. The figure is accurate only for unaffected workloads; the caveat should be stated.
+- [P2] (B) No sources cited throughout; the entire matrix synthesises claims from prior sections but offers no anchoring references for the performance figures or regulatory mappings.
+
 ## Links
 
 - Up: [[09-privacy-enhancing-technologies]]

@@ -141,6 +141,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The "8× increase in DA capacity over the original EIP-4844 specification" claim for Fusaka/PeerDAS is incorrect: the blob target rises from 3 to 14, which is roughly 4.7×, not 8×.
+- [P2] (A) The inline gas formula "$(181 + 6L) \times 1{,}000$ gas" does not reproduce the table total (~207,700) at L=0 (gives 181,000); the formula is inconsistent with the itemized breakdown presented immediately above it.
+- [P2] (B) The DA marketplace figures (Celestia ~$0.07/MB, Ethereum ~$3.83/MB, EigenDA V2 100 MB/s, 34% of blocks with blobs) carry no citations; they should be anchored to a date-stamped source.
+
 ## Links
 
 - Up: [[08-the-verdict]]

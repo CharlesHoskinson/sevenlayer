@@ -93,6 +93,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) "Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, halving the effective security level" — accurate for preimage resistance; the halving framing is slightly imprecise because Grover applies to search, not all hash security properties equally. The subsequent BHT discussion partially corrects this but the leading sentence could mislead.
+- [P2] (A) BHT "roughly 85-bit quantum collision resistance" for SHA-256 — the BHT exponent is 2n/3; for n=256 that gives ~170-bit quantum security if QRAM is ignored, or the classical 128-bit bound if QRAM cost is folded in. The "85-bit" figure is non-standard and the parenthetical "(though this attack requires impractical amounts of quantum random-access memory)" partially negates the claim; clarify whether 85-bit is a realistic bound or a theoretical worst-case.
+- [P1] (B) BHT citation is attributed only as "Brassard-Hoyer-Tapp" without a full reference (no venue, year, or title) in Sources cited. The actual paper is "Quantum cryptanalysis of hash and claw-free functions," STACS 1998.
+- [P3] (C) Parenthetical asides in the Module-SIS paragraph (two nested parentheticals explaining Pedersen commitments) create cluttered prose; the Pedersen aside could link to [[pedersen]] instead.
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

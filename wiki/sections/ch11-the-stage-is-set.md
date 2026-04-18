@@ -68,6 +68,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (D) "Philosophy C absorbed Philosophies A and B" — these labels are not defined within the section and are only meaningful with Ch3 in view; a brief inline gloss (e.g., "Philosophy C (general-purpose ISA)") would help the section stand alone or serve as a navigable reference.
+- [P2] (A) "the proof core from Chapter 10" — the proof core triad concept is first introduced in Chapter 6 (ch06-the-proof-core-why-layers-4-5-and-6-are-inseparable) and revisited in Chapter 10; attributing it solely to Ch10 misrepresents its origin in the book.
+- [P3] (D) "BabyBear/M31/Goldilocks/BN254 → commitment → arithmetization → proof system" — Goldilocks appears in this field-choice cascade but does not feature in the proof core triad discussion in ch11-the-proof-core-triad (only BabyBear, M31, BN254); its inclusion here without a corresponding triad analysis creates a gap.
+
 ## Links
 
 - Up: [[11-zkvms-the-universal-stage]]

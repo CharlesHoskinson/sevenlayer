@@ -58,6 +58,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P0] (A) The section states the BCTV14 bug "had existed for roughly three years, from the system's deployment in 2016 until its discovery in early 2019." CVE-2019-7167 was publicly disclosed in February 2019; this is consistent. However, the key claim asserts "Sean Bowe and Ariel Gabizon discovered the bug" — Gabizon is Ariel Gabizon; the discoverers per the official disclosure are Sean Bowe, Ariel Gabizon, and Daira Hopwood. Omitting Hopwood is a factual omission.
+- [P1] (A) The 67% statistic ("67% of real-world zero-knowledge vulnerabilities are not in the ceremony or the cryptography — they are in the mathematical specification") is sourced in ch01 to "Chaliasos et al., USENIX Security 2024" but this section cites no source for the same statistic; the citation is missing and should be added.
+- [P2] (B) The BCTV14 source is cited only as "(referenced as CVE-2019-7167)" — the original paper is Bitansky, Chiesa, Tromer, Virza, "Succinct Non-Interactive Arguments via Linear Interactive Proofs" (2013); the 2014 extension is the one deployed in Zcash Sprout. A fuller citation improves traceability.
+- [none] (C) No AI-smell or style issues found.
+- [none] (D) No structural contradictions found.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

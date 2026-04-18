@@ -101,6 +101,15 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "Jolt and ZKM can require 128 GB of system RAM" — Jolt's memory usage depends heavily on trace length and the specific program; ZKM is a separate system. The claim conflates two distinct systems under one figure without separate citations for each. Needs either per-system figures or a source that reports this jointly.
+- [P1] (A) The hardware prices (RTX 4090 ~$2,000, H100 ~$30,000, server ~$50,000–$80,000) are stated as "as of early 2026" — these are concrete enough to become wrong; flagging them as point-in-time estimates is correct, but the H100 server range is wide and should cite a source.
+- [P2] (A) "approximately 5.5 billion people on Earth own a smartphone" — this figure should be sourced; GSMA or Statista reports from 2025 put smartphone penetration at roughly 4.7–5.1 billion. The claim of ~96% unable to do client-side proving depends on this base number being accurate.
+- [P2] (B) The Crypto Wars paragraph is presented as historical analogy without a citation for the "40-bit export-grade encryption" claim. This is well-known history but a footnote or source would keep the book's citation standard consistent.
+- [P2] (C) "Read that again." — imperative-to-reader register is a mild AI/pop-nonfiction smell. Could be dropped; the argument stands without the rhetorical prod.
+- [P2] (C) "The uncomfortable math:" and "The uncomfortable conclusion:" — two consecutive sections using "uncomfortable" as a setup word is a detectable pattern; vary the framing.
+- [P2] (E) TEE vulnerabilities are listed (Foreshadow, AEPIC Leak, Downfall) with no dates or brief descriptions. Readers unfamiliar with these attacks get no context for their severity or whether mitigations exist.
+- [P3] (D) The section ends with a paragraph on NTT being memory-bandwidth-limited, which is accurate but feels appended — it doesn't connect back to the hardware ladder or the equity argument. Consider moving it earlier or integrating it into the H100 tier description.
+
 ## Links
 
 - Up: [[04-the-secret-performance]]

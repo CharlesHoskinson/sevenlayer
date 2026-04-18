@@ -282,6 +282,15 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "The Goldilocks prime field ($2^{64} - 2^{32} + 1$) that Cairo adopted has since been used by RISC Zero, SP1, and others" — Cairo does not use Goldilocks; it uses the Stark prime. Same error as in `ch03-from-circuits-to-virtual-machines-a-brief-evolution`; must be corrected in both places.
+- [P1] (A) The Philosophy D summary table marks all three DSLs (Compact, Noir, Leo) as "Compiler-enforced" privacy. Noir enforces public/private via annotations but lacks a disclosure-analysis pass that rejects accidental leakage; Leo's privacy is structural/record-based. Only Compact provides compile-time disclosure analysis. The table overstates Noir's and Leo's guarantees.
+- [P1] (B) "Airbender proves 21.8 million RISC-V cycles/second on a single NVIDIA H100" — no source. "RISC Zero's R0VM 2.0 reduced Ethereum block proving from 35 minutes to 44 seconds" — no source. "Aztec's Ignition Chain went live in November 2025 as the first decentralized L2 on Ethereum, with 185+ operators and 3,400+ sequencers" — "first decentralized L2" is a strong claim with no citation.
+- [P1] (D) Two "What unites…" paragraphs appear in the wrong order (lines ~202 and ~206): the paragraph describing what unites Philosophy D languages is immediately followed by a paragraph describing what unites Philosophies A/B/C, then the table. The A/B/C paragraph should precede the D synthesis to maintain logical flow; as written it feels like a structural remnant.
+- [P2] (B) Scroll TVL ($748 million), Linea TVL ($2 billion), Polygon/Hermez acquisition ($250 million), and NoirCon0 date (November 2024) are all uncited specific figures. At least the acquisition figure should reference a primary source.
+- [P2] (C) "Noir 1.0 was pre-released in late 2025" — calling something "1.0 pre-released" is contradictory; a pre-release is not 1.0. Clarify whether this is a release candidate, a versioned release, or a beta.
+- [P2] (C) The "Sources cited" field is empty despite numerous specific quantitative claims throughout this section (cycle counts, TVL, sequencer counts). This is the longest section in the chapter and the most citation-sparse.
+- [P3] (E) Leo is described briefly relative to Compact and Noir; its formal verification hooks and the Aleo snarkVM architecture are mentioned but not explained. The section's depth is uneven across the three DSLs.
+
 ## Links
 
 - Up: [[03-choreographing-the-act]]

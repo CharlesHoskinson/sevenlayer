@@ -80,6 +80,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "Plonky3 (used by SP1 and Stwo)" — Stwo (StarkWare's prover) uses circle STARKs over the Mersenne-31 field, not Plonky3. SP1 uses Plonky3. This is a misattribution; correct to "Plonky3 (used by SP1)".
+- [P1] (B) ZKAP, Picus/QED^2, zkFuzz, and MTZK are all cited in the body without paper titles, author lists, venues, or years. The Sources cited section lists them by result only. These are specific research tools; at minimum each needs a year and attribution.
+- [P2] (B) "NAVe, a formal verification tool for Noir programs announced in 2025" — no citation; no venue or author.
+- [P2] (D) The claim "95 of 141 real-world bugs" in the body conflicts with "67% of all known SNARK vulnerabilities" in section 1 (ch03-risc-v-won). 95/141 = 67.4%, so the figures are arithmetically consistent, but section 1 rounds to 67% while this section uses the raw count. The two phrasings — "real-world bugs" here vs "all known SNARK vulnerabilities" in section 1 — describe the same dataset differently; ensure the scope label is consistent.
+- [P2] (C) "The magician's choreography has a typo, and the proof system performs the typo faithfully" — the theatrical metaphor closing is fine, but the phrase "performs the typo" is imprecise (the system doesn't perform a typo; it enforces under-specified constraints). Minor clarity issue.
+- [P3] (E) The section correctly notes that automated detection tools cover Circom but not halo2, Plonky3, or Jolt, yet it does not explain *why* — namely that R1CS analysis tools don't generalize to PLONKish or AIR constraint systems. Adding one sentence on the structural reason would strengthen the claim.
+
 ## Links
 
 - Up: [[03-choreographing-the-act]]

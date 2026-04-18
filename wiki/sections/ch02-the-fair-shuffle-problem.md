@@ -59,6 +59,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) The opening analogy says "141,416 people each add a bit of randomness" but contributions are multiplicative, not additive; the algebra section later corrects this, but the introductory framing plants a misconception.
+- [P2] (B) No citation for the 141,416 participant count; the Ethereum KZG ceremony has a verifiable public transcript — a footnote URL would anchor this claim.
+- [P2] (C) "glass on the inside, paper on the outside" is a vivid image but the metaphor is strained — glass is fragile, which is not the intended connotation; consider revising.
+- [none] (D) No issues found.
+- [P3] (E) The section could note that the hybrid pattern is not unique to 2026 — StarkWare's Ethereum settlement has used this pattern since 2021; the "dominant 2026" framing slightly misplaces the timeline.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

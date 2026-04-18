@@ -91,6 +91,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) The $7.4B identity-segment projection cited in ch13-zk-identity-growth-regulatory-mandate has no corresponding source in this section or the market-sizing table; if it is from Grand View Research [42] it should appear in the table and note, or it needs a separate citation.
+- [P2] (A) The segment share estimates (60%/20%/10%/5%/3%/2%) are presented without a sourcing methodology; the note acknowledges no authoritative breakdown exists, but the specific percentages could mislead readers who treat them as cited figures rather than rough author estimates.
+- [P3] (E) The CAGR projections assume no quantum break and continued regulatory tailwinds but do not discuss the sensitivity of the 55% proving-services CAGR to the rollup proving cost collapse already underway; as proving costs drop to near-zero, the revenue denominator for that segment may shrink even as volume grows.
+
 ## Links
 
 - Up: [[13-the-market-landscape]]

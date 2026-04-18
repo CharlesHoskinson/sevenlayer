@@ -187,6 +187,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The benchmark table cites "Airbender ~35 s (1 H100) ~8,000x" but the chapter text says Ethereum block native time is "~100 ms." Dividing 35 s / 0.1 s = 350x, not 8,000x. The overhead multiplier in the table appears to be measuring something other than Ethereum block overhead, or the 35 s figure applies to a different workload than 100 ms native. This inconsistency needs resolution or a footnote clarifying the baseline.
+- [P1] (A) "Midnight shielded transfer: ~20 s proof time over BLS12-381; nominal ~4,000,000x vs. raw arithmetic" — the table shows "~4,000,000x (arithmetic)" but the body text uses "roughly 1,000,000x if measured against the pure arithmetic." The factor is stated as both 1,000,000x (body) and 4,000,000x (table/Key claims). One of these must be wrong.
+- [P2] (A) Source 3 (polynomial commitment) is described as "by far, the most computationally expensive step" but NTT is cited as 40–60% of proving time and is part of commitment. The framing implies commitment > constraint expansion, but Source 2 (constraint expansion) causes the 50x–100x multiplicative factor. The section would benefit from stating explicitly which source dominates the absolute wall-clock time vs. which causes the largest multiplicative overhead relative to native.
+- [P2] (B) No sources cited in this section despite specific numerical claims about RISC Zero, SP1, and Stwo benchmark times. The 2025 benchmarks should be cited (e.g., SP1 v2 blog post, Stwo benchmark announcement). Currently "Sources cited: None."
+- [P3] (E) The section does not discuss proving hardware costs (dollar cost per proof), which is directly relevant to the economic viability argument. A one-paragraph note on approximate USD cost per Ethereum block proof on GPU clusters would ground the overhead discussion in practical deployment terms.
+
 ## Links
 
 - Up: [[05-encoding-the-performance]]

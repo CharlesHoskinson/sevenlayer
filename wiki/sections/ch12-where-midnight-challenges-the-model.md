@@ -73,6 +73,10 @@ None in this section.
 
 ## Improvement notes
 
+- [P2] (A) The table lists token model as "Three-token model (Night/Shielded/DUST)" — the third token class is "custom tokens" (which can be shielded or unshielded), not a token named "Shielded." Inconsistent with the naming used everywhere else in chapter 12.
+- [P2] (B) "nanopass architecture spanning 26 intermediate languages" is a specific engineering claim; no source is cited. Should reference the Compact Language Reference or compiler documentation.
+- [P3] (D) The three challenge descriptions are clear, but the transition from the prose to the summary table is abrupt; a single bridging sentence would improve flow without adding AI-smell padding.
+
 ## Links
 
 - Up: [[12-midnight-the-privacy-theater]]

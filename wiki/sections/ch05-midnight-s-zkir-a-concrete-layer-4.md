@@ -145,6 +145,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "ZKIR has 24 opcodes in 8 categories: Arithmetic (3), Constraints (4), Comparison (2), Control flow (2), Type encoding (3), Division (1), Cryptographic (5), I/O (4)" — summing these: 3+4+2+2+3+1+5+4 = 24. The count is internally consistent. However, the body text lists only 4 I/O opcodes: `private_input`, `public_input`, `output`, `impact` — but omits any mention of what "impact" does; it is described nowhere in the section. Given that `impact` is a blockchain-specific operation (presumably writing to ledger state), its omission weakens the concrete example.
+- [P1] (A) "BLS12-381 scalar field: ~$2^{253}$, ~4x wider than Goldilocks (64-bit)" — 253 / 64 = ~4x is approximate but the scalar field of BLS12-381 is actually 255 bits (the order of the BLS12-381 G1 group is a 255-bit prime). The "~$2^{253}$" in the body is inconsistent with the "255 bits to represent" stated a sentence later. One of these should be used consistently; 255-bit is the correct figure.
+- [P2] (A) The section states Midnight's backend is "Halo2-style" but the source cited is "Midnight ZKIR Reference (v2/v3), 119 oracle traces. Compact compiler v0.29.0" — the source does not specify Halo2 explicitly. If the Halo2 backend is documented, a more specific citation or version reference would strengthen this claim.
+- [P2] (C) "A general principle is at work: in constraint systems, everything that is *not* explicitly constrained is implicitly *allowed*" — this duplicates the under-constrained circuit principle introduced in Chapter 3. Cross-reference would serve better than re-stating it.
+- [P3] (E) The section does not describe what a typical compiled Compact contract produces in terms of total ZKIR node count or resulting PLONKish constraint count for a representative transaction. A single concrete end-to-end example (e.g., token transfer: N ZKIR nodes → M PLONKish constraints) would improve depth significantly.
+
 ## Links
 
 - Up: [[05-encoding-the-performance]]

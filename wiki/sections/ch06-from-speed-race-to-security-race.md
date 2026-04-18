@@ -57,6 +57,10 @@ None in this section.
 
 ## Improvement notes
 
+- [P2] (E) Very short (285 words); the section largely restates conclusions from ch06-real-time-ethereum-proving without adding new content; either extend with the random oracle model gap (mentioned but not developed) or merge with ch06-real-time-ethereum-proving
+- [P2] (B) No sources cited; the Ethereum Foundation December 2025 announcement should have a reference (blog post, EIP, or public statement)
+- [P3] (C) "This is a harder problem, and it is the one that will define Layer 5's trajectory" — mild forward-prediction AI flourish; could be cut without loss
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

@@ -123,6 +123,9 @@ None in this section.
 
 ## Improvement notes
 
+- [P2] (B) No sources cited; the entire Midnight architecture description rests on undocumented internal specs — at minimum a link to official Midnight documentation or the Compact language spec should be added.
+- [P3] (A) [[nova]] is listed in Entities but Nova (a folding scheme) does not appear in this section's text and is not relevant to the three-token architecture; this is likely a tagging error.
+
 ## Links
 
 - Up: [[08-the-verdict]]

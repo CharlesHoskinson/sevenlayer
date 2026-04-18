@@ -139,6 +139,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) "Jolt is approximately 6x faster than RISC Zero in theoretical commitment cost analysis" — this appears in the Reference Data section without a citation and with the qualifier "theoretical." The original Jolt paper claims a 5x–10x improvement in prover cost vs. RISC Zero; "6x" is within that range but needs a citation. The phrase "theoretical commitment cost analysis" is vague — is this from the Jolt paper's own comparison or from an independent benchmark?
+- [P2] (A) "There is a theoretical lower bound that clarifies the situation. Any computation that produces n bits of output requires at least n bits of communication to verify" — this is a correct statement of the communication complexity lower bound, but presenting it as a "theoretical lower bound" on ZK proof overhead is potentially misleading: SNARKs routinely produce proofs much smaller than the output size (e.g., Groth16 produces a 192-byte proof for computations with megabytes of output). The lower bound applies to communication, not proof size in the standard sense. Clarification needed.
+- [P2] (C) "The Sudoku puzzle captures the constraint-satisfaction flavor but misleads about uniqueness" — this point was already made in the intro section (ch05-layer-4-arithmetization). The closing section repeats it without adding new insight. The recap is mildly redundant given the intro already handled it.
+- [P3] (D) The Reference Data appendix at the end lists all key facts for the chapter. This is useful, but its placement at the end of the last section rather than in the chapter hub (05-encoding-the-performance.md) means it is only discoverable by reading to the last page. Consider whether it belongs in the chapter rollup instead.
+
 ## Links
 
 - Up: [[05-encoding-the-performance]]

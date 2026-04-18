@@ -110,6 +110,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P0] (A) BLS12-381 is described as a "~253-bit prime" throughout this section (and in ch07-case-study-midnight). The scalar field r of BLS12-381 has bitlength 255 (r ≈ 2^254, a 255-bit number). The base field p is 381 bits. Neither is ~253 bits. This factual error propagates to ch07-case-study-midnight and ch07-one-way-door and should be corrected to "~255-bit scalar field."
+- [P2] (A) Goldilocks 2-adicity: text says the field "supports efficient radix-2 NTTs…with domain sizes up to $2^{32}$" and "high 2-adicity — meaning $2^{32}$ divides $p-1$." The 2-adicity is 32 (the exponent), not $2^{32}$ (the value). Saying "$2^{32}$ divides $p-1$" is correct but calling it "2-adicity $2^{32}$" in the key claims is a notational conflation that could confuse readers expecting the exponent.
+- [P3] (E) BabyBear's extension field degree is stated as 4 (giving ~124 bits) but the specific extension construction and why degree 4 is required over BabyBear is not explained; a brief note on irreducible polynomial choice would strengthen the depth.
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

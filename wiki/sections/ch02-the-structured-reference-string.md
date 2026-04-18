@@ -65,6 +65,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The section describes the 192-byte proof as the result of "a pairing" and attributes it to the SRS/KZG scheme, but KZG opening proofs are 48 bytes (one G1 point); the 192-byte figure is specific to Groth16 (two G1 + one G2). The text blurs the distinction between a KZG commitment opening and a Groth16 proof, which are different constructs.
+- [P1] (B) The Kate, Zaverucha, Goldberg 2010 citation lacks a DOI or venue; the paper is "Constant-Size Commitments to Polynomials and Their Applications" at ASIACRYPT 2010 — this should be specified.
+- [P2] (C) The finite field clock-arithmetic aside is clear but runs long for what is essentially a parenthetical; it might belong in a glossary entry rather than in-line.
+- [none] (D) No contradictions with other chapters found.
+- [P3] (E) No discussion of the BN254 vs BLS12-381 choice for the SRS here, even though that choice determines the 65M-point count; a forward reference to the curve discussion sections would help.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

@@ -82,6 +82,13 @@ None.
 
 ## Improvement notes
 
+- [P1] (A) CVE-2025-52484 is cited as a RISC Zero disclosure but "rs1 and rs2 register operands" confusion is described without specifying which RISC-V instruction(s) were affected. The severity is unclear — this matters because some register operand confusions are exploitable for arbitrary value substitution (critical) while others affect only specific instruction classes. The summary should state the affected instruction or instruction class.
+- [P1] (B) "zkFuzz found 66 bugs including 38 zero-days" — the source for this is not identified in the prose (only in Sources cited as "zkFuzz"). The paper reference needs a year and venue to be verifiable.
+- [P2] (A) "ZKAP achieves F1 score 0.82 and discovered 34 previously unknown vulnerabilities via static analysis (Circom only)" — the F1 score is for a detection task that should be specified (under-constrained circuit detection? completeness checking?). Without the task definition, F1=0.82 is uninterpretable.
+- [P2] (B) NAVe (for Noir) and Picus (for Circom) are mentioned without citations or publication years. These are research tools; a reader wanting to follow up has no entry point.
+- [P2] (C) "The correctness gap: the distance between what the developer meant and what the constraints actually enforce. It is measured not in bits of security but in lines of code that were not written." — well-phrased but the final clause ("lines of code not written") is a rhetorical flourish that imprecisely conflates missing constraints with missing code; the zkSync bug was a method that existed but wasn't called.
+- [P3] (D) The section introduces "non-deterministic hints" as a relevant concept but this term is not indexed in the Entities list and does not link to a concept page. If it appears again in ch05, it should be a [[concept]] link here.
+
 ## Links
 
 - Up: [[04-the-secret-performance]]

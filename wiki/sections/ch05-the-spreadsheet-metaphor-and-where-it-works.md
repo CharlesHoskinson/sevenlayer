@@ -88,6 +88,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) Sudoku constraint count in the running example box states "16 range constraints + 8 given-cell constraints + 48 uniqueness checks = 72 constraints" and then "roughly 120 R1CS constraints." The 4x4 uniqueness check figure of 48 ($8 \times \binom{4}{2}$) is correct, but "8 groups" should be 3 types × some count — the 4×4 grid has 4 rows + 4 columns + 4 2×2 boxes = 12 groups, not 8. The arithmetic leading to 48 pairs is correct only if 8 is the right group count, which it is not for a standard 4×4 Sudoku (should be 12 groups × 6 pairs = 72 uniqueness constraints, not 48). This is a numerical error that propagates to the total.
+- [P2] (A) "a polynomial of degree $d$ is completely determined by its values at any $d+1$ points" — stated as the reason to use polynomials, but the following sentence conflates determination with the Schwartz-Zippel catching-misbehavior argument. The two ideas (interpolation uniqueness and probabilistic checking) are distinct; the paragraph blurs them.
+- [P2] (C) "This is the core idea of arithmetization" appears twice in close proximity (once at the end of the main spreadsheet explanation, once after the Sudoku box). Light redundancy.
+- [P3] (B) No sources cited for the spreadsheet/constraint analogy or for Schwartz-Zippel; a footnote to the original Schwartz (1980) / Zippel (1979) papers would be appropriate here.
+
 ## Links
 
 - Up: [[05-encoding-the-performance]]

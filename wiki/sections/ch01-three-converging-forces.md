@@ -94,6 +94,16 @@ None in this section.
 
 ## Improvement notes
 
+- [P0] (A) The National Public Data breach is dated "January 2024" but the breach became public in August 2024 (USDoJ complaint, August 2024); the data appears to have been collected and sold starting in 2023, with public disclosure in mid-2024. "January 2024" is unverified and likely wrong; verify and correct the date.
+- [P1] (A) "$20 billion TVL in ZK rollups by early 2026" — no source cited; this is a forward-looking figure (relative to the source commit) and should reference L2Beat or DeFiLlama data as of a specific date.
+- [P1] (A) The SP1 Hypercube claim ("6.9 seconds, 99.7% of L1 blocks under 12 seconds, 16 GPUs, late 2025") lacks a citation; add a Succinct Labs blog post or benchmarking report reference.
+- [P1] (A) The Stwo "940x throughput improvement" claim lacks a citation; add the StarkWare blog post or paper reference.
+- [P1] (B) The $80 → $0.04 cost collapse is the section's central quantitative claim and carries no source; cite a benchmarking report or public blog post with a retrieval date.
+- [P2] (A) eIDAS 2.0 is described as "finalized 2024"; the regulation was passed by the European Parliament in February 2024 and published in the Official Journal in May 2024. "Finalized 2024" is broadly correct but a specific citation (OJ L 2024/1183) would strengthen accuracy.
+- [P2] (A) "Ethereum processes roughly 15 transactions per second" — the correct baseline for Ethereum post-merge mainnet is closer to 12–15 TPS; the claim is in-range but stating ~12–15 TPS would be more precise.
+- [P2] (C) The three bold headers ("The privacy crisis became quantifiable," "The scaling problem acquired a price tag," "The cost curve collapsed") use a listicle structure that feels AI-generated; consider folding these into running prose with transitional sentences instead.
+- [P3] (D) The flywheel paragraph and the Midnight disclosure paragraph duplicate framing found in the chapter hub; consider whether both locations need the full text.
+
 ## Links
 
 - Up: [[01-the-promise-of-provable-and-programmable-secrets]]

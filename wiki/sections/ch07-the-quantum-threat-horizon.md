@@ -104,6 +104,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) "~2,500 logical qubits for BLS12-381" — Webber et al. (2022, "The impact of hardware specifications on reaching quantum advantage") estimated ~2,330 logical qubits for 256-bit elliptic curve; "~2,500" is a reasonable approximation but no citation is provided. The key claims repeat this figure without source.
+- [P2] (A) "current devices, which have demonstrated only a few thousand physical qubits" — as of late 2024 IBM Condor reached 1,121 qubits and Google Willow 105 qubits; "a few thousand" overstates current state unless referring to planned near-term devices. Should say "low hundreds to low thousands" or cite specific device benchmarks.
+- [P2] (B) Federal Reserve FEDS 2025-093 is cited for the HNDL claim but no title or URL is given; this is a specific government document that should have a full citation for verifiability.
+- [P3] (C) The three-option framing (accept/migrate/ignore) uses "hope that…quantum computers take longer than expected" for option 3 — slightly editorializing; functional but could be stated more neutrally.
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

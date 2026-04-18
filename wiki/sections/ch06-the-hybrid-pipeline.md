@@ -95,6 +95,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (B) No sources cited for any concrete timing or cost figures (3–5s STARK, 5–10s Groth16 wrap, "$0.50–$1.00 per verification", sub-$1 end-to-end); these should reference CastleLabs/Ethproofs or a dated benchmark
+- [P2] (A) "All major production systems follow this architecture: SP1, Stwo, Polygon, ZKM" — Polygon runs multiple proving systems (e.g., Polygon zkEVM uses a different pipeline); the claim needs qualification or a source
+- [P2] (C) "The implication is worth spelling out" — AI smell
+- [P2] (A) "$0.50–$1.00 at typical gas prices" is vague and gas-price-dependent; the figure is anchored to no specific date or gas price level
+- [P3] (E) The pipeline section describes four NVIDIA A100s but ch06-real-time-ethereum-proving describes RTX 5090s for SP1 Hypercube; no note explains the different hardware baselines used in the two sections
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

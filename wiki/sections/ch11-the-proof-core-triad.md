@@ -85,6 +85,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) "In SP1: BabyBear (Layer 6) enables multilinear PCS (Layer 6)" — multilinear PCS straddles Layers 5 and 6 (commitment scheme is Layer 7 in some framings, or Layer 5 in others); labelling it Layer 6 twice in the same triad description is internally inconsistent with the book's own layer taxonomy.
+- [P3] (B) No sources cited for the triad clustering claim or for the "BN254 subgroup order 2^28" figure, both of which are verifiable mathematical facts that benefit from a reference.
+
 ## Links
 
 - Up: [[11-zkvms-the-universal-stage]]

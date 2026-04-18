@@ -75,6 +75,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (B) "Eight of ten major zkVMs target RISC-V" and "67% of all known SNARK vulnerabilities" are stated in the body as facts but no primary source is cited in this section; the 67% is attributed by internal cross-reference only to `ch03-under-constrained-circuits`, not to Chaliasos SoK directly.
+- [P2] (A) "Eight of ten major zero-knowledge virtual machines now target the same general-purpose instruction set" — no timestamp anchors this count; the claim is stale-prone and should be dated or qualified.
+- [P2] (C) The opening question "who writes the script?" repeats the closing rhetorical device of chapter 2 without acknowledging it; readers who skip sections may find the callback opaque.
+- [P3] (E) The Sudoku running-example box describes only the constraint structure; it does not say what the proof *hides* (the solution) versus what it *reveals* (the puzzle), missing an opportunity to introduce the public/private input distinction at Layer 2.
+
 ## Links
 
 - Up: [[03-choreographing-the-act]]

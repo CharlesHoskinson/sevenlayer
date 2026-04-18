@@ -60,6 +60,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The section states Tower NFS reduced BN254's security "from 128 bits to approximately 100 bits" citing Kim & Barbulescu 2016 and Menezes, Sarkar, Singh 2016. The current best estimate after Barbulescu-Duquesne 2018 is closer to 100–110 bits; the 2016 citations are not the latest word. The claim is broadly correct but the specific figure is conservative and should note that later analysis (Barbulescu, Duquesne 2018) refined it.
+- [P2] (B) Kim & Barbulescu 2016 lacks a venue; the paper is "Extended Tower Number Field Sieve: A New Complexity for the Medium Prime Case" (CRYPTO 2016). Similarly Menezes, Sarkar, Singh 2016 is "Challenges with Assessing the Impact of NFS Advances on the Security of Pairing-Based Cryptography" (MathCrypt 2016).
+- [none] (C) No AI-smell or style issues. The section is notably concise and well-written.
+- [none] (D) No contradictions with other chapters found.
+- [P3] (E) The section could note that Ethereum's EIP-2537 proposal adds BLS12-381 precompiles to Ethereum's base layer, which would directly address the migration barrier described; this is directly relevant to the "changing the curve requires upgrading every verifying contract" point.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

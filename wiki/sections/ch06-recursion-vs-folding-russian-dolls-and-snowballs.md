@@ -90,6 +90,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) Body text says Zexe "2018" but the sources section correctly lists "IEEE S&P 2020"; the ePrint date (2018) and the venue year (2020) are conflated — the body should say "Bowe et al. (S&P 2020)" or "introduced in a 2018 preprint, published S&P 2020"
+- [P2] (C) "This is the kind of obstacle that looks fatal until someone sees through it" — AI smell (narrative flourish)
+- [P2] (C) "It is worth understanding why" — AI smell
+- [P3] (E) The "Snowball Does Not Fall Apart" subsection correctly explains that folding alone does not provide soundness, but does not mention that the accumulated error vector E can grow unboundedly in the basic Nova construction — relevant for readers who go on to read about SuperNova/HyperNova improvements
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

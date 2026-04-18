@@ -82,6 +82,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) The FOOM Club exploit (delta_2 == gamma_2 misconfiguration) is cited without a source; a CVE, GitHub issue, or audit report reference is needed to verify the technical claim about the specific misconfiguration.
+- [P3] (D) [[snarkjs]] is not listed in Entities despite being the directly implicated library in the FOOM Club exploit; inconsistent with entity-tagging practice elsewhere.
+
 ## Links
 
 - Up: [[08-the-verdict]]

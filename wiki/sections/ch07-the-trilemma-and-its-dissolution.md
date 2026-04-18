@@ -84,6 +84,11 @@ None in this section.
 
 ## Improvement notes
 
+- [P1] (B) "The original paper presented a 'cryptographic primitives trilemma'" — no citation given for which paper introduced this trilemma framing. If this is an original synthesis rather than a cited result, the language should say so rather than implying a specific source.
+- [P2] (A) FRI is described as achieving "post-quantum security but lacks algebraic functionality (no homomorphism, so no folding) and offers only moderate succinctness (large proofs)" — the trilemma as stated has three properties, but the text inconsistently uses "moderate succinctness" for FRI in the list and then later says FRI "achieves post-quantum security" and "reasonable verification (polylogarithmic)" — the mapping of FRI to exactly two of three properties is blurred.
+- [P2] (B) Symphony (2026) appears in key claims with "ePrint 2025/1905" but Sources cited lists nothing for this section; the Symphony citation should be in Sources cited.
+- [P3] (C) The closing rhetorical question ("*is this trilemma fundamental?*") is effective but the multi-sentence follow-up "The answer, as of 2026, is no" paragraph has an AI-essay cadence (question → answer → hedged elaboration → conclusion). Could be tightened.
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

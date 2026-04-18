@@ -21,4 +21,16 @@ status: untouched
 
 ## Audit rollup
 
-_(populated in Phase 2.4)_
+Audited 2026-04-18. 9 sections, 14 findings total: P0=0, P1=4, P2=8, P3=2.
+
+| Section | Findings |
+|---------|----------|
+| ch09-the-four-pillars | P1 (B) Gentry thesis vs STOC 2009 mismatch; P2 (B) Yao/Dwork/Dinur absent from chapter bibliography; P2 (C) "key insight" AI smell |
+| ch09-three-kinds-of-security | P1 (A) Battering Ram cost inconsistent (€50 body vs $50 key claims); P1 (B) no sources for all named TEE attacks; P2 (D) SGX deprecation detail never reconnects to security-tier taxonomy |
+| ch09-composability-when-one-pet-is-not-enough | P2 (B) no sources for zkFHE gate count claim; P2 (E) privacy stack ordering uncited |
+| ch09-real-world-deployments-five-case-studies | P2 (A) spurious `[[nova]]` entity; P3 (B) Privacy Pools volume figure unsourced |
+| ch09-privacy-architectures-for-smart-contracts-kachina-and-zexe | P1 (B) Zexe venue "2018" should be IEEE S&P 2020; P1 (A) "BLS-12" ambiguous, should be BLS12-377; P2 (B) duplicate dependency slug (ch03 vs ch04 for same section); P3 (B) Kachina affiliation unverified |
+| ch09-the-regulatory-intersection | P2 (A) eIDAS "effective 2024" potentially misleading re wallet deployment deadline; P3 (B) Galactica/zyphe/hyli cited without references |
+| ch09-the-decision-matrix | P2 (A) TEE <5% overhead conflicts with Downfall mitigation data in same chapter; P2 (B) no sources for performance figures |
+| ch09-open-problems | P1 (B) Ozdemir-Boneh USENIX 2022 absent from master bibliography; P2 (B) EUROCRYPT 2026 PIR paper unnamed and unverifiable |
+| ch09-the-incomplete-stack | clean |

@@ -153,6 +153,8 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P3] (B) Meisami and Bodell (2023) is cited for the proxy pattern survey but no venue, title, or link is given; a full reference would strengthen the claim.
+
 ## Links
 
 - Up: [[08-the-verdict]]

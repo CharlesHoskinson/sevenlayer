@@ -84,6 +84,13 @@ Every pairing-based proof system rests on the discrete logarithm problem, which 
 
 ## Improvement notes
 
+- [P1] (A) The key-claims block states "Midnight chose BLS12-381 over Pluto-Eris in April 2025" but the body text says only "In April 2025, the Midnight team announced a switch back to BLS12-381" without citing an announcement URL, blog post, or changelog commit. This is a specific dateable claim that needs a source.
+- [P1] (A) The section says "Conservative estimates place cryptographically relevant quantum computers … in the 2032–2035 timeframe." This range is contested; NIST IR 8547 itself does not predict a specific date for CRQCs — it targets 2035 for *deprecation of algorithms*, not for quantum computer arrival. The conflation of "NIST deprecation target" with "quantum computer arrival estimate" overstates NIST's position.
+- [P2] (B) The Neo (Nguyen, Setty, 2025) citation lacks a venue or ePrint number; this paper is IACR ePrint 2025/xxx and should be traceable.
+- [P2] (C) "The honest assessment" (paragraph on BHT) is a mild AI-smell phrase; replace with direct language.
+- [none] (D) No contradictions with other chapters found.
+- [P3] (E) The section does not mention that Grover's quadratic speedup applies to pre-image search, not collision resistance directly; collision resistance degrades as $2^{n/3}$ under BHT (not $2^{n/2}$), which is a material distinction for parameter selection.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

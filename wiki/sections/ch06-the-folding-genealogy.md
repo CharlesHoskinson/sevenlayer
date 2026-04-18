@@ -125,6 +125,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) LatticeFold venue listed as "ASIACRYPT 2025" — the Boneh-Chen LatticeFold paper (ePrint 2024/257) was presented at CRYPTO 2024, not ASIACRYPT 2025; verify and correct the venue
+- [P1] (B) ProtoGalaxy author list given as "Eagen and Gabizon" — the actual ePrint 2023/1106 has three authors (Liam Eagen, Ariel Gabizon, and Zacharias); incomplete attribution
+- [P2] (A) Symphony (2026) has no citation at all; if this is a forthcoming or internal paper, the text should note that; if published, a citation is required
+- [P2] (B) Sumcheck attribution "Lund, Fortnow, Karloff, and Nisan in 1992" — the FOCS proceedings were 1990; the JACM version is 1992; body should clarify "FOCS 1990 / JACM 1992" to avoid confusion
+- [P3] (E) The "four axes" framing is introduced but the Axes table is never explicitly revisited for LatticeFold, Neo, and Symphony — a one-line "axes advanced" annotation per scheme would make the framework payoff clearer
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

@@ -82,6 +82,9 @@ None in this section.
 
 ## Improvement notes
 
+- [P2] (B) No sources cited despite specific quantitative claims: "few hundred multiplication gates" for zkFHE prototypes and the MPC-to-FHE share-to-ciphertext conversion as an "active research frontier" — these should cite the relevant papers or prototypes.
+- [P2] (E) The "privacy stack" layer ordering (DP < MPC < FHE < ZKP by cost/strength) is asserted as architectural fact with no supporting reference; a citation to a survey or prior taxonomy would strengthen it.
+
 ## Links
 
 - Up: [[09-privacy-enhancing-technologies]]

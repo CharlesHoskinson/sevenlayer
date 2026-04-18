@@ -92,6 +92,12 @@ None in this section.
 
 ## Improvement notes
 
+- [none] (A) No factual errors found.
+- [P2] (B) The Luhmann reference ("Niklas Luhmann distinguished between trust and confidence") has no citation; the relevant work is "Trust and Power" (1979) or "Risk: A Sociological Theory" (1993) — the latter is more directly relevant to confidence in systems.
+- [P2] (C) The section contains "it is worth noting" in the game-theoretic analysis paragraph ("it is worth noting that..."); cut the phrase. The sociological framing is strong, but the subsection heading "The Sociology of Trust at Scale" is generic — consider a more specific title.
+- [none] (D) No contradictions with other chapters found.
+- [P3] (E) The section's game-theoretic strongest-link analysis is novel and well-argued but does not engage with the academic literature on ceremony design (e.g., the Nikolaenko et al. 2022 on-chain ceremony paper, which introduces formal security models for permissionless ceremonies).
+
 ## Links
 
 - Up: [[02-building-the-stage]]

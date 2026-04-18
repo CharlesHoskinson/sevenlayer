@@ -138,6 +138,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (B) Sources cited lists Gentry as "PhD thesis, Stanford" but the master bibliography (ref 29) cites the STOC 2009 paper — these are distinct publications; the section should cite the STOC paper to match the bibliography, or explicitly cite both.
+- [P2] (B) Yao (1982), Dwork/Rothblum/Vadhan (2010), and Dinur/Nissim (2003) appear in Sources cited but are absent from the chapter bibliography (refs 29–31 cover only Gentry, Kachina, Buterin). They should be added as numbered entries.
+- [P2] (C) "The key insight, often missed, is that ZKPs are a tool for selective disclosure" — "key insight" is an AI-smell phrase; rephrase.
+
 ## Links
 
 - Up: [[09-privacy-enhancing-technologies]]

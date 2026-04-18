@@ -61,6 +61,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) `localhost:6300` and per-UTXO shielding/unshielded token claims are stated as fact with no source citation; add references to Wallet SDK or Developer Guide.
+- [P3] (C) The pipeline ASCII diagram labels are clean, but the prose phrase "This three-part output reflects the fundamental architecture" edges toward boilerplate framing — tighten.
+
 ## Links
 
 - Up: [[12-midnight-the-privacy-theater]]

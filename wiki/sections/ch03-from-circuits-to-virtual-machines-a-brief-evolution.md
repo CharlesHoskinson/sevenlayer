@@ -72,6 +72,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) "The Goldilocks prime field ($2^{64} - 2^{32} + 1$) that Cairo adopted" is factually wrong. Cairo uses the Stark prime (p = 2^251 + 17·2^192 + 1), not Goldilocks. Goldilocks is used by Plonky2/Plonky3 and later by RISC Zero; the same error propagates to `ch03-the-four-philosophies`. Fix both instances.
+- [P1] (B) "95 of 141 catalogued vulnerabilities were under-constrained circuits (Chaliasos SoK)" — no paper title, author list, year, or URL. Cited by label only throughout the chapter; a full reference is needed at first use.
+- [P2] (A) Cairo's creation date is given as 2021; the Cairo whitepaper appeared in late 2021 but an earlier prototype shipped in 2020. "Created by StarkWare in 2021" may be defensible but should be qualified as the public/whitepaper release date.
+- [P2] (C) "Imagine asking a playwright to write both the script and the stage directions in a single document…" — the theater metaphor is used heavily in chapter 1; its reuse here without advancement adds padding rather than insight.
+- [P2] (D) The Tornado Cash bug description ("The witness generator computed the correct value. The constraint system did not enforce it") is correct here, but `ch03-under-constrained-circuits` describes the same bug in more detail. The two accounts should agree on framing; currently section 2 says "one character" while section 5 also says "one character" — consistent, but the duplication of the anecdote across two sections is unnecessary.
+- [P3] (E) No mention of Circom's successor tools (Circom 2, circom-plus) or how the field has responded since 2018; the evolution narrative stops at the third generation without noting ongoing Circom development.
+
 ## Links
 
 - Up: [[03-choreographing-the-act]]

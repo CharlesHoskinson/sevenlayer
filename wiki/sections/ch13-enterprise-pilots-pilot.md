@@ -77,6 +77,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) No sources cited for any of the named pilots (Deutsche Bank Project Guardian, DTCC/Canton December 2025, Partisia/Danish government), the DTCC $2.5 quadrillion figure, or the correspondent banking fee range (0.1–0.3% notional). Each of these is a specific verifiable claim.
+- [P2] (A) "DTCC clears approximately $2.5 quadrillion in securities annually" conflates clearing with transaction processing notional; DTCC's reported figures include repo and netting activity that inflates the number beyond what "clears" conventionally implies. Needs qualification or a more precise verb.
+- [P3] (B) The claim that "Deutsche Bank, UBS, and Goldman Sachs have all conducted pilots on ZKsync" is asserted without citation; UBS and Goldman Sachs involvement in ZKsync-specific pilots (vs. Project Guardian more broadly) is worth verifying.
+
 ## Links
 
 - Up: [[13-the-market-landscape]]

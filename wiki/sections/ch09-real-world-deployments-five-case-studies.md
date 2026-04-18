@@ -95,6 +95,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) Entities include `[[nova]]` — Nova is a folding scheme unrelated to this section's content; likely a tagging error, should be removed.
+- [P3] (B) Privacy Pools volume figures (">$6 million, >1,500 users by early 2026") are specific claims with no URL or source; a reference to 0xbow's published stats or an Etherscan link should be added.
+
 ## Links
 
 - Up: [[09-privacy-enhancing-technologies]]

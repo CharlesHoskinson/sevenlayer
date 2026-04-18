@@ -110,6 +110,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) Date inconsistency: section body calls LatticeFold "Stage 2: LatticeFold (2024)" and key claims say "LatticeFold (2024, Boneh and Chen)" but Sources cited lists "Boneh and Chen, LatticeFold — ASIACRYPT 2025." If the ePrint appeared in 2024 and the conference proceedings in 2025, the body should distinguish ePrint date from publication venue to avoid confusion.
+- [P2] (A) "The progression has been fast, compressing a decade of typical cryptographic development into two years" — LaBRADOR (2023), Greyhound's precursors, and early lattice SNARK work (Lyubashevsky et al. from 2009 onward) predate 2024. "Two years" understates the prior research base; the claim applies more precisely to the folding-capable production-quality line beginning with LatticeFold.
+- [P2] (B) Symphony cited as "ePrint 2025/1905" in Sources cited — consistent with other sections. LatticeFold+ cited as "CRYPTO 2025" without authors or title; should include Boneh, Chen, and co-authors for completeness.
+- [P3] (E) The section describes five stages but does not give concrete proof-size or verification-time numbers for LatticeFold and LatticeFold+ (only Greyhound's ~50 KB and Neo's 127-bit figure are given). Adding ballpark numbers for intermediate stages would improve depth and comparability.
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

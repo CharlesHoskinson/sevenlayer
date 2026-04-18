@@ -77,6 +77,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (C) Paragraphs 1 and 2 both open with the same idea ("the Chapter 4 privacy tradeoff returns with full force"), nearly verbatim. The second paragraph is redundant with the first and should be merged or cut.
+- [P2] (B) No sources for: RISC Zero Boundless 542.7 trillion cycles, Aligned Layer $11B+ EigenLayer restaking figure, rollup proving costs $200K–$500K/year, GPU rental rates, H100 power draw, or gross margin estimates (40–60%/15–25%). This section has the highest density of specific quantitative claims and fewest citations of any ch13 section.
+- [P2] (A) Gross margin estimates (40–60% owned hardware, 15–25% cloud) are presented as established figures but are apparently internal estimates with no sourcing; they should be flagged as estimates or attributed.
+- [P3] (A) "542.7 trillion cycles by December 2025" is unusually precise for an uncited claim; if this is from a RISC Zero announcement it should be cited directly.
+
 ## Links
 
 - Up: [[13-the-market-landscape]]

@@ -66,6 +66,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) GMR 1985 paper is named but no ePrint/DOI or ACM DL link is given; cite "STOC 1985, pp. 291–304" or add ACM doi.
+- [P2] (C) "Clarke was half right" — the Arthur C. Clarke allusion is dropped without naming Clarke or the quote it subverts; a reader unfamiliar with the aphorism loses the reference entirely.
+- [P2] (C) "For most of human history, this seemed inevitable. To prove is to show. To show is to reveal. To reveal is to lose control." — three-beat aphoristic repetition borders on AI-style rhetorical cadence; tighten.
+- [P3] (E) The section asserts "seven independent, weaker assumptions" without previewing what they are; a parenthetical hint (even just listing the layer names) would ground the claim and reduce the reader's need to take it on faith.
+- [none] A — no issues found.
+- [none] D — no issues found.
+
 ## Links
 
 - Up: [[01-the-promise-of-provable-and-programmable-secrets]]

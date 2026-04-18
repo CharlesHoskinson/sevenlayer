@@ -69,6 +69,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The soundness bound is stated as "roughly $1/2^{128}$" in both body and summary, but that figure describes the security *parameter*, not the per-round soundness error of the interactive protocol; for a non-interactive proof the forging probability should reference the proof system's concrete soundness bound (depends on field size and number of rounds), not simply the security-parameter target. Worth clarifying to avoid misleading technically literate readers.
+- [P2] (B) The claim "mathematicians assumed these three properties were incompatible" is asserted without citation; the GMR paper itself is the source and should be named here rather than only in the previous section.
+- [P2] (C) "The sun will burn out first" — vivid but used identically in the Key claims block ("the sun will burn out first"); one instance is enough.
+- [P2] (E) Soundness is described only as "dishonest provers fail"; knowledge-soundness (the extractor argument) — which is what the "K" in SNARK refers to — is not distinguished from plain soundness, an omission that will confuse readers who later encounter the distinction in Chapter 5.
+- [none] D — no issues found.
+
 ## Links
 
 - Up: [[01-the-promise-of-provable-and-programmable-secrets]]

@@ -117,6 +117,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (C) "The key insight is a change in the algebraic structure" — "key insight" is an AI smell
+- [P2] (B) ICICLE speedup range "3.25x to 7x" has no source; the Stwo/ICICLE benchmarks should be cited (StarkWare blog or the Circle STARKs paper)
+- [P2] (B) "940x throughput improvement over Stone" is a very strong claim with a single source (the Circle STARKs ePrint); a secondary benchmark citation would strengthen it
+- [P3] (A) The circle group isomorphism stated as "$C(\mathbb{F}_p)$ is isomorphic to the multiplicative group of $\mathbb{F}_{p^2}$ modulo $\mathbb{F}_p^*$" — technically the isomorphism is to the subgroup of norm-1 elements of $\mathbb{F}_{p^2}^*$; the stated quotient framing is informal and could mislead readers with algebraic background
+- [P3] (E) The BabyBear comparison at the end is useful but brief; a sentence noting that BabyBear's multiplicative group of smooth order $2^{27}$ (not $2^{31}$) means its FFT domain is smaller than M31's circle group would sharpen the comparison
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

@@ -101,6 +101,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) "The Midnight developer guide documents that the first attempt at implementing a private voting contract…was rejected with 11 disclosure errors" — attributed to "the Midnight developer guide" but no URL, version, or section is given. Should link or date the source.
+- [P2] (B) No citations in "Sources cited" despite specific implementation details (26-pass pipeline, three leakage categories, 11-error voting contract redesign). These are Compact-specific engineering claims that should trace to documentation or a technical paper.
+- [P2] (A) The code example uses `disclose(get_balance())` and assigns to `my_balance`, but the preceding prose says "The `disclose()` call is the developer's explicit declaration: 'I acknowledge that this private value will influence public state.'" The explanation conflates two distinct functions of `disclose()`: making the value available inside the circuit (constrained) vs acknowledging that it influences *public* state. Compact's disclosure analysis catches the latter; the former is automatic for any circuit input. The distinction should be tightened.
+- [P3] (D) The section's claim that "no other ZK language provides this guarantee" is unqualified. Leo's record model provides a structural (if less granular) privacy guarantee. The comparison should acknowledge that Leo's approach is different but not entirely without compiler-enforced bounds.
+- [P3] (E) The section ends abruptly after the tradeoff paragraph. A brief note on whether disclosure analysis catches *over*-constraining (revealing more than necessary) as well as under-constraining would complete the picture.
+
 ## Links
 
 - Up: [[03-choreographing-the-act]]

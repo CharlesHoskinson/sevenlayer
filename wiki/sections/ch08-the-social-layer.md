@@ -64,6 +64,8 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [none] X — no issues found.
+
 ## Links
 
 - Up: [[08-the-verdict]]

@@ -83,6 +83,8 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] C The ASCII diagram is hard to parse: the visual arrow count does not obviously match the "14 directed edges" claim in the header, and the legend lists only 14 edges split as "6 upward" + "8 downward" without labelling all 8 downward arrows in the figure. A reader cannot verify the edge count from the diagram alone.
+
 ## Links
 
 - Up: [[10-the-synthesis-three-paths-not-two]]

@@ -61,6 +61,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The section claims Hermez transcript data "has already become unrecoverable" — this is a strong factual claim with no source. The Wang, Cohney, Bonneau 2025 paper should be cited for this specific finding, and the claim should be qualified (e.g., "as of 2024" or "per the authors' investigation").
+- [P2] (B) The Wang, Cohney, Bonneau 2025 citation lacks venue; this is a SoK-style paper and should reference its conference (likely IEEE S&P or similar) once published, or the ePrint number.
+- [P2] (C) The ADOPT acronym expansion is presented as a list, which is clear, but the paragraph "Their finding: no existing ceremony satisfies all five properties" uses a leading italicization pattern that borders on the numbered-proof-step style warned against in style guidelines.
+- [none] (D) No contradictions found.
+- [P3] (E) The section does not discuss which ADOPT properties Zcash Sprout or Sapling scored on/failed — applying the framework retroactively to those ceremonies would give the reader a richer comparative picture.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

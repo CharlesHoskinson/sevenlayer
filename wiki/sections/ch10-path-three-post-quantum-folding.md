@@ -73,6 +73,10 @@ The third path abandons both pairing-based and hash-based cryptography in favor 
 
 ## Improvement notes
 
+- [P1] A/B "FIPS 203/204 standardization process" cited as validating Module-SIS is imprecise: FIPS 203 standardizes ML-KEM (Module-LWE based key encapsulation), FIPS 204 standardizes ML-DSA (a signature based on Module-LWE/SIS). Module-SIS specifically underpins FIPS 204 and the relevant hash-based signature in FIPS 205 (SLH-DSA). Citing both 203 and 204 as the Module-SIS validation conflates the KEM and signature standards. Should specify FIPS 204 (and FIPS 205 for context).
+- [P2] B Greyhound is cited as "Nguyen & Seiler, CRYPTO 2024" but has no BIBLIOGRAPHY.md entry — only ch07-lattice-based-proving references it by name without a full citation. Needs a bibliography entry.
+- [P2] B "Neo/SuperNeo" — bibliography ref 21 covers Neo (Nguyen & Setty, ePrint 2025/294) but "SuperNeo" is not documented anywhere else in the wiki. Either a distinct paper needing its own citation, or an informal name that should be clarified.
+
 ## Links
 
 - Up: [[10-the-synthesis-three-paths-not-two]]

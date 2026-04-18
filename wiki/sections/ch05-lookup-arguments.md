@@ -187,6 +187,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) Jolt field-element cost stated as "~18 field element commitments per instruction (3 per chunk, with $c = 6$ chunks)" in the body text, but the Key claims state "~18 field element commitments per instruction vs. ~50–80 constraints in traditional zkVMs." The body's ADD example elsewhere says "approximately 18 field elements per instruction (3 per chunk, $c = 6$ chunks for 64-bit RISC-V)" — 3 × 6 = 18 is correct for 64-bit, but the preceding paragraph uses $c = 4$ chunks of 8 bits for a 32-bit ADD (4 chunks × 3 = 12, not 18). The section mixes 32-bit and 64-bit examples without clearly distinguishing them, making the 18-element figure appear inconsistent.
+- [P1] (A) Plookup attributed to "Gabizon and Williamson" — the full paper title is "plookup: A simplified polynomial protocol for lookup tables" and includes Zacharias, not just Gabizon and Williamson. Check authorship; the ePrint 2020/315 lists Gabizon and Williamson as sole authors, which is correct for the original Plookup, but LogUp-GKR is attributed to "Papini and Haboeck" while the actual ePrint 2023/1284 authors are Shahar Papini and Ulrich Haboeck — the Key claims entry spells it "Papini, Shahar and Ulrich Haboeck" (correctly) while the Sources section uses "Papini, Shahar and Ulrich Haboeck" — consistent, but the body text just says "Papini and Haboeck" without first names. Minor inconsistency but worth normalizing.
+- [P2] (A) "Offline memory checking (Blum et al., adapted by Setty)" — "Blum et al." is attributed to the 1990s but no specific paper is cited. The canonical reference is Blum, Evans, Gemmell, Kannan, Naor, "Checking the Correctness of Memories" (1991). A citation entry should be added.
+- [P2] (C) The LogUp section explains logarithmic derivatives via "P'(X)/P(X) = Sum of 1/(X - r_i)" — this is mathematically correct but uses the prime-notation derivative inline before defining it, then switches to a formal display equation. The transition from the inline explanation to the displayed formula is slightly abrupt; a brief "differentiating both sides gives" would smooth it.
+- [P3] (E) Jolt's status as "alpha (open-sourced by a16z)" is noted but no mention of the main missing capability for production: lack of proof recursion. This is mentioned in passing but the implications for deployment (e.g., no on-chain verification without recursion) are not elaborated.
+
 ## Links
 
 - Up: [[05-encoding-the-performance]]

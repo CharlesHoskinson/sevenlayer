@@ -115,6 +115,13 @@ Midnight's Compact language enforces the witness/circuit boundary via a `disclos
 
 ## Improvement notes
 
+- [P1] (A) "Proof generation takes a fixed amount of time regardless of witness values — dominated by the cryptographic proving step, not the witness computation." This is not accurate as stated: proof generation time in a PLONK-based system varies with the number of constraints, which is fixed per circuit, but the witness computation time varies with the witnesses themselves (e.g., complex TypeScript logic). The claim of "fixed time" applies to the proving step, not the combined witness+proving pipeline. The prose then immediately walks this back by noting "dedicated attacker measuring sub-second timing variations in the witness computation phase" could still extract information. Tighten the initial claim.
+- [P1] (A) "The 18-second proof generation time observed on Midnight's development environment" — no source is given for this figure. Midnight's development documentation, testnet benchmarks, or a paper should be cited. This is repeated twice (body and summary) without citation.
+- [P2] (B) "Midnight developer guide" is listed as a source but with no version, URL, or date. Developer documentation changes; a date or commit hash would anchor the reference.
+- [P2] (A) The four-step transaction pipeline (callTx → proveTx → balanceTx → submitTx) is described as using BIP-340 Schnorr signatures for UTXO signing. This is a specific technical claim that should be verified against Midnight's published specs; BIP-340 is Bitcoin's Schnorr signature spec and it would be unusual for a Cardano sidechain to use it verbatim rather than a Cardano-native Schnorr scheme.
+- [P2] (C) "Privacy on Midnight is genuine at the cryptographic level. It is unexamined at the implementation level." This is a strong evaluative claim worth keeping, but it reads as a conclusion without a preceding argument in this section (the argument was made in ch04-side-channel-attacks-when-the-walls-leak). A forward or backward reference would ground it.
+- [P3] (E) The section notes that "the number of segments in a transaction could reveal which circuit was called" as an open question but does not explain what "segments" are in the ZKIR model. Readers need a brief definition or a forward pointer to ch05-midnight-s-zkir-a-concrete-layer-4.
+
 ## Links
 
 - Up: [[04-the-secret-performance]]

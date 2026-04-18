@@ -88,6 +88,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (B) No sources cited for the claim that "the execution trace for a block proved by SP1 or RISC Zero might contain billions of field elements." SP1 and RISC Zero benchmarks exist; a reference would anchor this.
+- [P2] (A) "roughly 80 field elements in total" for a 4×4 Sudoku trace is stated without showing the accounting. The table shows 4 rows for x²+x=12; for Sudoku the derivation (16 values + intermediate checks) is asserted. A brief worked breakdown or explicit "approximately" would clarify.
+- [P2] (C) The box titled "The Running Example: The Sudoku Witness" uses a callout style that slightly breaks the prose rhythm; the label "Running Example" echoes a textbook convention, but this is minor.
+- [P3] (E) The section explains sequential dependency clearly but doesn't address out-of-order speculation or speculative execution techniques that have been explored (e.g., ORAM-based approaches). A sentence noting why these don't help would pre-empt reader questions.
+- [P3] (D) "The recording is vastly larger because it includes every intermediate value" — true, but no order-of-magnitude comparison is given between computation time and trace-generation time until the next section. A forward pointer would help.
+
 ## Links
 
 - Up: [[04-the-secret-performance]]

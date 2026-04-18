@@ -66,6 +66,10 @@ None in this section.
 
 ## Improvement notes
 
+- [P1] (A) "The proof server at `localhost:6300` is an air-gapped rehearsal room" — "air-gapped" is technically incorrect; air-gapping requires physical network isolation. The proof server is process-local on the user's machine but not air-gapped. Use "local" or "network-isolated."
+- [P2] (B) DUST fee of "~490 trillion SPECK per circuit call" stated as a specific figure with no source; SPECK unit is not defined in the wiki.
+- [P3] (C) The closing Penrose analogy ("geometry of spacetime is not a backdrop...") is a strong literary gesture but risks reading as decorative rather than analytical — consider anchoring it to a concrete architectural claim.
+
 ## Links
 
 - Up: [[12-midnight-the-privacy-theater]]

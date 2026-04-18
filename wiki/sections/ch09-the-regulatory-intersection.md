@@ -88,6 +88,9 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) "eIDAS 2.0, effective from 2024" — the regulation entered force in 2024 but member-state wallet deployment is mandated by 2026. The phrasing may mislead readers into thinking wallets are already required; should clarify "entered force 2024, wallets required by 2026."
+- [P3] (B) "Galactica Network, zyphe, and hyli" named as zKYC implementations with no citations; at minimum a website or whitepaper reference should be listed for each.
+
 ## Links
 
 - Up: [[09-privacy-enhancing-technologies]]

@@ -153,6 +153,12 @@ SP1, Stwo/Cairo, and Jolt each traverse the seven layers by a distinct route: SP
 
 ## Improvement notes
 
+- [P0] (A) Jolt Layer 1 is described as "Trusted (Hyrax/Pedersen commitments)" — Hyrax is a *transparent*, trust-free polynomial commitment scheme based on inner-product arguments over elliptic curves; it requires no trusted setup. Labelling Jolt Layer 1 as "Trusted" is incorrect.
+- [P1] (A) Speed comparison for Stwo: Layer 5 entry says "approximately 100x faster than its predecessor Stone" but Layer 6 entry says "M31 arithmetic is approximately 125x faster than the 252-bit Stark field used by Stone." These two figures refer to the same system comparison yet differ. One is likely a rounded figure for Stone's overall pipeline; the other for raw field arithmetic — but the distinction is not explained and the juxtaposition will confuse readers.
+- [P2] (B) "SP1 witness generation consumes an estimated 60-70% of total proving time" — flagged as an estimate with no source. This specific proportion is a key claim about the Witness Gap and needs a citation.
+- [P2] (B) "Gassmann et al. (2025)" cited without venue, journal, or DOI. This is the sole named source in the section and is referenced in multiple places; a full citation is needed.
+- [P3] (C) "SP1 implements 39+ RISC-V instructions" (Layer 2) alongside "all 62 core opcodes formally verified" (same paragraph) — two different counts for different things but no explanation of the distinction, creating confusion.
+
 ## Links
 
 - Up: [[11-zkvms-the-universal-stage]]

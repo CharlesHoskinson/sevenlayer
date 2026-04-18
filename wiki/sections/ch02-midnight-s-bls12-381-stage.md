@@ -67,6 +67,13 @@ None in this section.
 
 ## Improvement notes
 
+- [P1] (A) The section describes Midnight's proof system as "PLONK-family (a variant of Halo2)" but ch06-case-study-midnight-s-sealed-certificate identifies it specifically as "Halo 2 / UltraPlonk with custom gates." The ch02 description is vague where a more precise characterization exists; the term "Halo2 variant" is used in ch02-universal-versus-circuit-specific-setups as well, but "UltraPlonk" is the specific variant and should be named here.
+- [P1] (A) The April 2025 Pluto-Eris → BLS12-381 switch claim has no source citation (same issue as in ch02-the-quantum-shelf-life); the `midnight-trusted-setup` repository reference also lacks a URL.
+- [P2] (B) The proof server URL (localhost:6300) and the 13.7 KB / 1.3 KB proving/verification key sizes appear to be sourced from Midnight devnet documentation, but no source is cited.
+- [none] (C) No AI-smell or style issues. Concrete, specific, and direct.
+- [none] (D) No contradictions with other chapters found.
+- [P3] (E) The section does not note whether the `midnight-trusted-setup` ceremony has been completed or is ongoing, or how its ADOPT scores compare to the Ethereum KZG ceremony analyzed in the preceding section.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

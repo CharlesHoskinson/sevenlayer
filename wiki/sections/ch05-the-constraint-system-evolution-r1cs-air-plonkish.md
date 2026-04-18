@@ -249,6 +249,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) Groth16 proof size is stated as "three elliptic curve group elements, roughly 128 bytes" in the body and as "192 bytes (3 group elements)" in the Summary. These are inconsistent: three BLS12-381 G1 points are 3 × 48 = 144 bytes (compressed) or 3 × 96 = 288 bytes (uncompressed); the commonly cited figure is 192 bytes for two G1 + one G2. The "128 bytes" figure in the body and "192 bytes" in the summary cannot both be correct; the body figure needs a correction.
+- [P1] (A) The AIR constraint count comparison table claims AIR costs "~30,000" constraints for 1,000 hash rounds and attributes this to "description size only" — but a footnote immediately after clarifies that the prover's work scales with trace size, not description size. The table entry is therefore misleading: calling it "~30,000 constraints" for 1,000 rounds implies a 1,000× reduction in prover work, which is not what AIR provides. The table column header or the AIR cell value should be qualified to avoid this misreading.
+- [P2] (A) R1CS is credited to GGPR (2012) in one place and the Key claims list cites "GGPR (2012)" correctly. However, the body text says GGPR "introduced the QAP framework that R1CS later formalized" — implying R1CS came after QAP, but R1CS is sometimes treated as a renaming/refinement that happened in 2013 (Parno et al., "Pinocchio"). The history is slightly compressed.
+- [P2] (C) Paragraph beginning "The history of arithmetization is a history of increasing expressiveness" is a near-duplicate of the opening paragraph of the same section. Two nearly identical "history of arithmetization" framing sentences appear within the first eight lines — one of them should be cut.
+- [P3] (E) The PLONKish section does not discuss the Halo2 commitment scheme (IPA/KZG variants) or why Halo2 avoids a trusted setup, which is a key differentiator over vanilla PLONK. A brief note would improve depth given that Halo2 is cited as the production standard.
+
 ## Links
 
 - Up: [[05-encoding-the-performance]]

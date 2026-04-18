@@ -73,6 +73,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (C) "it is worth spelling out" style phrasing in the chapter body (appears in ch06-the-hybrid-pipeline but pattern starts here); intro section itself is clean
+- [P2] (B) No sources cited; Schwartz-Zippel is named but not cited; FRI/KZG/Ajtai are forward-referenced to Ch10 without a note for the reader
+- [P3] (E) Ajtai commitment path is mentioned only parenthetically; a single sentence on what distinguishes it from KZG/FRI would improve the taxonomy
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

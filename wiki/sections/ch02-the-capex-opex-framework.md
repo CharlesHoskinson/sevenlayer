@@ -70,6 +70,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The $2–5M ceremony cost and per-rollup $60K amortization figures are presented without a source; they are cited as approximate but the basis (engineering, auditing, coordination breakdown) is unexplained. The "50+ rollups sharing the SRS" count also needs a source or date anchor.
+- [P2] (A) The STARK verification gas estimate (~2–5M gas) and Groth16 estimate (~200K–300K gas) are Ethereum mainnet figures; gas costs fluctuate significantly and the text should note the date or price assumption (the section mentions "typical Ethereum gas prices" without anchoring).
+- [none] (B) No citation issues beyond those noted in A.
+- [P2] (C) "Smaller than a tweet" (192 bytes) is a recurring motif across multiple sections; it is used more naturally here than elsewhere, but the phrase's repetition across the wiki creates slight staleness.
+- [none] (D) No structural contradictions found.
+- [P3] (E) The section names SP1 Hypercube and Stwo but does not note that the SP1 Hypercube benchmark (6.9 s) and Stwo benchmark (~10 s) referenced in ch05 are already available; a cross-reference to the overhead-tax section would let readers see actual numbers.
+
 ## Links
 
 - Up: [[02-building-the-stage]]

@@ -63,6 +63,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (B) Three vulnerability incidents cited as fact (Frozen Heart 2022, Last Challenge Attack 2024, Solana ZK ElGamal 2025) with no sources in the "Sources cited" section; Trail of Bits Frozen Heart disclosure and the gnark PLONK bug report should be cited
+- [P2] (A) "Last Challenge Attack of 2024 compromised gnark's PLONK verifier, used by multiple Ethereum rollups" — the specific rollups affected are not named; either name them or soften to "at least one Ethereum rollup"
+- [P3] (E) SP1 Hypercube's 62-opcode formal verification is mentioned as "state of the art" but without explaining what a formal verification of opcodes does and does not cover; a sentence distinguishing opcode-constraint verification from full Fiat-Shamir-to-field-arithmetic stack verification would help readers calibrate the claim
+
 ## Links
 
 - Up: [[06-the-sealed-certificate]]

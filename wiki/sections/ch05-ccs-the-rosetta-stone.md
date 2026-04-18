@@ -130,6 +130,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) "Neo (Nguyen and Setty, 2025): the first lattice-based folding scheme for CCS" — Neo is described as "the first lattice-based folding scheme for CCS" here, but LatticeFold (Boneh and Chen) is a predecessor; the claim should clarify whether Neo is first for CCS specifically or first lattice-based generally, as LatticeFold predates Neo and also targets CCS-like constraints.
+- [P2] (A) The CCS satisfying condition uses the Hadamard product symbol "$\bigcirc$" in the display formula, but the explanation parenthetical correctly defines it as element-wise multiplication ("$\circ$"). The notation inconsistency (large circle vs. small circle) between formula and prose may confuse readers; standardize to $\circ$ throughout.
+- [P2] (C) "There is a deeper mathematical point here, one that Penrose would appreciate" — name-dropping Penrose adds no information and reads as padding; cut.
+- [P3] (E) The section mentions ProtoStar and ProtoGalaxy only by name with no description of how they extend Nova to higher-degree constraints. Given that this is the CCS-as-universal-target section, a one-line characterization of each would add useful depth.
+- [P3] (D) The "Three Dialects, One Grammar" subsection repeats content (the R1CS-as-CCS derivation) that appears in the earlier "The Idea" subsection. The repetition is intentional for emphasis but could be tightened.
+
 ## Links
 
 - Up: [[05-encoding-the-performance]]

@@ -77,6 +77,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The body claims "24 typed instructions organized into eight categories" and then lists: arithmetic (3), constraints (3), control flow (2), type encoding (2), cryptographic operations (3), and I/O (4) = 17 instructions. Seven instructions are unaccounted for. Either the count is wrong or the category listing is incomplete; reconcile the total with the enumerated list.
+- [P2] (A) "Cairo produces execution traces but no privacy separation" — Cairo's *compiler* does not produce execution traces; execution traces are a runtime artifact of the CairoVM. The compiler produces Sierra/CASM bytecode. The comparison is technically imprecise.
+- [P2] (B) No citations in "Sources cited" for any of the ZKIR specifics (24 instructions, 8 categories, two transcript channels). These are verifiable implementation details that should reference Midnight's technical documentation or the Compact spec.
+- [P2] (C) "No other ZK language generates all three from one source" is a strong uniqueness claim that appears in both this section and in `ch03-the-four-philosophies`. The repetition is intentional for emphasis but risks feeling like padding; consider consolidating.
+- [P3] (E) The section describes ZKIR at the instruction-category level but never gives an example of a ZKIR JSON fragment. Given that the section is titled "Compiler, IR, Circuit," a small concrete ZKIR excerpt would ground the claim that it is "JSON-formatted" and show the two transcript channels in practice.
+
 ## Links
 
 - Up: [[03-choreographing-the-act]]

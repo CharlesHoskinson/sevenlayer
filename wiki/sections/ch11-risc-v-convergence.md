@@ -65,6 +65,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (C) "Its PLONKish/KZG architecture is a generational outlier" — "generational outlier" is imprecise and carries vague evaluative weight; replace with something like "the only production zkVM still using pairing-based KZG commitments rather than hash-based FRI."
+- [P2] (B) "Gassmann et al. (2025)" cited without venue; same gap as in ch11-three-zkvms-through-seven-layers.
+- [P3] (C) "Unlike ARM (proprietary) or x86 (legacy-encumbered)" — ARM cores are licensed widely; calling ARM simply "proprietary" oversimplifies a nuanced licensing model and risks being misleading to technically sophisticated readers.
+
 ## Links
 
 - Up: [[11-zkvms-the-universal-stage]]

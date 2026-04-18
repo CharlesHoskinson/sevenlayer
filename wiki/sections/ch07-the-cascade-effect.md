@@ -97,6 +97,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P2] (A) BabyBear description says "multiplicative subgroup of order $2^{27}$" — correct (2-adicity 27), consistent with ch07-small-fields. However the text then says extension field gives "~124 bits" via degree-4 extension; the section doesn't explain why degree 4 is needed rather than degree 2 for BabyBear specifically.
+- [P2] (D) The cascade code block for Neo uses a specific guard condition value `(k+1) * T * (b-1) = 2,808` but the parameter k=12 gives (12+1)×216×(2-1)=2,808 — this checks out. However the block mixes prime notation (q = 2^64 − 2^32 + 1) with parameter equations without clarifying units; a reader unfamiliar with the lattice estimator may not understand what "T = 216 (expansion factor)" means in context.
+- [P3] (C) The closing metaphor "branching tunnels" is vivid but the paragraph repeating "once you enter one, the others seal behind you" immediately after the same idea stated as "once a tunnel is entered, the others seal behind you" is a near-verbatim repetition within four lines.
+
 ## Links
 
 - Up: [[07-the-deep-craft]]

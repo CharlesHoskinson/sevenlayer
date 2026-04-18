@@ -92,6 +92,12 @@ The Witness Gap is four overlapping problems: a Performance Gap (witness generat
 
 ## Improvement notes
 
+- [P2] (A) "~96% of the world's population cannot perform client-side ZK proving" is repeated from ch04-memory-the-binding-constraint verbatim. If the smartphone ownership base number there is inaccurate (see that section's notes), the error propagates here too.
+- [P2] (C) "The mathematics is beautiful. The engineering is brutal." — closing aphorism is an AI-smell stock contrast. Cut or vary.
+- [P2] (D) The synthesis labels four gaps (Performance, Memory, Security, Correctness) and adds a fifth (equity) that was framed as part of the Memory section. Calling it a "fifth dimension" when it was introduced as part of Tier hardware earlier in the chapter creates a mild numbering inconsistency; the equity gap is better described as a consequence of the Memory Gap than as a peer dimension.
+- [P3] (E) The "system architect" checklist (5 questions) is useful but duplicates framing used at the end of ch04-memory-the-binding-constraint. The two lists could be integrated or differentiated more clearly (memory section = hardware questions, this section = system design questions).
+- [P3] (D) The closing transition ("Layer 4 must answer: how do we turn this recording into a mathematical puzzle") calls the next chapter Layer 4 but ch04 itself has been calling the witness generation "Layer 3" throughout. This mislabels the transition: witness generation is Layer 3 of the seven-layer model; arithmetization is Layer 4. The layer numbering in the transition paragraph should be checked against the book's own taxonomy.
+
 ## Links
 
 - Up: [[04-the-secret-performance]]

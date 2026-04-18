@@ -134,6 +134,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+- [P1] (A) The table row "GPU pipeline speedup over CPU (sum-check protocol): 3,040x — BatchZK" conflicts with the prose, which calls it "3,000 times speedup" at one point and "3,040x" in the table; the prose rounds to 3,000 but the table is more precise. Reconcile to a single figure throughout.
+- [P1] (A) The streaming space bound is stated as $O(\sqrt{KT})$ in the Key claims and table but as $O(\sqrt{T})$ in the prose body. These are not equivalent unless K=1; if K is a checkpoint granularity parameter, define it or use a consistent notation throughout.
+- [P2] (A) "An Ethereum block produces billions [of field elements]" then "can exceed 100 gigabytes of RAM" — the RAM figure covers materialized field elements at specific field sizes; the text doesn't mention the field size (e.g., 64-bit Goldilocks vs. 254-bit BN254 elements differ 4×). Adding the field size would make the RAM estimate verifiable.
+- [P2] (B) ZKPOG, ZKProphet, BatchZK, Nair/Thaler/Zhu, and Ozdemir/Laufer/Boneh are all cited by name without publication years or venues. At minimum, years should appear in the Sources cited block; the prose treats all five as equally recent without dating them.
+- [P2] (C) "Welcome to the Witness Gap — and it is growing, not shrinking." The em-dash and exclamatory register is a light AI-smell; tighten to a declarative statement.
+- [P3] (E) The section does not mention whether pipelining (BatchZK) requires a specific proof system or is system-agnostic. The streaming approach (Jolt/sum-check) is explicitly tied to the sum-check protocol, but BatchZK's applicability is not bounded.
+
 ## Links
 
 - Up: [[04-the-secret-performance]]

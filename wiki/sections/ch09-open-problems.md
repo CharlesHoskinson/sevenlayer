@@ -60,6 +60,9 @@ Three frontier capabilities likely to define the next privacy architecture gener
 
 ## Improvement notes
 
+- [P1] (B) "Ozdemir and Boneh (USENIX Security 2022)" is not listed in the master bibliography (refs 34 and 46 are different Ozdemir papers; the collaborative zk-SNARKs paper is absent). Should be added as a numbered bibliography entry.
+- [P2] (B) EUROCRYPT 2026 PIR result is cited by conference name only — "specific paper not named in text" is acknowledged in Open questions. Until the paper is identified, this claim is unverifiable and should be flagged as provisional.
+
 ## Links
 
 - Up: [[09-privacy-enhancing-technologies]]
