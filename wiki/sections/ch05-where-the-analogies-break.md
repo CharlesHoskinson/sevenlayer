@@ -4,9 +4,9 @@ slug: ch05-where-the-analogies-break
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2350, 2417]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2352, 2422]
+source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+status: reviewed
 word_count: 1313
 ---
 
@@ -40,43 +40,46 @@ From this point forward, the magician-and-audience framing will recede. Layers 5
 
 ### Reference Data
 
-- **R1CS** (2012): bilinear constraints (degree 2). One constraint per multiplication gate. Native format for Groth16 (128-byte proofs, constant-time verification) and Spartan.
-- **AIR** (2018): uniform transition constraints over execution traces. Native format for STARKs (transparent, post-quantum). Constraint description size independent of trace length.
+- **R1CS** (2012): bilinear constraints (degree 2). One constraint per multiplication gate. Native format for Groth16 (192-byte proofs on BLS12-381, constant-time verification) and Spartan.
+- **AIR** (2018): uniform transition constraints over execution traces. Native format for STARKs (transparent, post-quantum). Constraint description size independent of trace length; prover trace work is not.
 - **PLONKish** (2019): selector-gated custom gates with copy constraints via permutation arguments. Native format for Halo2, PLONK. Dominant in deployed systems (2020-2025).
 - **CCS** (Setty, 2023): unifies R1CS, AIR, and PLONKish without overhead. Native target for HyperNova, Neo, ProtoStar, ProtoGalaxy.
 - **Sumcheck protocol** (Lund et al., 1992): reduces verification of polynomial sums over $2^n$ inputs to $n$ rounds of interaction. Backbone of Spartan, HyperNova, Jolt, and SP1 Hypercube.
-- **Plookup** (2020): first practical lookup argument. Sorting-based, $O(n \log n)$.
-- **LogUp** (2022): sorting-free lookup via logarithmic derivatives. $O(n)$ prover cost.
-- **LogUp-GKR** (2023): logarithmic verifier cost for lookups. Used in SP1 Hypercube and Stwo.
+- **Plookup** (Gabizon and Williamson, 2020): first practical lookup argument. Sorting-based, $O(n \log n)$.
+- **LogUp** (Haboeck, 2022): sorting-free lookup via logarithmic derivatives. $O(n)$ prover cost.
+- **LogUp-GKR** (Papini and Haboeck, 2023): logarithmic verifier cost for lookups. Used in SP1 Hypercube and Stwo.
 - **Lasso** (2023): lookups into tables of size $2^{128}$, prover cost independent of table size.
-- **Jolt** (2023): approximately 6x faster than RISC Zero in theoretical commitment cost analysis. Full RISC-V ISA via lookups.
+- **Jolt** (2023): approximately 6x faster than RISC Zero in theoretical commitment cost analysis. Full RISC-V ISA via lookups; ~18 field elements per 64-bit RISC-V instruction.
 - **Overhead tax**: 10,000-50,000x versus native execution (2024-2025 systems). Falling to 1,000-5,000x by 2027-2028.
 - **Overhead breakdown**: field encoding (10-100x), constraint expansion (50-100x), polynomial commitment (10-50x). Sources multiply.
 - **Ozdemir et al.**: 50-150x reduction in memory checking constraints via algebraic approaches.
 - **Binius** (2025): 100x reduction in bit-level embedding overhead via binary tower fields.
 - **Mersenne-31**: field modulus $2^{31} - 1$. Fastest known modular reduction. Used by SP1 and Stwo.
-- **ZKIR**: 24 typed instructions, compiling Compact to PLONKish constraints over BLS12-381 ($\sim 2^{253}$).
+- **ZKIR**: 24 typed instructions, compiling Compact to PLONKish constraints over BLS12-381 (a 255-bit prime, order $\sim 2^{255}$).
 
 ### Sources
 
 - [R-L4-1] Gennaro, Gentry, Parno, Raykova. "Quadratic Span Programs and Succinct NIZKs without PCPs." EUROCRYPT 2013. ePrint 2012/215.
 - [R-L4-2] Ben-Sasson, Bentov, Horesh, Riabzev. "Scalable, Transparent, and Post-Quantum Secure Computational Integrity." ePrint 2018/046.
-- [R-L4-3] Gabizon, Williamson, Ciobotaru. "PLONK." ePrint 2019/953.
+- [R-L4-3] Gabizon, Ariel, Zachary J. Williamson, and Oana Ciobotaru. "PLONK." ePrint 2019/953.
 - [R-L4-4] Setty, Thaler, Wahby. "Customizable Constraint Systems for Succinct Arguments." ePrint 2023/552.
 - [R-L4-5] Setty. "Spartan: Efficient and General-Purpose zkSNARKs without Trusted Setup." ePrint 2019/550.
-- [R-L4-6] Gabizon, Williamson. "Plookup." ePrint 2020/315.
-- [R-L4-7] Haboeck. "LogUp." ePrint 2022/1530.
-- [R-L4-8] Papini, Shahar and Ulrich Haboeck. "LogUp-GKR." ePrint 2023/1284.
-- [R-L4-9] Setty, Thaler, Wahby. "Lasso." ePrint 2023/1216.
-- [R-L4-10] Arun, Setty, Thaler. "Jolt." ePrint 2023/1217.
+- [R-L4-6] Gabizon, Ariel and Zachary J. Williamson. "Plookup." ePrint 2020/315.
+- [R-L4-7] Haboeck, Ulrich. "Multivariate Lookups Based on Logarithmic Derivatives (LogUp)." ePrint 2022/1530.
+- [R-L4-8] Papini, Shahar and Ulrich Haboeck. "Improving Logarithmic Derivative Lookups Using GKR (LogUp-GKR)." ePrint 2023/1284.
+- [R-L4-9] Setty, Thaler, Wahby. "Unlocking the Lookup Singularity with Lasso." ePrint 2023/1216.
+- [R-L4-10] Arun, Setty, Thaler. "Jolt: SNARKs for Virtual Machines via Lookups." ePrint 2023/1217.
 - Midnight ZKIR Reference (v2/v3), 119 oracle traces. Compact compiler v0.29.0.
 - Lund, Fortnow, Karloff, Nisan. "Algebraic Methods for Interactive Proof Systems." JCSS 1992.
+- ZKsync. "Airbender: GPU-Accelerated RISC-V Proving." Product announcement, June 2025. https://www.zksync.io/airbender
+- Groth16 proof size: three group elements on BLS12-381 in compressed form (two $\mathbb{G}_1$ points at 48 bytes each, one $\mathbb{G}_2$ point at 96 bytes) = 192 bytes. Derived from the BLS12-381 curve specification.
 
 
 ---
 
 *A note on the next three chapters.* Chapters 5, 6, and 7 cover arithmetization, proof systems, and cryptographic primitives -- what this book calls the "proof core." In practice, these three layers are inseparable: the choice of field (Layer 6) determines which arithmetization works (Layer 4), which determines which proof system is viable (Layer 5). We present them sequentially because a book must be linear, but they are best understood as a single coupled design unit. If a choice in Chapter 7 seems to contradict a claim in Chapter 5, it is because the dependency runs in both directions. Read all three, then revisit.
 
+---
 ---
 
 ## Summary
@@ -138,6 +141,8 @@ Layer 4 is a lossy translation: native computation (64-bit integers, floats, poi
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [P2] (A) "Jolt is approximately 6x faster than RISC Zero in theoretical commitment cost analysis" — this appears in the Reference Data section without a citation and with the qualifier "theoretical." The original Jolt paper claims a 5x–10x improvement in prover cost vs. RISC Zero; "6x" is within that range but needs a citation. The phrase "theoretical commitment cost analysis" is vague — is this from the Jolt paper's own comparison or from an independent benchmark?
 - [P2] (A) "There is a theoretical lower bound that clarifies the situation. Any computation that produces n bits of output requires at least n bits of communication to verify" — this is a correct statement of the communication complexity lower bound, but presenting it as a "theoretical lower bound" on ZK proof overhead is potentially misleading: SNARKs routinely produce proofs much smaller than the output size (e.g., Groth16 produces a 192-byte proof for computations with megabytes of output). The lower bound applies to communication, not proof size in the standard sense. Clarification needed.

@@ -5,8 +5,8 @@ chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1949, 1995]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+status: reviewed
 word_count: 1291
 ---
 
@@ -104,6 +104,8 @@ The sumcheck protocol (Lund, Fortnow, Karloff, Nisan 1992) reduces verification 
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [P2] (A) "SP1 Hypercube builds its entire polynomial stack on sumcheck" is listed in the "Why Sumcheck Is Everywhere" bullet list but no citation or ePrint reference is provided. All other systems in that list have attributed papers; SP1 Hypercube should have a reference or at minimum a "(Succinct, 2025)" attribution inline.
 - [P2] (A) Key claims state "Sumcheck-based architectures avoid NTTs entirely" — this is true for the sumcheck reduction step, but the committed polynomials in systems like Binius and HyperNova may still require NTT-like transforms depending on the commitment scheme. The claim needs qualification: sumcheck itself avoids NTTs; the surrounding commitment scheme may or may not.

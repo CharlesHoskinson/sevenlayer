@@ -2,7 +2,7 @@
 title: "Encoding the Performance"
 chapter: 5
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 5: Encoding the Performance
@@ -20,7 +20,15 @@ status: untouched
 - [[ch05-where-the-layers-collapse]]
 - [[ch05-where-the-analogies-break]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-18 per `wiki/drafts/ch05-v2.md`. 0 P0 + 9 P1 resolved. Draft preserved. P2 (16) and P3 (9) deferred.
+
+**Key corrections:** Sudoku 4x4 constraint count fixed (12 groups × 6 pairs = 72 uniqueness, 96 total); Groth16 proof size 192 bytes everywhere (not 128); AIR table reframed to separate description-size from prover-work; BLS12-381 scalar field stated as 255 bits; Jolt canonical example pinned to 64-bit RISC-V (18 field elements); Midnight overhead set to 1,000,000x; Airbender and whole overhead-table rebaselined to Ethereum-block native time (~100 ms) with explicit column header.
+
+**Intentional addition:** overhead table rebaseline affected rows beyond Airbender (RISC Zero, SP1, SP1 Hypercube, Stwo) — declared in ledger as coherence fix, not scope creep. No downstream chapters reference the old per-row multipliers.
+
+## Audit rollup (pre-revision)
 
 **Totals: P0=0, P1=7, P2=16, P3=9**
 

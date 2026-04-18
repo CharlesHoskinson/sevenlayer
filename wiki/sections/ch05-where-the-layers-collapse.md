@@ -4,9 +4,9 @@ slug: ch05-where-the-layers-collapse
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2320, 2349]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2322, 2351]
+source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+status: reviewed
 word_count: 657
 ---
 
@@ -81,6 +81,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [P2] (A) "RISC Zero originally used a 254-bit field with KZG commitments and R1CS constraints. In 2023, they migrated to BabyBear (31-bit field) with FRI commitments and AIR constraints." The claim that RISC Zero originally used R1CS is imprecise — RISC Zero's original architecture (v0.x) used a STARK-based system over a 254-bit field, not R1CS/Groth16. The migration was from a 254-bit field STARK to BabyBear FRI, not from R1CS. This should be corrected to avoid implying RISC Zero was a Groth16 system.
 - [P2] (A) The proof-core triad bullet lists "64-bit Goldilocks, lattice, CCS+sumcheck" as one coherent bundle. Neo (referenced in the CCS section) uses Goldilocks but not lattice-based commitments in its published form; LatticeFold uses NTRU lattices. The association of "lattice" specifically with Goldilocks may be inaccurate — LatticeFold targets general fields including small fields, not specifically Goldilocks.

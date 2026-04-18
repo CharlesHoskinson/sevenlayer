@@ -4,9 +4,9 @@ slug: ch05-midnight-s-zkir-a-concrete-layer-4
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2238, 2319]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2240, 2321]
+source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+status: reviewed
 word_count: 1203
 ---
 
@@ -36,14 +36,14 @@ ZK proof (over BLS12-381)
 
 A ZKIR circuit is a directed acyclic graph of 24 base instructions organized into eight categories:
 
-- **Arithmetic** (3 opcodes): `add`, `mul`, `neg` -- basic field arithmetic modulo the BLS12-381 scalar field (approximately $2^{253}$). There is no subtraction opcode; the compiler implements a - b as add(a, neg(b)).
+- **Arithmetic** (3 opcodes): `add`, `mul`, `neg` -- basic field arithmetic modulo the BLS12-381 scalar field (a 255-bit prime with order approximately $2^{255}$). There is no subtraction opcode; the compiler implements a - b as add(a, neg(b)).
 - **Constraints** (4 opcodes): `assert`, `constrain_eq`, `constrain_bits`, `constrain_to_boolean` -- the enforcement mechanism.
 - **Comparison** (2 opcodes): `test_eq`, `less_than` -- produce boolean results without enforcing them.
 - **Control flow** (2 opcodes): `cond_select`, `copy` -- conditional multiplexing and variable aliasing.
 - **Type encoding** (3 opcodes): `reconstitute_field`, `encode`, `decode` -- type-level serialization.
 - **Division** (1 opcode): `div_mod_power_of_two` -- integer-style division for byte extraction.
 - **Cryptographic** (5 opcodes): `transient_hash`, `persistent_hash`, `ec_mul_generator`, `ec_mul`, `hash_to_curve` -- elliptic curve and hash operations over the Jubjub curve embedded in BLS12-381.
-- **I/O** (4 opcodes): `private_input`, `public_input`, `output`, `impact` -- the boundary between circuit and ledger state.
+- **I/O** (4 opcodes): `private_input`, `public_input`, `output`, `impact`. `private_input` and `public_input` pull values into the circuit; `output` exposes a value as a public output. `impact` represents a ledger-state operation -- reading from or writing to Midnight's on-chain state -- binding circuit values to the ledger so that a proof can assert and update persistent on-chain data as part of its execution.
 
 Each instruction consumes inputs (field elements or references to earlier instruction outputs) and produces outputs. The DAG structure emerges from data dependencies: instruction i depends on instruction j if it references j's output. Variables are numbered sequentially (0, 1, 2, ...), and instructions can only reference outputs of earlier instructions.
 
@@ -55,9 +55,9 @@ Two opcodes embody the fundamental challenge of arithmetization: ensuring that a
 
 There is a critical distinction between `constrain_eq` (which *enforces* equality and fails the circuit if violated) and `test_eq` (which *produces* a boolean result without enforcement). The Compact compiler uses `test_eq` for equality comparisons in program logic and `constrain_eq` for internal correctness checks. Confusing the two is precisely the kind of constraint error that causes the under-constrained vulnerabilities discussed in Chapter 3.
 
-**constrain_bits** enforces that a field element lies within a range $[0, 2^N - 1]$. This is essential because ZKIR values are elements of the BLS12-381 scalar field -- numbers up to approximately $2^{253}$. But Compact types often have bounded ranges: `Uint<8>` must be in [0, 255], `Uint<32>` in $[0, 2^{32} - 1]$, `Boolean` must be exactly 0 or 1.
+**constrain_bits** enforces that a field element lies within a range $[0, 2^N - 1]$. This matters because ZKIR values are elements of the BLS12-381 scalar field -- a 255-bit prime, with values as large as roughly $2^{255}$. But Compact types often have bounded ranges: `Uint<8>` must be in [0, 255], `Uint<32>` in $[0, 2^{32} - 1]$, `Boolean` must be exactly 0 or 1.
 
-Without `constrain_bits`, a malicious prover could substitute any $253$-bit field element where an $8$-bit value was expected. If a circuit adds two `Uint<8>` values, the honest result is at most 510 -- but without range checking, a prover could claim the result is an arbitrary 253-bit number, potentially extracting value or corrupting state. Every `Uint<N>` value in compiled Compact code includes a corresponding `constrain_bits` to enforce the range constraint.
+Without `constrain_bits`, a malicious prover could substitute any 255-bit field element where an 8-bit value was expected. If a circuit adds two `Uint<8>` values, the honest result is at most 510 -- but without range checking, a prover could claim the result is an arbitrary 255-bit number, potentially extracting value or corrupting state. Every `Uint<N>` value in compiled Compact code includes a corresponding `constrain_bits` to enforce the range constraint.
 
 A general principle is at work: in constraint systems, everything that is *not* explicitly constrained is implicitly *allowed*. The prover will satisfy exactly the constraints you write, and nothing more. If you forget a constraint, the prover is free to exploit the gap. This is why under-constrained circuits are the dominant failure mode in ZK systems.
 
@@ -82,7 +82,7 @@ A ZKIR circuit could, in principle, be lowered to CCS instead of PLONKish. The t
 
 ### The BLS12-381 Field Consequence
 
-ZKIR operates over the BLS12-381 scalar field: a prime of approximately $2^{253}$, requiring 255 bits to represent. This is roughly 4x wider than the Goldilocks field (64-bit) used by Neo and Plonky2, and approximately 8x wider than the BabyBear (31-bit) or Mersenne-31 (31-bit) fields used by SP1, RISC Zero, and Stwo.
+ZKIR operates over the BLS12-381 scalar field: a 255-bit prime with order approximately $2^{255}$. This is roughly 4x wider than the Goldilocks field (64-bit) used by Neo and Plonky2, and approximately 8x wider than the BabyBear (31-bit) or Mersenne-31 (31-bit) fields used by SP1, RISC Zero, and Stwo.
 
 The large field is necessary for Midnight's architectural choices. BLS12-381 is a pairing-friendly curve, enabling KZG polynomial commitments and Groth16 verification. The Jubjub twisted Edwards curve embeds natively in BLS12-381's scalar field, enabling in-circuit elliptic curve operations for Pedersen commitments and key derivation. The mature ecosystem (Zcash, Ethereum 2.0) provides audited tooling.
 
@@ -145,8 +145,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) "ZKIR has 24 opcodes in 8 categories: Arithmetic (3), Constraints (4), Comparison (2), Control flow (2), Type encoding (3), Division (1), Cryptographic (5), I/O (4)" — summing these: 3+4+2+2+3+1+5+4 = 24. The count is internally consistent. However, the body text lists only 4 I/O opcodes: `private_input`, `public_input`, `output`, `impact` — but omits any mention of what "impact" does; it is described nowhere in the section. Given that `impact` is a blockchain-specific operation (presumably writing to ledger state), its omission weakens the concrete example.
-- [P1] (A) "BLS12-381 scalar field: ~$2^{253}$, ~4x wider than Goldilocks (64-bit)" — 253 / 64 = ~4x is approximate but the scalar field of BLS12-381 is actually 255 bits (the order of the BLS12-381 G1 group is a 255-bit prime). The "~$2^{253}$" in the body is inconsistent with the "255 bits to represent" stated a sentence later. One of these should be used consistently; 255-bit is the correct figure.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) The section states Midnight's backend is "Halo2-style" but the source cited is "Midnight ZKIR Reference (v2/v3), 119 oracle traces. Compact compiler v0.29.0" — the source does not specify Halo2 explicitly. If the Halo2 backend is documented, a more specific citation or version reference would strengthen this claim.
 - [P2] (C) "A general principle is at work: in constraint systems, everything that is *not* explicitly constrained is implicitly *allowed*" — this duplicates the under-constrained circuit principle introduced in Chapter 3. Cross-reference would serve better than re-stating it.
 - [P3] (E) The section does not describe what a typical compiled Compact contract produces in terms of total ZKIR node count or resulting PLONKish constraint count for a representative transaction. A single concrete end-to-end example (e.g., token transfer: N ZKIR nodes → M PLONKish constraints) would improve depth significantly.

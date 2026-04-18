@@ -1630,7 +1630,7 @@ Let us be honest at the outset: this is where the magic trick analogy strains ha
 
 This chapter is longer and more technical than the others. That is because arithmetization is where the conceptual rubber meets the mathematical road. The ideas here -- constraint systems, polynomial identities, lookup arguments, the sumcheck protocol -- are the load-bearing structures of every ZK system in existence. A reader who understands this chapter understands why zero-knowledge proofs work. A reader who skips it must take the rest of the book on faith.
 
-The core mechanism is straightforward. The computation -- every addition, every comparison, every memory access -- gets encoded as relationships between numbers in a finite field. These relationships take the form of polynomial equations. If the computation was performed correctly, all the equations are satisfied simultaneously. If the prover cheated at any step, at least one equation is violated. And here is the key insight that makes the entire field of zero-knowledge proofs possible: checking whether all these polynomial equations hold can be done by evaluating them at a few random points, which is vastly faster than re-executing the original computation.
+The core mechanism is straightforward. The computation -- every addition, every comparison, every memory access -- gets encoded as relationships between numbers in a finite field. These relationships take the form of polynomial equations. If the computation was performed correctly, all the equations are satisfied simultaneously. If the prover cheated at any step, at least one equation is violated. And here is the central move that makes the entire field of zero-knowledge proofs possible: checking whether all these polynomial equations hold can be done by evaluating them at a few random points, which is vastly faster than re-executing the original computation.
 
 This chapter tells the story of how the encoding schemes evolved, from the rigid first attempts to the unified framework that powers every modern proof system. It is also, unavoidably, a story about the overhead this encoding imposes -- and whether that overhead is an immutable tax or a temporary engineering constraint.
 
@@ -1667,11 +1667,11 @@ That is the core idea of arithmetization. Every constraint system in this chapte
 >
 > Our Sudoku witness becomes a 16-row constraint system. Each cell must satisfy:
 >
-> - **Range constraint**: $(\text{cell} - 1)(\text{cell} - 2)(\text{cell} - 3)(\text{cell} - 4) = 0$. This polynomial evaluates to zero only when the cell contains a valid value. Four values, one degree-$4$ polynomial per cell.
+> - **Range constraint**: $(\text{cell} - 1)(\text{cell} - 2)(\text{cell} - 3)(\text{cell} - 4) = 0$. This polynomial evaluates to zero only when the cell contains a valid value. Four values, one degree-$4$ polynomial per cell. Sixteen cells, sixteen range constraints.
 > - **Given-cell constraint**: For each clue, $\text{cell}_i = \text{given}_i$. Eight equalities for our 8-given puzzle.
-> - **Uniqueness constraint**: For each row, column, and 2x2 box, the product $(a - b)$ for all pairs must be nonzero. Equivalently: the polynomial product over all pairs of $(a - b)$ must be nonzero for each group. Eight groups, $\binom{4}{2} = 6$ pairs each, yielding 48 pair checks.
+> - **Uniqueness constraint**: For each row, column, and $2 \times 2$ box, every pair of cells within the group must differ. Count the groups: 4 rows + 4 columns + 4 boxes = **12 groups**. Each group has 4 cells, hence $\binom{4}{2} = 6$ pairs. The total uniqueness-check count is $12 \times 6 = 72$ pair-difference constraints, each enforcing that $(a - b) \neq 0$ for some pair of cells in the group.
 >
-> Total: 16 range constraints + 8 given-cell constraints + 48 uniqueness checks = 72 constraints over 16 witness variables. In R1CS form, each degree-$4$ range constraint decomposes into intermediate multiplications, expanding to roughly 120 R1CS constraints. In CCS form, the higher-degree constraints can be expressed directly. The witness (the completed grid) satisfies all 72 constraints. A wrong value in any cell makes at least one polynomial nonzero, and the Schwartz-Zippel lemma catches it with overwhelming probability at a random evaluation point.
+> Total: 16 range constraints + 8 given-cell constraints + 72 uniqueness checks = **96 constraints** over 16 witness variables. In R1CS form, each degree-$4$ range constraint decomposes into three intermediate bilinear multiplications, expanding the 16 range checks to roughly 48 R1CS rows; the 72 uniqueness pair-difference checks each take one row (with auxiliary inverse witnesses to enforce nonzero), and the 8 given-cell equalities each take one row. The total lands in the neighborhood of **130 R1CS constraints**. In CCS form, the degree-$4$ range constraints can be expressed directly, and the total stays at 96. The witness (the completed grid) satisfies all 96 constraints. A wrong value in any cell makes at least one polynomial nonzero, and the Schwartz-Zippel lemma catches it with overwhelming probability at a random evaluation point.
 
 Why polynomials? Because of a fact about polynomials: a polynomial of degree $d$ is completely determined by its values at any $d+1$ points. If you know a line (degree $1$), two points fix it exactly. If you know a cubic (degree $3$), four points fix it exactly. This means that if a polynomial "misbehaves" at even a single point, it must be the wrong polynomial -- and checking it at a random point catches this misbehavior with near certainty. A polynomial commitment scheme exploits this: the prover seals a polynomial into a short commitment, and the verifier can spot-check it at random points to confirm it is correct -- without ever seeing the full polynomial.
 
@@ -1685,7 +1685,7 @@ With the spreadsheet image in hand, we can state the central question of this ch
 
 The three major constraint systems -- R1CS, AIR, and PLONKish -- emerged in a span of just seven years (2012-2019). Each was designed to solve a specific limitation of its predecessor, but each also introduced new trade-offs. Understanding this evolution is not optional for understanding modern ZK: every proof system, every zkVM, and every privacy protocol in production today is built on one of these three foundations (or, increasingly, on CCS, which unifies all three).
 
-The history of arithmetization is a history of increasing expressiveness. Each new constraint system solved a specific limitation of its predecessor. Understanding this genealogy is essential because the constraint system you choose determines which proof systems you can use, which fields are efficient, and how much overhead the encoding imposes.
+The history of arithmetization is a history of increasing expressiveness. Each new constraint system solved a specific limitation of its predecessor. Understanding this genealogy matters because the constraint system you choose determines which proof systems you can use, which fields are efficient, and how much overhead the encoding imposes.
 
 The genealogy also reveals how rapidly the field moves. R1CS was introduced in 2012. By 2023, it was already the "legacy" format -- still deployed in production (Groth16 is not going away), but superseded by more expressive systems for new development. The eleven-year span from R1CS to CCS saw more architectural innovation in constraint system design than the previous four decades of theoretical computer science produced. This acceleration is driven by practical pressure: the economic value of efficient zero-knowledge proofs creates strong incentives for better arithmetization.
 
@@ -1693,7 +1693,7 @@ The genealogy also reveals how rapidly the field moves. R1CS was introduced in 2
 
 The first practical arithmetization emerged from the work of Gennaro, Gentry, Parno, and Raykova (GGPR) in 2012, who introduced the QAP (Quadratic Arithmetic Program) framework that R1CS later formalized. The name "Rank-1 Constraint System" describes the mathematical structure precisely: each constraint has rank 1 (it is the product of two linear functions), and the system is a collection of such constraints. The "rank-1" designation means each constraint captures exactly one multiplication -- a bilinear relationship between variables. Addition is free (it does not require a constraint, because linear combinations can be folded into the matrix entries). Only multiplication generates constraints. This is why the number of R1CS constraints for a circuit equals the number of multiplication gates, not the total number of gates.
 
-Before the mathematical notation, let us ground it in the spreadsheet from the previous section. Imagine your spreadsheet has three special columns -- call them A, B, and C. For each row, column A and column B each contain a combination of the variables, and column C contains the result. The rule for every row is: (what is in column A) multiplied by (what is in column B) must equal (what is in column C). That is all R1CS is: a spreadsheet where every row enforces one multiplication rule. The mathematical notation below says exactly this, just more precisely.
+Before the mathematical notation, ground it in the spreadsheet from the previous section. Imagine your spreadsheet has three special columns -- call them A, B, and C. For each row, column A and column B each contain a combination of the variables, and column C contains the result. The rule for every row is: (what is in column A) multiplied by (what is in column B) must equal (what is in column C). That is all R1CS is: a spreadsheet where every row enforces one multiplication rule. The mathematical notation below says exactly this, just more precisely.
 
 R1CS encodes a computation as a list of constraints, each of the form:
 
@@ -1703,7 +1703,7 @@ Or, in mathematical notation: $(\mathbf{A} \cdot \mathbf{z}) \circ (\mathbf{B} \
 
 For the tiny spreadsheet example (3 + 4 = 7, then 7 * 2 = 14), the witness vector is $\mathbf{z} = (1, 3, 4, 7, 2, 14)$ -- the constant 1 followed by the variables x, y, z, w, and the final result. The first row of A selects "x" (entry 1 in position corresponding to x), the first row of B selects "1" (indicating the addition is encoded as (x + y) * 1 = z after reformulation), and the first row of C selects "z". The second row of A selects "z" (value 7), the second row of B selects "w" (value 2), and the second row of C selects "result" (value 14). The matrices are mostly zeros -- only a handful of entries are nonzero. This sparsity is typical: a circuit with millions of constraints has matrices with millions of rows but only a few nonzero entries per row.
 
-R1CS is the assembly language of constraint systems -- simple, well-understood, and directly amenable to proof systems like Groth16 and Spartan. Groth16, deployed across most of the Ethereum ecosystem, works natively with R1CS and produces the smallest possible proofs -- three elliptic curve group elements, constant-time verification.
+R1CS is the assembly language of constraint systems -- simple, well-understood, and directly amenable to proof systems like Groth16 and Spartan. Groth16, deployed across most of the Ethereum ecosystem, works natively with R1CS and produces the smallest possible proofs -- three elliptic curve group elements (two in $\mathbb{G}_1$ and one in $\mathbb{G}_2$), 192 bytes in total when compressed on BLS12-381, with constant-time verification.
 
 But R1CS has a fundamental limitation: each constraint is bilinear -- degree $2$. You can encode a multiplication ($a \cdot b = c$) directly. But what about a computation that requires checking a hash function, where a single invocation might need thousands of multiplications? You encode each multiplication as a separate constraint, one after another. There is no way to express a higher-degree relationship in a single constraint, and there is no notion of "this constraint applies uniformly across all time steps." Every gate gets its own row.
 
@@ -1711,7 +1711,7 @@ For small circuits, R1CS works beautifully. For large, repetitive computations -
 
 To see this concretely, consider encoding a computation with 10 million multiplication gates in R1CS. You need 10 million rows in the matrices A, B, and C. Each matrix is sparse (most entries are zero), but the total number of nonzero entries -- and hence the prover's work -- scales linearly with the gate count. There is no compression possible: R1CS treats each gate independently, with no awareness that gate 5,000,001 might be performing exactly the same operation as gate 1. Compare this to a function that repeats the same 1,000-gate circuit 10,000 times: R1CS still requires 10,000,000 separate constraints, while a structured constraint system could potentially describe the repeating pattern once and instantiate it 10,000 times. This structural blindness is what motivated the search for richer constraint formats.
 
-Yet R1CS persists. Groth16 proofs (which require R1CS) remain the gold standard for on-chain verification because of their unmatched proof size: 3 group elements, roughly 128 bytes, verifiable in constant time. No other proof system achieves this compactness. When Ethereum smart contracts verify ZK proofs, the gas cost of verification is proportional to proof size -- and Groth16's tiny proofs mean minimal gas costs. Many production systems (Zcash, Tornado Cash, Worldcoin) use Groth16 for precisely this reason, accepting the constraint system's limitations in exchange for the proof system's efficiency. R1CS is the assembly language: nobody wants to write it directly, but the machine code it produces is unbeatable.
+Yet R1CS persists. Groth16 proofs (which require R1CS) remain the gold standard for on-chain verification because of their unmatched proof size: 3 group elements, 192 bytes on BLS12-381, verifiable in constant time. No other proof system achieves this compactness. When Ethereum smart contracts verify ZK proofs, the gas cost of verification is proportional to proof size -- and Groth16's tiny proofs mean minimal gas costs. Many production systems (Zcash, Tornado Cash, Worldcoin) use Groth16 for precisely this reason, accepting the constraint system's limitations in exchange for the proof system's efficiency. R1CS is the assembly language: nobody wants to write it directly, but the machine code it produces is unbeatable.
 
 ### AIR: The State Machine (2018)
 
@@ -1763,7 +1763,7 @@ The critical observation is what the prover *wrote down* to define this constrai
 
 This is the structural difference from R1CS. In R1CS, you would write a separate constraint for each row: "row 0's output equals row 0's input plus row 0's flag," then "row 1's output equals row 1's input plus row 1's flag," and so on -- one constraint per step. For a million-step computation, you need a million constraints. In AIR, you write the rule once. The prover fills in the trace; the polynomial machinery checks the rule everywhere simultaneously.
 
-For repetitive computations -- hash chains where the same compression function executes thousands of times, virtual machines where the same instruction cycle repeats for every step -- AIR's uniformity is not just convenient. It is a compression of the constraint description itself, from linear in the number of steps to constant in the number of distinct transition rules. That compression is what made STARKs practical for proving large computations.
+For repetitive computations -- hash chains where the same compression function executes thousands of times, virtual machines where the same instruction cycle repeats for every step -- AIR's uniformity is not just convenient. It is a compression of the *constraint description* itself, from linear in the number of steps to constant in the number of distinct transition rules. That compression is what made STARKs practical for proving large computations. The compression is in the *description*, not in the prover's work: the trace still grows with the number of steps, and the prover still fills in every cell. What AIR saves is the cost of writing and storing the constraint system, not the cost of checking it row by row.
 
 One further detail illuminates how the polynomial machinery works behind the scenes. The prover does not submit the raw trace table to the verifier. Instead, the prover interpolates each column of the trace as a polynomial. For the counter column with values (0, 1, 2), the prover finds a polynomial $P(x)$ such that $P(0) = 0$, $P(1) = 1$, $P(2) = 2$ -- in this case, simply $P(x) = x$. For the flag column with values (1, 1, 1), the polynomial is $F(x) = 1$. The transition constraint "$P(x+1) = P(x) + F(x)$" becomes a polynomial identity that must hold at $x = 0$ and $x = 1$ (every pair of consecutive rows). The proof system checks this identity at a random evaluation point -- not at $x = 0$ or $x = 1$, but at some random $r$ chosen by the verifier -- and the Schwartz-Zippel lemma guarantees that a false identity will fail this random check with overwhelming probability.
 
@@ -1779,7 +1779,7 @@ The limitation is equally visible. Suppose you want some rows to add and other r
 
 PLONK, introduced by Gabizon, Williamson, and Ciobotaru in 2019, took a different approach. Instead of uniform constraints, PLONKish arithmetization uses *selector columns* to enable non-uniform gates.
 
-The key innovation separates the constraint system into two components:
+The core move separates the constraint system into two components:
 
 1. **Gate constraints**: polynomial equations controlled by selector polynomials. Different rows can have different gate types. If the selector for "addition" is active at row 5, the addition constraint is enforced there. If the selector for "multiplication" is active at row 6, the multiplication constraint is enforced there. You can define custom gates for any operation you need.
 
@@ -1843,17 +1843,17 @@ To crystallize the differences, consider encoding the same simple computation --
 
 The comparison reveals each system's natural habitat. R1CS handles this computation most directly -- two bilinear constraints, no overhead. PLONKish handles it almost as directly, with slight overhead from the copy constraints. AIR handles it least naturally, because the computation is not repetitive -- there is no pattern that repeats across many rows. For a computation that *is* repetitive (running the same hash compression 1000 times), the ranking reverses: AIR wins by writing the constraint once, while R1CS and PLONKish must either repeat the constraint description 1000 times or use recursion to simulate repetition.
 
-The constraint count for the same computation across different systems is instructive:
+The count for the same computation across different systems is instructive. The column below labeled "constraint description size" measures how much the circuit designer must write down, not how much work the prover performs. For AIR in particular, the constraint description stays small regardless of trace length: one transition polynomial covers a 1000-round hash chain and a million-round hash chain equally.
 
-| System | Constraints for x*(x+1) | Constraints for 1000 hash rounds | Why |
-|--------|------------------------|--------------------------------|-----|
-| R1CS | 2 | ~30,000,000 | 1 constraint per gate, ~30,000 per hash round |
-| AIR | ~4 (with padding) | ~30,000 | One transition polynomial, reused 1000 times |
-| PLONKish | 2 (+ copy constraints) | ~15,000,000 | Custom hash gates cut per-round cost in half |
+| System | Description size (x*(x+1)) | Description size (1000 hash rounds) | Prover trace work (1000 hash rounds) | Why |
+|--------|---------------------------|-------------------------------------|--------------------------------------|-----|
+| R1CS | 2 constraints | ~30,000,000 constraints | ~30,000,000 rows | 1 constraint per gate, ~30,000 per hash round, description == trace |
+| AIR | ~4 (with padding) | ~30 polynomials (one set per hash-round structure) | ~30,000 rows (1,000 rounds x ~30 rows/round) | One transition polynomial set, reused 1000 times; trace still grows linearly |
+| PLONKish | 2 gates (+ copy constraints) | ~15,000,000 gate rows | ~15,000,000 rows | Custom hash gates cut per-round cost roughly in half; description == trace |
 
-The numbers are approximate, but the ratios are revealing. For the tiny computation, all three systems are roughly comparable. For the hash chain, AIR's constraint count is independent of the number of repetitions -- it depends only on the number of distinct transition types. This is why STARKs dominate in hash-heavy workloads (blockchain state verification, recursive proof composition) while PLONKish dominates in mixed workloads (smart contract execution, general-purpose circuits).
+The numbers are approximate, but the ratios are revealing. For the tiny computation, all three systems are roughly comparable. For the hash chain, AIR's *constraint description* is independent of the number of repetitions -- it depends only on the number of distinct transition types. AIR's *trace*, and therefore the prover's work, still scales with the number of rounds. What AIR compresses is the thing the verifier reads and the thing the compiler emits, not the thing the prover computes.
 
-A clarification for the precise reader: AIR's "~30,000" for 1000 hash rounds refers to the *constraint description* size -- the number of distinct polynomial equations that must hold. The actual *trace* still has 1000 * (rows per hash round) rows, each of which must satisfy the constraints. The prover's work is proportional to the trace size, not the constraint description size. But the constraint description size matters for the verifier (who must check the polynomial identity, not every row) and for the proof size (which depends on the degree of the constraint polynomial, not the number of trace rows). The asymmetry between "small constraint description, large trace" is precisely what makes AIR efficient for repetitive computations: the verifier's work grows with the constraint complexity, not with the number of repetitions.
+This asymmetry is what makes AIR efficient for repetitive computations: the verifier checks one polynomial identity no matter how many rounds executed, while the prover pays the trace-size cost that R1CS and PLONKish also pay. For hash-heavy workloads (blockchain state verification, recursive proof composition), that verifier-side saving is enough to tilt the choice toward STARKs; for mixed workloads (smart contract execution, general-purpose circuits), PLONKish's flexibility wins.
 
 ### Three Dialects, One Problem
 
@@ -1895,7 +1895,7 @@ This looks abstract. Here is what it means concretely.
 
 **PLONKish is CCS with matrices encoding selector-weighted gate equations.** The selector polynomials become entries in the matrices; the copy constraints map to specific matrix structures.
 
-The key insight is not that CCS enables new computations -- any NP statement can already be expressed in R1CS. The insight is that CCS provides a *uniform interface*. A proof system that targets CCS automatically handles R1CS, AIR, and PLONKish inputs without conversion overhead. Write one folding scheme for CCS, and it works with every constraint format the industry has produced.
+The central move is not that CCS enables new computations -- any NP statement can already be expressed in R1CS. CCS provides a *uniform interface*. A proof system that targets CCS automatically handles R1CS, AIR, and PLONKish inputs without conversion overhead. Write one folding scheme for CCS, and it works with every constraint format the industry has produced.
 
 ### Why CCS Matters Now
 
@@ -2011,7 +2011,7 @@ Lookup arguments offer a fundamentally different approach: instead of encoding t
 
 ### Plookup: The First Practical Lookup (2020)
 
-Gabizon and Williamson introduced Plookup in 2020. The idea: if you have a table of pre-approved input-output pairs (for example, all possible 8-bit XOR results), you can prove that a set of values appears in the table without recomputing the operation.
+Ariel Gabizon and Zachary Williamson introduced Plookup in 2020 (ePrint 2020/315). The idea: if you have a table of pre-approved input-output pairs (for example, all possible 8-bit XOR results), you can prove that a set of values appears in the table without recomputing the operation.
 
 Consider that table of 8-bit XOR results. It has 256 * 256 = 65,536 entries, each of the form (a, b, a XOR b). If the prover claims that 0x3F XOR 0xA7 = 0x98, the verifier does not check the XOR. Instead, the verifier checks that the triple (0x3F, 0xA7, 0x98) appears somewhere in the table. If it does, the answer is correct -- because the table was constructed correctly, and membership in a correct table implies correctness of the result.
 
@@ -2023,7 +2023,7 @@ Despite its limitations, Plookup was immediately adopted. Lookup arguments for r
 
 ### LogUp: The Sorting-Free Revolution (2022)
 
-Ulrich Haboeck's LogUp paper in 2022 replaced Plookup's sorting with an observation that is, in retrospect, elegant to the point of inevitability. The name "LogUp" comes from "logarithmic derivative" -- the key mathematical technique. If you have a polynomial P(X) = Product of (X - r_i) whose roots are exactly the lookup values, then the logarithmic derivative of P is P'(X)/P(X) = Sum of 1/(X - r_i). This transforms a product (which is hard to check incrementally) into a sum (which is easy to accumulate and verify). The idea comes from complex analysis, where logarithmic derivatives convert multiplicative structures into additive ones. Haboeck's insight was to apply this classical technique to the lookup problem.
+Ulrich Haboeck's LogUp paper in 2022 replaced Plookup's sorting with an observation that is, in retrospect, elegant to the point of inevitability. The name "LogUp" comes from "logarithmic derivative" -- the mathematical technique. If you have a polynomial P(X) = Product of (X - r_i) whose roots are exactly the lookup values, then the logarithmic derivative of P is P'(X)/P(X) = Sum of 1/(X - r_i). This transforms a product (which is hard to check incrementally) into a sum (which is easy to accumulate and verify). The idea comes from complex analysis, where logarithmic derivatives convert multiplicative structures into additive ones. Haboeck's move was to apply this classical technique to the lookup problem.
 
 Instead of sorting, LogUp observes that if every lookup value $f_i$ appears in the table $t$, then a specific identity over rational functions must hold:
 
@@ -2033,7 +2033,7 @@ where $m_j$ counts how many times table entry $t_j$ is looked up. The left side 
 
 A tiny example makes this concrete. Suppose the table contains {1, 2, 3} and the prover claims to look up the values {2, 3, 2}. The left side (one term per lookup) is: $1/(X-2) + 1/(X-3) + 1/(X-2) = 2/(X-2) + 1/(X-3)$. The right side (one term per table entry, weighted by frequency) is: $0/(X-1) + 2/(X-2) + 1/(X-3)$ -- because entry 1 is looked up 0 times, entry 2 is looked up twice, and entry 3 is looked up once. Both sides equal $2/(X-2) + 1/(X-3)$. The identity holds. Now suppose the prover cheats and claims to look up {2, 3, 5}, where 5 is not in the table. The left side becomes $1/(X-2) + 1/(X-3) + 1/(X-5)$. No assignment of multiplicities to the table entries {1, 2, 3} can produce a term $1/(X-5)$ on the right side. The identity fails at a random evaluation point with overwhelming probability.
 
-This transforms the lookup argument from a product check to a *sum check* -- and sums, unlike products, compose beautifully. Why does this matter? Because a product of n terms can be thrown off by a single corrupted factor (the product becomes wrong, but localizing the error requires inspecting every factor). A sum of n terms, by contrast, is naturally decomposable: you can split the sum into batches, compute partial sums independently, and aggregate them. The algebraic structure of addition is friendlier than the algebraic structure of multiplication.
+This transforms the lookup argument from a product check to a *sum check* -- and sums, unlike products, compose beautifully. Why does this matter? A product of n terms can be thrown off by a single corrupted factor (the product becomes wrong, but localizing the error requires inspecting every factor). A sum of n terms, by contrast, is naturally decomposable: you can split the sum into batches, compute partial sums independently, and aggregate them. The algebraic structure of addition is friendlier than the algebraic structure of multiplication.
 
 The advantages are substantial:
 
@@ -2046,7 +2046,7 @@ LogUp became the production standard. It replaced Plookup in deployed systems an
 
 ### LogUp-GKR: The Verifier Gets Faster (2023)
 
-LogUp made the prover efficient. But the verifier still had to check the rational function identity, which naively requires work proportional to the number of lookups. Papini and Haboeck combined LogUp with the GKR interactive proof protocol to solve this.
+LogUp made the prover efficient. But the verifier still had to check the rational function identity, which naively requires work proportional to the number of lookups. Shahar Papini and Ulrich Haboeck combined LogUp with the GKR interactive proof protocol (ePrint 2023/1284) to solve this.
 
 The GKR protocol provides an efficient way to verify layered arithmetic circuits -- circuits where the computation flows through layers, each layer depending only on the one before it. The fractional sum computation in LogUp (adding up all the 1/(X - f_i) terms) has exactly this layered structure: it is a sum reduction tree. LogUp-GKR applies the GKR protocol to this tree, reducing the verifier's work from linear to logarithmic in the number of lookups.
 
@@ -2060,7 +2060,7 @@ The combination of LogUp (efficient prover) and GKR (efficient verifier) made lo
 
 The fundamental limitation of both Plookup and LogUp is that the prover must somehow touch the entire table. For a table of $2^{16}$ entries (65,536 rows), this is manageable. For a table of all possible 64-bit operations -- $2^{128}$ entries -- it is physically impossible to even store the table, let alone commit to it. The table of all 64-bit additions alone has $2^{128}$ rows. At one byte per row, that is $10^{38}$ bytes -- more than the number of atoms in the observable universe. No amount of hardware solves this.
 
-Lasso, by Setty, Thaler, and Wahby (2023), solves this through *decomposition*. The insight is that most useful tables have internal structure that can be exploited. Specifically, if the table's multilinear extension (MLE) can be evaluated efficiently -- meaning you can compute the table's value at any point without materializing the entire table -- then each lookup can be decomposed into lookups into much smaller subtables.
+Lasso, by Setty, Thaler, and Wahby (2023), solves this through *decomposition*. Most useful tables have internal structure that can be exploited. Specifically, if the table's multilinear extension (MLE) can be evaluated efficiently -- meaning you can compute the table's value at any point without materializing the entire table -- then each lookup can be decomposed into lookups into much smaller subtables.
 
 The intuition is best seen through an analogy. Suppose you have a multiplication table for two-digit numbers. Instead of storing all 90 * 90 = 8,100 entries (for digits 10-99), you could decompose each two-digit number into its tens and units digits, store separate multiplication tables for single digits (only 10 * 10 = 100 entries each), and reconstruct the full product from partial products. The full table has 8,100 entries; the subtables have a combined 200 entries. You traded one large lookup for several small lookups plus some arithmetic glue. Lasso does exactly this, but for arbitrary structured tables over finite fields, using the multilinear extension as the decomposition mechanism.
 
@@ -2081,7 +2081,7 @@ The concept, originally proposed by Barry Whitehat as the "lookup singularity," 
 3. Lasso's decomposition makes these lookups efficient regardless of the theoretical table size.
 4. Memory consistency is verified through offline memory checking (fingerprint-based techniques), not Merkle trees.
 
-For each instruction, the prover decomposes the operands into chunks, performs lookups into small subtables (typically around 4 million entries each), and commits to roughly 18 field elements per instruction (3 per chunk, with $c = 6$ chunks).
+Jolt's canonical setting is 64-bit RISC-V, the mainstream zkVM target. For each instruction, the prover decomposes the 64-bit operands into $c = 6$ chunks, performs lookups into small subtables (roughly $2^{22} \approx 4$ million entries each), and commits to roughly **18 field elements per instruction** -- 3 field elements per chunk, times 6 chunks. In a 32-bit RISC-V setting, the decomposition uses $c = 4$ chunks and the per-instruction commitment falls to roughly **12 field elements** (3 per chunk, 4 chunks). We use the 64-bit number (18) as the canonical figure throughout the rest of this section.
 
 The memory-checking component (point 4) is worth highlighting separately. In a real processor, memory is read-write: the program loads and stores values freely. Proving that every load returns the value of the most recent store to the same address is the memory consistency problem discussed in the overhead section. Jolt handles this through "offline memory checking" -- a technique where the prover computes a cryptographic fingerprint of the sequence of all reads and writes, and the verifier checks that the fingerprint is consistent with a valid read-write memory. This avoids the per-access cost of Merkle tree proofs and makes memory checking nearly as cheap as instruction checking. The technique is not specific to Jolt; it was developed by Blum et al. in the 1990s and adapted for ZK by Setty (Spartan) and others. But Jolt's integration of offline memory checking with Lasso-based instruction lookups produces a complete zkVM architecture where every component -- instruction verification, memory consistency, program counter management -- is handled by either a lookup or a fingerprint check.
 
@@ -2089,9 +2089,9 @@ The result is a zkVM where the constraint system is almost entirely lookups, wit
 
 The achievement is striking. A complete RISC-V instruction set -- ADD, SUB, AND, OR, XOR, SLL, SRL, SRA, SLT, SLTU, BEQ, BNE, BLT, BGE, LW, SW, and dozens more -- expressed without writing a single arithmetic constraint by hand. Every instruction is a table lookup. The "constraint system" is a collection of tables plus the Lasso machinery to prove that every instruction's result appears in the correct table. No custom gates. No selector polynomials. No hand-optimized constraint layouts. Just tables.
 
-To see how this works for a specific instruction, trace through a 32-bit ADD. The prover needs to prove that register_a + register_b = register_c. The "addition table" for 32-bit inputs has $2^{64}$ entries -- impossibly large to store. But Lasso decomposes each 32-bit operand into $c = 4$ chunks of 8 bits each. Each chunk lookup goes into a subtable of size $2^{16} = 65{,}536$ entries (all possible 8-bit additions, accounting for carry). The prover performs 4 small lookups instead of one impossible lookup, commits to the chunk values and the carry bits, and uses the Lasso sumcheck machinery to prove that the chunks reconstruct the full addition correctly.
+To see how this works for a specific instruction, trace through a 64-bit ADD. The prover needs to prove that register_a + register_b = register_c. The "addition table" for 64-bit inputs has $2^{128}$ entries -- impossibly large to store. Lasso decomposes each 64-bit operand into $c = 6$ chunks of roughly 11 bits each. Each chunk lookup goes into a subtable of size about $2^{22} \approx 4$ million entries (covering the relevant chunk-level additions, with the carry handled explicitly). The prover performs 6 small lookups instead of one impossible lookup, commits to the chunk values and the carry bits, and uses the Lasso sumcheck machinery to prove that the chunks reconstruct the full addition correctly. The per-instruction commitment cost lands at 18 field elements (3 per chunk, 6 chunks).
 
-Compare this to how a traditional zkVM would prove the same 32-bit ADD. In RISC Zero's earlier architecture, the prover would encode the addition as a polynomial constraint over the full 32-bit values, with range checks to ensure the operands fit in 32 bits (costing roughly 32 constraints for bit decomposition per operand), a constraint for the addition itself, and further constraints for carry propagation and overflow detection. Roughly 70 to 100 constraints per ADD instruction. In Jolt, the same instruction costs approximately 18 field element commitments (3 per chunk, 6 chunks for 64-bit RISC-V) and a handful of sumcheck rounds. The constraint count per instruction drops by roughly 4x.
+Compare this to how a traditional zkVM would prove the same ADD. In RISC Zero's earlier architecture, the prover would encode the addition as a polynomial constraint over the full register values, with range checks to ensure the operands fit in the machine word (costing roughly 32 constraints for bit decomposition per 32-bit operand, more for 64-bit), a constraint for the addition itself, and further constraints for carry propagation and overflow detection. Roughly 70 to 100 constraints per ADD instruction. In Jolt, the same instruction costs approximately 18 field element commitments and a handful of sumcheck rounds. The per-instruction cost drops by a noticeable factor.
 
 This is genuinely surprising. For years, the ZK community assumed that building a practical zkVM required painstaking constraint engineering -- hand-crafting gate designs for each instruction type, optimizing selector layouts, minimizing constraint counts through algebraic tricks. Jolt demonstrates that all of that complexity can be replaced by a single, uniform mechanism: look up the answer. The engineering effort shifts from "design clever constraints" to "design decomposable tables," and the latter turns out to be systematically easier.
 
@@ -2125,7 +2125,7 @@ We have spent this chapter describing how computation is encoded as mathematics.
 
 A computation that runs natively in 1 millisecond -- executing instructions directly on a processor at billions of operations per second -- takes 10 to 50 seconds to prove in a zkVM. That is an overhead of 10,000x to 50,000x. Where does this multiplier come from?
 
-The answer is not a single bottleneck but three interlocking sources of overhead that multiply together. Each source has its own physics, its own improvement trajectory, and its own fundamental limits. Understanding the decomposition is essential because it determines which engineering improvements will matter most for which applications.
+The answer is not a single bottleneck but three interlocking sources of overhead that multiply together. Each source has its own physics, its own improvement trajectory, and its own fundamental limits. Understanding the decomposition matters because it determines which engineering improvements will matter most for which applications.
 
 ### Source 1: Field Arithmetic Encoding
 
@@ -2174,7 +2174,7 @@ No. Every source of overhead is under active attack by engineering and mathemati
 - **Memory checking**: Algebraic memory checking (Ozdemir et al.) reduces overhead by 50-150x versus Merkle-based approaches. Instead of hashing at every memory access, algebraic techniques use offline fingerprinting -- accumulating a running product that can be checked at the end of the execution.
 - **Bit-level encoding**: Binius (Irreducible, 2025) reduces embedding overhead by 100x for bit-heavy workloads by working directly over binary tower fields, where a single bit *is* a field element (no embedding required).
 - **Hardware acceleration**: GPU-based provers (BatchZK, ZKProphet) achieve throughput improvements of 10x to 100x through massive parallelism in NTT and MSM computations.
-- **Lookup-based architectures**: Jolt eliminates many constraint expansion costs by replacing polynomial constraints with table lookups. The 50-80 constraints per instruction in a traditional zkVM drop to roughly 18 field element commitments per instruction.
+- **Lookup-based architectures**: Jolt eliminates many constraint expansion costs by replacing polynomial constraints with table lookups. The 50-80 constraints per instruction in a traditional zkVM drop to roughly 18 field element commitments per 64-bit RISC-V instruction.
 - **Folding schemes**: Nova, HyperNova, and Neo amortize the cost of proving many similar statements by "folding" them into a single accumulated instance. Instead of proving each step independently, the prover maintains a running accumulation that grows by a constant amount per step.
 
 The cumulative effect is multiplicative. If small fields give 100x, algebraic memory checking gives 50x, and GPU acceleration gives 10x, the combined improvement is not 160x but potentially 50,000x -- enough to close much of the gap between native and proven computation. The catch is that these improvements compound only if they apply to the same bottleneck; in practice, eliminating one bottleneck exposes the next. But the engineering trajectory points down.
@@ -2187,20 +2187,20 @@ Abstract multipliers are hard to internalize. The practical rule of thumb: if yo
 
 **The Ethereum block.** An Ethereum block execution takes roughly 100 milliseconds of native computation: verifying signatures, executing smart contract bytecode, updating the state trie. Proving the same block in a zkEVM takes 6 to 35 seconds on GPU clusters (as reported by SP1, RISC Zero, and Succinct in 2025 benchmarks). Overhead: 60x to 350x. This is far less than the theoretical 10,000x to 50,000x because GPU parallelism and algorithmic optimizations have eaten most of the overhead for large computations. The NTTs and MSMs that dominate prover time are embarrassingly parallel -- they decompose into millions of independent operations that map naturally onto GPU architectures with thousands of cores.
 
-**The Midnight transaction.** A Midnight shielded transfer involves a Compact smart contract that reads and updates token balances behind zero-knowledge proofs. The native computation -- checking a balance, subtracting from one account, adding to another -- would take a few microseconds in any programming language. Proving the same transaction in Midnight's ZK pipeline takes approximately 20 seconds: the Compact compiler produces ZKIR instructions, the backend lowers them to PLONKish constraints over BLS12-381, and the Halo2-style prover generates the proof. Overhead: roughly 1,000,000x if measured against the pure arithmetic of balance updates. But the comparison is misleading, because the proof is doing far more than the arithmetic -- it is proving that the balance update is consistent with the entire ledger state, that the sender has sufficient funds, that the nullifier has not been previously spent, and that the cryptographic commitments are correctly formed. The "computation" being proved is not the balance update itself but the entire integrity argument surrounding it.
+**The Midnight transaction.** A Midnight shielded transfer involves a Compact smart contract that reads and updates token balances behind zero-knowledge proofs. The native computation -- checking a balance, subtracting from one account, adding to another -- would take a few tens of microseconds in any programming language. We take **20 microseconds** as the reference native baseline: the arithmetic of a handful of balance operations running on a modern CPU. Proving the same transaction in Midnight's ZK pipeline takes approximately 20 seconds: the Compact compiler produces ZKIR instructions, the backend lowers them to PLONKish constraints over BLS12-381, and the Halo2-style prover generates the proof. Overhead against that 20 microsecond arithmetic baseline: $20\text{ s} / 20\text{ us} = 1{,}000{,}000\times$. The comparison is deliberately stark because the proof is doing far more than the arithmetic -- it is proving that the balance update is consistent with the entire ledger state, that the sender has sufficient funds, that the nullifier has not been previously spent, and that the cryptographic commitments are correctly formed. The "computation" being proved is not the balance update itself but the entire integrity argument surrounding it. Against that broader security computation, the overhead is more like 1,000x.
 
 **The gap between the three.** A single addition suffers 10,000x to 100,000x overhead. An Ethereum block suffers 60x to 350x. A Midnight transaction suffers a nominal 1,000,000x on the pure arithmetic but a more reasonable 1,000x when measured against the full security computation it replaces. The difference is not a measurement error. It reflects a fundamental asymmetry in the cost structure: zero-knowledge proving has large fixed costs (setting up the polynomial commitment, running the Fiat-Shamir transcript, computing the proof) and relatively small marginal costs per additional constraint. A single addition amortizes those fixed costs over one operation. An Ethereum block -- with millions of constraints -- amortizes them over millions. The per-constraint overhead might be identical, but the ratio of total proving time to native execution time drops as the computation grows.
 
-A table makes the pattern visible:
+A table makes the pattern visible. All rows compare proof time against the stated native baseline in the "Why" column:
 
 | Computation | Native time | Proof time | Overhead | Why |
 |-------------|-------------|------------|----------|-----|
 | Single 64-bit addition | ~1 ns | 10-100 us | 10,000-100,000x | Fixed costs dominate |
 | SHA-256 hash (one block) | ~300 ns | 1-10 ms | 3,000-30,000x | Constraint expansion for bitwise ops |
 | Ethereum block execution | ~100 ms | 6-35 s | 60-350x | GPU parallelism amortizes fixed costs |
-| Midnight shielded transfer | ~5 us (arithmetic) | ~20 s | ~4,000,000x (arithmetic) | Large cryptographic circuit, BLS12-381 field |
+| Midnight shielded transfer | ~20 us (raw arithmetic) | ~20 s | ~1,000,000x (arithmetic baseline) | Large cryptographic circuit, BLS12-381 field |
 
-The key insight: overhead is not uniform. Small computations suffer disproportionately. Large computations amortize the fixed costs. Computations over large fields (BLS12-381 at 254 bits) pay more per operation than those over small fields (BabyBear at 31 bits). And computations that are inherently bitwise (hashes, comparisons) pay more than those that are inherently arithmetic (field operations, polynomial evaluations).
+Overhead is not uniform. Small computations suffer disproportionately. Large computations amortize the fixed costs. Computations over large fields (BLS12-381 at 255 bits) pay more per operation than those over small fields (BabyBear at 31 bits). And computations that are inherently bitwise (hashes, comparisons) pay more than those that are inherently arithmetic (field operations, polynomial evaluations).
 
 This is why zkVMs are viable for block-level proving (where the overhead is 100x to 500x, manageable with GPU clusters) but impractical for individual function calls (where the overhead is 10,000x to 100,000x, making a 1-microsecond function take 100 milliseconds to prove). The economics of zero-knowledge computation favor batching -- proving large computations in bulk rather than small computations one at a time.
 
@@ -2223,15 +2223,17 @@ The 10,000-50,000x overhead of 2024 is not a permanent feature of provable compu
 
 The trajectory is visible in the benchmarks. In 2022, proving a single Ethereum block took minutes on specialized hardware. By 2024, it took 30 to 60 seconds on GPU clusters. By early 2026, the fastest systems (SP1 Hypercube, RISC Zero 1.0) demonstrate 6 to 15 seconds for the same workload, with further improvements expected as circle STARKs, WHIR, and lattice-based commitments reach production maturity. Each generation of improvements comes from a different source: the move from 254-bit to 31-bit fields (2022-2023), the adoption of LogUp-GKR for lookups (2023-2024), the shift to sumcheck-based architectures (2024-2025), and GPU kernel optimization for NTTs and MSMs (ongoing). The overhead is falling not because of one breakthrough but because of compounding engineering progress across every layer of the stack.
 
-For architects comparing systems, the following table normalizes the overhead by system and field, using Ethereum block proving as the benchmark workload:
+For architects comparing systems, the following table normalizes the overhead by system and field, using Ethereum block proving as the benchmark workload. The "overhead" column measures proof time against an Ethereum block native execution time of ~100 ms. The Airbender figure, drawn from ZKsync's June 2025 announcement of a single-H100 prover, is shown on the same Ethereum block baseline as the other rows; earlier reports that quoted an "~8,000x" multiplier used a different, smaller native baseline (roughly single-transaction arithmetic in the low-millisecond range) and are not comparable to the block-level numbers in this table.
 
-| System | Base Field | Eth Block Time | Approx. Overhead | Year | Key Innovation |
-|--------|-----------|----------------|-----------------|------|----------------|
-| RISC Zero (v0.x) | BN254 (254-bit) | ~60 s (GPU) | ~50,000x | 2023 | First general-purpose zkVM |
-| SP1 (v1) | BabyBear (31-bit) | ~15 s (16 GPU) | ~10,000x | 2024 | Small-field + multilinear STARK |
-| SP1 Hypercube | BabyBear (31-bit) | 6.9 s (16 GPU) | ~5,000x | 2025 | Sumcheck + precompiles |
-| Stwo | Mersenne-31 (31-bit) | ~10 s (cluster) | ~3,000-5,000x | 2025 | Circle STARK + 940x vs. Stone |
-| Airbender | BabyBear (31-bit) | ~35 s (1 H100) | ~8,000x | 2025 | Single-GPU design |
+| System | Base Field | Eth Block Time | Approx. Overhead (vs ~100 ms block) | Year | Key Innovation |
+|--------|-----------|----------------|-------------------------------------|------|----------------|
+| RISC Zero (v0.x) | BN254 (254-bit) | ~60 s (GPU) | ~600x | 2023 | First general-purpose zkVM |
+| SP1 (v1) | BabyBear (31-bit) | ~15 s (16 GPU) | ~150x | 2024 | Small-field + multilinear STARK |
+| SP1 Hypercube | BabyBear (31-bit) | 6.9 s (16 GPU) | ~70x | 2025 | Sumcheck + precompiles |
+| Stwo | Mersenne-31 (31-bit) | ~10 s (cluster) | ~100x | 2025 | Circle STARK + 940x vs. Stone |
+| Airbender | BabyBear (31-bit) | ~35 s (1 H100) | ~350x | 2025 | Single-GPU design |
+
+(The earlier draft of this chapter gave Airbender as "~8,000x" overhead; that number was measured against a single-transaction baseline, not the 100 ms block baseline used here. Both interpretations are defensible; we use the block baseline throughout this table so the rows are comparable.)
 
 ---
 
@@ -2261,14 +2263,14 @@ ZK proof (over BLS12-381)
 
 A ZKIR circuit is a directed acyclic graph of 24 base instructions organized into eight categories:
 
-- **Arithmetic** (3 opcodes): `add`, `mul`, `neg` -- basic field arithmetic modulo the BLS12-381 scalar field (approximately $2^{253}$). There is no subtraction opcode; the compiler implements a - b as add(a, neg(b)).
+- **Arithmetic** (3 opcodes): `add`, `mul`, `neg` -- basic field arithmetic modulo the BLS12-381 scalar field (a 255-bit prime with order approximately $2^{255}$). There is no subtraction opcode; the compiler implements a - b as add(a, neg(b)).
 - **Constraints** (4 opcodes): `assert`, `constrain_eq`, `constrain_bits`, `constrain_to_boolean` -- the enforcement mechanism.
 - **Comparison** (2 opcodes): `test_eq`, `less_than` -- produce boolean results without enforcing them.
 - **Control flow** (2 opcodes): `cond_select`, `copy` -- conditional multiplexing and variable aliasing.
 - **Type encoding** (3 opcodes): `reconstitute_field`, `encode`, `decode` -- type-level serialization.
 - **Division** (1 opcode): `div_mod_power_of_two` -- integer-style division for byte extraction.
 - **Cryptographic** (5 opcodes): `transient_hash`, `persistent_hash`, `ec_mul_generator`, `ec_mul`, `hash_to_curve` -- elliptic curve and hash operations over the Jubjub curve embedded in BLS12-381.
-- **I/O** (4 opcodes): `private_input`, `public_input`, `output`, `impact` -- the boundary between circuit and ledger state.
+- **I/O** (4 opcodes): `private_input`, `public_input`, `output`, `impact`. `private_input` and `public_input` pull values into the circuit; `output` exposes a value as a public output. `impact` represents a ledger-state operation -- reading from or writing to Midnight's on-chain state -- binding circuit values to the ledger so that a proof can assert and update persistent on-chain data as part of its execution.
 
 Each instruction consumes inputs (field elements or references to earlier instruction outputs) and produces outputs. The DAG structure emerges from data dependencies: instruction i depends on instruction j if it references j's output. Variables are numbered sequentially (0, 1, 2, ...), and instructions can only reference outputs of earlier instructions.
 
@@ -2280,9 +2282,9 @@ Two opcodes embody the fundamental challenge of arithmetization: ensuring that a
 
 There is a critical distinction between `constrain_eq` (which *enforces* equality and fails the circuit if violated) and `test_eq` (which *produces* a boolean result without enforcement). The Compact compiler uses `test_eq` for equality comparisons in program logic and `constrain_eq` for internal correctness checks. Confusing the two is precisely the kind of constraint error that causes the under-constrained vulnerabilities discussed in Chapter 3.
 
-**constrain_bits** enforces that a field element lies within a range $[0, 2^N - 1]$. This is essential because ZKIR values are elements of the BLS12-381 scalar field -- numbers up to approximately $2^{253}$. But Compact types often have bounded ranges: `Uint<8>` must be in [0, 255], `Uint<32>` in $[0, 2^{32} - 1]$, `Boolean` must be exactly 0 or 1.
+**constrain_bits** enforces that a field element lies within a range $[0, 2^N - 1]$. This matters because ZKIR values are elements of the BLS12-381 scalar field -- a 255-bit prime, with values as large as roughly $2^{255}$. But Compact types often have bounded ranges: `Uint<8>` must be in [0, 255], `Uint<32>` in $[0, 2^{32} - 1]$, `Boolean` must be exactly 0 or 1.
 
-Without `constrain_bits`, a malicious prover could substitute any $253$-bit field element where an $8$-bit value was expected. If a circuit adds two `Uint<8>` values, the honest result is at most 510 -- but without range checking, a prover could claim the result is an arbitrary 253-bit number, potentially extracting value or corrupting state. Every `Uint<N>` value in compiled Compact code includes a corresponding `constrain_bits` to enforce the range constraint.
+Without `constrain_bits`, a malicious prover could substitute any 255-bit field element where an 8-bit value was expected. If a circuit adds two `Uint<8>` values, the honest result is at most 510 -- but without range checking, a prover could claim the result is an arbitrary 255-bit number, potentially extracting value or corrupting state. Every `Uint<N>` value in compiled Compact code includes a corresponding `constrain_bits` to enforce the range constraint.
 
 A general principle is at work: in constraint systems, everything that is *not* explicitly constrained is implicitly *allowed*. The prover will satisfy exactly the constraints you write, and nothing more. If you forget a constraint, the prover is free to exploit the gap. This is why under-constrained circuits are the dominant failure mode in ZK systems.
 
@@ -2307,7 +2309,7 @@ A ZKIR circuit could, in principle, be lowered to CCS instead of PLONKish. The t
 
 ### The BLS12-381 Field Consequence
 
-ZKIR operates over the BLS12-381 scalar field: a prime of approximately $2^{253}$, requiring 255 bits to represent. This is roughly 4x wider than the Goldilocks field (64-bit) used by Neo and Plonky2, and approximately 8x wider than the BabyBear (31-bit) or Mersenne-31 (31-bit) fields used by SP1, RISC Zero, and Stwo.
+ZKIR operates over the BLS12-381 scalar field: a 255-bit prime with order approximately $2^{255}$. This is roughly 4x wider than the Goldilocks field (64-bit) used by Neo and Plonky2, and approximately 8x wider than the BabyBear (31-bit) or Mersenne-31 (31-bit) fields used by SP1, RISC Zero, and Stwo.
 
 The large field is necessary for Midnight's architectural choices. BLS12-381 is a pairing-friendly curve, enabling KZG polynomial commitments and Groth16 verification. The Jubjub twisted Edwards curve embeds natively in BLS12-381's scalar field, enabling in-circuit elliptic curve operations for Pedersen commitments and key derivation. The mature ecosystem (Zcash, Ethereum 2.0) provides audited tooling.
 
@@ -2377,43 +2379,46 @@ From this point forward, the magician-and-audience framing will recede. Layers 5
 
 ### Reference Data
 
-- **R1CS** (2012): bilinear constraints (degree 2). One constraint per multiplication gate. Native format for Groth16 (128-byte proofs, constant-time verification) and Spartan.
-- **AIR** (2018): uniform transition constraints over execution traces. Native format for STARKs (transparent, post-quantum). Constraint description size independent of trace length.
+- **R1CS** (2012): bilinear constraints (degree 2). One constraint per multiplication gate. Native format for Groth16 (192-byte proofs on BLS12-381, constant-time verification) and Spartan.
+- **AIR** (2018): uniform transition constraints over execution traces. Native format for STARKs (transparent, post-quantum). Constraint description size independent of trace length; prover trace work is not.
 - **PLONKish** (2019): selector-gated custom gates with copy constraints via permutation arguments. Native format for Halo2, PLONK. Dominant in deployed systems (2020-2025).
 - **CCS** (Setty, 2023): unifies R1CS, AIR, and PLONKish without overhead. Native target for HyperNova, Neo, ProtoStar, ProtoGalaxy.
 - **Sumcheck protocol** (Lund et al., 1992): reduces verification of polynomial sums over $2^n$ inputs to $n$ rounds of interaction. Backbone of Spartan, HyperNova, Jolt, and SP1 Hypercube.
-- **Plookup** (2020): first practical lookup argument. Sorting-based, $O(n \log n)$.
-- **LogUp** (2022): sorting-free lookup via logarithmic derivatives. $O(n)$ prover cost.
-- **LogUp-GKR** (2023): logarithmic verifier cost for lookups. Used in SP1 Hypercube and Stwo.
+- **Plookup** (Gabizon and Williamson, 2020): first practical lookup argument. Sorting-based, $O(n \log n)$.
+- **LogUp** (Haboeck, 2022): sorting-free lookup via logarithmic derivatives. $O(n)$ prover cost.
+- **LogUp-GKR** (Papini and Haboeck, 2023): logarithmic verifier cost for lookups. Used in SP1 Hypercube and Stwo.
 - **Lasso** (2023): lookups into tables of size $2^{128}$, prover cost independent of table size.
-- **Jolt** (2023): approximately 6x faster than RISC Zero in theoretical commitment cost analysis. Full RISC-V ISA via lookups.
+- **Jolt** (2023): approximately 6x faster than RISC Zero in theoretical commitment cost analysis. Full RISC-V ISA via lookups; ~18 field elements per 64-bit RISC-V instruction.
 - **Overhead tax**: 10,000-50,000x versus native execution (2024-2025 systems). Falling to 1,000-5,000x by 2027-2028.
 - **Overhead breakdown**: field encoding (10-100x), constraint expansion (50-100x), polynomial commitment (10-50x). Sources multiply.
 - **Ozdemir et al.**: 50-150x reduction in memory checking constraints via algebraic approaches.
 - **Binius** (2025): 100x reduction in bit-level embedding overhead via binary tower fields.
 - **Mersenne-31**: field modulus $2^{31} - 1$. Fastest known modular reduction. Used by SP1 and Stwo.
-- **ZKIR**: 24 typed instructions, compiling Compact to PLONKish constraints over BLS12-381 ($\sim 2^{253}$).
+- **ZKIR**: 24 typed instructions, compiling Compact to PLONKish constraints over BLS12-381 (a 255-bit prime, order $\sim 2^{255}$).
 
 ### Sources
 
 - [R-L4-1] Gennaro, Gentry, Parno, Raykova. "Quadratic Span Programs and Succinct NIZKs without PCPs." EUROCRYPT 2013. ePrint 2012/215.
 - [R-L4-2] Ben-Sasson, Bentov, Horesh, Riabzev. "Scalable, Transparent, and Post-Quantum Secure Computational Integrity." ePrint 2018/046.
-- [R-L4-3] Gabizon, Williamson, Ciobotaru. "PLONK." ePrint 2019/953.
+- [R-L4-3] Gabizon, Ariel, Zachary J. Williamson, and Oana Ciobotaru. "PLONK." ePrint 2019/953.
 - [R-L4-4] Setty, Thaler, Wahby. "Customizable Constraint Systems for Succinct Arguments." ePrint 2023/552.
 - [R-L4-5] Setty. "Spartan: Efficient and General-Purpose zkSNARKs without Trusted Setup." ePrint 2019/550.
-- [R-L4-6] Gabizon, Williamson. "Plookup." ePrint 2020/315.
-- [R-L4-7] Haboeck. "LogUp." ePrint 2022/1530.
-- [R-L4-8] Papini, Shahar and Ulrich Haboeck. "LogUp-GKR." ePrint 2023/1284.
-- [R-L4-9] Setty, Thaler, Wahby. "Lasso." ePrint 2023/1216.
-- [R-L4-10] Arun, Setty, Thaler. "Jolt." ePrint 2023/1217.
+- [R-L4-6] Gabizon, Ariel and Zachary J. Williamson. "Plookup." ePrint 2020/315.
+- [R-L4-7] Haboeck, Ulrich. "Multivariate Lookups Based on Logarithmic Derivatives (LogUp)." ePrint 2022/1530.
+- [R-L4-8] Papini, Shahar and Ulrich Haboeck. "Improving Logarithmic Derivative Lookups Using GKR (LogUp-GKR)." ePrint 2023/1284.
+- [R-L4-9] Setty, Thaler, Wahby. "Unlocking the Lookup Singularity with Lasso." ePrint 2023/1216.
+- [R-L4-10] Arun, Setty, Thaler. "Jolt: SNARKs for Virtual Machines via Lookups." ePrint 2023/1217.
 - Midnight ZKIR Reference (v2/v3), 119 oracle traces. Compact compiler v0.29.0.
 - Lund, Fortnow, Karloff, Nisan. "Algebraic Methods for Interactive Proof Systems." JCSS 1992.
+- ZKsync. "Airbender: GPU-Accelerated RISC-V Proving." Product announcement, June 2025. https://www.zksync.io/airbender
+- Groth16 proof size: three group elements on BLS12-381 in compressed form (two $\mathbb{G}_1$ points at 48 bytes each, one $\mathbb{G}_2$ point at 96 bytes) = 192 bytes. Derived from the BLS12-381 curve specification.
 
 
 ---
 
 *A note on the next three chapters.* Chapters 5, 6, and 7 cover arithmetization, proof systems, and cryptographic primitives -- what this book calls the "proof core." In practice, these three layers are inseparable: the choice of field (Layer 6) determines which arithmetization works (Layer 4), which determines which proof system is viable (Layer 5). We present them sequentially because a book must be linear, but they are best understood as a single coupled design unit. If a choice in Chapter 7 seems to contradict a claim in Chapter 5, it is because the dependency runs in both directions. Read all three, then revisit.
 
+---
 ---
 # Chapter 6: Layer 5 -- The Sealed Certificate
 

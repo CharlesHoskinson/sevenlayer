@@ -4,7 +4,7 @@ slug: ch07-small-fields
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3185, 3237]
+source_lines: [3190, 3242]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 961

@@ -4,7 +4,7 @@ slug: ch06-case-study-midnight-s-sealed-certificate
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2849, 2910]
+source_lines: [2854, 2915]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 940

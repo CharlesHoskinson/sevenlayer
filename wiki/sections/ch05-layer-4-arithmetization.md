@@ -5,8 +5,8 @@ chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1611, 1640]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+status: reviewed
 word_count: 701
 ---
 
@@ -32,7 +32,7 @@ Let us be honest at the outset: this is where the magic trick analogy strains ha
 
 This chapter is longer and more technical than the others. That is because arithmetization is where the conceptual rubber meets the mathematical road. The ideas here -- constraint systems, polynomial identities, lookup arguments, the sumcheck protocol -- are the load-bearing structures of every ZK system in existence. A reader who understands this chapter understands why zero-knowledge proofs work. A reader who skips it must take the rest of the book on faith.
 
-The core mechanism is straightforward. The computation -- every addition, every comparison, every memory access -- gets encoded as relationships between numbers in a finite field. These relationships take the form of polynomial equations. If the computation was performed correctly, all the equations are satisfied simultaneously. If the prover cheated at any step, at least one equation is violated. And here is the key insight that makes the entire field of zero-knowledge proofs possible: checking whether all these polynomial equations hold can be done by evaluating them at a few random points, which is vastly faster than re-executing the original computation.
+The core mechanism is straightforward. The computation -- every addition, every comparison, every memory access -- gets encoded as relationships between numbers in a finite field. These relationships take the form of polynomial equations. If the computation was performed correctly, all the equations are satisfied simultaneously. If the prover cheated at any step, at least one equation is violated. And here is the central move that makes the entire field of zero-knowledge proofs possible: checking whether all these polynomial equations hold can be done by evaluating them at a few random points, which is vastly faster than re-executing the original computation.
 
 This chapter tells the story of how the encoding schemes evolved, from the rigid first attempts to the unified framework that powers every modern proof system. It is also, unavoidably, a story about the overhead this encoding imposes -- and whether that overhead is an immutable tax or a temporary engineering constraint.
 
@@ -76,6 +76,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [P2] (C) "key insight that makes the entire field of zero-knowledge proofs possible" — stock AI-smell phrase; reword as plain statement.
 - [P2] (A) Schwartz-Zippel is named in Key claims but not in the body of this intro section — the body only paraphrases it; the named lemma should appear in the prose where first invoked, not just in the metadata.

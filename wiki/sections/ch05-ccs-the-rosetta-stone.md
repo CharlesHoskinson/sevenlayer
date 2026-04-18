@@ -5,8 +5,8 @@ chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1876, 1948]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+status: reviewed
 word_count: 2077
 ---
 
@@ -32,7 +32,7 @@ This looks abstract. Here is what it means concretely.
 
 **PLONKish is CCS with matrices encoding selector-weighted gate equations.** The selector polynomials become entries in the matrices; the copy constraints map to specific matrix structures.
 
-The key insight is not that CCS enables new computations -- any NP statement can already be expressed in R1CS. The insight is that CCS provides a *uniform interface*. A proof system that targets CCS automatically handles R1CS, AIR, and PLONKish inputs without conversion overhead. Write one folding scheme for CCS, and it works with every constraint format the industry has produced.
+The central move is not that CCS enables new computations -- any NP statement can already be expressed in R1CS. CCS provides a *uniform interface*. A proof system that targets CCS automatically handles R1CS, AIR, and PLONKish inputs without conversion overhead. Write one folding scheme for CCS, and it works with every constraint format the industry has produced.
 
 ### Why CCS Matters Now
 
@@ -129,6 +129,8 @@ Customizable Constraint Systems (Setty, Thaler, Wahby 2023) unify R1CS, AIR, and
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [P2] (A) "Neo (Nguyen and Setty, 2025): the first lattice-based folding scheme for CCS" — Neo is described as "the first lattice-based folding scheme for CCS" here, but LatticeFold (Boneh and Chen) is a predecessor; the claim should clarify whether Neo is first for CCS specifically or first lattice-based generally, as LatticeFold predates Neo and also targets CCS-like constraints.
 - [P2] (A) The CCS satisfying condition uses the Hadamard product symbol "$\bigcirc$" in the display formula, but the explanation parenthetical correctly defines it as element-wise multiplication ("$\circ$"). The notation inconsistency (large circle vs. small circle) between formula and prose may confuse readers; standardize to $\circ$ throughout.

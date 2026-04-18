@@ -4,7 +4,7 @@ slug: ch06-the-folding-genealogy
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2582, 2644]
+source_lines: [2587, 2649]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 1197

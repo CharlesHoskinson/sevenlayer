@@ -5,8 +5,8 @@ chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1641, 1683]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+status: reviewed
 word_count: 1230
 ---
 
@@ -39,11 +39,11 @@ That is the core idea of arithmetization. Every constraint system in this chapte
 >
 > Our Sudoku witness becomes a 16-row constraint system. Each cell must satisfy:
 >
-> - **Range constraint**: $(\text{cell} - 1)(\text{cell} - 2)(\text{cell} - 3)(\text{cell} - 4) = 0$. This polynomial evaluates to zero only when the cell contains a valid value. Four values, one degree-$4$ polynomial per cell.
+> - **Range constraint**: $(\text{cell} - 1)(\text{cell} - 2)(\text{cell} - 3)(\text{cell} - 4) = 0$. This polynomial evaluates to zero only when the cell contains a valid value. Four values, one degree-$4$ polynomial per cell. Sixteen cells, sixteen range constraints.
 > - **Given-cell constraint**: For each clue, $\text{cell}_i = \text{given}_i$. Eight equalities for our 8-given puzzle.
-> - **Uniqueness constraint**: For each row, column, and 2x2 box, the product $(a - b)$ for all pairs must be nonzero. Equivalently: the polynomial product over all pairs of $(a - b)$ must be nonzero for each group. Eight groups, $\binom{4}{2} = 6$ pairs each, yielding 48 pair checks.
+> - **Uniqueness constraint**: For each row, column, and $2 \times 2$ box, every pair of cells within the group must differ. Count the groups: 4 rows + 4 columns + 4 boxes = **12 groups**. Each group has 4 cells, hence $\binom{4}{2} = 6$ pairs. The total uniqueness-check count is $12 \times 6 = 72$ pair-difference constraints, each enforcing that $(a - b) \neq 0$ for some pair of cells in the group.
 >
-> Total: 16 range constraints + 8 given-cell constraints + 48 uniqueness checks = 72 constraints over 16 witness variables. In R1CS form, each degree-$4$ range constraint decomposes into intermediate multiplications, expanding to roughly 120 R1CS constraints. In CCS form, the higher-degree constraints can be expressed directly. The witness (the completed grid) satisfies all 72 constraints. A wrong value in any cell makes at least one polynomial nonzero, and the Schwartz-Zippel lemma catches it with overwhelming probability at a random evaluation point.
+> Total: 16 range constraints + 8 given-cell constraints + 72 uniqueness checks = **96 constraints** over 16 witness variables. In R1CS form, each degree-$4$ range constraint decomposes into three intermediate bilinear multiplications, expanding the 16 range checks to roughly 48 R1CS rows; the 72 uniqueness pair-difference checks each take one row (with auxiliary inverse witnesses to enforce nonzero), and the 8 given-cell equalities each take one row. The total lands in the neighborhood of **130 R1CS constraints**. In CCS form, the degree-$4$ range constraints can be expressed directly, and the total stays at 96. The witness (the completed grid) satisfies all 96 constraints. A wrong value in any cell makes at least one polynomial nonzero, and the Schwartz-Zippel lemma catches it with overwhelming probability at a random evaluation point.
 
 Why polynomials? Because of a fact about polynomials: a polynomial of degree $d$ is completely determined by its values at any $d+1$ points. If you know a line (degree $1$), two points fix it exactly. If you know a cubic (degree $3$), four points fix it exactly. This means that if a polynomial "misbehaves" at even a single point, it must be the wrong polynomial -- and checking it at a random point catches this misbehavior with near certainty. A polynomial commitment scheme exploits this: the prover seals a polynomial into a short commitment, and the verifier can spot-check it at random points to confirm it is correct -- without ever seeing the full polynomial.
 
@@ -88,7 +88,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) Sudoku constraint count in the running example box states "16 range constraints + 8 given-cell constraints + 48 uniqueness checks = 72 constraints" and then "roughly 120 R1CS constraints." The 4x4 uniqueness check figure of 48 ($8 \times \binom{4}{2}$) is correct, but "8 groups" should be 3 types × some count — the 4×4 grid has 4 rows + 4 columns + 4 2×2 boxes = 12 groups, not 8. The arithmetic leading to 48 pairs is correct only if 8 is the right group count, which it is not for a standard 4×4 Sudoku (should be 12 groups × 6 pairs = 72 uniqueness constraints, not 48). This is a numerical error that propagates to the total.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) "a polynomial of degree $d$ is completely determined by its values at any $d+1$ points" — stated as the reason to use polynomials, but the following sentence conflates determination with the Schwartz-Zippel catching-misbehavior argument. The two ideas (interpolation uniqueness and probabilistic checking) are distinct; the paragraph blurs them.
 - [P2] (C) "This is the core idea of arithmetization" appears twice in close proximity (once at the end of the main spreadsheet explanation, once after the Sudoku box). Light redundancy.
 - [P3] (B) No sources cited for the spreadsheet/constraint analogy or for Schwartz-Zippel; a footnote to the original Schwartz (1980) / Zippel (1979) papers would be appropriate here.

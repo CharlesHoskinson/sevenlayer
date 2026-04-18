@@ -5,8 +5,8 @@ chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1996, 2121]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+status: reviewed
 word_count: 3722
 ---
 
@@ -28,7 +28,7 @@ Lookup arguments offer a fundamentally different approach: instead of encoding t
 
 ### Plookup: The First Practical Lookup (2020)
 
-Gabizon and Williamson introduced Plookup in 2020. The idea: if you have a table of pre-approved input-output pairs (for example, all possible 8-bit XOR results), you can prove that a set of values appears in the table without recomputing the operation.
+Ariel Gabizon and Zachary Williamson introduced Plookup in 2020 (ePrint 2020/315). The idea: if you have a table of pre-approved input-output pairs (for example, all possible 8-bit XOR results), you can prove that a set of values appears in the table without recomputing the operation.
 
 Consider that table of 8-bit XOR results. It has 256 * 256 = 65,536 entries, each of the form (a, b, a XOR b). If the prover claims that 0x3F XOR 0xA7 = 0x98, the verifier does not check the XOR. Instead, the verifier checks that the triple (0x3F, 0xA7, 0x98) appears somewhere in the table. If it does, the answer is correct -- because the table was constructed correctly, and membership in a correct table implies correctness of the result.
 
@@ -40,7 +40,7 @@ Despite its limitations, Plookup was immediately adopted. Lookup arguments for r
 
 ### LogUp: The Sorting-Free Revolution (2022)
 
-Ulrich Haboeck's LogUp paper in 2022 replaced Plookup's sorting with an observation that is, in retrospect, elegant to the point of inevitability. The name "LogUp" comes from "logarithmic derivative" -- the key mathematical technique. If you have a polynomial P(X) = Product of (X - r_i) whose roots are exactly the lookup values, then the logarithmic derivative of P is P'(X)/P(X) = Sum of 1/(X - r_i). This transforms a product (which is hard to check incrementally) into a sum (which is easy to accumulate and verify). The idea comes from complex analysis, where logarithmic derivatives convert multiplicative structures into additive ones. Haboeck's insight was to apply this classical technique to the lookup problem.
+Ulrich Haboeck's LogUp paper in 2022 replaced Plookup's sorting with an observation that is, in retrospect, elegant to the point of inevitability. The name "LogUp" comes from "logarithmic derivative" -- the mathematical technique. If you have a polynomial P(X) = Product of (X - r_i) whose roots are exactly the lookup values, then the logarithmic derivative of P is P'(X)/P(X) = Sum of 1/(X - r_i). This transforms a product (which is hard to check incrementally) into a sum (which is easy to accumulate and verify). The idea comes from complex analysis, where logarithmic derivatives convert multiplicative structures into additive ones. Haboeck's move was to apply this classical technique to the lookup problem.
 
 Instead of sorting, LogUp observes that if every lookup value $f_i$ appears in the table $t$, then a specific identity over rational functions must hold:
 
@@ -50,7 +50,7 @@ where $m_j$ counts how many times table entry $t_j$ is looked up. The left side 
 
 A tiny example makes this concrete. Suppose the table contains {1, 2, 3} and the prover claims to look up the values {2, 3, 2}. The left side (one term per lookup) is: $1/(X-2) + 1/(X-3) + 1/(X-2) = 2/(X-2) + 1/(X-3)$. The right side (one term per table entry, weighted by frequency) is: $0/(X-1) + 2/(X-2) + 1/(X-3)$ -- because entry 1 is looked up 0 times, entry 2 is looked up twice, and entry 3 is looked up once. Both sides equal $2/(X-2) + 1/(X-3)$. The identity holds. Now suppose the prover cheats and claims to look up {2, 3, 5}, where 5 is not in the table. The left side becomes $1/(X-2) + 1/(X-3) + 1/(X-5)$. No assignment of multiplicities to the table entries {1, 2, 3} can produce a term $1/(X-5)$ on the right side. The identity fails at a random evaluation point with overwhelming probability.
 
-This transforms the lookup argument from a product check to a *sum check* -- and sums, unlike products, compose beautifully. Why does this matter? Because a product of n terms can be thrown off by a single corrupted factor (the product becomes wrong, but localizing the error requires inspecting every factor). A sum of n terms, by contrast, is naturally decomposable: you can split the sum into batches, compute partial sums independently, and aggregate them. The algebraic structure of addition is friendlier than the algebraic structure of multiplication.
+This transforms the lookup argument from a product check to a *sum check* -- and sums, unlike products, compose beautifully. Why does this matter? A product of n terms can be thrown off by a single corrupted factor (the product becomes wrong, but localizing the error requires inspecting every factor). A sum of n terms, by contrast, is naturally decomposable: you can split the sum into batches, compute partial sums independently, and aggregate them. The algebraic structure of addition is friendlier than the algebraic structure of multiplication.
 
 The advantages are substantial:
 
@@ -63,7 +63,7 @@ LogUp became the production standard. It replaced Plookup in deployed systems an
 
 ### LogUp-GKR: The Verifier Gets Faster (2023)
 
-LogUp made the prover efficient. But the verifier still had to check the rational function identity, which naively requires work proportional to the number of lookups. Papini and Haboeck combined LogUp with the GKR interactive proof protocol to solve this.
+LogUp made the prover efficient. But the verifier still had to check the rational function identity, which naively requires work proportional to the number of lookups. Shahar Papini and Ulrich Haboeck combined LogUp with the GKR interactive proof protocol (ePrint 2023/1284) to solve this.
 
 The GKR protocol provides an efficient way to verify layered arithmetic circuits -- circuits where the computation flows through layers, each layer depending only on the one before it. The fractional sum computation in LogUp (adding up all the 1/(X - f_i) terms) has exactly this layered structure: it is a sum reduction tree. LogUp-GKR applies the GKR protocol to this tree, reducing the verifier's work from linear to logarithmic in the number of lookups.
 
@@ -77,7 +77,7 @@ The combination of LogUp (efficient prover) and GKR (efficient verifier) made lo
 
 The fundamental limitation of both Plookup and LogUp is that the prover must somehow touch the entire table. For a table of $2^{16}$ entries (65,536 rows), this is manageable. For a table of all possible 64-bit operations -- $2^{128}$ entries -- it is physically impossible to even store the table, let alone commit to it. The table of all 64-bit additions alone has $2^{128}$ rows. At one byte per row, that is $10^{38}$ bytes -- more than the number of atoms in the observable universe. No amount of hardware solves this.
 
-Lasso, by Setty, Thaler, and Wahby (2023), solves this through *decomposition*. The insight is that most useful tables have internal structure that can be exploited. Specifically, if the table's multilinear extension (MLE) can be evaluated efficiently -- meaning you can compute the table's value at any point without materializing the entire table -- then each lookup can be decomposed into lookups into much smaller subtables.
+Lasso, by Setty, Thaler, and Wahby (2023), solves this through *decomposition*. Most useful tables have internal structure that can be exploited. Specifically, if the table's multilinear extension (MLE) can be evaluated efficiently -- meaning you can compute the table's value at any point without materializing the entire table -- then each lookup can be decomposed into lookups into much smaller subtables.
 
 The intuition is best seen through an analogy. Suppose you have a multiplication table for two-digit numbers. Instead of storing all 90 * 90 = 8,100 entries (for digits 10-99), you could decompose each two-digit number into its tens and units digits, store separate multiplication tables for single digits (only 10 * 10 = 100 entries each), and reconstruct the full product from partial products. The full table has 8,100 entries; the subtables have a combined 200 entries. You traded one large lookup for several small lookups plus some arithmetic glue. Lasso does exactly this, but for arbitrary structured tables over finite fields, using the multilinear extension as the decomposition mechanism.
 
@@ -98,7 +98,7 @@ The concept, originally proposed by Barry Whitehat as the "lookup singularity," 
 3. Lasso's decomposition makes these lookups efficient regardless of the theoretical table size.
 4. Memory consistency is verified through offline memory checking (fingerprint-based techniques), not Merkle trees.
 
-For each instruction, the prover decomposes the operands into chunks, performs lookups into small subtables (typically around 4 million entries each), and commits to roughly 18 field elements per instruction (3 per chunk, with $c = 6$ chunks).
+Jolt's canonical setting is 64-bit RISC-V, the mainstream zkVM target. For each instruction, the prover decomposes the 64-bit operands into $c = 6$ chunks, performs lookups into small subtables (roughly $2^{22} \approx 4$ million entries each), and commits to roughly **18 field elements per instruction** -- 3 field elements per chunk, times 6 chunks. In a 32-bit RISC-V setting, the decomposition uses $c = 4$ chunks and the per-instruction commitment falls to roughly **12 field elements** (3 per chunk, 4 chunks). We use the 64-bit number (18) as the canonical figure throughout the rest of this section.
 
 The memory-checking component (point 4) is worth highlighting separately. In a real processor, memory is read-write: the program loads and stores values freely. Proving that every load returns the value of the most recent store to the same address is the memory consistency problem discussed in the overhead section. Jolt handles this through "offline memory checking" -- a technique where the prover computes a cryptographic fingerprint of the sequence of all reads and writes, and the verifier checks that the fingerprint is consistent with a valid read-write memory. This avoids the per-access cost of Merkle tree proofs and makes memory checking nearly as cheap as instruction checking. The technique is not specific to Jolt; it was developed by Blum et al. in the 1990s and adapted for ZK by Setty (Spartan) and others. But Jolt's integration of offline memory checking with Lasso-based instruction lookups produces a complete zkVM architecture where every component -- instruction verification, memory consistency, program counter management -- is handled by either a lookup or a fingerprint check.
 
@@ -106,9 +106,9 @@ The result is a zkVM where the constraint system is almost entirely lookups, wit
 
 The achievement is striking. A complete RISC-V instruction set -- ADD, SUB, AND, OR, XOR, SLL, SRL, SRA, SLT, SLTU, BEQ, BNE, BLT, BGE, LW, SW, and dozens more -- expressed without writing a single arithmetic constraint by hand. Every instruction is a table lookup. The "constraint system" is a collection of tables plus the Lasso machinery to prove that every instruction's result appears in the correct table. No custom gates. No selector polynomials. No hand-optimized constraint layouts. Just tables.
 
-To see how this works for a specific instruction, trace through a 32-bit ADD. The prover needs to prove that register_a + register_b = register_c. The "addition table" for 32-bit inputs has $2^{64}$ entries -- impossibly large to store. But Lasso decomposes each 32-bit operand into $c = 4$ chunks of 8 bits each. Each chunk lookup goes into a subtable of size $2^{16} = 65{,}536$ entries (all possible 8-bit additions, accounting for carry). The prover performs 4 small lookups instead of one impossible lookup, commits to the chunk values and the carry bits, and uses the Lasso sumcheck machinery to prove that the chunks reconstruct the full addition correctly.
+To see how this works for a specific instruction, trace through a 64-bit ADD. The prover needs to prove that register_a + register_b = register_c. The "addition table" for 64-bit inputs has $2^{128}$ entries -- impossibly large to store. Lasso decomposes each 64-bit operand into $c = 6$ chunks of roughly 11 bits each. Each chunk lookup goes into a subtable of size about $2^{22} \approx 4$ million entries (covering the relevant chunk-level additions, with the carry handled explicitly). The prover performs 6 small lookups instead of one impossible lookup, commits to the chunk values and the carry bits, and uses the Lasso sumcheck machinery to prove that the chunks reconstruct the full addition correctly. The per-instruction commitment cost lands at 18 field elements (3 per chunk, 6 chunks).
 
-Compare this to how a traditional zkVM would prove the same 32-bit ADD. In RISC Zero's earlier architecture, the prover would encode the addition as a polynomial constraint over the full 32-bit values, with range checks to ensure the operands fit in 32 bits (costing roughly 32 constraints for bit decomposition per operand), a constraint for the addition itself, and further constraints for carry propagation and overflow detection. Roughly 70 to 100 constraints per ADD instruction. In Jolt, the same instruction costs approximately 18 field element commitments (3 per chunk, 6 chunks for 64-bit RISC-V) and a handful of sumcheck rounds. The constraint count per instruction drops by roughly 4x.
+Compare this to how a traditional zkVM would prove the same ADD. In RISC Zero's earlier architecture, the prover would encode the addition as a polynomial constraint over the full register values, with range checks to ensure the operands fit in the machine word (costing roughly 32 constraints for bit decomposition per 32-bit operand, more for 64-bit), a constraint for the addition itself, and further constraints for carry propagation and overflow detection. Roughly 70 to 100 constraints per ADD instruction. In Jolt, the same instruction costs approximately 18 field element commitments and a handful of sumcheck rounds. The per-instruction cost drops by a noticeable factor.
 
 This is genuinely surprising. For years, the ZK community assumed that building a practical zkVM required painstaking constraint engineering -- hand-crafting gate designs for each instruction type, optimizing selector layouts, minimizing constraint counts through algebraic tricks. Jolt demonstrates that all of that complexity can be replaced by a single, uniform mechanism: look up the answer. The engineering effort shifts from "design clever constraints" to "design decomposable tables," and the latter turns out to be systematically easier.
 
@@ -187,8 +187,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) Jolt field-element cost stated as "~18 field element commitments per instruction (3 per chunk, with $c = 6$ chunks)" in the body text, but the Key claims state "~18 field element commitments per instruction vs. ~50–80 constraints in traditional zkVMs." The body's ADD example elsewhere says "approximately 18 field elements per instruction (3 per chunk, $c = 6$ chunks for 64-bit RISC-V)" — 3 × 6 = 18 is correct for 64-bit, but the preceding paragraph uses $c = 4$ chunks of 8 bits for a 32-bit ADD (4 chunks × 3 = 12, not 18). The section mixes 32-bit and 64-bit examples without clearly distinguishing them, making the 18-element figure appear inconsistent.
-- [P1] (A) Plookup attributed to "Gabizon and Williamson" — the full paper title is "plookup: A simplified polynomial protocol for lookup tables" and includes Zacharias, not just Gabizon and Williamson. Check authorship; the ePrint 2020/315 lists Gabizon and Williamson as sole authors, which is correct for the original Plookup, but LogUp-GKR is attributed to "Papini and Haboeck" while the actual ePrint 2023/1284 authors are Shahar Papini and Ulrich Haboeck — the Key claims entry spells it "Papini, Shahar and Ulrich Haboeck" (correctly) while the Sources section uses "Papini, Shahar and Ulrich Haboeck" — consistent, but the body text just says "Papini and Haboeck" without first names. Minor inconsistency but worth normalizing.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) "Offline memory checking (Blum et al., adapted by Setty)" — "Blum et al." is attributed to the 1990s but no specific paper is cited. The canonical reference is Blum, Evans, Gemmell, Kannan, Naor, "Checking the Correctness of Memories" (1991). A citation entry should be added.
 - [P2] (C) The LogUp section explains logarithmic derivatives via "P'(X)/P(X) = Sum of 1/(X - r_i)" — this is mathematically correct but uses the prime-notation derivative inline before defining it, then switches to a formal display equation. The transition from the inline explanation to the displayed formula is slightly abrupt; a brief "differentiating both sides gives" would smooth it.
 - [P3] (E) Jolt's status as "alpha (open-sourced by a16z)" is noted but no mention of the main missing capability for production: lack of proof recursion. This is mentioned in passing but the implications for deployment (e.g., no on-chain verification without recursion) are not elaborated.

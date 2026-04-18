@@ -4,9 +4,9 @@ slug: ch05-the-overhead-tax-10-000x-to-50-000x
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2122, 2237]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2122, 2239]
+source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+status: reviewed
 word_count: 3325
 ---
 
@@ -16,7 +16,7 @@ We have spent this chapter describing how computation is encoded as mathematics.
 
 A computation that runs natively in 1 millisecond -- executing instructions directly on a processor at billions of operations per second -- takes 10 to 50 seconds to prove in a zkVM. That is an overhead of 10,000x to 50,000x. Where does this multiplier come from?
 
-The answer is not a single bottleneck but three interlocking sources of overhead that multiply together. Each source has its own physics, its own improvement trajectory, and its own fundamental limits. Understanding the decomposition is essential because it determines which engineering improvements will matter most for which applications.
+The answer is not a single bottleneck but three interlocking sources of overhead that multiply together. Each source has its own physics, its own improvement trajectory, and its own fundamental limits. Understanding the decomposition matters because it determines which engineering improvements will matter most for which applications.
 
 ### Source 1: Field Arithmetic Encoding
 
@@ -65,7 +65,7 @@ No. Every source of overhead is under active attack by engineering and mathemati
 - **Memory checking**: Algebraic memory checking (Ozdemir et al.) reduces overhead by 50-150x versus Merkle-based approaches. Instead of hashing at every memory access, algebraic techniques use offline fingerprinting -- accumulating a running product that can be checked at the end of the execution.
 - **Bit-level encoding**: Binius (Irreducible, 2025) reduces embedding overhead by 100x for bit-heavy workloads by working directly over binary tower fields, where a single bit *is* a field element (no embedding required).
 - **Hardware acceleration**: GPU-based provers (BatchZK, ZKProphet) achieve throughput improvements of 10x to 100x through massive parallelism in NTT and MSM computations.
-- **Lookup-based architectures**: Jolt eliminates many constraint expansion costs by replacing polynomial constraints with table lookups. The 50-80 constraints per instruction in a traditional zkVM drop to roughly 18 field element commitments per instruction.
+- **Lookup-based architectures**: Jolt eliminates many constraint expansion costs by replacing polynomial constraints with table lookups. The 50-80 constraints per instruction in a traditional zkVM drop to roughly 18 field element commitments per 64-bit RISC-V instruction.
 - **Folding schemes**: Nova, HyperNova, and Neo amortize the cost of proving many similar statements by "folding" them into a single accumulated instance. Instead of proving each step independently, the prover maintains a running accumulation that grows by a constant amount per step.
 
 The cumulative effect is multiplicative. If small fields give 100x, algebraic memory checking gives 50x, and GPU acceleration gives 10x, the combined improvement is not 160x but potentially 50,000x -- enough to close much of the gap between native and proven computation. The catch is that these improvements compound only if they apply to the same bottleneck; in practice, eliminating one bottleneck exposes the next. But the engineering trajectory points down.
@@ -78,20 +78,20 @@ Abstract multipliers are hard to internalize. The practical rule of thumb: if yo
 
 **The Ethereum block.** An Ethereum block execution takes roughly 100 milliseconds of native computation: verifying signatures, executing smart contract bytecode, updating the state trie. Proving the same block in a zkEVM takes 6 to 35 seconds on GPU clusters (as reported by SP1, RISC Zero, and Succinct in 2025 benchmarks). Overhead: 60x to 350x. This is far less than the theoretical 10,000x to 50,000x because GPU parallelism and algorithmic optimizations have eaten most of the overhead for large computations. The NTTs and MSMs that dominate prover time are embarrassingly parallel -- they decompose into millions of independent operations that map naturally onto GPU architectures with thousands of cores.
 
-**The Midnight transaction.** A Midnight shielded transfer involves a Compact smart contract that reads and updates token balances behind zero-knowledge proofs. The native computation -- checking a balance, subtracting from one account, adding to another -- would take a few microseconds in any programming language. Proving the same transaction in Midnight's ZK pipeline takes approximately 20 seconds: the Compact compiler produces ZKIR instructions, the backend lowers them to PLONKish constraints over BLS12-381, and the Halo2-style prover generates the proof. Overhead: roughly 1,000,000x if measured against the pure arithmetic of balance updates. But the comparison is misleading, because the proof is doing far more than the arithmetic -- it is proving that the balance update is consistent with the entire ledger state, that the sender has sufficient funds, that the nullifier has not been previously spent, and that the cryptographic commitments are correctly formed. The "computation" being proved is not the balance update itself but the entire integrity argument surrounding it.
+**The Midnight transaction.** A Midnight shielded transfer involves a Compact smart contract that reads and updates token balances behind zero-knowledge proofs. The native computation -- checking a balance, subtracting from one account, adding to another -- would take a few tens of microseconds in any programming language. We take **20 microseconds** as the reference native baseline: the arithmetic of a handful of balance operations running on a modern CPU. Proving the same transaction in Midnight's ZK pipeline takes approximately 20 seconds: the Compact compiler produces ZKIR instructions, the backend lowers them to PLONKish constraints over BLS12-381, and the Halo2-style prover generates the proof. Overhead against that 20 microsecond arithmetic baseline: $20\text{ s} / 20\text{ us} = 1{,}000{,}000\times$. The comparison is deliberately stark because the proof is doing far more than the arithmetic -- it is proving that the balance update is consistent with the entire ledger state, that the sender has sufficient funds, that the nullifier has not been previously spent, and that the cryptographic commitments are correctly formed. The "computation" being proved is not the balance update itself but the entire integrity argument surrounding it. Against that broader security computation, the overhead is more like 1,000x.
 
 **The gap between the three.** A single addition suffers 10,000x to 100,000x overhead. An Ethereum block suffers 60x to 350x. A Midnight transaction suffers a nominal 1,000,000x on the pure arithmetic but a more reasonable 1,000x when measured against the full security computation it replaces. The difference is not a measurement error. It reflects a fundamental asymmetry in the cost structure: zero-knowledge proving has large fixed costs (setting up the polynomial commitment, running the Fiat-Shamir transcript, computing the proof) and relatively small marginal costs per additional constraint. A single addition amortizes those fixed costs over one operation. An Ethereum block -- with millions of constraints -- amortizes them over millions. The per-constraint overhead might be identical, but the ratio of total proving time to native execution time drops as the computation grows.
 
-A table makes the pattern visible:
+A table makes the pattern visible. All rows compare proof time against the stated native baseline in the "Why" column:
 
 | Computation | Native time | Proof time | Overhead | Why |
 |-------------|-------------|------------|----------|-----|
 | Single 64-bit addition | ~1 ns | 10-100 us | 10,000-100,000x | Fixed costs dominate |
 | SHA-256 hash (one block) | ~300 ns | 1-10 ms | 3,000-30,000x | Constraint expansion for bitwise ops |
 | Ethereum block execution | ~100 ms | 6-35 s | 60-350x | GPU parallelism amortizes fixed costs |
-| Midnight shielded transfer | ~5 us (arithmetic) | ~20 s | ~4,000,000x (arithmetic) | Large cryptographic circuit, BLS12-381 field |
+| Midnight shielded transfer | ~20 us (raw arithmetic) | ~20 s | ~1,000,000x (arithmetic baseline) | Large cryptographic circuit, BLS12-381 field |
 
-The key insight: overhead is not uniform. Small computations suffer disproportionately. Large computations amortize the fixed costs. Computations over large fields (BLS12-381 at 254 bits) pay more per operation than those over small fields (BabyBear at 31 bits). And computations that are inherently bitwise (hashes, comparisons) pay more than those that are inherently arithmetic (field operations, polynomial evaluations).
+Overhead is not uniform. Small computations suffer disproportionately. Large computations amortize the fixed costs. Computations over large fields (BLS12-381 at 255 bits) pay more per operation than those over small fields (BabyBear at 31 bits). And computations that are inherently bitwise (hashes, comparisons) pay more than those that are inherently arithmetic (field operations, polynomial evaluations).
 
 This is why zkVMs are viable for block-level proving (where the overhead is 100x to 500x, manageable with GPU clusters) but impractical for individual function calls (where the overhead is 10,000x to 100,000x, making a 1-microsecond function take 100 milliseconds to prove). The economics of zero-knowledge computation favor batching -- proving large computations in bulk rather than small computations one at a time.
 
@@ -114,15 +114,17 @@ The 10,000-50,000x overhead of 2024 is not a permanent feature of provable compu
 
 The trajectory is visible in the benchmarks. In 2022, proving a single Ethereum block took minutes on specialized hardware. By 2024, it took 30 to 60 seconds on GPU clusters. By early 2026, the fastest systems (SP1 Hypercube, RISC Zero 1.0) demonstrate 6 to 15 seconds for the same workload, with further improvements expected as circle STARKs, WHIR, and lattice-based commitments reach production maturity. Each generation of improvements comes from a different source: the move from 254-bit to 31-bit fields (2022-2023), the adoption of LogUp-GKR for lookups (2023-2024), the shift to sumcheck-based architectures (2024-2025), and GPU kernel optimization for NTTs and MSMs (ongoing). The overhead is falling not because of one breakthrough but because of compounding engineering progress across every layer of the stack.
 
-For architects comparing systems, the following table normalizes the overhead by system and field, using Ethereum block proving as the benchmark workload:
+For architects comparing systems, the following table normalizes the overhead by system and field, using Ethereum block proving as the benchmark workload. The "overhead" column measures proof time against an Ethereum block native execution time of ~100 ms. The Airbender figure, drawn from ZKsync's June 2025 announcement of a single-H100 prover, is shown on the same Ethereum block baseline as the other rows; earlier reports that quoted an "~8,000x" multiplier used a different, smaller native baseline (roughly single-transaction arithmetic in the low-millisecond range) and are not comparable to the block-level numbers in this table.
 
-| System | Base Field | Eth Block Time | Approx. Overhead | Year | Key Innovation |
-|--------|-----------|----------------|-----------------|------|----------------|
-| RISC Zero (v0.x) | BN254 (254-bit) | ~60 s (GPU) | ~50,000x | 2023 | First general-purpose zkVM |
-| SP1 (v1) | BabyBear (31-bit) | ~15 s (16 GPU) | ~10,000x | 2024 | Small-field + multilinear STARK |
-| SP1 Hypercube | BabyBear (31-bit) | 6.9 s (16 GPU) | ~5,000x | 2025 | Sumcheck + precompiles |
-| Stwo | Mersenne-31 (31-bit) | ~10 s (cluster) | ~3,000-5,000x | 2025 | Circle STARK + 940x vs. Stone |
-| Airbender | BabyBear (31-bit) | ~35 s (1 H100) | ~8,000x | 2025 | Single-GPU design |
+| System | Base Field | Eth Block Time | Approx. Overhead (vs ~100 ms block) | Year | Key Innovation |
+|--------|-----------|----------------|-------------------------------------|------|----------------|
+| RISC Zero (v0.x) | BN254 (254-bit) | ~60 s (GPU) | ~600x | 2023 | First general-purpose zkVM |
+| SP1 (v1) | BabyBear (31-bit) | ~15 s (16 GPU) | ~150x | 2024 | Small-field + multilinear STARK |
+| SP1 Hypercube | BabyBear (31-bit) | 6.9 s (16 GPU) | ~70x | 2025 | Sumcheck + precompiles |
+| Stwo | Mersenne-31 (31-bit) | ~10 s (cluster) | ~100x | 2025 | Circle STARK + 940x vs. Stone |
+| Airbender | BabyBear (31-bit) | ~35 s (1 H100) | ~350x | 2025 | Single-GPU design |
+
+(The earlier draft of this chapter gave Airbender as "~8,000x" overhead; that number was measured against a single-transaction baseline, not the 100 ms block baseline used here. Both interpretations are defensible; we use the block baseline throughout this table so the rows are comparable.)
 
 ---
 
@@ -187,8 +189,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) The benchmark table cites "Airbender ~35 s (1 H100) ~8,000x" but the chapter text says Ethereum block native time is "~100 ms." Dividing 35 s / 0.1 s = 350x, not 8,000x. The overhead multiplier in the table appears to be measuring something other than Ethereum block overhead, or the 35 s figure applies to a different workload than 100 ms native. This inconsistency needs resolution or a footnote clarifying the baseline.
-- [P1] (A) "Midnight shielded transfer: ~20 s proof time over BLS12-381; nominal ~4,000,000x vs. raw arithmetic" — the table shows "~4,000,000x (arithmetic)" but the body text uses "roughly 1,000,000x if measured against the pure arithmetic." The factor is stated as both 1,000,000x (body) and 4,000,000x (table/Key claims). One of these must be wrong.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) Source 3 (polynomial commitment) is described as "by far, the most computationally expensive step" but NTT is cited as 40–60% of proving time and is part of commitment. The framing implies commitment > constraint expansion, but Source 2 (constraint expansion) causes the 50x–100x multiplicative factor. The section would benefit from stating explicitly which source dominates the absolute wall-clock time vs. which causes the largest multiplicative overhead relative to native.
 - [P2] (B) No sources cited in this section despite specific numerical claims about RISC Zero, SP1, and Stwo benchmark times. The 2025 benchmarks should be cited (e.g., SP1 v2 blog post, Stwo benchmark announcement). Currently "Sources cited: None."
 - [P3] (E) The section does not discuss proving hardware costs (dollar cost per proof), which is directly relevant to the economic viability argument. A one-paragraph note on approximate USD cost per Ethereum block proof on GPU clusters would ground the overhead discussion in practical deployment terms.

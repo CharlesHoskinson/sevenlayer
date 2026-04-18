@@ -4,7 +4,7 @@ slug: ch07-lattice-based-proving
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3288, 3341]
+source_lines: [3293, 3346]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 927

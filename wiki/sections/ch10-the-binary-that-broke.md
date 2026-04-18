@@ -4,7 +4,7 @@ slug: ch10-the-binary-that-broke
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4339, 4346]
+source_lines: [4344, 4351]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 120

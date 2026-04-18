@@ -4,7 +4,7 @@ slug: ch08-case-study-midnight-and-the-three-token-architecture
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3806, 3875]
+source_lines: [3811, 3880]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 1211

@@ -4,7 +4,7 @@ slug: ch07-three-hardness-assumptions-three-worlds
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3009, 3046]
+source_lines: [3014, 3051]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 945

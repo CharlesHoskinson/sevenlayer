@@ -5,8 +5,8 @@ chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
 source_lines: [1684, 1875]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: e4bc60766613a415a561005e11f6a9975728dff5
+status: reviewed
 word_count: 5095
 ---
 
@@ -14,7 +14,7 @@ word_count: 5095
 
 The three major constraint systems -- R1CS, AIR, and PLONKish -- emerged in a span of just seven years (2012-2019). Each was designed to solve a specific limitation of its predecessor, but each also introduced new trade-offs. Understanding this evolution is not optional for understanding modern ZK: every proof system, every zkVM, and every privacy protocol in production today is built on one of these three foundations (or, increasingly, on CCS, which unifies all three).
 
-The history of arithmetization is a history of increasing expressiveness. Each new constraint system solved a specific limitation of its predecessor. Understanding this genealogy is essential because the constraint system you choose determines which proof systems you can use, which fields are efficient, and how much overhead the encoding imposes.
+The history of arithmetization is a history of increasing expressiveness. Each new constraint system solved a specific limitation of its predecessor. Understanding this genealogy matters because the constraint system you choose determines which proof systems you can use, which fields are efficient, and how much overhead the encoding imposes.
 
 The genealogy also reveals how rapidly the field moves. R1CS was introduced in 2012. By 2023, it was already the "legacy" format -- still deployed in production (Groth16 is not going away), but superseded by more expressive systems for new development. The eleven-year span from R1CS to CCS saw more architectural innovation in constraint system design than the previous four decades of theoretical computer science produced. This acceleration is driven by practical pressure: the economic value of efficient zero-knowledge proofs creates strong incentives for better arithmetization.
 
@@ -22,7 +22,7 @@ The genealogy also reveals how rapidly the field moves. R1CS was introduced in 2
 
 The first practical arithmetization emerged from the work of Gennaro, Gentry, Parno, and Raykova (GGPR) in 2012, who introduced the QAP (Quadratic Arithmetic Program) framework that R1CS later formalized. The name "Rank-1 Constraint System" describes the mathematical structure precisely: each constraint has rank 1 (it is the product of two linear functions), and the system is a collection of such constraints. The "rank-1" designation means each constraint captures exactly one multiplication -- a bilinear relationship between variables. Addition is free (it does not require a constraint, because linear combinations can be folded into the matrix entries). Only multiplication generates constraints. This is why the number of R1CS constraints for a circuit equals the number of multiplication gates, not the total number of gates.
 
-Before the mathematical notation, let us ground it in the spreadsheet from the previous section. Imagine your spreadsheet has three special columns -- call them A, B, and C. For each row, column A and column B each contain a combination of the variables, and column C contains the result. The rule for every row is: (what is in column A) multiplied by (what is in column B) must equal (what is in column C). That is all R1CS is: a spreadsheet where every row enforces one multiplication rule. The mathematical notation below says exactly this, just more precisely.
+Before the mathematical notation, ground it in the spreadsheet from the previous section. Imagine your spreadsheet has three special columns -- call them A, B, and C. For each row, column A and column B each contain a combination of the variables, and column C contains the result. The rule for every row is: (what is in column A) multiplied by (what is in column B) must equal (what is in column C). That is all R1CS is: a spreadsheet where every row enforces one multiplication rule. The mathematical notation below says exactly this, just more precisely.
 
 R1CS encodes a computation as a list of constraints, each of the form:
 
@@ -32,7 +32,7 @@ Or, in mathematical notation: $(\mathbf{A} \cdot \mathbf{z}) \circ (\mathbf{B} \
 
 For the tiny spreadsheet example (3 + 4 = 7, then 7 * 2 = 14), the witness vector is $\mathbf{z} = (1, 3, 4, 7, 2, 14)$ -- the constant 1 followed by the variables x, y, z, w, and the final result. The first row of A selects "x" (entry 1 in position corresponding to x), the first row of B selects "1" (indicating the addition is encoded as (x + y) * 1 = z after reformulation), and the first row of C selects "z". The second row of A selects "z" (value 7), the second row of B selects "w" (value 2), and the second row of C selects "result" (value 14). The matrices are mostly zeros -- only a handful of entries are nonzero. This sparsity is typical: a circuit with millions of constraints has matrices with millions of rows but only a few nonzero entries per row.
 
-R1CS is the assembly language of constraint systems -- simple, well-understood, and directly amenable to proof systems like Groth16 and Spartan. Groth16, deployed across most of the Ethereum ecosystem, works natively with R1CS and produces the smallest possible proofs -- three elliptic curve group elements, constant-time verification.
+R1CS is the assembly language of constraint systems -- simple, well-understood, and directly amenable to proof systems like Groth16 and Spartan. Groth16, deployed across most of the Ethereum ecosystem, works natively with R1CS and produces the smallest possible proofs -- three elliptic curve group elements (two in $\mathbb{G}_1$ and one in $\mathbb{G}_2$), 192 bytes in total when compressed on BLS12-381, with constant-time verification.
 
 But R1CS has a fundamental limitation: each constraint is bilinear -- degree $2$. You can encode a multiplication ($a \cdot b = c$) directly. But what about a computation that requires checking a hash function, where a single invocation might need thousands of multiplications? You encode each multiplication as a separate constraint, one after another. There is no way to express a higher-degree relationship in a single constraint, and there is no notion of "this constraint applies uniformly across all time steps." Every gate gets its own row.
 
@@ -40,7 +40,7 @@ For small circuits, R1CS works beautifully. For large, repetitive computations -
 
 To see this concretely, consider encoding a computation with 10 million multiplication gates in R1CS. You need 10 million rows in the matrices A, B, and C. Each matrix is sparse (most entries are zero), but the total number of nonzero entries -- and hence the prover's work -- scales linearly with the gate count. There is no compression possible: R1CS treats each gate independently, with no awareness that gate 5,000,001 might be performing exactly the same operation as gate 1. Compare this to a function that repeats the same 1,000-gate circuit 10,000 times: R1CS still requires 10,000,000 separate constraints, while a structured constraint system could potentially describe the repeating pattern once and instantiate it 10,000 times. This structural blindness is what motivated the search for richer constraint formats.
 
-Yet R1CS persists. Groth16 proofs (which require R1CS) remain the gold standard for on-chain verification because of their unmatched proof size: 3 group elements, roughly 128 bytes, verifiable in constant time. No other proof system achieves this compactness. When Ethereum smart contracts verify ZK proofs, the gas cost of verification is proportional to proof size -- and Groth16's tiny proofs mean minimal gas costs. Many production systems (Zcash, Tornado Cash, Worldcoin) use Groth16 for precisely this reason, accepting the constraint system's limitations in exchange for the proof system's efficiency. R1CS is the assembly language: nobody wants to write it directly, but the machine code it produces is unbeatable.
+Yet R1CS persists. Groth16 proofs (which require R1CS) remain the gold standard for on-chain verification because of their unmatched proof size: 3 group elements, 192 bytes on BLS12-381, verifiable in constant time. No other proof system achieves this compactness. When Ethereum smart contracts verify ZK proofs, the gas cost of verification is proportional to proof size -- and Groth16's tiny proofs mean minimal gas costs. Many production systems (Zcash, Tornado Cash, Worldcoin) use Groth16 for precisely this reason, accepting the constraint system's limitations in exchange for the proof system's efficiency. R1CS is the assembly language: nobody wants to write it directly, but the machine code it produces is unbeatable.
 
 ### AIR: The State Machine (2018)
 
@@ -92,7 +92,7 @@ The critical observation is what the prover *wrote down* to define this constrai
 
 This is the structural difference from R1CS. In R1CS, you would write a separate constraint for each row: "row 0's output equals row 0's input plus row 0's flag," then "row 1's output equals row 1's input plus row 1's flag," and so on -- one constraint per step. For a million-step computation, you need a million constraints. In AIR, you write the rule once. The prover fills in the trace; the polynomial machinery checks the rule everywhere simultaneously.
 
-For repetitive computations -- hash chains where the same compression function executes thousands of times, virtual machines where the same instruction cycle repeats for every step -- AIR's uniformity is not just convenient. It is a compression of the constraint description itself, from linear in the number of steps to constant in the number of distinct transition rules. That compression is what made STARKs practical for proving large computations.
+For repetitive computations -- hash chains where the same compression function executes thousands of times, virtual machines where the same instruction cycle repeats for every step -- AIR's uniformity is not just convenient. It is a compression of the *constraint description* itself, from linear in the number of steps to constant in the number of distinct transition rules. That compression is what made STARKs practical for proving large computations. The compression is in the *description*, not in the prover's work: the trace still grows with the number of steps, and the prover still fills in every cell. What AIR saves is the cost of writing and storing the constraint system, not the cost of checking it row by row.
 
 One further detail illuminates how the polynomial machinery works behind the scenes. The prover does not submit the raw trace table to the verifier. Instead, the prover interpolates each column of the trace as a polynomial. For the counter column with values (0, 1, 2), the prover finds a polynomial $P(x)$ such that $P(0) = 0$, $P(1) = 1$, $P(2) = 2$ -- in this case, simply $P(x) = x$. For the flag column with values (1, 1, 1), the polynomial is $F(x) = 1$. The transition constraint "$P(x+1) = P(x) + F(x)$" becomes a polynomial identity that must hold at $x = 0$ and $x = 1$ (every pair of consecutive rows). The proof system checks this identity at a random evaluation point -- not at $x = 0$ or $x = 1$, but at some random $r$ chosen by the verifier -- and the Schwartz-Zippel lemma guarantees that a false identity will fail this random check with overwhelming probability.
 
@@ -108,7 +108,7 @@ The limitation is equally visible. Suppose you want some rows to add and other r
 
 PLONK, introduced by Gabizon, Williamson, and Ciobotaru in 2019, took a different approach. Instead of uniform constraints, PLONKish arithmetization uses *selector columns* to enable non-uniform gates.
 
-The key innovation separates the constraint system into two components:
+The core move separates the constraint system into two components:
 
 1. **Gate constraints**: polynomial equations controlled by selector polynomials. Different rows can have different gate types. If the selector for "addition" is active at row 5, the addition constraint is enforced there. If the selector for "multiplication" is active at row 6, the multiplication constraint is enforced there. You can define custom gates for any operation you need.
 
@@ -172,17 +172,17 @@ To crystallize the differences, consider encoding the same simple computation --
 
 The comparison reveals each system's natural habitat. R1CS handles this computation most directly -- two bilinear constraints, no overhead. PLONKish handles it almost as directly, with slight overhead from the copy constraints. AIR handles it least naturally, because the computation is not repetitive -- there is no pattern that repeats across many rows. For a computation that *is* repetitive (running the same hash compression 1000 times), the ranking reverses: AIR wins by writing the constraint once, while R1CS and PLONKish must either repeat the constraint description 1000 times or use recursion to simulate repetition.
 
-The constraint count for the same computation across different systems is instructive:
+The count for the same computation across different systems is instructive. The column below labeled "constraint description size" measures how much the circuit designer must write down, not how much work the prover performs. For AIR in particular, the constraint description stays small regardless of trace length: one transition polynomial covers a 1000-round hash chain and a million-round hash chain equally.
 
-| System | Constraints for x*(x+1) | Constraints for 1000 hash rounds | Why |
-|--------|------------------------|--------------------------------|-----|
-| R1CS | 2 | ~30,000,000 | 1 constraint per gate, ~30,000 per hash round |
-| AIR | ~4 (with padding) | ~30,000 | One transition polynomial, reused 1000 times |
-| PLONKish | 2 (+ copy constraints) | ~15,000,000 | Custom hash gates cut per-round cost in half |
+| System | Description size (x*(x+1)) | Description size (1000 hash rounds) | Prover trace work (1000 hash rounds) | Why |
+|--------|---------------------------|-------------------------------------|--------------------------------------|-----|
+| R1CS | 2 constraints | ~30,000,000 constraints | ~30,000,000 rows | 1 constraint per gate, ~30,000 per hash round, description == trace |
+| AIR | ~4 (with padding) | ~30 polynomials (one set per hash-round structure) | ~30,000 rows (1,000 rounds x ~30 rows/round) | One transition polynomial set, reused 1000 times; trace still grows linearly |
+| PLONKish | 2 gates (+ copy constraints) | ~15,000,000 gate rows | ~15,000,000 rows | Custom hash gates cut per-round cost roughly in half; description == trace |
 
-The numbers are approximate, but the ratios are revealing. For the tiny computation, all three systems are roughly comparable. For the hash chain, AIR's constraint count is independent of the number of repetitions -- it depends only on the number of distinct transition types. This is why STARKs dominate in hash-heavy workloads (blockchain state verification, recursive proof composition) while PLONKish dominates in mixed workloads (smart contract execution, general-purpose circuits).
+The numbers are approximate, but the ratios are revealing. For the tiny computation, all three systems are roughly comparable. For the hash chain, AIR's *constraint description* is independent of the number of repetitions -- it depends only on the number of distinct transition types. AIR's *trace*, and therefore the prover's work, still scales with the number of rounds. What AIR compresses is the thing the verifier reads and the thing the compiler emits, not the thing the prover computes.
 
-A clarification for the precise reader: AIR's "~30,000" for 1000 hash rounds refers to the *constraint description* size -- the number of distinct polynomial equations that must hold. The actual *trace* still has 1000 * (rows per hash round) rows, each of which must satisfy the constraints. The prover's work is proportional to the trace size, not the constraint description size. But the constraint description size matters for the verifier (who must check the polynomial identity, not every row) and for the proof size (which depends on the degree of the constraint polynomial, not the number of trace rows). The asymmetry between "small constraint description, large trace" is precisely what makes AIR efficient for repetitive computations: the verifier's work grows with the constraint complexity, not with the number of repetitions.
+This asymmetry is what makes AIR efficient for repetitive computations: the verifier checks one polynomial identity no matter how many rounds executed, while the prover pays the trace-size cost that R1CS and PLONKish also pay. For hash-heavy workloads (blockchain state verification, recursive proof composition), that verifier-side saving is enough to tilt the choice toward STARKs; for mixed workloads (smart contract execution, general-purpose circuits), PLONKish's flexibility wins.
 
 ### Three Dialects, One Problem
 
@@ -249,8 +249,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) Groth16 proof size is stated as "three elliptic curve group elements, roughly 128 bytes" in the body and as "192 bytes (3 group elements)" in the Summary. These are inconsistent: three BLS12-381 G1 points are 3 × 48 = 144 bytes (compressed) or 3 × 96 = 288 bytes (uncompressed); the commonly cited figure is 192 bytes for two G1 + one G2. The "128 bytes" figure in the body and "192 bytes" in the summary cannot both be correct; the body figure needs a correction.
-- [P1] (A) The AIR constraint count comparison table claims AIR costs "~30,000" constraints for 1,000 hash rounds and attributes this to "description size only" — but a footnote immediately after clarifies that the prover's work scales with trace size, not description size. The table entry is therefore misleading: calling it "~30,000 constraints" for 1,000 rounds implies a 1,000× reduction in prover work, which is not what AIR provides. The table column header or the AIR cell value should be qualified to avoid this misreading.
+_P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
+
 - [P2] (A) R1CS is credited to GGPR (2012) in one place and the Key claims list cites "GGPR (2012)" correctly. However, the body text says GGPR "introduced the QAP framework that R1CS later formalized" — implying R1CS came after QAP, but R1CS is sometimes treated as a renaming/refinement that happened in 2013 (Parno et al., "Pinocchio"). The history is slightly compressed.
 - [P2] (C) Paragraph beginning "The history of arithmetization is a history of increasing expressiveness" is a near-duplicate of the opening paragraph of the same section. Two nearly identical "history of arithmetization" framing sentences appear within the first eight lines — one of them should be cut.
 - [P3] (E) The PLONKish section does not discuss the Halo2 commitment scheme (IPA/KZG variants) or why Halo2 avoids a trusted setup, which is a key differentiator over vanilla PLONK. A brief note would improve depth given that Halo2 is cited as the production standard.
