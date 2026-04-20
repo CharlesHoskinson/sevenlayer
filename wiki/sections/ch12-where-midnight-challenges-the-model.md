@@ -5,8 +5,8 @@ chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
 source_lines: [4916, 4936]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 57de0a15f2c97434882b311654d3cf79fddbc027
+status: reviewed
 word_count: 398
 ---
 
@@ -27,7 +27,7 @@ The following table crystallizes what the Midnight case study proves and what it
 | Compiler-enforced privacy | Disclosure analysis catches 11 error types at compile time | Side-channel leakage (timing), metadata via indexer/network layer |
 | Seven-layer decomposition | Clean mapping at 5 of 7 layers | Compact compiler spans L2--L4; SDK spans L3--L7; layers not cleanly separable |
 | Privacy as architecture | Every layer serves privacy -- UTXO model, local proving, shielded state | Cross-contract token transfers between DApps remain unsupported |
-| Trust decomposition | Three-token model (Night/Shielded/DUST) is genuinely novel | Governance key management and upgrade path remain centralized |
+| Trust decomposition | Three-token model (NIGHT/DUST/custom) is genuinely novel | Governance of circuit upgrades and user migration remains unspecified |
 | Post-quantum readiness | Architecture acknowledged as non-PQ | No migration path to lattice-based commitments without full redesign |
 | Developer experience | Compact→ZKIR→proof pipeline is coherent end-to-end | 17-28s proof times create UX barrier; no GPU acceleration |
 
@@ -72,6 +72,8 @@ None in this section.
 - Centralized governance: who controls verifier key upgrades, and what protects users during transitions?
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) The table lists token model as "Three-token model (Night/Shielded/DUST)" — the third token class is "custom tokens" (which can be shielded or unshielded), not a token named "Shielded." Inconsistent with the naming used everywhere else in chapter 12.
 - [P2] (B) "nanopass architecture spanning 26 intermediate languages" is a specific engineering claim; no source is cited. Should reference the Compact Language Reference or compiler documentation.

@@ -5,8 +5,8 @@ chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
 source_lines: [4902, 4915]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 57de0a15f2c97434882b311654d3cf79fddbc027
+status: reviewed
 word_count: 165
 ---
 
@@ -60,6 +60,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (E) The section lists five validation points but gives only one sentence each; Layers 3 and 6 are noted as not clean fits but there is no brief explanation of why — even a parenthetical would improve completeness.
 - [P3] (B) "~18 s / ~490 trillion SPECK" is repeated without a source; should inherit the citation from the full-mapping section rather than float uncited here.

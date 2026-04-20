@@ -2,7 +2,7 @@
 title: "Midnight -- The Privacy Theater"
 chapter: 12
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 12: Midnight -- The Privacy Theater
@@ -17,7 +17,17 @@ status: untouched
 - [[ch12-the-privacy-theater-analogy]]
 - [[ch12-five-lessons-for-zk-system-design]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-19 per `wiki/drafts/ch12-v2.md`. 1 P0 + 4 P1 resolved. Draft preserved. P2 (7) and P3 (5) deferred.
+
+**Key corrections:** DUST correctly labeled as unshielded/public fee token (not shielded); BLS12-381 scalar field set to 255 bits matching ch2/ch5/ch7; Halo 2 distinguished from UltraPlonk arithmetization; verifier-key immutability reconciled with ch8 (contract-level insert/remove, deployed keys immutable); "air-gapped" replaced with "local / process space" (technically accurate).
+
+**Regression fix:** `---` separator between ch12 and ch13 restored post-splice.
+
+**Follow-up (P1 backlog additions flagged by reviewer):** Section notes in `ch02-midnight-s-bls12-381-stage`, `ch07-case-study-midnight`, and `ch07-the-one-way-door` still carry stale values in their `## Key claims` blocks ("Halo 2 / UltraPlonk", "~2^253") — wiki-side only (book text is now consistent). Address in a targeted wiki-cleanup pass.
+
+## Audit rollup (pre-revision)
 
 Audited 2026-04-18. P0=1, P1=3, P2=7, P3=5.
 

@@ -5,8 +5,8 @@ chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
 source_lines: [4795, 4809]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 57de0a15f2c97434882b311654d3cf79fddbc027
+status: reviewed
 word_count: 178
 ---
 
@@ -60,6 +60,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) `localhost:6300` and per-UTXO shielding/unshielded token claims are stated as fact with no source citation; add references to Wallet SDK or Developer Guide.
 - [P3] (C) The pipeline ASCII diagram labels are clean, but the prose phrase "This three-part output reflects the fundamental architecture" edges toward boilerplate framing — tighten.
