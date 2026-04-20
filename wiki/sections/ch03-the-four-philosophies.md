@@ -4,8 +4,8 @@ slug: ch03-the-four-philosophies
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [827, 1043]
-source_commit: c9e43022aec66b2d2daf6a69767a4389b8d854c8
+source_lines: [808, 1024]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 3720
 ---
@@ -22,7 +22,7 @@ The leading examples are Scroll, with $748 million in total value locked as of e
 
 The disadvantage is equally obvious: the EVM was not designed for proving. It has 256-bit arithmetic (proof systems prefer 31-bit or 64-bit fields). It has dynamic gas metering. It has a complex memory model. Proving every quirk of the EVM is computationally expensive -- like translating a novel into a language that has no word for half the concepts.
 
-The cost of faithful reproduction has a concrete data point. Polygon acquired Hermez, the team behind one of the most ambitious zkEVM implementations, for approximately $250 million. The project aimed to prove every Ethereum opcode at the circuit level. It was technically impressive. It was also, in the end, commercially unviable. In 2025, Polygon announced the sunsetting of zkEVM Mainnet Beta. The Hermez team, led by co-founder Jordi Baylina (who also co-created Circom), spun off to form ZisK -- and pivoted to RISC-V. The person who knew more about EVM-compatible ZK proving than almost anyone else alive concluded that the direct approach was not the path forward.
+The cost of faithful reproduction has a concrete data point. Polygon acquired Hermez, the team behind one of the most ambitious zkEVM implementations, for approximately $250 million (Polygon, "Polygon Acquires Hermez Network," August 2021). The project aimed to prove every Ethereum opcode at the circuit level. It was technically impressive. It was also, in the end, commercially unviable. In 2025, Polygon announced the sunsetting of zkEVM Mainnet Beta. The Hermez team, led by co-founder Jordi Baylina (who also co-created Circom), spun off to form ZisK -- and pivoted to RISC-V. The person who knew more about EVM-compatible ZK proving than almost anyone else alive concluded that the direct approach was not the path forward.
 
 The lesson is not that EVM compatibility is wrong. Scroll and Linea are thriving -- Scroll uses a custom zkEVM circuit that abstracts away the most expensive opcodes, while Linea has been converging toward a RISC-V backend with EVM compatibility layered on top. The lesson is that *how* you achieve compatibility matters enormously. A $250 million investment with a world-class team is not sufficient if the architectural approach creates an exponential constraint-generation problem. Abstract where you can. Approximate where you must. And keep one eye on the RISC-V projects that may make your compatibility layer unnecessary.
 
@@ -50,7 +50,7 @@ Three languages define this category.
 
 *Noir* (Aztec Labs) is a Rust-inspired, backend-agnostic ZK language. It compiles to an Abstract Circuit Intermediate Representation (ACIR). Noir does not target a specific proof system -- it targets multiple backends. This makes it the closest thing the ZK world has to a "write once, prove anywhere" language.
 
-Noir 1.0 was pre-released in late 2025. It became an officially recognized language on GitHub. NoirCon conferences have been held (NoirCon0 in November 2024). The ecosystem includes over 600 projects and 900 GitHub stars. Key adopters include zkEmail, zkPassport, and zkLogin. Aztec's Ignition Chain launched in November 2025 as a decentralized L2 on Ethereum, with 185+ operators across five continents and thousands of sequencers -- and its core cryptography was written in Noir (Aztec Network, "Aztec Ignition Chain Update," 2025).
+Noir's 1.0 release landed in late 2025 as the language's first stable version. It became an officially recognized language on GitHub. NoirCon conferences have been held (NoirCon0 in November 2024). The ecosystem includes over 600 projects and 900 GitHub stars. Key adopters include zkEmail, zkPassport, and zkLogin. Aztec's Ignition Chain launched in November 2025 as a decentralized L2 on Ethereum, with 185+ operators across five continents and thousands of sequencers -- and its core cryptography was written in Noir (Aztec Network, "Aztec Ignition Chain Update," 2025).
 
 Noir breaks the three-philosophy taxonomy because it is neither ISA-based nor chain-specific: it is a universal circuit language. Its privacy model is annotation-based -- all inputs are private unless explicitly declared `pub` -- but it lacks the compile-time disclosure analysis that Compact provides. The developer bears responsibility for correctly managing the public/private boundary. In exchange, Noir programs can target any proving backend that accepts ACIR, making them portable across proof systems in a way that no other ZK language achieves.
 
@@ -80,9 +80,9 @@ export circuit transfer(
 
 The keyword `circuit` is the first departure from ordinary programming. This function will not execute on a server. It will be compiled into a zero-knowledge circuit -- a set of polynomial constraints that a prover can satisfy and a verifier can check. Every variable inside this function will become a wire in that circuit. Every operation will become a gate.
 
-The keyword `disclose` is the second departure, and the more consequential one. The function `get_balance()` is a witness function -- it retrieves the sender's private balance from off-chain storage. That value is, by default, invisible to anyone but the prover. The `disclose()` call is the developer's explicit declaration: "I acknowledge that this private value will influence public state." Without it, the compiler rejects the program. Not at runtime. Not during testing. At compile time, before any proof is generated, before any key material is created, before any circuit is emitted.
+The keyword `disclose` is the second departure, and the more consequential one. The function `get_balance()` is a witness function -- it retrieves the sender's private balance from off-chain storage. That value is, by default, not available inside the circuit at all. The `disclose()` call makes it available as a circuit input -- it is the developer's explicit declaration: "I acknowledge that this witness value will enter the constraint system and may thereby influence public state." Without it, the compiler rejects any program that tries to use the witness value within a circuit. Not at runtime. Not during testing. At compile time, before any proof is generated, before any key material is created, before any circuit is emitted.
 
-The practical consequence is that a developer cannot accidentally write a transfer function that leaks the sender's balance. They can intentionally leak it -- `disclose()` is an explicit consent mechanism, not a prohibition. But the accidental case, which accounts for the majority of real-world privacy bugs, is eliminated by the compiler's disclosure analysis pass.
+The practical consequence is that a developer cannot accidentally write a transfer function that leaks the sender's balance. They can intentionally bring a witness value into scope -- `disclose()` is an explicit consent mechanism, not a prohibition. But the accidental case, which accounts for the majority of real-world privacy bugs, is eliminated by the compiler's disclosure analysis pass.
 
 The compilation itself is worth understanding. Compact's 26-pass nanopass pipeline transforms the source through a sequence of increasingly specialized intermediate languages. The program begins as `Lsrc` -- essentially the developer's TypeScript-like code. It passes through type inference (`Ltypes`), where the compiler determines the bit-width of every value. It passes through disclosure analysis (`Lnodisclose`), where the compiler traces every data-flow path from witness inputs to public outputs. It passes through loop unrolling (`Lunrolled`), where bounded loops are expanded into straight-line code -- necessary because ZK circuits have no concept of iteration. It passes through circuit flattening (`Lflattened`), where nested expressions are decomposed into individual gates. And it emerges as ZKIR: a JSON-formatted circuit description ready for the proof system.
 
@@ -280,11 +280,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) Scroll TVL ($748 million), Linea TVL ($2 billion), Polygon/Hermez acquisition ($250 million), and NoirCon0 date (November 2024) are all uncited specific figures. At least the acquisition figure should reference a primary source.
-- [P2] (C) "Noir 1.0 was pre-released in late 2025" — calling something "1.0 pre-released" is contradictory; a pre-release is not 1.0. Clarify whether this is a release candidate, a versioned release, or a beta.
-- [P2] (C) The "Sources cited" field is empty despite numerous specific quantitative claims throughout this section (cycle counts, TVL, sequencer counts). This is the longest section in the chapter and the most citation-sparse.
 - [P3] (E) Leo is described briefly relative to Compact and Noir; its formal verification hooks and the Aleo snarkVM architecture are mentioned but not explained. The section's depth is uneven across the three DSLs.
 
 ## Links

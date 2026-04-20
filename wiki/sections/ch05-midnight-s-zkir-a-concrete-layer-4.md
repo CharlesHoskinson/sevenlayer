@@ -4,8 +4,8 @@ slug: ch05-midnight-s-zkir-a-concrete-layer-4
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2240, 2321]
-source_commit: eb72fd8bb82cecd60e59036b27847eea5797a886
+source_lines: [2217, 2298]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1203
 ---
@@ -59,7 +59,7 @@ There is a critical distinction between `constrain_eq` (which *enforces* equalit
 
 Without `constrain_bits`, a malicious prover could substitute any 255-bit field element where an 8-bit value was expected. If a circuit adds two `Uint<8>` values, the honest result is at most 510 -- but without range checking, a prover could claim the result is an arbitrary 255-bit number, potentially extracting value or corrupting state. Every `Uint<N>` value in compiled Compact code includes a corresponding `constrain_bits` to enforce the range constraint.
 
-A general principle is at work: in constraint systems, everything that is *not* explicitly constrained is implicitly *allowed*. The prover will satisfy exactly the constraints you write, and nothing more. If you forget a constraint, the prover is free to exploit the gap. This is why under-constrained circuits are the dominant failure mode in ZK systems.
+This is an instance of the under-constrained circuit principle examined in Chapter 3: anything not explicitly constrained is implicitly allowed, and the prover is free to exploit the gap.
 
 ### Where ZKIR Sits in the Taxonomy
 
@@ -145,10 +145,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) The section states Midnight's backend is "Halo2-style" but the source cited is "Midnight ZKIR Reference (v2/v3), 119 oracle traces. Compact compiler v0.29.0" — the source does not specify Halo2 explicitly. If the Halo2 backend is documented, a more specific citation or version reference would strengthen this claim.
-- [P2] (C) "A general principle is at work: in constraint systems, everything that is *not* explicitly constrained is implicitly *allowed*" — this duplicates the under-constrained circuit principle introduced in Chapter 3. Cross-reference would serve better than re-stating it.
 - [P3] (E) The section does not describe what a typical compiled Compact contract produces in terms of total ZKIR node count or resulting PLONKish constraint count for a representative transaction. A single concrete end-to-end example (e.g., token transfer: N ZKIR nodes → M PLONKish constraints) would improve depth significantly.
 
 ## Links

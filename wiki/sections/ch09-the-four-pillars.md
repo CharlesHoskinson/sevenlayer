@@ -4,8 +4,8 @@ slug: ch09-the-four-pillars
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4014, 4095]
-source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
+source_lines: [3997, 4078]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 3079
 ---
@@ -36,7 +36,7 @@ MPC is not a single protocol. It is a family, and the family members have very d
 
 The distinction between honest-majority and dishonest-majority protocols matters enormously. Shamir-based MPC with honest majority achieves *information-theoretic* security -- it remains secure even against an adversary with unlimited computational power, including quantum computers. SPDZ provides security against any number of corruptions, but relies on computational hardness assumptions.
 
-To understand what MPC actually does, consider the problem that started the field. In 1982, Andrew Yao posed what is now called the Millionaires' Problem: two millionaires want to determine who is richer without either revealing their net worth. They are standing at a cocktail party. Neither will say a number. Neither trusts the other to be honest. And no accountant is available whom both would trust with the truth. How do they find out?
+To understand what MPC actually does, consider the problem that started the field. In 1982, Andrew Yao posed what is now called the Millionaires' Problem (Yao, "Protocols for Secure Computations," FOCS 1982): two millionaires want to determine who is richer without either revealing their net worth. They are standing at a cocktail party. Neither will say a number. Neither trusts the other to be honest. And no accountant is available whom both would trust with the truth. How do they find out?
 
 Here is the trick. Alice has a net worth of, say, $7 million. Bob has $5 million. Alice encodes her wealth into an encrypted lookup table -- a garbled circuit -- that represents the comparison function "is Alice's input greater than Bob's input?" She hands the garbled table to Bob. Bob, using a sub-protocol called oblivious transfer, obtains the encryption key corresponding to his own input ($5 million) without Alice learning which key he selected. Bob evaluates the garbled circuit with his key and obtains a single bit of output: "Alice is richer." He announces the result. Neither party learned the other's number. The function was computed. The inputs stayed private.
 
@@ -78,7 +78,7 @@ FHE is the trick performed inside a sealed box: the computation happens on encry
 
 **Differential Privacy (DP)** answers: *How can I release statistical insights about a dataset while guaranteeing that no individual's record can be reverse-engineered from the output?*
 
-If the other PETs are stage tricks -- precise, targeted, visible to the audience -- differential privacy is fog. It blurs the picture just enough that no individual face can be identified, while the overall scene remains recognizable. Apple uses it for iOS telemetry (since 2016, with $\varepsilon = 2$ per day for most data types). Google deployed RAPPOR (Randomized Aggregatable Privacy-Preserving Ordinal Response) for Chrome usage monitoring. The US Census Bureau used it for the 2020 Census -- the first-ever deployment at national scale, motivated by the Dinur-Nissim database reconstruction theorem, which proved that releasing too many exact statistics about a dataset inevitably leaks individual records.
+If the other PETs are stage tricks -- precise, targeted, visible to the audience -- differential privacy is fog. It blurs the picture just enough that no individual face can be identified, while the overall scene remains recognizable. Apple uses it for iOS telemetry (since 2016, with $\varepsilon = 2$ per day for most data types). Google deployed RAPPOR (Randomized Aggregatable Privacy-Preserving Ordinal Response) for Chrome usage monitoring. The US Census Bureau used it for the 2020 Census -- the first-ever deployment at national scale, motivated by the Dinur-Nissim database reconstruction theorem (Dinur and Nissim, "Revealing Information while Preserving Privacy," PODS 2003), which proved that releasing too many exact statistics about a dataset inevitably leaks individual records.
 
 DP works by adding carefully calibrated noise to query results. The noise is large enough to mask any individual's contribution but small enough to preserve the statistical utility of the aggregate. The privacy guarantee is parameterized by epsilon (lower epsilon = more privacy = more noise = less accuracy), and composability is formalized by a composition theorem: sequential queries consume a "privacy budget," and once the budget is exhausted, no more queries can be safely answered. The fog has a finite supply. Use it wisely.
 
@@ -88,7 +88,7 @@ The art of differential privacy is choosing the blur. Too much noise (low epsilo
 
 What does this look like in practice? Apple's deployment adds noise locally, on each device, before data is transmitted -- a technique called local differential privacy. When your iPhone wants to report which emoji you use most frequently, it does not send "thumbs up." It sends "thumbs up" with probability $(e^\varepsilon)/(e^\varepsilon + 1)$ and a random emoji with probability $1/(e^\varepsilon + 1)$. Any individual report is plausibly random. But aggregate millions of reports, and the noise cancels out, revealing the population-level distribution. Apple uses $\varepsilon = 2$ per day for most data types and $\varepsilon = 8$ for some health-related queries. Google's RAPPOR uses a similar local model with a two-stage randomization that provides both plausible deniability for individual responses and high accuracy for aggregate statistics. You never see any of this. Your phone adds the noise silently, the aggregation server receives randomized data, and the statistical team extracts population trends from the collective fog.
 
-The composition problem is the silent killer of differential privacy deployments. Each query against a dataset consumes a portion of the privacy budget. If you query a medical database once with $\varepsilon = 1$, you get a strong privacy guarantee. If you query it twice, the effective epsilon is (at most) 2 -- weaker, but still meaningful. If you query it a thousand times, each with $\varepsilon = 1$, the effective epsilon is (at most) 1000 -- and at that point, the privacy guarantee is essentially worthless. Advanced composition theorems (Dwork, Rothblum, and Vadhan, 2010) give tighter bounds: k queries with epsilon each compose to roughly $\varepsilon \cdot \sqrt{k}$ rather than $\varepsilon \cdot k$. But the fundamental truth remains: privacy budgets are finite, and every query spends them. A dataset that has been queried ten thousand times is not the same, from a privacy standpoint, as one that has been queried ten times. The fog dissipates with each question asked. The Census Bureau's TopDown Algorithm was designed with this in mind: the total privacy budget was fixed before any queries were defined, and the noise allocation was optimized across all geographic levels simultaneously, from national aggregates down to census blocks. The budget was spent once, carefully, and then the books were closed.
+The composition problem is the silent killer of differential privacy deployments. Each query against a dataset consumes a portion of the privacy budget. If you query a medical database once with $\varepsilon = 1$, you get a strong privacy guarantee. If you query it twice, the effective epsilon is (at most) 2 -- weaker, but still meaningful. If you query it a thousand times, each with $\varepsilon = 1$, the effective epsilon is (at most) 1000 -- and at that point, the privacy guarantee is essentially worthless. Advanced composition theorems (Dwork, Rothblum, and Vadhan, "Boosting and Differential Privacy," FOCS 2010) give tighter bounds: k queries with epsilon each compose to roughly $\varepsilon \cdot \sqrt{k}$ rather than $\varepsilon \cdot k$. But the fundamental truth remains: privacy budgets are finite, and every query spends them. A dataset that has been queried ten thousand times is not the same, from a privacy standpoint, as one that has been queried ten times. The fog dissipates with each question asked. The Census Bureau's TopDown Algorithm was designed with this in mind: the total privacy budget was fixed before any queries were defined, and the noise allocation was optimized across all geographic levels simultaneously, from national aggregates down to census blocks. The budget was spent once, carefully, and then the books were closed.
 
 ---
 
@@ -138,10 +138,9 @@ None flagged by this section.
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] (B) Yao (1982), Dwork/Rothblum/Vadhan (2010), and Dinur/Nissim (2003) appear in Sources cited but are absent from the chapter bibliography (refs 29–31 cover only Gentry, Kachina, Buterin). They should be added as numbered entries.
-- [P2] (C) "The key insight, often missed, is that ZKPs are a tool for selective disclosure" — "key insight" is an AI-smell phrase; rephrase.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

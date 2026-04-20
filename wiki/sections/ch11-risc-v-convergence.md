@@ -4,8 +4,8 @@ slug: ch11-risc-v-convergence
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4746, 4762]
-source_commit: 9cb1d67a71f09c510cc06fa9493948e145a8f31a
+source_lines: [4734, 4750]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 337
 ---
@@ -22,9 +22,9 @@ Second, RISC-V's compiler ecosystem is decades deep. Any Rust, C, or C++ program
 
 Third, RISC-V is open and royalty-free. Unlike ARM (proprietary) or x86 (legacy-encumbered), RISC-V has no licensing costs and no vendor lock-in. For an open-source ecosystem, this matters.
 
-The holdouts are instructive. Cairo (Stwo) is a ZK-native ISA designed to minimize arithmetization cost -- the ISA *is* the constraint system. This gives Cairo a structural efficiency advantage: the compiler optimization study (Gassmann et al., 2025) found that standard LLVM optimizations yield over 40% improvement on RISC-V zkVMs because they target hardware features (caches, branch predictors) absent in ZK contexts. Cairo avoids this overhead by design. Whether that advantage justifies a smaller developer ecosystem is the strategic question StarkWare has answered with "yes" for Starknet and "maybe not" for broader adoption (hence Kakarot's EVM-on-Stwo path).
+The holdouts are instructive. Cairo (Stwo) is a ZK-native ISA designed to minimize arithmetization cost -- the ISA *is* the constraint system. This gives Cairo a structural efficiency advantage: the compiler optimization study (Gassmann et al., "Optimizing RISC-V zkVM Compilation," 2025, preprint) [59] found that standard LLVM optimizations yield over 40% improvement on RISC-V zkVMs because they target hardware features (caches, branch predictors) absent in ZK contexts. Cairo avoids this overhead by design. Whether that advantage justifies a smaller developer ecosystem is the strategic question StarkWare has answered with "yes" for Starknet and "maybe not" for broader adoption (hence Kakarot's EVM-on-Stwo path).
 
-zkWASM (Delphinus Lab) targets WebAssembly, offering the broadest language support of any zkVM (any language that compiles to WASM). Its PLONKish/KZG architecture is a generational outlier -- it uses pairing-based commitments rather than hash-based -- and it has not demonstrated Ethereum block proving. zkWASM appears to be a niche play for web-native applications rather than a contender for the mainstream proving market.
+zkWASM (Delphinus Lab) targets WebAssembly, offering the broadest language support of any zkVM (any language that compiles to WASM). It is the only production zkVM still using pairing-based KZG commitments rather than hash-based FRI, and it has not demonstrated Ethereum block proving. zkWASM appears to be a niche play for web-native applications rather than a contender for the mainstream proving market.
 
 
 
@@ -65,10 +65,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (C) "Its PLONKish/KZG architecture is a generational outlier" — "generational outlier" is imprecise and carries vague evaluative weight; replace with something like "the only production zkVM still using pairing-based KZG commitments rather than hash-based FRI."
-- [P2] (B) "Gassmann et al. (2025)" cited without venue; same gap as in ch11-three-zkvms-through-seven-layers.
 - [P3] (C) "Unlike ARM (proprietary) or x86 (legacy-encumbered)" — ARM cores are licensed widely; calling ARM simply "proprietary" oversimplifies a nuanced licensing model and risks being misleading to technically sophisticated readers.
 
 ## Links

@@ -4,8 +4,8 @@ slug: ch01-the-seven-layers-at-a-glance
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [282, 308]
-source_commit: b965c2493b961bc9b2103781f78f2c7e98e4521f
+source_lines: [274, 300]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 799
 ---
@@ -18,15 +18,15 @@ Every zero-knowledge system, from the simplest proof to the most complex rollup,
 
 **Layer 2 -- The Language (Writing the Script).** The magician needs a script: a programming language in which to express the computation she wants to prove. Her choice of language determines what bugs she can make and what assurances the compiler can enforce. You will see how a single character -- `=` where `<==` was needed -- broke Tornado Cash's entire soundness guarantee.
 
-**Layer 3 -- The Witness (The Secret Backstage Preparation).** The magician goes backstage to run the computation with her private data, recording every step in an execution trace that no one else will ever see. This preparation, not the proof itself, is the most underestimated bottleneck in the entire stack. You will learn why a stopwatch held to a Zcash prover leaked information about transaction amounts the mathematics had promised to hide.
+**Layer 3 -- The Witness (The Secret Backstage Preparation).** The magician goes backstage to run the computation with her private data, recording every step in an execution trace that no one else will ever see. This preparation, not the proof itself, is the most underestimated bottleneck in the entire stack. You will learn why a stopwatch held to a Zcash prover correlated with transaction amounts -- allowing statistical inference of values the mathematics had promised to hide.
 
-The first three layers are about *preparation* -- building the stage, writing the script, rehearsing backstage. The next two are about *transformation* -- converting human-readable computation into something mathematics can verify. The final two are about *foundations and consequences* -- the cryptographic bedrock the system rests on and the real-world stage where the proof faces its audience. This three-act structure mirrors the workflow of every team that builds a ZK system: design, encode, deploy.
+The first three layers are about preparation -- building the stage, writing the script, rehearsing backstage. The next two transform that preparation into something mathematics can verify. The final two supply the cryptographic bedrock and the real-world stage where the proof meets its audience. This arc mirrors the workflow of every team that builds a ZK system: design, encode, deploy.
 
 **Layer 4 -- The Arithmetization (Encoding the Performance).** The backstage recording is transformed into a system of polynomial equations -- formulas built from addition and multiplication, like $3x^2 + 5x + 7$. Polynomials can encode complex rules compactly, and they have a mathematical property that makes cheating almost impossible to hide. The result is a puzzle that can be checked in seconds, even though solving it took hours. You will watch our 4x4 Sudoku become 72 polynomial constraints and discover why each constraint must hold at every point in a million-element field.
 
 **Layer 5 -- The Proof System (Sealing the Certificate).** The magician compresses the entire puzzle into a compact, tamper-proof certificate using cryptographic machinery that guarantees soundness and zero-knowledge simultaneously. You will compare the two dominant families -- SNARKs and STARKs -- and see why a 192-byte proof and a 200-kilobyte proof can both be "succinct."
 
-**Layer 6 -- The Cryptographic Bedrock.** Beneath the proof system lie the fundamental building blocks: elliptic curves, hash functions, and polynomial commitment schemes (methods for sealing a polynomial into a tamper-proof envelope). Their mathematical hardness assumptions are the bedrock on which everything above rests. You will confront the expiration date that quantum computers stamp on half of modern cryptography, and meet the lattice-based replacements racing to arrive in time.
+**Layer 6 -- The Cryptographic Bedrock.** Beneath the proof system lie the fundamental building blocks: elliptic curves, hash functions, and polynomial commitment schemes (methods for sealing a polynomial into a tamper-proof envelope). Their security rests on three classes of hard problem: the discrete logarithm problem (breaking elliptic-curve groups), hash collision resistance, and lattice problems (the post-quantum replacements already entering deployment). These hardness assumptions are the bedrock on which everything above rests. You will confront the expiration date that quantum computers stamp on half of modern cryptography, and meet the lattice-based replacements racing to arrive in time.
 
 **Layer 7 -- The Verification (The Audience's Verdict).** The audience checks the proof on a public stage -- a blockchain, a smart contract, a verifier endpoint -- and the economics, governance, and data availability of that stage determine whether the trick actually matters outside mathematics. You will watch a governance attack exploit a system whose code worked exactly as designed.
 
@@ -81,11 +81,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "A stopwatch held to a Zcash prover revealed the transaction amounts" — ch04-side-channel confirms the attack correlated proof-generation time with Hamming weight, allowing *estimation* of amounts; saying it "revealed" the amounts overstates the attack's precision (R = 0.57, not 1.0). Soften to "allowed inference of" or "correlated with."
-- [P2] (C) The three-act structural description ("preparation … transformation … foundations and consequences") has a slightly formulaic, outline-style quality that interrupts the flow mid-section; integrating it as a transitional sentence rather than a standalone paragraph would read better.
-- [P2] (E) Layer 6 description mentions quantum threat but does not name the specific hardness assumptions at stake (discrete log, hash collision resistance); the Entities list includes `[[lattice]]` but the body does not mention lattices, leaving the entity tag unanchored.
 - [P3] (E) The DAG with "fourteen causal edges" is promised for Chapter 10 but no preview of what those edges represent is given; a one-sentence hint would build anticipation more concretely.
 
 ## Links

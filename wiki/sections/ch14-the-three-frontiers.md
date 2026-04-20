@@ -4,8 +4,8 @@ slug: ch14-the-three-frontiers
 chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
-source_lines: [5347, 5390]
-source_commit: 8e419c9815e6fe5f507dd769315a84b46afd74d5
+source_lines: [5334, 5377]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 729
 ---
@@ -19,10 +19,10 @@ The ZK field is transitioning through three sequential frontiers, each building 
 The performance frontier asked: can we prove computation fast enough and cheaply enough for production use? The answer, as of late 2025, is yes. Real-time Ethereum proving is achieved. The cost curve traced in Chapters 1 and 6 has flattened at pennies per block. The EF declared the speed race won. The remaining performance work is optimization (energy efficiency, memory reduction, witness acceleration), not breakthrough. The magician can now perform in real time. That question is settled.
 
 **Evidence this frontier is active:**
-- SP1 Hypercube: 6.9s Ethereum block proving on 16 GPUs (Dec 2025)
+- SP1 Hypercube: 6.9s Ethereum block proving on 16 GPUs (announced May 2025; Succinct blog post)
 - Airbender: 21.8M RISC-V cycles/sec on single H100 (2025)
 - Proving cost: $80 → $0.04 in 24 months (2,000x reduction)
-- EF declared speed race 'effectively won,' pivoted to security (Dec 2025)
+- EF declared speed race 'effectively won,' pivoted to security (Kadianakis, Dec 2025)
 
 ### Frontier 2: Security (2026-2028) -- Currently Active
 
@@ -32,7 +32,7 @@ This frontier is harder than performance because security is a property you prov
 
 **Evidence this frontier is active:**
 - EF 2026 targets: 100-bit provable security by May, 128-bit by December
-- SP1: formal verification of 62 RISC-V opcodes against Sail specification
+- SP1: formal verification of 62 RISC-V opcodes against Sail specification (Succinct Labs, SP1 formal verification report, 2025)
 - Arguzz (Hochrainer, Wustholz, Christakis, 2025): found 11 bugs across 6 major zkVMs
 - soundcalc: automated soundness margin calculator for proof system parameters
 - Picus, ZKAP: emerging static analysis tools for constraint under-specification
@@ -103,10 +103,10 @@ The ZK field moves through three sequential frontiers: Performance (2023-2025, l
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) "SP1: formal verification of 62 RISC-V opcodes against Sail specification" appears in the Security frontier evidence block with no source listed; the sources section cites only the Kadianakis EF blog post and the Arguzz paper. The "62 opcodes" figure needs a dedicated citation.
-- [P2] (A) SP1 Hypercube performance claim (6.9s, 16 GPUs) is tagged "Dec 2025" in the body but the SP1 Hypercube source is a May 2025 blog post; the EF security pivot post is Dec 2025. The date attribution conflates two separate announcements.
 - [P3] (B) "soundcalc: automated soundness margin calculator" is presented as evidence with no citation anywhere in the section or sources block.
 - [P3] (C) The paper is cited as "Arguzz" in Sources cited and bibliography but as "ARGUZZ" in ch14-the-seven-questions. Standardise capitalisation across both files.
 

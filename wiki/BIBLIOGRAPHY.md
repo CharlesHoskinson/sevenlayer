@@ -83,3 +83,4 @@
 62. Wee, Hoeteck and David J. Wu. "Lattice-Based Functional Commitments: Fast Verification and Cryptanalysis." *ASIACRYPT 2023*. ePrint 2024/028.
 63. Mascelli, Jillian and Megan Rodden. "'Harvest Now Decrypt Later': Examining Post-Quantum Cryptography and the Data Privacy Risks for Distributed Ledger Networks." FEDS 2025-093, Federal Reserve Board, 2025.
 64. NIST. "Module-Lattice-Based Digital Signature Standard (FIPS 204)." August 2024.
+65. Nguyen, Wilson and Gregor Seiler. "Greyhound: Fast Polynomial Commitments from Lattices." *CRYPTO 2024*. ePrint 2024/1293.

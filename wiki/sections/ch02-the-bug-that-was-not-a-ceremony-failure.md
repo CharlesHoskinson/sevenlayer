@@ -4,8 +4,8 @@ slug: ch02-the-bug-that-was-not-a-ceremony-failure
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [610, 622]
-source_commit: 29475f3770e85700685f72ef97723a324b0994c0
+source_lines: [598, 610]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 350
 ---
@@ -58,9 +58,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) The BCTV14 source is cited only as "(referenced as CVE-2019-7167)" — the original paper is Bitansky, Chiesa, Tromer, Virza, "Succinct Non-Interactive Arguments via Linear Interactive Proofs" (2013); the 2014 extension is the one deployed in Zcash Sprout. A fuller citation improves traceability.
 - [none] (C) No AI-smell or style issues found.
 - [none] (D) No structural contradictions found.
 

@@ -4,8 +4,8 @@ slug: ch10-the-map-redrawn
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4353, 4391]
-source_commit: 9eb332547f6b1cd6e7e67527183abbd5c486974c
+source_lines: [4336, 4380]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 356
 ---
@@ -38,12 +38,18 @@ Chapter 1 presented seven layers as a stack -- neat, linear, one resting on the 
         │         │────────►│Primitive│────────►│         │
         └─────────┘         └─────────┘         └─────────┘
 
-  ── ► Upward chain (6 edges): 6→5→4→3→2→1 (design flows up)
-  ◄ ── Downward pressure (8 edges): 7→6, 7→5, 4→2, 3≡4,
-       6→7, 1→5, 5→7, 2→3
+  ── ► Upward chain (6 edges): 6→5, 5→4, 4→3, 3→2, 2→1, 1→5
+  ◄ ── Downward/cross edges (8 edges):
+       7→6 (gas forces BN254), 7→5 (gas forces wrapping),
+       4→2 (Cairo: constraint cost shapes ISA),
+       3→4 (Jolt: witness generation is arithmetization),
+       6→7 (field size sets proof size),
+       5→7 (proof format sets verifier design),
+       2→3 (ISA instruction count sets trace width),
+       4→5 (arithmetization selects proof system)
 ```
 
-**Reading the diagram.** The upward chain (six edges) is what the book has followed: field choice (Layer 6) determines commitment scheme (Layer 5), which shapes arithmetization (Layer 4), which constrains witness layout (Layer 3), which influences ISA design (Layer 2), which determines setup scope (Layer 1). If this were the whole story, the stack metaphor would suffice.
+**Reading the diagram.** The upward chain (six edges) is what the book has followed: field choice (Layer 6) determines commitment scheme (Layer 5), which shapes arithmetization (Layer 4), which constrains witness layout (Layer 3), which influences ISA design (Layer 2), which determines setup scope (Layer 1) -- and setup type in turn constrains the available proof systems (Layer 5). If this were the whole story, the stack metaphor would suffice.
 
 It is not the whole story. Eight downward and cross-cutting edges complicate the picture. Ethereum gas economics (Layer 7) force BN254 pairings (Layer 6) and STARK-to-SNARK wrapping (Layer 5). Cairo's constraint system (Layer 4) dictated its ISA design (Layer 2). Jolt fused witness generation (Layer 3) into arithmetization (Layer 4). The graph has no cycles -- design-time constraints are asymmetric -- but it has width: multiple independent paths connect the same pair of nodes, and a single parameter change propagates through the web along all of them simultaneously.
 
@@ -83,9 +89,9 @@ None flagged by this section.
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] C The ASCII diagram is hard to parse: the visual arrow count does not obviously match the "14 directed edges" claim in the header, and the legend lists only 14 edges split as "6 upward" + "8 downward" without labelling all 8 downward arrows in the figure. A reader cannot verify the edge count from the diagram alone.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

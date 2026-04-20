@@ -4,8 +4,8 @@ slug: ch05-the-sumcheck-protocol-the-hidden-foundation
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1949, 1995]
-source_commit: eb72fd8bb82cecd60e59036b27847eea5797a886
+source_lines: [1926, 1972]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1291
 ---
@@ -49,7 +49,7 @@ The sumcheck protocol is the verification mechanism that makes polynomial-based 
 - **SP1 Hypercube** (Succinct, 2025) uses sumcheck over the Boolean hypercube as its primary verification strategy.
 - **Binius** (Irreducible, 2025) applies sumcheck over binary tower fields.
 
-The sumcheck protocol is to modern ZK proof systems what the internal combustion engine was to early automobiles: the mechanism that makes the entire apparatus work, even though the user never sees it directly. Understanding that sumcheck exists, and that it reduces exponential verification to linear communication, is essential for understanding why the overhead of arithmetization is not as catastrophic as it might first appear.
+Understanding that sumcheck exists -- and that it reduces exponential verification to linear communication -- is essential for understanding why the overhead of arithmetization is not as catastrophic as it might first appear. It is the mechanism that makes the entire apparatus work, even though the user never sees it directly.
 
 A note on presentation order: this chapter covers arithmetization (Layer 4) before the proof system (Layer 5) and cryptographic primitives (Layer 6). But in practice, the causal arrow often runs the other way. The sumcheck protocol is a proof technique that shaped which arithmetization formats became practical. The field choice at Layer 6 determines which polynomial representations are efficient at Layer 4. These three layers -- field, commitment scheme, polynomial representation -- form an inseparable "proof core." We present them in the standard order, but the reader should understand that the dependency is circular, not linear.
 
@@ -105,11 +105,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "SP1 Hypercube builds its entire polynomial stack on sumcheck" is listed in the "Why Sumcheck Is Everywhere" bullet list but no citation or ePrint reference is provided. All other systems in that list have attributed papers; SP1 Hypercube should have a reference or at minimum a "(Succinct, 2025)" attribution inline.
-- [P2] (A) Key claims state "Sumcheck-based architectures avoid NTTs entirely" — this is true for the sumcheck reduction step, but the committed polynomials in systems like Binius and HyperNova may still require NTT-like transforms depending on the commitment scheme. The claim needs qualification: sumcheck itself avoids NTTs; the surrounding commitment scheme may or may not.
-- [P2] (C) "The sumcheck protocol is to modern ZK proof systems what the internal combustion engine was to early automobiles" — a functional analogy but slightly overwrought; the following explanation makes the point more precisely without needing it.
 - [P3] (B) Lund et al. (1992) is cited in Sources but the journal is given as "JCSS 1992" — JCSS is correct (Journal of Computer and System Sciences) but the volume and page numbers are absent. Full citation would be: Vol. 44, No. 2, 1992, pp. 282–296.
 
 ## Links

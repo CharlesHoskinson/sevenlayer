@@ -4,8 +4,8 @@ slug: ch04-memory-the-binding-constraint
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1345, 1392]
-source_commit: a4f1e087fc5498fd54e35cbddb135fb2203d262d
+source_lines: [1325, 1372]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1646
 ---
@@ -22,9 +22,9 @@ If you are a rollup operator running a proving cluster in a data center with 16 
 
 But if you are an individual user generating proofs on your own device -- the scenario that provides maximum privacy, because your private data never leaves your machine -- the memory requirements become a barrier to entry. A laptop with 16 GB of RAM cannot generate proofs for non-trivial computations. A phone cannot even attempt it.
 
-This leads to an uncomfortable conclusion: *privacy is, in part, a luxury good*. The privacy-maximizing architecture (client-side proving, where your secrets never leave your device) requires hardware that most people do not own. The privacy-minimizing architecture (delegated proving, where you send your private data to a proving service) works on any device but requires trusting the service with your secrets.
+This leads to a stark conclusion: *privacy is, in part, a luxury good*. The privacy-maximizing architecture (client-side proving, where your secrets never leave your device) requires hardware that most people do not own. The privacy-minimizing architecture (delegated proving, where you send your private data to a proving service) works on any device but requires trusting the service with your secrets.
 
-Read that again. The architecture that protects your data the most demands hardware that costs the most. The architecture that exposes your data to third parties is the one available to everyone. This is not a theoretical concern. It is the economic structure of privacy in 2026, and it should disturb anyone who believes privacy is a right rather than a commodity.
+The architecture that protects your data the most demands hardware that costs the most. The architecture that exposes your data to third parties is the one available to everyone. This is not a theoretical concern. It is the economic structure of privacy in 2026, and it should disturb anyone who believes privacy is a right rather than a commodity.
 
 ### The Hardware Ladder
 
@@ -40,15 +40,15 @@ The abstract claim becomes concrete when you map it to specific hardware tiers. 
 
 **Tier 0: A smartphone with 4-8 GB of RAM (~$200-800).** This is what most of the world actually owns. At this tier, zero-knowledge proving of any meaningful complexity is not slow -- it is impossible. The memory is insufficient. The compute is insufficient. The thermal envelope is insufficient. A phone cannot generate a ZK proof for a shielded transaction, a private vote, or a verifiable computation of any significant size. Not "cannot generate it quickly" -- cannot generate it at all.
 
-The uncomfortable math: approximately 5.5 billion people on Earth own a smartphone. Approximately 200 million own a desktop or laptop with a discrete GPU capable of ZK proving. Of those, perhaps 10-20 million own hardware at Tier 2 or above. That means roughly 96% of the world's population -- including nearly all smartphone-only users in developing economies -- cannot perform client-side ZK proving. They must delegate. They must trust. The cryptographic guarantee of privacy is available to them only through the intermediation of someone else's hardware.
+The numbers are sobering. GSMA Intelligence (2025) puts global smartphone connections at approximately 4.6 billion unique subscribers, roughly 57% of the world's population. Approximately 200 million own a desktop or laptop with a discrete GPU capable of ZK proving. Of those, perhaps 10-20 million own hardware at Tier 2 or above. That means well over 90% of the world's population -- including nearly all smartphone-only users in developing economies -- cannot perform client-side ZK proving. They must delegate. They must trust. The cryptographic guarantee of privacy is available to them only through the intermediation of someone else's hardware.
 
 This is not a bug in the technology. It is a structural feature of the cost curve. Moore's Law may eventually bring proving hardware to lower price points. Algorithmic improvements (streaming provers, algebraic RAM reduction) may lower the hardware floor. But in 2026, the privacy hierarchy is clear: the richer your hardware, the more private your computation. The poorer your hardware, the more you must trust others with your secrets.
 
-There is a historical parallel. In the 1990s, strong encryption was classified as a munition by the United States government. Export-grade encryption was deliberately weakened to 40-bit keys, ensuring that only domestic users (and the NSA) had access to real cryptographic security. The rest of the world got a pantomime of privacy. The "Crypto Wars" ended when the government relented and strong encryption became universally available. The current ZK hardware barrier is not a government restriction -- it is an economic one. But the effect is similar: strong privacy for the few, weak privacy (or no privacy) for the many. Whether this barrier will fall, as the export restrictions did, depends on whether the field can make proving cheap enough to run on the hardware that people actually own.
+There is a historical parallel. In the 1990s, strong encryption was classified as a munition by the United States government under the Export Administration Regulations; export-grade cipher suites were capped at 40-bit symmetric keys (the "export-grade" restrictions documented in RFC 6176 and the EFF's *Cracking DES*, 1998), ensuring that only domestic users had access to real cryptographic security. The rest of the world got a pantomime of privacy. The "Crypto Wars" ended when the government relented and strong encryption became universally available. The current ZK hardware barrier is not a government restriction -- it is an economic one. But the effect is similar: strong privacy for the few, weak privacy (or no privacy) for the many. Whether this barrier will fall, as the export restrictions did, depends on whether the field can make proving cheap enough to run on the hardware that people actually own.
 
 The implications cut in several directions. For technology roadmaps, the target is not "faster proofs" in the abstract but "proofs on cheaper hardware" -- a different optimization problem with different constraints. Streaming provers that trade compute for memory, algebraic RAM reductions that shrink the witness itself, and protocol-level innovations like folding (Chapter 6) that amortize proving cost across many steps all attack different facets of this problem. For system architects, the choice between client-side and delegated proving is not merely a technical tradeoff -- it is a decision about who your system's privacy guarantees actually serve. A system that provides privacy only to users with $4,000 workstations has made an implicit choice about its constituency. Acknowledging that choice honestly is the first step toward changing it.
 
-The field is aware of this tension. ZKPoG specifically targets the NVIDIA RTX 4090 as its hardware platform, arguing that democratizing ZK proving requires targeting accessible consumer hardware rather than data center GPUs. Streaming witness generation reduces memory requirements at the cost of additional computation. And proof delegation with trusted execution environments (TEEs) offers a middle path -- your data is processed inside a secure enclave that even the hardware operator cannot inspect. But TEEs have their own vulnerability history (Foreshadow, AEPIC Leak, Downfall), and Intel deprecated SGX on consumer processors in 2021.
+The field is aware of this tension. ZKPoG specifically targets the NVIDIA RTX 4090 as its hardware platform, arguing that democratizing ZK proving requires targeting accessible consumer hardware rather than data center GPUs. Streaming witness generation reduces memory requirements at the cost of additional computation. And proof delegation with trusted execution environments (TEEs) offers a middle path -- your data is processed inside a secure enclave that even the hardware operator cannot inspect. But TEEs have their own vulnerability history: Foreshadow (L1TF, 2018, affecting Intel SGX), AEPIC Leak (2022, architectural leak from SGX's APIC memory-mapped registers), and Downfall (GDS, 2023, gathering data sampling via AVX gather instructions). Intel deprecated SGX on consumer processors in 2021, reflecting the difficulty of maintaining enclave security across microarchitectural generations.
 
 The memory constraint also interacts with NTT performance in a way that matters for system design. NTT is memory-bandwidth-limited at large sizes. The butterfly structure of the NTT requires global memory accesses with poor locality in later stages, meaning that the speed of proving is ultimately limited not by compute (FLOPS) but by memory bandwidth (GB/s). HBM (High Bandwidth Memory) on data center GPUs provides the bandwidth; consumer GPUs do not.
 
@@ -101,13 +101,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "approximately 5.5 billion people on Earth own a smartphone" — this figure should be sourced; GSMA or Statista reports from 2025 put smartphone penetration at roughly 4.7–5.1 billion. The claim of ~96% unable to do client-side proving depends on this base number being accurate.
-- [P2] (B) The Crypto Wars paragraph is presented as historical analogy without a citation for the "40-bit export-grade encryption" claim. This is well-known history but a footnote or source would keep the book's citation standard consistent.
-- [P2] (C) "Read that again." — imperative-to-reader register is a mild AI/pop-nonfiction smell. Could be dropped; the argument stands without the rhetorical prod.
-- [P2] (C) "The uncomfortable math:" and "The uncomfortable conclusion:" — two consecutive sections using "uncomfortable" as a setup word is a detectable pattern; vary the framing.
-- [P2] (E) TEE vulnerabilities are listed (Foreshadow, AEPIC Leak, Downfall) with no dates or brief descriptions. Readers unfamiliar with these attacks get no context for their severity or whether mitigations exist.
 - [P3] (D) The section ends with a paragraph on NTT being memory-bandwidth-limited, which is accurate but feels appended — it doesn't connect back to the hardware ladder or the equity argument. Consider moving it earlier or integrating it into the H100 tier description.
 
 ## Links

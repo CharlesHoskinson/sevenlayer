@@ -4,8 +4,8 @@ slug: ch09-three-kinds-of-security
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4096, 4123]
-source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
+source_lines: [4079, 4106]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 972
 ---
@@ -32,7 +32,7 @@ Downfall (August 2023; Moghimi, 2023; Intel advisory INTEL-SA-00828, CVE-2022-40
 
 Intel quietly deprecated SGX on 11th/12th-generation consumer processors (and later) beginning in 2021. The feature remains available on server-class Xeon processors, where it is marketed for cloud confidential computing. But the deprecation on consumer chips tells a story: Intel concluded that the attack surface was too large and the performance cost of mitigations too high for a feature intended to run on every laptop. The room within a room is still available -- but only in the data center, where the threat model is different and the economic calculus favors the convenience of hardware isolation despite its known fragility.
 
-For the system architect, this taxonomy matters because it determines *what you are actually trusting*. If your system uses MPC with honest majority for the core computation and ZKPs for the verifiable output, you have information-theoretic privacy for the computation and computational privacy for the proof. If you then run the whole thing inside a TEE, the TEE adds performance (fast) and convenience (no complex protocol choreography) but does not strengthen the privacy beyond what the cryptography already provides -- and may weaken it if the TEE is compromised.
+For the system architect, this taxonomy matters because it determines *what you are actually trusting*. If your system uses MPC with honest majority for the core computation and ZKPs for the verifiable output, you have information-theoretic privacy for the computation and computational privacy for the proof. If you then run the whole thing inside a TEE, the TEE adds performance (fast) and convenience (no complex protocol choreography) but does not strengthen the privacy beyond what the cryptography already provides -- and may weaken it if the TEE is compromised. This is the practical meaning of the heuristic-security tier: not worthless, but fragile in ways that information-theoretic and computational guarantees are not.
 
 The magician's guarantee depends on which lock protects the trick. Information-theoretic security is a lock that cannot be picked, even with infinite time. Computational security is a lock that cannot be picked in practice -- but a quantum locksmith might change the calculus. Heuristic security is a lock that has never been picked, without proof that it cannot be.
 
@@ -76,9 +76,9 @@ None flagged by this section.
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] (D) TEE deprecation discussion (last three paragraphs) is detailed and accurate but never reconnects to how the three security tiers interact in PET selection — the coherence back to "heuristic security" as a taxonomy term is implicit, not stated.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

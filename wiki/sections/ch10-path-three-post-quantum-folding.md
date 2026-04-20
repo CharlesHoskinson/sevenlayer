@@ -4,8 +4,8 @@ slug: ch10-path-three-post-quantum-folding
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4420, 4431]
-source_commit: 9eb332547f6b1cd6e7e67527183abbd5c486974c
+source_lines: [4409, 4420]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 352
 ---
@@ -14,9 +14,9 @@ word_count: 352
 
 The third path is the newest and least traveled. It abandons both pairing-based cryptography and hash-based commitments in favor of lattice-based constructions that provide additive homomorphism (enabling folding), post-quantum security, and increasingly competitive proof sizes.
 
-The key systems are LatticeFold (Boneh and Chen, ASIACRYPT 2025), LatticeFold+ (CRYPTO 2025), Neo and SuperNeo (Nguyen and Setty, ePrint 2025/294), and Symphony (Chen, ePrint 2025/1905). These systems use Module-SIS commitments -- lattice-based structures whose hardness underpins NIST's FIPS 204 signature standard (ML-DSA) [64]. For context, the broader Module-LWE/SIS family also supports FIPS 203's ML-KEM (encapsulation, Module-LWE) and FIPS 205's SLH-DSA (stateless hash-based signatures) [25]. The folding constructions rely specifically on the Module-SIS hardness that FIPS 204 validates, and they achieve folding over polynomial rings without discrete logarithms or pairings.
+The key systems are LatticeFold (Boneh and Chen, ASIACRYPT 2025), LatticeFold+ (CRYPTO 2025), Neo and SuperNeo (Nguyen and Setty, ePrint 2025/294 [21] -- SuperNeo extends Neo to non-uniform IVC, the lattice analog of SuperNova, and is presented in the same paper), and Symphony (Chen, ePrint 2025/1905). These systems use Module-SIS commitments -- lattice-based structures whose hardness underpins NIST's FIPS 204 signature standard (ML-DSA) [64]. For context, the broader Module-LWE/SIS family also supports FIPS 203's ML-KEM (encapsulation, Module-LWE) and FIPS 205's SLH-DSA (stateless hash-based signatures) [25]. The folding constructions rely specifically on the Module-SIS hardness that FIPS 204 validates, and they achieve folding over polynomial rings without discrete logarithms or pairings.
 
-The proof sizes are larger than Groth16 but rapidly improving: Greyhound (Nguyen and Seiler, CRYPTO 2024) achieves roughly 50 KB proofs with lattice-based commitments, and LaBRADOR (CRYPTO 2023) reports roughly 58 KB. Orders of magnitude larger than Groth16's 192 bytes, but competitive with raw STARK proofs. The trajectory suggests lattice-based schemes may reach practical production within three to five years.
+The proof sizes are larger than Groth16 but rapidly improving: Greyhound (Nguyen and Seiler, CRYPTO 2024 [65]) achieves roughly 50 KB proofs with lattice-based commitments, and LaBRADOR (CRYPTO 2023) reports roughly 58 KB. Orders of magnitude larger than Groth16's 192 bytes, but competitive with raw STARK proofs. The trajectory suggests lattice-based schemes may reach practical production within three to five years.
 
 Why does this path matter? Because it is the only path that survives quantum computing without caveats. The hybrid path (Path One) is quantum-vulnerable at the verification wrapper. The pure transparent path (Path Two) relies on hash functions whose collision resistance degrades under Grover-style and BHT-style quantum attacks -- SHA-256 drops from 128-bit classical collision resistance toward roughly 85-bit quantum collision resistance in the BHT model. The lattice path rests on Module-LWE/SIS, the same assumption family NIST chose for its post-quantum standards. It does not merely survive the quantum era. It was built for it.
 
@@ -73,10 +73,9 @@ The third path abandons both pairing-based and hash-based cryptography in favor 
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] B Greyhound is cited as "Nguyen & Seiler, CRYPTO 2024" but has no BIBLIOGRAPHY.md entry — only ch07-lattice-based-proving references it by name without a full citation. Needs a bibliography entry.
-- [P2] B "Neo/SuperNeo" — bibliography ref 21 covers Neo (Nguyen & Setty, ePrint 2025/294) but "SuperNeo" is not documented anywhere else in the wiki. Either a distinct paper needing its own citation, or an informal name that should be clarified.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

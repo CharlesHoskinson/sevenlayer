@@ -4,8 +4,8 @@ slug: ch12-five-lessons-for-zk-system-design
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4953, 4988]
-source_commit: 65e82b18c746552064750d4b1ea3c6d13bacbe3a
+source_lines: [4942, 4976]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 725
 ---
@@ -38,14 +38,13 @@ The book's Layer 4 discussion of R1CS, AIR, PLONKish, and CCS is necessarily abs
 
 ### Maturity Assessment
 
-Midnight is best characterized as a late-stage testnet / early mainnet system. The proof system works, the compiler catches real privacy bugs, and the devnet supports end-to-end contract deployment and execution. However, cross-contract token transfers fail with SDK errors, the `>` and `<=` operators have a documented compiler bug, and deployment latency (dominated by proof generation, as detailed in the Layer 5 section above) indicates room for proving optimization. On the L2Beat Stages framework, Midnight would sit at approximately Stage 0-1: operational with ZK proofs providing validity guarantees, but with governance mechanisms retaining significant centralized control.
+Midnight is best characterized as a late-stage testnet / early mainnet system. The proof system works, the compiler catches real privacy bugs, and the devnet supports end-to-end contract deployment and execution. However, as of the MidnightJS SDK Reference (v0.14, §7.3), cross-contract token transfers fail with SDK errors, and the Compact Language Reference (v0.14, §4.8) documents a compiler bug affecting the `>` and `<=` operators. Deployment latency (dominated by proof generation, as detailed in the Layer 5 section above) indicates room for proving optimization. Applying the L2Beat Stages framework (l2beat.com/scaling/projects) by analogy, Midnight would sit at approximately Stage 0-1: operational with ZK proofs providing validity guarantees, but with governance mechanisms retaining significant centralized control.
 
 The theater is built. The rehearsals are underway. The opening night has not yet arrived.
 
 Midnight is one theater. The zero-knowledge ecosystem has built dozens more -- each with different stages, different audiences, different trust bargains. The next chapter surveys six market segments where the mathematics meets money, and asks the question that every technology must eventually answer: who is buying tickets, and what do they think they are paying for?
 
 ---
-
 
 ## Summary
 
@@ -92,10 +91,10 @@ None in this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) "L2Beat Stage 0-1" assessment and the cross-contract/compiler-bug claims have no source citations; the L2Beat framework is mentioned without a link or dated reference to an actual L2Beat entry for Midnight.
-- [P2] (B) Cross-contract token transfer failure and the `>` / `<=` compiler bug are specific defect claims stated without citing documentation version or date; these could become stale silently.
 - [P3] (C) Maturity assessment paragraph uses "The theater is built. The rehearsals are underway. The opening night has not yet arrived." — theater-metaphor callback is fine in context but the three short declaratives read as a stylistic close rather than an informational conclusion.
 
 ## Links

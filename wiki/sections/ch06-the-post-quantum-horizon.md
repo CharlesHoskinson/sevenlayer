@@ -4,8 +4,8 @@ slug: ch06-the-post-quantum-horizon
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2957, 2972]
-source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
+source_lines: [2936, 2951]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 329
 ---
@@ -14,7 +14,7 @@ word_count: 329
 
 Everything we have discussed in this chapter faces an existential question: what happens when quantum computers arrive?
 
-Shor's algorithm breaks the discrete logarithm problem in polynomial time. This means every proof system built on elliptic curve cryptography -- Groth16, PLONK, Halo 2, KZG commitments, all of Nova's original elliptic-curve-based instantiations -- becomes insecure. Not "might become insecure." Becomes insecure. The mathematical fact is established; only the engineering timeline is uncertain.
+Once a sufficiently powerful quantum computer exists, Shor's algorithm breaks the discrete logarithm problem in polynomial time. This means every proof system built on elliptic curve cryptography -- Groth16, PLONK, Halo 2, KZG commitments, all of Nova's original elliptic-curve-based instantiations -- becomes insecure. The mathematical implication is established; only the engineering timeline is uncertain. A fault-tolerant, cryptographically relevant quantum computer does not yet exist, and estimates for when one will vary widely.
 
 The NIST IR 8547 deprecation schedule targets 2035 for phasing out pre-quantum cryptography. Conservative estimates for "Q-Day" -- the date when a cryptographically relevant quantum computer exists -- range from 2032 to 2035. For blockchain systems with 10+ year lifespans, this means systems deployed today must either plan for migration or be built on quantum-resistant foundations from the start.
 
@@ -75,9 +75,10 @@ Shor's algorithm makes all elliptic-curve-based proof systems (Groth16, PLONK, H
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) "Shor's algorithm breaks the discrete logarithm problem in polynomial time. This means every proof system built on elliptic curve cryptography … becomes insecure. Not 'might become insecure.' Becomes insecure." — the certainty is slightly overstated; Shor's algorithm requires a cryptographically relevant quantum computer (fault-tolerant, large-scale) that does not yet exist; the phrasing conflates mathematical implication with practical threat; a hedge ("once a sufficiently powerful quantum computer exists") would be more precise
 - [P3] (E) "No post-quantum on-chain verifier exists in production" — accurate, but the section could briefly mention NIST PQC standardization (CRYSTALS-Dilithium, FALCON) and why none of those directly apply to on-chain ZK verifiers, to help readers understand the gap
 
 ## Links

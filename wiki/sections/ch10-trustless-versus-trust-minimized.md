@@ -4,8 +4,8 @@ slug: ch10-trustless-versus-trust-minimized
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4544, 4559]
-source_commit: 9eb332547f6b1cd6e7e67527183abbd5c486974c
+source_lines: [4533, 4547]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 307
 ---
@@ -25,7 +25,6 @@ We stated this thesis in the opening pages of Chapter 1: trust decomposition, no
 The remaining chapters of this book will use "trust-minimized" rather than "trustless." Not because it sounds better -- it sounds worse, deliberately -- but because it is accurate. And accuracy in naming things is where understanding begins.
 
 ---
-
 
 ## Summary
 
@@ -56,6 +55,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 

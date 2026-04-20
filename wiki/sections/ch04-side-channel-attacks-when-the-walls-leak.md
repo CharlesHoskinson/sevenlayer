@@ -4,8 +4,8 @@ slug: ch04-side-channel-attacks-when-the-walls-leak
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1393, 1474]
-source_commit: a4f1e087fc5498fd54e35cbddb135fb2203d262d
+source_lines: [1373, 1454]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 2220
 ---
@@ -22,9 +22,9 @@ The correlation coefficient was R = 0.57. Not perfect, but far from zero. A timi
 
 Monero's Bulletproofs implementation was safe. The correlation was R = 0.04 -- essentially noise. The difference was architectural: Bulletproofs operates on both the binary decomposition of the amount *and its complement*, making the number of curve operations constant regardless of the value. The proof generation time was the same whether the amount was 1 or 1,000,000. Constant-time implementation is not an optimization. It is a security requirement.
 
-### The Zcash Timing Attack: A Detective Story
+### The Zcash Timing Attack
 
-The Zcash attack deserves to be told as the detective story it was, because the investigative method reveals how side-channel analysis works in practice -- and why it is so difficult to defend against.
+The Zcash attack illustrates how side-channel analysis works in practice -- and why it is so difficult to defend against.
 
 The researchers began with a hypothesis: if the Groth16 prover's multi-scalar exponentiation skips zero-valued scalar multiplications, then the proof generation time should correlate with the number of nonzero bits in the witness. They did not need to break any cryptography. They did not need to find a flaw in the mathematics. They needed a stopwatch.
 
@@ -62,9 +62,9 @@ Every electronic circuit, when it operates, produces electromagnetic emanations.
 
 Field operations in elliptic curve arithmetic are particularly vulnerable. When a prover computes a point addition on an elliptic curve, the specific operations performed (and their power consumption) depend on the coordinates of the points being added, which depend on the witness values. A modular multiplication where both operands are large consumes more power than one where an operand is small. A conditional branch (reduce or do not reduce after multiplication) produces a different electromagnetic signature depending on which path is taken.
 
-Measuring these emanations from a few centimeters away -- close enough to touch the device but not close enough to require physical modification -- can reconstruct the scalar values used in multi-scalar exponentiation. This means reconstructing the witness coefficients. This means reconstructing the private inputs to the proof.
+Measuring these emanations from a few centimeters away -- close enough to touch the device but not close enough to require physical modification -- can, in principle, reconstruct the scalar values used in multi-scalar exponentiation. This means reconstructing the witness coefficients. This means reconstructing the private inputs to the proof. No published paper has demonstrated this attack end-to-end against a ZK MSM implementation specifically; the extrapolation from established EM attacks on AES and ECDSA is technically grounded but not yet empirically closed for ZK provers.
 
-Electromagnetic side-channel attacks are a published, demonstrated attack class. They have been used to extract AES keys from smartcards, RSA private keys from laptops, and ECDSA signing keys from hardware security modules. The equipment required is modest: a near-field probe ($50-200), an amplifier ($100-500), and an oscilloscope ($500-5,000). A university research lab can mount this attack. A well-funded adversary can mount it from across a room using more sensitive antennas.
+Electromagnetic side-channel attacks are a published, demonstrated attack class against related primitives. They have been used to extract AES keys from smartcards (Agrawal, Archambeault, Rao, Rohatgi, CHES 2002), RSA private keys from laptops, and ECDSA signing keys from hardware security modules. The equipment required is modest: a near-field probe ($50-200), an amplifier ($100-500), and an oscilloscope ($500-5,000). A university research lab can mount this attack against deployed hardware.
 
 For zero-knowledge provers running on commodity hardware -- laptops, desktops, even data center servers without electromagnetic shielding -- the EM channel is an open question. No major ZK implementation has published an electromagnetic side-channel analysis. The attack surface is real, the equipment is cheap, and the countermeasures (electromagnetic shielding, randomized execution ordering, amplitude-flattening power regulation) are not part of any ZK prover's design requirements.
 
@@ -142,10 +142,10 @@ Zero-knowledge is a property of the proof, not the prover: the process of genera
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "EM attacks can reconstruct the scalar values used in multi-scalar exponentiation" is stated as "published, demonstrated" but no specific ZK-system EM attack paper is cited — only the general prior work on AES smartcards and ECDSA HSMs. The claim that ZK MSM is vulnerable to EM is extrapolated, not directly demonstrated in the literature cited.
-- [P2] (C) The "detective story" sub-framing ("told as the detective story it was") is an AI-smell: framing a sub-section as a narrative genre. Retitle or remove the genre label.
 - [P3] (E) The GPU SIMT thread-divergence paragraph is the only place in ch04 that connects side-channel defenses to GPU architecture. It raises an important open problem but does not cite any work that has measured the performance cost of constant-time GPU proving. Noting this gap explicitly would strengthen the open-questions section.
 
 ## Links

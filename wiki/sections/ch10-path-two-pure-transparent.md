@@ -4,8 +4,8 @@ slug: ch10-path-two-pure-transparent
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4408, 4419]
-source_commit: 9eb332547f6b1cd6e7e67527183abbd5c486974c
+source_lines: [4397, 4408]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 316
 ---
@@ -62,6 +62,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 

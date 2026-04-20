@@ -4,8 +4,8 @@ slug: ch11-zkvms-across-the-stack
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4562, 4571]
-source_commit: 9cb1d67a71f09c510cc06fa9493948e145a8f31a
+source_lines: [4550, 4559]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 251
 ---
@@ -18,7 +18,7 @@ The zkVM is not a Layer 2 phenomenon. It reaches into every layer of the stack -
 
 Before zkVMs, every zero-knowledge application required building a custom stage: hand-crafting constraint systems, choosing a field, designing a witness format, writing a custom verifier. Each application was a bespoke production -- a one-night show with its own scenery, its own props, its own choreography. The zkVM changed this by providing a **universal stage** that can host any trick. A developer writes ordinary Rust, compiles it to RISC-V, and the zkVM handles the rest: witness generation, arithmetization, proving, compression, verification. The stage is universal; the performances are infinite.
 
-The preceding layer-by-layer analysis explains why this matters. The most urgent findings at nearly every layer are not isolated gaps but consequences of the same underlying shift. Polygon zkEVM's shutdown at Layer 2, the Witness Gap's amplification at Layer 3, CCS and LogUp's emergence at Layer 4, folding's rise and the hybrid pipeline's dominance at Layer 5, the small-field revolution at Layer 6, STARK-to-SNARK wrapping at Layer 7 -- these are the seismic effects of a single tectonic event: the zero-knowledge virtual machine reorganized the entire stack around itself.
+The preceding layer-by-layer analysis explains why this matters. The most urgent findings at nearly every layer are not isolated gaps but consequences of the same underlying shift. Polygon zkEVM's shutdown at Layer 2 (Chapter 3), the Witness Gap's amplification at Layer 3 (Chapter 4), CCS and LogUp's emergence at Layer 4, folding's rise and the hybrid pipeline's dominance at Layer 5, the small-field revolution at Layer 6, STARK-to-SNARK wrapping at Layer 7 -- these are the seismic effects of a single tectonic event: the zero-knowledge virtual machine reorganized the entire stack around itself.
 
 
 ## Summary
@@ -60,10 +60,9 @@ None flagged by this section.
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] (B) "Polygon zkEVM's shutdown at Layer 2" stated without citation; this is a specific empirical claim that needs a source or date.
-- [P2] (B) No sources cited anywhere in the section despite making specific cross-layer causal claims (Witness Gap amplification, LogUp/CCS emergence as zkVM consequences). At minimum, forward references to sourced sections should anchor these claims.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

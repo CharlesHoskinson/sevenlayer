@@ -4,8 +4,8 @@ slug: ch07-maturity-and-readiness
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3486, 3501]
-source_commit: 7623e4c122cda2624dd2a679440afa4136b8f409
+source_lines: [3471, 3486]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 228
 ---
@@ -14,9 +14,9 @@ word_count: 228
 
 As of early 2026, the picture looks like this:
 
-**Deployed and battle-tested:** KZG (BN254 and BLS12-381), FRI/STARK (Goldilocks, BabyBear, M31), IPA/Bulletproofs (Pasta curves, Halo2, Pickles/Mina). These power every production ZK system -- Ethereum rollups, Zcash, Midnight, Starknet, Mina.
+**Deployed and battle-tested:** KZG (BN254 and BLS12-381), FRI/STARK (Goldilocks, BabyBear, M31). These power every production ZK system -- Ethereum rollups, Zcash, Midnight, Starknet, Mina. IPA/Bulletproofs (Pasta curves) are production in Zcash's Orchard (via Halo2) and Mina (via Pickles), but their deployment footprint is narrower than KZG over BN254 or FRI-based STARKs; grouping them as equally battle-tested would overstate the evidence.
 
-**Peer-reviewed and prototyped:** LatticeFold (Boneh-Chen; ePrint 2024/257, ASIACRYPT 2025), LatticeFold+ (CRYPTO 2025). Neo has an active implementation in Rust (the Nightstream repository, 15 crates). Concrete benchmarks are emerging but sparse.
+**Peer-reviewed and prototyped:** LatticeFold (Boneh and Chen, ASIACRYPT 2025; ePrint 2024/257), LatticeFold+ (Boneh, Chen, and coauthors, CRYPTO 2025). Neo has an active implementation in Rust (the Nightstream repository; as of early 2026, spanning 15 crates -- a count that may shift as the codebase evolves). Concrete benchmarks are emerging but sparse.
 
 **Proposed and promising:** Symphony (ePrint 2025/1905, no implementation yet). The high-arity folding concept is validated theoretically but awaits engineering.
 
@@ -79,11 +79,10 @@ As of early 2026: pairing-based and FRI/STARK systems are deployed and battle-te
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) "Neo has an active implementation in Rust (the Nightstream repository, 15 crates)" — the crate count (15) is a specific operational claim about a live repository that will become stale; it should either be dated ("as of early 2026") or removed in favor of a link to the repo.
-- [P2] (A) "LatticeFold (ASIACRYPT 2025, presentation by Boneh and Chen)" — the parenthetical "presentation by Boneh and Chen" implies a talk; the source should be cited as the paper (Boneh and Chen, "LatticeFold: A Lattice-based Folding Scheme and its Applications to Succinct Proof Systems," ASIACRYPT 2025) not just the presentation.
-- [P2] (D) "Deployed and battle-tested: KZG (BN254 and BLS12-381), FRI/STARK (Goldilocks, BabyBear, M31), IPA/Bulletproofs (Pasta curves)" — Bulletproofs (Bünz et al.) over Pasta curves are specifically Halo2, which is production in Zcash Orchard but not as widely deployed as STARK-based systems. Grouping "IPA/Bulletproofs (Pasta curves)" as equally battle-tested as KZG over BN254 overstates the deployment breadth.
 - [P3] (E) The blockers list (GPU kernels, benchmarking, audit tooling) is useful but does not mention formal verification or soundness proofs of the lattice folding reductions as a deployment blocker — an important gap for security-sensitive applications.
 
 ## Links

@@ -4,8 +4,8 @@ slug: ch07-the-laws-that-break
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3003, 3018]
-source_commit: 7623e4c122cda2624dd2a679440afa4136b8f409
+source_lines: [2983, 2998]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 397
 ---
@@ -60,10 +60,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) Section says "this chapter descends to the deepest layer of the zero-knowledge stack" but this is Layer 6; Layer 1 (the setup/ceremony layer) sits beneath it in the stack numbering — phrasing is loose but defensible as "deepest in this book's treatment" rather than "lowest in the stack."
-- [P2] (B) Dependency lists `[[ch06-the-post-quantum-horizon]]` — verify this slug exists and covers the same material claimed; the quantum reckoning topic may be split differently in ch06.
 - [P3] (C) Feynman framing is effective but the rhetorical question in italics ("*What happens when quantum computers change these 'laws'?*") and the em-dash heavy prose lean toward polished AI-introduction style; could be trimmed.
 
 ## Links

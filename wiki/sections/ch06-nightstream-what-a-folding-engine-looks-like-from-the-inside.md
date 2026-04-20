@@ -4,8 +4,8 @@ slug: ch06-nightstream-what-a-folding-engine-looks-like-from-the-inside
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2650, 2736]
-source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
+source_lines: [2629, 2715]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1973
 ---
@@ -14,7 +14,7 @@ word_count: 1973
 
 The genealogy reads like a family tree. But a family tree does not show you the plumbing. It tells you who begat whom, not how the pipes connect, where the pressure builds, or which joints leak under load.
 
-Nightstream is a real implementation of the lattice-folding lineage described above. Fifteen Rust crates, a Lean formal model, and a proving pipeline that turns execution traces into folded obligations over the Goldilocks field. It is a research prototype, not a production system -- its own README says so. But it is the most complete public implementation of CCS-native lattice-based folding available for study. And studying its engineering reveals something that theory papers consistently leave out: the hardest problem in a folding system is not any single algorithm. It is the alignment between all of them.
+Nightstream is a real implementation of the lattice-folding lineage described above. Fifteen Rust crates, a Lean formal model, and a proving pipeline that turns execution traces into folded obligations over the Goldilocks field. It is a research prototype, not a production system -- its own README says so. The codebase is publicly available at https://github.com/LFDT-Nightstream/Starstream. Studying its engineering reveals something that theory papers consistently leave out: the hardest problem in a folding system is not any single algorithm. It is the alignment between all of them.
 
 ### A Pipeline, Not a Library
 
@@ -30,7 +30,7 @@ That is the nature of a pipeline. A library offers tools. A pipeline imposes dis
 
 How does an execution trace become a foldable witness?
 
-The answer lives in `neo-memory`, and the design is a shared CPU bus. The execution trace -- every instruction, every memory access, every register state -- is laid out as a single columnar spine. Each step in the computation produces a row. The columns follow a fixed schema defined in the bus layout. Twist and Shout memory arguments, which verify that the prover's claimed memory operations are consistent, consume bus-extracted columns from the same spine rather than maintaining separate committed witnesses.
+The answer lives in `neo-memory`, and the design is a shared CPU bus. The execution trace -- every instruction, every memory access, every register state -- is laid out as a single columnar spine. Each step in the computation produces a row. The columns follow a fixed schema defined in the bus layout. The memory arguments (named "Twist" and "Shout" in the Nightstream codebase, following the protocol names used there), which verify that the prover's claimed memory operations are consistent, consume bus-extracted columns from the same spine rather than maintaining separate committed witnesses.
 
 This is what the backstage recording machinery from Chapter 4 looks like when you unroll it into actual data structures. The magician's assistant is not just scribbling notes -- she is filling in a spreadsheet with a fixed schema, one row per step, and every downstream verification process reads from that same spreadsheet.
 
@@ -145,10 +145,10 @@ None in this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) "Twist and Shout memory arguments" — "Twist" is a recognizable memory-consistency argument name; "Twist and Shout" appears to be an invented informal label; clarify whether this is the actual protocol name used in the Nightstream codebase or an editorial gloss
-- [P2] (B) No sources cited; the section would benefit from a link to the Nightstream repository or its README, since the section relies on specific crate names and architectural details that readers cannot verify without a pointer
 - [P3] (C) "Not glamorous, but essential" and "slow, patient, unglamorous work" — light AI-style rhetorical framing; could be tightened
 
 ## Links

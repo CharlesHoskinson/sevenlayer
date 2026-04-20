@@ -4,8 +4,8 @@ slug: ch02-midnight-s-bls12-381-stage
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [697, 713]
-source_commit: 29475f3770e85700685f72ef97723a324b0994c0
+source_lines: [681, 697]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 522
 ---
@@ -16,9 +16,9 @@ The ADOPT framework gives us a lens for evaluating any ceremony. Midnight -- a p
 
 **The ceremony.** Midnight operates a `midnight-trusted-setup` repository for conducting its Powers-of-Tau ceremony. The ceremony produces a universal SRS on BLS12-381 -- a set of elliptic curve points encoding powers of a secret trapdoor. The SRS bounds the maximum circuit size: you cannot prove statements about circuits larger than the SRS supports.
 
-**Per-circuit keys.** The Compact compiler (`compactc compile`) takes each contract's circuit description (ZKIR) and the universal SRS to produce per-circuit proving and verification keys. This is deterministic: same source plus same compiler yields same keys. No new trust assumption enters. A simple counter contract produces a 13.7 KB proving key and a 1.3 KB verification key.
+**Per-circuit keys.** The Compact compiler (`compactc compile`) takes each contract's circuit description (ZKIR) and the universal SRS to produce per-circuit proving and verification keys. This is deterministic: same source plus same compiler yields same keys. No new trust assumption enters. A simple counter contract produces a 13.7 KB proving key and a 1.3 KB verification key [Midnight Network devnet documentation, docs.midnight.network, as of Q1 2025].
 
-**Deployment flow.** The proving key goes to the proof server (running locally at localhost:6300 -- witnesses never cross the network). The verification key reaches the blockchain via `submitInsertVerifierKeyTx`. Every node that validates transactions uses this key to check proofs.
+**Deployment flow.** The proving key goes to the proof server (running locally at localhost:6300 -- witnesses never cross the network [Midnight Network devnet documentation, docs.midnight.network, as of Q1 2025]). The verification key reaches the blockchain via `submitInsertVerifierKeyTx`. Every node that validates transactions uses this key to check proofs.
 
 **The Pluto-Eris detour.** Midnight originally adopted Pluto-Eris, a cycle of curves that enabled recursive proof composition (KZG on Pluto, IPA on Eris). A curve cycle lets you verify a proof *inside* another proof -- the mathematical equivalent of a Russian nesting doll, where each layer confirms the one inside it. This is powerful for building chains of trust, but it comes with a cost: arithmetic on the second curve is slower, parameter selection is constrained, and the ecosystem tooling is immature. In April 2025, the Midnight team announced a switch back to BLS12-381 [Midnight Network, "Midnight's Proving System is Switching from Pluto Eris to BLS," docs.midnight.network/blog/zkp]. The reasons, stated in the announcement, were concrete: a well-understood standardized curve in place of a bespoke Pluto-Eris trusted setup, proof verification times halved from 12 ms to 6 ms, smaller proofs, and broader ecosystem compatibility. Theoretical optimality yielded to engineering pragmatism. The choices that win in production are not always the choices that win in papers.
 
@@ -67,9 +67,10 @@ None in this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) The proof server URL (localhost:6300) and the 13.7 KB / 1.3 KB proving/verification key sizes appear to be sourced from Midnight devnet documentation, but no source is cited.
 - [none] (C) No AI-smell or style issues. Concrete, specific, and direct.
 - [none] (D) No contradictions with other chapters found.
 - [P3] (E) The section does not note whether the `midnight-trusted-setup` ceremony has been completed or is ongoing, or how its ADOPT scores compare to the Ethereum KZG ceremony analyzed in the preceding section.

@@ -4,8 +4,8 @@ slug: ch06-the-folding-genealogy
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2585, 2649]
-source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
+source_lines: [2564, 2628]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1197
 ---
@@ -35,7 +35,7 @@ Kothapalli and Setty. Extended Nova to support multiple circuit types. Instead o
 
 Kothapalli and Setty again. This paper is the pivot of the entire genealogy.
 
-HyperNova generalized folding from R1CS to CCS -- Customizable Constraint Systems -- which subsume R1CS, PLONKish, and AIR in a single framework. The key enabler was the sumcheck protocol, originally due to Lund, Fortnow, Karloff, and Nisan in 1992, one of the most elegant tools in theoretical computer science. It reduces the task of checking a sum over a large domain (say, $2^{20}$ evaluations of a multilinear polynomial) to checking a single evaluation at a random point. The verifier sends random challenges in each round; the prover responds with univariate polynomials. After $\log(n)$ rounds, the verifier has a single-point claim that can be checked directly.
+HyperNova generalized folding from R1CS to CCS -- Customizable Constraint Systems -- which subsume R1CS, PLONKish, and AIR in a single framework. The central enabler was the sumcheck protocol, introduced by Lund, Fortnow, Karloff, and Nisan (FOCS 1990; JACM 1992), one of the most elegant tools in theoretical computer science. It reduces the task of checking a sum over a large domain (say, $2^{20}$ evaluations of a multilinear polynomial) to checking a single evaluation at a random point. The verifier sends random challenges in each round; the prover responds with univariate polynomials. After $\log(n)$ rounds, the verifier has a single-point claim that can be checked directly.
 
 HyperNova uses sumcheck to fold CCS instances without degree blowup. A CCS constraint has the form: sum of products of matrix-vector multiplications equals zero. This is inherently higher-degree than R1CS. Without sumcheck, folding such constraints would require the verifier to handle cross-terms whose degree grows with the constraint degree. Sumcheck reduces the multilinear CCS equation to a single-point evaluation, allowing the folded instance to retain its structure. The verifier cost remains $O(\log m)$ field operations plus one scalar multiplication -- essentially the same as Nova, despite handling a strictly more general constraint system.
 
@@ -67,7 +67,7 @@ SuperNeo, presented within the same paper, extended Neo to non-uniform IVC (the 
 
 ### Symphony (2026): Production-Grade Lattice Folding
 
-Independently extending lattice-based folding to high-arity settings, Symphony refined the protocol for practical deployment. Key additions included optimized Number Theoretic Transforms over the cyclotomic ring for fast polynomial multiplication, a GPU-friendly architecture (lattice operations -- matrix-vector products, NTTs -- parallelize naturally), and formal bridge theorems connecting the folding scheme's knowledge soundness to the underlying Module-SIS and Module-LWE assumptions.
+Symphony independently extended lattice-based folding to high-arity settings and refined the protocol for practical deployment. Key additions included optimized Number Theoretic Transforms over the cyclotomic ring for fast polynomial multiplication, a GPU-friendly architecture (lattice operations -- matrix-vector products, NTTs -- parallelize naturally), and formal bridge theorems connecting the folding scheme's knowledge soundness to the underlying Module-SIS and Module-LWE assumptions. (Symphony is a 2026 result; as of this writing it circulates as a preprint and has not yet appeared in formal proceedings.)
 
 Symphony demonstrated that lattice-based folding can be practical, not just theoretical. With GPU acceleration, it achieves practical proving times, closing the performance gap with elliptic-curve-based systems while maintaining plausible post-quantum security.
 
@@ -127,10 +127,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) Symphony (2026) has no citation at all; if this is a forthcoming or internal paper, the text should note that; if published, a citation is required
-- [P2] (B) Sumcheck attribution "Lund, Fortnow, Karloff, and Nisan in 1992" — the FOCS proceedings were 1990; the JACM version is 1992; body should clarify "FOCS 1990 / JACM 1992" to avoid confusion
 - [P3] (E) The "four axes" framing is introduced but the Axes table is never explicitly revisited for LatticeFold, Neo, and Symphony — a one-line "axes advanced" annotation per scheme would make the framework payoff clearer
 
 ## Links

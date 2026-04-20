@@ -4,8 +4,8 @@ slug: ch07-case-study-midnight
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3352, 3413]
-source_commit: 7623e4c122cda2624dd2a679440afa4136b8f409
+source_lines: [3334, 3397]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 785
 ---
@@ -22,13 +22,15 @@ To see how Layer 6 choices play out in a real system, consider Midnight -- a pri
 
 **Embedded curve:** Jubjub, a twisted Edwards curve whose order divides $r$. Jubjub lives "inside" BLS12-381's scalar field, enabling efficient elliptic curve operations (point addition, scalar multiplication, hash-to-curve) within zero-knowledge circuits without the overhead of non-native field arithmetic.
 
-**Hash functions:** Poseidon-family algebraic hashes, represented at the ZKIR level as opaque opcodes (`transient_hash`, `persistent_hash`, `hash_to_curve`). Algebraic hash functions are dramatically more efficient inside ZK circuits than traditional hash functions like SHA-256, because their operations (field additions and multiplications) are native to the circuit's arithmetic.
+**Hash functions:** Poseidon-family algebraic hashes, represented at the ZKIR level as opaque opcodes (`transient_hash`, `persistent_hash`, `hash_to_curve`). Algebraic hash functions are dramatically more efficient inside ZK circuits than traditional hash functions like SHA-256, because their operations (field additions and multiplications) are native to the circuit's arithmetic. Midnight's ZKIR defines 24 opcodes in total, forming the instruction set that its compiler (Compact) targets.
 
-**Token model:** UTXO-based shielded tokens (similar to Zcash Sapling). A coin is a triple (nonce, color, value) committed to a global Merkle tree via `persistent_hash`. Nullifiers prevent double-spending. Pedersen commitments on Jubjub hide transaction values.
+**Token model:** UTXO-based shielded tokens (similar to Zcash Sapling). A coin is a triple (nonce, color, value) committed to a global Merkle tree via `persistent_hash`. Nullifiers prevent double-spending. Pedersen commitments on Jubjub hide transaction values. The Zswap protocol enables private token transfers by composing shielded spend and output circuits.
+
+Technical details drawn from Midnight's published technical specification and developer documentation.
 
 ### What Midnight Gets
 
-Midnight occupies the "high algebraic functionality + high succinctness" corner of the design space. The pairing enables constant-size KZG proofs. Jubjub enables rich in-circuit elliptic curve operations (key derivation, Pedersen commitments, hash-to-curve) with native efficiency. The PLONK-like proof system compiles from a purpose-built language (Compact) through a 24-opcode instruction set (ZKIR). The standard library provides Merkle trees, shielded token circuits, and a full Zswap protocol for private token transfers.
+Midnight occupies the "high algebraic functionality + high succinctness" corner of the design space. The pairing enables constant-size KZG proofs. Jubjub enables rich in-circuit elliptic curve operations (key derivation, Pedersen commitments, hash-to-curve) with native efficiency. The PLONK-like proof system compiles from a purpose-built language (Compact) through its 24-opcode instruction set (ZKIR). The standard library provides Merkle trees, shielded token circuits, and a full Zswap protocol for private token transfers.
 
 The result is maximum algebraic functionality. Every cryptographic primitive -- hashing, commitment, key derivation, signature verification -- operates natively within the circuit's arithmetic. Nothing requires emulation or non-native field arithmetic.
 
@@ -40,7 +42,7 @@ The vulnerability assessment is total:
 
 | Component | Assumption | Post-Quantum Status |
 |---|---|---|
-| Proof verification (KZG) | q-SDH on BLS12-381 | Broken by Shor |
+| Proof verification (KZG) | q-SDH on BLS12-381 (reduces to DLP/pairing) | Broken by Shor |
 | Jubjub key derivation | ECDLP on Jubjub | Broken by Shor |
 | Pedersen commitments | DLP on Jubjub | Broken by Shor (binding fails) |
 | In-circuit hashing | CRHF (Poseidon) | Weakened but likely survivable |
@@ -120,10 +122,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) Vulnerability table lists "q-SDH on BLS12-381" as the assumption for KZG proof verification — KZG soundness rests on the q-Strong Diffie-Hellman assumption (q-SDH), which is correct. But q-SDH is itself implied by the DLP/pairing assumption, not a separate assumption; the table could be clearer that this reduces to the discrete log / pairing assumption.
-- [P2] (B) Sources cited lists "None" despite specific technical claims about Midnight's ZKIR opcode set (24 opcodes), wallet SDK behavior, and Zswap protocol. These deserve a citation to Midnight's technical documentation or whitepaper.
 - [P3] (D) The section presents a strong Midnight-vs-Neo comparison table but the Neo side consistently cites ch07-lattice-based-proving without resolving which specific version of Neo the numbers refer to (2025 paper vs Nightstream implementation). A note on which version is compared would sharpen coherence.
 
 ## Links

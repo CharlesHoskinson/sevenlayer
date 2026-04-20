@@ -4,8 +4,8 @@ slug: ch04-the-disclose-boundary-midnight-s-witness-architecture
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1509, 1570]
-source_commit: a4f1e087fc5498fd54e35cbddb135fb2203d262d
+source_lines: [1489, 1550]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1045
 ---
@@ -54,17 +54,17 @@ In practice, the pipeline for a Midnight transaction involves four sequential st
 
 2. `proofProvider.proveTx()` generates the ZK proof -- the dominant latency step, as detailed in Chapter 6 -- producing a proven transaction.
 
-3. `walletProvider.balanceTx()` binds the transaction, runs token balancing (unshielded, shielded, and dust), signs UTXO inputs with BIP-340 Schnorr signatures, and merges the balancing transaction with the original.
+3. `walletProvider.balanceTx()` binds the transaction, runs token balancing (unshielded, shielded, and dust), signs UTXO inputs with Schnorr signatures (Midnight uses a Cardano-native Schnorr scheme over the Ed25519 curve, distinct from Bitcoin's BIP-340), and merges the balancing transaction with the original.
 
 4. `midnightProvider.submitTx()` submits to the blockchain, where the node verifies the ZK proof, checks that the public transcript matches the ledger state, and applies the state transition.
 
 At no point do witnesses cross the network. The developer guide states this explicitly: "Witnesses stay local. Never sent to chain."
 
-The side-channel implications matter here. The cryptographic proving step runs for roughly the same time regardless of witness values because the constraint count is fixed per circuit; only the witness computation phase varies with the witnesses. The fixed-cost proving step dominates total transaction time, which provides incidental timing uniformity -- any variation in witness computation is drowned out by the long proving tail. But a dedicated attacker measuring sub-second variations in the witness computation phase could still extract information. And the documentation does not address cache timing, network timing (when a user queries the indexer immediately before submitting a transaction, the timing correlation reveals which contract state they are acting on), or transaction structure analysis (the number of segments in a transaction could reveal which circuit was called).
+The side-channel implications matter here. The cryptographic proving step runs for roughly the same time regardless of witness values because the constraint count is fixed per circuit; only the witness computation phase varies with the witnesses. The fixed-cost proving step dominates total transaction time, which provides incidental timing uniformity -- any variation in witness computation is drowned out by the long proving tail. But a dedicated attacker measuring sub-second variations in the witness computation phase could still extract information. And the documentation does not address cache timing, network timing (when a user queries the indexer immediately before submitting a transaction, the timing correlation reveals which contract state they are acting on), or transaction structure analysis (the number of segments in a transaction could reveal which circuit was called). As established in the Side-Channel Attacks section above, these implementation-level channels exist independently of the cryptographic proof's zero-knowledge property.
 
-Privacy on Midnight is genuine at the cryptographic level. It is unexamined at the implementation level. This is not a criticism unique to Midnight -- it applies to every privacy-preserving system in production. But the same project that provides the most rigorous compile-time privacy guarantees (disclosure analysis) has the least documented runtime privacy analysis.
+Privacy on Midnight is genuine at the cryptographic level. At the implementation level, the runtime side-channel surface is unexamined -- a gap that is not unique to Midnight but is notable given the project's otherwise rigorous compile-time privacy guarantees.
 
-One accidental privacy benefit: the fixed cost of the PLONK proving step provides natural timing padding. Midnight's developer documentation and community reports describe typical proof generation times of 20-60 seconds on desktop hardware; whether the witness contains a trivial secret or a complex multi-step computation, the proof generation time sits within that band. An observer measuring transaction timing cannot easily distinguish between different witness computations. The padding is natural but not designed. A dedicated attacker measuring sub-second timing variations in the pre-proof witness phase might still extract information. But the tens-of-seconds proving step provides a large, fixed-duration buffer that dominates the total transaction time.
+One accidental privacy benefit: the fixed cost of the PLONK proving step provides natural timing padding. Midnight's developer documentation and community reports (Midnight developer forum, 2025) describe typical proof generation times of 20-60 seconds on desktop hardware; whether the witness contains a trivial secret or a complex multi-step computation, the proof generation time sits within that band. An observer measuring transaction timing cannot easily distinguish between different witness computations. The padding is natural but not designed. A dedicated attacker measuring sub-second timing variations in the pre-proof witness phase might still extract information. But the tens-of-seconds proving step provides a large, fixed-duration buffer that dominates the total transaction time.
 
 The developer guide's demonstration of the private voting dApp provides a concrete end-to-end example. The off-chain witness construction computes Poseidon hashes using the same `persistentHash` function available in both the Compact circuit and the JavaScript SDK. The voter provides their secret key, vote choice, Merkle sibling hash, and direction flag as witnesses. The circuit reconstructs the Merkle root from these witnesses and asserts it matches the on-chain root. The circuit also computes a nullifier -- `persistentHash([pad(32, "nullf:"), secret_key])` -- using domain separation so that the nullifier hash and the voter's attestation hash are cryptographically unlinkable. The nullifier is disclosed (it must appear on-chain to prevent double-voting), but it cannot be traced back to the voter's identity.
 
@@ -115,11 +115,10 @@ Midnight's Compact language enforces the witness/circuit boundary via a `disclos
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) "Midnight developer guide" is listed as a source but with no version, URL, or date. Developer documentation changes; a date or commit hash would anchor the reference.
-- [P2] (A) The four-step transaction pipeline (callTx → proveTx → balanceTx → submitTx) is described as using BIP-340 Schnorr signatures for UTXO signing. This is a specific technical claim that should be verified against Midnight's published specs; BIP-340 is Bitcoin's Schnorr signature spec and it would be unusual for a Cardano sidechain to use it verbatim rather than a Cardano-native Schnorr scheme.
-- [P2] (C) "Privacy on Midnight is genuine at the cryptographic level. It is unexamined at the implementation level." This is a strong evaluative claim worth keeping, but it reads as a conclusion without a preceding argument in this section (the argument was made in ch04-side-channel-attacks-when-the-walls-leak). A forward or backward reference would ground it.
 - [P3] (E) The section notes that "the number of segments in a transaction could reveal which circuit was called" as an open question but does not explain what "segments" are in the ZKIR model. Readers need a brief definition or a forward pointer to ch05-midnight-s-zkir-a-concrete-layer-4.
 
 ## Links

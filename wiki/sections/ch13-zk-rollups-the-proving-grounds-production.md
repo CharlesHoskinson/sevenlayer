@@ -4,8 +4,8 @@ slug: ch13-zk-rollups-the-proving-grounds-production
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [4997, 5022]
-source_commit: ed3c6bed074f7c28c5ab5956c9683f747793d6a6
+source_lines: [4985, 5010]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 745
 ---
@@ -20,19 +20,19 @@ The market has consolidated rapidly, and one of its most expensive lessons has a
 
 The current production leaders tell a more encouraging story -- but the trust question follows them onto every stage:
 
-**Scroll** ($748M TVL as of early 2026) -- the largest zkEVM by total value locked. Scroll uses a halo2-based proof system with KZG commitments, generating PLONKish proofs that are verified directly on Ethereum L1. Seven hundred forty-eight million dollars locked means users trust the math with real money. Whether they have examined the governance is a different question.
+**Scroll** ($748M TVL as of early 2026, per L2Beat) -- the largest zkEVM by total value locked. Scroll uses a halo2-based proof system with KZG commitments, generating PLONKish proofs that are verified directly on Ethereum L1. Seven hundred forty-eight million dollars locked means users trust the math with real money. Whether they have examined the governance is a different question.
 
-**Linea** ($2B TVL) -- ConsenSys's zkEVM, targeting full EVM equivalence. Linea uses a custom prover with Fiat-Shamir-based PLONK and posts compressed proofs to Ethereum. Two billion dollars locked. That is not a pilot program. It is also not a trustless one.
+**Linea** ($2B TVL, per L2Beat) -- ConsenSys's zkEVM, targeting full EVM equivalence. Linea uses a gnark-based custom SNARK prover and posts compressed proofs to Ethereum. Two billion dollars locked. That is not a pilot program. It is also not a trustless one.
 
 **Starknet** -- powered by Stwo, the Circle STARK prover that went live on mainnet in November 2025. Starknet stands apart: it uses the Cairo ISA rather than EVM compatibility, and its STARK proofs are verified natively on L1 without Groth16 wrapping (accepting larger proof sizes in exchange for transparency). The only major rollup that performs the entire trick on a glass stage -- no trusted setup, no opaque wrapping. The trust tradeoff is different here: you trust the transparency of the mathematics, and you pay for it in proof size.
 
-**ZKsync Era** -- Matter Labs' zkEVM, powered by the Airbender prover. ZKsync achieved 21.8 million cycles per second on a single H100 GPU and deployed via the Atlas upgrade. The 2026 roadmap targets formal verification and adoption as a "universal standard" for ZK proving.
+**ZKsync Era** -- Matter Labs' zkEVM, powered by the Airbender prover. ZKsync reported 21.8 million cycles per second on a single H100 GPU via the Atlas upgrade. The 2026 roadmap targets formal verification and adoption as a "universal standard" for ZK proving.
 
 Midnight, analyzed in Chapter 12, occupies a distinct position in this landscape -- not a rollup optimizing Ethereum throughput, but a privacy-first sidechain where ZK proofs are the execution model. Its Stage 0-1 maturity and ~18-second proof times place it alongside early-stage rollups in production readiness, but its privacy-by-architecture design addresses a different market: applications where transaction confidentiality is the primary requirement, not throughput.
 
 The aggregate picture: ZK rollups collectively secured over $20 billion in total value locked by early 2026 (Chapter 1). That figure represents real capital betting on the soundness of proof systems and the governance of rollup operators. Whether that bet is well-placed depends on how quickly rollups mature from Stage 0-1 (governance can override proofs) to Stage 2 (governance cannot override proofs except for proven soundness errors). As of this writing, no major ZK rollup has reached Stage 2.
 
-The economics have improved sharply. The 2,000-fold cost collapse described in Chapter 6 means that at current rates, continuously proving every Ethereum block costs roughly $102,000 per year -- less than the GPU cluster required to do it. Post-Pectra (May 2025) and Fusaka (December 2025), data availability costs have also dropped, with blob capacity increasing 8x via PeerDAS. The trick has become cheaper than the theater's electricity bill. But cost is not the same as trust. A cheap proof verified by a governance council you cannot remove is still a proof verified by a governance council you cannot remove.
+The economics have improved sharply. The 2,000-fold cost collapse described in Chapter 6 means that at current rates, continuously proving every Ethereum block costs roughly $102,000 per year -- a figure derived from Chapter 6's proving-cost benchmarks applied to Ethereum's block rate. Post-Pectra (May 2025) and Fusaka (December 2025), data availability costs have also dropped, with blob capacity increasing approximately 8x via PeerDAS (per Ethereum Foundation EIP documentation). The trick has become cheaper than the theater's electricity bill. But cost is not the same as trust. A cheap proof verified by a governance council you cannot remove is still a proof verified by a governance council you cannot remove.
 
 **Trust relocated from:** L1 execution validators **to:** proof system soundness + governance multisig. **Net:** genuine minimization for computation integrity; governance remains the binding constraint.
 
@@ -84,10 +84,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) No sources cited for specific figures: Scroll $748M TVL, Linea $2B TVL, ZKsync Airbender 21.8M cycles/sec, $102K/year proving cost, blob capacity increase figures. These are verifiable claims that should carry citations.
-- [P2] (A) "Fiat-Shamir-based PLONK" for Linea is imprecise; Linea uses a gnark-based custom SNARK. The description conflates the non-interactivity transform with the underlying proof system family.
 - [P3] (D) "Philosophy A in the original taxonomy" references a ch03 classification not defined here and not wikilinked; a dependency link to the relevant ch03 section is missing.
 - [P3] (A) "Atlas upgrade" for ZKsync Era's Airbender deployment is a specific named event with no citation or wikilink; if the name is wrong or contested it will be unverifiable.
 

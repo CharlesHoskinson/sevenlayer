@@ -4,8 +4,8 @@ slug: ch09-open-problems
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4309, 4320]
-source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
+source_lines: [4292, 4303]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 252
 ---
@@ -18,7 +18,7 @@ Three capabilities sit at the frontier of PET research and will likely shape the
 
 **Collaborative/threshold proving**: Distributing ZK proof generation across multiple servers using MPC, so that no single server sees the full witness. The work by Ozdemir and Boneh, "Experimenting with Collaborative zk-SNARKs: Zero-Knowledge Proofs for Distributed Secrets," USENIX Security 2022 (ePrint 2021/1530), and subsequent improvements in 2024 demonstrate that proof generation itself can be privacy-preserving. This creates a fifth proving model -- between client-side (private but expensive) and delegated (cheap but witness-exposing) -- that combines the privacy of the former with the performance of the latter. The magician's backstage preparation is distributed across multiple locked rooms. No single stagehand sees the whole act.
 
-**Private Information Retrieval (PIR)**: Querying a database without revealing which record you are accessing. A client-side prover in a private rollup (like Aztec) needs to retrieve encrypted notes from the network without revealing which notes belong to them. Recent advances at EUROCRYPT 2026 achieved information-theoretic PIR with sublinear server time and quasilinear space, moving PIR from theoretical curiosity toward practical deployment for billion-entry databases.
+**Private Information Retrieval (PIR)**: Querying a database without revealing which record you are accessing. A client-side prover in a private rollup (like Aztec) needs to retrieve encrypted notes from the network without revealing which notes belong to them. Recent results presented at EUROCRYPT 2026 claimed information-theoretic PIR with sublinear server time and quasilinear space -- a result that, if confirmed, would move PIR from theoretical curiosity toward practical deployment for billion-entry databases. The specific paper had not been formally published at time of writing; treat these benchmarks as provisional pending peer review.
 
 ---
 
@@ -60,9 +60,9 @@ Three frontier capabilities likely to define the next privacy architecture gener
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] (B) EUROCRYPT 2026 PIR result is cited by conference name only — "specific paper not named in text" is acknowledged in Open questions. Until the paper is identified, this claim is unverifiable and should be flagged as provisional.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

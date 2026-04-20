@@ -4,8 +4,8 @@ slug: ch06-fiat-shamir-vulnerabilities
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2836, 2859]
-source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
+source_lines: [2815, 2838]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 479
 ---
@@ -24,7 +24,7 @@ This is not theoretical. Three incidents have demonstrated it at production scal
 
 The "Frozen Heart" vulnerability class was disclosed by Trail of Bits in April 2022, affecting six independent implementations across three proof systems -- Girault, Bulletproofs, and PLONK variants. In each case, a public input or commitment had been omitted from the Fiat-Shamir transcript, allowing a malicious prover to bias the challenge and forge proofs without knowing a valid witness [Trail of Bits, "Coordinated disclosure of vulnerabilities affecting Girault, Bulletproofs, and PLONK," April 2022, https://blog.trailofbits.com/2022/04/13/part-1-coordinated-disclosure-of-vulnerabilities-affecting-girault-bulletproofs-and-plonk/].
 
-The "Last Challenge Attack" was disclosed in October 2023 in gnark's PLONK verifier (GitHub advisory GHSA-7p92-x423-vwj6, https://github.com/Consensys/gnark/security/advisories/GHSA-7p92-x423-vwj6). The vulnerability arose because the batching challenge in gnark's multi-point KZG verification was computed before all evaluation proofs had been included in the transcript, leaving degrees of freedom a prover could exploit. The fix required enforcing that every evaluation proof is absorbed into the transcript before the batching challenge is sampled.
+The "Last Challenge Attack" was disclosed in October 2023 in gnark's PLONK verifier (GitHub advisory GHSA-7p92-x423-vwj6, https://github.com/Consensys/gnark/security/advisories/GHSA-7p92-x423-vwj6). The vulnerability arose because the batching challenge in gnark's multi-point KZG verification was computed before all evaluation proofs had been included in the transcript, leaving degrees of freedom a prover could exploit. The fix required enforcing that every evaluation proof is absorbed into the transcript before the batching challenge is sampled. The gnark library is used by at least one Ethereum rollup in production; the advisory does not name specific deployments affected.
 
 In 2025, Solana's ZK ElGamal Proof program was affected by two separate Fiat-Shamir transcript omissions. A vulnerability reported in April 2025 omitted certain algebraic components from the hash used to derive the Fiat-Shamir challenge, allowing a forged proof of an unauthorized action to pass verification -- enabling potential minting or withdrawal of confidential tokens [Solana postmortem, solana.com/news/post-mortem-may-2-2025]. A second distinct vulnerability was reported in June 2025, where a prover-generated "challenge" value was not absorbed into the transcript, allowing a sigma-OR proof to be forged and fee validation bypassed [Solana postmortem, solana.com/news/post-mortem-june-25-2025].
 
@@ -71,9 +71,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) "Last Challenge Attack of 2024 compromised gnark's PLONK verifier, used by multiple Ethereum rollups" — the specific rollups affected are not named; either name them or soften to "at least one Ethereum rollup"
 - [P3] (E) SP1 Hypercube's 62-opcode formal verification is mentioned as "state of the art" but without explaining what a formal verification of opcodes does and does not cover; a sentence distinguishing opcode-constraint verification from full Fiat-Shamir-to-field-arithmetic stack verification would help readers calibrate the claim
 
 ## Links

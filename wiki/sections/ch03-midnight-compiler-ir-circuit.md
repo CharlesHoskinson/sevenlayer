@@ -4,8 +4,8 @@ slug: ch03-midnight-compiler-ir-circuit
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [1162, 1200]
-source_commit: c9e43022aec66b2d2daf6a69767a4389b8d854c8
+source_lines: [1143, 1180]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 520
 ---
@@ -33,7 +33,7 @@ Every ZKIR circuit has two transcript channels. The `publicTranscript` records l
 
 **Artifact 3: Proving keys.** Contract-specific cryptographic material for the PLONK-based proof system on BLS12-381. Different circuits produce different keys. The proof server requires these keys to generate proofs; validators require them to verify proofs.
 
-This three-part split is not an implementation detail. It reflects the fundamental architecture of privacy-preserving computation: what can be proven (ZKIR), what runs privately (TypeScript), and what makes proofs possible (keys). No other ZK language produces all three from a single source file with first-class blockchain integration. Circom produces R1CS plus a witness generator but no blockchain API. Noir produces ACIR but no TypeScript bindings and no blockchain integration. Cairo produces execution traces but no privacy separation. Compact unifies the entire dApp development pipeline.
+This three-part split is not an implementation detail. It reflects the fundamental architecture of privacy-preserving computation: what can be proven (ZKIR), what runs privately (TypeScript), and what makes proofs possible (keys). No other ZK language produces all three from a single source file with first-class blockchain integration. Circom produces R1CS plus a witness generator but no blockchain API. Noir produces ACIR but no TypeScript bindings and no blockchain integration. Cairo's compiler produces Sierra bytecode, later lowered to CASM, but no privacy separation -- the execution trace is a runtime artifact, not a compiler output. Compact unifies the entire dApp development pipeline.
 
 For a system architect, the lesson generalizes beyond Midnight: the choice of Layer 2 language is not just a choice of syntax. It is a choice of compilation target, developer tooling, privacy model, and deployment pipeline. The language shapes everything downstream.
 
@@ -48,7 +48,6 @@ Now the magician goes backstage. The curtain closes. The audience waits. Behind 
 The recording is where the real cost lives. And it is where the real vulnerabilities hide.
 
 ---
-
 
 ## Summary
 
@@ -86,11 +85,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "Cairo produces execution traces but no privacy separation" — Cairo's *compiler* does not produce execution traces; execution traces are a runtime artifact of the CairoVM. The compiler produces Sierra/CASM bytecode. The comparison is technically imprecise.
-- [P2] (B) No citations in "Sources cited" for any of the ZKIR specifics (24 instructions, 8 categories, two transcript channels). These are verifiable implementation details that should reference Midnight's technical documentation or the Compact spec.
-- [P2] (C) "No other ZK language generates all three from one source" is a strong uniqueness claim that appears in both this section and in `ch03-the-four-philosophies`. The repetition is intentional for emphasis but risks feeling like padding; consider consolidating.
 - [P3] (E) The section describes ZKIR at the instruction-category level but never gives an example of a ZKIR JSON fragment. Given that the section is titled "Compiler, IR, Circuit," a small concrete ZKIR excerpt would ground the claim that it is "JSON-formatted" and show the two transcript channels in practice.
 
 ## Links

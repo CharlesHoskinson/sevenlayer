@@ -4,8 +4,8 @@ slug: ch06-from-speed-race-to-security-race
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2973, 2984]
-source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
+source_lines: [2952, 2965]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 285
 ---
@@ -17,6 +17,8 @@ The story of Layer 5 over the last three years is a story of two races.
 The first race was about speed. From 2022 to 2025, the question was: can you prove computation fast enough for it to matter? Can you prove an Ethereum block before the next block arrives? Can you bring the cost below a dollar, below a dime, below a penny? This race has been substantially won. Real-time proving is operational. Costs are in the single-digit cents. The hardware stack -- GPUs, SIMD, and potentially FPGAs and ASICs -- has been mobilized.
 
 The second race is about security. The Ethereum Foundation's December 2025 announcement marked the pivot: the target shifted from "prove fast" to "prove with 128-bit provable security." This means not just believing the proof system is secure, but having a formal proof that a computationally bounded adversary cannot forge proofs with probability better than $2^{-128}$. It means formally verifying the implementation against the specification. It means accounting for the gap between the random oracle model (where Fiat-Shamir uses ideal hash functions) and reality (where Fiat-Shamir uses SHA-256 or Poseidon).
+
+The random oracle model gap deserves a brief note. Standard proofs of Fiat-Shamir security assume a random oracle -- an idealized hash function that behaves as a truly random function on every input. Real hash functions (SHA-256, Poseidon, Keccak) are not random oracles. They have algebraic structure, and attacks exploiting that structure have been found in other contexts. Whether any current proof system is vulnerable to such attacks in practice is unknown; what is known is that the formal security proofs do not cover it. This gap is one of the unresolved problems that the security race must close.
 
 SP1 Hypercube's formal verification of all 62 RISC-V opcode constraints against the RISC-V Sail specification is a milestone in this second race. It demonstrates that production proof systems can achieve the level of formal rigor that was previously associated only with academic papers. But verifying opcodes is only the beginning. The full stack -- from the Fiat-Shamir transform through the polynomial commitment scheme through the field arithmetic -- must be verified end-to-end. This is a harder problem, and it is the one that will define Layer 5's trajectory over the next several years.
 
@@ -57,10 +59,10 @@ None in this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (E) Very short (285 words); the section largely restates conclusions from ch06-real-time-ethereum-proving without adding new content; either extend with the random oracle model gap (mentioned but not developed) or merge with ch06-real-time-ethereum-proving
-- [P2] (B) No sources cited; the Ethereum Foundation December 2025 announcement should have a reference (blog post, EIP, or public statement)
 - [P3] (C) "This is a harder problem, and it is the one that will define Layer 5's trajectory" — mild forward-prediction AI flourish; could be cut without loss
 
 ## Links

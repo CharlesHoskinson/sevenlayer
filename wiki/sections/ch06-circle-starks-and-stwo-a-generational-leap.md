@@ -4,8 +4,8 @@ slug: ch06-circle-starks-and-stwo-a-generational-leap
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2737, 2797]
-source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
+source_lines: [2716, 2778]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1611
 ---
@@ -20,12 +20,14 @@ Why the circle group? The Mersenne-31 field ($M31 = 2^{31} - 1$) is a prime with
 
 Why does the field size matter so much? Because 31-bit numbers fit in a single 32-bit machine word. On modern CPUs with SIMD instructions, you can process 8 or 16 M31 elements in parallel per instruction. On GPUs, the advantage is even more dramatic. Arithmetic over M31 is roughly 100 times faster than arithmetic over BN254's 254-bit field. When your proof system spends most of its time doing field arithmetic, a 100x speedup in the field operations translates almost directly into a 100x speedup in proving.
 
-The numbers confirm this. Stwo, StarkWare's production implementation of Circle STARKs, went live on Starknet mainnet in 2025. Every Starknet block is now proven by Stwo. The benchmarks:
+The numbers confirm this. Stwo, StarkWare's production implementation of Circle STARKs, went live on Starknet mainnet in 2025. Every Starknet block is now proven by Stwo. The benchmarks [Haboeck, Levit, and Papini, "Circle STARKs," ePrint 2024/278; StarkWare, "Stwo: A new STARK prover," blog.starkware.co, 2025]:
 
 - **940x throughput improvement** over Stone (StarkWare's previous prover)
 - **50x improvement** over ethSTARK (the academic reference implementation)
-- GPU acceleration via ICICLE-Stwo adds another 3.25x to 7x on top of the CPU SIMD backend
+- GPU acceleration via ICICLE-Stwo adds another 3.25x to 7x on top of the CPU SIMD backend [ICICLE-Stwo benchmarks, ingonyama.com/icicle/stwo]
 - Sub-second recursive proving is within reach: roughly 20 milliseconds for 10,000 Poseidon hash evaluations
+
+The 940x figure is a single-source claim from the Circle STARKs ePrint and StarkWare's accompanying benchmark post; independent replication would strengthen it, but it is consistent with the architectural advantages described below.
 
 These are not projections. This is production performance, running on mainnet, proving real blocks with real transactions. The gap between "academic proof system" and "deployed infrastructure" has closed.
 
@@ -117,11 +119,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (C) "The key insight is a change in the algebraic structure" — "key insight" is an AI smell
-- [P2] (B) ICICLE speedup range "3.25x to 7x" has no source; the Stwo/ICICLE benchmarks should be cited (StarkWare blog or the Circle STARKs paper)
-- [P2] (B) "940x throughput improvement over Stone" is a very strong claim with a single source (the Circle STARKs ePrint); a secondary benchmark citation would strengthen it
 - [P3] (A) The circle group isomorphism stated as "$C(\mathbb{F}_p)$ is isomorphic to the multiplicative group of $\mathbb{F}_{p^2}$ modulo $\mathbb{F}_p^*$" — technically the isomorphism is to the subgroup of norm-1 elements of $\mathbb{F}_{p^2}^*$; the stated quotient framing is informal and could mislead readers with algebraic background
 - [P3] (E) The BabyBear comparison at the end is useful but brief; a sentence noting that BabyBear's multiplicative group of smooth order $2^{27}$ (not $2^{31}$) means its FFT domain is smaller than M31's circle group would sharpen the comparison
 

@@ -4,8 +4,8 @@ slug: ch09-the-regulatory-intersection
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4240, 4277]
-source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
+source_lines: [4223, 4260]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1163
 ---
@@ -30,7 +30,7 @@ The zKYC pattern makes this concrete. Consider a bar that needs to verify a cust
 
 ### eIDAS 2.0 and the European Digital Identity Wallet
 
-The European Union's eIDAS 2.0 regulation, effective from 2024, mandates that all EU member states offer citizens a European Digital Identity Wallet by 2026. The wallet must support verifiable credentials and selective disclosure -- proving specific attributes (citizenship, age, professional qualifications) without revealing the entire identity document.
+The European Union's eIDAS 2.0 regulation entered into force in 2024; member states are required to offer citizens a European Digital Identity Wallet by 2026. The wallet must support verifiable credentials and selective disclosure -- proving specific attributes (citizenship, age, professional qualifications) without revealing the entire identity document.
 
 ZKPs are a natural technical foundation for selective disclosure in identity wallets. The Architecture and Reference Framework (ARF) for eIDAS 2.0 envisions a credential ecosystem where issuers (governments, universities, professional bodies) issue cryptographically signed credentials, holders store them in their wallets, and verifiers check proofs of specific attributes without seeing the full credential.
 
@@ -88,9 +88,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) "eIDAS 2.0, effective from 2024" — the regulation entered force in 2024 but member-state wallet deployment is mandated by 2026. The phrasing may mislead readers into thinking wallets are already required; should clarify "entered force 2024, wallets required by 2026."
 - [P3] (B) "Galactica Network, zyphe, and hyli" named as zKYC implementations with no citations; at minimum a website or whitepaper reference should be listed for each.
 
 ## Links

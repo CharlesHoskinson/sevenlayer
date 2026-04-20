@@ -4,8 +4,8 @@ slug: ch06-case-study-midnight-s-sealed-certificate
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2860, 2921]
-source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
+source_lines: [2839, 2900]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 940
 ---
@@ -16,7 +16,7 @@ To see how these abstract proof system choices play out in a real system, consid
 
 ### The Proof System: Halo 2 / UltraPlonk over BLS12-381
 
-Midnight chose a PLONK-family proof system: specifically Halo 2, an extension of UltraPlonk with custom gates and lookup tables. The curve is BLS12-381, a pairing-friendly curve with better security properties than BN254 (roughly 128-bit security vs. BN254's ~100 bits after Tower NFS advances). Although the original Halo paper (2019) used inner product arguments (IPA) that required no trusted setup, Midnight's deployment uses KZG polynomial commitments over BLS12-381, which require a Powers-of-Tau ceremony -- a universal trusted setup with a 1-of-N trust assumption.
+Midnight chose a PLONK-family proof system: specifically Halo 2, an extension of UltraPlonk with custom gates and lookup tables. The curve is BLS12-381, a pairing-friendly curve with better security properties than BN254 (roughly 128-bit security vs. BN254's ~100 bits after Tower NFS advances [Kim and Barbulescu, CRYPTO 2016]). Although the original Halo paper (2019) used inner product arguments (IPA) that required no trusted setup, Midnight's deployment uses KZG polynomial commitments over BLS12-381, which require a Powers-of-Tau ceremony -- a universal trusted setup with a 1-of-N trust assumption.
 
 This places Midnight firmly in the "classical SNARK" camp: pairing-based, recursion-capable, not post-quantum. It is a mature, well-understood choice. The PLONK arithmetization is flexible enough to support Midnight's privacy-preserving smart contract model, where transactions carry zero-knowledge proofs of valid state transitions.
 
@@ -34,7 +34,7 @@ Midnight's proof generation follows a four-phase pipeline that illustrates how t
 
 ### The Performance Reality
 
-Measured performance on Midnight's devnet (measured on development hardware; production performance may differ) reveals the cost of sealing in concrete terms:
+Measured performance on Midnight's devnet (development hardware; production performance may differ; no public benchmark link is available as of this writing) reveals the cost of sealing in concrete terms:
 
 | Operation | Time | Bottleneck |
 |-----------|------|------------|
@@ -53,7 +53,7 @@ From the user's perspective, Layer 5 is a 17-to-28-second pause during which the
 
 Midnight's architecture makes different choices than the proof systems at the performance frontier. It does not use STARKs. It does not use folding. It does not use GPU acceleration (the proof server appears to be CPU-only). It does not use small-field arithmetic. These are deliberate engineering choices that prioritize maturity and correctness over raw speed.
 
-A comparison with Ethereum is instructive:
+A comparison with the frontier systems is instructive:
 
 | Property | Midnight (Halo 2) | Neo/Symphony (Lattice folding) | SP1 Hypercube |
 |----------|-------------------|-------------------------------|---------------|
@@ -62,7 +62,7 @@ A comparison with Ethereum is instructive:
 | Post-quantum | No | Yes (plausible) | Yes (inner proof) |
 | Field | BLS12-381 (255-bit) | Goldilocks (64-bit) | M31/BabyBear (31-bit) |
 | Composition strategy | Recursion | Folding | STARK recursion + SNARK wrap |
-| Proof time (simple circuit) | 17-18 seconds | GPU-accelerated NTT | Sub-second |
+| Proof time (simple circuit) | 17-18 seconds | Sub-second (GPU, NTT-based; Symphony target) | Sub-second |
 | Proof size | ~hundreds of bytes | Larger (lattice-based) | ~192 bytes (after Groth16 wrap) |
 | Trust model | Trusted (universal SRS) | Transparent | Transparent inner, trusted outer |
 
@@ -121,10 +121,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) Comparison table cell for Neo/Symphony "Proof time (simple circuit)" reads "GPU-accelerated NTT" — this is a description of the mechanism, not a time value; the cell is inconsistent with the other rows that give actual durations; either provide a time estimate or label the cell differently
-- [P2] (B) Performance figures are stated as "measured on devnet (development hardware)" with no source or link; a pointer to a public benchmark or the Midnight devnet documentation would let readers verify
 - [P3] (A) BLS12-381 described as providing "roughly 128-bit security vs. BN254's ~100 bits after Tower NFS advances" — "roughly 128-bit" for BLS12-381 is standard, but Ethereum's rationale for BN254 is cost not security; noting that BN254 was chosen for EVM compatibility (not as the best security choice) would prevent the comparison from appearing as a criticism of Midnight's curve selection
 
 ## Links

@@ -4,8 +4,8 @@ slug: ch07-lattice-based-proving
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3298, 3351]
-source_commit: 7623e4c122cda2624dd2a679440afa4136b8f409
+source_lines: [3280, 3333]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 927
 ---
@@ -14,13 +14,13 @@ word_count: 927
 
 Against this backdrop -- the ticking clock, the harvest-now threat, the cliff edge -- a research program has been steadily building an alternative: lattice-based zero-knowledge proof systems that provide post-quantum security without sacrificing the algebraic structure needed for efficient proving.
 
-The progression has been fast, compressing a decade of typical cryptographic development into two years.
+The progression has been fast. Lattice-based cryptography has deep roots -- Lyubashevsky, Peikert, Regev, and others laid the foundations from 2009 onward, and LaBRADOR (2023) demonstrated large-scale lattice argument systems before folding was on the table. What has compressed into roughly two years is the specific line of *folding-capable, production-quality* schemes starting with LatticeFold in 2024 -- a sprint that condensed what would typically take a decade of applied cryptographic development.
 
 ### Stage 1: Greyhound (2024)
 
 The first demonstration that lattice-based SNARKs could be practical, not just theoretical. Greyhound achieved approximately 50-kilobyte proofs with sublinear (square root of N) verification, built entirely on Module-SIS. It was a standalone SNARK, not a folding scheme -- a proof of concept that lattice proofs could fit in the same order of magnitude as STARK proofs.
 
-### Stage 2: LatticeFold (Boneh-Chen; ePrint 2024/257, published at ASIACRYPT 2025)
+### Stage 2: LatticeFold (Boneh and Chen, "LatticeFold: A Lattice-based Folding Scheme and its Applications to Succinct Proof Systems," ASIACRYPT 2025; ePrint 2024/257)
 
 The conceptual breakthrough. Dan Boneh and Binyi Chen adapted Nova-style folding to work over cyclotomic rings with Ajtai commitments. The central observation: Ajtai's module homomorphism is the lattice analogue of Pedersen's additive homomorphism, and it is sufficient to enable the random-linear-combination technique that makes folding work.
 
@@ -28,7 +28,7 @@ LatticeFold introduced three composable reductions -- $\Pi_{\text{CCS}}$ (constr
 
 But LatticeFold had a critical limitation. It was restricted to power-of-two cyclotomic polynomials of the form $X^d + 1$. Over the Goldilocks field, this polynomial splits completely into degree-1 factors, meaning each NTT slot has only 64-bit security -- insufficient for the 128-bit target.
 
-### Stage 3: LatticeFold+ (2025)
+### Stage 3: LatticeFold+ (Boneh, Chen, and coauthors, CRYPTO 2025)
 
 A comprehensive improvement: 5 to 10 times faster prover, simpler verification circuit, shorter folding proofs, and a new purely algebraic range proof replacing LaBRADOR's more complex approach. LatticeFold+ identified three concrete parameterizations, including one over Goldilocks with the 81st cyclotomic polynomial $\Phi_{81} = X^{54} + X^{27} + 1$. This polynomial does not split into linear factors over Goldilocks; instead, it factors into degree-2 irreducibles, giving the extension field $K = \mathbb{F}_{q^2}$ with 128-bit NTT slots.
 
@@ -40,7 +40,7 @@ Neo overcame LatticeFold's power-of-two limitation directly. Its central innovat
 
 Neo works natively over Goldilocks with $\Phi_{81}$, giving $d = 54$, $\kappa = 16$, $m = 2^{24}$, and 127-bit post-quantum security (verified via the standard lattice estimator). The guard condition $(k+1) \cdot T \cdot (b-1) = 2{,}808 < 4{,}096 = B$ ensures that norm growth remains bounded across arbitrarily many folding steps.
 
-### Stage 5: Symphony (2026)
+### Stage 5: Symphony (ePrint 2025/1905, 2026)
 
 The most ambitious design. Symphony pushes folding to high arity -- folding 1,024 or more instances in a single step, rather than the standard two. This eliminates the need for recursive IVC (which requires embedding hash verification inside the SNARK circuit, a major overhead). Symphony folds $\text{poly}(\lambda)$ NP statements into two committed linear statements in one shot, then proves these with a compact SNARK.
 
@@ -110,10 +110,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) "The progression has been fast, compressing a decade of typical cryptographic development into two years" — LaBRADOR (2023), Greyhound's precursors, and early lattice SNARK work (Lyubashevsky et al. from 2009 onward) predate 2024. "Two years" understates the prior research base; the claim applies more precisely to the folding-capable production-quality line beginning with LatticeFold.
-- [P2] (B) Symphony cited as "ePrint 2025/1905" in Sources cited — consistent with other sections. LatticeFold+ cited as "CRYPTO 2025" without authors or title; should include Boneh, Chen, and co-authors for completeness.
 - [P3] (E) The section describes five stages but does not give concrete proof-size or verification-time numbers for LatticeFold and LatticeFold+ (only Greyhound's ~50 KB and Neo's 127-bit figure are given). Adding ballpark numbers for intermediate stages would improve depth and comparability.
 
 ## Links

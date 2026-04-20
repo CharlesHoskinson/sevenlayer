@@ -4,8 +4,8 @@ slug: ch10-trust-decomposition-seven-weaker-assumptions
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4482, 4543]
-source_commit: 9eb332547f6b1cd6e7e67527183abbd5c486974c
+source_lines: [4471, 4532]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 2483
 ---
@@ -58,7 +58,7 @@ The seven assumptions above are not hypothetical. Every one of them has failed, 
 
 Not all failures are created equal, and not all are independent. The seven assumptions form their own internal DAG of failure propagation.
 
-A Layer 6 failure cascades into Layer 5 (if the hardness assumption breaks, the proof system built on it is unsound) and Layer 1 (if discrete logs are easy, trusted setup toxic waste can be reconstructed). But it does *not* cascade into Layer 2 (the circuit logic is still correct), Layer 3 (the witness generation is still private against non-quantum adversaries), or Layer 4 (the arithmetization is still faithful). A quantum computer that breaks BN254 makes Groth16 proofs forgeable, but it does not introduce bugs into Circom circuits. The choreography is fine. The seal is broken.
+A Layer 6 failure cascades into Layer 5 (if the hardness assumption breaks, the proof system built on it is unsound) and Layer 1 (if discrete logs are easy, trusted setup toxic waste can be reconstructed). But it does *not* cascade into Layer 2 (the circuit logic is still correct), Layer 3 (the witness generation is still private against non-quantum adversaries), or Layer 4 (the arithmetization is still faithful). The reason is that Layer 2 and Layer 4 are *mathematical objects* -- a circuit is a set of polynomial equations, an arithmetization is a translation table -- whose correctness is a property of their construction, not of the hardness assumption the proof system relies on. A quantum computer that breaks BN254 makes Groth16 proofs forgeable, but it does not introduce bugs into Circom circuits or corrupt the encoding of RISC-V opcodes. The choreography is fine. The seal is broken.
 
 A Layer 2 failure is *contained*. A buggy circuit produces provably wrong results, but the proof system is still sound (it just proves the wrong thing), the setup is still valid, the hardware does not leak, and the math still holds. This containment is precisely what makes Layer 2 failures survivable: fix the circuit, redeploy the verifier, and the system recovers. The Zcash InternalH bug was patched in a single release. The stage machinery was fine; only the script needed rewriting.
 
@@ -128,9 +128,9 @@ None flagged by this section.
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] E The cascade structure section notes that a Layer 6 failure "does not cascade into Layer 2, 3, or 4," but does not explain why a quantum break of discrete logs would leave the circuit logic (Layer 2) or arithmetization (Layer 4) intact even though the proof system (Layer 5) using those layers becomes unsound. The reasoning is correct but the isolation argument would benefit from one sentence of elaboration.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

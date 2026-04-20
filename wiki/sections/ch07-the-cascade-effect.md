@@ -4,8 +4,8 @@ slug: ch07-the-cascade-effect
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3414, 3449]
-source_commit: 7623e4c122cda2624dd2a679440afa4136b8f409
+source_lines: [3398, 3434]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 886
 ---
@@ -21,12 +21,13 @@ Field: Goldilocks (q = 2^64 - 2^32 + 1)
   --> Ring: Phi_81, degree d = 54
     --> Commitment: kappa = 16 rows, m = 2^24 columns
       --> Folding: b = 2 (base), k = 12 (decomposition depth), B = 4096 (norm bound)
-        --> Challenge: T = 216 (expansion factor), |C| ~ 2^125
+        --> Challenge: T = 216 (expansion factor: max norm growth per folding step),
+                       |C| ~ 2^125
           --> Security: 127-bit MSIS
             --> Guard: (k+1) * T * (b-1) = 2,808 < 4,096 = B
 ```
 
-Change any parameter and everything downstream shifts. Use a different prime and the cyclotomic factorization changes, which changes the extension field, which changes the security level, which changes the commitment parameters, which changes the folding parameters. This is not optional coupling -- it is algebraic necessity. The parameters are not chosen independently. They are derived from each other, each one a consequence of the ones above it, the way the shape of a crystal is a consequence of the geometry of its atoms.
+Each parameter is a consequence of those above it. Change any one and everything downstream shifts. Use a different prime and the cyclotomic factorization changes, which changes the extension field, which changes the security level, which changes the commitment parameters, which changes the folding parameters. This is not optional coupling -- it is algebraic necessity. The parameters are not chosen independently. They are derived from each other, each one a consequence of the ones above it, the way the shape of a crystal is a consequence of the geometry of its atoms.
 
 The same cascade operates in the pairing world. BLS12-381's scalar field determines the Jubjub embedding. Jubjub determines which in-circuit operations are efficient. The pairing determines which commitment scheme works. The commitment scheme determines the proof system. The proof system determines the arithmetization.
 
@@ -34,11 +35,11 @@ And so "crypto-agility" -- the ability to swap cryptographic primitives without 
 
 To make this concrete, here is the decision tree that every zero-knowledge system architect walks, whether they realize it or not.
 
-**If you choose BabyBear (31-bit prime, $p = 2^{31} - 2^{27} + 1$):** You get SIMD-friendly arithmetic -- four field multiplications packed into a single 128-bit SIMD instruction, eight into a 256-bit AVX2 register. Your natural commitment scheme is FRI, because BabyBear has a multiplicative subgroup of order $2^{27}$, large enough for practical NTT domains. Your constraint format is AIR (Algebraic Intermediate Representation) or CCS, depending on your proof system. Your setup is transparent -- no ceremony, no trust. Your proofs are large (50 to 200 kilobytes) but your prover is *fast*, because every arithmetic operation is a single machine instruction. You achieve 128-bit security via a degree-4 extension field (four BabyBear elements per extended element, giving ~124 bits). This is the path chosen by RISC Zero and Plonky3. It optimizes for prover throughput at the cost of proof size.
+**If you choose BabyBear (31-bit prime, $p = 2^{31} - 2^{27} + 1$):** You get SIMD-friendly arithmetic -- four field multiplications packed into a single 128-bit SIMD instruction, eight into a 256-bit AVX2 register. Your natural commitment scheme is FRI, because BabyBear has a multiplicative subgroup of order $2^{27}$, large enough for practical NTT domains. Your constraint format is AIR (Algebraic Intermediate Representation) or CCS, depending on your proof system. Your setup is transparent -- no ceremony, no trust. Your proofs are large (50 to 200 kilobytes) but your prover is *fast*, because every arithmetic operation is a single machine instruction. You achieve 128-bit security via a degree-4 extension field (four BabyBear elements per extended element, giving ~124 bits -- degree 2 falls short because BabyBear's structure does not provide enough security separation at that extension level). This is the path chosen by RISC Zero and Plonky3. It optimizes for prover throughput at the cost of proof size.
 
-**If you choose Goldilocks (64-bit prime, $p = 2^{64} - 2^{32} + 1$):** You get native 64-bit arithmetic -- one multiplication per CPU instruction, no multi-limb overhead. Your natural commitment scheme is FRI (exploiting 2-adicity of $2^{32}$ for large NTT domains) or lattice-based Ajtai commitments (using the 81st cyclotomic polynomial for post-quantum security). Your constraint format is CCS or R1CS. Your setup is transparent in either case. If you choose FRI, your proofs are large but your prover leverages GPU-friendly 64-bit arithmetic. If you choose Ajtai, you get post-quantum security and folding capability, with proofs in the 50 to 60 kilobyte range. This is the path chosen by Plonky2 (FRI) and Neo/Nightstream (Ajtai). It balances prover speed, proof size, and -- if lattice-based -- quantum resilience.
+**If you choose Goldilocks (64-bit prime, $p = 2^{64} - 2^{32} + 1$):** You get native 64-bit arithmetic -- one multiplication per CPU instruction, no multi-limb overhead. Your natural commitment scheme is FRI (exploiting 2-adicity of 32 for large NTT domains) or lattice-based Ajtai commitments (using the 81st cyclotomic polynomial for post-quantum security). Your constraint format is CCS or R1CS. Your setup is transparent in either case. If you choose FRI, your proofs are large but your prover leverages GPU-friendly 64-bit arithmetic. If you choose Ajtai, you get post-quantum security and folding capability, with proofs in the 50 to 60 kilobyte range. This is the path chosen by Plonky2 (FRI) and Neo/Nightstream (Ajtai). It balances prover speed, proof size, and -- if lattice-based -- quantum resilience.
 
-**If you choose BLS12-381 (255-bit scalar field, 381-bit base field, pairing-friendly):** You get the full power of bilinear pairings -- KZG commitments with constant-size proofs (48 bytes), constant-time verification (one pairing check), and the richest algebraic structure available. Your constraint format is PLONKish gates or R1CS. Your setup requires a trusted ceremony (powers-of-tau). Your proofs are the smallest in existence. But your arithmetic is the most expensive: a single multiplication in the 255-bit scalar field costs a multi-limb subroutine that is 100 times slower than BabyBear's native operation. And you inherit an expiration date: Shor's algorithm will break every pairing-based proof when a cryptographically relevant quantum computer arrives. This is the path chosen by Midnight, Zcash (pre-Orchard), every Ethereum rollup's final verification layer, and the EIP-4844 blob scheme. It optimizes for proof succinctness and verifier efficiency at the cost of prover performance and quantum resilience.
+**If you choose BLS12-381 (255-bit scalar field, 381-bit base field, pairing-friendly):** You get the full power of bilinear pairings -- KZG commitments with constant-size proofs (48 bytes), constant-time verification (one pairing equation), and the richest algebraic structure available. Your constraint format is PLONKish gates or R1CS. Your setup requires a trusted ceremony (powers-of-tau). Your proofs are the smallest in existence. But your arithmetic is the most expensive: a single multiplication in the 255-bit scalar field costs a multi-limb subroutine that is 100 times slower than BabyBear's native operation. And you inherit an expiration date: Shor's algorithm will break every pairing-based proof when a cryptographically relevant quantum computer arrives. This is the path chosen by Midnight, Zcash (pre-Orchard), every Ethereum rollup's final verification layer, and the EIP-4844 blob scheme. It optimizes for proof succinctness and verifier efficiency at the cost of prover performance and quantum resilience.
 
 **If you choose Mersenne-31 ($p = 2^{31} - 1$):** You get the simplest possible modular reduction -- subtraction of the carry bit, because $2^{31} \equiv 1 \pmod{p}$. Your commitment scheme is FRI, adapted via Circle STARKs to work with M31's multiplicative group structure (which lacks large 2-adic subgroups but has a circle group of order $2^{31}$). Your prover is the fastest in existence for STARK-based systems, because M31 arithmetic is cheaper than any other field. Your proofs are transparent and plausibly post-quantum. This is StarkWare's Stwo path -- maximum prover throughput, hash-based security, no algebraic frills.
 
@@ -97,10 +98,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) BabyBear description says "multiplicative subgroup of order $2^{27}$" — correct (2-adicity 27), consistent with ch07-small-fields. However the text then says extension field gives "~124 bits" via degree-4 extension; the section doesn't explain why degree 4 is needed rather than degree 2 for BabyBear specifically.
-- [P2] (D) The cascade code block for Neo uses a specific guard condition value `(k+1) * T * (b-1) = 2,808` but the parameter k=12 gives (12+1)×216×(2-1)=2,808 — this checks out. However the block mixes prime notation (q = 2^64 − 2^32 + 1) with parameter equations without clarifying units; a reader unfamiliar with the lattice estimator may not understand what "T = 216 (expansion factor)" means in context.
 - [P3] (C) The closing metaphor "branching tunnels" is vivid but the paragraph repeating "once you enter one, the others seal behind you" immediately after the same idea stated as "once a tunnel is entered, the others seal behind you" is a near-verbatim repetition within four lines.
 
 ## Links

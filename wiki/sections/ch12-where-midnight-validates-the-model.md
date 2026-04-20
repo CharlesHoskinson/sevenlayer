@@ -4,8 +4,8 @@ slug: ch12-where-midnight-validates-the-model
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4900, 4913]
-source_commit: 65e82b18c746552064750d4b1ea3c6d13bacbe3a
+source_lines: [4887, 4902]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 165
 ---
@@ -23,6 +23,8 @@ The seven-layer decomposition maps cleanly to Midnight's architecture in five pl
 **4. Layer 5 maps to the proof server.** The four-phase pipeline instantiates the proof generation and verification layer with measured latencies and a clear component boundary.
 
 **5. Layer 7 maps to the three-token model.** The verifier key deployment, fee economics, and governance structure are concrete instances of deployment concerns.
+
+Layers 3 and 6 resist clean mapping in the opposite direction: L3 (witness boundary) is not a discrete component but a property of the compiler's disclosure analysis, which also straddles L2 and L4; L6 (cryptographic primitives) is not a separate subsystem but an intrinsic feature of L1's curve choice -- Jubjub and Poseidon exist because BLS12-381 was chosen. These two layers are present in Midnight, but they are absorbed into adjacent layers rather than standing alone.
 
 
 ## Summary
@@ -61,9 +63,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (E) The section lists five validation points but gives only one sentence each; Layers 3 and 6 are noted as not clean fits but there is no brief explanation of why — even a parenthetical would improve completeness.
 - [P3] (B) "~18 s / ~490 trillion SPECK" is repeated without a source; should inherit the citation from the full-mapping section rather than float uncited here.
 
 ## Links

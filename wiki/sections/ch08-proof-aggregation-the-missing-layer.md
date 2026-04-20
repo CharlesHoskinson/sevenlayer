@@ -4,25 +4,25 @@ slug: ch08-proof-aggregation-the-missing-layer
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3795, 3810]
-source_commit: ae218cbb73ddecefb37373fa1c8e789e5b6f8f93
+source_lines: [3779, 3794]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 256
 ---
 
 ## Proof Aggregation: The Missing Layer
 
-Between the prover (who generates proofs) and the on-chain verifier (who checks them), a significant infrastructure layer has emerged that the seven-layer model does not account for: proof aggregation services.
+Between the prover (who generates proofs) and the on-chain verifier (who checks them), a significant infrastructure layer has emerged that the seven-layer model does not account for: proof aggregation services. In terms of the stack, aggregation sits at Layer 7 but acts as a trust intermediary between Layers 5-6 (the proof system) and the on-chain verifier -- a sub-layer that inherits the security properties of neither automatically.
 
-**SHARP (Shared Prover)**, built by StarkWare for Starknet, is the original aggregation service. Multiple applications submit their execution traces to SHARP, which generates a single STARK proof covering all of them, then wraps that proof in Groth16 for on-chain verification. The verification gas cost is amortized across all participating applications.
+**SHARP (Shared Prover)**, built by StarkWare for Starknet (documentation: docs.starknet.io), is the original aggregation service. Multiple applications submit their execution traces to SHARP, which generates a single STARK proof covering all of them, then wraps that proof in Groth16 for on-chain verification. The verification gas cost is amortized across all participating applications.
 
-**Aligned Layer**, launched on mainnet with over $11 billion in restaked ETH (via EigenLayer), provides verification-as-a-service. Rollups and applications submit proofs to Aligned Layer, which batches and verifies them, posting the aggregated result to Ethereum.
+**Aligned Layer**, launched on mainnet in late 2024 with over $11 billion in restaked ETH secured via EigenLayer at launch (Aligned Layer launch announcement, November 2024), provides verification-as-a-service. Rollups and applications submit proofs to Aligned Layer, which batches and verifies them, posting the aggregated result to Ethereum.
 
-**NEBRA**, live since August 2024, provides proof aggregation with a focus on universal verification -- supporting multiple proof systems (Groth16, PLONK, STARK) within a single aggregation layer.
+**NEBRA**, live since August 2024 (NEBRA mainnet launch post, August 2024), provides proof aggregation with a focus on universal verification -- supporting multiple proof systems (Groth16, PLONK, STARK) within a single aggregation layer.
 
-The economic logic is straightforward. If a single Groth16 verification costs ~200,000 gas, and an aggregation service can batch 100 proofs into a single on-chain verification, the per-proof verification cost drops from ~$1 to ~$0.01. At sufficient volume, aggregation makes proof verification nearly free.
+The economic logic is straightforward. If a single Groth16 verification costs ~187,000 gas, and an aggregation service can batch 100 proofs into a single on-chain verification, the per-proof verification cost drops from ~$1 to ~$0.01. At sufficient volume, aggregation makes proof verification nearly free.
 
-But aggregation introduces a new trust assumption. Users must trust that the aggregation service correctly includes their proof in the batch, and that the aggregated proof faithfully represents all constituent proofs. If the aggregation service is centralized (as SHARP is for Starknet), this is a single point of failure at Layer 7 that can undermine the decentralization guarantees of the underlying proof system.
+But aggregation introduces new trust assumptions that the seven-layer model must account for. The aggregation service sits between prover and verifier and makes two commitments: that it correctly includes submitted proofs in the batch, and that the aggregated proof faithfully represents all constituent proofs. These commitments are not automatically inherited from the underlying proof system's soundness. A soundness error or equivocation at the aggregation layer can silently drop proofs, reorder them, or substitute forged proofs -- and the on-chain verifier, seeing a valid aggregated proof, has no way to detect the manipulation. If the aggregation service is centralized (as SHARP is for Starknet), it is a single point of failure at Layer 7 that can undermine the decentralization guarantees of Layers 1 through 6. The aggregator's own governance therefore warrants the same scrutiny as the verifier contract's governance.
 
 ---
 
@@ -62,10 +62,9 @@ None flagged by this section.
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] (B) No sources cited for any of the three named aggregation services (SHARP, Aligned Layer, NEBRA); the Aligned Layer ">$11B restaked ETH" figure and NEBRA "live August 2024" date are unanchored.
-- [P2] (E) Section does not explain how aggregation fits (or fails to fit) the seven-layer model beyond a single sentence; the trust-analysis of the aggregation layer is thin relative to the governance section's depth.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

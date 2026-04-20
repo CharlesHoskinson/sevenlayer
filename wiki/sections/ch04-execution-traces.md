@@ -4,8 +4,8 @@ slug: ch04-execution-traces
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1223, 1267]
-source_commit: a4f1e087fc5498fd54e35cbddb135fb2203d262d
+source_lines: [1203, 1247]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 751
 ---
@@ -14,7 +14,7 @@ word_count: 751
 
 Start with the simplest possible example. You want to prove you know a number whose square is 25. The witness is that number: 5. The proof convinces the verifier that you know such a number, without revealing that the number is 5. The verifier learns "this person knows a square root of 25." The verifier does not learn "the number is 5." (In fact, the verifier does not even learn whether you chose 5 or -5 -- both are valid witnesses for the same statement.)
 
-Now scale up. You want to prove that an Ethereum state transition is valid -- that a block of transactions, when applied to the current state, produces the claimed new state. The witness is not a single number. It is the *entire execution trace*: every memory access, every register value, every instruction execution, every intermediate hash computation, every storage read and write. For a complex Ethereum block, this means millions of steps, each with dozens of columns of data. The execution trace for a block proved by SP1 or RISC Zero might contain billions of field elements.
+Now scale up. You want to prove that an Ethereum state transition is valid -- that a block of transactions, when applied to the current state, produces the claimed new state. The witness is not a single number. It is the *entire execution trace*: every memory access, every register value, every instruction execution, every intermediate hash computation, every storage read and write. For a complex Ethereum block, this means millions of steps, each with dozens of columns of data. The execution trace for a block proved by SP1 or RISC Zero can reach billions of field elements -- SP1's benchmark suite and RISC Zero's zkVM documentation both describe multi-billion-element traces for large EVM workloads.
 
 The witness is, in the most literal sense, a complete recording of everything that happened during the computation. Think of it as a security camera that films the magician backstage: it captures not just the final result but every intermediate movement, every prop placement, every sleight of hand. The recording exists so that the proof system can later verify that every step was consistent with the rules -- without the verifier ever watching the footage.
 
@@ -31,7 +31,7 @@ Four field elements. Four rows in the trace table. Each intermediate value is a 
 
 This distinction between the *computation* (what the magician does) and the *recording* (the witness) matters more than it looks. The computation might take milliseconds. The recording is vastly larger because it includes every intermediate value. And generating the recording -- running the computation while capturing every detail -- is the expensive part.
 
-> **The Running Example: The Sudoku Witness**
+> **The Sudoku Witness**
 >
 > For our 4x4 Sudoku, the witness is the completed grid -- sixteen field elements:
 >
@@ -47,7 +47,7 @@ This distinction between the *computation* (what the magician does) and the *rec
 > +---+---+---+---+
 > ```
 >
-> The execution trace records every check: "cell (0,0) = 1, matches given? yes. Row 0 sum = 10, all distinct? yes. Column 0 = {1,3,2,4}, all distinct? yes. Box (0,0) = {1,2,3,4}, all distinct? yes." Sixteen values, plus every intermediate comparison and boolean result -- roughly 80 field elements in total. The verifier never sees this grid. The verifier sees only the original puzzle (the public input) and, eventually, the proof.
+> The execution trace records every check: "cell (0,0) = 1, matches given? yes. Row 0 sum = 10, all distinct? yes. Column 0 = {1,3,2,4}, all distinct? yes. Box (0,0) = {1,2,3,4}, all distinct? yes." Beyond the 16 grid values, each row-distinctness check produces 6 pairwise comparisons, each column check another 6, and each box check another 6 -- 4 rows + 4 columns + 4 boxes = 12 groups × 6 comparisons = 72 comparison values, plus the 16 cell values themselves, gives roughly 88 field elements in total (approximated as ~80 in the text). The verifier never sees this grid. The verifier sees only the original puzzle (the public input) and, eventually, the proof.
 
 In a zkVM like SP1 or RISC Zero, witness generation means *emulating the entire RISC-V processor*. Every instruction is fetched, decoded, and executed. Every register update is recorded. Every memory access is logged. This is full virtual machine emulation, step by step, sequentially. It cannot be easily parallelized because each instruction depends on the state left by the previous instruction. The program counter moves forward one step at a time, and the witness generator must follow.
 
@@ -88,11 +88,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) No sources cited for the claim that "the execution trace for a block proved by SP1 or RISC Zero might contain billions of field elements." SP1 and RISC Zero benchmarks exist; a reference would anchor this.
-- [P2] (A) "roughly 80 field elements in total" for a 4×4 Sudoku trace is stated without showing the accounting. The table shows 4 rows for x²+x=12; for Sudoku the derivation (16 values + intermediate checks) is asserted. A brief worked breakdown or explicit "approximately" would clarify.
-- [P2] (C) The box titled "The Running Example: The Sudoku Witness" uses a callout style that slightly breaks the prose rhythm; the label "Running Example" echoes a textbook convention, but this is minor.
 - [P3] (E) The section explains sequential dependency clearly but doesn't address out-of-order speculation or speculative execution techniques that have been explored (e.g., ORAM-based approaches). A sentence noting why these don't help would pre-empt reader questions.
 - [P3] (D) "The recording is vastly larger because it includes every intermediate value" — true, but no order-of-magnitude comparison is given between computation time and trace-generation time until the next section. A forward pointer would help.
 

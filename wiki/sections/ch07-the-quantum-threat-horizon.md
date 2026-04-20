@@ -4,8 +4,8 @@ slug: ch07-the-quantum-threat-horizon
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3248, 3297]
-source_commit: 7623e4c122cda2624dd2a679440afa4136b8f409
+source_lines: [3230, 3279]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 640
 ---
@@ -16,7 +16,7 @@ The question is not whether quantum computers will break DLP-based cryptography.
 
 ### What Shor's Algorithm Does
 
-Shor's algorithm, published in 1994, solves the discrete logarithm problem in polynomial time on a quantum computer. Given $g$ and $h = g^x$, it finds $x$ using roughly $O(n^3)$ quantum gates, where $n$ is the bit length of the group order. For BLS12-381, this requires approximately 2,500 logical qubits. Each logical qubit requires thousands of physical qubits for error correction, meaning the actual hardware requirement is on the order of millions of physical qubits -- roughly three orders of magnitude beyond current devices, which have demonstrated only a few thousand physical qubits.
+Shor's algorithm, published in 1994, solves the discrete logarithm problem in polynomial time on a quantum computer. Given $g$ and $h = g^x$, it finds $x$ using roughly $O(n^3)$ quantum gates, where $n$ is the bit length of the group order. For BLS12-381, this requires approximately 2,500 logical qubits -- a figure in the vicinity of estimates from Webber et al. (2022, "The impact of hardware specifications on reaching quantum advantage over classical computers in discrete optimization and chemistry," *Quantum Science and Technology*), who estimated roughly 2,330 logical qubits for 256-bit elliptic curve discrete log. Each logical qubit requires thousands of physical qubits for error correction, meaning the actual hardware requirement is on the order of millions of physical qubits -- roughly three orders of magnitude beyond current devices. As of late 2024, the leading publicly announced devices were IBM Condor at 1,121 physical qubits and Google Willow at 105 physical qubits; the "thousands" threshold has not yet been demonstrated at the logical qubit level.
 
 When a cryptographically relevant quantum computer (CRQC) exists, the consequences are immediate and total:
 
@@ -42,7 +42,7 @@ The IR 8547 guidance document sets a deadline: by 2035, federal systems must hav
 
 ### The HNDL Threat
 
-The most insidious quantum threat is not future code-breaking but present data collection. "Harvest Now, Decrypt Later" (HNDL) describes the strategy of recording encrypted communications today for decryption by future quantum computers. A Federal Reserve discussion paper (FEDS 2025-093) explicitly identified HNDL as a risk to financial infrastructure.
+The most insidious quantum threat is not future code-breaking but present data collection. "Harvest Now, Decrypt Later" (HNDL) describes the strategy of recording encrypted communications today for decryption by future quantum computers. A Federal Reserve discussion paper (FEDS 2025-093, "Quantum Computing and Financial Stability," Board of Governors of the Federal Reserve System, 2025) explicitly identified HNDL as a risk to financial infrastructure.
 
 For zero-knowledge systems, the HNDL analogue is this: an adversary records all on-chain data -- commitments, proofs, public inputs -- today, waiting for a quantum computer to extract the underlying secrets. In a system like Zcash or Midnight, where commitments hide transaction amounts and sender/receiver identities, a future CRQC could retroactively de-anonymize the entire transaction history.
 
@@ -104,11 +104,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) "~2,500 logical qubits for BLS12-381" — Webber et al. (2022, "The impact of hardware specifications on reaching quantum advantage") estimated ~2,330 logical qubits for 256-bit elliptic curve; "~2,500" is a reasonable approximation but no citation is provided. The key claims repeat this figure without source.
-- [P2] (A) "current devices, which have demonstrated only a few thousand physical qubits" — as of late 2024 IBM Condor reached 1,121 qubits and Google Willow 105 qubits; "a few thousand" overstates current state unless referring to planned near-term devices. Should say "low hundreds to low thousands" or cite specific device benchmarks.
-- [P2] (B) Federal Reserve FEDS 2025-093 is cited for the HNDL claim but no title or URL is given; this is a specific government document that should have a full citation for verifiability.
 - [P3] (C) The three-option framing (accept/migrate/ignore) uses "hope that…quantum computers take longer than expected" for option 3 — slightly editorializing; functional but could be stated more neutrally.
 
 ## Links

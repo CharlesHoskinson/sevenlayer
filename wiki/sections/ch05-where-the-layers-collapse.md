@@ -4,8 +4,8 @@ slug: ch05-where-the-layers-collapse
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2322, 2351]
-source_commit: eb72fd8bb82cecd60e59036b27847eea5797a886
+source_lines: [2299, 2328]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 657
 ---
@@ -30,13 +30,13 @@ The dependency runs opposite to the top-down model the book follows. In Cairo's 
 
 The most significant cross-layer dependency is the "proof core" -- the inseparable triad of {finite field, polynomial commitment scheme, polynomial representation} that straddles Layers 4, 5, and 6.
 
-Choose a 31-bit field (Layer 6) and you get fast arithmetic but need FRI-based commitments (Layer 5) and AIR or multilinear representations (Layer 4). Choose a 254-bit pairing-friendly field (Layer 6) and you can use KZG commitments (Layer 5) with univariate polynomials in Lagrange basis (Layer 4). Choose a lattice-based commitment over a 64-bit Goldilocks field (Layer 6) and you get post-quantum security with CCS-native constraints (Layer 4) and sumcheck-based folding (Layer 5).
+Choose a 31-bit field (Layer 6) and you get fast arithmetic but need FRI-based commitments (Layer 5) and AIR or multilinear representations (Layer 4). Choose a 254-bit pairing-friendly field (Layer 6) and you can use KZG commitments (Layer 5) with univariate polynomials in Lagrange basis (Layer 4). Choose a lattice-based commitment scheme (Layer 6) -- such as LatticeFold over NTRU lattices, which targets general fields and is not specific to Goldilocks -- and you get post-quantum security with CCS-native constraints (Layer 4) and sumcheck-based folding (Layer 5). (Neo, by contrast, targets Goldilocks specifically for efficiency, but uses sumcheck-based folding rather than lattice commitments.)
 
 These are not three independent choices. They are one choice with three manifestations. The seven-layer model usefully separates the *concerns* (what is being encoded? how is it committed? what field operations are available?) even when the *implementations* cannot be separated.
 
 This is the collapse we warned about in Chapter 1. The seven-layer model is a pedagogical map. The engineering territory has three layers at the proof core, not seven, and the edges between them are bidirectional. Hold both models as you read: the pedagogical stack (useful for learning each concern in isolation) and the engineering DAG (useful for building real systems). Chapter 10 will draw the honest map -- seven nodes, fourteen directed edges, no pretense of independence.
 
-A concrete example of this coupling: RISC Zero originally used a 254-bit field with KZG commitments and R1CS constraints. In 2023, they migrated to BabyBear (31-bit field) with FRI commitments and AIR constraints. The migration was not "swap out the field and keep everything else." It required simultaneously changing the field (Layer 6), the commitment scheme (Layer 5), and the constraint format (Layer 4) -- because none of the three could be changed independently. BabyBear does not support KZG (which needs a pairing-friendly curve), and FRI does not work naturally with R1CS (which lacks the evaluation-domain structure that FRI requires). The three layers moved as a unit, confirming that the "proof core" is a single design decision dressed up as three.
+A concrete example of this coupling: RISC Zero's early architecture (v0.x) used a 254-bit field with STARK-based commitments and AIR constraints -- not R1CS/Groth16 as sometimes assumed. In 2023, they migrated to BabyBear (31-bit field) with FRI commitments and a redesigned AIR constraint system. The migration was not "swap out the field and keep everything else." It required simultaneously changing the field (Layer 6) and the commitment machinery (Layer 5), along with the constraint layout (Layer 4), because the evaluation-domain structure that FRI requires had to be re-established over the new field. The three layers moved as a unit, confirming that the "proof core" is a single design decision dressed up as three.
 
 ---
 
@@ -82,10 +82,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "RISC Zero originally used a 254-bit field with KZG commitments and R1CS constraints. In 2023, they migrated to BabyBear (31-bit field) with FRI commitments and AIR constraints." The claim that RISC Zero originally used R1CS is imprecise — RISC Zero's original architecture (v0.x) used a STARK-based system over a 254-bit field, not R1CS/Groth16. The migration was from a 254-bit field STARK to BabyBear FRI, not from R1CS. This should be corrected to avoid implying RISC Zero was a Groth16 system.
-- [P2] (A) The proof-core triad bullet lists "64-bit Goldilocks, lattice, CCS+sumcheck" as one coherent bundle. Neo (referenced in the CCS section) uses Goldilocks but not lattice-based commitments in its published form; LatticeFold uses NTRU lattices. The association of "lattice" specifically with Goldilocks may be inaccurate — LatticeFold targets general fields including small fields, not specifically Goldilocks.
 - [P3] (D) The "Layers 2 and 4: Cairo's Co-Design" subsection is the most interesting cross-layer collapse but gets the least space. The write-once memory model example is compelling; it deserves an additional paragraph explaining the proof-cost difference numerically (e.g., sorted-access check vs. Merkle tree cost).
 - [P3] (B) No sources cited for any of the three collapse examples, including Cairo's write-once memory model. The Cairo paper (Goldberg et al., 2021) should be referenced.
 

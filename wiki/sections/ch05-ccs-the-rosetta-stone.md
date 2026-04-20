@@ -4,8 +4,8 @@ slug: ch05-ccs-the-rosetta-stone
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1876, 1948]
-source_commit: eb72fd8bb82cecd60e59036b27847eea5797a886
+source_lines: [1853, 1925]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 2077
 ---
@@ -20,9 +20,9 @@ The word "without overhead" is the point. Previous attempts at unification exist
 
 A CCS instance is defined by a set of sparse matrices $M_1, \ldots, M_t$ over a finite field, a collection of multisets $S_1, \ldots, S_q$ (each specifying which matrices to multiply together element-wise), and constants $c_1, \ldots, c_q$. The satisfying condition is:
 
-$\sum_{i=1}^{q} c_i \cdot \bigcirc_{j \in S_i} (M_j \cdot \mathbf{z}) = \mathbf{0}$
+$\sum_{i=1}^{q} c_i \cdot \underset{j \in S_i}{\circ} (M_j \cdot \mathbf{z}) = \mathbf{0}$
 
-(The Hadamard product is simply element-wise multiplication: $[a, b, c] \circ [d, e, f] = [ad, be, cf]$. When the formula says "Hadamard product of $M_j \cdot \mathbf{z}$," it means: compute each matrix-vector product separately, then multiply the resulting vectors element by element.)
+(The operator $\circ$ denotes the Hadamard product -- element-wise multiplication: $[a, b, c] \circ [d, e, f] = [ad, be, cf]$. The product indexed over $S_i$ means: compute each matrix-vector product $M_j \cdot \mathbf{z}$ separately, then multiply the resulting vectors element by element.)
 
 This looks abstract. Here is what it means concretely.
 
@@ -40,7 +40,7 @@ CCS is the native constraint system for every major modern folding scheme:
 
 - **HyperNova** (Kothapalli and Setty, 2023): multi-folding for CCS, using the sumcheck protocol to fold multiple CCS instances simultaneously.
 - **ProtoStar** and **ProtoGalaxy** (2023): folding schemes that generalize Nova to higher-degree constraint systems -- which CCS naturally supports.
-- **Neo** (Nguyen and Setty, 2025): the first lattice-based folding scheme for CCS, achieving post-quantum security with native small-field efficiency.
+- **Neo** (Nguyen and Setty, 2025): a lattice-based folding scheme targeting CCS natively, achieving post-quantum security with small-field efficiency. (LatticeFold, by Boneh and Chen, is an earlier lattice-based folding scheme; Neo is specifically designed for CCS with different structural properties.)
 - **LatticeFold+** (Boneh and Chen, 2025): extends LatticeFold with faster, simpler lattice-based folding and shorter proofs.
 
 Without CCS, none of these systems could claim generality. Each would be locked to R1CS (like Nova) or would need separate implementations for each constraint format. CCS is the abstraction layer that made the folding revolution possible.
@@ -75,7 +75,7 @@ This is not a metaphor. It is a theorem. Any R1CS instance, any AIR instance, an
 
 The practical consequence is immediate. Before CCS, a developer choosing R1CS was simultaneously choosing Groth16 or Spartan. A developer choosing AIR was choosing STARKs. A developer choosing PLONKish was choosing Halo2 or PLONK. Switching constraint systems meant rewriting the circuit and the proof system integration. CCS breaks this coupling. Write your constraints in whichever dialect is natural for your computation -- R1CS for simple circuits, AIR for VM traces, PLONKish for mixed-gate workloads -- and any CCS-compatible proof system will accept them without translation overhead. The grammar is universal; the dialects are a matter of convenience.
 
-There is a deeper mathematical point here, one that Penrose would appreciate. The existence of a universal constraint grammar is not obvious. One might have expected that the structural differences between R1CS (bilinear, flat), AIR (uniform, sequential), and PLONKish (selector-gated, permutation-wired) would require genuinely different proof techniques -- that no single algebraic framework could capture all three without paying some conversion tax. CCS demonstrates that the differences are shallow. At the level of sparse matrix-vector products and Hadamard products, all three constraint systems are doing the same thing. The "three families" narrative that dominated ZK from 2018 to 2022 was a historical artifact, not a mathematical necessity.
+The existence of a universal constraint grammar is not obvious. One might have expected that the structural differences between R1CS (bilinear, flat), AIR (uniform, sequential), and PLONKish (selector-gated, permutation-wired) would require genuinely different proof techniques -- that no single algebraic framework could capture all three without paying some conversion tax. CCS demonstrates that the differences are shallow. At the level of sparse matrix-vector products and Hadamard products, all three constraint systems are doing the same thing. The "three families" narrative that dominated ZK from 2018 to 2022 was a historical artifact, not a mathematical necessity.
 
 CCS provides the universal grammar. Sumcheck provides the universal verification engine. The two are partners: CCS tells us *what* the constraints look like -- a sum of Hadamard products of matrix-vector pairs -- and sumcheck tells us *how to check* that sum without evaluating every term. The verifier does not inspect every cell of the constraint spreadsheet. Instead, sumcheck reduces the problem: "does this multilinear polynomial sum to zero over the boolean hypercube?" becomes, after n rounds of interaction, "does this polynomial evaluate correctly at one random point?" The reduction is exponential -- from $2^n$ checks to $n$ rounds -- and it is the reason modern proof systems can verify in time logarithmic in the computation size.
 
@@ -130,11 +130,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "Neo (Nguyen and Setty, 2025): the first lattice-based folding scheme for CCS" — Neo is described as "the first lattice-based folding scheme for CCS" here, but LatticeFold (Boneh and Chen) is a predecessor; the claim should clarify whether Neo is first for CCS specifically or first lattice-based generally, as LatticeFold predates Neo and also targets CCS-like constraints.
-- [P2] (A) The CCS satisfying condition uses the Hadamard product symbol "$\bigcirc$" in the display formula, but the explanation parenthetical correctly defines it as element-wise multiplication ("$\circ$"). The notation inconsistency (large circle vs. small circle) between formula and prose may confuse readers; standardize to $\circ$ throughout.
-- [P2] (C) "There is a deeper mathematical point here, one that Penrose would appreciate" — name-dropping Penrose adds no information and reads as padding; cut.
 - [P3] (E) The section mentions ProtoStar and ProtoGalaxy only by name with no description of how they extend Nova to higher-degree constraints. Given that this is the CCS-as-universal-target section, a one-line characterization of each would add useful depth.
 - [P3] (D) The "Three Dialects, One Grammar" subsection repeats content (the R1CS-as-CCS derivation) that appears in the earlier "The Idea" subsection. The repetition is intentional for emphasis but could be tightened.
 

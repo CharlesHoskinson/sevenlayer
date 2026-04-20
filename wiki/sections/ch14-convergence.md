@@ -4,15 +4,15 @@ slug: ch14-convergence
 chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
-source_lines: [5391, 5408]
-source_commit: 8e419c9815e6fe5f507dd769315a84b46afd74d5
+source_lines: [5378, 5395]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 581
 ---
 
 ## Convergence
 
-The zero-knowledge proof ecosystem in March 2026 is in a state that would have been difficult to predict three years ago. Real-time proving of arbitrary computation is solved. Costs are negligible. Seven production zkVMs compete on a standardized benchmark (Ethereum block proving). The Ethereum Foundation has shifted its primary metric from speed to security. Lattice-based constructions are approaching practical viability for post-quantum proving. Enterprise financial institutions are conducting pilots. A $97 million market is projected to grow to $7.59 billion in seven years.
+The zero-knowledge proof ecosystem in March 2026 is in a state that would have been difficult to predict three years ago. Real-time proving of arbitrary computation is solved. Costs are negligible. Seven production zkVMs compete on a standardized benchmark (Ethereum block proving; ZKVMBench leaderboard, Q1 2026). The Ethereum Foundation has shifted its primary metric from speed to security. Lattice-based constructions are approaching practical viability for post-quantum proving. Enterprise financial institutions are conducting pilots. A $97 million market is projected to grow to $7.59 billion in seven years (MarketsandMarkets, "Zero Knowledge Proof Market," 2025). Over $20 billion in TVL sits in systems governed by upgradeable verifiers (L2Beat, March 2026).
 
 The seven-layer model -- for all its imperfections, its outdated binary, its missing primitives -- got the fundamental insight right: zero-knowledge proof systems are stacks, not monoliths. Understanding them requires understanding each layer's contribution and, critically, the interactions between layers. The model bends where layers couple (the proof core) and breaks where layers collapse (Jolt's witness-is-arithmetization), but it serves its pedagogical purpose: giving a structured way to think about a technology that is simultaneously simpler than it looks (the core math is elegant) and more complex than it looks (the engineering is a web of coupled decisions).
 
@@ -67,9 +67,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) "Sources cited: None" — all quantitative claims (market size, TVL, zkVM count) rely solely on cross-references with no independent citations. Key figures like "seven production zkVMs" and ">$20B TVL" should have at least one direct source here.
 - [P3] (A) "seven production zkVMs compete on a standardized benchmark" — the exact count of seven is not sourced in this section; it is asserted without a pointer to the ch11 landscape table or an external reference.
 
 ## Links

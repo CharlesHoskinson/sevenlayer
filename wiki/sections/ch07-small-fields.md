@@ -4,8 +4,8 @@ slug: ch07-small-fields
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3195, 3247]
-source_commit: 7623e4c122cda2624dd2a679440afa4136b8f409
+source_lines: [3177, 3229]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 961
 ---
@@ -42,13 +42,13 @@ Starting around 2022, a radical idea took hold: *use much smaller primes*.
 
 **Mersenne-31 / M31** ($p = 2^{31} - 1$, a 31-bit Mersenne prime). The simplest possible arithmetic -- reduction modulo a Mersenne prime is a single addition. Used by StarkWare's Stwo and Circle STARKs.
 
-**Goldilocks** ($p = 2^{64} - 2^{32} + 1$, a 64-bit prime). Fits in a single 64-bit machine word. Has high 2-adicity -- meaning $2^{32}$ divides $p - 1$, which tells you the field supports efficient radix-2 NTTs (the finite-field Fast Fourier Transform that dominates prover computation) with domain sizes up to $2^{32}$. Used by Polygon's Plonky2 and by Neo/Nightstream.
+**Goldilocks** ($p = 2^{64} - 2^{32} + 1$, a 64-bit prime). Fits in a single 64-bit machine word. Has 2-adicity 32 -- meaning $2^{32}$ divides $p - 1$ (the exponent 32 is the 2-adicity, not the value $2^{32}$ itself) -- which tells you the field supports efficient radix-2 NTTs (the finite-field Fast Fourier Transform that dominates prover computation) with domain sizes up to $2^{32}$. Used by Polygon's Plonky2 and by Neo/Nightstream.
 
 The performance impact is not incremental. It is a factor of 100. Arithmetic on 31-bit numbers is roughly 100 times faster than arithmetic on 254-bit numbers [Haboeck, Levit, and Papini, "Circle STARKs," ePrint 2024/278; confirmed by SP1 Hypercube benchmarks, Succinct Labs, 2025]. This is not algorithmic improvement -- it is the raw physics of computer hardware. A 31-bit multiply is one CPU instruction. A 254-bit multiply is an entire subroutine involving carry propagation, multi-limb multiplication, and modular reduction.
 
 This single observation -- that smaller fields make faster provers -- catalyzed the performance explosion in zero-knowledge proving. Circle STARKs over M31 (Stwo) achieve throughputs that were unimaginable with BN254-based systems. Plonky2 over Goldilocks enabled the first practical recursive STARKs.
 
-But smaller fields introduce a subtlety that Penrose would appreciate for its geometric elegance. A single 31-bit field element provides only 31 bits of security against certain attacks. To achieve 128-bit security, systems use *extension fields*. An extension field is built by the same trick as complex numbers: you take a small field and add extra "dimensions" to your arithmetic, and the security grows with the dimension. The cost is slightly more expensive arithmetic per operation -- but each operation now works in a larger, more secure space -- enlarging $\mathbb{F}_p$ to $\mathbb{F}_{p^k}$ for some small $k$. In Stwo, the extension degree is 4, giving effectively 124 bits. In Neo, the extension is $\mathbb{F}_{q^2}$ over Goldilocks, giving 128 bits. The extension adds complexity but the arithmetic is still vastly cheaper than native 254-bit operations.
+But smaller fields introduce a subtlety that Penrose would appreciate for its geometric elegance. A single 31-bit field element provides only 31 bits of security against certain attacks. To achieve 128-bit security, systems use *extension fields*. An extension field is built by the same trick as complex numbers: you take a small field and add extra "dimensions" to your arithmetic, and the security grows with the dimension. The cost is slightly more expensive arithmetic per operation -- but each operation now works in a larger, more secure space -- enlarging $\mathbb{F}_p$ to $\mathbb{F}_{p^k}$ for some small $k$. For BabyBear, a degree-4 extension is used (not degree 2) because BabyBear's order structure means $\mathbb{F}_{p^2}$ still falls short of 128-bit security for the relevant attacks; degree 4 gives four BabyBear elements per extended element and pushes security to ~124 bits. In Stwo over M31, the extension degree is also 4, giving effectively 124 bits. In Neo, the extension is $\mathbb{F}_{q^2}$ over Goldilocks, giving 128 bits. The extension adds complexity but the arithmetic is still vastly cheaper than native 254-bit operations.
 
 ### Why This Choice Is a One-Way Door
 
@@ -110,9 +110,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) Goldilocks 2-adicity: text says the field "supports efficient radix-2 NTTs…with domain sizes up to $2^{32}$" and "high 2-adicity — meaning $2^{32}$ divides $p-1$." The 2-adicity is 32 (the exponent), not $2^{32}$ (the value). Saying "$2^{32}$ divides $p-1$" is correct but calling it "2-adicity $2^{32}$" in the key claims is a notational conflation that could confuse readers expecting the exponent.
 - [P3] (E) BabyBear's extension field degree is stated as 4 (giving ~124 bits) but the specific extension construction and why degree 4 is required over BabyBear is not explained; a brief note on irreducible polynomial choice would strengthen the depth.
 
 ## Links

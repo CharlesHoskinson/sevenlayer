@@ -4,8 +4,8 @@ slug: ch02-option-value-analysis
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [714, 738]
-source_commit: 29475f3770e85700685f72ef97723a324b0994c0
+source_lines: [698, 722]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 598
 ---
@@ -30,7 +30,7 @@ What is this option worth? The calculation is sensitive to assumptions, so consi
 
 At the base case -- a 30% probability that cryptographically relevant quantum computers arrive within 15 years -- the expected cost of the trusted-setup path is $15 million. That is a real liability sitting on the balance sheet of every system built on BLS12-381 or BN254 today. Compare that to the annual cost premium of transparent proofs (perhaps $3-4 million more per year in on-chain verification, shrinking as STARKs get cheaper). Even in the base case, the option is expensive enough to take seriously. In the cautious case, it dominates.
 
-There is also the "Harvest Now, Decrypt Later" threat, and it may be the most urgent variant of the quantum risk. Adversaries who record the public SRS today do not need a quantum computer now. They need one *eventually*. Intelligence agencies routinely archive encrypted communications for future decryption -- the NSA's upstream collection programs, disclosed in 2013, were built on exactly this logic. Are they recording SRS parameters? The Federal Reserve's FEDS working paper on post-quantum risk for distributed ledger networks takes this possibility seriously enough to recommend that systems with 10+ year lifespans use post-quantum or post-quantum-ready primitives [Mascelli, Rodden, "'Harvest Now Decrypt Later': Examining Post-Quantum Cryptography and the Data Privacy Risks for Distributed Ledger Networks," FEDS 2025-093, Federal Reserve Board, 2025; https://www.federalreserve.gov/econres/feds/harvest-now-decrypt-later-examining-post-quantum-cryptography-and-the-data-privacy-risks-for-distributed-ledger-networks.htm]. For a privacy blockchain whose users chose it specifically to protect sensitive data, HNDL means that today's shielded transactions could become tomorrow's open records -- not because the cryptography was broken in real time, but because it was archived and broken later.
+There is also the "Harvest Now, Decrypt Later" threat. For systems with 10+ year lifespans, it may be the most pressing near-term exposure -- not because a quantum computer exists today, but because adversaries can archive public parameters now and decrypt later. Adversaries who record the public SRS today do not need a quantum computer now. They need one *eventually*. Intelligence agencies routinely archive encrypted communications for future decryption -- the NSA's upstream collection programs, disclosed through Snowden documents in 2013 (reported by Barton Gellman and Laura Poitras, *Washington Post*, June 2013), were built on exactly this logic. Are they recording SRS parameters? The Federal Reserve's FEDS working paper on post-quantum risk for distributed ledger networks takes this possibility seriously enough to recommend that systems with 10+ year lifespans use post-quantum or post-quantum-ready primitives [Mascelli, Rodden, "'Harvest Now Decrypt Later': Examining Post-Quantum Cryptography and the Data Privacy Risks for Distributed Ledger Networks," FEDS 2025-093, Federal Reserve Board, 2025; https://www.federalreserve.gov/econres/feds/harvest-now-decrypt-later-examining-post-quantum-cryptography-and-the-data-privacy-risks-for-distributed-ledger-networks.htm]. For a privacy blockchain whose users chose it specifically to protect sensitive data, HNDL means that today's shielded transactions could become tomorrow's open records -- not because the cryptography was broken in real time, but because it was archived and broken later.
 
 The answer depends on your estimate of the quantum timeline. If you believe cryptographically relevant quantum computers are 20+ years away, the option has low present value, and the performance advantage of pairing-based setups dominates. If you believe the timeline is 10-15 years -- consistent with the NIST 2035 migration target and the NSA's CNSA 2.0 transition schedule -- the option is substantial. Transparent setups satisfy the Federal Reserve's criterion by default. Trusted setups on pairing-friendly curves do not.
 
@@ -76,10 +76,10 @@ A trusted setup on BLS12-381 or BN254 buys performance today but forecloses post
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) The NSA upstream collection program reference lacks a source beyond "(disclosed in 2013)"; the Snowden disclosures are public record but a specific document or report would strengthen the citation.
-- [P2] (C) "There is also the 'Harvest Now, Decrypt Later' threat, and it may be the most urgent variant" — "it is worth noting" pattern avoided, but "it may be the most urgent" is a claim that needs qualification (urgent relative to what horizon?). Tighten.
 - [none] (D) No structural contradictions found.
 - [P3] (E) The option-value framework does not account for the possibility of SNARK-to-STARK migration without a new ceremony — the hybrid pipeline already uses a transparent inner proof, so a plausible upgrade path exists that the analysis ignores.
 

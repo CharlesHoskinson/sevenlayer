@@ -5,7 +5,7 @@ chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [177, 203]
-source_commit: b965c2493b961bc9b2103781f78f2c7e98e4521f
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 630
 ---
@@ -28,13 +28,13 @@ Three properties make this work. They recur at every layer of the story, and you
 
 The first: *the honest succeed*. If you genuinely are twenty-one, the proof will always verify. No glitch, no false rejection, no edge case where valid credentials fail. Cryptographers call this **completeness**. Without it, honest people get turned away, and the technology dies on contact with reality.
 
-The second: *the dishonest fail*. A nineteen-year-old cannot forge this proof. They cannot borrow your credential and make it work -- the proof is bound to a secret key only you possess. They cannot manipulate the computation to make nineteen appear as twenty-one -- the underlying mathematics will not verify. Cryptographers call this **soundness**, and the word "cannot" is doing real work: the system targets 128-bit security, meaning an adversary needs on the order of $2^{128}$ operations to produce a forged proof -- a number with thirty-nine digits. The sun will burn out first.
+The second: *the dishonest fail*. A nineteen-year-old cannot forge this proof. They cannot borrow your credential and make it work -- the proof is bound to a secret key only you possess. They cannot manipulate the computation to make nineteen appear as twenty-one -- the underlying mathematics will not verify. Cryptographers call this **soundness**, and the word "cannot" is doing real work: the system targets 128-bit security, meaning an adversary needs on the order of $2^{128}$ operations to produce a forged proof -- a number with thirty-nine digits. The sun will burn out first. A stronger variant, *knowledge-soundness*, asks not just that cheaters fail but that any convincing prover must actually *know* the secret -- which is where the "K" in SNARK comes from, and a distinction Chapter 5 will sharpen.
 
 The third: *nothing leaks*. Not a partial hint about your birth month. Not a statistical correlation that narrows your age range. An adversary who intercepts the proof learns exactly what the bouncer learned -- you are old enough -- and nothing more. The proof is *simulatable*: anyone could generate something that looks identical to it without knowing your date of birth at all. Cryptographers call this **zero-knowledge**. It is the property that makes the trick feel impossible, and the one this book exists to explain.
 
-For decades, mathematicians assumed these three properties were incompatible. A proof that convinces must carry information -- otherwise, what is the verifier checking? The insight of Goldwasser, Micali, and Rackoff was that *interaction* and *randomness* could substitute for disclosure. The verifier asks random questions. The prover answers. The pattern of answers is convincing, but each individual answer, taken alone, is meaningless. The verifier learns that the statement is true without learning *why* it is true, because the randomness of the questions makes the answers statistically independent of the secret.
+For decades, mathematicians assumed these three properties were incompatible -- an assumption the GMR paper itself set out to overturn. A proof that convinces must carry information -- otherwise, what is the verifier checking? The insight of Goldwasser, Micali, and Rackoff was that *interaction* and *randomness* could substitute for disclosure. The verifier asks random questions. The prover answers. The pattern of answers is convincing, but each individual answer, taken alone, is meaningless. The verifier learns that the statement is true without learning *why* it is true, because the randomness of the questions makes the answers statistically independent of the secret.
 
-That you can convince without informing -- that proof and knowledge can be decoupled -- is a foundational insight, and one that took the mathematical community decades to absorb.
+That you can convince without informing -- that proof and knowledge can be decoupled -- is foundational, and took the mathematical community decades to absorb.
 
 
 
@@ -69,11 +69,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) The claim "mathematicians assumed these three properties were incompatible" is asserted without citation; the GMR paper itself is the source and should be named here rather than only in the previous section.
-- [P2] (C) "The sun will burn out first" — vivid but used identically in the Key claims block ("the sun will burn out first"); one instance is enough.
-- [P2] (E) Soundness is described only as "dishonest provers fail"; knowledge-soundness (the extractor argument) — which is what the "K" in SNARK refers to — is not distinguished from plain soundness, an omission that will confuse readers who later encounter the distinction in Chapter 5.
 - [none] D — no issues found.
 
 ## Links

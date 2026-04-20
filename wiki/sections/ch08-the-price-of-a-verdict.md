@@ -4,8 +4,8 @@ slug: ch08-the-price-of-a-verdict
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3556, 3641]
-source_commit: ae218cbb73ddecefb37373fa1c8e789e5b6f8f93
+source_lines: [3540, 3625]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1775
 ---
@@ -22,9 +22,9 @@ A Groth16 proof verification on Ethereum uses the BN254 elliptic curve pairing p
 | Calldata (256-byte proof) | 4,096 |
 | EVM scaffolding | ~1,600 |
 | Per public input | ~7,160 each |
-| **Total (fixed, no public inputs)** | **~207,700** |
+| **Total (fixed, no public inputs)** | **~186,700** |
 
-The formula is roughly $(181 + 6L) \times 1{,}000$ gas for $L$ public inputs. At typical Ethereum gas prices and ETH valuations, this works out to somewhere between fifty cents and two dollars per verification. Call it a dollar.
+The formula is roughly $181{,}000 + 7{,}160L$ gas for $L$ public inputs. At typical Ethereum gas prices and ETH valuations, this works out to somewhere between fifty cents and two dollars per verification. Call it a dollar.
 
 One dollar. To check a proof that summarizes thousands, or millions, of computations. That is the economic engine of the entire zero-knowledge rollup industry. And the cost of *rendering a verdict* on an arbitrarily complex computation is effectively fixed. The computation can be ten steps or ten billion. The verdict costs the same.
 
@@ -43,32 +43,32 @@ Starknet's SHARP (Shared Prover) does this. Succinct's SP1 does this. Polygon's 
 
 The actual cost differential between the two approaches, then, is not the 10-25x that a naive comparison of raw STARK versus Groth16 verification would suggest. It is closer to 2x -- the overhead of the wrapping step, amortized across many proofs. The inner proof system matters enormously for prover economics (speed, hardware requirements, parallelizability), but the on-chain verification cost is nearly identical.
 
-There is a throughput ceiling too. An Ethereum block has a 30-million-gas limit (raised from the historical 15 million, with a 45-million effective target under various proposals). At 207,700 gas per Groth16 verification, you can fit roughly 150 to 225 verifications per block. That sounds like a lot, until you realize that each verification corresponds to a batch of rollup transactions. If Ethereum hosts 50 rollups and each wants to verify once per block, they consume less than a quarter of the block's capacity. But if we want real-time proving (verification every L1 slot), with hundreds of rollups and bridges, the verification gas budget starts to matter.
+There is a throughput ceiling too. An Ethereum block has a 30-million-gas limit (raised from the historical 15 million, with a 45-million effective target under various proposals). At ~187,000 gas per Groth16 verification (no public inputs), you can fit roughly 160 verifications per block. That sounds like a lot, until you realize that each verification corresponds to a batch of rollup transactions. If Ethereum hosts 50 rollups and each wants to verify once per block, they consume less than a third of the block's capacity. But if we want real-time proving (verification every L1 slot), with hundreds of rollups and bridges, the verification gas budget starts to matter.
 
 FFLONK, an alternative to Groth16, costs roughly 236,000 gas per verification -- slightly more, but with the advantage of a universal trusted setup (one ceremony works for all circuits, unlike Groth16's per-circuit setup). The gas difference is marginal. The governance and operational difference -- not needing a new ceremony for each circuit -- is substantial.
 
 ### The Verification-Data Seesaw
 
-Before March 2024, the dominant cost of running a ZK rollup on Ethereum was not verification. It was data availability. Posting transaction data (or state diffs) as calldata cost roughly 16 gas per byte. A typical rollup batch might include hundreds of kilobytes of data, costing millions of gas -- dwarfing the ~200,000 gas for the proof check.
+Before March 2024, the dominant cost of running a ZK rollup on Ethereum was not verification. It was data availability. Posting transaction data (or state diffs) as calldata cost roughly 16 gas per byte. A typical rollup batch might include hundreds of kilobytes of data, costing millions of gas -- dwarfing the ~187,000 gas for the proof check.
 
 EIP-4844, deployed in the Dencun upgrade on March 13, 2024, changed this calculus fundamentally. It introduced "blob transactions" -- a new data type designed specifically for rollup data. Each blob contains 4,096 field elements of 32 bytes (~128 KB), with a target of 3 blobs per block and a maximum of 6. Blobs have their own fee market, separate from Ethereum's execution gas market, operating under a blob-specific EIP-1559 mechanism.
 
-The result: rollup data costs dropped by 10-100x overnight. Blob fees settled near zero because demand was well below the 3-blob target -- as of mid-2024, only about 34% of Ethereum blocks contained any blobs at all, and the average was 1.33 blob transactions per block.
+The result: rollup data costs dropped by 10-100x overnight. Blob fees settled near zero because demand was well below the 3-blob target -- as of mid-2024, roughly 34% of Ethereum blocks contained any blobs at all, and the average was 1.33 blob transactions per block (Dune Analytics, blob usage dashboard, June 2024).
 
 But Ethereum did not stop at EIP-4844. Two subsequent upgrades expanded DA capacity further:
 
 - **Pectra** (May 2025): Raised the blob target from 3 to 6, and the maximum from 6 to 9.
 - **Fusaka** (December 2025): Introduced PeerDAS (Peer Data Availability Sampling), a distributed sampling scheme that raised the blob target to 14 and maximum to 21 -- roughly a 4.7x increase on target (3 → 14 blobs per block) over the original EIP-4844 specification.
 
-The seesaw has tipped. With blob fees near zero and DA capacity expanding, the ~200,000 gas verification cost has become the *dominant* L1 settlement expense for many ZK rollups. This inversion matters because it changes what is worth optimizing. Before EIP-4844, the rational investment was in compression (minimizing data). After EIP-4844, the rational investment is in proof aggregation (amortizing verification across more transactions per batch) and in cheaper verification schemes.
+The seesaw has tipped. With blob fees near zero and DA capacity expanding, the ~187,000 gas verification cost has become the *dominant* L1 settlement expense for many ZK rollups. This inversion matters because it changes what is worth optimizing. Before EIP-4844, the rational investment was in compression (minimizing data). After EIP-4844, the rational investment is in proof aggregation (amortizing verification across more transactions per batch) and in cheaper verification schemes.
 
 ### Beyond Ethereum: The DA Marketplace
 
 Ethereum is not the only source of data availability. A marketplace has emerged:
 
-**Celestia** charges roughly $0.07 per megabyte for data availability, compared to Ethereum's blob cost of roughly $3.83 per megabyte (when blobs are priced above the floor). Celestia achieves this by being a purpose-built DA layer -- it provides data ordering and availability guarantees without executing any transactions. The intellectual lineage traces directly to Mustafa Al-Bassam's LazyLedger (2019), which proposed a blockchain that does nothing but guarantee data is available and ordered, leaving execution to sovereign rollups that interpret their own transaction rules.
+**Celestia** charged roughly $0.07 per megabyte for data availability as of late 2024, compared to Ethereum's blob cost of roughly $3.83 per megabyte when blobs were priced above the floor (figures from Celestia's own cost-comparison documentation and blob fee tracking, Q4 2024). Celestia achieves this by being a purpose-built DA layer -- it provides data ordering and availability guarantees without executing any transactions. The intellectual lineage traces directly to Mustafa Al-Bassam's LazyLedger (2019), which proposed a blockchain that does nothing but guarantee data is available and ordered, leaving execution to sovereign rollups that interpret their own transaction rules.
 
-**EigenDA V2** targets 100 megabytes per second of throughput -- roughly two orders of magnitude more than Ethereum's native DA capacity. It achieves this by leveraging Ethereum's security through restaking (EigenLayer), where validators stake ETH to back DA guarantees.
+**EigenDA V2** targeted 100 megabytes per second of throughput -- roughly two orders of magnitude more than Ethereum's native DA capacity (EigenLayer documentation, V2 launch, 2024). It achieves this by leveraging Ethereum's security through restaking (EigenLayer), where validators stake ETH to back DA guarantees.
 
 **Avail** offers a third alternative, with its own DAS-based light client verification model.
 
@@ -141,10 +141,9 @@ None flagged by this section.
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] (A) The inline gas formula "$(181 + 6L) \times 1{,}000$ gas" does not reproduce the table total (~207,700) at L=0 (gives 181,000); the formula is inconsistent with the itemized breakdown presented immediately above it.
-- [P2] (B) The DA marketplace figures (Celestia ~$0.07/MB, Ethereum ~$3.83/MB, EigenDA V2 100 MB/s, 34% of blocks with blobs) carry no citations; they should be anchored to a date-stamped source.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

@@ -4,15 +4,15 @@ slug: ch08-case-study-midnight-and-the-three-token-architecture
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3811, 3880]
-source_commit: ae218cbb73ddecefb37373fa1c8e789e5b6f8f93
+source_lines: [3795, 3864]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1211
 ---
 
 ## Case Study: Midnight and the Three-Token Architecture
 
-Midnight, developed by IOG (Input Output Global), provides an instructive case study for Layer 7 because it makes different architectural choices than the Ethereum rollup model. Where Ethereum rollups post proofs to a general-purpose L1 and rely on upgradeable verifier contracts, Midnight integrates verification into its consensus layer and uses a novel three-token economic model that directly shapes the verification experience.
+Midnight, developed by IOG (Input Output Global), provides an instructive case study for Layer 7 because it makes different architectural choices than the Ethereum rollup model. Where Ethereum rollups post proofs to a general-purpose L1 and rely on upgradeable verifier contracts, Midnight integrates verification into its consensus layer and uses a novel three-token economic model that directly shapes the verification experience. The architecture described here is drawn from the Midnight developer documentation and the Compact language specification (docs.midnight.network, accessed early 2026).
 
 ### The Verification Pipeline
 
@@ -123,9 +123,10 @@ None in this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) No sources cited; the entire Midnight architecture description rests on undocumented internal specs — at minimum a link to official Midnight documentation or the Compact language spec should be added.
 - [P3] (A) [[nova]] is listed in Entities but Nova (a folding scheme) does not appear in this section's text and is not relevant to the three-token architecture; this is likely a tagging error.
 
 ## Links

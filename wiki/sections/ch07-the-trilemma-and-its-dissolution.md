@@ -4,8 +4,8 @@ slug: ch07-the-trilemma-and-its-dissolution
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3160, 3194]
-source_commit: 7623e4c122cda2624dd2a679440afa4136b8f409
+source_lines: [3142, 3176]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 643
 ---
@@ -21,13 +21,13 @@ I call this shape of tradeoffs the *cryptographic primitives trilemma* -- my own
 The trilemma positions the four families like this:
 
 - **KZG** achieves algebraic functionality and succinctness but lacks post-quantum security.
-- **FRI** achieves post-quantum security but lacks algebraic functionality (no homomorphism, so no folding) and offers only moderate succinctness (large proofs).
+- **FRI** achieves post-quantum security and moderate succinctness (transparent, polylogarithmic proofs and verification), but lacks algebraic functionality -- no homomorphism, so no folding.
 - **IPA** achieves moderate algebraic functionality but lacks both post-quantum security and full succinctness (linear verification).
 - **Lattice** achieves algebraic functionality and post-quantum security. Succinctness is the remaining gap.
 
 The framing is useful as a historical snapshot. As a statement of permanent truth, it is increasingly wrong.
 
-The lattice revolution -- Greyhound (2024), LatticeFold (Boneh-Chen; ePrint 2024/257, published at ASIACRYPT 2025), LatticeFold+ (2025), Neo (2025), Symphony (2026) -- has been systematically closing the succinctness gap. Greyhound demonstrated 50-kilobyte proofs with sublinear verification. LaBRADOR achieved 58-kilobyte proofs for large constraint systems. Symphony's high-arity folding can compress a final proof via a compact SNARK that, if instantiated with a pairing-based scheme, produces constant-size output -- and if instantiated with a lattice-based scheme, remains fully post-quantum.
+The lattice revolution -- Greyhound (2024), LatticeFold (Boneh-Chen; ePrint 2024/257, published at ASIACRYPT 2025), LatticeFold+ (2025), Neo (2025), Symphony (ePrint 2025/1905, 2026) -- has been systematically closing the succinctness gap. Greyhound demonstrated 50-kilobyte proofs with sublinear verification. LaBRADOR achieved 58-kilobyte proofs for large constraint systems. Symphony's high-arity folding can compress a final proof via a compact SNARK that, if instantiated with a pairing-based scheme, produces constant-size output -- and if instantiated with a lattice-based scheme, remains fully post-quantum.
 
 The trilemma is better understood as a *spectrum* that is being actively compressed. The engineering challenge is real (lattice proofs are still 1000x larger than KZG), but the trajectory is clear: lattice schemes are approaching practical competitiveness, and the gap shrinks with each generation. What looked like a permanent constraint on the geometry of the design space is turning out to be an artifact of our current engineering, not a law of mathematical nature.
 
@@ -84,10 +84,10 @@ None in this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) FRI is described as achieving "post-quantum security but lacks algebraic functionality (no homomorphism, so no folding) and offers only moderate succinctness (large proofs)" — the trilemma as stated has three properties, but the text inconsistently uses "moderate succinctness" for FRI in the list and then later says FRI "achieves post-quantum security" and "reasonable verification (polylogarithmic)" — the mapping of FRI to exactly two of three properties is blurred.
-- [P2] (B) Symphony (2026) appears in key claims with "ePrint 2025/1905" but Sources cited lists nothing for this section; the Symphony citation should be in Sources cited.
 - [P3] (C) The closing rhetorical question ("*is this trilemma fundamental?*") is effective but the multi-sentence follow-up "The answer, as of 2026, is no" paragraph has an AI-essay cadence (question → answer → hedged elaboration → conclusion). Could be tightened.
 
 ## Links

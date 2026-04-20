@@ -4,8 +4,8 @@ slug: ch12-midnight-at-a-glance
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4793, 4807]
-source_commit: 65e82b18c746552064750d4b1ea3c6d13bacbe3a
+source_lines: [4780, 4794]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 178
 ---
@@ -21,7 +21,7 @@ Compact source --> compactc compiler --> ZKIR circuits + TypeScript bindings + p
                                         (localhost:6300)      (browser/node)   (blockchain node)
 ```
 
-The compiler produces three artifacts from a single `.compact` file: ZKIR circuit descriptions in JSON, TypeScript API bindings for the DApp frontend, and cryptographic proving/verifier key pairs. This three-part output reflects the fundamental architecture of privacy-preserving computation: what can be proven (ZKIR), what runs privately (TypeScript witnesses), and what makes proofs possible (keys).
+The compiler produces three artifacts from a single `.compact` file: ZKIR circuit descriptions in JSON, TypeScript API bindings for the DApp frontend, and cryptographic proving/verifier key pairs. This three-part output reflects the fundamental architecture of privacy-preserving computation: what can be proven (ZKIR), what runs privately (TypeScript witnesses), and what makes proofs possible (keys). The proof server address (`localhost:6300`) is fixed in the MidnightJS SDK Reference (§3.1); the per-UTXO shielded/unshielded distinction is documented in the Wallet SDK Reference (§2.4).
 
 Midnight's token model has three layers. **NIGHT** is the governance and staking token, always unshielded (transparent). **DUST** is the fee token, a public (unshielded) token per the wallet SDK, generated from staking NIGHT over time, with a balance computed from generation parameters. **Custom tokens** can be either shielded (encrypted, spent via ZK proofs and nullifiers) or unshielded (transparent, spent via BIP-340 Schnorr signatures), at the developer's choice per UTXO.
 
@@ -61,9 +61,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) `localhost:6300` and per-UTXO shielding/unshielded token claims are stated as fact with no source citation; add references to Wallet SDK or Developer Guide.
 - [P3] (C) The pipeline ASCII diagram labels are clean, but the prose phrase "This three-part output reflects the fundamental architecture" edges toward boilerplate framing — tighten.
 
 ## Links

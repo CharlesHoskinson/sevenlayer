@@ -4,23 +4,21 @@ slug: ch05-the-constraint-system-evolution-r1cs-air-plonkish
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1684, 1875]
-source_commit: eb72fd8bb82cecd60e59036b27847eea5797a886
+source_lines: [1663, 1852]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 5095
 ---
 
 ## The Constraint System Evolution: R1CS, AIR, PLONKish
 
-The three major constraint systems -- R1CS, AIR, and PLONKish -- emerged in a span of just seven years (2012-2019). Each was designed to solve a specific limitation of its predecessor, but each also introduced new trade-offs. Understanding this evolution is not optional for understanding modern ZK: every proof system, every zkVM, and every privacy protocol in production today is built on one of these three foundations (or, increasingly, on CCS, which unifies all three).
-
-The history of arithmetization is a history of increasing expressiveness. Each new constraint system solved a specific limitation of its predecessor. Understanding this genealogy matters because the constraint system you choose determines which proof systems you can use, which fields are efficient, and how much overhead the encoding imposes.
+The three major constraint systems -- R1CS, AIR, and PLONKish -- emerged in a span of just seven years (2012-2019). Each solved a specific limitation of its predecessor, at the cost of new trade-offs. Understanding this evolution is not optional for understanding modern ZK: every proof system, every zkVM, and every privacy protocol in production today is built on one of these three foundations (or, increasingly, on CCS, which unifies all three). The constraint system you choose determines which proof systems you can use, which fields are efficient, and how much overhead the encoding imposes.
 
 The genealogy also reveals how rapidly the field moves. R1CS was introduced in 2012. By 2023, it was already the "legacy" format -- still deployed in production (Groth16 is not going away), but superseded by more expressive systems for new development. The eleven-year span from R1CS to CCS saw more architectural innovation in constraint system design than the previous four decades of theoretical computer science produced. This acceleration is driven by practical pressure: the economic value of efficient zero-knowledge proofs creates strong incentives for better arithmetization.
 
 ### R1CS: The Assembly Language (2012)
 
-The first practical arithmetization emerged from the work of Gennaro, Gentry, Parno, and Raykova (GGPR) in 2012, who introduced the QAP (Quadratic Arithmetic Program) framework that R1CS later formalized. The name "Rank-1 Constraint System" describes the mathematical structure precisely: each constraint has rank 1 (it is the product of two linear functions), and the system is a collection of such constraints. The "rank-1" designation means each constraint captures exactly one multiplication -- a bilinear relationship between variables. Addition is free (it does not require a constraint, because linear combinations can be folded into the matrix entries). Only multiplication generates constraints. This is why the number of R1CS constraints for a circuit equals the number of multiplication gates, not the total number of gates.
+The first practical arithmetization emerged from the work of Gennaro, Gentry, Parno, and Raykova (GGPR) in 2012, who introduced the QAP (Quadratic Arithmetic Program) framework. R1CS -- Rank-1 Constraint System -- is a closely related reformulation that became standard with Parno, Howell, Gentry, and Raykova's Pinocchio system (2013); the two are often treated interchangeably, with R1CS being the matrix-based description of the same bilinear structure. The name "Rank-1 Constraint System" describes the mathematical structure precisely: each constraint has rank 1 (it is the product of two linear functions), and the system is a collection of such constraints. The "rank-1" designation means each constraint captures exactly one multiplication -- a bilinear relationship between variables. Addition is free (it does not require a constraint, because linear combinations can be folded into the matrix entries). Only multiplication generates constraints. This is why the number of R1CS constraints for a circuit equals the number of multiplication gates, not the total number of gates.
 
 Before the mathematical notation, ground it in the spreadsheet from the previous section. Imagine your spreadsheet has three special columns -- call them A, B, and C. For each row, column A and column B each contain a combination of the variables, and column C contains the result. The rule for every row is: (what is in column A) multiplied by (what is in column B) must equal (what is in column C). That is all R1CS is: a spreadsheet where every row enforces one multiplication rule. The mathematical notation below says exactly this, just more precisely.
 
@@ -249,10 +247,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) R1CS is credited to GGPR (2012) in one place and the Key claims list cites "GGPR (2012)" correctly. However, the body text says GGPR "introduced the QAP framework that R1CS later formalized" — implying R1CS came after QAP, but R1CS is sometimes treated as a renaming/refinement that happened in 2013 (Parno et al., "Pinocchio"). The history is slightly compressed.
-- [P2] (C) Paragraph beginning "The history of arithmetization is a history of increasing expressiveness" is a near-duplicate of the opening paragraph of the same section. Two nearly identical "history of arithmetization" framing sentences appear within the first eight lines — one of them should be cut.
 - [P3] (E) The PLONKish section does not discuss the Halo2 commitment scheme (IPA/KZG variants) or why Halo2 avoids a trusted setup, which is a key differentiator over vanilla PLONK. A brief note would improve depth given that Halo2 is cited as the production standard.
 
 ## Links

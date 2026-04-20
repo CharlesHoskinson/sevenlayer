@@ -4,15 +4,15 @@ slug: ch02-the-setup-tradeoff
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [739, 760]
-source_commit: 29475f3770e85700685f72ef97723a324b0994c0
+source_lines: [723, 743]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 388
 ---
 
 ## The Setup Tradeoff
 
-If you had to build a privacy blockchain today, the analysis in this chapter recommends a specific architecture: a universal trusted setup on BLS12-381 for production deployment (smallest proofs, cheapest verification, broadest tooling), with a transparent STARK inner proof for the actual computation (no additional ceremony, post-quantum security for the data), and a concrete migration plan for the day quantum computers arrive. That is, in fact, roughly what every major production system has chosen. The consensus is not accidental. It reflects the tradeoffs in this chapter: ceremony cost amortizes, proof size costs recur, and quantum risk compounds.
+If you had to build a privacy blockchain today, the analysis in this chapter recommends a specific architecture: a universal trusted setup on BLS12-381 for production deployment (smallest proofs, cheapest verification, broadest tooling), with a transparent STARK inner proof for the actual computation (no additional ceremony, post-quantum security for the data), and a concrete migration plan for the day quantum computers arrive. That architecture describes the dominant production pattern in 2026. The consensus is not accidental. It reflects the tradeoffs in this chapter: ceremony cost amortizes, proof size costs recur, and quantum risk compounds.
 
 But the 1-of-N trust model, for all its elegance, is trust-minimized, not trustless. The BCTV14 bug proves that ceremony integrity alone is insufficient -- the construction must be independently correct. The quantum shelf life means that no pairing-based setup is permanent. And the ADOPT framework reveals that no ceremony conducted to date achieves the ideal of full availability, decentralization, openness, persistence, and transparency.
 
@@ -25,7 +25,6 @@ Sixty-seven percent of real-world SNARK vulnerabilities are under-constrained ci
 Who writes the script?
 
 ---
-
 # Part II: The Craft {.unnumbered}
 
 *The audience has seen the stage. They know the rules. Now the curtain rises, and the real work begins -- backstage, in the mathematics, where every step must be recorded, encoded, sealed, and verified. The next six chapters trace the magician's craft from the first line of code to the final proof on the blockchain.*
@@ -68,11 +67,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) The section claims "every major production system has chosen" the universal BLS12-381 + STARK inner + Groth16 outer architecture, but several major systems (e.g., Polygon's Plonky2/Plonky3, which wraps to PLONK rather than Groth16) do not exactly match this description; the "every major" claim is slightly overbroad.
 - [none] (B) No citation issues; the section appropriately references prior sections rather than introducing new sources.
-- [P2] (C) The closing line "Who writes the script?" is effective but the preceding Part II header break within the section file is unusual — structural dividers (# Part II) that appear mid-section suggest this content may belong at a different boundary in the compiled manuscript.
 - [P3] (E) The section summarizes the chapter's recommendations but does not note the emerging alternative of on-chain ceremony verification (Nikolaenko et al. 2022, already cited in ch02-two-ways-to-build-a-stage) as a potential third path that avoids both the sociological-trust problem and the proof-size penalty.
 
 ## Links

@@ -4,8 +4,8 @@ slug: ch06-the-three-families
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2449, 2506]
-source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
+source_lines: [2426, 2485]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1859
 ---
@@ -23,6 +23,8 @@ The catch is severe. Groth16 requires a per-circuit trusted setup ceremony. You 
 Put differently: Groth16 seals the smallest possible certificate -- just 192 bytes, three elliptic curve points. But you need a custom seal for every circuit you want to prove, and manufacturing that seal requires a ceremony involving thousands of people, any one of whom could secretly keep a master key to forge future certificates. If a quantum computer ever appears, every seal ever manufactured becomes useless.
 
 Despite these limitations, Groth16's on-chain economics are so favorable that it persists as the outer shell of nearly every hybrid proving pipeline. The inner proof system might be a STARK, a folding scheme, or something else entirely. But the last step -- the proof that actually touches the blockchain -- is almost always Groth16 over the BN254 curve, because Ethereum's EVM has precompiled contracts that make BN254 pairings cheap.
+
+BN254's security is commonly cited as approximately 100 bits after Tower Number Field Sieve advances [Kim and Barbulescu, "Extended Tower Number Field Sieve," CRYPTO 2016]; some models place it slightly higher (100--110 bits depending on parameters). This is below the 128-bit standard for new deployments, which is why BN254 persists for on-chain verification cost reasons rather than security reasons.
 
 ### PLONK: The Universal Workhorse
 
@@ -48,17 +50,17 @@ So the three families seal certificates with different properties. Groth16 seals
 
 The technical differences between the three families are real, but their *character* is better grasped through analogy. Each family seals a certificate. Think of each certificate as a letter placed inside an envelope. The families differ not in what the letter says but in how the envelope is made, what it costs, and what it reveals about the process of sealing.
 
-**Groth16 is the smallest possible envelope.** Three numbers -- two points on a curve and one more -- encode an entire computation. Consider the compression ratio. A circuit proving that an Ethereum block was executed correctly might involve billions of constraints, millions of intermediate values, a witness consuming gigabytes of memory. The Groth16 proof of that computation is 192 bytes. Three elliptic curve elements. It is as though someone handed you a novel -- a thick, sprawling saga with hundreds of characters and interlocking subplots -- and you compressed it into a haiku. Seventeen syllables. And yet a reader who knows the rules of haiku composition can verify that those seventeen syllables faithfully capture the plot. Not a summary. Not an approximation. A mathematically exact encoding from which any deviation would be detectable. The haiku either satisfies the verification equation or it does not. There is no room for a "pretty good" forgery.
+Groth16 is the smallest possible envelope. Three numbers -- two points on a curve and one more -- encode an entire computation. Consider the compression ratio. A circuit proving that an Ethereum block was executed correctly might involve billions of constraints, millions of intermediate values, a witness consuming gigabytes of memory. The Groth16 proof of that computation is 192 bytes. Three elliptic curve elements. It is as though someone handed you a novel -- a thick, sprawling saga with hundreds of characters and interlocking subplots -- and you compressed it into a haiku. Seventeen syllables. And yet a reader who knows the rules of haiku composition can verify that those seventeen syllables faithfully capture the plot. Not a summary. Not an approximation. A mathematically exact encoding from which any deviation would be detectable. The haiku either satisfies the verification equation or it does not. There is no room for a "pretty good" forgery.
 
 The cost of this extreme compression is inflexibility. The haiku form must be custom-designed for each novel. You cannot take a haiku mold built for *War and Peace* and use it to compress *Moby Dick*. In Groth16 terms, this means a new trusted setup ceremony for every circuit. The ceremony produces the specific algebraic structure -- the structured reference string -- that makes the compression possible for that particular computation. Change the computation, and you need a new ceremony. This is why Groth16 is almost never used as the primary proof system. It is used as the *final wrapper* -- the outermost envelope -- because you only need one ceremony for the wrapping circuit, and that circuit does not change.
 
-**PLONK is the universal envelope.** One envelope fits all letters. The envelope factory runs a single setup ceremony and produces a structured reference string that works for any circuit up to a certain size. Write a new smart contract? Same envelope. Update your program logic? Same envelope. The setup cost is paid once. After that, any computation that fits within the size bound can be sealed without a new ceremony.
+PLONK is the universal envelope. One envelope fits all letters. The envelope factory runs a single setup ceremony and produces a structured reference string that works for any circuit up to a certain size. Write a new smart contract? Same envelope. Update your program logic? Same envelope. The setup cost is paid once. After that, any computation that fits within the size bound can be sealed without a new ceremony.
 
 The analogy is a standardized shipping container. Before containerization, every type of cargo required its own packaging, its own crane, its own dockworker expertise. A container does not care whether it holds televisions, bananas, or machine parts. It is a universal interface between the thing being shipped and the infrastructure that moves it. PLONK's universal SRS is the container. The circuit -- whatever it computes -- is the cargo. The infrastructure -- the verifier, the blockchain, the precompiled contract -- handles every circuit the same way, because they all arrive in the same container.
 
 The proofs are slightly larger than Groth16's (a few hundred bytes to a few kilobytes, depending on the variant), and verification is slightly more expensive. These are the costs of universality. You pay a modest premium for the ability to change your message without manufacturing a new envelope. For most applications, this tradeoff is overwhelmingly favorable, which is why PLONK-family systems are the workhorses of production ZK.
 
-**STARKs are glass envelopes.** Nothing is hidden in the construction. There is no trusted setup, no toxic waste, no secret randomness that could compromise the system if leaked. The envelope-making process is entirely public. Anyone can inspect it, audit it, reproduce it. The cryptographic assumption is minimal: collision-resistant hash functions exist. That is all.
+STARKs are glass envelopes. Nothing is hidden in the construction. There is no trusted setup, no toxic waste, no secret randomness that could compromise the system if leaked. The envelope-making process is entirely public. Anyone can inspect it, audit it, reproduce it. The cryptographic assumption is minimal: collision-resistant hash functions exist. That is all.
 
 The trade: glass envelopes are bulkier than paper ones. A STARK proof is hundreds of kilobytes -- roughly a thousand times larger than a Groth16 proof. On a blockchain where every byte costs gas, this bulk translates directly into dollars. Glass is heavier than paper. You pay more to ship it. But glass has a property that paper lacks: you can see through it. The transparency is not a metaphor. It is a literal statement about the trust model. There is no ceremony to trust, no participant to worry about, no toxic waste to dispose of. The security rests on the hardest-to-break foundation in cryptography: the belief that hash functions do not have secret backdoors.
 
@@ -118,11 +120,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (C) Excessive bolding on the "Three Envelopes" subsection headers ("Groth16 is the smallest possible envelope", "PLONK is the universal envelope", "STARKs are glass envelopes") — the bold labels are redundant with the prose that follows and create a numbered-proof-steps feel
-- [P2] (C) "It is worth spelling out" — AI smell in hybrid pipeline paragraph
-- [P2] (A) BN254 security described as "~100 bits after Tower NFS advances" — consensus is 100–110 bits depending on the model; the claim is defensible but should cite Kim-Barbulescu (2016) or equivalent
 - [P3] (B) No citation for the EVM pairing cost of "250,000 gas via EIP-1108"; should cite EIP-1108 directly
 - [P3] (E) The envelope analogy is extended over three long paragraphs; it crowds out technical comparison of prover complexity and concrete proof-size numbers for PLONK variants (a few hundred bytes to a few KB is mentioned but not broken down by variant)
 

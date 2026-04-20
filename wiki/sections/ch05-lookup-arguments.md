@@ -4,8 +4,8 @@ slug: ch05-lookup-arguments
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1996, 2121]
-source_commit: eb72fd8bb82cecd60e59036b27847eea5797a886
+source_lines: [1973, 2098]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 3722
 ---
@@ -40,7 +40,7 @@ Despite its limitations, Plookup was immediately adopted. Lookup arguments for r
 
 ### LogUp: The Sorting-Free Revolution (2022)
 
-Ulrich Haboeck's LogUp paper in 2022 replaced Plookup's sorting with an observation that is, in retrospect, elegant to the point of inevitability. The name "LogUp" comes from "logarithmic derivative" -- the mathematical technique. If you have a polynomial P(X) = Product of (X - r_i) whose roots are exactly the lookup values, then the logarithmic derivative of P is P'(X)/P(X) = Sum of 1/(X - r_i). This transforms a product (which is hard to check incrementally) into a sum (which is easy to accumulate and verify). The idea comes from complex analysis, where logarithmic derivatives convert multiplicative structures into additive ones. Haboeck's move was to apply this classical technique to the lookup problem.
+Ulrich Haboeck's LogUp paper in 2022 replaced Plookup's sorting with an observation that is, in retrospect, elegant to the point of inevitability. The name "LogUp" comes from "logarithmic derivative" -- the mathematical technique. If you have a polynomial $P(X) = \prod_i (X - r_i)$ whose roots are exactly the lookup values, take the logarithm: $\log P(X) = \sum_i \log(X - r_i)$. Differentiating both sides gives $P'(X)/P(X) = \sum_i 1/(X - r_i)$. This transforms a product (which is hard to check incrementally) into a sum (which is easy to accumulate and verify). The idea comes from complex analysis, where logarithmic derivatives convert multiplicative structures into additive ones. Haboeck's move was to apply this classical technique to the lookup problem.
 
 Instead of sorting, LogUp observes that if every lookup value $f_i$ appears in the table $t$, then a specific identity over rational functions must hold:
 
@@ -100,7 +100,7 @@ The concept, originally proposed by Barry Whitehat as the "lookup singularity," 
 
 Jolt's canonical setting is 64-bit RISC-V, the mainstream zkVM target. For each instruction, the prover decomposes the 64-bit operands into $c = 6$ chunks, performs lookups into small subtables (roughly $2^{22} \approx 4$ million entries each), and commits to roughly **18 field elements per instruction** -- 3 field elements per chunk, times 6 chunks. In a 32-bit RISC-V setting, the decomposition uses $c = 4$ chunks and the per-instruction commitment falls to roughly **12 field elements** (3 per chunk, 4 chunks). We use the 64-bit number (18) as the canonical figure throughout the rest of this section.
 
-The memory-checking component (point 4) is worth highlighting separately. In a real processor, memory is read-write: the program loads and stores values freely. Proving that every load returns the value of the most recent store to the same address is the memory consistency problem discussed in the overhead section. Jolt handles this through "offline memory checking" -- a technique where the prover computes a cryptographic fingerprint of the sequence of all reads and writes, and the verifier checks that the fingerprint is consistent with a valid read-write memory. This avoids the per-access cost of Merkle tree proofs and makes memory checking nearly as cheap as instruction checking. The technique is not specific to Jolt; it was developed by Blum et al. in the 1990s and adapted for ZK by Setty (Spartan) and others. But Jolt's integration of offline memory checking with Lasso-based instruction lookups produces a complete zkVM architecture where every component -- instruction verification, memory consistency, program counter management -- is handled by either a lookup or a fingerprint check.
+The memory-checking component (point 4) is worth highlighting separately. In a real processor, memory is read-write: the program loads and stores values freely. Proving that every load returns the value of the most recent store to the same address is the memory consistency problem discussed in the overhead section. Jolt handles this through "offline memory checking" -- a technique where the prover computes a cryptographic fingerprint of the sequence of all reads and writes, and the verifier checks that the fingerprint is consistent with a valid read-write memory. This avoids the per-access cost of Merkle tree proofs and makes memory checking nearly as cheap as instruction checking. The technique is not specific to Jolt; it was developed by Blum, Evans, Gemmell, Kannan, and Naor ("Checking the Correctness of Memories," 1991) and adapted for ZK by Setty (Spartan) and others. But Jolt's integration of offline memory checking with Lasso-based instruction lookups produces a complete zkVM architecture where every component -- instruction verification, memory consistency, program counter management -- is handled by either a lookup or a fingerprint check.
 
 The result is a zkVM where the constraint system is almost entirely lookups, with minimal arithmetic "glue." This is not an optimization applied to an existing constraint system -- it is a different paradigm for encoding computation.
 
@@ -187,10 +187,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "Offline memory checking (Blum et al., adapted by Setty)" — "Blum et al." is attributed to the 1990s but no specific paper is cited. The canonical reference is Blum, Evans, Gemmell, Kannan, Naor, "Checking the Correctness of Memories" (1991). A citation entry should be added.
-- [P2] (C) The LogUp section explains logarithmic derivatives via "P'(X)/P(X) = Sum of 1/(X - r_i)" — this is mathematically correct but uses the prime-notation derivative inline before defining it, then switches to a formal display equation. The transition from the inline explanation to the displayed formula is slightly abrupt; a brief "differentiating both sides gives" would smooth it.
 - [P3] (E) Jolt's status as "alpha (open-sourced by a16z)" is noted but no mention of the main missing capability for production: lack of proof recursion. This is mentioned in passing but the implications for deployment (e.g., no on-chain verification without recursion) are not elaborated.
 
 ## Links

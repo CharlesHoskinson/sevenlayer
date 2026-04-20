@@ -4,8 +4,8 @@ slug: ch04-the-witness-as-a-multi-dimensional-problem
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1571, 1608]
-source_commit: a4f1e087fc5498fd54e35cbddb135fb2203d262d
+source_lines: [1551, 1587]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 772
 ---
@@ -20,13 +20,13 @@ The research literature reveals that the "Witness Gap" is not a single bottlenec
 
 **The Security Gap.** The witness is the most sensitive artifact in the system. It contains the private inputs. Side-channel attacks can leak witness information through timing (R=0.57 in Zcash), cache patterns (Mukherjee, Rechberger, and Schofnegger 2024 against Reinforced Concrete's Bars table), and network metadata. Constant-time implementation is a security requirement, not a performance optimization.
 
-**The Correctness Gap.** The witness generator and the constraint system must compute identical functions. When they disagree, the result is a soundness bug. Static analysis tools like ZKAP (F1 score 0.82, 34 previously unknown vulnerabilities discovered) and fuzzing tools like zkFuzz can detect divergence, but they currently work only on Circom. Extending them to Rust-based systems (halo2, Plonky3) remains an open problem.
+**The Correctness Gap.** The witness generator and the constraint system must compute identical functions. When they disagree, the result is a soundness bug. Static analysis tools like ZKAP (F1 score 0.82 on under-constrained circuit detection in Circom) and fuzzing tools like zkFuzz can detect divergence, but they currently work only on Circom. Extending them to Rust-based systems (halo2, Plonky3) remains an open problem.
 
 These four gaps interact. Solving the performance gap (GPU acceleration) can worsen the security gap (GPU thread divergence from constant-time code reduces SIMT utilization). Solving the memory gap (streaming) changes the architecture in ways that affect the correctness gap (streaming provers must handle state differently than batch provers). There is no single fix. The witness problem is systemic.
 
-And underneath the four technical gaps lies the equity gap from the Hardware Ladder: every technical improvement that requires more expensive hardware to exploit widens the distance between users who can prove privately and users who must trust a service. The four-dimensional problem is really five-dimensional, and the fifth dimension -- who can afford the hardware -- is the one that determines whether zero-knowledge privacy is a universal right or a premium feature.
+Underneath the four technical gaps lies an equity consequence of the Memory Gap: every hardware floor improvement that requires more expensive equipment to exploit widens the distance between users who can prove privately and users who must trust a service. The GSMA-grounded figure above -- well over 90% of people cannot perform client-side proving on current hardware -- is a direct outcome of the Memory Gap tier structure, not a separate dimension. It is where the technical and the political converge.
 
-The analogy holds: the magician's backstage is not just dark -- it is expensive, fragile, and surveilled. The recording equipment costs a fortune. The walls have cracks. And if the recording is wrong, the audience will believe a lie. Layer 3 is where the practical reality of zero-knowledge systems diverges most sharply from the elegant theory. The mathematics is beautiful. The engineering is brutal.
+The magician's backstage is not just dark -- it is expensive, fragile, and surveilled. The recording equipment costs a fortune. The walls have cracks. And if the recording is wrong, the audience will believe a lie. Layer 3 is where the practical reality of zero-knowledge systems diverges most sharply from the elegant theory.
 
 For the system architect, Layer 3 generates the most concrete questions in any ZK evaluation:
 
@@ -47,7 +47,6 @@ But the witness is just a recording. It proves nothing by itself. Anyone could f
 That transformation is the subject of Layer 4: the most technically demanding layer in the stack, and the one where the magic trick metaphor will finally strain to its breaking point.
 
 ---
-
 
 ## Summary
 
@@ -92,11 +91,10 @@ The Witness Gap is four overlapping problems: a Performance Gap (witness generat
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "~96% of the world's population cannot perform client-side ZK proving" is repeated from ch04-memory-the-binding-constraint verbatim. If the smartphone ownership base number there is inaccurate (see that section's notes), the error propagates here too.
-- [P2] (C) "The mathematics is beautiful. The engineering is brutal." — closing aphorism is an AI-smell stock contrast. Cut or vary.
-- [P2] (D) The synthesis labels four gaps (Performance, Memory, Security, Correctness) and adds a fifth (equity) that was framed as part of the Memory section. Calling it a "fifth dimension" when it was introduced as part of Tier hardware earlier in the chapter creates a mild numbering inconsistency; the equity gap is better described as a consequence of the Memory Gap than as a peer dimension.
 - [P3] (E) The "system architect" checklist (5 questions) is useful but duplicates framing used at the end of ch04-memory-the-binding-constraint. The two lists could be integrated or differentiated more clearly (memory section = hardware questions, this section = system design questions).
 - [P3] (D) The closing transition ("Layer 4 must answer: how do we turn this recording into a mathematical puzzle") calls the next chapter Layer 4 but ch04 itself has been calling the witness generation "Layer 3" throughout. This mislabels the transition: witness generation is Layer 3 of the seven-layer model; arithmetization is Layer 4. The layer numbering in the transition paragraph should be checked against the book's own taxonomy.
 

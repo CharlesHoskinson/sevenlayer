@@ -4,8 +4,8 @@ slug: ch11-the-landscape-table-march-2026
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4572, 4606]
-source_commit: 9cb1d67a71f09c510cc06fa9493948e145a8f31a
+source_lines: [4560, 4594]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 626
 ---
@@ -24,7 +24,7 @@ The numbers tell the story concisely. Eight of ten major zkVMs now target RISC-V
 | **Proof system** | Multilinear STARK | FRI STARK | Spartan sumcheck | Circle STARK | DEEP STARK | STARK (recursive) | STARK (Plonky3) |
 | **Field** | BabyBear (31-bit) | BabyBear (31-bit) | BN254 (256-bit) | M31 (31-bit) | M31 (31-bit) | Goldilocks (64-bit) | BabyBear / M31 |
 | **SNARK wrap** | Groth16 | Groth16 | Planned | None (native) | Groth16 | Groth16 | Groth16 |
-| **Eth block** | 6.9 s / 16 GPU | 44 s / cluster | N/A | N/A (Cairo) | 35 s / 1 GPU | 6.6 s / 24 GPU | 6.9 s / 16 GPU |
+| **Eth block** | 6.9 s / 16 GPU [52] | 44 s / cluster [56] | N/A | N/A (Cairo) | 35 s / 1 GPU [53] | 6.6 s / 24 GPU [43] | 6.9 s / 16 GPU [52] |
 | **Maturity** | Production | Production | Beta | Production | Production | Adv. testnet | Production |
 
 **Glossary.** *ISA* = instruction set architecture, the fundamental language a processor understands. *Arithmetization* = the method of translating computation into mathematical equations. *AIR* = Algebraic Intermediate Representation, encoding computation as polynomial constraints over an execution trace. *LogUp-GKR* = a sumcheck-based lookup argument. *Circle STARK* = a STARK adapted to the circle group of a Mersenne prime. *SNARK wrap* = compressing a large transparent proof into a small proof for cheap on-chain verification. *Field* = a set of numbers with special arithmetic properties; "31-bit" and "64-bit" refer to element size, with smaller fields enabling faster operations on modern hardware.
@@ -40,10 +40,10 @@ For architects choosing a zkVM, the landscape table describes *what exists*. The
 | General-purpose execution | SP1 Hypercube, RISC Zero | RISC-V, mature tooling, broadest Rust ecosystem support |
 | Maximum throughput | SP1 Hypercube, Airbender | Best Ethereum block proving benchmarks (6.9s, 21.8M cycles/sec) |
 | ZK-native efficiency | Stwo (Cairo) | Purpose-built ISA eliminates translation overhead; Starknet-native |
-| Post-quantum trajectory | Neo/SuperNeo (watch) | Lattice-based, CCS-native, 127-bit PQ security; 3-5 year horizon |
+| Post-quantum trajectory | Neo/SuperNeo (watch) | Lattice-based, CCS-native, 127-bit PQ security; 3-5 year horizon. Not in the table above -- these are research-stage systems from the Neo project, not yet production zkVMs. |
 | Lookup-heavy design | Jolt | Lasso decomposable lookups; sumcheck-native; avoids NTT bottleneck |
 | Minimum trusted setup | Stwo, Pico Prism | Fully transparent (hash-based FRI); no ceremony required |
-| Formal verification | SP1 | 62 RISC-V opcodes verified against Sail spec; strongest correctness guarantees |
+| Formal verification | SP1 | 62 RISC-V opcodes verified against Sail spec [57]; strongest correctness guarantees |
 
 
 ## Summary
@@ -104,11 +104,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) No sources cited for any benchmark numbers (Eth block times, GPU configs) or the EF "speed race won" declaration (December 2025). These are high-value claims that need traceability.
-- [P2] (B) "SP1 has 62 RISC-V opcodes formally verified against the Sail specification" — no source; this specific count needs a citation to the SP1 formal verification work.
-- [P2] (D) "Neo/SuperNeo (watch)" appears in the selection rubric without introduction — these systems are not in the landscape table above and are not defined anywhere in this section. Reader has no context for the recommendation.
 - [P3] (B) "Nexus 3.0 abandoned Nova-based folding... 1000x speed penalty" — no citation; this is a strong empirical claim about a competitor's technical decision.
 
 ## Links

@@ -4,8 +4,8 @@ slug: ch02-the-capex-opex-framework
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [542, 561]
-source_commit: 29475f3770e85700685f72ef97723a324b0994c0
+source_lines: [530, 549]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 511
 ---
@@ -16,16 +16,16 @@ The most useful lens for understanding setup economics is the capital expenditur
 
 **Ceremony costs are capex.** The Ethereum KZG Summoning, run by the Ethereum Foundation over 208 days, cost an order of magnitude of a few million dollars in coordination, engineering, grants, and security auditing -- a figure consistent with the public grant round and the scale of the coordinating infrastructure [Ethereum Foundation, "KZG Ceremony Grant Round," December 2022; Ethereum Foundation, "Wrapping up the KZG Ceremony," January 2024]. Whatever the precise number, ceremonies like this are one-time events. Because the resulting SRS is universal, every system that builds on it amortizes the cost. L2Beat's registry lists dozens of live rollups as of early 2026, many of which verify Groth16 or KZG-based proofs against the same family of SRSes. Per-rollup, the amortized share of the ceremony cost is trivial relative to any serious project's annual budget.
 
-**Per-proof costs are opex.** Once the stage is built, the cost that matters is the cost of each proof. Here the gap between trusted and transparent setups opens wide:
+**Per-proof costs are opex.** Once the stage is built, the cost that matters is the cost of each proof. Here the gap between trusted and transparent setups opens wide. The figures below are Ethereum mainnet estimates as of early 2026; gas prices fluctuate, so these should be read as order-of-magnitude anchors rather than billing rates:
 
-- **Groth16 on-chain verification**: approximately 200,000-300,000 gas, which at typical Ethereum gas prices translates to about $0.50-$1.00. This is the cheapest on-chain verification available. Groth16 proofs are exactly 192 bytes -- three elliptic curve group elements. Smaller than a tweet.
+- **Groth16 on-chain verification**: approximately 200,000-300,000 gas, which at typical Ethereum gas prices translates to about $0.50-$1.00. This is the cheapest on-chain verification available. Groth16 proofs are exactly 192 bytes -- three elliptic curve group elements -- compact enough to fit in a short text message.
 - **Raw STARK on-chain verification**: approximately 2-5 million gas, translating to $5-$25. STARK proofs run roughly 100 KB -- about 500 times larger than Groth16 proofs.
 
 To see what this means in practice, consider a rollup operator posting 1,000 proofs per day to Ethereum. With Groth16, each verification costs roughly 200,000 gas -- about $0.75 at typical prices. That is $750 per day, roughly $274,000 per year. With raw STARKs posted directly on-chain, each verification costs roughly 3 million gas -- about $11. That is $11,000 per day, roughly $4 million per year. Against a ceremony cost in the low millions, the payback period for even a single operator is well under two years. After that, it is pure savings.
 
 These numbers explain why trusted setups persist despite their trust assumptions. The argument is not philosophical. It is economic. And it explains why the dominant production pattern in 2026 is neither pure trusted nor pure transparent, but *hybrid*: use a transparent STARK as the inner proof (no ceremony required, post-quantum security for the computation), then wrap it in a Groth16 or KZG-based outer proof for cheap on-chain verification. You get the transparency of STARKs and the economics of SNARKs.
 
-Every major production system follows this pattern. SP1 Hypercube generates STARK proofs over a small, fast field (BabyBear, 31 bits per number), recursively compresses them, and wraps the result in Groth16 for Ethereum verification. Stwo does the same over the Mersenne-31 field. RISC Zero, Airbender, ZisK -- all follow the same architecture. Even StarkWare, the company that built its identity on transparent proving, wraps to Groth16 for Ethereum settlement because the gas economics demand it.
+Most major production systems follow this pattern. SP1 Hypercube generates STARK proofs over a small, fast field (BabyBear, 31 bits per number), recursively compresses them, and wraps the result in Groth16 for Ethereum verification. Stwo does the same over the Mersenne-31 field. RISC Zero, Airbender, ZisK -- all follow the same architecture. Even StarkWare, the company that built its identity on transparent proving, wraps to Groth16 for Ethereum settlement because the gas economics demand it. (Systems that wrap to PLONK rather than Groth16 -- such as Polygon's Plonky2/Plonky3 family -- follow a variant of the same logic, substituting a universal-SRS outer wrapper for the circuit-specific Groth16 one.)
 
 The cost of this hybrid approach is complexity: you maintain two proof systems, two fields, and a "field-crossing" circuit that bridges the small inner field to the large outer field. The outer wrapper still requires a trusted setup (the KZG ceremony). But the inner proof -- where the actual computation is verified -- is fully transparent. If a post-quantum on-chain verifier ever becomes practical, the outer Groth16 layer can be dropped, and the entire pipeline becomes transparent end-to-end.
 
@@ -70,11 +70,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) The STARK verification gas estimate (~2–5M gas) and Groth16 estimate (~200K–300K gas) are Ethereum mainnet figures; gas costs fluctuate significantly and the text should note the date or price assumption (the section mentions "typical Ethereum gas prices" without anchoring).
 - [none] (B) No citation issues beyond those noted in A.
-- [P2] (C) "Smaller than a tweet" (192 bytes) is a recurring motif across multiple sections; it is used more naturally here than elsewhere, but the phrase's repetition across the wiki creates slight staleness.
 - [none] (D) No structural contradictions found.
 - [P3] (E) The section names SP1 Hypercube and Stwo but does not note that the SP1 Hypercube benchmark (6.9 s) and Stwo benchmark (~10 s) referenced in ch05 are already available; a cross-reference to the overhead-tax section would let readers see actual numbers.
 

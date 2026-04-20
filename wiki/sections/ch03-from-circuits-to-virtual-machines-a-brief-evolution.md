@@ -4,8 +4,8 @@ slug: ch03-from-circuits-to-virtual-machines-a-brief-evolution
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [801, 826]
-source_commit: c9e43022aec66b2d2daf6a69767a4389b8d854c8
+source_lines: [784, 807]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 575
 ---
@@ -16,13 +16,11 @@ To understand where we are, we need to understand where we came from.
 
 The first generation of zero-knowledge programming looked nothing like programming. In 2018, if you wanted to prove a computation in zero knowledge, you wrote *circuits* -- not programs, but direct descriptions of mathematical relationships. The dominant tool was Circom, a domain-specific language created by Jordi Baylina and the iden3 team. In Circom, you did not write `if balance >= amount then approve`. You wrote constraint templates: mathematical equations that the proof system would verify. The developer was simultaneously writing two programs in one file -- one that computed the witness (the private data), and one that generated the constraints (the mathematical rules). These two programs had to agree perfectly on every input. When they did not, the result was an under-constrained circuit: a proof system that would certify false statements as true.
 
-Imagine asking a playwright to write both the script and the stage directions in a single document, using two different notations that had to be perfectly synchronized, with no compiler to check whether they matched. That is what early ZK development felt like.
-
-Circom was powerful. It gave developers complete control over the constraint system. But that control came at a cost. Chaliasos et al., in "SoK: What Don't We Know? Understanding Security Vulnerabilities in SNARKs" (USENIX Security 2024), catalogued the scale of the problem: 95 of 141 real-world vulnerabilities were under-constrained circuits -- the epidemic described at the opening of this chapter. The Tornado Cash bug was a single character: `=` where `<==` was needed. One character. Complete soundness break. A malicious prover could generate proofs for false statements, and the verifier would accept them.
+Circom was powerful. It gave developers complete control over the constraint system. But that control came at a cost. Chaliasos et al. catalogued the scale of the problem: 95 of 141 real-world vulnerabilities were under-constrained circuits. The canonical example -- the Tornado Cash bug -- was a single character: `=` where `<==` was needed. The witness generator computed the correct value; the constraint system did not enforce it. A malicious prover could substitute any value, and the verifier would accept the proof. One character. Complete soundness break. (The bug mechanics are examined in detail in the section on under-constrained circuits below.)
 
 The second generation asked a different question: what if the developer never saw the constraints at all? What if they wrote a program in a language they already knew, and a compiler handled the translation to mathematics?
 
-Cairo, created by StarkWare in 2021, pioneered this approach. Cairo defined a new instruction set architecture -- a virtual CPU designed from the ground up so that every instruction's execution could be efficiently encoded as polynomial constraints. The developer wrote programs. The compiler generated constraints. The proof system verified the constraints. The developer never touched a mathematical equation.
+Cairo, created by StarkWare -- with an early prototype in 2020 and the formal whitepaper in late 2021 -- pioneered this approach. Cairo defined a new instruction set architecture -- a virtual CPU designed from the ground up so that every instruction's execution could be efficiently encoded as polynomial constraints. The developer wrote programs. The compiler generated constraints. The proof system verified the constraints. The developer never touched a mathematical equation.
 
 Cairo settled on the so-called Stark prime -- $p = 2^{251} + 17 \cdot 2^{192} + 1$ -- a 252-bit field chosen to hold elliptic-curve scalars natively. This was a *large-field* STARK. A later wave of provers went the other way: *small-field* STARKs working over 64-bit Goldilocks ($2^{64} - 2^{32} + 1$), 31-bit BabyBear, or Mersenne-31 (M31). Goldilocks arrived with Plonky2, moved through Plonky3, and now underpins RISC Zero; BabyBear and M31 power SP1 and Stwo respectively. The arithmetic shrank because the hardware did not: 32-bit integer multiply is a native CPU instruction, and small-field STARKs exploit that fact. Cairo was the large-field template. Goldilocks-class provers are the small-field descendants.
 
@@ -74,11 +72,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) Cairo's creation date is given as 2021; the Cairo whitepaper appeared in late 2021 but an earlier prototype shipped in 2020. "Created by StarkWare in 2021" may be defensible but should be qualified as the public/whitepaper release date.
-- [P2] (C) "Imagine asking a playwright to write both the script and the stage directions in a single document…" — the theater metaphor is used heavily in chapter 1; its reuse here without advancement adds padding rather than insight.
-- [P2] (D) The Tornado Cash bug description ("The witness generator computed the correct value. The constraint system did not enforce it") is correct here, but `ch03-under-constrained-circuits` describes the same bug in more detail. The two accounts should agree on framing; currently section 2 says "one character" while section 5 also says "one character" — consistent, but the duplication of the anecdote across two sections is unnecessary.
 - [P3] (E) No mention of Circom's successor tools (Circom 2, circom-plus) or how the field has responded since 2018; the evolution narrative stops at the third generation without noting ongoing Circom development.
 
 ## Links

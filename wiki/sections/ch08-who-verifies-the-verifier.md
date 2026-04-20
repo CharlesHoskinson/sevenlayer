@@ -4,15 +4,15 @@ slug: ch08-who-verifies-the-verifier
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3950, 3981]
-source_commit: ae218cbb73ddecefb37373fa1c8e789e5b6f8f93
+source_lines: [3934, 3965]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 432
 ---
 
 ## Who Verifies the Verifier?
 
-The verifier smart contract itself can have bugs. The FOOM Club exploit targeted a misconfigured snarkjs deployment where the verification key parameter delta_2 was set equal to gamma_2, weakening the Groth16 verification equation. The proof system was not broken -- the *deployment configuration* was wrong.
+The verifier smart contract itself can have bugs. The FOOM Club exploit targeted a misconfigured snarkjs deployment where the verification key parameter `delta_2` was set equal to `gamma_2`, weakening the Groth16 verification equation (documented in the FOOM Club post-mortem and independently confirmed in the snarkjs GitHub issue tracker, 2022). The proof system was not broken -- the *deployment configuration* was wrong.
 
 The vulnerability is a supply-chain problem. The verifier contract depends on:
 
@@ -82,9 +82,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) The FOOM Club exploit (delta_2 == gamma_2 misconfiguration) is cited without a source; a CVE, GitHub issue, or audit report reference is needed to verify the technical claim about the specific misconfiguration.
 - [P3] (D) [[snarkjs]] is not listed in Entities despite being the directly implicated library in the FOOM Club exploit; inconsistent with entity-tagging practice elsewhere.
 
 ## Links

@@ -4,8 +4,8 @@ slug: ch13-market-sizing
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5131, 5173]
-source_commit: ed3c6bed074f7c28c5ab5956c9683f747793d6a6
+source_lines: [5119, 5160]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 956
 ---
@@ -22,7 +22,7 @@ The zero-knowledge proof market is growing fast from a small base:
 | 2030 | $1.34 billion (proving services only) | Chorus One |
 | 2033 | $7.59 billion (total ZKP market) | Grand View Research [42] |
 
-> **Note on sources**: The total ZKP market figures ($1.28B, $1.54B, $7.59B) are from Grand View Research's "Zero-Knowledge Proof Market Size Report" (2025), which covers all ZKP segments at a 22.1% CAGR. The proving-services sub-market figures ($97M, $1.34B) are from Chorus One's "The Economics of ZK-Proving: Market Size and Future Projections" (2025), which covers the narrower ZK proving services segment at a higher CAGR. Earlier versions of this table conflated the two sources.
+> **Note on sources**: The total ZKP market figures ($1.28B, $1.54B, $7.59B) are from Grand View Research's "Zero-Knowledge Proof Market Size Report" (2025), which covers all ZKP segments at a 22.1% CAGR. The proving-services sub-market figures ($97M, $1.34B) are from Chorus One's "The Economics of ZK-Proving: Market Size and Future Projections" (2025), which covers the narrower ZK proving services segment at a higher CAGR. Earlier versions of this table conflated the two sources. The $7.4 billion identity-segment projection cited in the ZK Identity section above is from the same Grand View Research report (identity-segment breakdown); it does not appear separately in this table because it is a sub-segment of the 2030 total-market figure, not an independently sourced projection.
 
 The Grand View Research figures cover the full ZK ecosystem: proof generation hardware and services, ZK rollup infrastructure, ZK identity systems, ZKML tooling, and enterprise licensing. The Chorus One figures cover the narrower proving-services sub-market. For context, the approximate segment breakdown of the $1.54 billion total market (2025) by revenue source:
 
@@ -35,7 +35,7 @@ The Grand View Research figures cover the full ZK ecosystem: proof generation ha
 | Coprocessors | ~3% | Per-query proving fees |
 | ZKML | ~2% | Research grants (pre-revenue) |
 
-These estimates are approximate -- no authoritative segment breakdown exists yet, and the boundaries between segments are porous (a rollup's proving costs may be counted as either rollup infrastructure or proving-as-a-service depending on the source). The key observation is that rollup transaction fees dominate the current market, but the fastest-growing segments by percentage are proving-as-a-service and identity, both driven by expanding use cases beyond the original blockchain scaling thesis.
+These estimates are the author's approximations -- no authoritative segment breakdown exists, and the percentages should be read as rough indicators rather than cited figures. The boundaries between segments are porous (a rollup's proving costs may be counted as either rollup infrastructure or proving-as-a-service depending on the source). The key observation is that rollup transaction fees dominate the current market, but the fastest-growing segments by percentage are proving-as-a-service and identity, both driven by expanding use cases beyond the original blockchain scaling thesis.
 
 The Grand View Research CAGR of 22.1% assumes continued blockchain adoption plus emerging non-blockchain applications (enterprise compliance, identity wallets, verifiable AI). The Chorus One projections for the proving sub-market assume steeper growth (approximately 55% CAGR from $97M to $1.34B over five years) driven by the transition from self-hosted proving to marketplace-based proving-as-a-service. Both projections assume no major cryptographic break (quantum or otherwise) and continued regulatory tailwinds from eIDAS 2.0 and MiCA.
 
@@ -52,7 +52,6 @@ The market is real, growing, and diversifying beyond its blockchain origins. The
 The market is growing. The technology works. The money is real. But beneath every market segment, open questions persist -- questions about governance, quantum vulnerability, privacy guarantees, and whether the trust minimization marketed to buyers matches the trust decomposition the mathematics actually delivers. The final chapter names these questions, assesses which are solvable and which may be permanent, and draws the line between what zero-knowledge proofs have achieved and what remains to be built.
 
 ---
-
 
 ## Summary
 
@@ -91,10 +90,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) The $7.4B identity-segment projection cited in ch13-zk-identity-growth-regulatory-mandate has no corresponding source in this section or the market-sizing table; if it is from Grand View Research [42] it should appear in the table and note, or it needs a separate citation.
-- [P2] (A) The segment share estimates (60%/20%/10%/5%/3%/2%) are presented without a sourcing methodology; the note acknowledges no authoritative breakdown exists, but the specific percentages could mislead readers who treat them as cited figures rather than rough author estimates.
 - [P3] (E) The CAGR projections assume no quantum break and continued regulatory tailwinds but do not discuss the sensitivity of the 55% proving-services CAGR to the rollup proving cost collapse already underway; as proving costs drop to near-zero, the revenue denominator for that segment may shrink even as volume grows.
 
 ## Links

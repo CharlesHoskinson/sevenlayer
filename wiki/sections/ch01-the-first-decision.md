@@ -4,8 +4,8 @@ slug: ch01-the-first-decision
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [336, 368]
-source_commit: b965c2493b961bc9b2103781f78f2c7e98e4521f
+source_lines: [328, 360]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 572
 ---
@@ -18,7 +18,7 @@ Why Sudoku? Because it is small enough to hold in your head (sixteen cells, four
 
 Over the next four chapters, you will watch this puzzle undergo a series of transformations. First it becomes a program: sixteen variables, a handful of rules, written in a language the proof system can understand. Then it becomes a witness: a completed grid that only the prover can see, with every intermediate computation recorded. Then it becomes 72 polynomial equations -- the mathematical encoding that replaces human intuition with algebraic structure. And finally it becomes a proof: a handful of numbers, smaller than this sentence, that convinces any stranger the solution exists. Each transformation strips away one more layer of human readability and replaces it with mathematical certainty. By the end, the puzzle will be unrecognizable. That is exactly the point.
 
-Here is the puzzle. Eight cells are given; eight are blank:
+Here is the puzzle. Seven cells are given; nine are blank:
 
 ```
 +---+---+---+---+
@@ -38,7 +38,7 @@ Now we need to build the stage.
 
 Every magic show requires one. In zero-knowledge proof systems, "building the stage" means creating the mathematical parameters that both characters will use -- the prover to generate proofs, the verifier to check them. This step happens before any proof is ever created. The most important question about the stage is not how it is built but *who builds it, and whether you have to trust them*.
 
-The ceremonies scaled from intimate to planetary in seven years. In 2016, the Zcash Sprout ceremony involved six participants, each generating a share of the secret parameters and then destroying their share; if even one of the six was honest, the system was secure. Two years later, the Zcash Sapling ceremony used the BGM17 multi-party protocol and grew to roughly ninety contributors, proving the trick could scale past a small team. By 2023, the Ethereum KZG Summoning had scaled that to six figures -- 141,416 participants, same principle, applied at the population level. The alternative -- transparent setups that require no ceremony at all -- avoids the problem entirely, at a cost in proof size and verification expense.
+The ceremonies scaled from intimate to planetary in seven years. In 2016, the Zcash Sprout ceremony involved six participants, each generating a share of the secret parameters and then destroying their share; if even one of the six was honest, the system was secure [Zcash Foundation, "The Design of the Ceremony," 2016]. Two years later, the Zcash Sapling ceremony used the BGM17 multi-party protocol and grew to roughly ninety contributors, proving the trick could scale past a small team. By 2023, the Ethereum KZG Summoning had scaled that to six figures -- 141,416 participants, same principle, applied at the population level [Ethereum Foundation, "Wrapping up the KZG Ceremony," January 2024]. The alternative -- transparent setups that require no ceremony at all -- avoids the problem entirely, at a cost in proof size and verification expense.
 
 That question -- trusted setup or transparent setup, ceremony or glass stage, hidden trapdoors or none -- is the subject of Chapter 2. It is the first fork in the road. Its consequences echo through every layer that follows.
 
@@ -79,10 +79,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) No source is cited for either the Zcash Sprout ceremony details or the Ethereum KZG Summoning participant count; add a reference to the KZG ceremony attestation page or the Ethereum Foundation blog post.
-- [P2] (C) "Eight cells are given; eight are blank" — the puzzle ASCII art shows a 4×4 grid; the claim that "eight cells are given" is correct (1, 4, 4, 1, 1, 4, 1 — actually count: top row: 1,_,_,4 = 2 given; row 2: _,4,1,_ = 2 given; row 3: _,1,_,_ = 1 given; row 4: 4,_,_,1 = 2 given = 7 given, not 8). Verify the cell count.
 - [P3] (E) The section introduces "transparent setup" as the alternative but gives only one sentence on the trade-off; a brief mention of FRI-based systems (STARKs) as the canonical transparent approach would reduce the abstraction here without adding length.
 - [none] D — no cross-chapter contradictions found beyond those noted above.
 

@@ -4,8 +4,8 @@ slug: ch05-the-spreadsheet-metaphor-and-where-it-works
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1641, 1683]
-source_commit: eb72fd8bb82cecd60e59036b27847eea5797a886
+source_lines: [1620, 1662]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1230
 ---
@@ -45,7 +45,7 @@ That is the core idea of arithmetization. Every constraint system in this chapte
 >
 > Total: 16 range constraints + 8 given-cell constraints + 72 uniqueness checks = **96 constraints** over 16 witness variables. In R1CS form, each degree-$4$ range constraint decomposes into three intermediate bilinear multiplications, expanding the 16 range checks to roughly 48 R1CS rows; the 72 uniqueness pair-difference checks each take one row (with auxiliary inverse witnesses to enforce nonzero), and the 8 given-cell equalities each take one row. The total lands in the neighborhood of **130 R1CS constraints**. In CCS form, the degree-$4$ range constraints can be expressed directly, and the total stays at 96. The witness (the completed grid) satisfies all 96 constraints. A wrong value in any cell makes at least one polynomial nonzero, and the Schwartz-Zippel lemma catches it with overwhelming probability at a random evaluation point.
 
-Why polynomials? Because of a fact about polynomials: a polynomial of degree $d$ is completely determined by its values at any $d+1$ points. If you know a line (degree $1$), two points fix it exactly. If you know a cubic (degree $3$), four points fix it exactly. This means that if a polynomial "misbehaves" at even a single point, it must be the wrong polynomial -- and checking it at a random point catches this misbehavior with near certainty. A polynomial commitment scheme exploits this: the prover seals a polynomial into a short commitment, and the verifier can spot-check it at random points to confirm it is correct -- without ever seeing the full polynomial.
+Why polynomials? Two separate facts about polynomials combine to make them useful here. First, interpolation uniqueness: a polynomial of degree $d$ is completely determined by its values at any $d+1$ points. If you know a line (degree $1$), two points fix it exactly. Second, and distinct, the Schwartz-Zippel lemma: if two polynomials of degree $d$ disagree anywhere, they disagree at a random point with probability at least $1 - d/q$. These are different claims -- one about reconstruction, one about probabilistic detection -- but together they give the verifier power: the prover commits to a polynomial, and a single random evaluation distinguishes the correct polynomial from any cheat with overwhelming probability. A polynomial commitment scheme exploits both facts: the prover seals a polynomial into a short commitment, and the verifier spot-checks it at random points -- without ever seeing the full polynomial.
 
 The metaphor is imperfect in one important respect: a real spreadsheet has rows and columns with human-readable labels. A constraint system is a set of abstract polynomial equations over vectors of field elements. The "rows" and "columns" are a convenient way to think about structure, but the mathematics does not require a rectangular layout. Keep this in mind as we move through the specific systems.
 
@@ -88,10 +88,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "a polynomial of degree $d$ is completely determined by its values at any $d+1$ points" — stated as the reason to use polynomials, but the following sentence conflates determination with the Schwartz-Zippel catching-misbehavior argument. The two ideas (interpolation uniqueness and probabilistic checking) are distinct; the paragraph blurs them.
-- [P2] (C) "This is the core idea of arithmetization" appears twice in close proximity (once at the end of the main spreadsheet explanation, once after the Sudoku box). Light redundancy.
 - [P3] (B) No sources cited for the spreadsheet/constraint analogy or for Schwartz-Zippel; a footnote to the original Schwartz (1980) / Zippel (1979) papers would be appropriate here.
 
 ## Links

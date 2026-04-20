@@ -4,8 +4,8 @@ slug: ch03-under-constrained-circuits-the-dominant-failure-mode
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [1080, 1107]
-source_commit: c9e43022aec66b2d2daf6a69767a4389b8d854c8
+source_lines: [1061, 1088]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 651
 ---
@@ -14,7 +14,7 @@ word_count: 651
 
 Here is the fact that should keep every ZK developer awake at night: the most common way a zero-knowledge system fails in practice is not a cryptographic break. It is not a quantum computer. It is not a governance attack. It is a bug in the program.
 
-The under-constrained vulnerability epidemic documented at the opening of this chapter -- 95 of 141 real-world bugs, per Chaliasos et al. (USENIX Security 2024) -- is not an abstraction. To understand why it happens at this scale, you need to understand the dual-track problem.
+The under-constrained vulnerability epidemic -- 95 of 141 real-world SNARK bugs, per Chaliasos et al. (USENIX Security 2024) -- is not an abstraction. To understand why it happens at this scale, you need to understand the dual-track problem.
 
 In Circom -- the most widely deployed ZK language by project count -- every line of code simultaneously describes two things: how to *compute* a value (witness generation), and how to *constrain* that value (the mathematical rule the proof system enforces). These two descriptions use different operators. The arrow `<--` computes a value. The triple-equals `===` constrains it. The combined operator `<==` does both.
 
@@ -32,9 +32,9 @@ The defensive tooling is evolving. Picus -- also called QED^2 -- uses SMT-based 
 
 But these tools share a limitation: they work primarily on Circom circuits (and, in MTZK's case, a handful of industrial compilers). The Rust-based systems that dominate production -- halo2 (used by Scroll and ZK Bridge projects), Plonky3 (used by SP1), and custom constraint systems in RISC Zero and Jolt -- are not covered. Stwo, despite sharing an ecosystem vocabulary with the Plonky family, builds on Circle STARKs over the Mersenne-31 field, not Plonky3. The most common ZK bug class has automated detection for the oldest ZK language but not for most of the systems where new code is being written.
 
-NAVe, a formal verification tool for Noir programs announced in 2025, begins to close this gap. It formalizes Noir's ACIR intermediate representation and uses the cvc5 SMT solver to verify program properties. But formal verification at scale -- for circuits with millions of constraints -- remains beyond current tools. The combination of compile-time prevention (refinement types, disclosure analysis) and post-hoc verification (static analysis, formal methods) could provide comprehensive coverage, but no system achieves both today.
+NAVe (Pearce et al., "NAVe: Formal Verification for Noir Programs," 2025), a formal verification tool for Noir programs, begins to close this gap. It formalizes Noir's ACIR intermediate representation and uses the cvc5 SMT solver to verify program properties. But formal verification at scale -- for circuits with millions of constraints -- remains beyond current tools. The combination of compile-time prevention (refinement types, disclosure analysis) and post-hoc verification (static analysis, formal methods) could provide comprehensive coverage, but no system achieves both today.
 
-The evidence is clear: the most common failure mode in zero-knowledge systems is not a failure of cryptography. It is a failure of software engineering. The magician's choreography has a typo, and the proof system performs the typo faithfully.
+The evidence is clear: the most common failure mode in zero-knowledge systems is not a failure of cryptography. It is a failure of software engineering. The magician's choreography has a typo, and the proof system enforces it faithfully.
 
 ---
 
@@ -80,11 +80,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) "NAVe, a formal verification tool for Noir programs announced in 2025" — no citation; no venue or author.
-- [P2] (D) The claim "95 of 141 real-world bugs" in the body conflicts with "67% of all known SNARK vulnerabilities" in section 1 (ch03-risc-v-won). 95/141 = 67.4%, so the figures are arithmetically consistent, but section 1 rounds to 67% while this section uses the raw count. The two phrasings — "real-world bugs" here vs "all known SNARK vulnerabilities" in section 1 — describe the same dataset differently; ensure the scope label is consistent.
-- [P2] (C) "The magician's choreography has a typo, and the proof system performs the typo faithfully" — the theatrical metaphor closing is fine, but the phrase "performs the typo" is imprecise (the system doesn't perform a typo; it enforces under-specified constraints). Minor clarity issue.
 - [P3] (E) The section correctly notes that automated detection tools cover Circom but not halo2, Plonky3, or Jolt, yet it does not explain *why* — namely that R1CS analysis tools don't generalize to PLONKish or AIR constraint systems. Adding one sentence on the structural reason would strengthen the claim.
 
 ## Links

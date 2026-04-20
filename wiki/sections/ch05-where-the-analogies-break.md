@@ -4,8 +4,8 @@ slug: ch05-where-the-analogies-break
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2352, 2422]
-source_commit: eb72fd8bb82cecd60e59036b27847eea5797a886
+source_lines: [2329, 2399]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1313
 ---
@@ -14,7 +14,7 @@ word_count: 1313
 
 We promised at the beginning of this chapter to say where the analogies break down.
 
-Arithmetization is the hardest layer to explain because it is the layer where computer science, algebra, and information theory collide in ways that resist simplification. The "spreadsheet with polynomial rules" captures the structure but not the mechanism. The "Sudoku puzzle" captures the constraint-satisfaction flavor but misleads about uniqueness. The "encoding" metaphor captures the transformation but hides the overhead.
+Arithmetization is the hardest layer to explain because it is the layer where computer science, algebra, and information theory collide in ways that resist simplification. The "spreadsheet with polynomial rules" captures the structure but not the mechanism. The "Sudoku puzzle" captures the constraint-satisfaction flavor but misleads about uniqueness (as noted at the opening of this chapter). The "encoding" metaphor captures the transformation but hides the overhead.
 
 What actually happens at Layer 4 is a lossy translation. A computation in the real world involves pointers, variable-length data, exceptions, floating-point approximation, and timing. The arithmetized version strips all of that away and replaces it with fixed-size field elements, fixed-structure polynomial constraints, and deterministic evaluation. The gap between the two -- the "abstraction tax" of 10,000x to 50,000x -- is the price of making computation mathematically verifiable.
 
@@ -24,7 +24,7 @@ That price is falling. It fell when AIR replaced R1CS for VM-style computations.
 
 But it has not fallen to zero, and it may never fall to zero. Provable computation is inherently more expensive than unprovable computation. The magician who performs backstage with no audience can cut corners. The magician who must produce a sealed certificate -- one that any stranger can verify -- must record every step with mathematical precision. The overhead of arithmetization is the cost of making the performance verifiable.
 
-There is a theoretical lower bound that clarifies the situation. Any computation that produces n bits of output requires at least n bits of communication to verify (you need to at least read the output). The overhead above this information-theoretic minimum comes from the cryptographic machinery: polynomial commitments, random challenge generation, and the proof that the polynomial identities hold. Whether this cryptographic overhead can be reduced to $O(1)$ multiplicative factor remains an open question. The current answer is: not yet, but the constant factor is shrinking every year.
+A communication-complexity argument sets a floor: any verifier must at minimum read the output, so at least $n$ bits of communication are required to verify a computation producing $n$ bits of output. This is a lower bound on *communication*, not on proof size in the usual sense -- SNARKs routinely produce proofs of 192 bytes for computations with megabytes of output, because the verifier does not need to read the full output to check the proof. The overhead above this floor comes from the cryptographic machinery: polynomial commitments, random challenge generation, and the proof that the polynomial identities hold. Whether that cryptographic overhead can be reduced to an $O(1)$ multiplicative factor over native execution remains open. The current answer is: not yet, but the constant factor is shrinking every year.
 
 The honest summary of Layer 4 in 2026: arithmetization is hard, expensive, and getting better fast. The constraint systems are converging toward CCS. The lookup revolution is replacing hand-crafted constraints with table lookups. The overhead is falling from 10,000x toward 1,000x and below. And the sumcheck protocol -- invented in 1992, long before anyone imagined practical zero-knowledge proofs -- has become the universal verification engine that makes it all work.
 
@@ -49,7 +49,7 @@ From this point forward, the magician-and-audience framing will recede. Layers 5
 - **LogUp** (Haboeck, 2022): sorting-free lookup via logarithmic derivatives. $O(n)$ prover cost.
 - **LogUp-GKR** (Papini and Haboeck, 2023): logarithmic verifier cost for lookups. Used in SP1 Hypercube and Stwo.
 - **Lasso** (2023): lookups into tables of size $2^{128}$, prover cost independent of table size.
-- **Jolt** (2023): approximately 6x faster than RISC Zero in theoretical commitment cost analysis. Full RISC-V ISA via lookups; ~18 field elements per 64-bit RISC-V instruction.
+- **Jolt** (Arun, Setty, Thaler, ePrint 2023/1217): prover cost approximately 5x-10x lower than RISC Zero in the Jolt paper's own comparison of per-instruction commitment cost; the paper reports ~6x as a representative figure. Full RISC-V ISA via lookups; ~18 field elements per 64-bit RISC-V instruction.
 - **Overhead tax**: 10,000-50,000x versus native execution (2024-2025 systems). Falling to 1,000-5,000x by 2027-2028.
 - **Overhead breakdown**: field encoding (10-100x), constraint expansion (50-100x), polynomial commitment (10-50x). Sources multiply.
 - **Ozdemir et al.**: 50-150x reduction in memory checking constraints via algebraic approaches.
@@ -69,6 +69,7 @@ From this point forward, the magician-and-audience framing will recede. Layers 5
 - [R-L4-8] Papini, Shahar and Ulrich Haboeck. "Improving Logarithmic Derivative Lookups Using GKR (LogUp-GKR)." ePrint 2023/1284.
 - [R-L4-9] Setty, Thaler, Wahby. "Unlocking the Lookup Singularity with Lasso." ePrint 2023/1216.
 - [R-L4-10] Arun, Setty, Thaler. "Jolt: SNARKs for Virtual Machines via Lookups." ePrint 2023/1217.
+- [R-L4-11] Blum, Evans, Gemmell, Kannan, Naor. "Checking the Correctness of Memories." FOCS 1991.
 - Midnight ZKIR Reference (v2/v3), 119 oracle traces. Compact compiler v0.29.0.
 - Lund, Fortnow, Karloff, Nisan. "Algebraic Methods for Interactive Proof Systems." JCSS 1992.
 - ZKsync. "Airbender: GPU-Accelerated RISC-V Proving." Product announcement, June 2025. https://www.zksync.io/airbender
@@ -79,7 +80,6 @@ From this point forward, the magician-and-audience framing will recede. Layers 5
 
 *A note on the next three chapters.* Chapters 5, 6, and 7 cover arithmetization, proof systems, and cryptographic primitives -- what this book calls the "proof core." In practice, these three layers are inseparable: the choice of field (Layer 6) determines which arithmetization works (Layer 4), which determines which proof system is viable (Layer 5). We present them sequentially because a book must be linear, but they are best understood as a single coupled design unit. If a choice in Chapter 7 seems to contradict a claim in Chapter 5, it is because the dependency runs in both directions. Read all three, then revisit.
 
----
 ---
 
 ## Summary
@@ -142,11 +142,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "Jolt is approximately 6x faster than RISC Zero in theoretical commitment cost analysis" — this appears in the Reference Data section without a citation and with the qualifier "theoretical." The original Jolt paper claims a 5x–10x improvement in prover cost vs. RISC Zero; "6x" is within that range but needs a citation. The phrase "theoretical commitment cost analysis" is vague — is this from the Jolt paper's own comparison or from an independent benchmark?
-- [P2] (A) "There is a theoretical lower bound that clarifies the situation. Any computation that produces n bits of output requires at least n bits of communication to verify" — this is a correct statement of the communication complexity lower bound, but presenting it as a "theoretical lower bound" on ZK proof overhead is potentially misleading: SNARKs routinely produce proofs much smaller than the output size (e.g., Groth16 produces a 192-byte proof for computations with megabytes of output). The lower bound applies to communication, not proof size in the standard sense. Clarification needed.
-- [P2] (C) "The Sudoku puzzle captures the constraint-satisfaction flavor but misleads about uniqueness" — this point was already made in the intro section (ch05-layer-4-arithmetization). The closing section repeats it without adding new insight. The recap is mildly redundant given the intro already handled it.
 - [P3] (D) The Reference Data appendix at the end lists all key facts for the chapter. This is useful, but its placement at the end of the last section rather than in the chapter hub (05-encoding-the-performance.md) means it is only discoverable by reading to the last page. Consider whether it belongs in the chapter rollup instead.
 
 ## Links

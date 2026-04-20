@@ -4,8 +4,8 @@ slug: ch11-the-proof-core-triad
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4691, 4716]
-source_commit: 9cb1d67a71f09c510cc06fa9493948e145a8f31a
+source_lines: [4679, 4704]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 978
 ---
@@ -16,9 +16,9 @@ The comparative analysis reveals a pattern the seven-layer model obscures: Layer
 
 In Stwo: M31 (Layer 6) forces Circle groups (Layer 5) forces Circle AIR (Layer 4).
 
-In SP1: BabyBear (Layer 6) enables multilinear PCS (Layer 6) enables LogUp-GKR (Layer 4/5) enables Jagged multi-table AIR (Layer 4).
+In SP1: BabyBear (Layer 6) enables multilinear PCS (Layer 5/6) enables LogUp-GKR (Layer 4/5) enables Jagged multi-table AIR (Layer 4).
 
-In Jolt: BN254 (Layer 6) enables Hyrax commitment (Layer 6) makes sumcheck natural (Layer 5) makes Lasso lookups natural (Layer 4).
+In Jolt: BN254 (Layer 6) enables Hyrax commitment (Layer 5/6) makes sumcheck natural (Layer 5) makes Lasso lookups natural (Layer 4).
 
 In each case, the field choice *determines* the commitment scheme, which *determines* the polynomial representation, which *determines* the arithmetization. The proof core is the inseparable nucleus of {field, commitment scheme, polynomial representation} straddling Layers 4, 5, and 6. Acknowledging it does not require restructuring the seven-layer model, but it does require acknowledging that the model's clean layer boundaries are pedagogical simplifications, not architectural truths.
 
@@ -85,9 +85,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) "In SP1: BabyBear (Layer 6) enables multilinear PCS (Layer 6)" — multilinear PCS straddles Layers 5 and 6 (commitment scheme is Layer 7 in some framings, or Layer 5 in others); labelling it Layer 6 twice in the same triad description is internally inconsistent with the book's own layer taxonomy.
 - [P3] (B) No sources cited for the triad clustering claim or for the "BN254 subgroup order 2^28" figure, both of which are verifiable mathematical facts that benefit from a reference.
 
 ## Links

@@ -4,8 +4,8 @@ slug: ch04-witness-constraint-divergence
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1475, 1508]
-source_commit: a4f1e087fc5498fd54e35cbddb135fb2203d262d
+source_lines: [1455, 1488]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 843
 ---
@@ -24,7 +24,7 @@ The zkSync Era MemoryWriteQuery bug was worse. The struct that handled memory wr
 
 These bugs share a common structure: the witness was correct, but the constraints were insufficient. The magician performed the trick honestly backstage, but the constraint system's description of what "honest" meant was incomplete. The proof certified that the computation matched the constraints. The constraints did not match the intended computation.
 
-Call it the correctness gap: the distance between what the developer meant and what the constraints actually enforce. It is measured not in bits of security but in lines of code that were not written.
+Call it the correctness gap: the distance between what the developer meant and what the constraints actually enforce. The zkSync bug illustrates the typical failure mode: the method enforcing the constraint existed but was never called. Missing constraints are not always missing code; they are sometimes code present but never invoked.
 
 Multiple valid witnesses can exist for the same statement, and the proof system does not care which one the prover uses. If you prove that you know a square root of 25, the proof system accepts whether you use 5 or -5. This is by design -- the proof system guarantees soundness (you cannot prove a false statement), not uniqueness (there is only one valid witness).
 
@@ -40,7 +40,7 @@ The most common approach is *property-based testing*: generate thousands of rand
 
 *Differential testing* takes a different angle. You implement the same computation twice -- once as a witness generator, once as an independent reference implementation -- and check that they agree on all inputs. If the constraint system accepts a witness that the reference implementation rejects, you have found a bug. This approach catches the class of errors where the witness generator and the constraint system silently diverge (the dominant failure mode in Circom).
 
-*Formal verification* is the gold standard but remains aspirational for large circuits. NAVe (for Noir) and Picus (for Circom) can verify properties of small to medium circuits automatically, but circuits with millions of constraints exceed current solver capacity. The combination of compile-time prevention (Compact's disclosure analysis, refinement types) and post-hoc verification (ZKAP's static analysis, zkFuzz) could provide comprehensive coverage, but no production system achieves both today. This gap is one of the field's most important open problems.
+*Formal verification* is the gold standard but remains aspirational for large circuits. NAVe (Ozdemir, Brown, and Bonneau, 2023; targeted at Noir) and Picus (Wen, Cheng, and Wang, CCS 2023; targeted at Circom) can verify properties of small to medium circuits automatically, but circuits with millions of constraints exceed current solver capacity. The combination of compile-time prevention (Compact's disclosure analysis, refinement types) and post-hoc verification (ZKAP's static analysis for under-constrained circuit detection -- F1 score 0.82 on that specific task -- and zkFuzz) could provide comprehensive coverage, but no production system achieves both today. This gap is one of the field's most important open problems.
 
 ---
 
@@ -82,11 +82,10 @@ None.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "ZKAP achieves F1 score 0.82 and discovered 34 previously unknown vulnerabilities via static analysis (Circom only)" — the F1 score is for a detection task that should be specified (under-constrained circuit detection? completeness checking?). Without the task definition, F1=0.82 is uninterpretable.
-- [P2] (B) NAVe (for Noir) and Picus (for Circom) are mentioned without citations or publication years. These are research tools; a reader wanting to follow up has no entry point.
-- [P2] (C) "The correctness gap: the distance between what the developer meant and what the constraints actually enforce. It is measured not in bits of security but in lines of code that were not written." — well-phrased but the final clause ("lines of code not written") is a rhetorical flourish that imprecisely conflates missing constraints with missing code; the zkSync bug was a method that existed but wasn't called.
 - [P3] (D) The section introduces "non-deterministic hints" as a relevant concept but this term is not indexed in the Entities list and does not link to a concept page. If it appears again in ch05, it should be a [[concept]] link here.
 
 ## Links

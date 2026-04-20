@@ -4,8 +4,8 @@ slug: ch08-pricing-attacks
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3901, 3949]
-source_commit: ae218cbb73ddecefb37373fa1c8e789e5b6f8f93
+source_lines: [3885, 3933]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1160
 ---
@@ -94,6 +94,8 @@ Two novel attack classes exploit mismatches in how rollups price their three ind
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 

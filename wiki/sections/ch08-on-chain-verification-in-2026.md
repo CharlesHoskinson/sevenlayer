@@ -4,8 +4,8 @@ slug: ch08-on-chain-verification-in-2026
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3982, 4003]
-source_commit: ae218cbb73ddecefb37373fa1c8e789e5b6f8f93
+source_lines: [3966, 3986]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 461
 ---
@@ -14,7 +14,7 @@ word_count: 461
 
 The state of on-chain verification as of early 2026:
 
-**Verification costs** have stabilized. Groth16 on BN254 remains the dominant on-chain proof format, at roughly 200,000-250,000 gas per verification. The verification cost floor is set by the pairing precompile gas schedule, which is a protocol parameter that changes only through Ethereum governance (EIPs and hard forks).
+**Verification costs** have stabilized. Groth16 on BN254 remains the dominant on-chain proof format, at roughly 187,000-250,000 gas per verification (varying with public input count). The verification cost floor is set by the pairing precompile gas schedule, which is a protocol parameter that changes only through Ethereum governance (EIPs and hard forks).
 
 **Data availability** is abundant and cheap. Three Ethereum upgrades in two years (Dencun, Pectra, Fusaka) have expanded blob-based DA capacity from the original EIP-4844 target of 3 blobs per block to roughly 14 under Fusaka/PeerDAS -- about a 4.7x increase over two years. Alternative DA layers (Celestia, EigenDA, Avail) provide even cheaper options at the cost of different security assumptions.
 
@@ -30,7 +30,6 @@ Until the governance matures to Stage 2 -- until the smart contracts that verify
 
 Layer 7 is the last layer. The seven-layer tour -- from setup ceremony to on-chain verdict -- is complete. But zero-knowledge proofs do not operate in isolation. They belong to a family of privacy-enhancing technologies -- MPC, FHE, differential privacy, TEEs -- and understanding ZKPs without understanding their siblings leads to architectures that reach for the right mathematics and solve the wrong problem. Before we synthesize the seven layers in Part III, we map the family.
 
----
 ---
 
 ## Summary
@@ -73,6 +72,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 

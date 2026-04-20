@@ -4,8 +4,8 @@ slug: ch07-the-one-way-door
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3502, 3529]
-source_commit: 7623e4c122cda2624dd2a679440afa4136b8f409
+source_lines: [3487, 3513]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 534
 ---
@@ -34,10 +34,9 @@ The laws of physics do not change. But our understanding of which mathematical p
 
 ---
 
-The physical laws are set. The field is chosen, the commitment scheme determined, the hardness assumption staked. Everything from here upward -- the proof system, the arithmetization, the language, the setup -- inherits the possibilities and constraints of this foundation. But none of it matters until someone checks the proof. Layer 7 is where the mathematics meets its audience: on a blockchain, in a smart contract, through a governance structure that can override everything we have built. The next chapter examines the verdict -- and the uncomfortable truth that the audience's judgment is only as trustworthy as the institution that seats them.
+*Chapter bridge: The foundations are set. From here, the stack ascends to Layer 7 -- where the mathematics meets its audience on a blockchain, in a smart contract, through governance structures that can override everything built below. The next chapter examines the verdict, and the uncomfortable truth that the audience's judgment is only as trustworthy as the institution that seats them.*
 
 ---
-
 
 ## Summary
 
@@ -81,9 +80,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (D) The closing transition paragraph ("Layer 7 is where the mathematics meets its audience…") is a book-level bridge to Chapter 8 embedded in this section file. In a wiki structure where sections are independently navigable, this bridge may be misread as part of this section's argument rather than a chapter transition; it could be marked or moved to the chapter hub.
 - [P3] (C) "The data is patient" (from ch07-the-quantum-threat-horizon) and the similar "secrets written in ink that merely required a light that had not yet been invented" here are vivid but slightly overwrought; consistency of tone with other closing sections in the chapter varies.
 
 ## Links

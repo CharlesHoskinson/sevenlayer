@@ -4,8 +4,8 @@ slug: ch12-where-midnight-challenges-the-model
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4914, 4934]
-source_commit: 65e82b18c746552064750d4b1ea3c6d13bacbe3a
+source_lines: [4903, 4923]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 398
 ---
@@ -14,7 +14,7 @@ word_count: 398
 
 Three aspects of Midnight's architecture do not fit cleanly into seven layers:
 
-**1. The compiler spans Layers 2, 3, and 4 simultaneously.** The Compact compiler's nanopass architecture takes source code (Layer 2), performs disclosure analysis (a Layer 3 concern -- who sees the witness?), and emits ZKIR (Layer 4 arithmetization) in a single continuous pipeline of 26 intermediate languages. There is no clean boundary where "language" ends and "arithmetization" begins. The magician's script, the backstage preparation, and the mathematical encoding blur into a single creative act.
+**1. The compiler spans Layers 2, 3, and 4 simultaneously.** The Compact compiler uses a nanopass architecture (Compact Language Reference §6.1) that takes source code (Layer 2), performs disclosure analysis (a Layer 3 concern -- who sees the witness?), and emits ZKIR (Layer 4 arithmetization) in a single continuous pipeline of 26 intermediate languages. There is no clean boundary where "language" ends and "arithmetization" begins. The magician's script, the backstage preparation, and the mathematical encoding blur into a single creative act.
 
 **2. The SDK is a cross-layer orchestrator.** The four-phase transaction pipeline spans Layer 3 (witness construction in `callTx`), Layer 5 (proof generation in `proveTx`), Layer 6 (BIP-340 signatures in `balanceTx`), and Layer 7 (on-chain submission in `submitTx`). The SDK is not "at" any single layer; it is the glue connecting all of them.
 
@@ -73,10 +73,10 @@ None in this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) The table lists token model as "Three-token model (Night/Shielded/DUST)" — the third token class is "custom tokens" (which can be shielded or unshielded), not a token named "Shielded." Inconsistent with the naming used everywhere else in chapter 12.
-- [P2] (B) "nanopass architecture spanning 26 intermediate languages" is a specific engineering claim; no source is cited. Should reference the Compact Language Reference or compiler documentation.
 - [P3] (D) The three challenge descriptions are clear, but the transition from the prose to the summary table is abrupt; a single bridging sentence would improve flow without adding AI-smell padding.
 
 ## Links

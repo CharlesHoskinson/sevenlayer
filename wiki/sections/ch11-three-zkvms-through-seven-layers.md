@@ -4,8 +4,8 @@ slug: ch11-three-zkvms-through-seven-layers
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4607, 4690]
-source_commit: 9cb1d67a71f09c510cc06fa9493948e145a8f31a
+source_lines: [4595, 4678]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 2326
 ---
@@ -18,9 +18,9 @@ The best way to understand why the seven-layer model bends under zkVM pressure i
 
 **Layer 1 (Setup).** Hybrid -- transparent inner loop (hash-based Poseidon2 over BabyBear), trusted outer wrap (Groth16 over BN254). The KZG ceremony is for the wrapper only. The trusted-or-transparent choice is actually "both."
 
-**Layer 2 (ISA).** RISC-V (RV32IM). Developers write ordinary Rust; the compiler handles the rest. SP1 implements 39+ RISC-V instructions, with all 62 core opcodes formally verified against the official RISC-V Sail specification.
+**Layer 2 (ISA).** RISC-V (RV32IM). Developers write ordinary Rust; the compiler handles the rest. SP1 implements 39+ RISC-V instructions, with all 62 core opcodes formally verified against the official RISC-V Sail specification [57].
 
-**Layer 3 (Witness).** Shard-based execution traces with continuations. Each shard is an independent proving unit; shared challenges enforce consistency at shard boundaries. This is where the Witness Gap lives -- SP1's witness generation is CPU-bound while its proving is GPU-accelerated, so witness generation consumes an estimated 60-70% of total proving time.
+**Layer 3 (Witness).** Shard-based execution traces with continuations. Each shard is an independent proving unit; shared challenges enforce consistency at shard boundaries. This is where the Witness Gap lives -- SP1's witness generation is CPU-bound while its proving is GPU-accelerated, so witness generation accounts for an estimated 60-70% of total proving time [58].
 
 **Layer 4 (Arithmetization).** Multi-table AIR with LogUp-GKR cross-table lookups over multilinear polynomials. Each RISC-V instruction type has its own constraint table ("chip"). Precompiles (SHA-256, Keccak, secp256k1) are independent STARK tables connected via LogUp.
 
@@ -60,7 +60,7 @@ Conventional STARKs require a field with large multiplicative subgroups for FFT-
 
 The payoff is the 125x raw arithmetic speedup. M31 arithmetic -- 31-bit integer addition and multiplication with a single modular reduction -- maps directly onto 32-bit CPU and GPU instructions with no multi-precision overhead. A single SIMD lane processes one field element. Compare this with the 252-bit Stark field used by Stone, where each field multiplication requires multiple 64-bit limb operations and carry propagation. The measured factor is not a software optimization; it is a consequence of matching the algebraic structure to the hardware word size. The end-to-end Stwo pipeline sees roughly 100x over Stone because prover work beyond field arithmetic -- hashing, commitments, I/O -- scales on its own schedule.
 
-Cairo's role is just as distinctive. Where RISC-V zkVMs treat the ISA and the constraint system as separate concerns -- the ISA defines computation, the arithmetization encodes it -- Cairo *collapses the two*. A Cairo instruction is simultaneously a machine operation and a set of polynomial constraints. The compiler does not translate programs into constraints; it emits programs that *are* constraints. This eliminates the "arithmetization tax" that RISC-V zkVMs pay: the overhead of encoding a general-purpose instruction (designed for silicon hardware) into an algebraic form (designed for polynomial provers). Gassmann et al.'s finding that standard LLVM optimizations yield 40% improvement on RISC-V zkVMs -- because LLVM optimizes for caches and branch predictors that do not exist in ZK execution -- quantifies exactly the tax that Cairo avoids.
+Cairo's role is just as distinctive. Where RISC-V zkVMs treat the ISA and the constraint system as separate concerns -- the ISA defines computation, the arithmetization encodes it -- Cairo *collapses the two*. A Cairo instruction is simultaneously a machine operation and a set of polynomial constraints. The compiler does not translate programs into constraints; it emits programs that *are* constraints. This eliminates the "arithmetization tax" that RISC-V zkVMs pay: the overhead of encoding a general-purpose instruction (designed for silicon hardware) into an algebraic form (designed for polynomial provers). Gassmann et al.'s finding that standard LLVM optimizations yield 40% improvement on RISC-V zkVMs -- because LLVM optimizes for caches and branch predictors that do not exist in ZK execution -- quantifies exactly the tax that Cairo avoids [59].
 
 The SHARP (Shared Prover) aggregation layer adds a dimension absent from SP1 and Jolt: *amortization across applications*. SHARP batches proofs from multiple independent Starknet applications into a single recursive proof, so the fixed cost of Ethereum L1 verification is shared among all applications that submit proofs in the same batch window. This is economic aggregation, not just cryptographic recursion. A small contract with ten transactions per hour pays a fraction of the L1 verification cost it would bear alone. The theater shares its rent among all the acts on stage.
 
@@ -153,10 +153,10 @@ SP1, Stwo/Cairo, and Jolt each traverse the seven layers by a distinct route: SP
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) "SP1 witness generation consumes an estimated 60-70% of total proving time" — flagged as an estimate with no source. This specific proportion is a key claim about the Witness Gap and needs a citation.
-- [P2] (B) "Gassmann et al. (2025)" cited without venue, journal, or DOI. This is the sole named source in the section and is referenced in multiple places; a full citation is needed.
 - [P3] (C) "SP1 implements 39+ RISC-V instructions" (Layer 2) alongside "all 62 core opcodes formally verified" (same paragraph) — two different counts for different things but no explanation of the distinction, creating confusion.
 
 ## Links

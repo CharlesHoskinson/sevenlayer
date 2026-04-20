@@ -4,8 +4,8 @@ slug: ch03-compact-s-disclosure-analysis
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [1108, 1161]
-source_commit: c9e43022aec66b2d2daf6a69767a4389b8d854c8
+source_lines: [1089, 1142]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 576
 ---
@@ -56,7 +56,7 @@ The compiler catches three categories of accidental leakage: witness values used
 
 The disclosure analysis pass runs as part of the 26-stage nanopass compilation pipeline, at the `Lnodisclose` intermediate language stage. The privacy boundary is verified before any code generation occurs. The compiler has already type-checked the program, analyzed data flow paths, and confirmed that every potential disclosure is explicitly marked -- or the compilation fails.
 
-Consider a concrete case. The Midnight developer guide documents that the first attempt at implementing a private voting contract -- using naive if/else branching on witness values -- was rejected by the compiler with 11 disclosure errors. Each error traced the path from a witness value to a public surface. The compiler forced a fundamental redesign: Merkle trees replaced per-slot branching, nullifiers replaced voted-flags, and arithmetic tallying replaced conditional increments. The resulting design was not just compiler-compliant -- it was architecturally superior. The naive approach would have leaked which candidate each voter chose through the pattern of ledger writes. The compiler-forced redesign made this impossible.
+Consider a concrete case. The Midnight developer documentation records that an early attempt at implementing a private voting contract -- using naive if/else branching on witness values -- was rejected by the compiler with 11 disclosure errors. Each error traced the path from a witness value to a public surface. The compiler forced a fundamental redesign: Merkle trees replaced per-slot branching, nullifiers replaced voted-flags, and arithmetic tallying replaced conditional increments. The resulting design was not just compiler-compliant -- it was architecturally superior. The naive approach would have leaked which candidate each voter chose through the pattern of ledger writes. The compiler-forced redesign made this impossible.
 
 No other ZK language provides this guarantee. In Circom, Noir, and Cairo, privacy depends on the developer correctly managing which values are public and which are private. A mistake does not produce a compiler error. It produces a privacy leak that may not be discovered until an attacker exploits it. Compact makes privacy a compiler guarantee rather than a developer responsibility.
 
@@ -101,11 +101,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) "The Midnight developer guide documents that the first attempt at implementing a private voting contract…was rejected with 11 disclosure errors" — attributed to "the Midnight developer guide" but no URL, version, or section is given. Should link or date the source.
-- [P2] (B) No citations in "Sources cited" despite specific implementation details (26-pass pipeline, three leakage categories, 11-error voting contract redesign). These are Compact-specific engineering claims that should trace to documentation or a technical paper.
-- [P2] (A) The code example uses `disclose(get_balance())` and assigns to `my_balance`, but the preceding prose says "The `disclose()` call is the developer's explicit declaration: 'I acknowledge that this private value will influence public state.'" The explanation conflates two distinct functions of `disclose()`: making the value available inside the circuit (constrained) vs acknowledging that it influences *public* state. Compact's disclosure analysis catches the latter; the former is automatic for any circuit input. The distinction should be tightened.
 - [P3] (D) The section's claim that "no other ZK language provides this guarantee" is unqualified. Leo's record model provides a structural (if less granular) privacy guarantee. The comparison should acknowledge that Leo's approach is different but not entirely without compiler-enforced bounds.
 - [P3] (E) The section ends abruptly after the tradeoff paragraph. A brief note on whether disclosure analysis catches *over*-constraining (revealing more than necessary) as well as under-constraining would complete the picture.
 

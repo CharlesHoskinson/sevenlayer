@@ -4,15 +4,15 @@ slug: ch04-witness-generation-costs
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1268, 1344]
-source_commit: a4f1e087fc5498fd54e35cbddb135fb2203d262d
+source_lines: [1248, 1324]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1966
 ---
 
 ## Witness Generation Costs
 
-The paper that this book revises claimed witness generation accounted for 10-25% of total proving time. That figure was approximately correct in 2023, when the proving step was slow enough to dwarf everything else. It is no longer correct.
+The 10-25% figure was approximately correct in 2023, when the proving step was slow enough to dwarf everything else. It is no longer correct.
 
 Modern GPU-accelerated provers have transformed the cost structure. When the cryptographic proving step runs on an NVIDIA H100 GPU -- or a cluster of them -- it becomes 10 to 100 times faster than on a CPU. Multi-scalar multiplications, the traditional bottleneck, have been optimized to the point where number-theoretic transforms (NTTs -- the finite-field version of the Fast Fourier Transform) now account for up to 90% of GPU proving time. And NTTs themselves have been accelerated through pipelining, with systems like BatchZK achieving roughly 3,040x speedup over CPU baselines for sum-check operations.
 
@@ -22,9 +22,9 @@ Before GPU acceleration: witness generation takes 2 seconds, proving takes 8 sec
 
 After GPU acceleration: witness generation still takes 2 seconds, proving takes 0.8 seconds. Witness share: 71%.
 
-Welcome to the Witness Gap -- and it is growing, not shrinking. Every improvement to the proving step makes the witness gap worse by proportion. The field has been optimizing the fast part and ignoring the slow part.
+The Witness Gap is growing, not shrinking. Every improvement to the proving step makes it worse by proportion. The field has been optimizing the fast part and ignoring the slow part.
 
-To feel the scale: our 4x4 Sudoku produces a witness of roughly 80 field elements. Trivial. A 9x9 Sudoku -- the kind you find in a newspaper -- produces thousands. An Ethereum block produces billions. The witness for a single Ethereum block, fully materialized, can exceed 100 gigabytes of RAM. The gap between "toy example" and "production workload" is not a gentle slope. It is a cliff.
+To feel the scale: our 4x4 Sudoku produces a witness of roughly 80 field elements. Trivial. A 9x9 Sudoku -- the kind you find in a newspaper -- produces thousands. An Ethereum block produces billions. The witness for a single Ethereum block, fully materialized in 64-bit Goldilocks field elements (8 bytes each), can exceed 100 gigabytes of RAM; systems using 254-bit BN254 elements would require roughly four times as much. The gap between "toy example" and "production workload" is not a gentle slope. It is a cliff.
 
 ZKPoG -- the same ePrint 2025/765 study that established the 50-70% figure -- demonstrated that moving witness generation to the GPU can yield 3-10x speedups. But this requires different parallelization strategies than proving. Proving parallelizes naturally because polynomial arithmetic is regular and data-independent. Witness generation requires analyzing the circuit's dependency graph, topologically sorting gates to identify independent clusters, and mapping irregular computation patterns onto GPU hardware. The parallelism is there, but extracting it is harder.
 
@@ -76,14 +76,14 @@ The performance numbers tell the story:
 
 | Metric | Value | Source |
 |---|---|---|
-| Witness generation share (with GPU proving) | 50-70% of total time | ZKPoG (ePrint 2025/765) |
-| NTT share of GPU proving time | up to 90% | ZKProphet |
-| GPU pipeline speedup over CPU (sum-check protocol) | 3,040x | BatchZK |
-| GPU pipeline speedup over CPU (Merkle tree) | 793x | BatchZK |
-| GPU pipeline memory per proof | 0.08-0.44 GB | BatchZK |
+| Witness generation share (with GPU proving) | 50-70% of total time | ZKPoG (Li et al., ePrint 2025/765) |
+| NTT share of GPU proving time | up to 90% | ZKProphet (2025) |
+| GPU pipeline speedup over CPU (sum-check protocol) | 3,040x | BatchZK (2025) |
+| GPU pipeline speedup over CPU (Merkle tree) | 793x | BatchZK (2025) |
+| GPU pipeline memory per proof | 0.08-0.44 GB | BatchZK (2025) |
 | Streaming prover space | $O(\sqrt{KT})$ for $K$ checkpoint segments | Nair, Thaler, Zhu (ePrint 2025/611) |
-| RAM constraint reduction | up to 51.3x | Ozdemir, Laufer, Boneh (IEEE S&P 2025) |
-| ZKPoG end-to-end GPU speedup | 22.8x average | ZKPoG |
+| RAM constraint reduction | up to 51.3x | Ozdemir, Laufer, Boneh (IEEE S&P 2025, ePrint 2024/979) |
+| ZKPoG end-to-end GPU speedup | 22.8x average | ZKPoG (ePrint 2025/765) |
 
 ---
 
@@ -134,11 +134,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "An Ethereum block produces billions [of field elements]" then "can exceed 100 gigabytes of RAM" — the RAM figure covers materialized field elements at specific field sizes; the text doesn't mention the field size (e.g., 64-bit Goldilocks vs. 254-bit BN254 elements differ 4×). Adding the field size would make the RAM estimate verifiable.
-- [P2] (B) ZKPOG, ZKProphet, BatchZK, Nair/Thaler/Zhu, and Ozdemir/Laufer/Boneh are all cited by name without publication years or venues. At minimum, years should appear in the Sources cited block; the prose treats all five as equally recent without dating them.
-- [P2] (C) "Welcome to the Witness Gap — and it is growing, not shrinking." The em-dash and exclamatory register is a light AI-smell; tighten to a declarative statement.
 - [P3] (E) The section does not mention whether pipelining (BatchZK) requires a specific proof system or is system-agnostic. The streaming approach (Jolt/sum-check) is explicitly tied to the sum-check protocol, but BatchZK's applicability is not bounded.
 
 ## Links

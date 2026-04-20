@@ -4,8 +4,8 @@ slug: ch06-the-proof-core-why-layers-4-5-and-6-are-inseparable
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2818, 2835]
-source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
+source_lines: [2797, 2814]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 371
 ---
@@ -70,6 +70,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 

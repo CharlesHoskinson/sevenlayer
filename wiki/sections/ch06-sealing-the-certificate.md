@@ -4,8 +4,8 @@ slug: ch06-sealing-the-certificate
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2425, 2448]
-source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
+source_lines: [2402, 2425]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 615
 ---
@@ -24,7 +24,7 @@ In the previous two chapters, we watched the computation get written down (the l
 >
 > Our 72 constraints over 16 witness variables are now sealed into a certificate. The prover commits to the constraint polynomials using the chosen commitment scheme (KZG, FRI, or Ajtai -- depending on the architectural path from Chapter 10). The verifier sends random challenge points (or they are derived via Fiat-Shamir from the transcript hash). The prover evaluates the committed polynomials at those points and returns the evaluations with opening proofs.
 >
-> The verifier checks: do the evaluations satisfy the constraint relationships at the challenged points? If yes, Schwartz-Zippel guarantees that the polynomials themselves satisfy the constraints everywhere -- except with probability at most $d/|\mathbb{F}|$, where $d$ is the polynomial degree and $|\mathbb{F}|$ is the field size. For our 4x4 Sudoku over a 256-bit field, $d$ is roughly 4 and $|\mathbb{F}|$ is roughly $2^{256}$, so the soundness error is vanishingly small.
+> The verifier checks: do the evaluations satisfy the constraint relationships at the challenged points? If yes, the Schwartz-Zippel lemma guarantees that the polynomials themselves satisfy the constraints everywhere -- except with probability at most $d/|\mathbb{F}|$, where $d$ is the polynomial degree and $|\mathbb{F}|$ is the field size. For our 4x4 Sudoku over a 256-bit field, $d$ is roughly 4 and $|\mathbb{F}|$ is roughly $2^{256}$, so the soundness error is vanishingly small. (Schwartz-Zippel is a standard tool in algebraic complexity; see Chapter 10 for the formal statement alongside the discussion of KZG, FRI, and Ajtai commitments.)
 >
 > The result: a Groth16 proof of 192 bytes, or a STARK proof of around 50 KB, or a folded lattice commitment -- depending on the path. The verifier learns that the prover knows a valid solution. The verifier learns nothing about which numbers go where. The sixteen secret values never leave the prover's machine. The 4x4 grid that was the witness has been compressed into a handful of group elements and field evaluations -- the sealed certificate.
 
@@ -73,10 +73,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (C) "it is worth spelling out" style phrasing in the chapter body (appears in ch06-the-hybrid-pipeline but pattern starts here); intro section itself is clean
-- [P2] (B) No sources cited; Schwartz-Zippel is named but not cited; FRI/KZG/Ajtai are forward-referenced to Ch10 without a note for the reader
 - [P3] (E) Ajtai commitment path is mentioned only parenthetically; a single sentence on what distinguishes it from KZG/FRI would improve the taxonomy
 
 ## Links

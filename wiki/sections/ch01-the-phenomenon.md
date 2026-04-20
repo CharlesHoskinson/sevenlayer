@@ -4,8 +4,8 @@ slug: ch01-the-phenomenon
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [204, 242]
-source_commit: b965c2493b961bc9b2103781f78f2c7e98e4521f
+source_lines: [204, 240]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1224
 ---
@@ -24,9 +24,9 @@ In 1986, Amos Fiat and Adi Shamir found the way through [Fiat-Shamir, Crypto '86
 
 But the Fiat-Shamir transform alone was not enough. It removed the interaction, but the resulting proofs were still large and expensive to verify. Two decades of incremental progress followed -- better algebraic structures, tighter security reductions, more efficient encodings.
 
-Two papers separated by three years bracket the breakthrough. In 2013, Rosario Gennaro, Craig Gentry, Bryan Parno, and Mariana Raykova introduced Quadratic Arithmetic Programs -- the first algebraic framework that made succinct non-interactive arguments practical [GGPR, Eurocrypt 2013; ePrint 2012/215]. In 2016, Jens Groth built on that lineage and produced the proof that made the theory hit hardware: three elliptic-curve points, 192 bytes total [Groth 2016; ePrint 2016/260]. QAPs were the precursor. Groth16 is the one people cite when they say "192 bytes."
+Two papers separated by three years bracket the breakthrough. In 2013, Rosario Gennaro, Craig Gentry, Bryan Parno, and Mariana Raykova introduced Quadratic Arithmetic Programs -- the first algebraic framework that made succinct non-interactive arguments practical [GGPR, Eurocrypt 2013; ePrint 2012/215]. In 2016, Jens Groth built on that lineage and produced the proof that made the theory hit hardware [Groth 2016; ePrint 2016/260]. QAPs were the precursor. Groth16 is the one people cite when they say "192 bytes."
 
-What does such a proof actually look like? Not a page of equations. Not an argument in English. A Groth16 proof is exactly three points on an elliptic curve -- three pairs of coordinates in a mathematical space where arithmetic is easy to perform but impossible to reverse. Serialized, each point takes about 48 bytes. The entire proof fits in 192 bytes. Smaller than a tweet. Less data than your phone transmits when it pings a cell tower. Yet those 192 bytes can certify that a computation involving millions of steps was performed correctly -- every memory access checked, every arithmetic operation verified, every constraint satisfied. The disproportion between what is proved and what is transmitted is the source of the word "succinct" in SNARK (Succinct Non-interactive ARgument of Knowledge). The entire field of practical zero-knowledge begins with that compression ratio.
+What does such a proof actually look like? Not a page of equations. Not an argument in English. A Groth16 proof consists of two points on one elliptic curve ($\mathbb{G}_1$, each 48 bytes) and one point on a degree-2 extension curve ($\mathbb{G}_2$, 96 bytes) -- three group elements in total, 192 bytes when serialized on BLS12-381. Smaller than a short tweet. Less data than your phone transmits when it pings a cell tower. Yet those 192 bytes can certify that a computation involving millions of steps was performed correctly -- every memory access checked, every arithmetic operation verified, every constraint satisfied. The disproportion between what is proved and what is transmitted is the source of the word "succinct" in SNARK (Succinct Non-interactive ARgument of Knowledge). The entire field of practical zero-knowledge begins with that compression ratio.
 
 Three curve points that took a GPU cluster seconds to compute, that a smart contract on Ethereum can verify for roughly 250,000 gas (a few dollars' worth of on-chain computation), and that reveal absolutely nothing about the secret they certify.
 
@@ -40,9 +40,7 @@ With a zero-knowledge proof, the bank proves a single statement: "The sum of all
 
 Or consider the supply chain. A pharmaceutical manufacturer must prove to the FDA that every batch of a drug was produced within temperature tolerances, using ingredients from the approved supplier list, in a facility that passed its last GMP inspection. Today, that means opening the entire manufacturing record -- supplier identities, process parameters, pricing agreements -- to federal inspectors. With a zero-knowledge proof, the manufacturer proves compliance without revealing the recipe. Every temperature reading was in range. Every ingredient was on the list. The FDA gets certainty. The manufacturer keeps its trade secrets. Competitors learn nothing.
 
-But the scenario that scales furthest touches individuals, not institutions. Imagine filling a prescription. Today, the pharmacy learns your name, your diagnosis, your prescribing physician, and your insurance details. Your insurance company learns which pharmacy you use, what medication you take, and when you fill it. Your employer's benefits administrator can infer your health conditions from the claims data. A single prescription generates a trail of private information across four or five organizations, each storing it on servers that get breached with depressing regularity.
-
-With zero-knowledge proofs, the exchange becomes surgical. You prove you are over twenty-one. You prove you hold a valid prescription for this specific medication. You prove your insurance covers it, and that you have met your deductible. You prove all of this without revealing your name, your diagnosis, your policy number, or your date of birth to anyone except the parties who strictly need each specific fact. Each proof is independent. Each reveals only its single bit of truth. The pharmacy fills your prescription. Your insurer processes the claim. Your medical history remains yours. No database holds the composite picture, because no composite picture was ever assembled.
+The same logic extends to individuals. A patient filling a prescription proves she holds a valid script, is covered, and has met her deductible -- without handing name, diagnosis, or policy number to anyone who does not strictly need them. The pharmacy fills the prescription. The insurer processes the claim. No composite record is assembled, because no composite was ever transmitted.
 
 The pattern is always the same. Someone must verify a fact. Verification has always required disclosure. Disclosure leaks information irrelevant to the fact being verified. Zero-knowledge proofs sever the coupling between verification and disclosure. They let you prove the fact and *only* the fact.
 
@@ -89,11 +87,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "Groth16 proof is exactly three points on an elliptic curve — three pairs of coordinates" — technically a Groth16 proof is two $\mathbb{G}_1$ elements and one $\mathbb{G}_2$ element; the $\mathbb{G}_2$ element is a pair of $\mathbb{F}_{p^2}$ points and takes 96 bytes, not 48. The total 192 bytes is correct but "three points of 48 bytes each" oversimplifies and is inconsistent with the BLS12-381 curve geometry used in practice.
-- [P2] (C) "Smaller than a tweet" — Twitter/X raised the character limit to 280 in 2017 (which is ~280 bytes UTF-8); the comparison still works but should say "smaller than a short tweet" or use a more stable comparator.
-- [P2] (C) The hospital scenario ("filling a prescription") spans four paragraphs and repeats the same pattern established in the bank and supply-chain scenarios without adding new analytical content; condense or cut the third use-case to reduce repetition.
 - [P3] (E) The STARK size range "50 to 200 kilobytes" is mentioned but no explanation is given for what drives the variance; a single sentence noting that proof size scales with log of computation depth would add useful texture without bloating the section.
 
 ## Links

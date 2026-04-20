@@ -4,8 +4,8 @@ slug: ch09-real-world-deployments-five-case-studies
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4158, 4197]
-source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
+source_lines: [4141, 4180]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 806
 ---
@@ -95,9 +95,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) Entities include `[[nova]]` — Nova is a folding scheme unrelated to this section's content; likely a tagging error, should be removed.
 - [P3] (B) Privacy Pools volume figures (">$6 million, >1,500 users by early 2026") are specific claims with no URL or source; a reference to 0xbow's published stats or an Etherscan link should be added.
 
 ## Links

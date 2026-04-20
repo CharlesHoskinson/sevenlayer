@@ -4,8 +4,8 @@ slug: ch05-layer-4-arithmetization
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1611, 1640]
-source_commit: eb72fd8bb82cecd60e59036b27847eea5797a886
+source_lines: [1590, 1619]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 701
 ---
@@ -32,7 +32,7 @@ Let us be honest at the outset: this is where the magic trick analogy strains ha
 
 This chapter is longer and more technical than the others. That is because arithmetization is where the conceptual rubber meets the mathematical road. The ideas here -- constraint systems, polynomial identities, lookup arguments, the sumcheck protocol -- are the load-bearing structures of every ZK system in existence. A reader who understands this chapter understands why zero-knowledge proofs work. A reader who skips it must take the rest of the book on faith.
 
-The core mechanism is straightforward. The computation -- every addition, every comparison, every memory access -- gets encoded as relationships between numbers in a finite field. These relationships take the form of polynomial equations. If the computation was performed correctly, all the equations are satisfied simultaneously. If the prover cheated at any step, at least one equation is violated. And here is the central move that makes the entire field of zero-knowledge proofs possible: checking whether all these polynomial equations hold can be done by evaluating them at a few random points, which is vastly faster than re-executing the original computation.
+The core mechanism is straightforward. The computation -- every addition, every comparison, every memory access -- gets encoded as relationships between numbers in a finite field. These relationships take the form of polynomial equations. If the computation was performed correctly, all the equations are satisfied simultaneously. If the prover cheated at any step, at least one equation is violated. The move that makes this verifiable: checking whether all these polynomial equations hold can be done by evaluating them at a few random points, which is vastly faster than re-executing the original computation. This works because of the Schwartz-Zippel lemma: a nonzero polynomial of degree $d$ over a field of size $q$ evaluates to zero at a random point with probability at most $d/q$, which is negligible for the large fields used in ZK.
 
 This chapter tells the story of how the encoding schemes evolved, from the rigid first attempts to the unified framework that powers every modern proof system. It is also, unavoidably, a story about the overhead this encoding imposes -- and whether that overhead is an immutable tax or a temporary engineering constraint.
 
@@ -77,10 +77,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (C) "key insight that makes the entire field of zero-knowledge proofs possible" — stock AI-smell phrase; reword as plain statement.
-- [P2] (A) Schwartz-Zippel is named in Key claims but not in the body of this intro section — the body only paraphrases it; the named lemma should appear in the prose where first invoked, not just in the metadata.
 - [P3] (E) Five-act roadmap is described but "act 4" (lookup revolution) is listed as fourth in the prose yet appears as the fourth item in a five-item list with sumcheck as third — the ordering implied (spreadsheet, R1CS/AIR/PLONKish, CCS+sumcheck, lookups, overhead) is slightly inconsistent with the section sequence (sumcheck precedes lookups but the intro paragraph pairs them as "act three").
 - [P3] (B) No sources cited; acceptable for an intro section, but a forward-reference to [R-L4-1] for the GGPR/QAP origin would anchor the historical claim made in the body.
 

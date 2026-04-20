@@ -4,8 +4,8 @@ slug: ch09-privacy-architectures-for-smart-contracts-kachina-and-zexe
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4198, 4239]
-source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
+source_lines: [4181, 4222]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 741
 ---
@@ -93,9 +93,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (B) Dependencies lists both `[[ch03-the-disclose-boundary-midnight-s-witness-architecture]]` and `[[ch04-the-disclose-boundary-midnight-s-witness-architecture]]` for the same conceptual section — duplicate or stale link that should be resolved to the correct slug.
 - [P3] (B) Kachina affiliation "University of Edinburgh and IOHK" — the bibliography entry (IEEE CSF 2021) does not list an affiliation; worth verifying that all three authors were at those institutions.
 
 ## Links

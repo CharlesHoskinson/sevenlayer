@@ -4,8 +4,8 @@ slug: ch02-the-quantum-shelf-life
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [638, 666]
-source_commit: 29475f3770e85700685f72ef97723a324b0994c0
+source_lines: [622, 650]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1003
 ---
@@ -16,7 +16,7 @@ The stage is built. The universal SRS is published. The economic case for ceremo
 
 Every pairing-based proof system -- Groth16, PLONK, Marlin, Sonic, KZG -- rests on the hardness of the discrete logarithm problem on elliptic curves. Shor's algorithm, running on a sufficiently powerful quantum computer, solves the discrete logarithm problem in polynomial time.
 
-This is not "might break." This is "does break, given sufficient hardware." The question is when, not whether. It is worth separating two dates that are often run together. NIST's IR 8547 sets a *deprecation schedule for pre-quantum cryptographic algorithms*, targeting 2035 for the retirement of the pre-quantum suite across federal systems [NIST, "Transition to Post-Quantum Cryptography Standards (IR 8547)," November 2024]. That is a regulatory deadline for migration, not a prediction of when a cryptographically relevant quantum computer (CRQC) arrives. Independent estimates of CRQC arrival spread across a wide band. The NSA's CNSA 2.0 FAQ plans for NSS equipment transitions completed by 2030 and a fully quantum-resistant NSS by 2035, reflecting a precautionary posture rather than a dated forecast [NSA, "Commercial National Security Algorithm Suite 2.0 FAQ," 2022, rev. 2024]. Academic timelines -- including the Mosca-Piani "quantum threat timeline" style of analysis -- place meaningful probability on CRQC arrival anywhere in the 2030-2040 window, with the tails reaching earlier and later. The honest summary is that regulators are working to a 2035 migration deadline because the probability of a CRQC within the following decade is not negligible, not because anyone has a model that says it will arrive that year.
+This is not "might break." This is "does break, given sufficient hardware." The question is when, not whether. Two dates are often conflated and should not be. NIST's IR 8547 sets a *deprecation schedule for pre-quantum cryptographic algorithms*, targeting 2035 for the retirement of the pre-quantum suite across federal systems [NIST, "Transition to Post-Quantum Cryptography Standards (IR 8547)," November 2024]. That is a regulatory deadline for migration, not a prediction of when a cryptographically relevant quantum computer (CRQC) arrives. Independent estimates of CRQC arrival spread across a wide band. The NSA's CNSA 2.0 FAQ plans for NSS equipment transitions completed by 2030 and a fully quantum-resistant NSS by 2035, reflecting a precautionary posture rather than a dated forecast [NSA, "Commercial National Security Algorithm Suite 2.0 FAQ," 2022, rev. 2024]. Academic timelines -- including the Mosca-Piani "quantum threat timeline" style of analysis -- place meaningful probability on CRQC arrival anywhere in the 2030-2040 window, with the tails reaching earlier and later. The summary: regulators are working to a 2035 migration deadline because the probability of a CRQC within the following decade is not negligible, not because anyone has a model that says it will arrive that year.
 
 The implications for Layer 1 are stark. A quantum computer would not need to compromise any ceremony participant. It would not need to break into anyone's hardware or bribe anyone. It would simply take the *public SRS* -- the list of elliptic curve points that everyone can see -- and extract the original trapdoor from it. Mathematically, irreversibly, without detection.
 
@@ -24,7 +24,7 @@ Once the trapdoor is extracted, every proof ever generated under that SRS become
 
 This creates a concept we will call the *quantum shelf life* of a trusted setup. A KZG ceremony conducted in 2023 produces an SRS that is secure against classical computers indefinitely but has a finite lifespan against quantum adversaries. If that SRS secures a blockchain expected to operate for 20 years, the setup's shelf life may expire before the system's intended lifetime ends.
 
-STARKs, by contrast, rely on collision-resistant hash functions, which are believed to resist quantum computers. The caveat "believed to" deserves scrutiny. Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, which effectively halves the security level of hash functions: 256-bit classical security becomes 128-bit quantum security. This is a quantitative adjustment, not a qualitative break -- you double your hash output size and move on. More subtly, the BHT algorithm can reduce collision resistance further, but it requires quantum random-access memory (qRAM), which is widely considered physically impracticable with current technology. The honest assessment: hash-based systems *probably* survive quantum computers with parameter adjustments, but the unqualified claim that they are "post-quantum secure" gives false confidence. What we can say is that no known quantum algorithm breaks them in the way Shor's algorithm breaks elliptic curves -- completely, efficiently, and with mathematical certainty.
+STARKs, by contrast, rely on collision-resistant hash functions, which are believed to resist quantum computers. The caveat "believed to" deserves scrutiny. Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, which effectively halves the security level of hash functions: 256-bit classical security becomes 128-bit quantum security. This is a quantitative adjustment, not a qualitative break -- you double your hash output size and move on. More subtly, the BHT algorithm can reduce collision resistance further, but it requires quantum random-access memory (qRAM), which is widely considered physically impracticable with current technology. In sum: hash-based systems *probably* survive quantum computers with parameter adjustments, but the unqualified claim that they are "post-quantum secure" gives false confidence. What we can say is that no known quantum algorithm breaks them in the way Shor's algorithm breaks elliptic curves -- completely, efficiently, and with mathematical certainty.
 
 A transparent STARK-based setup has no quantum shelf life problem because there is no trapdoor to extract. The "stage" is made of hash functions, and hash functions do not have secrets.
 
@@ -84,10 +84,10 @@ Every pairing-based proof system rests on the discrete logarithm problem, which 
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) The Neo (Nguyen, Setty, 2025) citation lacks a venue or ePrint number; this paper is IACR ePrint 2025/xxx and should be traceable.
-- [P2] (C) "The honest assessment" (paragraph on BHT) is a mild AI-smell phrase; replace with direct language.
 - [none] (D) No contradictions with other chapters found.
 - [P3] (E) The section does not mention that Grover's quadratic speedup applies to pre-image search, not collision resistance directly; collision resistance degrades as $2^{n/3}$ under BHT (not $2^{n/2}$), which is a material distinction for parameter selection.
 

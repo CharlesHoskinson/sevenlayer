@@ -4,20 +4,20 @@ slug: ch09-the-decision-matrix
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4278, 4308]
-source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
+source_lines: [4261, 4291]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 280
 ---
 
 ## The Decision Matrix
 
-For the system architect who needs to choose a PET (or a combination of PETs), the decision depends on four questions:
+For the system architect who needs to choose a PET (or a combination of PETs), the decision depends on four questions. The performance figures below reflect current benchmarks as of 2025-2026; see the referenced sources for each PET in prior sections for primary citations.
 
 **1. What is the trust model?**
 - If you need privacy against computationally unbounded adversaries (including future quantum computers): MPC with honest majority provides information-theoretic security.
 - If you trust computational hardness assumptions: ZKPs and FHE provide computational security.
-- If you trust hardware manufacturers: TEEs provide heuristic security with high performance.
+- If you trust hardware manufacturers: TEEs provide heuristic security with high performance -- but see the Three Kinds of Security section for the caveat that Downfall-class mitigations can impose up to 50% overhead on affected workloads.
 
 **2. Who has the data?**
 - If the data holder needs to prove a property: ZKP (selective disclosure).
@@ -30,7 +30,7 @@ For the system architect who needs to choose a PET (or a combination of PETs), t
 - MPC: communication rounds proportional to circuit depth. Latency is the bottleneck.
 - FHE: 10,000-1,000,000x overhead over plaintext. Improving rapidly, but still orders of magnitude slower.
 - DP: negligible overhead (adding noise to query results is cheap).
-- TEE: near-native performance (<5% overhead for many workloads).
+- TEE: near-native performance for unaffected workloads (often below 5% overhead), but Downfall-class mitigations cause up to 50% degradation for workloads dependent on the Gather instruction (Moghimi, 2023).
 
 **4. What regulatory regime applies?**
 - GDPR/eIDAS 2.0: Selective disclosure (ZKP), off-chain storage with on-chain hashing, right-to-erasure compatibility.
@@ -78,10 +78,9 @@ None flagged by this section.
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] (A) "TEE: near-native performance (<5% overhead for many workloads)" conflicts with the section's own ch09-three-kinds-of-security, which reports Downfall mitigations causing up to 50% degradation for affected workloads. The figure is accurate only for unaffected workloads; the caveat should be stated.
-- [P2] (B) No sources cited throughout; the entire matrix synthesises claims from prior sections but offers no anchoring references for the performance figures or regulatory mappings.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

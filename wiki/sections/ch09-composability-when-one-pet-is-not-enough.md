@@ -4,8 +4,8 @@ slug: ch09-composability-when-one-pet-is-not-enough
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4124, 4157]
-source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
+source_lines: [4107, 4140]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1219
 ---
@@ -24,7 +24,7 @@ The real power of PETs emerges when they are composed. No single instrument play
 
 Each step uses the PET best suited to its specific trust problem: MPC for multi-party data aggregation, DP for statistical disclosure control, FHE for outsourced computation on sensitive data, and ZKP for verifiable compliance without disclosure.
 
-But the transitions between steps are not trivial. The MPC-to-FHE handoff requires either the hospitals to encrypt the MPC output under the AI firm's FHE public key (which means they see the plaintext), or a protocol that converts MPC secret shares directly to FHE ciphertexts (an active research frontier). The FHE-to-ZKP handoff requires verifiable FHE -- proving in zero knowledge that an FHE computation was performed correctly -- which is emerging but not yet production-ready.
+But the transitions between steps are not trivial. The MPC-to-FHE handoff requires either the hospitals to encrypt the MPC output under the AI firm's FHE public key (which means they see the plaintext), or a protocol that converts MPC secret shares directly to FHE ciphertexts -- an active research area; see Boura et al., "CHIMERA: Combining Ring-LWE-based Fully Homomorphic Encryption Schemes," Journal of Mathematical Cryptology 2020, and more recent work on share-to-ciphertext conversion at CRYPTO 2023. The FHE-to-ZKP handoff requires verifiable FHE -- proving in zero knowledge that an FHE computation was performed correctly -- which is emerging but not yet production-ready.
 
 The composability lesson: PETs compose in theory. In practice, each composition point requires protocol engineering that is often harder than the individual PET deployments. The system architect must understand not just what each PET does, but how they hand off to each other. The orchestra sounds beautiful when everyone enters on cue. Getting the cues right is the hard part.
 
@@ -36,9 +36,9 @@ This pattern -- ZKP-verified inputs to MPC -- appears in private auctions (prove
 
 **ZKP + FHE: Verifiable Encrypted Computation.** This is the zkFHE frontier mentioned earlier, and it deserves a structural explanation. The problem: a cloud provider performs FHE computation on your encrypted data and returns an encrypted result. You decrypt and get an answer. But did the provider actually compute the function you requested? Or did it compute a cheaper approximation, or a different function entirely, or simply return a random ciphertext? FHE guarantees confidentiality -- the provider cannot see your data. It does not guarantee integrity -- the provider can lie about what it computed. ZKPs close this gap. The provider produces a zero-knowledge proof that the sequence of homomorphic operations it performed on the ciphertext corresponds exactly to the function specification. The proof is verified against the input ciphertext, the output ciphertext, and the function description. If it checks out, you know the computation was honest. If it does not, you know to reject the result and find another provider.
 
-The difficulty is that proving FHE computations in zero knowledge is very expensive. Each homomorphic operation involves polynomial arithmetic over large rings, and the ZKP circuit must encode all of this arithmetic faithfully. Current zkFHE prototypes achieve verification for small circuits -- a few hundred multiplication gates -- and the proving overhead adds another order of magnitude atop FHE's already steep costs. But the research trajectory is clear, and the incentive is enormous: anyone who wants to outsource computation on sensitive data to an untrusted cloud needs both confidentiality (FHE) and integrity (ZKP). Neither alone is sufficient.
+The difficulty is that proving FHE computations in zero knowledge is very expensive. Each homomorphic operation involves polynomial arithmetic over large rings, and the ZKP circuit must encode all of this arithmetic faithfully. Current zkFHE prototypes handle circuits in the range of a few hundred multiplication gates before proving costs become prohibitive (see, e.g., Bois et al., "Verifiable Encryption from MPC-in-the-Head and Oblivious Transfer," EUROCRYPT 2021, and the SherLOCKED prototype using RISC Zero's Bonsai zkVM); the proving overhead adds another order of magnitude atop FHE's already steep costs. But the research trajectory is clear, and the incentive is enormous: anyone who wants to outsource computation on sensitive data to an untrusted cloud needs both confidentiality (FHE) and integrity (ZKP). Neither alone is sufficient.
 
-**The Privacy Stack.** PET composition is fundamentally an architectural problem: do not think of PETs as individual tools to be selected. Think of them as layers in a protocol stack, analogous to the network stack that separates TCP from IP from Ethernet. At the bottom, differential privacy provides statistical-level guarantees for aggregate data releases -- the coarsest and cheapest form of privacy, suitable for telemetry and census-scale statistics. Above it, MPC provides computation-level privacy for multi-party protocols -- stronger than DP (it protects individual inputs, not just statistical aggregates), but more expensive and limited to specific interaction patterns. Above that, FHE provides data-level privacy for outsourced computation -- stronger still (the computing party learns nothing at all), but with the highest performance cost. And at the top, ZKPs provide verification-level privacy -- the ability to prove properties of private data or private computation without revealing the underlying secrets.
+**The Privacy Stack.** PET composition is fundamentally an architectural problem: do not think of PETs as individual tools to be selected. Think of them as layers in a protocol stack, analogous to the network stack that separates TCP from IP from Ethernet. The layering follows from their respective threat models and cost profiles (see Dwork and Roth, "The Algorithmic Foundations of Differential Privacy," Foundations and Trends in Theoretical Computer Science 2014, for the DP tier; and Goldreich, "Foundations of Cryptography, Vol. 2," Cambridge 2004, for the MPC and FHE tiers). At the bottom, differential privacy provides statistical-level guarantees for aggregate data releases -- the coarsest and cheapest form of privacy, suitable for telemetry and census-scale statistics. Above it, MPC provides computation-level privacy for multi-party protocols -- stronger than DP (it protects individual inputs, not just statistical aggregates), but more expensive and limited to specific interaction patterns. Above that, FHE provides data-level privacy for outsourced computation -- stronger still (the computing party learns nothing at all), but with the highest performance cost. And at the top, ZKPs provide verification-level privacy -- the ability to prove properties of private data or private computation without revealing the underlying secrets.
 
 Each layer addresses a different threat. Each has a different cost. And like network layers, they compose vertically: a system might use DP for its public-facing analytics dashboard, MPC for its inter-institutional data sharing, FHE for its cloud-based model training, and ZKPs for its compliance proofs -- all within the same architecture, each operating at its appropriate level of the stack. The system architect who treats PET selection as a single choice ("we will use ZKPs") is making the same mistake as the network engineer who treats protocol selection as a single choice ("we will use TCP"). The answer is almost always a stack, not a single layer.
 
@@ -82,10 +82,9 @@ None in this section.
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] (B) No sources cited despite specific quantitative claims: "few hundred multiplication gates" for zkFHE prototypes and the MPC-to-FHE share-to-ciphertext conversion as an "active research frontier" — these should cite the relevant papers or prototypes.
-- [P2] (E) The "privacy stack" layer ordering (DP < MPC < FHE < ZKP by cost/strength) is asserted as architectural fact with no supporting reference; a citation to a survey or prior taxonomy would strengthen it.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

@@ -4,8 +4,8 @@ slug: ch02-the-structured-reference-string
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [410, 434]
-source_commit: 29475f3770e85700685f72ef97723a324b0994c0
+source_lines: [398, 422]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 998
 ---
@@ -14,13 +14,13 @@ word_count: 998
 
 Before we discuss who builds the stage, we need to understand what it is.
 
-A note on the arithmetic that underlies everything in this book. All numbers in a zero-knowledge system live in a *finite field* -- a set of numbers where arithmetic wraps around, like a clock. On a clock with 7 hours, 5 + 4 = 2, because 9 wraps past 7. Multiplication works the same way: 3 × 5 = 1, because 15 wraps to 1. This may seem strange, but it is what makes the mathematics compact enough to verify quickly. Every time you see "field element," "field arithmetic," or "field size" in the chapters that follow, this is what it means: clock arithmetic with a very large clock. In practice, the "clock" has billions or trillions of hours -- large enough that the wrapping-around property provides the randomness the proof system needs to catch cheaters.
+A note on the arithmetic that underlies everything in this book. All numbers in a zero-knowledge system live in a *finite field* -- a set of numbers where arithmetic wraps around, like a clock. On a clock with 7 hours, 5 + 4 = 2, because 9 wraps past 7. Multiplication works the same way: 3 × 5 = 1, because 15 wraps to 1. This makes the mathematics compact enough to verify quickly. Every time you see "field element," "field arithmetic," or "field size" in the chapters that follow, this is what it means: clock arithmetic with a very large clock.
 
 A *Structured Reference String* (SRS) is a list of specially constructed numbers. These numbers are points on an elliptic curve -- a type of mathematical curve with a remarkable property.
 
 Picture a smooth curve drawn on a sheet of graph paper, defined by an equation like $y^2 = x^3 + ax + b$. Two points on this curve can be "added" together using a geometric rule: draw a straight line through the two points, find where the line intersects the curve a third time, and reflect that intersection across the horizontal axis. The result is a new point on the same curve. This operation is easy to perform -- draw the line, find the intersection, reflect. But *reversing* it is extraordinarily hard: given only the final point, there is no efficient way to figure out which two points were added to produce it, or how many times a point was added to itself. This asymmetry -- easy forward, impossible backward -- is the discrete logarithm problem, the mathematical one-way street on which most of modern cryptography depends.
 
-The SRS exploits this asymmetry. It is a sequence of curve points, each derived from the previous one by a secret multiplication. Think of it as a ruler with very precise markings that everyone uses to measure, but that no one can reverse-engineer to discover how the markings were made. The markings let you measure certain things (verify polynomial evaluations). They do not let you reconstruct the manufacturing process (recover the secret value from the markings). The scheme that makes this possible was invented by Kate, Zaverucha, and Goldberg in 2010 [Kate, Zaverucha, Goldberg, "Constant-Size Commitments to Polynomials and Their Applications," *ASIACRYPT 2010*] and is universally known as KZG, after the authors' initials. KZG uses a special algebraic operation called a *bilinear pairing* -- a function that checks relationships between encrypted values without revealing them. Chapter 7 explains the mathematics in detail; for now, the property to hold onto is that pairings let the verifier check polynomial identities without ever seeing the polynomial.
+The SRS exploits this asymmetry. It is a sequence of curve points, each derived from the previous one by a secret multiplication. Think of it as a ruler with very precise markings that everyone uses to measure, but that no one can reverse-engineer to discover how the markings were made. The markings let you measure certain things (verify polynomial evaluations). They do not let you reconstruct the manufacturing process (recover the secret value from the markings). The scheme that makes this possible was invented by Kate, Zaverucha, and Goldberg in 2010 [Kate, Zaverucha, Goldberg, "Constant-Size Commitments to Polynomials and Their Applications," *ASIACRYPT 2010*] and is universally known as KZG, after the authors' initials. KZG uses a special algebraic operation called a *bilinear pairing* -- a function that checks relationships between encrypted values without revealing them. Chapter 7 explains the mathematics in detail; for now: pairings let the verifier check polynomial identities without ever seeing the polynomial.
 
 What does the SRS let a verifier *do*? A proof arrives. The verifier looks up the SRS (which is public), feeds the proof and the SRS into a verification equation, and checks whether the equation holds. The equation involves a pairing: a function that takes two curve points and produces a single number, with a property that preserves certain algebraic relationships between the inputs in the output. The verifier can check that two encrypted values are correctly related -- that the prover's computation was honest -- without ever seeing the values themselves. If the pairing check passes, the proof is valid. If it fails, someone cheated. The entire verification takes milliseconds.
 
@@ -67,9 +67,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (C) The finite field clock-arithmetic aside is clear but runs long for what is essentially a parenthetical; it might belong in a glossary entry rather than in-line.
 - [none] (D) No contradictions with other chapters found.
 - [P3] (E) No discussion of the BN254 vs BLS12-381 choice for the SRS here, even though that choice determines the 65M-point count; a forward reference to the curve discussion sections would help.
 

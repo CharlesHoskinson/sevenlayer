@@ -4,8 +4,8 @@ slug: ch01-the-deepest-question
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [309, 335]
-source_commit: b965c2493b961bc9b2103781f78f2c7e98e4521f
+source_lines: [301, 327]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1131
 ---
@@ -20,9 +20,9 @@ At Layer 2, you trust that the program was written correctly. Here the field's d
 
 At Layer 3, you trust that the hardware generating the witness does not leak secrets through side channels. The proof is zero-knowledge, but the *process of generating the proof* may not be. Researchers demonstrated that Zcash's Groth16 prover leaked information about transaction amounts through proof-generation timing -- a stopwatch, applied to something that should have been invisible, enabled statistical estimation of what the mathematics had promised to hide. Privacy, it turns out, is partly a luxury good: the architecture that maximizes it (client-side proving) demands hardware most people cannot afford, while the architecture available to everyone (delegated proving) requires trusting someone else with your secrets. The people with the most to hide have the least ability to hide it. Chapter 4 confronts this asymmetry. Midnight, whose compiler enforces privacy boundaries at compile time, offers one response -- though as Chapter 12 will show, compile-time guarantees and runtime privacy are different problems.
 
-I'm not entirely sure the seven-layer framing does justice to what happens next. Layers 4 and 5 are where the abstract becomes visceral -- where you feel the weight of converting human-readable computation into something a polynomial equation can express.
+Layers 4 and 5 are where the abstract becomes visceral -- where you feel the weight of converting human-readable computation into something a polynomial equation can express.
 
-Consider a simple lending rule: "if the balance exceeds the threshold, approve the loan." On a laptop, that comparison takes a few nanoseconds -- a single CPU instruction. But a zero-knowledge proof cannot evaluate an if-then statement. It works only with polynomial equations: expressions like $a \times b = c$, evaluated over a finite field. The if-then must be *arithmetized* -- rewritten as a system of polynomial constraints that are satisfied if and only if the original computation was performed correctly. That single lending rule, when fully arithmetized, becomes roughly 50,000 polynomial constraints evaluated over a field of $2^{64}$ elements. The overhead stops being an abstraction. It becomes watts, seconds, dollars.
+Consider a simple lending rule: "if the balance exceeds the threshold, approve the loan." On a laptop, that comparison takes a few nanoseconds -- a single CPU instruction. But a zero-knowledge proof cannot evaluate an if-then statement. It works only with polynomial equations: expressions like $a \times b = c$, evaluated over a finite field. The if-then must be *arithmetized* -- rewritten as a system of polynomial constraints that are satisfied if and only if the original computation was performed correctly. That single lending rule, when fully arithmetized over the 64-bit Goldilocks field ($2^{64} - 2^{32} + 1$), becomes roughly 50,000 polynomial constraints; the exact count is field-specific and would differ on a 254-bit curve. The overhead stops being an abstraction. It becomes watts, seconds, dollars.
 
 At Layers 4 and 5, you trust that the arithmetization faithfully encodes the computation and that the proof system's security reduction is tight. The overhead tax is large. A computation that takes one millisecond on your laptop takes minutes to prove in zero knowledge on today's production systems. The current overhead, measured end-to-end across real workloads, runs 10,000x to 50,000x -- four to five orders of magnitude between native execution and proved execution. Recent prover generations have been chipping that number down, and Chapter 5 projects a plausible 1,000x-5,000x floor for well-engineered systems over the next few years. But today, the tax is the reason real-time proving of a single Ethereum block required 16 GPUs running in parallel. The computation itself was trivial. *Proving* it was correct cost four to five orders of magnitude more. The cost curve in the previous section is paying for this transformation. Chapters 5 and 6 show where that tax comes from, why it is falling, and whether it has a floor.
 
@@ -86,11 +86,10 @@ Each of the seven layers introduces a distinct trust assumption that is independ
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (A) "Layer 4/5: arithmetizing a simple lending comparison generates ~50,000 polynomial constraints over a field of $2^{64}$ elements" — $2^{64}$ is the Goldilocks field, but the example is presented generically; if the figure is field-specific it should say so, and if it is for a 254-bit field the number would be different.
-- [P2] (C) "I'm not entirely sure the seven-layer framing does justice to what happens next" — first-person hedge mid-section reads as an authorial aside that undermines the section's analytical authority; either commit to the framing or restructure the transition.
-- [P2] (C) "There is a symmetry worth noting" — "worth noting" is a classic AI-smell filler phrase; drop it and state the observation directly.
 - [P3] (E) The client-side vs. delegated proving asymmetry ("people with the most to hide have the least ability to hide it") is stated as a conclusion but not quantified; a brief hardware-cost data point (e.g., SNARK proving requires ~4 GB RAM and ~10s on a modern phone) would make the claim concrete.
 
 ## Links

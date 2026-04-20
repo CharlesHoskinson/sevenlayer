@@ -4,8 +4,8 @@ slug: ch14-the-seven-questions-that-remain-open
 chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
-source_lines: [5176, 5346]
-source_commit: 8e419c9815e6fe5f507dd769315a84b46afd74d5
+source_lines: [5163, 5333]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 6042
 ---
@@ -18,7 +18,7 @@ We have spent thirteen chapters explaining zero-knowledge proofs -- layer by lay
 
 ### Question 1: Can witness generation be made fully parallel on GPUs?
 
-Witness generation involves dependency chains -- each intermediate value may depend on previous ones in a directed acyclic graph that resists naive parallelism. When cryptographic proving moves to GPUs (achieving 10-50x speedups via NTT and MSM parallelism), witness generation remains CPU-bound, creating the Witness Gap. ZKPOG (2025) demonstrated 22.8x speedups by restructuring witness computation for GPU execution, but the general problem -- making arbitrary computation graphs GPU-friendly -- remains open.
+Witness generation involves dependency chains -- each intermediate value may depend on previous ones in a directed acyclic graph that resists naive parallelism. When cryptographic proving moves to GPUs (achieving 10 to 100 times faster throughput via NTT and MSM parallelism, as documented in Chapter 4), witness generation remains CPU-bound, creating the Witness Gap. ZKPOG (2025) demonstrated 22.8x speedups by restructuring witness computation for GPU execution, but the general problem -- making arbitrary computation graphs GPU-friendly -- remains open.
 
 The Witness Gap grows with every proving speedup, as Chapter 4 documented: accelerate the cryptographic step and the CPU-bound witness share swells to dominate total latency. The asymptotic state of zkVM performance may be entirely witness-bound. The backstage preparation may always take longer than the performance. Or perhaps not -- but no one has proven otherwise.
 
@@ -256,9 +256,10 @@ Seven concrete research blockers define the field's near-term ceiling: GPU witne
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
-- [P2] (A) Q1 states GPU proving achieves "10-50x speedups via NTT and MSM parallelism"; ch04 consistently states "10 to 100 times faster." The upper bound is understated.
 - [P3] (B) Wee-Wu citation lists venue as "ASIACRYPT 2023" with ePrint 2024/028 — the ePrint number postdates the conference year by a year. The ePrint number should be verified (likely 2023/xxx for a 2023 proceedings paper).
 - [P3] (C) "ARGUZZ" in Q4 body text is inconsistent with "Arguzz" in the Sources cited block and the title in the bibliography. Use consistent capitalisation throughout.
 

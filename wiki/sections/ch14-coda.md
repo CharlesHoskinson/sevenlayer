@@ -4,8 +4,8 @@ slug: ch14-coda
 chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
-source_lines: [5409, 5521]
-source_commit: 8e419c9815e6fe5f507dd769315a84b46afd74d5
+source_lines: [5396, 5509]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1850
 ---
@@ -32,12 +32,13 @@ Consider the patient at the pharmacy counter. In the world before this technolog
 
 Consider the 22-year-old in Madrid, renting a car in Berlin. In the world before eIDAS 2.0, she hands her passport across a counter and a stranger photographs every page. In the world this technology is building, her phone generates a proof: "I hold a valid EU driving license and I am over 21." The rental agent learns two facts. The proof reveals nothing else -- not her name, not her nationality, not her date of birth, not her address. The wallet proves the attributes. The mathematics does the rest.
 
-This vision is not yet fully realized. The open questions in this chapter -- GPU witness parallelism, post-quantum proof compactness, governance binding, constant-time proving -- are the engineering work that remains. The timeline is 3-5 years for the hardest problems. Some may take longer. Some may resist solution entirely. But every year, the proving gets cheaper, the verification gets faster, the security gets more formal, and the privacy gets more principled. The seven-layer model is imperfect -- the layers couple, some collapse, others are missing. But it gives the field a shared vocabulary for discussing what trust means, where it lives, and how to reduce it. That vocabulary is worth preserving even as the architecture it describes continues to evolve.
+This vision is not yet fully realized. The open questions in this chapter -- GPU witness parallelism, post-quantum proof compactness, governance binding, constant-time proving -- are the engineering work that remains. Some are 2-4 year engineering problems; others, like settling the post-quantum proof-size question, are 5-10 year theoretical problems. Some may resist solution entirely. But every year, the proving gets cheaper, the verification gets faster, the security gets more formal, and the privacy gets more principled. The seven-layer model is imperfect -- the layers couple, some collapse, others are missing. But it gives the field a shared vocabulary for discussing what trust means, where it lives, and how to reduce it. That vocabulary is worth preserving even as the architecture it describes continues to evolve.
 
 That is what seven layers of mathematics make possible. Not trustlessness -- trust-minimization. Not perfection -- progress. Not magic -- engineering that looks like magic until you understand every layer, at which point it looks like something better: a system where telling the truth is easier than lying, and where proving a fact does not require surrendering the context that makes it private.
 
 The magician performs. The audience verifies. And between them, seven layers of mathematics ensure that the proof reveals nothing but the truth.
 
+---
 # Complete Bibliography {.unnumbered}
 
 ### Chapter 1: The Promise
@@ -175,9 +176,9 @@ None flagged by this section.
 
 ## Improvement notes
 
-_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
-- [P2] (A) The Coda states "3-5 years for the hardest problems," but Q2 in ch14-the-seven-questions sets a "5-10 years for theoretical resolution" timeline and Q6 sets "3-5 years." The Coda's single range flattens the spread and understates Q2's horizon.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

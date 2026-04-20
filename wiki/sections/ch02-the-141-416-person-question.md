@@ -4,8 +4,8 @@ slug: ch02-the-141-416-person-question
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [562, 609]
-source_commit: 29475f3770e85700685f72ef97723a324b0994c0
+source_lines: [550, 597]
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 1146
 ---
@@ -24,18 +24,18 @@ But a deeper question hides beneath this one.
 
 "If the toxic waste is destroyed, how does anyone *know* it was actually destroyed?"
 
-The epigraph that opened this chapter asked it. Here is the honest answer: nobody knows. "Destruction" is a physical claim about a digital artifact. You cannot prove you deleted something from your own computer. You can only promise you did. The 1-of-N model rests on: "I trust that at least one person is honest, *and* that their computer was not compromised, *and* that no backup exists anywhere, *and* that no side-channel leaked the secret during generation."
+The epigraph that opened this chapter asked it. Here is the answer: nobody knows. "Destruction" is a physical claim about a digital artifact. You cannot prove you deleted something from your own computer. You can only promise you did. The 1-of-N model rests on: "I trust that at least one person is honest, *and* that their computer was not compromised, *and* that no backup exists anywhere, *and* that no side-channel leaked the secret during generation."
 
 This is weaker than trusting a single entity. But it is not zero trust. The word "trustless" does not apply here. The accurate word is "trust-minimized." This distinction matters, and it will recur at every layer.
 
 
-### The Sociology of Trust at Scale
+### The Structure of Ceremony Trust
 
 The 141,416-person question admits a deeper analysis than the one just given, one that touches the foundations of how human societies construct shared belief.
 
 Consider what it means to "trust" a cryptographic ceremony. You are not trusting that a specific person told the truth. You are not trusting that a specific institution acted in good faith. You are trusting a *statistical claim about a population*: that among 141,416 independent actors, at least one behaved honestly. This is a fundamentally different kind of trust than anything that existed before networked cryptography. It is closer to the trust you place in thermodynamic laws -- not trust in any particular molecule, but trust in the aggregate behavior of an astronomically large ensemble.
 
-The sociologist Niklas Luhmann distinguished between *trust* (an active bet on a specific person) and *confidence* (passive reliance on a system). The 1-of-N ceremony model converts the first into the second: you don't trust any participant; you have confidence in the design. If that confidence ever broke, there would be no villain to blame -- only the discovery that a system designed to be trustworthy was not.
+The sociologist Niklas Luhmann distinguished between *trust* (an active bet on a specific person) and *confidence* (passive reliance on a system) [Luhmann, *Risk: A Sociological Theory*, 1993]. The 1-of-N ceremony model converts the first into the second: you don't trust any participant; you have confidence in the design. If that confidence ever broke, there would be no villain to blame -- only the discovery that a system designed to be trustworthy was not.
 
 This is why the ceremony must not only *be* secure but be *perceived* as secure by a community large enough to sustain confidence over decades. Perception is an engineering requirement. A cryptographically perfect ceremony that the community does not believe in provides no security in practice.
 
@@ -53,7 +53,7 @@ This is the inverse of the chain metaphor that dominates security thinking. A ch
 
 The question of how large is "large enough" has no clean mathematical answer, because it depends on the adversary model. Against a lone hacker, six participants may suffice. Against a corporate adversary, ninety. Against a nation-state with global surveillance capabilities, perhaps tens of thousands. Against a coalition of nation-states -- the most paranoid threat model, but not an absurd one for infrastructure securing tens of billions of dollars -- perhaps hundreds of thousands. The Ethereum ceremony's 141,416 participants do not guarantee security against any specific adversary. They guarantee that the *sociological* bar for a successful attack is extraordinarily high, higher than any previous cryptographic ceremony has set, and plausibly higher than any adversary can clear.
 
-Plausibly. Not provably. And that gap -- between plausible and provable -- is where the honest assessment of ceremony security must live.
+Plausibly. Not provably. And that gap -- between plausible and provable -- is where any honest assessment of ceremony security must live.
 
 But even if the ceremony is perfect -- even if all 141,416 participants were honest and every fragment of toxic waste is truly gone -- the system can still be broken. The ceremony protects the stage. It does not protect what is performed on it.
 
@@ -92,11 +92,11 @@ None in this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (A) No factual errors found.
-- [P2] (B) The Luhmann reference ("Niklas Luhmann distinguished between trust and confidence") has no citation; the relevant work is "Trust and Power" (1979) or "Risk: A Sociological Theory" (1993) — the latter is more directly relevant to confidence in systems.
-- [P2] (C) The section contains "it is worth noting" in the game-theoretic analysis paragraph ("it is worth noting that..."); cut the phrase. The sociological framing is strong, but the subsection heading "The Sociology of Trust at Scale" is generic — consider a more specific title.
 - [none] (D) No contradictions with other chapters found.
 - [P3] (E) The section's game-theoretic strongest-link analysis is novel and well-argued but does not engage with the academic literature on ceremony design (e.g., the Nikolaenko et al. 2022 on-chain ceremony paper, which introduces formal security models for permissionless ceremonies).
 

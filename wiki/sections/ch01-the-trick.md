@@ -5,7 +5,7 @@ chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [154, 176]
-source_commit: b965c2493b961bc9b2103781f78f2c7e98e4521f
+source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
 status: reviewed
 word_count: 584
 ---
@@ -14,13 +14,13 @@ word_count: 584
 
 Every civilization has faced the same problem. You know something. I need to verify it. And the only method anyone has ever found is *disclosure* -- you open the books, you show the document, you reveal the source code, you hand over the key. Knowledge flows from the prover to the checker, and some of it inevitably spills.
 
-For most of human history, this seemed inevitable. To prove is to show. To show is to reveal. To reveal is to lose control.
+For most of human history, this seemed inevitable. To prove is to show; to show is to reveal; to reveal is to lose control.
 
 Then, in 1985, three researchers at MIT wrote a paper that broke the pattern.
 
-Shafi Goldwasser, Silvio Micali, and Charles Rackoff demonstrated something that sounds, on first hearing, like a contradiction: it is possible to prove a statement is true while revealing *nothing* about *why* it is true [GMR 1985, SICOMP 18(1):186-208]. Not approximately nothing. Not mostly nothing. Nothing -- in a sense that can be stated as a theorem and checked by anyone. The proof convinces. It does not inform. The audience sees the trick succeed and learns nothing about how it was performed.
+Shafi Goldwasser, Silvio Micali, and Charles Rackoff demonstrated something that sounds, on first hearing, like a contradiction: it is possible to prove a statement is true while revealing *nothing* about *why* it is true [GMR 1985; originally STOC 1985, pp. 291–304; journal version SICOMP 18(1):186–208]. Not approximately nothing. Not mostly nothing. Nothing -- in a sense that can be stated as a theorem and checked by anyone. The proof convinces. It does not inform. The audience sees the trick succeed and learns nothing about how it was performed.
 
-Clarke was half right. This technology is indistinguishable from magic -- until you understand it. Then it is more astonishing than magic, because magic relies on deception while this relies on its opposite. The magician hides the mechanism. The zero-knowledge proof hides the data *and lets you verify the mechanism is honest*.
+Clarke's aphorism holds that sufficiently advanced technology is indistinguishable from magic. He was half right. This technology is indistinguishable from magic -- until you understand it. Then it is more astonishing than magic, because magic relies on deception while this relies on its opposite. The magician hides the mechanism. The zero-knowledge proof hides the data *and lets you verify the mechanism is honest*.
 
 Zero-knowledge proofs do not eliminate trust. They *decompose* it. They take one monolithic act of faith -- trust the bank, trust the platform, trust the government -- and break it into seven independent, weaker assumptions. Each one is testable. Each one is replaceable. What remains after the mathematics has done its work is not zero trust but *less* trust, distributed across more points of failure, each auditable on its own terms.
 
@@ -66,11 +66,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
+
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P2] (B) GMR 1985 paper is named but no ePrint/DOI or ACM DL link is given; cite "STOC 1985, pp. 291–304" or add ACM doi.
-- [P2] (C) "Clarke was half right" — the Arthur C. Clarke allusion is dropped without naming Clarke or the quote it subverts; a reader unfamiliar with the aphorism loses the reference entirely.
-- [P2] (C) "For most of human history, this seemed inevitable. To prove is to show. To show is to reveal. To reveal is to lose control." — three-beat aphoristic repetition borders on AI-style rhetorical cadence; tighten.
 - [P3] (E) The section asserts "seven independent, weaker assumptions" without previewing what they are; a parenthetical hint (even just listing the layer names) would ground the claim and reduce the reader's need to take it on faith.
 - [none] A — no issues found.
 - [none] D — no issues found.
