@@ -4,7 +4,7 @@ slug: ch09-the-incomplete-stack
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4325, 4346]
+source_lines: [4321, 4342]
 source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
 status: reviewed
 word_count: 377

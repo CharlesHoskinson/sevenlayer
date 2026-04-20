@@ -4,7 +4,7 @@ slug: ch12-where-midnight-validates-the-model
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4904, 4917]
+source_lines: [4900, 4913]
 source_commit: 65e82b18c746552064750d4b1ea3c6d13bacbe3a
 status: reviewed
 word_count: 165

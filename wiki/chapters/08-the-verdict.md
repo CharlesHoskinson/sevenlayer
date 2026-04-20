@@ -2,7 +2,7 @@
 title: "Layer 7 -- The Verdict"
 chapter: 8
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 8: Layer 7 -- The Verdict
@@ -20,7 +20,15 @@ status: untouched
 - [[ch08-who-verifies-the-verifier]]
 - [[ch08-on-chain-verification-in-2026]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-19 per `wiki/drafts/ch08-v2.md`. 0 P0 + 2 P1 resolved. Draft preserved. P2 (6) and P3 (3) deferred.
+
+**Key corrections:** Fusaka/PeerDAS DA capacity claim corrected from "8×" to "4.7× on target (3 → 14 blobs per block)" — arithmetic matches actual blob-target ratio. On-chain-verification summary aligned to the same 4.7× figure (was "~16×").
+
+**Voice sweep:** replaced a handful of softening phrases ("Let us start" → "Start with money"; "the deepest insight" → "the deepest observation"; "it is also worth noting" removed; Last Challenge enumeration flattened from numbered list to prose). All declared in ledger.
+
+## Audit rollup (pre-revision)
 
 | Section | Issues |
 |---------|--------|

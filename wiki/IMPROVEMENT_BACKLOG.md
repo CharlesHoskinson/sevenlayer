@@ -3,14 +3,7 @@
 Auto-generated from `## Improvement notes` in every section.
 Regenerate with `python wiki/tools/build_backlog.py`.
 
-**Totals:** 341 open findings — P0: 0, P1: 2, P2: 230, P3: 109
-
-## P1 (2)
-
-| Status | Ch | Slug | Dim | Finding |
-|--------|----|------|-----|---------|
-| [ ] | 08 | [[ch08-on-chain-verification-in-2026]] | A | "Three Ethereum upgrades in two years… expanded DA capacity by roughly 16×" is inconsistent with the numbers given in ch08-the-price-of-a-verdict: blob target goes from 3 (EIP-4844) to 14 (Fusaka), which is ~4.7×, not 16×. If the 16× is computed against pre-EIP-4844 calldata capacity, that denominator and methodology should be stated explicitly. |
-| [ ] | 08 | [[ch08-the-price-of-a-verdict]] | A | The "8× increase in DA capacity over the original EIP-4844 specification" claim for Fusaka/PeerDAS is incorrect: the blob target rises from 3 to 14, which is roughly 4.7×, not 8×. |
+**Totals:** 339 open findings — P0: 0, P1: 0, P2: 230, P3: 109
 
 ## P2 (230)
 
@@ -372,7 +365,7 @@ Regenerate with `python wiki/tools/build_backlog.py`.
 | 05 | 0 | 0 | 23 | 13 | 36 |
 | 06 | 0 | 0 | 27 | 16 | 43 |
 | 07 | 0 | 0 | 27 | 13 | 40 |
-| 08 | 0 | 2 | 7 | 3 | 12 |
+| 08 | 0 | 0 | 7 | 3 | 10 |
 | 09 | 0 | 0 | 11 | 3 | 14 |
 | 10 | 0 | 0 | 5 | 2 | 7 |
 | 11 | 0 | 0 | 13 | 6 | 19 |
@@ -382,7 +375,6 @@ Regenerate with `python wiki/tools/build_backlog.py`.
 
 ## Revision order (by P0+P1 density, descending)
 
-- Chapter 08: P0+P1 = 2
 - Chapter 01: P0+P1 = 0
 - Chapter 02: P0+P1 = 0
 - Chapter 03: P0+P1 = 0
@@ -390,6 +382,7 @@ Regenerate with `python wiki/tools/build_backlog.py`.
 - Chapter 05: P0+P1 = 0
 - Chapter 06: P0+P1 = 0
 - Chapter 07: P0+P1 = 0
+- Chapter 08: P0+P1 = 0
 - Chapter 09: P0+P1 = 0
 - Chapter 10: P0+P1 = 0
 - Chapter 11: P0+P1 = 0

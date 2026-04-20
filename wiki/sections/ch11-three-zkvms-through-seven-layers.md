@@ -4,7 +4,7 @@ slug: ch11-three-zkvms-through-seven-layers
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4611, 4694]
+source_lines: [4607, 4690]
 source_commit: 9cb1d67a71f09c510cc06fa9493948e145a8f31a
 status: reviewed
 word_count: 2326

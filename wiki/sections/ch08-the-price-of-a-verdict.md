@@ -5,14 +5,14 @@ chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3556, 3641]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 5128bf4915b60448d50f9712ef2a308ac9d40765
+status: reviewed
 word_count: 1775
 ---
 
 ## The Price of a Verdict
 
-Let us start with money, because money clarifies.
+Start with money, because money clarifies.
 
 A Groth16 proof verification on Ethereum uses the BN254 elliptic curve pairing precompiles introduced in the Byzantium hard fork (2017) and made cheaper by the Istanbul upgrade's EIP-1108 (2019). The gas cost breaks down as follows:
 
@@ -26,11 +26,11 @@ A Groth16 proof verification on Ethereum uses the BN254 elliptic curve pairing p
 
 The formula is roughly $(181 + 6L) \times 1{,}000$ gas for $L$ public inputs. At typical Ethereum gas prices and ETH valuations, this works out to somewhere between fifty cents and two dollars per verification. Call it a dollar.
 
-One dollar. To check a proof that summarizes thousands, or millions, of computations. That is the economic engine of the entire zero-knowledge rollup industry. It is also worth noting: the cost of *rendering a verdict* on an arbitrarily complex computation is effectively fixed. The computation can be ten steps or ten billion. The verdict costs the same.
+One dollar. To check a proof that summarizes thousands, or millions, of computations. That is the economic engine of the entire zero-knowledge rollup industry. And the cost of *rendering a verdict* on an arbitrarily complex computation is effectively fixed. The computation can be ten steps or ten billion. The verdict costs the same.
 
 But notice what that dollar buys. It buys a *Groth16* verification. Groth16 requires a trusted setup (Layer 1), uses elliptic curve pairings on BN254 (Layer 6), and produces the smallest proofs in the field -- three group elements that fit in a tweet. The cheapness of the verdict is not free. It is subsidized by decisions made five layers below.
 
-What about STARKs? The paper being revised presents STARK verification as expensive -- two to five million gas -- and contrasts this with SNARK cheapness. This framing was arguably accurate in 2022. It is misleading in 2026. The reason is simple: nobody posts raw STARKs to Ethereum.
+What about STARKs? The paper being revised presents STARK verification as expensive -- two to five million gas -- and contrasts this with SNARK cheapness. That framing was arguably accurate in 2022. It is misleading in 2026. The reason is simple: nobody posts raw STARKs to Ethereum.
 
 The actual production pipeline looks like this:
 
@@ -51,16 +51,16 @@ FFLONK, an alternative to Groth16, costs roughly 236,000 gas per verification --
 
 Before March 2024, the dominant cost of running a ZK rollup on Ethereum was not verification. It was data availability. Posting transaction data (or state diffs) as calldata cost roughly 16 gas per byte. A typical rollup batch might include hundreds of kilobytes of data, costing millions of gas -- dwarfing the ~200,000 gas for the proof check.
 
-EIP-4844, deployed in the Dencun upgrade on March 13, 2024, changed this calculus fundamentally. It introduced "blob transactions" -- a new data type designed specifically for rollup data. Each blob contains 4,096 field elements of 32 bytes (~128 KB), with a target of 3 blobs per block and a maximum of 6. Critically, blobs have their own fee market, separate from Ethereum's execution gas market, operating under a blob-specific EIP-1559 mechanism.
+EIP-4844, deployed in the Dencun upgrade on March 13, 2024, changed this calculus fundamentally. It introduced "blob transactions" -- a new data type designed specifically for rollup data. Each blob contains 4,096 field elements of 32 bytes (~128 KB), with a target of 3 blobs per block and a maximum of 6. Blobs have their own fee market, separate from Ethereum's execution gas market, operating under a blob-specific EIP-1559 mechanism.
 
 The result: rollup data costs dropped by 10-100x overnight. Blob fees settled near zero because demand was well below the 3-blob target -- as of mid-2024, only about 34% of Ethereum blocks contained any blobs at all, and the average was 1.33 blob transactions per block.
 
 But Ethereum did not stop at EIP-4844. Two subsequent upgrades expanded DA capacity further:
 
-- **Pectra** (May 2025): Doubled blob targets from 3 to 6, and maximum from 6 to approximately 9.
-- **Fusaka** (December 2025): Introduced PeerDAS (Peer Data Availability Sampling), implementing a distributed sampling scheme that raised the blob target to 14 and maximum to 21 -- an 8x increase in DA capacity over the original EIP-4844 specification.
+- **Pectra** (May 2025): Raised the blob target from 3 to 6, and the maximum from 6 to 9.
+- **Fusaka** (December 2025): Introduced PeerDAS (Peer Data Availability Sampling), a distributed sampling scheme that raised the blob target to 14 and maximum to 21 -- roughly a 4.7x increase on target (3 → 14 blobs per block) over the original EIP-4844 specification.
 
-The seesaw has tipped. With blob fees near zero and DA capacity expanding rapidly, the ~200,000 gas verification cost has become the *dominant* L1 settlement expense for many ZK rollups. This inversion matters because it changes what is worth optimizing. Before EIP-4844, the rational investment was in compression (minimizing data). After EIP-4844, the rational investment is in proof aggregation (amortizing verification across more transactions per batch) and in cheaper verification schemes.
+The seesaw has tipped. With blob fees near zero and DA capacity expanding, the ~200,000 gas verification cost has become the *dominant* L1 settlement expense for many ZK rollups. This inversion matters because it changes what is worth optimizing. Before EIP-4844, the rational investment was in compression (minimizing data). After EIP-4844, the rational investment is in proof aggregation (amortizing verification across more transactions per batch) and in cheaper verification schemes.
 
 ### Beyond Ethereum: The DA Marketplace
 
@@ -80,7 +80,7 @@ The term "data availability" is one of those phrases that sounds self-explanator
 
 If yes, the rollup has data availability. Anyone can verify that the rollup operator is honest by replaying all transactions from genesis and checking that the claimed state matches the computed state. If no -- if some of the data is withheld, stored only on the operator's private servers, or available only to a privileged set of participants -- then the operator could cheat and nobody would know. The operator could include a transaction that steals every user's funds, prove that the resulting state transition is "valid" (because the ZK proof only proves that *some* valid transition occurred), and nobody could challenge it because nobody can see the inputs.
 
-This is the critical subtlety that connects data availability to zero-knowledge proofs. A ZK proof proves that a state transition was computed correctly. It proves that if you start from state S and apply transactions T, you arrive at state S'. What it does *not* prove -- what it *cannot* prove, by design -- is what state S actually was. The proof attests to the correctness of the computation, not the availability of the inputs. If the operator claims the starting state was S but actually started from a fabricated state S_fake, the ZK proof will happily prove that the transition from S_fake was computed correctly. Without DA, nobody can verify the starting point.
+This is the subtlety that connects data availability to zero-knowledge proofs. A ZK proof proves that a state transition was computed correctly. It proves that if you start from state S and apply transactions T, you arrive at state S'. What it does *not* prove -- what it *cannot* prove, by design -- is what state S actually was. The proof attests to the correctness of the computation, not the availability of the inputs. If the operator claims the starting state was S but actually started from a fabricated state S_fake, the ZK proof will happily prove that the transition from S_fake was computed correctly. Without DA, nobody can verify the starting point.
 
 Data availability is the anchor. The ZK proof is the chain. Without the anchor, the chain secures nothing.
 
@@ -141,7 +141,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) The "8× increase in DA capacity over the original EIP-4844 specification" claim for Fusaka/PeerDAS is incorrect: the blob target rises from 3 to 14, which is roughly 4.7×, not 8×.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) The inline gas formula "$(181 + 6L) \times 1{,}000$ gas" does not reproduce the table total (~207,700) at L=0 (gives 181,000); the formula is inconsistent with the itemized breakdown presented immediately above it.
 - [P2] (B) The DA marketplace figures (Celestia ~$0.07/MB, Ethereum ~$3.83/MB, EigenDA V2 100 MB/s, 34% of blocks with blobs) carry no citations; they should be anchored to a date-stamped source.
 

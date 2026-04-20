@@ -4,9 +4,9 @@ slug: ch08-governance-the-achilles-heel
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3698, 3799]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [3693, 3794]
+source_commit: 5128bf4915b60448d50f9712ef2a308ac9d40765
+status: reviewed
 word_count: 2734
 ---
 
@@ -58,7 +58,7 @@ The attack, when it came in May 2023, unfolded like a stage magic trick -- not t
 
 To understand the trick, you need to understand two pieces of Ethereum infrastructure that most users never think about.
 
-The first is `CREATE2`. On Ethereum, when you deploy a contract, it gets an address. Normally, this address is derived from the deployer's address and a nonce (a sequential counter), so it is effectively unpredictable. `CREATE2`, introduced in EIP-1014, changes the formula: the new contract's address is derived from the deployer's address, a chosen salt, and the *hash of the bytecode being deployed*. This means you can calculate a contract's address before deploying it. More importantly -- and this is the key to the trick -- if you deploy an intermediary factory contract that itself uses `CREATE` (the old opcode), and that factory deploys a child contract, and then you destroy both the factory and the child via `selfdestruct`, and then you redeploy the factory at its original `CREATE2` address, the factory's nonce resets to zero, and it can deploy a *completely different* child contract at the *same address* where the original child lived. The address is reused. The code is not.
+The first is `CREATE2`. On Ethereum, when you deploy a contract, it gets an address. Normally, this address is derived from the deployer's address and a nonce (a sequential counter), so it is effectively unpredictable. `CREATE2`, introduced in EIP-1014, changes the formula: the new contract's address is derived from the deployer's address, a chosen salt, and the *hash of the bytecode being deployed*. This means you can calculate a contract's address before deploying it. More importantly -- and this is what the trick turns on -- if you deploy an intermediary factory contract that itself uses `CREATE` (the old opcode), and that factory deploys a child contract, and then you destroy both the factory and the child via `selfdestruct`, and then you redeploy the factory at its original `CREATE2` address, the factory's nonce resets to zero, and it can deploy a *completely different* child contract at the *same address* where the original child lived. The address is reused. The code is not.
 
 The second is the proxy pattern. Tornado Cash's governance system, like many DAO governance contracts, used a proxy architecture (EIP-1967/UUPS). In a proxy pattern, there is a permanent proxy contract at a fixed address that users interact with. This proxy does not contain the actual governance logic. Instead, it contains a pointer -- a storage slot at a specific, standardized location -- that holds the address of an *implementation* contract. When you call a function on the proxy, the proxy uses `delegatecall` to forward your call to whatever implementation contract the pointer currently references. The proxy's storage is used, but the implementation's code runs. This means whoever can change the pointer controls what code executes when anyone interacts with the governance system. Change the pointer, and you change the governance -- silently, without deploying a new visible contract, without changing the address that everyone knows and trusts.
 
@@ -152,6 +152,8 @@ Governance vulnerabilities are architectural, not implementational — they cann
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P3] (B) Meisami and Bodell (2023) is cited for the proxy pattern survey but no venue, title, or link is given; a full reference would strengthen the claim.
 

@@ -4,7 +4,7 @@ slug: ch10-the-map-redrawn
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4357, 4395]
+source_lines: [4353, 4391]
 source_commit: 9eb332547f6b1cd6e7e67527183abbd5c486974c
 status: reviewed
 word_count: 356

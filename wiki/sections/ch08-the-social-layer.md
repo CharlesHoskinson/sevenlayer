@@ -5,8 +5,8 @@ chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3536, 3555]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 5128bf4915b60448d50f9712ef2a308ac9d40765
+status: reviewed
 word_count: 406
 ---
 
@@ -26,7 +26,7 @@ This chapter is about what happens after the proof is generated. It is about gas
 
 Layer 7 is where cryptography meets politics. And politics, as a rule, wins.
 
-Layer 7 carries four distinct responsibilities, and this chapter treats each in turn. First: the *economics* of rendering a verdict — what does verification cost, and who pays? Second: *implementation vulnerabilities* that can corrupt the verdict — Fiat-Shamir transcript bugs that enable proof forgery. Third: *governance structures* that can override the verdict — multisig attacks, upgrade mechanisms, and the social layer above the math. Fourth: *aggregation and data availability infrastructure* that sits between the prover and the verifier — SHARP, blob economics, and the emerging DA marketplace. These four concerns are operationally convergent — they all determine whether the audience's verdict is trustworthy — but they are logically distinct. A system can have perfect verification economics and catastrophic governance. Separating the concerns makes the trust analysis sharper.
+Layer 7 carries four distinct responsibilities, and this chapter treats each in turn. First: the *economics* of rendering a verdict -- what does verification cost, and who pays? Second: *implementation vulnerabilities* that can corrupt the verdict -- Fiat-Shamir transcript bugs that enable proof forgery. Third: *governance structures* that can override the verdict -- multisig attacks, upgrade mechanisms, and the social layer above the math. Fourth: *aggregation and data availability infrastructure* that sits between the prover and the verifier -- SHARP, blob economics, and the emerging DA marketplace. These four concerns are operationally convergent -- they all determine whether the audience's verdict is trustworthy -- but they are logically distinct. A system can have perfect verification economics and catastrophic governance. Separating the concerns sharpens the trust analysis.
 
 ---
 
@@ -63,6 +63,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [none] X — no issues found.
 

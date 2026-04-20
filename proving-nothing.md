@@ -3549,13 +3549,13 @@ This chapter is about what happens after the proof is generated. It is about gas
 
 Layer 7 is where cryptography meets politics. And politics, as a rule, wins.
 
-Layer 7 carries four distinct responsibilities, and this chapter treats each in turn. First: the *economics* of rendering a verdict — what does verification cost, and who pays? Second: *implementation vulnerabilities* that can corrupt the verdict — Fiat-Shamir transcript bugs that enable proof forgery. Third: *governance structures* that can override the verdict — multisig attacks, upgrade mechanisms, and the social layer above the math. Fourth: *aggregation and data availability infrastructure* that sits between the prover and the verifier — SHARP, blob economics, and the emerging DA marketplace. These four concerns are operationally convergent — they all determine whether the audience's verdict is trustworthy — but they are logically distinct. A system can have perfect verification economics and catastrophic governance. Separating the concerns makes the trust analysis sharper.
+Layer 7 carries four distinct responsibilities, and this chapter treats each in turn. First: the *economics* of rendering a verdict -- what does verification cost, and who pays? Second: *implementation vulnerabilities* that can corrupt the verdict -- Fiat-Shamir transcript bugs that enable proof forgery. Third: *governance structures* that can override the verdict -- multisig attacks, upgrade mechanisms, and the social layer above the math. Fourth: *aggregation and data availability infrastructure* that sits between the prover and the verifier -- SHARP, blob economics, and the emerging DA marketplace. These four concerns are operationally convergent -- they all determine whether the audience's verdict is trustworthy -- but they are logically distinct. A system can have perfect verification economics and catastrophic governance. Separating the concerns sharpens the trust analysis.
 
 ---
 
 ## The Price of a Verdict
 
-Let us start with money, because money clarifies.
+Start with money, because money clarifies.
 
 A Groth16 proof verification on Ethereum uses the BN254 elliptic curve pairing precompiles introduced in the Byzantium hard fork (2017) and made cheaper by the Istanbul upgrade's EIP-1108 (2019). The gas cost breaks down as follows:
 
@@ -3569,11 +3569,11 @@ A Groth16 proof verification on Ethereum uses the BN254 elliptic curve pairing p
 
 The formula is roughly $(181 + 6L) \times 1{,}000$ gas for $L$ public inputs. At typical Ethereum gas prices and ETH valuations, this works out to somewhere between fifty cents and two dollars per verification. Call it a dollar.
 
-One dollar. To check a proof that summarizes thousands, or millions, of computations. That is the economic engine of the entire zero-knowledge rollup industry. It is also worth noting: the cost of *rendering a verdict* on an arbitrarily complex computation is effectively fixed. The computation can be ten steps or ten billion. The verdict costs the same.
+One dollar. To check a proof that summarizes thousands, or millions, of computations. That is the economic engine of the entire zero-knowledge rollup industry. And the cost of *rendering a verdict* on an arbitrarily complex computation is effectively fixed. The computation can be ten steps or ten billion. The verdict costs the same.
 
 But notice what that dollar buys. It buys a *Groth16* verification. Groth16 requires a trusted setup (Layer 1), uses elliptic curve pairings on BN254 (Layer 6), and produces the smallest proofs in the field -- three group elements that fit in a tweet. The cheapness of the verdict is not free. It is subsidized by decisions made five layers below.
 
-What about STARKs? The paper being revised presents STARK verification as expensive -- two to five million gas -- and contrasts this with SNARK cheapness. This framing was arguably accurate in 2022. It is misleading in 2026. The reason is simple: nobody posts raw STARKs to Ethereum.
+What about STARKs? The paper being revised presents STARK verification as expensive -- two to five million gas -- and contrasts this with SNARK cheapness. That framing was arguably accurate in 2022. It is misleading in 2026. The reason is simple: nobody posts raw STARKs to Ethereum.
 
 The actual production pipeline looks like this:
 
@@ -3594,16 +3594,16 @@ FFLONK, an alternative to Groth16, costs roughly 236,000 gas per verification --
 
 Before March 2024, the dominant cost of running a ZK rollup on Ethereum was not verification. It was data availability. Posting transaction data (or state diffs) as calldata cost roughly 16 gas per byte. A typical rollup batch might include hundreds of kilobytes of data, costing millions of gas -- dwarfing the ~200,000 gas for the proof check.
 
-EIP-4844, deployed in the Dencun upgrade on March 13, 2024, changed this calculus fundamentally. It introduced "blob transactions" -- a new data type designed specifically for rollup data. Each blob contains 4,096 field elements of 32 bytes (~128 KB), with a target of 3 blobs per block and a maximum of 6. Critically, blobs have their own fee market, separate from Ethereum's execution gas market, operating under a blob-specific EIP-1559 mechanism.
+EIP-4844, deployed in the Dencun upgrade on March 13, 2024, changed this calculus fundamentally. It introduced "blob transactions" -- a new data type designed specifically for rollup data. Each blob contains 4,096 field elements of 32 bytes (~128 KB), with a target of 3 blobs per block and a maximum of 6. Blobs have their own fee market, separate from Ethereum's execution gas market, operating under a blob-specific EIP-1559 mechanism.
 
 The result: rollup data costs dropped by 10-100x overnight. Blob fees settled near zero because demand was well below the 3-blob target -- as of mid-2024, only about 34% of Ethereum blocks contained any blobs at all, and the average was 1.33 blob transactions per block.
 
 But Ethereum did not stop at EIP-4844. Two subsequent upgrades expanded DA capacity further:
 
-- **Pectra** (May 2025): Doubled blob targets from 3 to 6, and maximum from 6 to approximately 9.
-- **Fusaka** (December 2025): Introduced PeerDAS (Peer Data Availability Sampling), implementing a distributed sampling scheme that raised the blob target to 14 and maximum to 21 -- an 8x increase in DA capacity over the original EIP-4844 specification.
+- **Pectra** (May 2025): Raised the blob target from 3 to 6, and the maximum from 6 to 9.
+- **Fusaka** (December 2025): Introduced PeerDAS (Peer Data Availability Sampling), a distributed sampling scheme that raised the blob target to 14 and maximum to 21 -- roughly a 4.7x increase on target (3 → 14 blobs per block) over the original EIP-4844 specification.
 
-The seesaw has tipped. With blob fees near zero and DA capacity expanding rapidly, the ~200,000 gas verification cost has become the *dominant* L1 settlement expense for many ZK rollups. This inversion matters because it changes what is worth optimizing. Before EIP-4844, the rational investment was in compression (minimizing data). After EIP-4844, the rational investment is in proof aggregation (amortizing verification across more transactions per batch) and in cheaper verification schemes.
+The seesaw has tipped. With blob fees near zero and DA capacity expanding, the ~200,000 gas verification cost has become the *dominant* L1 settlement expense for many ZK rollups. This inversion matters because it changes what is worth optimizing. Before EIP-4844, the rational investment was in compression (minimizing data). After EIP-4844, the rational investment is in proof aggregation (amortizing verification across more transactions per batch) and in cheaper verification schemes.
 
 ### Beyond Ethereum: The DA Marketplace
 
@@ -3623,7 +3623,7 @@ The term "data availability" is one of those phrases that sounds self-explanator
 
 If yes, the rollup has data availability. Anyone can verify that the rollup operator is honest by replaying all transactions from genesis and checking that the claimed state matches the computed state. If no -- if some of the data is withheld, stored only on the operator's private servers, or available only to a privileged set of participants -- then the operator could cheat and nobody would know. The operator could include a transaction that steals every user's funds, prove that the resulting state transition is "valid" (because the ZK proof only proves that *some* valid transition occurred), and nobody could challenge it because nobody can see the inputs.
 
-This is the critical subtlety that connects data availability to zero-knowledge proofs. A ZK proof proves that a state transition was computed correctly. It proves that if you start from state S and apply transactions T, you arrive at state S'. What it does *not* prove -- what it *cannot* prove, by design -- is what state S actually was. The proof attests to the correctness of the computation, not the availability of the inputs. If the operator claims the starting state was S but actually started from a fabricated state S_fake, the ZK proof will happily prove that the transition from S_fake was computed correctly. Without DA, nobody can verify the starting point.
+This is the subtlety that connects data availability to zero-knowledge proofs. A ZK proof proves that a state transition was computed correctly. It proves that if you start from state S and apply transactions T, you arrive at state S'. What it does *not* prove -- what it *cannot* prove, by design -- is what state S actually was. The proof attests to the correctness of the computation, not the availability of the inputs. If the operator claims the starting state was S but actually started from a fabricated state S_fake, the ZK proof will happily prove that the transition from S_fake was computed correctly. Without DA, nobody can verify the starting point.
 
 Data availability is the anchor. The ZK proof is the chain. Without the anchor, the chain secures nothing.
 
@@ -3649,7 +3649,7 @@ And it is the single most dangerous implementation surface in the entire stack.
 
 ### Frozen Heart (2022)
 
-In April 2022, Trail of Bits disclosed a vulnerability class they called "Frozen Heart" (a backronym: Forging Of Zero kNowledge proofs). The core error was simple. Devastatingly simple. Multiple independent implementations of ZK proof systems omitted public inputs from the Fiat-Shamir hash computation.
+In April 2022, Trail of Bits disclosed a vulnerability class they called "Frozen Heart" (a backronym: Forging Of Zero kNowledge proofs). The error was simple. Devastatingly simple. Multiple independent implementations of ZK proof systems omitted public inputs from the Fiat-Shamir hash computation.
 
 The implementations affected were not obscure academic prototypes. They were production-grade libraries used by real projects:
 
@@ -3670,12 +3670,7 @@ The rule that was violated is not subtle: the Fiat-Shamir hash must include *all
 
 The Last Challenge Attack, discovered during an audit of Linea's PLONK verifier in the gnark library, is a more surgical variant of the same disease. In KZG-based proof systems, the verifier often batches multiple polynomial evaluations using a random "batching challenge" derived via Fiat-Shamir. The Last Challenge Attack exploits the case where this batching challenge is computed from a *truncated* transcript -- one that excludes the evaluation proofs themselves.
 
-The attack is elegant in the way that a perfectly executed heist is elegant. The malicious prover:
-
-1. Sets arbitrary (false) public inputs and proof components.
-2. Computes the batching challenge from the truncated transcript.
-3. Solves a linear system for the missing evaluation proofs.
-4. The vulnerable verifier accepts the forged proof with probability 1.
+The attack is elegant in the way that a perfectly executed heist is elegant. The malicious prover sets arbitrary (false) public inputs and proof components, computes the batching challenge from the truncated transcript, then solves a linear system for the missing evaluation proofs. The vulnerable verifier accepts the forged proof with probability 1.
 
 Not "with high probability." With certainty. The forged proof is deterministically constructed to pass verification. The audience has been compromised not by force but by omission -- a single value left out of a hash, and the entire edifice of mathematical certainty collapses.
 
@@ -3743,7 +3738,7 @@ The attack, when it came in May 2023, unfolded like a stage magic trick -- not t
 
 To understand the trick, you need to understand two pieces of Ethereum infrastructure that most users never think about.
 
-The first is `CREATE2`. On Ethereum, when you deploy a contract, it gets an address. Normally, this address is derived from the deployer's address and a nonce (a sequential counter), so it is effectively unpredictable. `CREATE2`, introduced in EIP-1014, changes the formula: the new contract's address is derived from the deployer's address, a chosen salt, and the *hash of the bytecode being deployed*. This means you can calculate a contract's address before deploying it. More importantly -- and this is the key to the trick -- if you deploy an intermediary factory contract that itself uses `CREATE` (the old opcode), and that factory deploys a child contract, and then you destroy both the factory and the child via `selfdestruct`, and then you redeploy the factory at its original `CREATE2` address, the factory's nonce resets to zero, and it can deploy a *completely different* child contract at the *same address* where the original child lived. The address is reused. The code is not.
+The first is `CREATE2`. On Ethereum, when you deploy a contract, it gets an address. Normally, this address is derived from the deployer's address and a nonce (a sequential counter), so it is effectively unpredictable. `CREATE2`, introduced in EIP-1014, changes the formula: the new contract's address is derived from the deployer's address, a chosen salt, and the *hash of the bytecode being deployed*. This means you can calculate a contract's address before deploying it. More importantly -- and this is what the trick turns on -- if you deploy an intermediary factory contract that itself uses `CREATE` (the old opcode), and that factory deploys a child contract, and then you destroy both the factory and the child via `selfdestruct`, and then you redeploy the factory at its original `CREATE2` address, the factory's nonce resets to zero, and it can deploy a *completely different* child contract at the *same address* where the original child lived. The address is reused. The code is not.
 
 The second is the proxy pattern. Tornado Cash's governance system, like many DAO governance contracts, used a proxy architecture (EIP-1967/UUPS). In a proxy pattern, there is a permanent proxy contract at a fixed address that users interact with. This proxy does not contain the actual governance logic. Instead, it contains a pointer -- a storage slot at a specific, standardized location -- that holds the address of an *implementation* contract. When you call a function on the proxy, the proxy uses `delegatecall` to forward your call to whatever implementation contract the pointer currently references. The proxy's storage is used, but the implementation's code runs. This means whoever can change the pointer controls what code executes when anyone interacts with the governance system. Change the pointer, and you change the governance -- silently, without deploying a new visible contract, without changing the address that everyone knows and trusts.
 
@@ -3827,7 +3822,7 @@ Midnight uses a split execution model. Smart contracts are written in Compact, a
 4. Every Midnight node verifies the proof against the circuit's verifier keys, which were deployed on-chain when the contract was created.
 5. If valid, the blockchain updates the contract's ledger state.
 
-The critical difference from the Ethereum rollup model: verification is not performed by a specialized verifier contract that can be upgraded via governance. It is performed by every node as part of consensus. The verifier keys are stored on-chain at the contract address and are immutable -- once deployed, a contract's verification logic cannot be changed. A new contract must be deployed for logic changes.
+The decisive difference from the Ethereum rollup model: verification is not performed by a specialized verifier contract that can be upgraded via governance. It is performed by every node as part of consensus. The verifier keys are stored on-chain at the contract address and are immutable -- once deployed, a contract's verification logic cannot be changed. A new contract must be deployed for logic changes.
 
 This is a strong answer to the governance-as-attack-surface problem. You cannot upgrade what is immutable. But it creates a different problem: what happens when there is a bug? The answer is migration -- deploy a corrected contract and convince users to move to it. This is slower and messier than a governance upgrade, but it cannot be exploited by an attacker with admin keys. The tradeoff is explicit: Midnight accepts the inconvenience of immutability in exchange for immunity to the Beanstalk-style attack.
 
@@ -3899,7 +3894,7 @@ The honest framing is not "trustless." It is "trust-minimized." And the remainin
 
 Feynman, who had a gift for puncturing pretension, would probably say something like this: "You have built a beautiful machine that converts social trust into mathematical certainty and back into social trust again. The mathematical part in the middle is genuinely impressive. But do not pretend the social parts at the ends do not exist."
 
-He would be right. And the fact that he would be right is itself the deepest insight Layer 7 has to offer. The magic trick is real. The mathematics works. But the trick is performed for an audience, and the audience is governed by people, and people are not mathematical objects. The security of the whole system is a chain, and the endpoints of that chain are anchored in human soil.
+He would be right. And the fact that he would be right is itself the deepest observation Layer 7 has to offer. The magic trick is real. The mathematics works. But the trick is performed for an audience, and the audience is governed by people, and people are not mathematical objects. The security of the whole system is a chain, and the endpoints of that chain are anchored in human soil.
 
 ---
 
@@ -3990,7 +3985,7 @@ The state of on-chain verification as of early 2026:
 
 **Verification costs** have stabilized. Groth16 on BN254 remains the dominant on-chain proof format, at roughly 200,000-250,000 gas per verification. The verification cost floor is set by the pairing precompile gas schedule, which is a protocol parameter that changes only through Ethereum governance (EIPs and hard forks).
 
-**Data availability** is abundant and cheap. Three Ethereum upgrades in two years (Dencun, Pectra, Fusaka) have expanded DA capacity by roughly 16x. Alternative DA layers (Celestia, EigenDA, Avail) provide even cheaper options at the cost of different security assumptions.
+**Data availability** is abundant and cheap. Three Ethereum upgrades in two years (Dencun, Pectra, Fusaka) have expanded blob-based DA capacity from the original EIP-4844 target of 3 blobs per block to roughly 14 under Fusaka/PeerDAS -- about a 4.7x increase over two years. Alternative DA layers (Celestia, EigenDA, Avail) provide even cheaper options at the cost of different security assumptions.
 
 **Governance maturity** lags. Most ZK rollups remain at Stage 0 or Stage 1 of L2Beat's framework. The path to Stage 2 -- where governance can no longer override the proof system -- requires either formally verified verifier contracts, multi-prover architectures, or long mandatory exit windows. No major ZK rollup has achieved Stage 2 as of this writing.
 
@@ -4004,6 +3999,7 @@ Until the governance matures to Stage 2 -- until the smart contracts that verify
 
 Layer 7 is the last layer. The seven-layer tour -- from setup ceremony to on-chain verdict -- is complete. But zero-knowledge proofs do not operate in isolation. They belong to a family of privacy-enhancing technologies -- MPC, FHE, differential privacy, TEEs -- and understanding ZKPs without understanding their siblings leads to architectures that reach for the right mathematics and solve the wrong problem. Before we synthesize the seven layers in Part III, we map the family.
 
+---
 ---
 # Chapter 9: Privacy-Enhancing Technologies
 

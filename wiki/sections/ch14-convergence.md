@@ -4,7 +4,7 @@ slug: ch14-convergence
 chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
-source_lines: [5395, 5412]
+source_lines: [5391, 5408]
 source_commit: 8e419c9815e6fe5f507dd769315a84b46afd74d5
 status: reviewed
 word_count: 581

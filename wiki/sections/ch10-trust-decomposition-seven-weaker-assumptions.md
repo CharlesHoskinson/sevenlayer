@@ -4,7 +4,7 @@ slug: ch10-trust-decomposition-seven-weaker-assumptions
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4486, 4547]
+source_lines: [4482, 4543]
 source_commit: 9eb332547f6b1cd6e7e67527183abbd5c486974c
 status: reviewed
 word_count: 2483

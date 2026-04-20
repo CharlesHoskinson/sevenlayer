@@ -4,7 +4,7 @@ slug: ch12-midnight-as-test-case
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4787, 4796]
+source_lines: [4783, 4792]
 source_commit: 65e82b18c746552064750d4b1ea3c6d13bacbe3a
 status: reviewed
 word_count: 265

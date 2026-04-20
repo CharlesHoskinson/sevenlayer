@@ -4,7 +4,7 @@ slug: ch13-proving-as-a-service-the-prover-market-production
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5077, 5104]
+source_lines: [5073, 5100]
 source_commit: ed3c6bed074f7c28c5ab5956c9683f747793d6a6
 status: reviewed
 word_count: 1170

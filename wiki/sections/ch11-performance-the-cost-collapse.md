@@ -4,7 +4,7 @@ slug: ch11-performance-the-cost-collapse
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4721, 4749]
+source_lines: [4717, 4745]
 source_commit: 9cb1d67a71f09c510cc06fa9493948e145a8f31a
 status: reviewed
 word_count: 458

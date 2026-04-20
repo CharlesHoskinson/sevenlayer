@@ -4,9 +4,9 @@ slug: ch08-case-study-midnight-and-the-three-token-architecture
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3816, 3885]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [3811, 3880]
+source_commit: 5128bf4915b60448d50f9712ef2a308ac9d40765
+status: reviewed
 word_count: 1211
 ---
 
@@ -24,7 +24,7 @@ Midnight uses a split execution model. Smart contracts are written in Compact, a
 4. Every Midnight node verifies the proof against the circuit's verifier keys, which were deployed on-chain when the contract was created.
 5. If valid, the blockchain updates the contract's ledger state.
 
-The critical difference from the Ethereum rollup model: verification is not performed by a specialized verifier contract that can be upgraded via governance. It is performed by every node as part of consensus. The verifier keys are stored on-chain at the contract address and are immutable -- once deployed, a contract's verification logic cannot be changed. A new contract must be deployed for logic changes.
+The decisive difference from the Ethereum rollup model: verification is not performed by a specialized verifier contract that can be upgraded via governance. It is performed by every node as part of consensus. The verifier keys are stored on-chain at the contract address and are immutable -- once deployed, a contract's verification logic cannot be changed. A new contract must be deployed for logic changes.
 
 This is a strong answer to the governance-as-attack-surface problem. You cannot upgrade what is immutable. But it creates a different problem: what happens when there is a bug? The answer is migration -- deploy a corrected contract and convince users to move to it. This is slower and messier than a governance upgrade, but it cannot be exploited by an attacker with admin keys. The tradeoff is explicit: Midnight accepts the inconvenience of immutability in exchange for immunity to the Beanstalk-style attack.
 
@@ -122,6 +122,8 @@ None in this section.
 - No multi-oracle or threshold-oracle pattern documented.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) No sources cited; the entire Midnight architecture description rests on undocumented internal specs — at minimum a link to official Midnight documentation or the Compact language spec should be added.
 - [P3] (A) [[nova]] is listed in Entities but Nova (a folding scheme) does not appear in this section's text and is not relevant to the three-token architecture; this is likely a tagging error.

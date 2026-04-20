@@ -4,7 +4,7 @@ slug: ch11-the-proof-core-triad
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4695, 4720]
+source_lines: [4691, 4716]
 source_commit: 9cb1d67a71f09c510cc06fa9493948e145a8f31a
 status: reviewed
 word_count: 978

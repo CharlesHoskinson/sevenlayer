@@ -4,9 +4,9 @@ slug: ch08-the-deepest-symmetry
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3886, 3905]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [3881, 3900]
+source_commit: 5128bf4915b60448d50f9712ef2a308ac9d40765
+status: reviewed
 word_count: 429
 ---
 
@@ -26,7 +26,7 @@ The honest framing is not "trustless." It is "trust-minimized." And the remainin
 
 Feynman, who had a gift for puncturing pretension, would probably say something like this: "You have built a beautiful machine that converts social trust into mathematical certainty and back into social trust again. The mathematical part in the middle is genuinely impressive. But do not pretend the social parts at the ends do not exist."
 
-He would be right. And the fact that he would be right is itself the deepest insight Layer 7 has to offer. The magic trick is real. The mathematics works. But the trick is performed for an audience, and the audience is governed by people, and people are not mathematical objects. The security of the whole system is a chain, and the endpoints of that chain are anchored in human soil.
+He would be right. And the fact that he would be right is itself the deepest observation Layer 7 has to offer. The magic trick is real. The mathematics works. But the trick is performed for an audience, and the audience is governed by people, and people are not mathematical objects. The security of the whole system is a chain, and the endpoints of that chain are anchored in human soil.
 
 ---
 
@@ -62,6 +62,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) The Layer 1 ↔ Layer 7 symmetry argument assumes all proof systems require a ceremony with social trust, but STARK-based systems (transparent setups) do not — the symmetry holds only for SNARKs with trusted setups; the text should qualify this.
 

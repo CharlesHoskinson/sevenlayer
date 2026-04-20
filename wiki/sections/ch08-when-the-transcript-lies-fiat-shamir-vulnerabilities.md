@@ -4,9 +4,9 @@ slug: ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3642, 3697]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [3642, 3692]
+source_commit: 5128bf4915b60448d50f9712ef2a308ac9d40765
+status: reviewed
 word_count: 891
 ---
 
@@ -20,7 +20,7 @@ And it is the single most dangerous implementation surface in the entire stack.
 
 ### Frozen Heart (2022)
 
-In April 2022, Trail of Bits disclosed a vulnerability class they called "Frozen Heart" (a backronym: Forging Of Zero kNowledge proofs). The core error was simple. Devastatingly simple. Multiple independent implementations of ZK proof systems omitted public inputs from the Fiat-Shamir hash computation.
+In April 2022, Trail of Bits disclosed a vulnerability class they called "Frozen Heart" (a backronym: Forging Of Zero kNowledge proofs). The error was simple. Devastatingly simple. Multiple independent implementations of ZK proof systems omitted public inputs from the Fiat-Shamir hash computation.
 
 The implementations affected were not obscure academic prototypes. They were production-grade libraries used by real projects:
 
@@ -41,12 +41,7 @@ The rule that was violated is not subtle: the Fiat-Shamir hash must include *all
 
 The Last Challenge Attack, discovered during an audit of Linea's PLONK verifier in the gnark library, is a more surgical variant of the same disease. In KZG-based proof systems, the verifier often batches multiple polynomial evaluations using a random "batching challenge" derived via Fiat-Shamir. The Last Challenge Attack exploits the case where this batching challenge is computed from a *truncated* transcript -- one that excludes the evaluation proofs themselves.
 
-The attack is elegant in the way that a perfectly executed heist is elegant. The malicious prover:
-
-1. Sets arbitrary (false) public inputs and proof components.
-2. Computes the batching challenge from the truncated transcript.
-3. Solves a linear system for the missing evaluation proofs.
-4. The vulnerable verifier accepts the forged proof with probability 1.
+The attack is elegant in the way that a perfectly executed heist is elegant. The malicious prover sets arbitrary (false) public inputs and proof components, computes the batching challenge from the truncated transcript, then solves a linear system for the missing evaluation proofs. The vulnerable verifier accepts the forged proof with probability 1.
 
 Not "with high probability." With certainty. The forged proof is deterministically constructed to pass verification. The audience has been compromised not by force but by omission -- a single value left out of a hash, and the entire edifice of mathematical certainty collapses.
 
@@ -106,6 +101,8 @@ Omitting public inputs from the Fiat-Shamir hash causes total soundness failure:
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [none] X — no issues found.
 

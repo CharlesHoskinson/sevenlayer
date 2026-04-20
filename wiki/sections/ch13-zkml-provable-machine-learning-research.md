@@ -4,7 +4,7 @@ slug: ch13-zkml-provable-machine-learning-research
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5045, 5060]
+source_lines: [5041, 5056]
 source_commit: ed3c6bed074f7c28c5ab5956c9683f747793d6a6
 status: reviewed
 word_count: 647

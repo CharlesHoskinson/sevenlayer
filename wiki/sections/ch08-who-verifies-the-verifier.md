@@ -4,9 +4,9 @@ slug: ch08-who-verifies-the-verifier
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3955, 3986]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [3950, 3981]
+source_commit: 5128bf4915b60448d50f9712ef2a308ac9d40765
+status: reviewed
 word_count: 432
 ---
 
@@ -81,6 +81,8 @@ The verifier contract itself is a supply chain with five distinct failure surfac
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) The FOOM Club exploit (delta_2 == gamma_2 misconfiguration) is cited without a source; a CVE, GitHub issue, or audit report reference is needed to verify the technical claim about the specific misconfiguration.
 - [P3] (D) [[snarkjs]] is not listed in Entities despite being the directly implicated library in the FOOM Club exploit; inconsistent with entity-tagging practice elsewhere.

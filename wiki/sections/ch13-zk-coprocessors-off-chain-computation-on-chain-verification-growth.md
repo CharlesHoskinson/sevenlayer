@@ -4,7 +4,7 @@ slug: ch13-zk-coprocessors-off-chain-computation-on-chain-verification-growth
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5027, 5044]
+source_lines: [5023, 5040]
 source_commit: ed3c6bed074f7c28c5ab5956c9683f747793d6a6
 status: reviewed
 word_count: 535

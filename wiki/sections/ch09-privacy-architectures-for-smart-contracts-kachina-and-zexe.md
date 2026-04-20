@@ -4,7 +4,7 @@ slug: ch09-privacy-architectures-for-smart-contracts-kachina-and-zexe
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4202, 4243]
+source_lines: [4198, 4239]
 source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
 status: reviewed
 word_count: 741

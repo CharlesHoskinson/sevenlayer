@@ -4,7 +4,7 @@ slug: ch10-path-three-post-quantum-folding
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4424, 4435]
+source_lines: [4420, 4431]
 source_commit: 9eb332547f6b1cd6e7e67527183abbd5c486974c
 status: reviewed
 word_count: 352

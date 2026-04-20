@@ -4,7 +4,7 @@ slug: ch09-three-kinds-of-security
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4100, 4127]
+source_lines: [4096, 4123]
 source_commit: 64ef08cec31e6c519d3e388f85563b82e6479728
 status: reviewed
 word_count: 972

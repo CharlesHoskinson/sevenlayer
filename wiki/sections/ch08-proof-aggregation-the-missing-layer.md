@@ -4,9 +4,9 @@ slug: ch08-proof-aggregation-the-missing-layer
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3800, 3815]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [3795, 3810]
+source_commit: 5128bf4915b60448d50f9712ef2a308ac9d40765
+status: reviewed
 word_count: 256
 ---
 
@@ -61,6 +61,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) No sources cited for any of the three named aggregation services (SHARP, Aligned Layer, NEBRA); the Aligned Layer ">$11B restaked ETH" figure and NEBRA "live August 2024" date are unanchored.
 - [P2] (E) Section does not explain how aggregation fits (or fails to fit) the seven-layer model beyond a single sentence; the trust-analysis of the aggregation layer is thin relative to the governance section's depth.

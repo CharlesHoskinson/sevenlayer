@@ -4,7 +4,7 @@ slug: ch13-zk-rollups-the-proving-grounds-production
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5001, 5026]
+source_lines: [4997, 5022]
 source_commit: ed3c6bed074f7c28c5ab5956c9683f747793d6a6
 status: reviewed
 word_count: 745

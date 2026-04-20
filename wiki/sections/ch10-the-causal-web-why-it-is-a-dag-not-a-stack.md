@@ -4,7 +4,7 @@ slug: ch10-the-causal-web-why-it-is-a-dag-not-a-stack
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4444, 4485]
+source_lines: [4440, 4481]
 source_commit: 9eb332547f6b1cd6e7e67527183abbd5c486974c
 status: reviewed
 word_count: 1164
