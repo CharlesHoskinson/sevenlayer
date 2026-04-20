@@ -5,7 +5,7 @@ chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
 source_lines: [4566, 4575]
-source_commit: 9abf8bb5a87f0fd353e7aef7559fbaef6e45ba01
+source_commit: 9cb1d67a71f09c510cc06fa9493948e145a8f31a
 status: reviewed
 word_count: 251
 ---
