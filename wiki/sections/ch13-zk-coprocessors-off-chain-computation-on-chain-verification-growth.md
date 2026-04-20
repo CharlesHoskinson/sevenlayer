@@ -5,8 +5,8 @@ chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
 source_lines: [5027, 5044]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 508c29f21fc4bc0080e1bf4101db484f576f36a4
+status: reviewed
 word_count: 535
 ---
 
@@ -18,7 +18,7 @@ The magician, in this case, is not performing for a general audience. She is per
 
 **Axiom** raised $20 million in Series A funding and operates the leading ZK coprocessor platform. Axiom's coprocessor can access any historical Ethereum block header, account state, storage slot, transaction, or receipt, generate a computation over that data, and deliver a verified result to a smart contract in a single callback.
 
-**Brevis** operates both a ZK coprocessor and the Pico Prism zkVM. Brevis's ProverNet launched mainnet beta in December 2025, enabling decentralized proof generation for coprocessor queries.
+**Brevis** operates both a ZK coprocessor and the Pico Prism zkVM (the combined zkVM product discussed in Chapter 10). Brevis's ProverNet launched mainnet beta in December 2025, enabling decentralized proof generation for coprocessor queries.
 
 **Lagrange** provides ZK coprocessing for cross-chain state proofs and data availability verification, enabling smart contracts on one chain to verify state claims about another chain without trusting a bridge operator.
 
@@ -63,7 +63,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) "Pico Prism zkVM" merges two distinct Brevis products: Pico (a zkVM) and Prism (a coprocessor framework). The entities list correctly separates them ([[pico]], [[prism]]) but the body text conflates them into a single compound name, which is inaccurate.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (B) No sources cited for Axiom's $20M Series A, Brevis ProverNet Dec 2025 launch date, or the $0.10–$1.00 per-query cost estimate.
 - [P2] (C) The DeFi lending example (30-day average balance, TWAP query) is stated in nearly identical terms in both paragraph 5 and paragraph 6, creating redundant prose. One instance should be removed or condensed.
 

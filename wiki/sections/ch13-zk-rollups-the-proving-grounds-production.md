@@ -5,8 +5,8 @@ chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
 source_lines: [5001, 5026]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 508c29f21fc4bc0080e1bf4101db484f576f36a4
+status: reviewed
 word_count: 745
 ---
 
@@ -83,6 +83,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) No sources cited for specific figures: Scroll $748M TVL, Linea $2B TVL, ZKsync Airbender 21.8M cycles/sec, $102K/year proving cost, blob capacity increase figures. These are verifiable claims that should carry citations.
 - [P2] (A) "Fiat-Shamir-based PLONK" for Linea is imprecise; Linea uses a gnark-based custom SNARK. The description conflates the non-interactivity transform with the underlying proof system family.

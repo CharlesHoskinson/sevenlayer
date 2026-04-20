@@ -4,9 +4,9 @@ slug: ch13-enterprise-pilots-pilot
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5109, 5138]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [5105, 5134]
+source_commit: 508c29f21fc4bc0080e1bf4101db484f576f36a4
+status: reviewed
 word_count: 1416
 ---
 
@@ -76,6 +76,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) No sources cited for any of the named pilots (Deutsche Bank Project Guardian, DTCC/Canton December 2025, Partisia/Danish government), the DTCC $2.5 quadrillion figure, or the correspondent banking fee range (0.1–0.3% notional). Each of these is a specific verifiable claim.
 - [P2] (A) "DTCC clears approximately $2.5 quadrillion in securities annually" conflates clearing with transaction processing notional; DTCC's reported figures include repo and netting activity that inflates the number beyond what "clears" conventionally implies. Needs qualification or a more precise verb.

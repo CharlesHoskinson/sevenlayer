@@ -4,17 +4,15 @@ slug: ch13-proving-as-a-service-the-prover-market-production
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5079, 5108]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [5077, 5104]
+source_commit: 508c29f21fc4bc0080e1bf4101db484f576f36a4
+status: reviewed
 word_count: 1170
 ---
 
 ## Proving-as-a-Service: The Prover Market (Production)
 
-Here the privacy tradeoff from Chapter 4 returns with full force. Generating ZK proofs is computationally expensive but highly parallelizable, so a natural market has emerged: delegate your proving to someone with better hardware. The efficiency gain is real. The trust consequence is this: the person who proves for you sees your data.
-
-The Chapter 4 paradox returns with full force here. The architecture that protects your data the most -- client-side proving, where your secrets never leave your device -- requires hardware that most people do not own. The architecture that works on any device -- delegated proving -- requires trusting the prover with your secrets. Chapter 4 called this out as the economic structure of privacy in 2026. Here it becomes a business model.
+Here the privacy tradeoff from Chapter 4 returns with full force, and it returns as a business model. Generating ZK proofs is computationally expensive but highly parallelizable, so a natural market has emerged: delegate your proving to someone with better hardware. The architecture that protects your data the most -- client-side proving, where your secrets never leave your device -- requires hardware that most people do not own. The architecture that works on any device -- delegated proving -- requires trusting the prover with your secrets. The efficiency gain is real. The trust consequence is this: the person who proves for you sees your data.
 
 **Succinct** operates the leading prover network. By early 2026, the Succinct Network had generated over 6 million proofs on mainnet, secured over $4 billion in value, and launched the $PROVE token. The network's SP1 Hypercube zkVM powers multiple rollup deployments.
 
@@ -77,7 +75,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (C) Paragraphs 1 and 2 both open with the same idea ("the Chapter 4 privacy tradeoff returns with full force"), nearly verbatim. The second paragraph is redundant with the first and should be merged or cut.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (B) No sources for: RISC Zero Boundless 542.7 trillion cycles, Aligned Layer $11B+ EigenLayer restaking figure, rollup proving costs $200K–$500K/year, GPU rental rates, H100 power draw, or gross margin estimates (40–60%/15–25%). This section has the highest density of specific quantitative claims and fewest citations of any ch13 section.
 - [P2] (A) Gross margin estimates (40–60% owned hardware, 15–25% cloud) are presented as established figures but are apparently internal estimates with no sourcing; they should be flagged as estimates or attributed.
 - [P3] (A) "542.7 trillion cycles by December 2025" is unusually precise for an uncited claim; if this is from a RISC Zero announcement it should be cited directly.

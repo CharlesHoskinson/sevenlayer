@@ -3,18 +3,14 @@
 Auto-generated from `## Improvement notes` in every section.
 Regenerate with `python wiki/tools/build_backlog.py`.
 
-**Totals:** 347 open findings — P0: 0, P1: 8, P2: 230, P3: 109
+**Totals:** 343 open findings — P0: 0, P1: 4, P2: 230, P3: 109
 
-## P1 (8)
+## P1 (4)
 
 | Status | Ch | Slug | Dim | Finding |
 |--------|----|------|-----|---------|
 | [ ] | 08 | [[ch08-on-chain-verification-in-2026]] | A | "Three Ethereum upgrades in two years… expanded DA capacity by roughly 16×" is inconsistent with the numbers given in ch08-the-price-of-a-verdict: blob target goes from 3 (EIP-4844) to 14 (Fusaka), which is ~4.7×, not 16×. If the 16× is computed against pre-EIP-4844 calldata capacity, that denominator and methodology should be stated explicitly. |
 | [ ] | 08 | [[ch08-the-price-of-a-verdict]] | A | The "8× increase in DA capacity over the original EIP-4844 specification" claim for Fusaka/PeerDAS is incorrect: the blob target rises from 3 to 14, which is roughly 4.7×, not 8×. |
-| [ ] | 13 | [[ch13-proving-as-a-service-the-prover-market-production]] | C | Paragraphs 1 and 2 both open with the same idea ("the Chapter 4 privacy tradeoff returns with full force"), nearly verbatim. The second paragraph is redundant with the first and should be merged or cut. |
-| [ ] | 13 | [[ch13-zk-coprocessors-off-chain-computation-on-chain-verification-growth]] | A | "Pico Prism zkVM" merges two distinct Brevis products: Pico (a zkVM) and Prism (a coprocessor framework). The entities list correctly separates them ([[pico]], [[prism]]) but the body text conflates them into a single compound name, which is inaccurate. |
-| [ ] | 13 | [[ch13-zk-identity-growth-regulatory-mandate]] | C | The sentence "The market does not need to be created. It has been mandated." appears verbatim in both the eIDAS paragraph and the closing paragraph. One instance is a copy-paste artifact and should be removed. |
-| [ ] | 13 | [[ch13-zkml-provable-machine-learning-research]] | C | The 10,000–50,000x overhead tax and the floating-point-to-finite-field mapping problem are stated twice in consecutive paragraphs (once in the DeepProve paragraph, once in the "technical difficulty" breakdown paragraph). The repetition is an editing artifact; one of the two instances should be trimmed. |
 | [ ] | 14 | [[ch14-coda]] | D | The complete bibliography skips reference number 33 — the sequence runs 32, 34, skipping 33 entirely. Either a reference was deleted without renumbering or a citation was omitted. The gap should be resolved. |
 | [ ] | 14 | [[ch14-the-seven-questions-that-remain-open]] | A | Q2 describes Wee-Wu's work as "compact functional encryption and related primitives" but ePrint 2024/028 is titled "Lattice-Based Functional Commitments: Fast Verification and Cryptanalysis" — not functional encryption. The characterisation is imprecise and should be corrected to functional commitments. |
 
@@ -383,12 +379,11 @@ Regenerate with `python wiki/tools/build_backlog.py`.
 | 10 | 0 | 0 | 5 | 2 | 7 |
 | 11 | 0 | 0 | 13 | 6 | 19 |
 | 12 | 0 | 0 | 9 | 6 | 15 |
-| 13 | 0 | 4 | 13 | 6 | 23 |
+| 13 | 0 | 0 | 13 | 6 | 19 |
 | 14 | 0 | 2 | 5 | 5 | 12 |
 
 ## Revision order (by P0+P1 density, descending)
 
-- Chapter 13: P0+P1 = 4
 - Chapter 08: P0+P1 = 2
 - Chapter 14: P0+P1 = 2
 - Chapter 01: P0+P1 = 0
@@ -402,3 +397,4 @@ Regenerate with `python wiki/tools/build_backlog.py`.
 - Chapter 10: P0+P1 = 0
 - Chapter 11: P0+P1 = 0
 - Chapter 12: P0+P1 = 0
+- Chapter 13: P0+P1 = 0

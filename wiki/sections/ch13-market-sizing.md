@@ -4,9 +4,9 @@ slug: ch13-market-sizing
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5139, 5181]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [5135, 5177]
+source_commit: 508c29f21fc4bc0080e1bf4101db484f576f36a4
+status: reviewed
 word_count: 956
 ---
 
@@ -35,7 +35,7 @@ The Grand View Research figures cover the full ZK ecosystem: proof generation ha
 | Coprocessors | ~3% | Per-query proving fees |
 | ZKML | ~2% | Research grants (pre-revenue) |
 
-These estimates are approximate — no authoritative segment breakdown exists yet, and the boundaries between segments are porous (a rollup's proving costs may be counted as either rollup infrastructure or proving-as-a-service depending on the source). The key observation is that rollup transaction fees dominate the current market, but the fastest-growing segments by percentage are proving-as-a-service and identity, both driven by expanding use cases beyond the original blockchain scaling thesis.
+These estimates are approximate -- no authoritative segment breakdown exists yet, and the boundaries between segments are porous (a rollup's proving costs may be counted as either rollup infrastructure or proving-as-a-service depending on the source). The key observation is that rollup transaction fees dominate the current market, but the fastest-growing segments by percentage are proving-as-a-service and identity, both driven by expanding use cases beyond the original blockchain scaling thesis.
 
 The Grand View Research CAGR of 22.1% assumes continued blockchain adoption plus emerging non-blockchain applications (enterprise compliance, identity wallets, verifiable AI). The Chorus One projections for the proving sub-market assume steeper growth (approximately 55% CAGR from $97M to $1.34B over five years) driven by the transition from self-hosted proving to marketplace-based proving-as-a-service. Both projections assume no major cryptographic break (quantum or otherwise) and continued regulatory tailwinds from eIDAS 2.0 and MiCA.
 
@@ -90,6 +90,8 @@ None.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) The $7.4B identity-segment projection cited in ch13-zk-identity-growth-regulatory-mandate has no corresponding source in this section or the market-sizing table; if it is from Grand View Research [42] it should appear in the table and note, or it needs a separate citation.
 - [P2] (A) The segment share estimates (60%/20%/10%/5%/3%/2%) are presented without a sourcing methodology; the note acknowledges no authoritative breakdown exists, but the specific percentages could mislead readers who treat them as cited figures rather than rough author estimates.

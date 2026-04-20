@@ -2,7 +2,7 @@
 title: "The Market Landscape"
 chapter: 13
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 13: The Market Landscape
@@ -17,7 +17,15 @@ status: untouched
 - [[ch13-enterprise-pilots-pilot]]
 - [[ch13-market-sizing]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-19 per `wiki/drafts/ch13-v2.md`. 0 P0 + 4 P1 resolved. Draft preserved. P2 (13) and P3 (4) deferred.
+
+**Key corrections:** Proving-as-a-service duplicate opening paragraph merged; "Pico Prism zkVM" clarified as the combined Brevis product name (consistent with ch10); "The market does not need to be created. It has been mandated." appears only once (kept at the close of ZK Identity for punch); ZKML overhead-tax/floating-point repetition consolidated into the technical-difficulty paragraph.
+
+**Regression fix:** `---` separator between ch13 and ch14 restored post-splice.
+
+## Audit rollup (pre-revision)
 
 Audited 2026-04-18. 7 sections, 20 findings total: P0=0, P1=3, P2=13, P3=4.
 
