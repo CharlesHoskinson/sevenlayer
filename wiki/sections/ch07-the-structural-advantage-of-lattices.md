@@ -5,7 +5,7 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3468, 3485]
-source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+source_commit: 7623e4c122cda2624dd2a679440afa4136b8f409
 status: reviewed
 word_count: 297
 ---
