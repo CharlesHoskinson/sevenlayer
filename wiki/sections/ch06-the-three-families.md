@@ -5,8 +5,8 @@ chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2449, 2506]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 1859
 ---
 
@@ -117,6 +117,8 @@ Every production ZK proof system belongs to one of three families: Groth16 (192-
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (C) Excessive bolding on the "Three Envelopes" subsection headers ("Groth16 is the smallest possible envelope", "PLONK is the universal envelope", "STARKs are glass envelopes") — the bold labels are redundant with the prose that follows and create a numbered-proof-steps feel
 - [P2] (C) "It is worth spelling out" — AI smell in hybrid pipeline paragraph

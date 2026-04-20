@@ -4,9 +4,9 @@ slug: ch06-circle-starks-and-stwo-a-generational-leap
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2739, 2799]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2737, 2797]
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 1611
 ---
 
@@ -14,7 +14,7 @@ word_count: 1611
 
 While the folding lineage was evolving, a parallel revolution was happening in the STARK world. In 2024, Haboeck (Polygon Labs), Levit, and Papini (StarkWare) published Circle STARKs, and their production implementation -- Stwo -- became the fastest proof system ever deployed.
 
-The key insight is a change in the algebraic structure underlying the FFT, which is the computational backbone of every STARK prover. Traditional STARKs use multiplicative subgroups of finite fields for their FFT domains. These subgroups exist in large fields (like BN254's 254-bit field), but finding smooth-order subgroups in small fields is difficult. Circle STARKs replace the multiplicative subgroup with the *circle group* of a Mersenne prime field.
+The change is in the algebraic structure underlying the FFT, which is the computational backbone of every STARK prover. Traditional STARKs use multiplicative subgroups of finite fields for their FFT domains. These subgroups exist in large fields (like BN254's 254-bit field), but finding smooth-order subgroups in small fields is difficult. Circle STARKs replace the multiplicative subgroup with the *circle group* of a Mersenne prime field.
 
 Why the circle group? The Mersenne-31 field ($M31 = 2^{31} - 1$) is a prime with a special property: the circle group $C(\mathbb{F}_p) = \{(x, y) : x^2 + y^2 = 1 \text{ over } \mathbb{F}_p\}$ has order $p + 1 = 2^{31}$, which is a perfect power of 2. This enables a radix-2 FFT (the Circle FFT, or CFFT) analogous to the standard Cooley-Tukey FFT but operating over circle points. Each FRI step halves the domain using the circle group's "squaring" map, and the entire protocol adapts naturally to the circle geometry.
 
@@ -116,6 +116,8 @@ Circle STARKs (Haboeck, Levit, Papini, 2024) replace the multiplicative subgroup
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (C) "The key insight is a change in the algebraic structure" — "key insight" is an AI smell
 - [P2] (B) ICICLE speedup range "3.25x to 7x" has no source; the Stwo/ICICLE benchmarks should be cited (StarkWare blog or the Circle STARKs paper)

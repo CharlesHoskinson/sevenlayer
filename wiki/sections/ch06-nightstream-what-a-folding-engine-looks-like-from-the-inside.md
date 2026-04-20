@@ -4,9 +4,9 @@ slug: ch06-nightstream-what-a-folding-engine-looks-like-from-the-inside
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2650, 2738]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2650, 2736]
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 1973
 ---
 
@@ -71,11 +71,9 @@ The `val` lane exists to prevent this. It uses an independent challenge $\beta$,
 
 Nightstream includes a formal subproject in Lean 4 that closes theorem surfaces for the core protocol. The Lean model covers the algebraic reductions, the commitment binding properties under Module-SIS, and the soundness chain from folded claims back to original computation steps.
 
-This is unusual for a research prototype. Most implementations at this stage rely entirely on paper proofs and test suites. Nightstream's formal model provides a higher standard of assurance for the mathematical core.
+This is unusual for a research prototype. Most implementations at this stage rely entirely on paper proofs and test suites. Nightstream's formal model provides a higher standard of assurance for the mathematical core: the Lean proofs verify that the mathematical reductions are sound -- that if the folded claim passes the verifier's checks, then the original CCS instance was satisfiable -- and they prove the if-then chain from folded proof back to original computation.
 
-But there is a boundary that formal methods cannot cross on their own. The Lean proofs verify that the *mathematics* is correct -- that the reductions preserve soundness, that the commitment scheme is binding under stated assumptions. The Rust runtime must then consume those Lean-closed theorem surfaces exactly as intended. The proofs live in one world; the code lives in another. The residual risk is not that the theorems are wrong. It is that the code, through a layout mismatch, an off-by-one index, or a misread parameter, might inhabit a slightly different mathematical world than the one the theorems describe. Mathematics proven correct in the abstract; the question is whether the implementation faithfully instantiates it. This is a higher-quality problem than most systems have. It is still the real remaining assurance boundary.
-
-To be concrete about what Lean proves and what it does not: the Lean formalization verifies that the mathematical reductions are sound -- that if the folded claim passes the verifier's checks, then the original CCS instance was satisfiable. It proves the *if-then* chain from folded proof to original computation. What Lean does *not* prove is that the Rust code in `neo-fold` correctly instantiates the reduction. An off-by-one index in a matrix multiplication, a transposed loop bound in the commitment computation, a misread parameter from `neo-params` -- any of these could cause the Rust implementation to inhabit a slightly different mathematical world than the one Lean verified. The residual risk is implementation fidelity, not mathematical unsoundness. SP1's approach -- formal verification of opcode constraints against the RISC-V Sail specification -- attacks the same gap from the opposite direction: proving the code matches the spec rather than proving the spec is sound. Neither project has closed the full loop from spec to code to hardware. That loop is the frontier.
+What Lean does *not* prove is that the Rust code in `neo-fold` correctly instantiates those reductions. The proofs live in one world; the code lives in another. An off-by-one index in a matrix multiplication, a transposed loop bound in the commitment computation, a misread parameter from `neo-params` -- any of these could cause the Rust implementation to inhabit a slightly different mathematical world than the one the theorems describe. The residual risk is implementation fidelity, not mathematical unsoundness. SP1's approach -- formal verification of opcode constraints against the RISC-V Sail specification -- attacks the same gap from the opposite direction: proving the code matches the spec rather than proving the spec is sound. Neither project has closed the full loop from spec to code to hardware. That loop is the frontier.
 
 ### Unfinished Scaffolding
 
@@ -147,7 +145,8 @@ None in this section.
 
 ## Improvement notes
 
-- [P1] (D) The Lean boundary discussion is repeated nearly verbatim in two consecutive paragraphs (the "Lean Boundary" subsection contains both a general statement and a near-duplicate "to be concrete" paragraph saying essentially the same thing); one should be cut or merged
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) "Twist and Shout memory arguments" — "Twist" is a recognizable memory-consistency argument name; "Twist and Shout" appears to be an invented informal label; clarify whether this is the actual protocol name used in the Nightstream codebase or an editorial gloss
 - [P2] (B) No sources cited; the section would benefit from a link to the Nightstream repository or its README, since the section relies on specific crate names and architectural details that readers cannot verify without a pointer
 - [P3] (C) "Not glamorous, but essential" and "slow, patient, unglamorous work" — light AI-style rhetorical framing; could be tightened

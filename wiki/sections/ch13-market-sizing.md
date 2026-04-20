@@ -4,7 +4,7 @@ slug: ch13-market-sizing
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5132, 5174]
+source_lines: [5137, 5179]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 956

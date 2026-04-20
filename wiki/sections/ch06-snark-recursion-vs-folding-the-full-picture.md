@@ -4,9 +4,9 @@ slug: ch06-snark-recursion-vs-folding-the-full-picture
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2916, 2950]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2922, 2956]
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 557
 ---
 
@@ -41,7 +41,7 @@ The asymptotic advantage of folding is clear: $O(|F|)$ prover cost per step (whe
 
 In practice, the distinction between recursion and folding is blurring. Most production systems use a hybrid: folding for the inner loop (accumulate computation steps cheaply), then a monolithic SNARK (Spartan, Groth16) as the "decider" that produces the final succinct proof. Nova uses Spartan as its decider. Mangrove (Nguyen, Datta, Chen, Tyagi, Boneh, 2024) builds a k-arity PCD tree where leaf nodes fold computation chunks and internal nodes merge folded instances, with a final SNARK for the NP statement. The boundary between "folding" and "recursion" dissolves into a pipeline where both techniques serve different stages.
 
-The key decision variable is step count. For computations under approximately 1,000 steps, recursion with a fast inner proof system (Groth16 or PLONK) is competitive in both prover time and implementation complexity -- the per-step overhead of a full recursive proof is high but amortizes over few steps. For computations exceeding 10,000 steps -- the regime of zkVMs proving full program executions -- folding's $O(|F|)$ per-step cost with ~1,500 gates of folding overhead dominates recursion's $O(|F| + |V|)$ per-step cost, where $|V|$ is the verifier circuit size. The crossover region between 1,000 and 10,000 steps depends on the specific constraint system, field size, and hardware: folding wins earlier on small fields (where $|V|$ is relatively large compared to $|F|$) and later on pairing-friendly fields (where recursive verification is cheap). In practice, the distinction is blurring -- the dominant architecture uses folding for the inner accumulation loop and a single recursive SNARK compression as the final decider step.
+The key decision variable is step count. For computations under approximately 1,000 steps, recursion with a fast inner proof system (Groth16 or PLONK) is competitive in both prover time and implementation complexity -- the per-step overhead of a full recursive proof is high but amortizes over few steps. For computations exceeding 10,000 steps -- the regime of zkVMs proving full program executions -- folding's $O(|F|)$ per-step cost with ~1,500 gates of folding overhead dominates recursion's $O(|F| + |V|)$ per-step cost, where $|V|$ is the verifier circuit size. The crossover region between 1,000 and 10,000 steps depends on the specific constraint system, field size, and hardware: folding wins earlier on small fields (where $|V|$ is relatively large compared to $|F|$) and later on pairing-friendly fields (where recursive verification is cheap). In practice, the dominant architecture uses folding for the inner accumulation loop and a single recursive SNARK compression as the final decider step.
 
 ---
 
@@ -89,6 +89,8 @@ Recursion suits short computation chains with per-step proof requirements and ma
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (D) The 1,000–10,000 step crossover threshold is stated twice: once mid-section and then again in the final paragraph, nearly verbatim; one occurrence should be cut
 - [P2] (B) Mangrove citation lists "Nguyen, Datta, Chen, Tyagi, Boneh, 2024" — the ePrint should be cited with its number; also the author order should be verified against the actual paper

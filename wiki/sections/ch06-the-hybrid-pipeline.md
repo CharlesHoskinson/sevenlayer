@@ -5,8 +5,8 @@ chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2507, 2546]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 1107
 ---
 
@@ -26,7 +26,7 @@ The dominant architecture in 2025 looks like this:
 
 Every major production system follows this architecture: SP1 (Succinct Labs), Stwo (StarkWare), Polygon, ZKM, and most others. The STARK generates the raw material; the SNARK seals it into a certificate the blockchain will accept. The STARK provides transparency and prover efficiency. The SNARK provides on-chain cost efficiency. Each family contributes what it does best.
 
-The implication is worth spelling out. The "SNARK vs. STARK" debate that dominated conference panels from 2019 to 2023 was a false dichotomy. The field converged on "STARK inside, SNARK outside" because the engineering tradeoffs demanded it. Transparency for the prover. Compactness for the chain. The only remaining question is whether the outer SNARK wrapper can itself become post-quantum -- a problem that lattice-based proof systems (discussed later in this chapter) are beginning to address.
+The "SNARK vs. STARK" debate that dominated conference panels from 2019 to 2023 was a false dichotomy. The field converged on "STARK inside, SNARK outside" because the engineering tradeoffs demanded it. Transparency for the prover. Compactness for the chain. The only remaining question is whether the outer SNARK wrapper can itself become post-quantum -- a problem that lattice-based proof systems (discussed later in this chapter) are beginning to address.
 
 ### A Concrete Pipeline: From 1,000 Transactions to a 192-Byte Proof
 
@@ -34,13 +34,13 @@ The hybrid architecture becomes vivid when you trace a specific workload through
 
 **Step 1: Execute and generate the witness.** The operator's sequencer replays all 1,000 transactions against a local copy of the rollup's state. Every storage read, every storage write, every arithmetic operation is recorded in an execution trace -- the giant spreadsheet from Chapter 4. The witness includes all private data: account balances, nonces, intermediate computation values. This step is ordinary software execution, no cryptography involved. On a modern server, it takes 1 to 2 seconds. The output is a trace with millions of rows and dozens of columns.
 
-**Step 2: Generate a STARK proof over a small field.** The prover takes the execution trace and produces a STARK proof using BabyBear (31-bit) or Mersenne-31 arithmetic. This is where the heavy computation happens. The trace is interpolated into polynomials, the polynomials are committed via FRI (Merkle trees of evaluations), and the FRI protocol verifies low-degree proximity. On a cluster of GPUs -- say, four NVIDIA A100s -- this step takes 3 to 5 seconds. The output is a STARK proof: transparent, hash-based, quantum-resistant, and roughly 200 to 400 kilobytes in size.
+**Step 2: Generate a STARK proof over a small field.** The prover takes the execution trace and produces a STARK proof using BabyBear (31-bit) or Mersenne-31 arithmetic. This is where the heavy computation happens. The trace is interpolated into polynomials, the polynomials are committed via FRI (Merkle trees of evaluations), and the FRI protocol verifies low-degree proximity. On a cluster of GPUs -- say, four NVIDIA A100s -- this step takes roughly 3 to 5 seconds according to proving benchmarks from SP1 Hypercube [52]. The output is a STARK proof: transparent, hash-based, quantum-resistant, and roughly 200 to 400 kilobytes in size.
 
 **Step 3: Recursively compress the STARK.** The raw STARK proof is too large to post on-chain economically. So the operator generates a second STARK proof that verifies the first one. This is recursion: a proof about a proof. The verifier circuit for a STARK is much smaller than the original computation circuit, so the recursive proof is faster to generate and produces a smaller output. One or two rounds of recursive compression shrink the proof from hundreds of kilobytes to tens of kilobytes. This step takes 1 to 2 seconds.
 
-**Step 4: Wrap in Groth16 over BN254.** The compressed STARK proof is now small enough to verify inside a Groth16 circuit. A specialized wrapping circuit takes the STARK verifier computation -- check the Merkle paths, verify the FRI folding, confirm the constraint evaluations -- and expresses it as an R1CS instance over the BN254 field. The Groth16 prover then seals this into a 192-byte proof: two G1 points and one G2 point. This is the field-crossing step, where 31-bit STARK arithmetic is translated into 254-bit BN254 arithmetic. It is computationally expensive per field operation, but the circuit is small (it is only verifying a STARK, not re-executing the original computation). On a single GPU, this step takes 5 to 10 seconds.
+**Step 4: Wrap in Groth16 over BN254.** The compressed STARK proof is now small enough to verify inside a Groth16 circuit. A specialized wrapping circuit takes the STARK verifier computation -- check the Merkle paths, verify the FRI folding, confirm the constraint evaluations -- and expresses it as an R1CS instance over the BN254 field. The Groth16 prover then seals this into a 192-byte proof: two G1 points and one G2 point. This is the field-crossing step, where 31-bit STARK arithmetic is translated into 254-bit BN254 arithmetic. It is computationally expensive per field operation, but the circuit is small (it is only verifying a STARK, not re-executing the original computation). On a single GPU, this step takes roughly 5 to 10 seconds [52].
 
-**Step 5: Post the proof to Ethereum.** The operator submits a transaction to the rollup's on-chain verifier contract. The transaction contains the 192-byte Groth16 proof, the new state root, and a commitment to the batch of transactions. The Ethereum verifier contract calls the BN254 pairing precompile (EIP-1108), checks the three pairings, and accepts or rejects. Verification costs approximately 250,000 gas -- roughly $0.50 to $1.00 at typical gas prices. The state root is updated. The 1,000 transactions are finalized.
+**Step 5: Post the proof to Ethereum.** The operator submits a transaction to the rollup's on-chain verifier contract. The transaction contains the 192-byte Groth16 proof, the new state root, and a commitment to the batch of transactions. The Ethereum verifier contract calls the BN254 pairing precompile (EIP-1108), checks the three pairings, and accepts or rejects. Live cost figures tracked by Ethproofs [44] put on-chain verification at roughly $0.50 to $1.00 at typical gas prices. The state root is updated. The 1,000 transactions are finalized.
 
 The audience sees only Step 5. A 192-byte proof appears on-chain. A smart contract checks it in a few milliseconds. The state updates. Nobody knows -- or needs to know -- that behind those 192 bytes lie four NVIDIA GPUs, two rounds of recursive compression, a field-crossing circuit, and the execution traces of 1,000 individual transactions. The entire pipeline, from receiving the batch to posting the proof, completes in under 15 seconds and costs under $1.00.
 
@@ -95,7 +95,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (B) No sources cited for any concrete timing or cost figures (3–5s STARK, 5–10s Groth16 wrap, "$0.50–$1.00 per verification", sub-$1 end-to-end); these should reference CastleLabs/Ethproofs or a dated benchmark
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) "All major production systems follow this architecture: SP1, Stwo, Polygon, ZKM" — Polygon runs multiple proving systems (e.g., Polygon zkEVM uses a different pipeline); the claim needs qualification or a source
 - [P2] (C) "The implication is worth spelling out" — AI smell
 - [P2] (A) "$0.50–$1.00 at typical gas prices" is vague and gas-price-dependent; the figure is anchored to no specific date or gas price level

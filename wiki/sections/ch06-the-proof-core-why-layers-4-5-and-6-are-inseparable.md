@@ -4,9 +4,9 @@ slug: ch06-the-proof-core-why-layers-4-5-and-6-are-inseparable
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2820, 2837]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2818, 2835]
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 371
 ---
 
@@ -24,7 +24,7 @@ Consider the design decisions involved in building a proof system:
 
 These three choices -- field, commitment, arithmetization -- form a tightly coupled triad. Change one, and the other two must adapt. This is why we call them the "proof core": they function as a single design unit, even though our seven-layer model places them in separate layers.
 
-The layered model is still useful for understanding. It separates concerns that are conceptually distinct: what the mathematics *is* (Layer 6), how computation is *encoded* (Layer 4), and how the encoding is *verified* (Layer 5). But the reader should understand that in practice, these layers are designed together, optimized together, and constrained by each other's choices. A proof system is not assembled from independent components like bricks in a wall. It is forged as a single alloy, where the properties of each ingredient determine the properties of the whole. Chapter 10 redraws the seven-layer model as a directed acyclic graph, and the proof core is the densest cluster of edges in that graph.
+The layered model is still useful for understanding. It separates concerns that are conceptually distinct: what the mathematics *is* (Layer 6), how computation is *encoded* (Layer 4), and how the encoding is *verified* (Layer 5). But in practice, these layers are designed together, optimized together, and constrained by each other's choices. A proof system is not assembled from independent components like bricks in a wall. It is forged as a single alloy, where the properties of each ingredient determine the properties of the whole. Chapter 10 redraws the seven-layer model as a directed acyclic graph, and the proof core is the densest cluster of edges in that graph.
 
 ---
 
@@ -70,6 +70,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [none] X — no issues found.
 

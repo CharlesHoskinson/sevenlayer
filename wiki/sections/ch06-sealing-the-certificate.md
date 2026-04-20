@@ -5,8 +5,8 @@ chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2425, 2448]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 615
 ---
 
@@ -18,7 +18,7 @@ That something is a sealed certificate.
 
 The certificate attests that the trick was performed correctly -- "this transaction is valid," "this person is over 18," "this block was executed correctly." It is small enough to carry in your pocket. It is unforgeable. Anyone can verify it. Nobody needs to see the original performance. And a forged certificate is not merely unlikely -- it is a mathematical impossibility, its probability shrinking exponentially as the security parameter grows.
 
-Think of it this way. In the previous two chapters, we watched the computation get written down (the language), performed backstage (the witness), and translated into a mathematical puzzle (the arithmetization). Now we reach the moment the puzzle gets sealed into a certificate that will travel out into the world, to be checked by strangers who have no reason to trust us and no access to our private data. This is Layer 5: the proof system. It is the mechanism that presses the wax seal.
+In the previous two chapters, we watched the computation get written down (the language), performed backstage (the witness), and translated into a mathematical puzzle (the arithmetization). Now we reach the moment the puzzle gets sealed into a certificate that will travel out into the world, to be checked by strangers who have no reason to trust us and no access to our private data. This is Layer 5: the proof system. It is the mechanism that presses the wax seal.
 
 > **The Running Example: The Sudoku Proof**
 >
@@ -72,6 +72,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (C) "it is worth spelling out" style phrasing in the chapter body (appears in ch06-the-hybrid-pipeline but pattern starts here); intro section itself is clean
 - [P2] (B) No sources cited; Schwartz-Zippel is named but not cited; FRI/KZG/Ajtai are forward-referenced to Ch10 without a note for the reader

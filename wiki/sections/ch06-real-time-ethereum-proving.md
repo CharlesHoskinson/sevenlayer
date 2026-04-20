@@ -4,9 +4,9 @@ slug: ch06-real-time-ethereum-proving
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2800, 2819]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2798, 2817]
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 385
 ---
 
@@ -14,7 +14,7 @@ word_count: 385
 
 The performance revolution in proof systems has had a direct economic consequence worth pausing to appreciate, because it changes the fundamental calculus of what this technology is good for.
 
-In December 2023, proving a single Ethereum block cost approximately $80.21. By December 2025, the cost had fallen to roughly $0.04 -- a 2,000x reduction in 24 months. Airbender (ZKsync's prover) achieved $0.0001 per transfer. These numbers come from CastleLabs and Ethproofs benchmarks, and they represent a cost curve steeper than Moore's Law.
+In December 2023, proving a single Ethereum block cost approximately $80.21. By December 2025, the cost had fallen to roughly $0.04 -- a 2,000x reduction in 24 months. Airbender (ZKsync's prover) achieved $0.0001 per transfer. These numbers come from CastleLabs and Ethproofs benchmarks [43, 44], and they represent a cost curve steeper than Moore's Law.
 
 But cost is only half the story. Speed matters equally, because Ethereum produces a new block every 12 seconds. If proving takes longer than 12 seconds, the prover cannot keep up with the chain. For years, this was a distant goal. In late 2025, four teams crossed the threshold:
 
@@ -67,6 +67,8 @@ Ethereum block proving cost fell from $80.21 (December 2023) to $0.04 (December 
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) "Two additional teams from the Ethereum Foundation's proving ecosystem demonstrated sub-12-second proving" — unnamed, unsourced; either name the teams or remove the vague claim
 - [P2] (A) SP1 Hypercube described as "a multilinear polynomial stack built entirely on the sumcheck protocol" — while broadly accurate, "entirely on" overstates; the system also uses a STARK wrapper and Groth16 for on-chain posting; the description should note these layers

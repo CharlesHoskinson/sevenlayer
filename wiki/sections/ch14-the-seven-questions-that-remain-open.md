@@ -4,7 +4,7 @@ slug: ch14-the-seven-questions-that-remain-open
 chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
-source_lines: [5177, 5347]
+source_lines: [5182, 5352]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 6042

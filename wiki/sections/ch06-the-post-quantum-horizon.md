@@ -4,9 +4,9 @@ slug: ch06-the-post-quantum-horizon
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2951, 2966]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2957, 2972]
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 329
 ---
 
@@ -74,6 +74,8 @@ Shor's algorithm makes all elliptic-curve-based proof systems (Groth16, PLONK, H
 - No post-quantum on-chain verifier exists; closing this gap (lattice-friendly L1 precompiles or novel compression) is an open problem flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) "Shor's algorithm breaks the discrete logarithm problem in polynomial time. This means every proof system built on elliptic curve cryptography … becomes insecure. Not 'might become insecure.' Becomes insecure." — the certainty is slightly overstated; Shor's algorithm requires a cryptographically relevant quantum computer (fault-tolerant, large-scale) that does not yet exist; the phrasing conflates mathematical implication with practical threat; a hedge ("once a sufficiently powerful quantum computer exists") would be more precise
 - [P3] (E) "No post-quantum on-chain verifier exists in production" — accurate, but the section could briefly mention NIST PQC standardization (CRYSTALS-Dilithium, FALCON) and why none of those directly apply to on-chain ZK verifiers, to help readers understand the gap

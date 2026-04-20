@@ -4,9 +4,9 @@ slug: ch06-from-speed-race-to-security-race
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2967, 2978]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2973, 2984]
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 285
 ---
 
@@ -56,6 +56,8 @@ None in this section.
 - Full end-to-end formal verification of the Layer 5 stack (Fiat-Shamir transform through field arithmetic) is explicitly flagged as the open problem defining the next several years.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (E) Very short (285 words); the section largely restates conclusions from ch06-real-time-ethereum-proving without adding new content; either extend with the random oracle model gap (mentioned but not developed) or merge with ch06-real-time-ethereum-proving
 - [P2] (B) No sources cited; the Ethereum Foundation December 2025 announcement should have a reference (blog post, EIP, or public statement)

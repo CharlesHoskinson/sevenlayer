@@ -4,9 +4,9 @@ slug: ch06-the-folding-genealogy
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2587, 2649]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2585, 2649]
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 1197
 ---
 
@@ -21,7 +21,7 @@ Before tracing each step, here is the map. Read it the way a naturalist reads a 
 - **Instruction generality:** Uniform IVC (Nova) to non-uniform IVC (SuperNova, SuperNeo), enabling VM execution.
 - **Cryptographic generality:** Elliptic curves (Nova through CycleFold) to lattices (LatticeFold, Neo, Symphony), enabling post-quantum security.
 
-Every scheme in the genealogy that follows advances along at least one of these axes. The reader can track the progress by asking a single question of each paper: which axis did it push forward?
+Every scheme in the genealogy that follows advances along at least one of these axes.
 
 ### Nova (2022): The Origin
 
@@ -43,7 +43,7 @@ HyperNova is the generalization point because everything after it works in the C
 
 ### ProtoStar and ProtoGalaxy (2023): Alternative Paths
 
-These two schemes took different approaches to generalizing folding. ProtoStar (Bunz and Chen, ePrint 2023/620) built a generic accumulation framework for any interactive argument satisfying "special soundness" -- a more abstract starting point than HyperNova's CCS-specific approach. ProtoGalaxy (Eagen and Gabizon) introduced multi-instance folding: folding k instances simultaneously in a single round, rather than folding pairs sequentially. This enables high-arity proof-carrying data trees, which are needed for parallel proof generation.
+These two schemes took different approaches to generalizing folding. ProtoStar (Bunz and Chen, ePrint 2023/620) built a generic accumulation framework for any interactive argument satisfying "special soundness" -- a more abstract starting point than HyperNova's CCS-specific approach. ProtoGalaxy (Eagen and Gabizon, ePrint 2023/1106) introduced multi-instance folding: folding k instances simultaneously in a single round, rather than folding pairs sequentially. This enables high-arity proof-carrying data trees, which are needed for parallel proof generation.
 
 Both contributed important ideas to the field, but the main trunk of the genealogy runs through HyperNova because CCS became the dominant constraint language.
 
@@ -51,11 +51,11 @@ Both contributed important ideas to the field, but the main trunk of the genealo
 
 Kothapalli and Setty. This is the engineering paper that made all the theoretical folding schemes practical over elliptic curves. The problem: Nova's folding verifier includes a scalar multiplication, which requires non-native field arithmetic when working over a 2-cycle of curves. CycleFold delegates this scalar multiplication to a co-processor circuit on the second curve, where it can be computed natively. This reduced the second-curve circuit from roughly 10,000 gates to 1,500. Not glamorous, but essential. CycleFold is the standard technique used in every practical implementation of Nova and HyperNova.
 
-### LatticeFold (2024): Crossing Into Post-Quantum Territory
+### LatticeFold (ASIACRYPT 2025): Crossing Into Post-Quantum Territory
 
-Boneh and Chen, published at ASIACRYPT 2025. LatticeFold was the first folding scheme based on lattice assumptions rather than elliptic curve assumptions. This matters enormously, because lattice problems (Module-SIS, Module-LWE) are believed to resist quantum attacks, while elliptic curve discrete logarithm falls to Shor's algorithm.
+Boneh and Chen (ePrint 2024/257), published at ASIACRYPT 2025. LatticeFold was the first folding scheme based on lattice assumptions rather than elliptic curve assumptions. This matters enormously, because lattice problems (Module-SIS, Module-LWE) are believed to resist quantum attacks, while elliptic curve discrete logarithm falls to Shor's algorithm.
 
-LatticeFold replaced elliptic curve commitments with Ajtai-style lattice commitments: $\text{Commit}(A, m, r) = A \cdot [m; r] \bmod q$, where $A$ is a public matrix, $m$ is the message, and $r$ is randomness. These commitments are linearly homomorphic -- exactly the property that folding needs to combine instances via random linear combination. But LatticeFold worked over large fields ($q \approx 2^{128}$), which made arithmetic expensive.
+LatticeFold replaced elliptic curve commitments with Ajtai-style lattice commitments: $\text{Commit}(A, m, r) = A \cdot [m; r] \bmod q$, where $A$ is a public matrix, $m$ is the message, and $r$ is randomness. These commitments are linearly homomorphic -- exactly the property that folding needs to combine instances via random linear combination. But LatticeFold worked over large fields ($q \approx 2^{128}$), which made arithmetic expensive. Its successor, LatticeFold+ (Boneh and Chen, CRYPTO 2025; ePrint 2025/247), addressed this with faster, shorter proofs.
 
 ### Neo (2025): Small Fields and Pay-Per-Bit
 
@@ -72,6 +72,8 @@ Independently extending lattice-based folding to high-arity settings, Symphony r
 Symphony demonstrated that lattice-based folding can be practical, not just theoretical. With GPU acceleration, it achieves practical proving times, closing the performance gap with elliptic-curve-based systems while maintaining plausible post-quantum security.
 
 Each step in the genealogy broadened the reach of folding without sacrificing its fundamental advantage: logarithmic verifier cost and linear prover cost per step. The entire genealogy, from Nova to Symphony, spans just three years. This rate of progress is unusual even by the standards of a fast-moving field.
+
+---
 
 
 ## Summary
@@ -125,8 +127,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) LatticeFold venue listed as "ASIACRYPT 2025" — the Boneh-Chen LatticeFold paper (ePrint 2024/257) was presented at CRYPTO 2024, not ASIACRYPT 2025; verify and correct the venue
-- [P1] (B) ProtoGalaxy author list given as "Eagen and Gabizon" — the actual ePrint 2023/1106 has three authors (Liam Eagen, Ariel Gabizon, and Zacharias); incomplete attribution
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) Symphony (2026) has no citation at all; if this is a forthcoming or internal paper, the text should note that; if published, a citation is required
 - [P2] (B) Sumcheck attribution "Lund, Fortnow, Karloff, and Nisan in 1992" — the FOCS proceedings were 1990; the JACM version is 1992; body should clarify "FOCS 1990 / JACM 1992" to avoid confusion
 - [P3] (E) The "four axes" framing is introduced but the Axes table is never explicitly revisited for LatticeFold, Neo, and Symphony — a one-line "axes advanced" annotation per scheme would make the framework payoff clearer

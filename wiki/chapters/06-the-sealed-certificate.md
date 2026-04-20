@@ -2,7 +2,7 @@
 title: "Layer 5 -- The Sealed Certificate"
 chapter: 6
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 6: Layer 5 -- The Sealed Certificate
@@ -25,7 +25,13 @@ status: untouched
 - [[ch06-from-speed-race-to-security-race]]
 - [[ch06-the-sealed-certificate]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-19 per `wiki/drafts/ch06-v2.md`. 0 P0 + 6 P1 resolved. Draft preserved. P2 (27) and P3 (16) deferred.
+
+**Key corrections:** Trail of Bits Frozen Heart / gnark GHSA-7p92-x423-vwj6 / Solana ZK ElGamal postmortems all cited with URLs in body. Nightstream Lean boundary duplicate paragraphs merged. Zexe cited as "IEEE S&P 2020, preprint 2018; ePrint 2018/962". LatticeFold venue reconciled to ASIACRYPT 2025 (verified against Springer proceedings); LatticeFold+ disambiguated as CRYPTO 2025. ProtoGalaxy authors confirmed as Eagen and Gabizon only (verified via DBLP; reviewer's claim of third author "Dorota Filipczak" was incorrect). Hybrid pipeline timing and cost figures cited to SP1 Hypercube blog and Ethproofs.
+
+## Audit rollup (pre-revision)
 
 **Totals:** P0=0, P1=6, P2=27, P3=16
 

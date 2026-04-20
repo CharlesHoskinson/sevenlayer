@@ -4,9 +4,9 @@ slug: ch06-case-study-midnight-s-sealed-certificate
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2854, 2915]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [2860, 2921]
+source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+status: reviewed
 word_count: 940
 ---
 
@@ -120,6 +120,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) Comparison table cell for Neo/Symphony "Proof time (simple circuit)" reads "GPU-accelerated NTT" — this is a description of the mechanism, not a time value; the cell is inconsistent with the other rows that give actual durations; either provide a time estimate or label the cell differently
 - [P2] (B) Performance figures are stated as "measured on devnet (development hardware)" with no source or link; a pointer to a public benchmark or the Midnight devnet documentation would let readers verify
