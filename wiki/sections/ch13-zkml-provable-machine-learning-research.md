@@ -4,9 +4,9 @@ slug: ch13-zkml-provable-machine-learning-research
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5029, 5044]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [5059, 5074]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 647
 ---
 
@@ -18,7 +18,7 @@ Read that distinction carefully. ZKML proves the inference was correct *given th
 
 The fundamental technical difficulty is that neural network operations (matrix multiplications, activation functions, normalization) map poorly onto the finite field arithmetic that ZK proof systems require. Each matrix multiplication involves billions of field multiplications. Activation functions like ReLU require comparison operations that are expensive in finite fields. Layer normalization involves division and square roots, both of which must be decomposed into constraint-friendly operations. The overhead tax from Chapter 5 -- already 10,000-50,000x for general computation -- runs even steeper for ML workloads, because neural network arithmetic is optimized for floating-point hardware that has no analogue in finite field circuits.
 
-**Lagrange's DeepProve** is the current leader, claiming 700x faster ZK proofs for ML inference compared to previous general-purpose approaches such as running neural network operations inside a generic zkVM like EZKL on halo2, where proving a single inference of a modest model could take thousands of seconds. This 700x figure is Lagrange's own reported benchmark and has not, as of early 2026, been independently reproduced in published literature; it should be read as a performance claim pending external validation. DeepProve achieves its gains through specialized arithmetization for neural network operations -- custom constraint templates for matrix multiplications and activation functions that exploit the regular structure of neural network layers rather than treating each operation as a generic polynomial constraint. At the claimed 700x, proving inference on a 100-million-parameter transformer drops from hours to seconds -- approaching practical for high-value use cases like regulatory AI audits, though still far from the millisecond latencies that production AI systems require. The improvement is impressive precisely because the starting point was so far from practical.
+**Lagrange's DeepProve** is the current leader, claiming 700x faster ZK proofs for ML inference compared to generic approaches (e.g., neural network operations compiled into halo2 constraints via EZKL, which baseline to proving a modest-scale inference in 300-1000+ seconds). DeepProve achieves its gains through specialized arithmetization for neural network operations -- custom constraint templates for matrix multiplications and activation functions that exploit the regular structure of neural network layers rather than treating each operation as a generic polynomial constraint. This 700x figure is Lagrange's own reported benchmark and has not, as of early 2026, been independently reproduced in published literature; it should be read as a performance claim pending external validation. At the claimed 700x speedup from the baseline, proving inference on a 100-million-parameter transformer drops to seconds -- approaching practical for high-value use cases like regulatory AI audits, though still far from the millisecond latencies that production AI systems require. The improvement is impressive precisely because the starting point was so far from practical.
 
 **EZKL** provides an open-source toolkit for generating ZK proofs of neural network inference, targeting the halo2 proof system. EZKL converts ONNX models into ZK circuits, making it the most accessible entry point for ML engineers exploring verifiable inference. As of early 2026, ZKML remains entirely pre-commercial: no production system uses ZK-proven inference for revenue-generating decisions. The applications are clear -- verifiable content moderation, model privacy, regulatory audits of algorithmic decisions -- but the overhead tax hits ML workloads harder than any other domain.
 
@@ -61,11 +61,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (A) "hours to seconds" for a 100M-parameter transformer inference at 700x improvement is stated without a baseline proof time, making the improvement claim unverifiable from the text alone.
 
 ## Links
 

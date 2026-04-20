@@ -5,8 +5,8 @@ chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [622, 650]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1003
 ---
 
@@ -24,7 +24,7 @@ Once the trapdoor is extracted, every proof ever generated under that SRS become
 
 This creates a concept we will call the *quantum shelf life* of a trusted setup. A KZG ceremony conducted in 2023 produces an SRS that is secure against classical computers indefinitely but has a finite lifespan against quantum adversaries. If that SRS secures a blockchain expected to operate for 20 years, the setup's shelf life may expire before the system's intended lifetime ends.
 
-STARKs, by contrast, rely on collision-resistant hash functions, which are believed to resist quantum computers. The caveat "believed to" deserves scrutiny. Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, which effectively halves the security level of hash functions: 256-bit classical security becomes 128-bit quantum security. This is a quantitative adjustment, not a qualitative break -- you double your hash output size and move on. More subtly, the BHT algorithm can reduce collision resistance further, but it requires quantum random-access memory (qRAM), which is widely considered physically impracticable with current technology. In sum: hash-based systems *probably* survive quantum computers with parameter adjustments, but the unqualified claim that they are "post-quantum secure" gives false confidence. What we can say is that no known quantum algorithm breaks them in the way Shor's algorithm breaks elliptic curves -- completely, efficiently, and with mathematical certainty.
+STARKs, by contrast, rely on collision-resistant hash functions, which are believed to resist quantum computers. The caveat "believed to" deserves scrutiny. Grover's algorithm gives a quantum computer a quadratic speedup for brute-force *pre-image* search -- finding an input $x$ such that $H(x) = y$ -- which effectively halves that security level. Collision resistance is a separate property and degrades differently: the BHT algorithm (Brassard-Høyer-Tapp) reduces collision-finding from the classical $2^{n/2}$ birthday bound to $2^{n/3}$ under quantum attack, a more significant erosion. Importantly, BHT requires quantum random-access memory (qRAM), which is widely considered physically impracticable with current technology. In sum: hash-based systems *probably* survive quantum computers with parameter adjustments, but the unqualified claim that they are "post-quantum secure" gives false confidence. What we can say is that no known quantum algorithm breaks them in the way Shor's algorithm breaks elliptic curves -- completely, efficiently, and with mathematical certainty.
 
 A transparent STARK-based setup has no quantum shelf life problem because there is no trapdoor to extract. The "stage" is made of hash functions, and hash functions do not have secrets.
 
@@ -84,12 +84,13 @@ Every pairing-based proof system rests on the discrete logarithm problem, which 
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (D) No contradictions with other chapters found.
-- [P3] (E) The section does not mention that Grover's quadratic speedup applies to pre-image search, not collision resistance directly; collision resistance degrades as $2^{n/3}$ under BHT (not $2^{n/2}$), which is a material distinction for parameter selection.
 
 ## Links
 

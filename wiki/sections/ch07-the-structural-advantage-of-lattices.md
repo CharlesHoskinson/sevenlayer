@@ -4,9 +4,9 @@ slug: ch07-the-structural-advantage-of-lattices
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3453, 3470]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3485, 3502]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 297
 ---
 
@@ -24,7 +24,7 @@ Pre-quantum recursive proof systems (exemplified by Halo and its production desc
 
 Lattice-based folding eliminates all three. Neo operates over a single ring $R_q$. The rotation matrix encoding makes everything native to one algebraic structure. Recursion via folding requires no curve cycles and no non-native arithmetic. The setup is transparent (public random matrix).
 
-This simplification is not cosmetic. Fewer moving parts mean fewer places for bugs, fewer parameters to choose and validate, fewer assumptions to audit. The lattice path is not only quantum-resistant -- it is *simpler*. And in cryptographic engineering, simplicity is not a luxury. It is a security property.
+This simplification is not cosmetic. Fewer moving parts mean fewer places for bugs, fewer parameters to choose and validate, fewer assumptions to audit. Concretely: Halo2 over the Pasta cycle requires parameter sets for two distinct curves (Pallas and Vesta), with circuit overhead from maintaining two separate arithmetic domains; Neo requires one ring and one set of lattice parameters. Non-native field arithmetic in Halo2-based systems typically costs 10--30x more constraints per operation than native arithmetic -- eliminating it entirely, as Neo does, removes one of the largest sources of prover overhead. The lattice path is not only quantum-resistant -- it is *simpler*. And in cryptographic engineering, simplicity is not a luxury. It is a security property.
 
 ---
 
@@ -65,11 +65,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) The section makes a strong architectural point (lattice simplicity as a security property) but does not quantify the simplification — e.g., how many fewer parameters, what the circuit size savings from eliminating non-native arithmetic are in practice for Neo vs Halo2.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch05-layer-4-arithmetization
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1590, 1619]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1612, 1643]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 701
 ---
 
@@ -37,6 +37,8 @@ The core mechanism is straightforward. The computation -- every addition, every 
 This chapter tells the story of how the encoding schemes evolved, from the rigid first attempts to the unified framework that powers every modern proof system. It is also, unavoidably, a story about the overhead this encoding imposes -- and whether that overhead is an immutable tax or a temporary engineering constraint.
 
 The story has five acts. First, we establish the spreadsheet metaphor that makes constraint systems intuitive. Second, we trace the evolution from R1CS to AIR to PLONKish, with concrete worked examples showing how each system encodes computation differently. Third, we encounter CCS -- the unifying grammar that reveals all three systems as dialects of the same language -- and the sumcheck protocol that powers verification. Fourth, we follow the lookup revolution from Plookup through Jolt, watching as table lookups replace polynomial constraints as the primary computation paradigm. Fifth, we confront the overhead tax honestly, with concrete numbers showing what the encoding costs in practice and where those costs are falling.
+
+The five-act ordering places sumcheck (act three, paired with CCS) before lookups (act four), then overhead last. This matches the section sequence that follows: CCS and sumcheck together, then lookups, then the overhead tax.
 
 ---
 
@@ -77,12 +79,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) Five-act roadmap is described but "act 4" (lookup revolution) is listed as fourth in the prose yet appears as the fourth item in a five-item list with sumcheck as third — the ordering implied (spreadsheet, R1CS/AIR/PLONKish, CCS+sumcheck, lookups, overhead) is slightly inconsistent with the section sequence (sumcheck precedes lookups but the intro paragraph pairs them as "act three").
-- [P3] (B) No sources cited; acceptable for an intro section, but a forward-reference to [R-L4-1] for the GGPR/QAP origin would anchor the historical claim made in the body.
 
 ## Links
 

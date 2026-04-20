@@ -4,9 +4,9 @@ slug: ch06-the-sealed-certificate
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2966, 2980]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3000, 3014]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 358
 ---
 
@@ -22,7 +22,7 @@ And we have seen a real system, Midnight, deploy Halo 2 in production with a fou
 
 The certificate is sealed. But we have been treating the sealing mechanism as a black box -- we know it produces trustworthy certificates, but we have not examined what makes the seal unforgeable. What mathematical hardness assumptions prevent a forger from creating a convincing fake? Why do we believe these assumptions hold? And what happens if a quantum computer shatters them?
 
-These are the questions of Layer 6. The seal works because certain mathematical problems are hard. The next chapter examines those problems -- the foundations that make the entire magic trick possible.
+These are the questions of Layer 6. The seal works because certain mathematical problems are hard -- the discrete logarithm problem for elliptic-curve-based systems, and Module-SIS for lattice-based ones. The next chapter examines those problems -- the foundations that make the entire magic trick possible.
 
 ---
 
@@ -71,11 +71,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) Closing section is appropriately brief as a chapter summary, but the transition sentence "the seal works because certain mathematical problems are hard" could name one or two of those problems (discrete log, Module-SIS) to give readers a more concrete handoff into Chapter 7
 
 ## Links
 

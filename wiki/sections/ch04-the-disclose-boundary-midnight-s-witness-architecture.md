@@ -4,9 +4,9 @@ slug: ch04-the-disclose-boundary-midnight-s-witness-architecture
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1489, 1550]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1511, 1572]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1045
 ---
 
@@ -60,7 +60,7 @@ In practice, the pipeline for a Midnight transaction involves four sequential st
 
 At no point do witnesses cross the network. The developer guide states this explicitly: "Witnesses stay local. Never sent to chain."
 
-The side-channel implications matter here. The cryptographic proving step runs for roughly the same time regardless of witness values because the constraint count is fixed per circuit; only the witness computation phase varies with the witnesses. The fixed-cost proving step dominates total transaction time, which provides incidental timing uniformity -- any variation in witness computation is drowned out by the long proving tail. But a dedicated attacker measuring sub-second variations in the witness computation phase could still extract information. And the documentation does not address cache timing, network timing (when a user queries the indexer immediately before submitting a transaction, the timing correlation reveals which contract state they are acting on), or transaction structure analysis (the number of segments in a transaction could reveal which circuit was called). As established in the Side-Channel Attacks section above, these implementation-level channels exist independently of the cryptographic proof's zero-knowledge property.
+The side-channel implications matter here. The cryptographic proving step runs for roughly the same time regardless of witness values because the constraint count is fixed per circuit; only the witness computation phase varies with the witnesses. The fixed-cost proving step dominates total transaction time, which provides incidental timing uniformity -- any variation in witness computation is drowned out by the long proving tail. But a dedicated attacker measuring sub-second variations in the witness computation phase could still extract information. And the documentation does not address cache timing, network timing (when a user queries the indexer immediately before submitting a transaction, the timing correlation reveals which contract state they are acting on), or transaction structure analysis (the number of *segments* -- contiguous regions of the ZKIR bytecode that the ZKIR checker processes as independent units; see Chapter 5 for the ZKIR execution model -- in a transaction could reveal which circuit was called). As established in the Side-Channel Attacks section above, these implementation-level channels exist independently of the cryptographic proof's zero-knowledge property.
 
 Privacy on Midnight is genuine at the cryptographic level. At the implementation level, the runtime side-channel surface is unexamined -- a gap that is not unique to Midnight but is notable given the project's otherwise rigorous compile-time privacy guarantees.
 
@@ -115,11 +115,11 @@ Midnight's Compact language enforces the witness/circuit boundary via a `disclos
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The section notes that "the number of segments in a transaction could reveal which circuit was called" as an open question but does not explain what "segments" are in the ZKIR model. Readers need a brief definition or a forward pointer to ch05-midnight-s-zkir-a-concrete-layer-4.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch04-the-witness-as-a-multi-dimensional-problem
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1551, 1587]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1573, 1609]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 772
 ---
 
@@ -28,7 +28,7 @@ Underneath the four technical gaps lies an equity consequence of the Memory Gap:
 
 The magician's backstage is not just dark -- it is expensive, fragile, and surveilled. The recording equipment costs a fortune. The walls have cracks. And if the recording is wrong, the audience will believe a lie. Layer 3 is where the practical reality of zero-knowledge systems diverges most sharply from the elegant theory.
 
-For the system architect, Layer 3 generates the most concrete questions in any ZK evaluation:
+For the system architect, the four gaps translate into five design questions that sit above the hardware checklist in the Memory section -- those concern infrastructure; these concern the system as a whole:
 
 - What is the witness generation time for your target workload, and how does it compare to the proving time? If it exceeds 50%, your proving GPU is idle most of the time.
 - What are the memory requirements? Can the witness fit in the VRAM of your target GPU, or must it be streamed from system RAM?
@@ -91,12 +91,11 @@ The Witness Gap is four overlapping problems: a Performance Gap (witness generat
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The "system architect" checklist (5 questions) is useful but duplicates framing used at the end of ch04-memory-the-binding-constraint. The two lists could be integrated or differentiated more clearly (memory section = hardware questions, this section = system design questions).
-- [P3] (D) The closing transition ("Layer 4 must answer: how do we turn this recording into a mathematical puzzle") calls the next chapter Layer 4 but ch04 itself has been calling the witness generation "Layer 3" throughout. This mislabels the transition: witness generation is Layer 3 of the seven-layer model; arithmetization is Layer 4. The layer numbering in the transition paragraph should be checked against the book's own taxonomy.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch03-the-developer-s-actual-experience
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [1025, 1060]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1031, 1068]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1190
 ---
 
@@ -39,6 +39,8 @@ The cost asymmetry is the thing that shapes development habits. Running your pro
 **Step 5: Deploy.** The proven program is deployed. For rollup-based systems, this means posting the proof and public inputs to Ethereum. For Compact, this means deploying the ZKIR circuit, TypeScript bindings, and proving keys to Midnight's network. Contract deployment on Midnight's devnet is dominated by proof generation for the constructor circuit (see Chapter 6 for measured latencies).
 
 **Step 6: Monitor.** In production, the developer monitors for correctness, performance, and security. This step is almost entirely undocumented in the ZK ecosystem. There are no standard monitoring tools for ZK deployments. No dashboards for constraint utilization. No alerting for proof generation failures. The gap between "deploy" and "done" is where real-world systems fail.
+
+What would proper monitoring look like? For RISC-V systems: cycle counts per path, regression detection, hardware correlation. For Compact: failure logging with inputs, latency profiling. For Noir: per-function constraint utilization. None exists. These gaps -- called "observability for provable systems" -- let regressions escape into production undetected.
 
 One emerging bright spot: LLM-assisted ZK development. ZK-Coder (Xue et al., "From Evaluation to Enhancement: Large Language Models for Zero-Knowledge Proof Code Generation," arXiv 2509.11708, 2026) reports raising Circom circuit generation pass rates from roughly 20% on a baseline frontier model to roughly 88% when the model is paired with a sketch layer, retrieval over verified implementations, and interactive refinement. This suggests that the developer experience barrier -- the steep learning curve, the unfamiliar constraint semantics, the cryptic error messages -- may be partially addressable through AI tooling. But 88% is not 100%, and the remaining failure cases may be precisely the subtle under-constrainedness bugs that are hardest to detect. An LLM that generates a circuit with a missing constraint is more dangerous than an LLM that fails to generate a circuit at all.
 
@@ -84,11 +86,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) Step 6 (Monitor) is noted as "almost entirely undocumented" but receives only a single short paragraph. Given that the section is titled "The Developer's Actual Experience," this known gap in the field deserves more concrete framing of what is missing and why it matters.
 
 ## Links
 

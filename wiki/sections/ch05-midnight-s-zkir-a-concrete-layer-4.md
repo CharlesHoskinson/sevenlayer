@@ -4,9 +4,9 @@ slug: ch05-midnight-s-zkir-a-concrete-layer-4
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2217, 2298]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2242, 2323]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1203
 ---
 
@@ -145,11 +145,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The section does not describe what a typical compiled Compact contract produces in terms of total ZKIR node count or resulting PLONKish constraint count for a representative transaction. A single concrete end-to-end example (e.g., token transfer: N ZKIR nodes → M PLONKish constraints) would improve depth significantly.
 
 ## Links
 

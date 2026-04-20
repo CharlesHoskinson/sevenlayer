@@ -4,9 +4,9 @@ slug: ch11-performance-the-cost-collapse
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4705, 4733]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4736, 4764]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 458
 ---
 
@@ -29,7 +29,7 @@ Airbender proves a block in 35 seconds on a *single* H100 GPU -- the fastest sin
 
 **The Witness Gap grows with acceleration.** As GPU provers drove cryptographic proving time down 10-50x, witness generation -- still CPU-bound -- became the dominant bottleneck. The proportional shift described in Chapter 4 is now the defining structural constraint of zkVM performance: witness generation in a zkVM equals full VM emulation, which resists the parallelism that NTT and MSM exploit so effectively. The magician's backstage preparation now takes longer than sealing the proof.
 
-Active optimization research is attacking this gap from multiple directions. ZKPoG reports substantial GPU speedups for witness generation, moving the CPU-bound stage onto the accelerator. OpenVM 2.0's SWIRL prover pairs with a new ahead-of-time compiler that executes RISC-V at near-native 3.8 GHz, reporting a 7.8x speedup over an optimized interpreter on CoreMark and dropping Ethereum block 24M execution from 1.8s to 0.5s. Nexus 3.0 abandoned the Nova folding pipeline for a Stwo-backed M31 architecture, citing a roughly 1000x practical penalty from classical folding.
+Active optimization research is attacking this gap from multiple directions. ZKPoG reports substantial GPU speedups for witness generation, moving the CPU-bound stage onto the accelerator. OpenVM 2.0's SWIRL prover pairs with a new ahead-of-time compiler that executes RISC-V at near-native 3.8 GHz, reporting a 7.8x speedup over an optimized interpreter on CoreMark and dropping Ethereum block 24M execution from 1.8s to 0.5s. Nexus 3.0 pursued classical Nova folding before adopting small-field STARK backends, identifying practical limitations in the pure folding approach.
 
 **The EF security pivot (December 2025) [55].** The Ethereum Foundation declared the speed race won and shifted focus:
 - May 2026 target: 100-bit provable security across all zkEVM teams
@@ -80,11 +80,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (A) "the 2,000-fold cost collapse described in Chapter 6" — needs verification that ch6 uses this exact figure; if ch6 says a different number, this is an internal inconsistency.
 
 ## Links
 

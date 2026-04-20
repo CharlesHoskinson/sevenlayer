@@ -4,9 +4,9 @@ slug: ch06-circle-starks-and-stwo-a-generational-leap
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2716, 2778]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2750, 2812]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1611
 ---
 
@@ -41,7 +41,7 @@ But in small fields, this strategy collapses. The Mersenne-31 field has only $2^
 
 This is where the circle enters. Consider the set of all pairs $(x, y)$ in M31 that satisfy $x^2 + y^2 = 1$. This is the unit circle over the finite field -- not a continuous curve but a discrete set of points. The key fact: this set has exactly $p + 1 = 2^{31}$ points. Not $2^{31} - 2$. Not some awkward composite. Exactly $2^{31}$. A perfect power of 2.
 
-The coincidence is not a coincidence. It is a theorem. For any Mersenne prime $p = 2^n - 1$, the circle group $C(\mathbb{F}_p)$ has order $p + 1 = 2^n$. This is because the circle group over $\mathbb{F}_p$ is isomorphic to the multiplicative group of $\mathbb{F}_{p^2}$ modulo $\mathbb{F}_p^*$ -- a quotient that inherits the 2-adic structure of $p + 1$. When $p$ is a Mersenne prime, that structure is maximally smooth: a pure power of 2.
+The coincidence is not a coincidence. It is a theorem. For any Mersenne prime $p = 2^n - 1$, the circle group $C(\mathbb{F}_p)$ has order $p + 1 = 2^n$. This is because $C(\mathbb{F}_p)$ is isomorphic to the subgroup of norm-1 elements of $\mathbb{F}_{p^2}^*$ -- those $z \in \mathbb{F}_{p^2}^*$ satisfying $z \bar{z} = 1$ -- which has order $p + 1$ by a standard counting argument. When $p$ is a Mersenne prime, $p + 1 = 2^n$: maximally smooth, a pure power of 2.
 
 This perfect power-of-2 structure gives you the cleanest possible FFT. The Circle FFT (CFFT) decomposes a polynomial evaluation over $2^{31}$ points into layers of half-size evaluations, just as the standard Cooley-Tukey FFT does over multiplicative subgroups. Each layer halves the domain. After 31 layers, you are done. No padding, no awkward leftovers, no compromises.
 
@@ -69,7 +69,7 @@ But the advantage compounds under parallelism. A 64-bit register can hold two M3
 
 On a GPU, the effect is even more dramatic. A GPU's streaming multiprocessors are optimized for 32-bit integer and floating-point operations -- the native word size of graphics workloads. M31 arithmetic maps directly onto the hardware's sweet spot. BN254 arithmetic requires emulation using multiple 32-bit operations per limb, with register pressure and carry chains that reduce occupancy (the fraction of the GPU's compute units that are actively working). In practice, Stwo's GPU backend -- implemented via ICICLE -- achieves 3.25x to 7x additional speedup on top of the already-fast CPU SIMD implementation. The cumulative advantage of small-field arithmetic, from instruction-level to chip-level, is why Circle STARKs proved to be not a modest improvement over traditional STARKs but a qualitative jump.
 
-The Mersenne prime M31 is not the only small field in production. BabyBear ($p = 2^{31} - 2^{27} + 1 = 15 \times 2^{27} + 1$) offers similar 31-bit arithmetic with a multiplicative group of smooth order ($2^{27}$ divides $p - 1$), enabling traditional multiplicative-subgroup FFTs rather than circle FFTs. SP1 uses BabyBear for its inner proof system. The choice between M31 and BabyBear is a choice between circle-group FFTs and multiplicative-group FFTs -- two paths to the same destination of fast, small-field proving. Both paths converge on the same insight: the biggest optimization in proof system engineering is not a cleverer algorithm. It is a smaller number.
+The Mersenne prime M31 is not the only small field in production. BabyBear ($p = 2^{31} - 2^{27} + 1 = 15 \times 2^{27} + 1$) offers similar 31-bit arithmetic, but its multiplicative group has smooth order $2^{27}$ (since $2^{27}$ divides $p - 1$) rather than $2^{31}$, so BabyBear's FFT domain is smaller -- $2^{27}$ points via the standard multiplicative-subgroup FFT versus $2^{31}$ points via M31's circle-group FFT. SP1 uses BabyBear for its inner proof system. The choice between M31 and BabyBear is a choice between circle-group FFTs and multiplicative-group FFTs, with different domain-size ceilings -- two paths to fast, small-field proving that converge on the same insight: the biggest optimization in proof system engineering is not a cleverer algorithm. It is a smaller number.
 
 ---
 
@@ -119,12 +119,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (A) The circle group isomorphism stated as "$C(\mathbb{F}_p)$ is isomorphic to the multiplicative group of $\mathbb{F}_{p^2}$ modulo $\mathbb{F}_p^*$" — technically the isomorphism is to the subgroup of norm-1 elements of $\mathbb{F}_{p^2}^*$; the stated quotient framing is informal and could mislead readers with algebraic background
-- [P3] (E) The BabyBear comparison at the end is useful but brief; a sentence noting that BabyBear's multiplicative group of smooth order $2^{27}$ (not $2^{31}$) means its FFT domain is smaller than M31's circle group would sharpen the comparison
 
 ## Links
 

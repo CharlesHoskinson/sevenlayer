@@ -4,9 +4,9 @@ slug: ch03-from-circuits-to-virtual-machines-a-brief-evolution
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [784, 807]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [788, 813]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 575
 ---
 
@@ -31,6 +31,8 @@ The third generation asked the obvious follow-up: what if we proved a processor 
 This is the generation we live in now. SP1 (Succinct), RISC Zero, Airbender (ZKsync), ZisK (the team formerly known as Polygon Hermez), Jolt, and Pico Prism all prove RISC-V execution. The developer writes standard Rust. The compiler targets standard RISC-V. The proof system proves the execution trace. The developer may never know they are working with zero-knowledge proofs at all.
 
 But this triumphant narrative -- circuits to custom VMs to RISC-V -- leaves out a fourth thread. There is another approach, one that does not fit the evolutionary story. It does not prove a processor at all. It proves *state transitions*. And its compiler does something no instruction-set-based approach can do: it prevents privacy leaks at compile time.
+
+The Circom ecosystem has evolved: Circom 2 stabilized the language, tools like circom-plus added analysis. The dual-track problem persists, and the field's response remains tooling-focused rather than architectural.
 
 ---
 
@@ -72,11 +74,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) No mention of Circom's successor tools (Circom 2, circom-plus) or how the field has responded since 2018; the evolution narrative stops at the third generation without noting ongoing Circom development.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch07-the-trilemma-and-its-dissolution
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3142, 3176]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3176, 3208]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 643
 ---
 
@@ -39,9 +39,7 @@ To see the trilemma clearly, state the three properties any polynomial commitmen
 
 No known scheme achieves all three. KZG achieves the first two but requires a trusted setup ceremony. FRI achieves the third (transparent) and offers reasonable verification (polylogarithmic), but its proofs are polylogarithmic rather than constant -- orders of magnitude larger. IPA achieves the third (transparent) with logarithmic proofs (impressively small), but its verification is linear -- the verifier must do work proportional to the polynomial's degree. Lattice commitments achieve the third (transparent) with logarithmic proofs, but verification is sublinear rather than constant.
 
-The question that should keep a mathematician awake at night is: *is this trilemma fundamental?* Is there a theorem -- an impossibility result, an information-theoretic lower bound -- proving that no commitment scheme can simultaneously achieve constant-size proofs, constant-time verification, and transparency?
-
-The answer, as of 2026, is no. No one has proven that the ideal PCS is impossible. The barriers are engineering barriers, not mathematical barriers. The bilinear pairing that gives KZG its constant-size property is a specific algebraic structure tied to elliptic curves, and elliptic curves require structured reference strings to exploit pairings. But nothing in information theory says that constant-size polynomial commitments *require* pairings. Nothing says that transparency *requires* large proofs. The ideal scheme -- transparent, constant-size, constant-verification, post-quantum -- remains the field's holy grail. It may not exist. But its impossibility has not been proven, and the gap between what lattice schemes achieve today and what that grail demands shrinks with every new construction. The trilemma may be less a law of nature than a confession of our current ignorance.
+The harder question: is this trilemma a theorem or a limitation of current engineering? No impossibility proof exists. The bilinear pairing that gives KZG its constant-size property is a specific algebraic structure tied to elliptic curves -- but nothing in information theory says constant-size polynomial commitments *require* pairings, or that transparency *requires* large proofs. The ideal scheme -- transparent, constant-size, constant-verification, post-quantum -- remains unproven impossible, and the gap between what lattice schemes achieve today and what that grail demands shrinks with every new construction.
 
 ---
 
@@ -84,11 +82,11 @@ None in this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) The closing rhetorical question ("*is this trilemma fundamental?*") is effective but the multi-sentence follow-up "The answer, as of 2026, is no" paragraph has an AI-essay cadence (question → answer → hedged elaboration → conclusion). Could be tightened.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch05-where-the-analogies-break
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2329, 2399]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2354, 2429]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1313
 ---
 
@@ -44,12 +44,12 @@ From this point forward, the magician-and-audience framing will recede. Layers 5
 - **AIR** (2018): uniform transition constraints over execution traces. Native format for STARKs (transparent, post-quantum). Constraint description size independent of trace length; prover trace work is not.
 - **PLONKish** (2019): selector-gated custom gates with copy constraints via permutation arguments. Native format for Halo2, PLONK. Dominant in deployed systems (2020-2025).
 - **CCS** (Setty, 2023): unifies R1CS, AIR, and PLONKish without overhead. Native target for HyperNova, Neo, ProtoStar, ProtoGalaxy.
-- **Sumcheck protocol** (Lund et al., 1992): reduces verification of polynomial sums over $2^n$ inputs to $n$ rounds of interaction. Backbone of Spartan, HyperNova, Jolt, and SP1 Hypercube.
+- **Sumcheck protocol** (Lund et al., 1992, JCSS Vol. 44, No. 2, pp. 282-296): reduces verification of polynomial sums over $2^n$ inputs to $n$ rounds of interaction. Backbone of Spartan, HyperNova, Jolt, and SP1 Hypercube.
 - **Plookup** (Gabizon and Williamson, 2020): first practical lookup argument. Sorting-based, $O(n \log n)$.
 - **LogUp** (Haboeck, 2022): sorting-free lookup via logarithmic derivatives. $O(n)$ prover cost.
 - **LogUp-GKR** (Papini and Haboeck, 2023): logarithmic verifier cost for lookups. Used in SP1 Hypercube and Stwo.
 - **Lasso** (2023): lookups into tables of size $2^{128}$, prover cost independent of table size.
-- **Jolt** (Arun, Setty, Thaler, ePrint 2023/1217): prover cost approximately 5x-10x lower than RISC Zero in the Jolt paper's own comparison of per-instruction commitment cost; the paper reports ~6x as a representative figure. Full RISC-V ISA via lookups; ~18 field elements per 64-bit RISC-V instruction.
+- **Jolt** (Arun, Setty, Thaler, ePrint 2023/1217): full RISC-V ISA via lookups; ~18 field elements per 64-bit RISC-V instruction. Alpha (a16z); lacks proof recursion (limiting on-chain verification) and GPU proving.
 - **Overhead tax**: 10,000-50,000x versus native execution (2024-2025 systems). Falling to 1,000-5,000x by 2027-2028.
 - **Overhead breakdown**: field encoding (10-100x), constraint expansion (50-100x), polynomial commitment (10-50x). Sources multiply.
 - **Ozdemir et al.**: 50-150x reduction in memory checking constraints via algebraic approaches.
@@ -70,15 +70,20 @@ From this point forward, the magician-and-audience framing will recede. Layers 5
 - [R-L4-9] Setty, Thaler, Wahby. "Unlocking the Lookup Singularity with Lasso." ePrint 2023/1216.
 - [R-L4-10] Arun, Setty, Thaler. "Jolt: SNARKs for Virtual Machines via Lookups." ePrint 2023/1217.
 - [R-L4-11] Blum, Evans, Gemmell, Kannan, Naor. "Checking the Correctness of Memories." FOCS 1991.
+- [R-L4-Cairo] Goldberg, Papini, Riabzev et al. "Cairo -- a Turing-complete STARK-friendly CPU architecture." ePrint 2021/1063.
+- [R-L4-SC] Lund, Fortnow, Karloff, Nisan. "Algebraic Methods for Interactive Proof Systems." JCSS Vol. 44, No. 2, 1992, pp. 282-296.
+- [R-SZ-1] Schwartz, J.T. "Fast Probabilistic Algorithms for Verification of Polynomial Identities." Journal of the ACM, 27(4):701-717, 1980.
+- [R-SZ-2] Zippel, R. "Probabilistic Algorithms for Sparse Polynomials." EUROSAM 1979, Lecture Notes in Computer Science, Vol. 72, pp. 216-226.
 - Midnight ZKIR Reference (v2/v3), 119 oracle traces. Compact compiler v0.29.0.
-- Lund, Fortnow, Karloff, Nisan. "Algebraic Methods for Interactive Proof Systems." JCSS 1992.
 - ZKsync. "Airbender: GPU-Accelerated RISC-V Proving." Product announcement, June 2025. https://www.zksync.io/airbender
-- Groth16 proof size: three group elements on BLS12-381 in compressed form (two $\mathbb{G}_1$ points at 48 bytes each, one $\mathbb{G}_2$ point at 96 bytes) = 192 bytes. Derived from the BLS12-381 curve specification.
+- Groth16 proof size: three group elements on BLS12-381 in compressed form (two G1 points at 48 bytes each, one G2 point at 96 bytes) = 192 bytes. Derived from the BLS12-381 curve specification.
 
 
 ---
 
 *A note on the next three chapters.* Chapters 5, 6, and 7 cover arithmetization, proof systems, and cryptographic primitives -- what this book calls the "proof core." In practice, these three layers are inseparable: the choice of field (Layer 6) determines which arithmetization works (Layer 4), which determines which proof system is viable (Layer 5). We present them sequentially because a book must be linear, but they are best understood as a single coupled design unit. If a choice in Chapter 7 seems to contradict a claim in Chapter 5, it is because the dependency runs in both directions. Read all three, then revisit.
+
+---
 
 ---
 
@@ -142,11 +147,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (D) The Reference Data appendix at the end lists all key facts for the chapter. This is useful, but its placement at the end of the last section rather than in the chapter hub (05-encoding-the-performance.md) means it is only discoverable by reading to the last page. Consider whether it belongs in the chapter rollup instead.
 
 ## Links
 

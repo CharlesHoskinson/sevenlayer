@@ -4,9 +4,9 @@ slug: ch12-five-lessons-for-zk-system-design
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4942, 4976]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4973, 5006]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 725
 ---
 
@@ -40,10 +40,9 @@ The book's Layer 4 discussion of R1CS, AIR, PLONKish, and CCS is necessarily abs
 
 Midnight is best characterized as a late-stage testnet / early mainnet system. The proof system works, the compiler catches real privacy bugs, and the devnet supports end-to-end contract deployment and execution. However, as of the MidnightJS SDK Reference (v0.14, §7.3), cross-contract token transfers fail with SDK errors, and the Compact Language Reference (v0.14, §4.8) documents a compiler bug affecting the `>` and `<=` operators. Deployment latency (dominated by proof generation, as detailed in the Layer 5 section above) indicates room for proving optimization. Applying the L2Beat Stages framework (l2beat.com/scaling/projects) by analogy, Midnight would sit at approximately Stage 0-1: operational with ZK proofs providing validity guarantees, but with governance mechanisms retaining significant centralized control.
 
-The theater is built. The rehearsals are underway. The opening night has not yet arrived.
+The theater is built. The rehearsals are underway. The opening night awaits.
 
-Midnight is one theater. The zero-knowledge ecosystem has built dozens more -- each with different stages, different audiences, different trust bargains. The next chapter surveys six market segments where the mathematics meets money, and asks the question that every technology must eventually answer: who is buying tickets, and what do they think they are paying for?
-
+---
 ---
 
 ## Summary
@@ -91,11 +90,11 @@ None in this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) Maturity assessment paragraph uses "The theater is built. The rehearsals are underway. The opening night has not yet arrived." — theater-metaphor callback is fine in context but the three short declaratives read as a stylistic close rather than an informational conclusion.
 
 ## Links
 

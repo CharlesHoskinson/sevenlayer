@@ -4,9 +4,9 @@ slug: ch10-the-causal-web-why-it-is-a-dag-not-a-stack
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4429, 4470]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4460, 4501]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1164
 ---
 
@@ -32,7 +32,7 @@ These four examples are not anomalies. They are the norm. Once every causal arro
 
 ### The Shape of the Web
 
-Roger Penrose, in *The Road to Reality*, draws a distinction between structures that are merely complicated and structures that are *irreducibly entangled*. A stack is complicated: many parts, one ordering. A DAG is entangled: many parts, many orderings, no cycles. The seven-layer model, once you draw all the arrows, is a DAG with at least fourteen directed edges and zero cycles. It has structure, but that structure is not linear.
+Structures that are not stacked but entangled share a property Penrose names: many parts, many orderings, no cycles. A DAG is entangled: you can reach from Layer 6 to Layer 7 via Layer 5, or directly, or via Layer 4 and Layer 2, but no path leads back to Layer 6. The seven-layer model, once you draw all the arrows, is a DAG with at least fourteen directed edges and zero cycles. It has structure, but that structure is not linear.
 
 Consider the full edge set. Layer 6 forces Layer 5 (field choice determines commitment scheme). Layer 5 forces Layer 4 (commitment scheme shapes arithmetization). Layer 4 shapes Layer 3 (constraint format determines witness layout). Layer 3 shapes Layer 2 (witness cost influences ISA design). Layer 2 shapes Layer 1 (ISA scope determines setup complexity). That is the upward chain -- six edges, roughly linear, roughly matching the pedagogical ordering. If this were all, the stack metaphor would suffice.
 
@@ -40,7 +40,7 @@ But it is not all. Layer 7 forces Layer 6 (gas economics demand BN254). Layer 7 
 
 That is fourteen edges among seven nodes. The graph has no cycles -- no node reaches itself by following arrows -- which is what makes it a DAG rather than a general directed graph. But the graph has *width*: multiple independent paths connect the same pair of nodes. Layer 6 reaches Layer 7 both directly (field determines proof size) and indirectly via Layer 5 (field determines proof system, which determines verifier). Layer 7 reaches Layer 5 both directly (gas cost forces wrapping) and indirectly via Layer 6 (gas cost forces BN254, which constrains proof system). These parallel paths are why changing a single parameter -- say, the base field -- propagates unpredictably through the stack. The change follows multiple routes, and those routes interfere with each other.
 
-Penrose would recognize this as a feature, not a bug. Physical theories have the same structure: general relativity and quantum mechanics are not stacked but entangled, each constraining the other through multiple channels. The seven layers of zero-knowledge proofs exhibit the same irreducible entanglement. Layer 5 (the proof system) cannot be understood without simultaneously understanding Layer 6 (the field) and Layer 7 (the verifier). Layer 2 (the ISA) cannot be designed without understanding Layer 4 (the constraint system). The system is not modular. It is coherent -- every layer reaches every other layer through a small number of hops, and the short path-length is what makes local changes non-local.
+Physical theories have the same structure: general relativity and quantum mechanics are not stacked but entangled, each constraining the other through multiple channels. The seven layers of zero-knowledge proofs exhibit the same irreducible entanglement. Layer 5 (the proof system) cannot be understood without simultaneously understanding Layer 6 (the field) and Layer 7 (the verifier). Layer 2 (the ISA) cannot be designed without understanding Layer 4 (the constraint system). The system is not modular. It is coherent -- every layer reaches every other layer through a small number of hops, and the short path-length is what makes local changes non-local.
 
 ### Why No Cycles?
 
@@ -95,11 +95,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] B Penrose reference (*The Road to Reality*) paraphrases a distinction without a page number or chapter reference, making it unverifiable. Low priority given it is used illustratively, not as a technical claim.
 
 ## Links
 

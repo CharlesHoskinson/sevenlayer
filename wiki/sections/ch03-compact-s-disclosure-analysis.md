@@ -4,9 +4,9 @@ slug: ch03-compact-s-disclosure-analysis
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [1089, 1142]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1097, 1152]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 576
 ---
 
@@ -58,7 +58,9 @@ The disclosure analysis pass runs as part of the 26-stage nanopass compilation p
 
 Consider a concrete case. The Midnight developer documentation records that an early attempt at implementing a private voting contract -- using naive if/else branching on witness values -- was rejected by the compiler with 11 disclosure errors. Each error traced the path from a witness value to a public surface. The compiler forced a fundamental redesign: Merkle trees replaced per-slot branching, nullifiers replaced voted-flags, and arithmetic tallying replaced conditional increments. The resulting design was not just compiler-compliant -- it was architecturally superior. The naive approach would have leaked which candidate each voter chose through the pattern of ledger writes. The compiler-forced redesign made this impossible.
 
-No other ZK language provides this guarantee. In Circom, Noir, and Cairo, privacy depends on the developer correctly managing which values are public and which are private. A mistake does not produce a compiler error. It produces a privacy leak that may not be discovered until an attacker exploits it. Compact makes privacy a compiler guarantee rather than a developer responsibility.
+Compact's disclosure analysis prevents under-disclosure (accidental leaks of private values). It does not, however, address over-disclosure (unnecessarily revealing information that could remain hidden). A developer might intentionally disclose more than the computation semantically requires -- for instance, revealing a voter's full identity chain when only nullifier membership would suffice. The disclosure analysis verifies that every private value that crosses the boundary has explicit `disclose()` consent, but it does not verify that each `disclose()` is the *minimal* disclosure needed. This is a different class of privacy problem, one that overlaps more with protocol design than with language semantics.
+
+In Circom, Noir, and Cairo, privacy depends on the developer correctly managing which values are public and which are private. A mistake does not produce a compiler error. It produces a privacy leak that may not be discovered until an attacker exploits it. Compact makes privacy a compiler guarantee rather than a developer responsibility. Leo's record model provides a structural privacy guarantee too, though of a different kind: the encryption-by-default property prevents accidental data leaks, but gives the developer less fine-grained control over what stays hidden. The three approaches differ in how they prevent leaks, but they share the conviction that privacy cannot be left to chance.
 
 The tradeoff is clear: Compact contracts are locked to Midnight's proof system (PLONK on BLS12-381), token model (Zswap), and ledger architecture. They cannot be deployed on another chain. In exchange, the developer gets something no general-purpose approach can offer: the compiler will not let you accidentally show the audience what is behind the curtain.
 
@@ -101,12 +103,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (D) The section's claim that "no other ZK language provides this guarantee" is unqualified. Leo's record model provides a structural (if less granular) privacy guarantee. The comparison should acknowledge that Leo's approach is different but not entirely without compiler-enforced bounds.
-- [P3] (E) The section ends abruptly after the tradeoff paragraph. A brief note on whether disclosure analysis catches *over*-constraining (revealing more than necessary) as well as under-constraining would complete the picture.
 
 ## Links
 

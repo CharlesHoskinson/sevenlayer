@@ -41,7 +41,7 @@
       "heading_level": 2,
       "source_lines": [
         241,
-        273
+        271
       ]
     },
     {
@@ -51,8 +51,8 @@
       "slug": "ch01-the-seven-layers-at-a-glance",
       "heading_level": 2,
       "source_lines": [
-        274,
-        300
+        272,
+        298
       ]
     },
     {
@@ -62,8 +62,8 @@
       "slug": "ch01-the-deepest-question",
       "heading_level": 2,
       "source_lines": [
-        301,
-        327
+        299,
+        325
       ]
     },
     {
@@ -73,8 +73,8 @@
       "slug": "ch01-the-first-decision",
       "heading_level": 2,
       "source_lines": [
-        328,
-        360
+        326,
+        358
       ]
     },
     {
@@ -84,8 +84,8 @@
       "slug": "ch01-how-to-read-this-guide",
       "heading_level": 2,
       "source_lines": [
-        361,
-        373
+        359,
+        371
       ]
     },
     {
@@ -95,8 +95,8 @@
       "slug": "ch02-the-fair-shuffle-problem",
       "heading_level": 2,
       "source_lines": [
-        381,
-        397
+        379,
+        395
       ]
     },
     {
@@ -106,8 +106,8 @@
       "slug": "ch02-the-structured-reference-string",
       "heading_level": 2,
       "source_lines": [
-        398,
-        422
+        396,
+        420
       ]
     },
     {
@@ -117,8 +117,8 @@
       "slug": "ch02-two-ways-to-build-a-stage",
       "heading_level": 2,
       "source_lines": [
-        423,
-        529
+        421,
+        527
       ]
     },
     {
@@ -128,8 +128,8 @@
       "slug": "ch02-the-capex-opex-framework",
       "heading_level": 2,
       "source_lines": [
-        530,
-        549
+        528,
+        547
       ]
     },
     {
@@ -139,8 +139,8 @@
       "slug": "ch02-the-141-416-person-question",
       "heading_level": 2,
       "source_lines": [
-        550,
-        597
+        548,
+        595
       ]
     },
     {
@@ -150,8 +150,8 @@
       "slug": "ch02-the-bug-that-was-not-a-ceremony-failure",
       "heading_level": 2,
       "source_lines": [
-        598,
-        610
+        596,
+        608
       ]
     },
     {
@@ -161,7 +161,7 @@
       "slug": "ch02-universal-versus-circuit-specific-setups",
       "heading_level": 2,
       "source_lines": [
-        611,
+        609,
         621
       ]
     },
@@ -195,7 +195,7 @@
       "heading_level": 2,
       "source_lines": [
         664,
-        680
+        682
       ]
     },
     {
@@ -205,8 +205,8 @@
       "slug": "ch02-midnight-s-bls12-381-stage",
       "heading_level": 2,
       "source_lines": [
-        681,
-        697
+        683,
+        699
       ]
     },
     {
@@ -216,8 +216,8 @@
       "slug": "ch02-option-value-analysis",
       "heading_level": 2,
       "source_lines": [
-        698,
-        722
+        700,
+        726
       ]
     },
     {
@@ -227,8 +227,8 @@
       "slug": "ch02-the-setup-tradeoff",
       "heading_level": 2,
       "source_lines": [
-        723,
-        743
+        727,
+        747
       ]
     },
     {
@@ -238,8 +238,8 @@
       "slug": "ch03-risc-v-won-why-taxonomy-still-matters",
       "heading_level": 2,
       "source_lines": [
-        750,
-        783
+        754,
+        787
       ]
     },
     {
@@ -249,8 +249,8 @@
       "slug": "ch03-from-circuits-to-virtual-machines-a-brief-evolution",
       "heading_level": 2,
       "source_lines": [
-        784,
-        807
+        788,
+        813
       ]
     },
     {
@@ -260,8 +260,8 @@
       "slug": "ch03-the-four-philosophies",
       "heading_level": 2,
       "source_lines": [
-        808,
-        1024
+        814,
+        1030
       ]
     },
     {
@@ -271,8 +271,8 @@
       "slug": "ch03-the-developer-s-actual-experience",
       "heading_level": 2,
       "source_lines": [
-        1025,
-        1060
+        1031,
+        1068
       ]
     },
     {
@@ -282,8 +282,8 @@
       "slug": "ch03-under-constrained-circuits-the-dominant-failure-mode",
       "heading_level": 2,
       "source_lines": [
-        1061,
-        1088
+        1069,
+        1096
       ]
     },
     {
@@ -293,8 +293,8 @@
       "slug": "ch03-compact-s-disclosure-analysis",
       "heading_level": 2,
       "source_lines": [
-        1089,
-        1142
+        1097,
+        1152
       ]
     },
     {
@@ -304,8 +304,8 @@
       "slug": "ch03-midnight-compiler-ir-circuit",
       "heading_level": 2,
       "source_lines": [
-        1143,
-        1180
+        1153,
+        1204
       ]
     },
     {
@@ -315,8 +315,8 @@
       "slug": "ch04-the-hidden-bottleneck",
       "heading_level": 2,
       "source_lines": [
-        1187,
-        1202
+        1211,
+        1226
       ]
     },
     {
@@ -326,8 +326,8 @@
       "slug": "ch04-execution-traces",
       "heading_level": 2,
       "source_lines": [
-        1203,
-        1247
+        1227,
+        1273
       ]
     },
     {
@@ -337,8 +337,8 @@
       "slug": "ch04-witness-generation-costs",
       "heading_level": 2,
       "source_lines": [
-        1248,
-        1324
+        1274,
+        1350
       ]
     },
     {
@@ -348,8 +348,8 @@
       "slug": "ch04-memory-the-binding-constraint",
       "heading_level": 2,
       "source_lines": [
-        1325,
-        1372
+        1351,
+        1396
       ]
     },
     {
@@ -359,8 +359,8 @@
       "slug": "ch04-side-channel-attacks-when-the-walls-leak",
       "heading_level": 2,
       "source_lines": [
-        1373,
-        1454
+        1397,
+        1476
       ]
     },
     {
@@ -370,8 +370,8 @@
       "slug": "ch04-witness-constraint-divergence",
       "heading_level": 2,
       "source_lines": [
-        1455,
-        1488
+        1477,
+        1510
       ]
     },
     {
@@ -381,8 +381,8 @@
       "slug": "ch04-the-disclose-boundary-midnight-s-witness-architecture",
       "heading_level": 2,
       "source_lines": [
-        1489,
-        1550
+        1511,
+        1572
       ]
     },
     {
@@ -392,8 +392,8 @@
       "slug": "ch04-the-witness-as-a-multi-dimensional-problem",
       "heading_level": 2,
       "source_lines": [
-        1551,
-        1587
+        1573,
+        1609
       ]
     },
     {
@@ -403,8 +403,8 @@
       "slug": "ch05-layer-4-arithmetization",
       "heading_level": 2,
       "source_lines": [
-        1590,
-        1619
+        1612,
+        1643
       ]
     },
     {
@@ -414,8 +414,8 @@
       "slug": "ch05-the-spreadsheet-metaphor-and-where-it-works",
       "heading_level": 2,
       "source_lines": [
-        1620,
-        1662
+        1644,
+        1686
       ]
     },
     {
@@ -425,8 +425,8 @@
       "slug": "ch05-the-constraint-system-evolution-r1cs-air-plonkish",
       "heading_level": 2,
       "source_lines": [
-        1663,
-        1852
+        1687,
+        1876
       ]
     },
     {
@@ -436,8 +436,8 @@
       "slug": "ch05-ccs-the-rosetta-stone",
       "heading_level": 2,
       "source_lines": [
-        1853,
-        1925
+        1877,
+        1949
       ]
     },
     {
@@ -447,8 +447,8 @@
       "slug": "ch05-the-sumcheck-protocol-the-hidden-foundation",
       "heading_level": 2,
       "source_lines": [
-        1926,
-        1972
+        1950,
+        1995
       ]
     },
     {
@@ -458,8 +458,8 @@
       "slug": "ch05-lookup-arguments",
       "heading_level": 2,
       "source_lines": [
-        1973,
-        2098
+        1996,
+        2121
       ]
     },
     {
@@ -469,8 +469,8 @@
       "slug": "ch05-the-overhead-tax-10-000x-to-50-000x",
       "heading_level": 2,
       "source_lines": [
-        2099,
-        2216
+        2122,
+        2241
       ]
     },
     {
@@ -480,8 +480,8 @@
       "slug": "ch05-midnight-s-zkir-a-concrete-layer-4",
       "heading_level": 2,
       "source_lines": [
-        2217,
-        2298
+        2242,
+        2323
       ]
     },
     {
@@ -491,8 +491,8 @@
       "slug": "ch05-where-the-layers-collapse",
       "heading_level": 2,
       "source_lines": [
-        2299,
-        2328
+        2324,
+        2353
       ]
     },
     {
@@ -502,8 +502,8 @@
       "slug": "ch05-where-the-analogies-break",
       "heading_level": 2,
       "source_lines": [
-        2329,
-        2399
+        2354,
+        2429
       ]
     },
     {
@@ -513,8 +513,8 @@
       "slug": "ch06-sealing-the-certificate",
       "heading_level": 2,
       "source_lines": [
-        2402,
-        2425
+        2432,
+        2457
       ]
     },
     {
@@ -524,8 +524,8 @@
       "slug": "ch06-the-three-families",
       "heading_level": 2,
       "source_lines": [
-        2426,
-        2485
+        2458,
+        2517
       ]
     },
     {
@@ -535,8 +535,8 @@
       "slug": "ch06-the-hybrid-pipeline",
       "heading_level": 2,
       "source_lines": [
-        2486,
-        2525
+        2518,
+        2557
       ]
     },
     {
@@ -546,8 +546,8 @@
       "slug": "ch06-recursion-vs-folding-russian-dolls-and-snowballs",
       "heading_level": 2,
       "source_lines": [
-        2526,
-        2563
+        2558,
+        2597
       ]
     },
     {
@@ -557,8 +557,8 @@
       "slug": "ch06-the-folding-genealogy",
       "heading_level": 2,
       "source_lines": [
-        2564,
-        2628
+        2598,
+        2662
       ]
     },
     {
@@ -568,8 +568,8 @@
       "slug": "ch06-nightstream-what-a-folding-engine-looks-like-from-the-inside",
       "heading_level": 2,
       "source_lines": [
-        2629,
-        2715
+        2663,
+        2749
       ]
     },
     {
@@ -579,8 +579,8 @@
       "slug": "ch06-circle-starks-and-stwo-a-generational-leap",
       "heading_level": 2,
       "source_lines": [
-        2716,
-        2778
+        2750,
+        2812
       ]
     },
     {
@@ -590,8 +590,8 @@
       "slug": "ch06-real-time-ethereum-proving",
       "heading_level": 2,
       "source_lines": [
-        2779,
-        2796
+        2813,
+        2830
       ]
     },
     {
@@ -601,8 +601,8 @@
       "slug": "ch06-the-proof-core-why-layers-4-5-and-6-are-inseparable",
       "heading_level": 2,
       "source_lines": [
-        2797,
-        2814
+        2831,
+        2848
       ]
     },
     {
@@ -612,8 +612,8 @@
       "slug": "ch06-fiat-shamir-vulnerabilities",
       "heading_level": 2,
       "source_lines": [
-        2815,
-        2838
+        2849,
+        2872
       ]
     },
     {
@@ -623,8 +623,8 @@
       "slug": "ch06-case-study-midnight-s-sealed-certificate",
       "heading_level": 2,
       "source_lines": [
-        2839,
-        2900
+        2873,
+        2934
       ]
     },
     {
@@ -634,8 +634,8 @@
       "slug": "ch06-snark-recursion-vs-folding-the-full-picture",
       "heading_level": 2,
       "source_lines": [
-        2901,
-        2935
+        2935,
+        2969
       ]
     },
     {
@@ -645,8 +645,8 @@
       "slug": "ch06-the-post-quantum-horizon",
       "heading_level": 2,
       "source_lines": [
-        2936,
-        2951
+        2970,
+        2985
       ]
     },
     {
@@ -656,8 +656,8 @@
       "slug": "ch06-from-speed-race-to-security-race",
       "heading_level": 2,
       "source_lines": [
-        2952,
-        2965
+        2986,
+        2999
       ]
     },
     {
@@ -667,8 +667,8 @@
       "slug": "ch06-the-sealed-certificate",
       "heading_level": 2,
       "source_lines": [
-        2966,
-        2980
+        3000,
+        3014
       ]
     },
     {
@@ -678,8 +678,8 @@
       "slug": "ch07-the-laws-that-break",
       "heading_level": 2,
       "source_lines": [
-        2983,
-        2998
+        3017,
+        3032
       ]
     },
     {
@@ -689,8 +689,8 @@
       "slug": "ch07-three-hardness-assumptions-three-worlds",
       "heading_level": 2,
       "source_lines": [
-        2999,
-        3036
+        3033,
+        3070
       ]
     },
     {
@@ -700,8 +700,8 @@
       "slug": "ch07-four-families-of-commitment-schemes",
       "heading_level": 2,
       "source_lines": [
-        3037,
-        3141
+        3071,
+        3175
       ]
     },
     {
@@ -711,8 +711,8 @@
       "slug": "ch07-the-trilemma-and-its-dissolution",
       "heading_level": 2,
       "source_lines": [
-        3142,
-        3176
+        3176,
+        3208
       ]
     },
     {
@@ -722,8 +722,8 @@
       "slug": "ch07-small-fields",
       "heading_level": 2,
       "source_lines": [
-        3177,
-        3229
+        3209,
+        3261
       ]
     },
     {
@@ -733,8 +733,8 @@
       "slug": "ch07-the-quantum-threat-horizon",
       "heading_level": 2,
       "source_lines": [
-        3230,
-        3279
+        3262,
+        3311
       ]
     },
     {
@@ -744,8 +744,8 @@
       "slug": "ch07-lattice-based-proving",
       "heading_level": 2,
       "source_lines": [
-        3280,
-        3333
+        3312,
+        3365
       ]
     },
     {
@@ -755,8 +755,8 @@
       "slug": "ch07-case-study-midnight",
       "heading_level": 2,
       "source_lines": [
-        3334,
-        3397
+        3366,
+        3429
       ]
     },
     {
@@ -766,8 +766,8 @@
       "slug": "ch07-the-cascade-effect",
       "heading_level": 2,
       "source_lines": [
-        3398,
-        3434
+        3430,
+        3466
       ]
     },
     {
@@ -777,8 +777,8 @@
       "slug": "ch07-algebraic-vs-traditional-hash-functions",
       "heading_level": 2,
       "source_lines": [
-        3435,
-        3452
+        3467,
+        3484
       ]
     },
     {
@@ -788,8 +788,8 @@
       "slug": "ch07-the-structural-advantage-of-lattices",
       "heading_level": 2,
       "source_lines": [
-        3453,
-        3470
+        3485,
+        3502
       ]
     },
     {
@@ -799,8 +799,8 @@
       "slug": "ch07-maturity-and-readiness",
       "heading_level": 2,
       "source_lines": [
-        3471,
-        3486
+        3503,
+        3518
       ]
     },
     {
@@ -810,8 +810,8 @@
       "slug": "ch07-the-one-way-door",
       "heading_level": 2,
       "source_lines": [
-        3487,
-        3513
+        3519,
+        3545
       ]
     },
     {
@@ -821,8 +821,8 @@
       "slug": "ch08-the-social-layer",
       "heading_level": 2,
       "source_lines": [
-        3520,
-        3539
+        3552,
+        3571
       ]
     },
     {
@@ -832,8 +832,8 @@
       "slug": "ch08-the-price-of-a-verdict",
       "heading_level": 2,
       "source_lines": [
-        3540,
-        3625
+        3572,
+        3657
       ]
     },
     {
@@ -843,8 +843,8 @@
       "slug": "ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities",
       "heading_level": 2,
       "source_lines": [
-        3626,
-        3676
+        3658,
+        3708
       ]
     },
     {
@@ -854,8 +854,8 @@
       "slug": "ch08-governance-the-achilles-heel",
       "heading_level": 2,
       "source_lines": [
-        3677,
-        3778
+        3709,
+        3810
       ]
     },
     {
@@ -865,8 +865,8 @@
       "slug": "ch08-proof-aggregation-the-missing-layer",
       "heading_level": 2,
       "source_lines": [
-        3779,
-        3794
+        3811,
+        3826
       ]
     },
     {
@@ -876,8 +876,8 @@
       "slug": "ch08-case-study-midnight-and-the-three-token-architecture",
       "heading_level": 2,
       "source_lines": [
-        3795,
-        3864
+        3827,
+        3896
       ]
     },
     {
@@ -887,8 +887,8 @@
       "slug": "ch08-the-deepest-symmetry",
       "heading_level": 2,
       "source_lines": [
-        3865,
-        3884
+        3897,
+        3916
       ]
     },
     {
@@ -898,8 +898,8 @@
       "slug": "ch08-pricing-attacks",
       "heading_level": 2,
       "source_lines": [
-        3885,
-        3933
+        3917,
+        3965
       ]
     },
     {
@@ -909,8 +909,8 @@
       "slug": "ch08-who-verifies-the-verifier",
       "heading_level": 2,
       "source_lines": [
-        3934,
-        3965
+        3966,
+        3997
       ]
     },
     {
@@ -920,8 +920,8 @@
       "slug": "ch08-on-chain-verification-in-2026",
       "heading_level": 2,
       "source_lines": [
-        3966,
-        3986
+        3998,
+        4018
       ]
     },
     {
@@ -931,8 +931,8 @@
       "slug": "ch09-the-four-pillars",
       "heading_level": 2,
       "source_lines": [
-        3997,
-        4078
+        4029,
+        4110
       ]
     },
     {
@@ -942,8 +942,8 @@
       "slug": "ch09-three-kinds-of-security",
       "heading_level": 2,
       "source_lines": [
-        4079,
-        4106
+        4111,
+        4138
       ]
     },
     {
@@ -953,8 +953,8 @@
       "slug": "ch09-composability-when-one-pet-is-not-enough",
       "heading_level": 2,
       "source_lines": [
-        4107,
-        4140
+        4139,
+        4172
       ]
     },
     {
@@ -964,8 +964,8 @@
       "slug": "ch09-real-world-deployments-five-case-studies",
       "heading_level": 2,
       "source_lines": [
-        4141,
-        4180
+        4173,
+        4212
       ]
     },
     {
@@ -975,8 +975,8 @@
       "slug": "ch09-privacy-architectures-for-smart-contracts-kachina-and-zexe",
       "heading_level": 2,
       "source_lines": [
-        4181,
-        4222
+        4213,
+        4254
       ]
     },
     {
@@ -986,8 +986,8 @@
       "slug": "ch09-the-regulatory-intersection",
       "heading_level": 2,
       "source_lines": [
-        4223,
-        4260
+        4255,
+        4292
       ]
     },
     {
@@ -997,8 +997,8 @@
       "slug": "ch09-the-decision-matrix",
       "heading_level": 2,
       "source_lines": [
-        4261,
-        4291
+        4293,
+        4323
       ]
     },
     {
@@ -1008,8 +1008,8 @@
       "slug": "ch09-open-problems",
       "heading_level": 2,
       "source_lines": [
-        4292,
-        4303
+        4324,
+        4335
       ]
     },
     {
@@ -1019,8 +1019,8 @@
       "slug": "ch09-the-incomplete-stack",
       "heading_level": 2,
       "source_lines": [
-        4304,
-        4325
+        4336,
+        4356
       ]
     },
     {
@@ -1030,8 +1030,8 @@
       "slug": "ch10-the-binary-that-broke",
       "heading_level": 2,
       "source_lines": [
-        4328,
-        4335
+        4359,
+        4366
       ]
     },
     {
@@ -1041,8 +1041,8 @@
       "slug": "ch10-the-map-redrawn",
       "heading_level": 2,
       "source_lines": [
-        4336,
-        4380
+        4367,
+        4411
       ]
     },
     {
@@ -1052,8 +1052,8 @@
       "slug": "ch10-path-one-the-hybrid-stark-to-snark-pipeline",
       "heading_level": 2,
       "source_lines": [
-        4381,
-        4396
+        4412,
+        4427
       ]
     },
     {
@@ -1063,8 +1063,8 @@
       "slug": "ch10-path-two-pure-transparent",
       "heading_level": 2,
       "source_lines": [
-        4397,
-        4408
+        4428,
+        4439
       ]
     },
     {
@@ -1074,8 +1074,8 @@
       "slug": "ch10-path-three-post-quantum-folding",
       "heading_level": 2,
       "source_lines": [
-        4409,
-        4420
+        4440,
+        4451
       ]
     },
     {
@@ -1085,8 +1085,8 @@
       "slug": "ch10-the-three-path-table",
       "heading_level": 2,
       "source_lines": [
-        4421,
-        4428
+        4452,
+        4459
       ]
     },
     {
@@ -1096,8 +1096,8 @@
       "slug": "ch10-the-causal-web-why-it-is-a-dag-not-a-stack",
       "heading_level": 2,
       "source_lines": [
-        4429,
-        4470
+        4460,
+        4501
       ]
     },
     {
@@ -1107,8 +1107,8 @@
       "slug": "ch10-trust-decomposition-seven-weaker-assumptions",
       "heading_level": 2,
       "source_lines": [
-        4471,
-        4532
+        4502,
+        4563
       ]
     },
     {
@@ -1118,8 +1118,8 @@
       "slug": "ch10-trustless-versus-trust-minimized",
       "heading_level": 2,
       "source_lines": [
-        4533,
-        4547
+        4564,
+        4578
       ]
     },
     {
@@ -1129,8 +1129,8 @@
       "slug": "ch11-zkvms-across-the-stack",
       "heading_level": 2,
       "source_lines": [
-        4550,
-        4559
+        4581,
+        4590
       ]
     },
     {
@@ -1140,8 +1140,8 @@
       "slug": "ch11-the-landscape-table-march-2026",
       "heading_level": 2,
       "source_lines": [
-        4560,
-        4594
+        4591,
+        4625
       ]
     },
     {
@@ -1151,8 +1151,8 @@
       "slug": "ch11-three-zkvms-through-seven-layers",
       "heading_level": 2,
       "source_lines": [
-        4595,
-        4678
+        4626,
+        4709
       ]
     },
     {
@@ -1162,8 +1162,8 @@
       "slug": "ch11-the-proof-core-triad",
       "heading_level": 2,
       "source_lines": [
-        4679,
-        4704
+        4710,
+        4735
       ]
     },
     {
@@ -1173,8 +1173,8 @@
       "slug": "ch11-performance-the-cost-collapse",
       "heading_level": 2,
       "source_lines": [
-        4705,
-        4733
+        4736,
+        4764
       ]
     },
     {
@@ -1184,8 +1184,8 @@
       "slug": "ch11-risc-v-convergence",
       "heading_level": 2,
       "source_lines": [
-        4734,
-        4750
+        4765,
+        4781
       ]
     },
     {
@@ -1195,8 +1195,8 @@
       "slug": "ch11-the-stage-is-set",
       "heading_level": 2,
       "source_lines": [
-        4751,
-        4763
+        4782,
+        4794
       ]
     },
     {
@@ -1206,8 +1206,8 @@
       "slug": "ch12-midnight-as-test-case",
       "heading_level": 2,
       "source_lines": [
-        4770,
-        4779
+        4801,
+        4810
       ]
     },
     {
@@ -1217,8 +1217,8 @@
       "slug": "ch12-midnight-at-a-glance",
       "heading_level": 2,
       "source_lines": [
-        4780,
-        4794
+        4811,
+        4825
       ]
     },
     {
@@ -1228,8 +1228,8 @@
       "slug": "ch12-full-seven-layer-mapping",
       "heading_level": 2,
       "source_lines": [
-        4795,
-        4886
+        4826,
+        4917
       ]
     },
     {
@@ -1239,8 +1239,8 @@
       "slug": "ch12-where-midnight-validates-the-model",
       "heading_level": 2,
       "source_lines": [
-        4887,
-        4902
+        4918,
+        4933
       ]
     },
     {
@@ -1250,8 +1250,8 @@
       "slug": "ch12-where-midnight-challenges-the-model",
       "heading_level": 2,
       "source_lines": [
-        4903,
-        4923
+        4934,
+        4954
       ]
     },
     {
@@ -1261,8 +1261,8 @@
       "slug": "ch12-the-privacy-theater-analogy",
       "heading_level": 2,
       "source_lines": [
-        4924,
-        4941
+        4955,
+        4972
       ]
     },
     {
@@ -1272,8 +1272,8 @@
       "slug": "ch12-five-lessons-for-zk-system-design",
       "heading_level": 2,
       "source_lines": [
-        4942,
-        4976
+        4973,
+        5006
       ]
     },
     {
@@ -1283,8 +1283,8 @@
       "slug": "ch13-zk-rollups-the-proving-grounds-production",
       "heading_level": 2,
       "source_lines": [
-        4985,
-        5010
+        5015,
+        5040
       ]
     },
     {
@@ -1294,8 +1294,8 @@
       "slug": "ch13-zk-coprocessors-off-chain-computation-on-chain-verification-growth",
       "heading_level": 2,
       "source_lines": [
-        5011,
-        5028
+        5041,
+        5058
       ]
     },
     {
@@ -1305,8 +1305,8 @@
       "slug": "ch13-zkml-provable-machine-learning-research",
       "heading_level": 2,
       "source_lines": [
-        5029,
-        5044
+        5059,
+        5074
       ]
     },
     {
@@ -1316,8 +1316,8 @@
       "slug": "ch13-zk-identity-growth-regulatory-mandate",
       "heading_level": 2,
       "source_lines": [
-        5045,
-        5060
+        5075,
+        5090
       ]
     },
     {
@@ -1327,8 +1327,8 @@
       "slug": "ch13-proving-as-a-service-the-prover-market-production",
       "heading_level": 2,
       "source_lines": [
-        5061,
-        5088
+        5091,
+        5118
       ]
     },
     {
@@ -1338,8 +1338,8 @@
       "slug": "ch13-enterprise-pilots-pilot",
       "heading_level": 2,
       "source_lines": [
-        5089,
-        5118
+        5119,
+        5148
       ]
     },
     {
@@ -1349,8 +1349,8 @@
       "slug": "ch13-market-sizing",
       "heading_level": 2,
       "source_lines": [
-        5119,
-        5160
+        5149,
+        5190
       ]
     },
     {
@@ -1360,8 +1360,8 @@
       "slug": "ch14-the-seven-questions-that-remain-open",
       "heading_level": 2,
       "source_lines": [
-        5163,
-        5333
+        5193,
+        5363
       ]
     },
     {
@@ -1371,8 +1371,8 @@
       "slug": "ch14-the-three-frontiers",
       "heading_level": 2,
       "source_lines": [
-        5334,
-        5377
+        5364,
+        5407
       ]
     },
     {
@@ -1382,8 +1382,8 @@
       "slug": "ch14-convergence",
       "heading_level": 2,
       "source_lines": [
-        5378,
-        5395
+        5408,
+        5425
       ]
     },
     {
@@ -1393,8 +1393,8 @@
       "slug": "ch14-coda",
       "heading_level": 2,
       "source_lines": [
-        5396,
-        5509
+        5426,
+        5539
       ]
     }
   ],

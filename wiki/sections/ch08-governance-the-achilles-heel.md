@@ -4,9 +4,9 @@ slug: ch08-governance-the-achilles-heel
 chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
-source_lines: [3677, 3778]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3709, 3810]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 2734
 ---
 
@@ -86,7 +86,7 @@ Neither vulnerability alone would have been sufficient. Together, they allowed a
 
 ### ZK Rollup Governance Risk
 
-Both attacks targeted governance mechanisms that controlled upgradeable contracts. And ZK rollup verifier contracts are almost always deployed behind upgradeable proxy patterns -- the same patterns catalogued in the 2023 survey by Meisami and Bodell, which documented EIP-1967 (OpenZeppelin transparent proxy), EIP-1822 (UUPS), EIP-2535 (Diamonds), and Beacon proxies.
+Both attacks targeted governance mechanisms that controlled upgradeable contracts. And ZK rollup verifier contracts are almost always deployed behind upgradeable proxy patterns -- the same patterns catalogued in Meisami and Bodell's 2023 survey of Ethereum upgrade patterns (published in *IEEE Transactions on Software Engineering*, "A systematic survey of upgradeable smart contract patterns"), which documented EIP-1967 (OpenZeppelin transparent proxy), EIP-1822 (UUPS), EIP-2535 (Diamonds), and Beacon proxies.
 
 The proxy pattern introduces its own attack surface beyond governance: storage layout corruption when state variables are reordered across upgrades, function selector collisions between proxy admin and implementation functions, and the fundamental risk that `delegatecall` means all storage operations in the implementation affect the proxy's storage.
 
@@ -153,11 +153,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (B) Meisami and Bodell (2023) is cited for the proxy pattern survey but no venue, title, or link is given; a full reference would strengthen the claim.
 
 ## Links
 

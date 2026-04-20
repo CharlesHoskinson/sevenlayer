@@ -4,15 +4,15 @@ slug: ch05-ccs-the-rosetta-stone
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1853, 1925]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1877, 1949]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 2077
 ---
 
 ## CCS: The Rosetta Stone
 
-In 2023, Srinath Setty, Justin Thaler, and Riad Wahby published a paper that changed constraint system design. Customizable Constraint Systems (CCS) unified R1CS, AIR, and PLONKish into a single mathematical framework, without overhead.
+In 2023, Srinath Setty, Justin Thaler, and Riad Wahby published a paper that changed constraint system design. Customizable Constraint Systems (CCS) unified R1CS, AIR, and PLONKish into a single mathematical framework, without overhead [R-L4-4].
 
 The word "without overhead" is the point. Previous attempts at unification existed -- for example, you can always convert AIR to R1CS by expanding every transition into individual constraints, or convert R1CS to AIR by padding with identity transitions. But these conversions incur blowup: the converted instance is larger, sometimes much larger, than the original. CCS achieves something different: it captures each constraint format in its native form, preserving the sparsity and structure that makes each format efficient. An R1CS instance becomes a CCS instance of exactly the same size. An AIR instance becomes a CCS instance of exactly the same size. Nothing is wasted in translation.
 
@@ -39,7 +39,7 @@ The central move is not that CCS enables new computations -- any NP statement ca
 CCS is the native constraint system for every major modern folding scheme:
 
 - **HyperNova** (Kothapalli and Setty, 2023): multi-folding for CCS, using the sumcheck protocol to fold multiple CCS instances simultaneously.
-- **ProtoStar** and **ProtoGalaxy** (2023): folding schemes that generalize Nova to higher-degree constraint systems -- which CCS naturally supports.
+- **ProtoStar** (Bünz and Chen, 2023) and **ProtoGalaxy** (Eagen, Fiore, and Gabizon, 2023): folding schemes that generalize Nova to higher-degree constraint systems by using a single random evaluation to fold across the full constraint degree. ProtoStar handles arbitrary-degree constraints via a "special-sound" folding step; ProtoGalaxy achieves the same goal with improved efficiency by folding multiple instances at once using a polynomial accumulation technique. CCS naturally supports both because its degree parameter $d$ is unrestricted.
 - **Neo** (Nguyen and Setty, 2025): a lattice-based folding scheme targeting CCS natively, achieving post-quantum security with small-field efficiency. (LatticeFold, by Boneh and Chen, is an earlier lattice-based folding scheme; Neo is specifically designed for CCS with different structural properties.)
 - **LatticeFold+** (Boneh and Chen, 2025): extends LatticeFold with faster, simpler lattice-based folding and shorter proofs.
 
@@ -55,7 +55,7 @@ One subtle but important feature of CCS is the degree parameter $d$, which captu
 
 This matters because higher-degree constraints can capture more complex operations in fewer constraints. A single degree-$4$ constraint can express relationships that would require multiple degree-$2$ R1CS constraints. The tradeoff is that higher-degree constraints require more sophisticated proof techniques -- but the sumcheck protocol, which we turn to next, handles arbitrary degrees naturally.
 
-To see the degree parameter in action, return to the "x * (x + 1)" computation. In R1CS ($d = 2$), this requires two constraints: $t = x + 1$ (degree $1$, but padded to the bilinear form as $(x + 1) \cdot 1 = t$) and $\text{result} = x \cdot t$ (degree $2$). In a CCS instance with $d = 3$, you could express the entire computation in a single constraint: $x \cdot (x + 1) - \text{result} = 0$, which is a degree-$2$ polynomial in $x$. With $d = 4$, you could encode $x \cdot (x + 1) \cdot (x + 2) - \text{result} = 0$ in a single constraint -- a relationship that would require three R1CS constraints (one for each pairwise multiplication). Higher degree means more computation packed into fewer constraints, at the cost of more complex proof machinery.
+To see the degree parameter in action, return to the "x * (x + 1)" computation. In R1CS ($d = 2$), this requires two constraints: $t = x + 1 = 4$ (degree $1$, but padded to the bilinear form as $(x + 1) \cdot 1 = t$) and $\text{result} = x \cdot t$ (degree $2$). In a CCS instance with $d = 3$, you could express the entire computation in a single constraint: $x \cdot (x + 1) - \text{result} = 0$, which is a degree-$2$ polynomial in $x$. With $d = 4$, you could encode $x \cdot (x + 1) \cdot (x + 2) - \text{result} = 0$ in a single constraint -- a relationship that would require three R1CS constraints (one for each pairwise multiplication). Higher degree means more computation packed into fewer constraints, at the cost of more complex proof machinery.
 
 ### Three Dialects, One Grammar
 
@@ -130,12 +130,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The section mentions ProtoStar and ProtoGalaxy only by name with no description of how they extend Nova to higher-degree constraints. Given that this is the CCS-as-universal-target section, a one-line characterization of each would add useful depth.
-- [P3] (D) The "Three Dialects, One Grammar" subsection repeats content (the R1CS-as-CCS derivation) that appears in the earlier "The Idea" subsection. The repetition is intentional for emphasis but could be tightened.
 
 ## Links
 

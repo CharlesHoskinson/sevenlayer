@@ -4,9 +4,9 @@ slug: ch11-risc-v-convergence
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4734, 4750]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4765, 4781]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 337
 ---
 
@@ -20,7 +20,7 @@ First, RISC-V's register-transfer architecture maps cleanly onto tabular executi
 
 Second, RISC-V's compiler ecosystem is decades deep. Any Rust, C, or C++ program can be compiled to RISC-V using standard LLVM toolchains. Millions of existing programs become provable without modification. The universal stage accepts any act, because any act can be translated into its language.
 
-Third, RISC-V is open and royalty-free. Unlike ARM (proprietary) or x86 (legacy-encumbered), RISC-V has no licensing costs and no vendor lock-in. For an open-source ecosystem, this matters.
+Third, RISC-V is open and royalty-free. Unlike ARM (widely licensed but proprietary) or x86 (legacy-encumbered), RISC-V has no licensing costs and no vendor lock-in. For an open-source ecosystem, this matters.
 
 The holdouts are instructive. Cairo (Stwo) is a ZK-native ISA designed to minimize arithmetization cost -- the ISA *is* the constraint system. This gives Cairo a structural efficiency advantage: the compiler optimization study (Gassmann et al., "Optimizing RISC-V zkVM Compilation," 2025, preprint) [59] found that standard LLVM optimizations yield over 40% improvement on RISC-V zkVMs because they target hardware features (caches, branch predictors) absent in ZK contexts. Cairo avoids this overhead by design. Whether that advantage justifies a smaller developer ecosystem is the strategic question StarkWare has answered with "yes" for Starknet and "maybe not" for broader adoption (hence Kakarot's EVM-on-Stwo path).
 
@@ -65,11 +65,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) "Unlike ARM (proprietary) or x86 (legacy-encumbered)" — ARM cores are licensed widely; calling ARM simply "proprietary" oversimplifies a nuanced licensing model and risks being misleading to technically sophisticated readers.
 
 ## Links
 

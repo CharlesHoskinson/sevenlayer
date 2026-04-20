@@ -4,9 +4,9 @@ slug: ch12-where-midnight-challenges-the-model
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4903, 4923]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4934, 4954]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 398
 ---
 
@@ -20,7 +20,7 @@ Three aspects of Midnight's architecture do not fit cleanly into seven layers:
 
 **3. Privacy is not a layer -- it is a cross-cutting concern.** The book treats privacy primarily as a Layer 3 issue (witness secrecy). In Midnight, privacy decisions propagate through every layer: BLS12-381's pairing structure enables shielded commitments (Layer 1/6), disclosure analysis enforces privacy at the language level (Layer 2), the two-transcript model separates public and private data (Layer 3/4), the proof server keeps witnesses local (Layer 5), and the shielded/unshielded UTXO model determines what the verifier sees (Layer 7). Privacy is not a room in the theater. It is the architecture of the theater itself.
 
-The following table crystallizes what the Midnight case study proves and what it leaves unresolved:
+These three tensions -- compiler scope, SDK orchestration, and privacy-as-architecture rather than privacy-as-feature -- show where Midnight's design exceeds the model's explanatory reach:
 
 | Dimension | Midnight Validates | Midnight Does Not Solve |
 |-----------|--------------------|------------------------|
@@ -73,11 +73,11 @@ None in this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (D) The three challenge descriptions are clear, but the transition from the prose to the summary table is abrupt; a single bridging sentence would improve flow without adding AI-smell padding.
 
 ## Links
 

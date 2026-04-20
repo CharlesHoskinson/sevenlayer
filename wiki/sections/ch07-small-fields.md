@@ -4,9 +4,9 @@ slug: ch07-small-fields
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3177, 3229]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3209, 3261]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 961
 ---
 
@@ -48,7 +48,7 @@ The performance impact is not incremental. It is a factor of 100. Arithmetic on 
 
 This single observation -- that smaller fields make faster provers -- catalyzed the performance explosion in zero-knowledge proving. Circle STARKs over M31 (Stwo) achieve throughputs that were unimaginable with BN254-based systems. Plonky2 over Goldilocks enabled the first practical recursive STARKs.
 
-But smaller fields introduce a subtlety that Penrose would appreciate for its geometric elegance. A single 31-bit field element provides only 31 bits of security against certain attacks. To achieve 128-bit security, systems use *extension fields*. An extension field is built by the same trick as complex numbers: you take a small field and add extra "dimensions" to your arithmetic, and the security grows with the dimension. The cost is slightly more expensive arithmetic per operation -- but each operation now works in a larger, more secure space -- enlarging $\mathbb{F}_p$ to $\mathbb{F}_{p^k}$ for some small $k$. For BabyBear, a degree-4 extension is used (not degree 2) because BabyBear's order structure means $\mathbb{F}_{p^2}$ still falls short of 128-bit security for the relevant attacks; degree 4 gives four BabyBear elements per extended element and pushes security to ~124 bits. In Stwo over M31, the extension degree is also 4, giving effectively 124 bits. In Neo, the extension is $\mathbb{F}_{q^2}$ over Goldilocks, giving 128 bits. The extension adds complexity but the arithmetic is still vastly cheaper than native 254-bit operations.
+But smaller fields introduce a subtlety that Penrose would appreciate for its geometric elegance. A single 31-bit field element provides only 31 bits of security against certain attacks. To achieve 128-bit security, systems use *extension fields*. An extension field is built by the same trick as complex numbers: you take a small field and add extra "dimensions" to your arithmetic, and the security grows with the dimension. The cost is slightly more expensive arithmetic per operation -- but each operation now works in a larger, more secure space -- enlarging $\mathbb{F}_p$ to $\mathbb{F}_{p^k}$ for some small $k$. For BabyBear, a degree-4 extension is used (not degree 2) because $p - 1 = 2^{27} \cdot 15$, which means the quadratic extension $\mathbb{F}_{p^2}$ has order $p^2 - 1$ divisible by $2^{27}$ but not by $2^{54}$; this leaves the extension short on subgroup structure and yields only ~62 bits of security for the most demanding protocol checks. Degree 4 -- concretely, $\mathbb{F}_{p^4}$ constructed via an irreducible polynomial such as $X^4 + 7$ over $\mathbb{F}_p$ (a standard choice in BabyBear-based implementations) -- gives four BabyBear elements per extended element and pushes security to ~124 bits. In Stwo over M31, the extension degree is also 4, giving effectively 124 bits. In Neo, the extension is $\mathbb{F}_{q^2}$ over Goldilocks, giving 128 bits. The extension adds complexity but the arithmetic is still vastly cheaper than native 254-bit operations.
 
 ### Why This Choice Is a One-Way Door
 
@@ -110,11 +110,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) BabyBear's extension field degree is stated as 4 (giving ~124 bits) but the specific extension construction and why degree 4 is required over BabyBear is not explained; a brief note on irreducible polynomial choice would strengthen the depth.
 
 ## Links
 

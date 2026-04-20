@@ -4,9 +4,9 @@ slug: ch02-the-capex-opex-framework
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [530, 549]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [528, 547]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 511
 ---
 
@@ -25,7 +25,7 @@ To see what this means in practice, consider a rollup operator posting 1,000 pro
 
 These numbers explain why trusted setups persist despite their trust assumptions. The argument is not philosophical. It is economic. And it explains why the dominant production pattern in 2026 is neither pure trusted nor pure transparent, but *hybrid*: use a transparent STARK as the inner proof (no ceremony required, post-quantum security for the computation), then wrap it in a Groth16 or KZG-based outer proof for cheap on-chain verification. You get the transparency of STARKs and the economics of SNARKs.
 
-Most major production systems follow this pattern. SP1 Hypercube generates STARK proofs over a small, fast field (BabyBear, 31 bits per number), recursively compresses them, and wraps the result in Groth16 for Ethereum verification. Stwo does the same over the Mersenne-31 field. RISC Zero, Airbender, ZisK -- all follow the same architecture. Even StarkWare, the company that built its identity on transparent proving, wraps to Groth16 for Ethereum settlement because the gas economics demand it. (Systems that wrap to PLONK rather than Groth16 -- such as Polygon's Plonky2/Plonky3 family -- follow a variant of the same logic, substituting a universal-SRS outer wrapper for the circuit-specific Groth16 one.)
+Most major production systems follow this pattern. SP1 Hypercube generates STARK proofs over a small, fast field (BabyBear, 31 bits per number), recursively compresses them, and wraps the result in Groth16 for Ethereum verification. Stwo does the same over the Mersenne-31 field. RISC Zero, Airbender, ZisK -- all follow the same architecture. Even StarkWare, the company that built its identity on transparent proving, wraps to Groth16 for Ethereum settlement because the gas economics demand it. (Systems that wrap to PLONK rather than Groth16 -- such as Polygon's Plonky2/Plonky3 family -- follow a variant of the same logic, substituting a universal-SRS outer wrapper for the circuit-specific Groth16 one.) Chapter 5 documents the prover benchmarks for these systems -- SP1 Hypercube at 6.9 s and Stwo at roughly 10 s -- and the overhead that the wrapping layer adds.
 
 The cost of this hybrid approach is complexity: you maintain two proof systems, two fields, and a "field-crossing" circuit that bridges the small inner field to the large outer field. The outer wrapper still requires a trusted setup (the KZG ceremony). But the inner proof -- where the actual computation is verified -- is fully transparent. If a post-quantum on-chain verifier ever becomes practical, the outer Groth16 layer can be dropped, and the entire pipeline becomes transparent end-to-end.
 
@@ -70,13 +70,14 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (B) No citation issues beyond those noted in A.
 - [none] (D) No structural contradictions found.
-- [P3] (E) The section names SP1 Hypercube and Stwo but does not note that the SP1 Hypercube benchmark (6.9 s) and Stwo benchmark (~10 s) referenced in ch05 are already available; a cross-reference to the overhead-tax section would let readers see actual numbers.
 
 ## Links
 

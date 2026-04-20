@@ -4,9 +4,9 @@ slug: ch04-execution-traces
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1203, 1247]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1227, 1273]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 751
 ---
 
@@ -29,7 +29,7 @@ Here is what a witness looks like for a trivial computation: proving that $x^2 +
 
 Four field elements. Four rows in the trace table. Each intermediate value is a cell the prover must fill in and the constraint system must verify. For a real zkVM executing a RISC-V program, the trace has columns for every register (32 registers), the program counter, the current instruction, memory addresses accessed, and intermediate ALU results -- thousands of columns, millions of rows, but the same fundamental structure: a table where each row is one clock cycle of execution.
 
-This distinction between the *computation* (what the magician does) and the *recording* (the witness) matters more than it looks. The computation might take milliseconds. The recording is vastly larger because it includes every intermediate value. And generating the recording -- running the computation while capturing every detail -- is the expensive part.
+This distinction between the *computation* (what the magician does) and the *recording* (the witness) matters more than it looks. The computation might take milliseconds. The recording is vastly larger because it includes every intermediate value. The scale of that difference is the subject of the next section; generating the recording is the expensive part.
 
 > **The Sudoku Witness**
 >
@@ -52,6 +52,8 @@ This distinction between the *computation* (what the magician does) and the *rec
 In a zkVM like SP1 or RISC Zero, witness generation means *emulating the entire RISC-V processor*. Every instruction is fetched, decoded, and executed. Every register update is recorded. Every memory access is logged. This is full virtual machine emulation, step by step, sequentially. It cannot be easily parallelized because each instruction depends on the state left by the previous instruction. The program counter moves forward one step at a time, and the witness generator must follow.
 
 Here is why witness generation is CPU-bound. Polynomial arithmetic -- the core of the proving step -- is naturally parallel. Number-theoretic transforms, multi-scalar multiplications, and polynomial evaluations split naturally across thousands of GPU cores. But VM emulation is inherently sequential. The next instruction depends on the current instruction's result. You cannot execute instruction 1,000 before you know the outcome of instruction 999.
+
+One might ask whether CPU techniques like out-of-order execution or speculative execution could help. They cannot, for a fundamental reason: speculative execution requires knowing which path to speculate down, which requires resolving branch conditions -- conditions that may depend on witness values that have not yet been computed. ORAM-based approaches can hide *which* memory locations are accessed, but they do not change the sequential dependency structure of instruction execution. The sequentiality is not an artifact of naive implementation; it is a consequence of what witness generation is.
 
 ---
 
@@ -88,12 +90,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The section explains sequential dependency clearly but doesn't address out-of-order speculation or speculative execution techniques that have been explored (e.g., ORAM-based approaches). A sentence noting why these don't help would pre-empt reader questions.
-- [P3] (D) "The recording is vastly larger because it includes every intermediate value" — true, but no order-of-magnitude comparison is given between computation time and trace-generation time until the next section. A forward pointer would help.
 
 ## Links
 

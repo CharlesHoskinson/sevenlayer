@@ -4,9 +4,9 @@ slug: ch06-case-study-midnight-s-sealed-certificate
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2839, 2900]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2873, 2934]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 940
 ---
 
@@ -16,7 +16,7 @@ To see how these abstract proof system choices play out in a real system, consid
 
 ### The Proof System: Halo 2 / UltraPlonk over BLS12-381
 
-Midnight chose a PLONK-family proof system: specifically Halo 2, an extension of UltraPlonk with custom gates and lookup tables. The curve is BLS12-381, a pairing-friendly curve with better security properties than BN254 (roughly 128-bit security vs. BN254's ~100 bits after Tower NFS advances [Kim and Barbulescu, CRYPTO 2016]). Although the original Halo paper (2019) used inner product arguments (IPA) that required no trusted setup, Midnight's deployment uses KZG polynomial commitments over BLS12-381, which require a Powers-of-Tau ceremony -- a universal trusted setup with a 1-of-N trust assumption.
+Midnight chose a PLONK-family proof system: specifically Halo 2, an extension of UltraPlonk with custom gates and lookup tables. The curve is BLS12-381, a pairing-friendly curve with better security properties than BN254 (roughly 128-bit security vs. BN254's ~100 bits after Tower NFS advances [Kim and Barbulescu, CRYPTO 2016]). BN254 was adopted by Ethereum for EVM compatibility -- low precompile cost was the priority -- rather than as the strongest available security choice; Midnight's selection of BLS12-381 reflects a different set of constraints where on-chain Ethereum verification cost is not the primary driver. Although the original Halo paper (2019) used inner product arguments (IPA) that required no trusted setup, Midnight's deployment uses KZG polynomial commitments over BLS12-381, which require a Powers-of-Tau ceremony -- a universal trusted setup with a 1-of-N trust assumption.
 
 This places Midnight firmly in the "classical SNARK" camp: pairing-based, recursion-capable, not post-quantum. It is a mature, well-understood choice. The PLONK arithmetization is flexible enough to support Midnight's privacy-preserving smart contract model, where transactions carry zero-knowledge proofs of valid state transitions.
 
@@ -121,11 +121,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (A) BLS12-381 described as providing "roughly 128-bit security vs. BN254's ~100 bits after Tower NFS advances" — "roughly 128-bit" for BLS12-381 is standard, but Ethereum's rationale for BN254 is cost not security; noting that BN254 was chosen for EVM compatibility (not as the best security choice) would prevent the comparison from appearing as a criticism of Midnight's curve selection
 
 ## Links
 

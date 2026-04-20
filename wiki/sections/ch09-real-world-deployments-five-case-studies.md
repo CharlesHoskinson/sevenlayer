@@ -4,9 +4,9 @@ slug: ch09-real-world-deployments-five-case-studies
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4141, 4180]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4173, 4212]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 806
 ---
 
@@ -36,7 +36,7 @@ Privacy Pools, co-authored by Vitalik Buterin and implemented by 0xbow, launched
 
 The design addresses the fundamental tension between on-chain privacy and regulatory compliance -- a tension that destroyed Tornado Cash and haunts every privacy protocol. Users deposit funds into a pool and can later withdraw them, breaking the link between deposit and withdrawal addresses (similar to Tornado Cash). But Privacy Pools add a compliance layer: an Association Set Provider (ASP) screens deposits for connections to sanctioned or illicit addresses, and the zero-knowledge proof used for withdrawal includes a proof that the user's funds are drawn from a compliant "association set."
 
-The result is "pragmatic privacy" -- transaction privacy for legitimate users, with a built-in compliance mechanism that prevents sanctioned funds from mixing with clean funds. As of early 2026, Privacy Pools has processed over $6 million in volume across more than 1,500 users. The broader ecosystem includes more than 35 teams pursuing approximately 13 distinct approaches to private transfers on Ethereum. The magician proves she is not cheating -- and the regulator is satisfied.
+The result is "pragmatic privacy" -- transaction privacy for legitimate users, with a built-in compliance mechanism that prevents sanctioned funds from mixing with clean funds. As of early 2026, Privacy Pools has processed over $6 million in volume across more than 1,500 users (per [CoinDesk, April 2025](https://www.coindesk.com/tech/2025/04/03/0xbow-s-ethereum-privacy-pools-surpass-200-deposits-as-user-interest-grows)). The broader ecosystem includes more than 35 teams pursuing approximately 13 distinct approaches to private transfers on Ethereum. The magician proves she is not cheating -- and the regulator is satisfied.
 
 ### 5. Apple, Google, and the US Census Bureau: Differential Privacy at Scale
 
@@ -95,11 +95,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (B) Privacy Pools volume figures (">$6 million, >1,500 users by early 2026") are specific claims with no URL or source; a reference to 0xbow's published stats or an Etherscan link should be added.
 
 ## Links
 

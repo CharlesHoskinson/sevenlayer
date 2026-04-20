@@ -4,9 +4,9 @@ slug: ch01-the-seven-layers-at-a-glance
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [274, 300]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [272, 298]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 799
 ---
 
@@ -32,7 +32,7 @@ The first three layers are about preparation -- building the stage, writing the 
 
 If you have ever wondered why ZK proofs cost what they cost, why some systems require elaborate ceremonies and others do not, or why a quantum computer threatens certain proof systems but not others -- these seven layers are where the answers live. Each chapter that follows unpacks one layer.
 
-A warning: the dependencies between layers do not follow the numbering. The choice of cryptographic primitive (Layer 6) determines which proof systems are available (Layer 5). That determines which arithmetizations work (Layer 4). That shapes which languages are efficient (Layer 2). That constrains the setup (Layer 1). A single decision -- choosing a small, fast number system (the Goldilocks field) over a large, secure one (BLS12-381) -- can cascade through all seven layers and reshape the entire architecture.
+A warning: the dependencies between layers do not follow the numbering. The choice of cryptographic primitive (Layer 6) determines which proof systems are available (Layer 5). That determines which arithmetizations work (Layer 4). That shapes which languages are efficient (Layer 2). That constrains the setup (Layer 1). A single decision -- choosing a small, fast number system (the Goldilocks field) over a large, secure one (BLS12-381) -- can cascade through all seven layers and reshape the entire architecture. By Chapter 10, these dependencies will be redrawn as a directed acyclic graph with fourteen causal edges, revealing how each layer constrains the others in ways the linear model obscures.
 
 In practice, some layers fuse. Jolt merges witness generation and arithmetization into a single lookup step. Cairo co-designs its language around its constraint system. Layers 4, 5, and 6 -- the "proof core" -- behave as one inseparable design unit in every production system. By Chapter 10, the model will be redrawn in its honest final form: a directed acyclic graph with fourteen causal edges, not seven tidy floors. The map is provisional. The territory is more tangled.
 
@@ -81,11 +81,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The DAG with "fourteen causal edges" is promised for Chapter 10 but no preview of what those edges represent is given; a one-sentence hint would build anticipation more concretely.
 
 ## Links
 

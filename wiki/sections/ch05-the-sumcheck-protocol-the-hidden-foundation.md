@@ -4,15 +4,15 @@ slug: ch05-the-sumcheck-protocol-the-hidden-foundation
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1926, 1972]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1950, 1995]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1291
 ---
 
 ## The Sumcheck Protocol: The Hidden Foundation
 
-If there is one protocol that deserves to be called the backbone of modern zero-knowledge proof systems, it is the sumcheck protocol. Lund, Fortnow, Karloff, and Nisan introduced it in 1992 -- decades before practical ZK systems existed. Sumcheck has since become the common thread running through every major proof system of the current era.
+If there is one protocol that deserves to be called the backbone of modern zero-knowledge proof systems, it is the sumcheck protocol. Lund, Fortnow, Karloff, and Nisan introduced it in 1992 -- decades before practical ZK systems existed [R-L4-SC]. Sumcheck has since become the common thread running through every major proof system of the current era.
 
 ### What Sumcheck Does
 
@@ -42,7 +42,7 @@ Spartan uses it for R1CS verification. HyperNova uses it for CCS folding. Jolt a
 
 The sumcheck protocol is the verification mechanism that makes polynomial-based arithmetization practical. Every time a modern proof system needs to verify that a polynomial identity holds over a large domain, sumcheck is how it does so.
 
-- **Spartan** (Setty, 2019) uses sumcheck to verify R1CS satisfaction directly, without FFTs. The prover expresses the R1CS check as a multilinear polynomial sum and runs sumcheck to prove it holds.
+- **Spartan** (Setty, 2019) [R-L4-5] uses sumcheck to verify R1CS satisfaction directly, without FFTs. The prover expresses the R1CS check as a multilinear polynomial sum and runs sumcheck to prove it holds.
 - **HyperNova** uses sumcheck as the core of its multi-folding protocol. Folding multiple CCS instances reduces to a sumcheck instance.
 - **Jolt and Lasso** reduce lookup verification to sumcheck instances. Every table lookup becomes a polynomial sum that sumcheck can verify.
 - **LogUp-GKR** combines the sumcheck protocol with the GKR interactive proof to verify lookup arguments with logarithmic overhead.
@@ -56,7 +56,6 @@ A note on presentation order: this chapter covers arithmetization (Layer 4) befo
 The sumcheck protocol also illustrates a recurring theme in this book: the most important technical ideas are often invisible to the end user. A developer writing a Compact smart contract on Midnight, or a Solidity developer deploying a Groth16 verifier on Ethereum, will never interact with the sumcheck protocol directly. They will never see a multilinear polynomial or check a partial sum. But sumcheck is running underneath, silently reducing the verification cost from exponential to linear, making the entire stack practical. The seven layers of the magic trick include mechanisms that the audience never sees -- and sumcheck is the most consequential of them all.
 
 ---
-
 
 ## Summary
 
@@ -105,11 +104,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (B) Lund et al. (1992) is cited in Sources but the journal is given as "JCSS 1992" — JCSS is correct (Journal of Computer and System Sciences) but the volume and page numbers are absent. Full citation would be: Vol. 44, No. 2, 1992, pp. 282–296.
 
 ## Links
 

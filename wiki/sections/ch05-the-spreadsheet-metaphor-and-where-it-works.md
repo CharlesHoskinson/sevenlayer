@@ -4,9 +4,9 @@ slug: ch05-the-spreadsheet-metaphor-and-where-it-works
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1620, 1662]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1644, 1686]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1230
 ---
 
@@ -31,7 +31,7 @@ Now you write rules. "The value in column B at row 5 must equal the value in col
 
 Notice that the rules are not arbitrary. They are polynomial equations -- expressions built from addition, subtraction, and multiplication of cell values. This restriction is fundamental. A polynomial rule like "$A \cdot B = C$" is checkable by the proof system. A non-polynomial rule like "if A > B then C = 1 else C = 0" cannot be directly encoded as a polynomial equation because comparison is not a polynomial operation. (It can be encoded *indirectly*, by decomposing A and B into bits and constraining the bit-level comparison, but this adds many auxiliary constraints.) The polynomial restriction is the price of admittance to the proof system. Only relationships expressible as polynomial equations over finite fields can be directly verified. Everything else must be translated into polynomial form first.
 
-If every rule holds across every row, the spreadsheet is *consistent* -- it faithfully records a valid computation. If any rule is violated, the computation was not performed correctly. The prover's job is to fill in the spreadsheet (this is the witness from the previous chapter) and then convince the verifier that all the rules hold. The verifier's job is to check -- but not by examining every cell. Instead, the verifier picks random evaluation points and checks whether the polynomial equations are satisfied there. By the Schwartz-Zippel lemma, a polynomial that is not identically zero will be nonzero at a random point with high probability. The Schwartz-Zippel lemma is the mathematical fact that makes this work: a nonzero polynomial of degree $d$, evaluated at a random point from a field of size $q$, is zero with probability at most $d/q$. For the fields used in ZK (where $q$ is astronomically large), this probability is negligible. One random check is almost as good as checking everywhere. So if the equations check out at the random points, the spreadsheet is almost certainly correct everywhere.
+If every rule holds across every row, the spreadsheet is *consistent* -- it faithfully records a valid computation. If any rule is violated, the computation was not performed correctly. The prover's job is to fill in the spreadsheet (this is the witness from the previous chapter) and then convince the verifier that all the rules hold. The verifier's job is to check -- but not by examining every cell. Instead, the verifier picks random evaluation points and checks whether the polynomial equations are satisfied there. By the Schwartz-Zippel lemma, a polynomial that is not identically zero will be nonzero at a random point with high probability. The Schwartz-Zippel lemma is the mathematical fact that makes this work: a nonzero polynomial of degree $d$, evaluated at a random point from a field of size $q$, is zero with probability at most $d/q$. For the fields used in ZK (where $q$ is astronomically large), this probability is negligible. One random check is almost as good as checking everywhere. So if the equations check out at the random points, the spreadsheet is almost certainly correct everywhere. [R-SZ-1][R-SZ-2]
 
 That is the core idea of arithmetization. Every constraint system in this chapter is a different way of organizing the spreadsheet, choosing the rules, and encoding the computation.
 
@@ -88,11 +88,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (B) No sources cited for the spreadsheet/constraint analogy or for Schwartz-Zippel; a footnote to the original Schwartz (1980) / Zippel (1979) papers would be appropriate here.
 
 ## Links
 

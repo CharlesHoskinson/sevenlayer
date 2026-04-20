@@ -4,9 +4,9 @@ slug: ch11-the-stage-is-set
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4751, 4763]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4782, 4794]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 344
 ---
 
@@ -16,7 +16,7 @@ Three conclusions emerge from the landscape.
 
 First, the ISA war is over. RISC-V won, and the remaining holdouts (Cairo, zkWASM) serve specialized niches rather than competing for the general-purpose market. For system architects, this means the language question from Chapter 3 has a default answer: write Rust, compile to RISC-V, and the zkVM handles the rest. Philosophy C (general-purpose ISA) absorbed Philosophies A (EVM-compatible) and B (ZK-native ISA) -- not by defeating them, but by making their benefits available as compatibility layers on top of a universal stage.
 
-Second, the proof core first identified in Chapter 6 is visible in every row of the landscape table. The field choice (BabyBear, M31, Goldilocks, BN254) determines the commitment scheme (FRI, Circle STARK, KZG), which determines the arithmetization (AIR, Circle AIR, R1CS), which determines the proof system. Change one cell in the table, and every other cell in that row must adapt. The seven-layer model did not break under zkVM pressure -- it *fused*. Layers 2 and 3 (language and witness) merged when "write Rust" became the universal answer. Layers 4, 5, and 6 (arithmetization, proof system, cryptographic primitives) became the proof core triad that Chapter 6 identified and Chapter 10 revisited. What remains separate is Layer 1 (setup: ceremony or transparent) and Layer 7 (verification: where the proof lands and who governs the verifier contract).
+Second, the proof core identified across the landscape shows layers 4, 5, and 6 fused into an inseparable nucleus in every production system. The field choice (BabyBear, M31, Goldilocks, BN254) determines the commitment scheme (FRI, Circle STARK, KZG), which determines the polynomial representation (AIR, Circle AIR, R1CS), which determines the proof system. Change one cell in the table, and every other cell in that row must adapt. The seven-layer model did not break under zkVM pressure -- it *fused*. Layers 2 and 3 (language and witness) merged when "write Rust" became the universal answer. Layers 4, 5, and 6 formed the proof core triad that this chapter made explicit. What remains separate is Layer 1 (setup: ceremony or transparent) and Layer 7 (verification: where the proof lands and who governs the verifier contract).
 
 Third, the competitive axis is rotating. The speed race is over -- four independent teams achieved real-time Ethereum block proving in 2025. The next frontier is provable security: 128-bit security with formal verification, not just empirical benchmarks. The teams that win the next phase will not be the ones with the fastest provers but the ones whose proofs you can trust with mathematical certainty.
 
@@ -67,11 +67,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (D) "BabyBear/M31/Goldilocks/BN254 → commitment → arithmetization → proof system" — Goldilocks appears in this field-choice cascade but does not feature in the proof core triad discussion in ch11-the-proof-core-triad (only BabyBear, M31, BN254); its inclusion here without a corresponding triad analysis creates a gap.
 
 ## Links
 

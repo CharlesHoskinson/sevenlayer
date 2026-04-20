@@ -4,9 +4,9 @@ slug: ch11-three-zkvms-through-seven-layers
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4595, 4678]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4626, 4709]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 2326
 ---
 
@@ -18,7 +18,7 @@ The best way to understand why the seven-layer model bends under zkVM pressure i
 
 **Layer 1 (Setup).** Hybrid -- transparent inner loop (hash-based Poseidon2 over BabyBear), trusted outer wrap (Groth16 over BN254). The KZG ceremony is for the wrapper only. The trusted-or-transparent choice is actually "both."
 
-**Layer 2 (ISA).** RISC-V (RV32IM). Developers write ordinary Rust; the compiler handles the rest. SP1 implements 39+ RISC-V instructions, with all 62 core opcodes formally verified against the official RISC-V Sail specification [57].
+**Layer 2 (ISA).** RISC-V (RV32IM). Developers write ordinary Rust; the compiler handles the rest. SP1 implements 39+ RISC-V instructions in its custom chips, with 62 core RISC-V opcodes formally verified against the official RISC-V Sail specification [57]. The distinction: the 39+ are SP1-optimized custom implementations; the 62 are the standardized instruction set.
 
 **Layer 3 (Witness).** Shard-based execution traces with continuations. Each shard is an independent proving unit; shared challenges enforce consistency at shard boundaries. This is where the Witness Gap lives -- SP1's witness generation is CPU-bound while its proving is GPU-accelerated, so witness generation accounts for an estimated 60-70% of total proving time [58].
 
@@ -153,11 +153,11 @@ SP1, Stwo/Cairo, and Jolt each traverse the seven layers by a distinct route: SP
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) "SP1 implements 39+ RISC-V instructions" (Layer 2) alongside "all 62 core opcodes formally verified" (same paragraph) — two different counts for different things but no explanation of the distinction, creating confusion.
 
 ## Links
 

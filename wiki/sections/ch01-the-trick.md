@@ -5,8 +5,8 @@ chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [154, 176]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 584
 ---
 
@@ -22,7 +22,7 @@ Shafi Goldwasser, Silvio Micali, and Charles Rackoff demonstrated something that
 
 Clarke's aphorism holds that sufficiently advanced technology is indistinguishable from magic. He was half right. This technology is indistinguishable from magic -- until you understand it. Then it is more astonishing than magic, because magic relies on deception while this relies on its opposite. The magician hides the mechanism. The zero-knowledge proof hides the data *and lets you verify the mechanism is honest*.
 
-Zero-knowledge proofs do not eliminate trust. They *decompose* it. They take one monolithic act of faith -- trust the bank, trust the platform, trust the government -- and break it into seven independent, weaker assumptions. Each one is testable. Each one is replaceable. What remains after the mathematics has done its work is not zero trust but *less* trust, distributed across more points of failure, each auditable on its own terms.
+Zero-knowledge proofs do not eliminate trust. They *decompose* it. They take one monolithic act of faith -- trust the bank, trust the platform, trust the government -- and break it into seven independent, weaker assumptions (setup, language, witness, arithmetization, proof system, cryptography, verification). Each one is testable. Each one is replaceable. What remains after the mathematics has done its work is not zero trust but *less* trust, distributed across more points of failure, each auditable on its own terms.
 
 The word "trustless" is marketing. The accurate word is "trust-minimized." What that decomposition looks like in practice -- which assumptions survive, where they live, and what breaks when each one fails -- is the subject of every chapter that follows.
 
@@ -66,11 +66,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P3] (E) The section asserts "seven independent, weaker assumptions" without previewing what they are; a parenthetical hint (even just listing the layer names) would ground the claim and reduce the reader's need to take it on faith.
 - [none] A — no issues found.
 - [none] D — no issues found.
 

@@ -5,8 +5,8 @@ chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
 source_lines: [651, 663]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 289
 ---
 
@@ -16,7 +16,7 @@ There is a more immediate security concern than quantum computers, and it affect
 
 BN254 (also called alt_bn128 or BN128) is the curve hardcoded into Ethereum's elliptic curve precompile opcodes. Every Groth16 proof verified on Ethereum's base layer uses BN254. But the estimated security of BN254 has been eroding. The Tower Number Field Sieve (Tower NFS) -- a family of discrete log algorithms that exploits the tower structure of extension fields -- cut BN254's estimated security from 128 bits toward roughly 100 bits in the 2016 round of analysis [Kim, Barbulescu, "Extended Tower Number Field Sieve: A New Complexity for the Medium Prime Case," *CRYPTO 2016* / IACR ePrint 2015/1027; Menezes, Sarkar, Singh, "Challenges with Assessing the Impact of NFS Advances on the Security of Pairing-Based Cryptography," *MathCrypt 2016*]. Barbulescu and Duquesne refined the Tower NFS analysis for pairing-friendly curves in 2017-2019 and proposed updated key-size recommendations; on their numbers, BN254 sits at approximately 100-110 bits of security [Barbulescu, Duquesne, "Updating Key Size Estimations for Pairings," *Journal of Cryptology* 32:1298-1336, 2019; HAL preprint hal-01534101, 2017].
 
-One hundred-odd bits of security is not broken. But it sits below the 128-bit threshold that NIST mandates for new cryptographic deployments. The ZK ecosystem has been slowly migrating from BN254 to BLS12-381, which provides a comfortable 128-bit security margin even under Tower NFS analysis. Migration is slow, though: existing smart contracts reference the BN254 precompile directly, and changing the curve means changing the verification logic, which means upgrading every contract that verifies proofs.
+One hundred-odd bits of security is not broken. But it sits below the 128-bit threshold that NIST mandates for new cryptographic deployments. The ZK ecosystem has been slowly migrating from BN254 to BLS12-381, which provides a comfortable 128-bit security margin even under Tower NFS analysis. Migration is slow, though: existing smart contracts reference the BN254 precompile directly, and changing the curve means changing the verification logic, which means upgrading every contract that verifies proofs. EIP-2537, which adds BLS12-381 precompile opcodes to Ethereum's base layer, directly addresses this migration barrier: once those precompiles are live, new contracts can verify BLS12-381 proofs as cheaply as BN254 proofs today, removing the main economic obstacle to the curve transition.
 
 The setup layer casts a long shadow. Choices made at Layer 1 -- which curve, which parameters, which ceremony -- propagate forward through years or decades of deployment. The curve choice that was state-of-the-art in 2018 shows its age by 2026. The ceremony that was sufficient in 2023 may be insufficient by 2035. Building the stage is not a one-time act. It is a commitment with a time horizon.
 
@@ -60,13 +60,14 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (C) No AI-smell or style issues. The section is notably concise and well-written.
 - [none] (D) No contradictions with other chapters found.
-- [P3] (E) The section could note that Ethereum's EIP-2537 proposal adds BLS12-381 precompiles to Ethereum's base layer, which would directly address the migration barrier described; this is directly relevant to the "changing the curve requires upgrading every verifying contract" point.
 
 ## Links
 

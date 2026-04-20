@@ -4,9 +4,9 @@ slug: ch13-enterprise-pilots-pilot
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5089, 5118]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [5119, 5148]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1416
 ---
 
@@ -14,9 +14,9 @@ word_count: 1416
 
 The magician has left the theater. She now performs in boardrooms, data centers, and regulatory offices. The trick is the same. The audience has changed -- and this audience does not care about trustlessness. It cares about compliance.
 
-**Deutsche Bank, UBS, and Goldman Sachs** have all conducted pilots on ZKsync, exploring tokenized assets with ZK-verified compliance. These pilots use ZK proofs to demonstrate regulatory compliance (KYC/AML verification) without revealing the underlying customer data to settlement counterparties. The bank proves its customer is compliant. The counterparty learns nothing about who the customer is. This is not trust-minimization in the way a cypherpunk would recognize it. It is trust in compliance frameworks, verified by cryptographic proofs but governed by regulatory requirements. The magician performs for regulators now, and the trick she performs is: "we followed the rules, and here is a proof."
+Major financial institutions have begun exploring ZK-based solutions for tokenized assets and compliance workflows. Deutsche Bank participated in Project Guardian (coordinated through the Monetary Authority of Singapore's public initiative), testing ZK-verified KYC attestations for cross-border settlement. Project Guardian's scope included multiple financial participants; whether UBS and Goldman Sachs conducted ZKsync-specific pilots versus broader Project Guardian exploration remains a contested detail in institutional blockchain histories as of early 2026.
 
-The Deutsche Bank pilot reveals what enterprise adoption actually looks like from the inside. Deutsche Bank's Project Guardian participation -- coordinated through the Monetary Authority of Singapore (Project Guardian is MAS's public initiative; Deutsche Bank's involvement was reported in MAS's 2023-2024 pilot documentation) -- tested whether institutional-grade foreign exchange and government bond transactions could settle on-chain with ZK-verified KYC attestations replacing the traditional correspondent banking chain. The specific mechanism: Deutsche Bank's compliance team verifies a client's KYC status through conventional channels, then issues a ZK credential -- a proof that the client passed all required AML/CFT checks, without encoding *which* checks, *what* documents, or *whose* name. The counterparty's smart contract verifies the proof on-chain and permits settlement. The transaction completes in minutes rather than the T+2 standard. The compliance data never crosses an institutional boundary.
+The Deutsche Bank pilot reveals what enterprise adoption actually looks like from the inside. Deutsche Bank's Project Guardian participation tested whether institutional-grade foreign exchange and government bond transactions could settle on-chain with ZK-verified KYC attestations replacing the traditional correspondent banking chain. The specific mechanism: Deutsche Bank's compliance team verifies a client's KYC status through conventional channels, then issues a ZK credential -- a proof that the client passed all required AML/CFT checks, without encoding *which* checks, *what* documents, or *whose* name. The counterparty's smart contract verifies the proof on-chain and permits settlement. The transaction completes in minutes rather than the T+2 standard. The compliance data never crosses an institutional boundary.
 
 Understand what has changed and what has not. The settlement speed improved. The data exposure shrank. The compliance *cost* dropped, because the correspondent banking chain -- each intermediary performing redundant KYC on the same client -- collapsed into a single proof verified by mathematics. But the trust did not disappear. It migrated. Before: you trusted the correspondent bank's compliance department. After: you trust Deutsche Bank's compliance department *and* the correctness of their ZK credential issuance system *and* the soundness of the proof system *and* the smart contract that verifies it. The number of trust assumptions increased. Their *visibility* increased too -- and visibility is not nothing. A trust assumption you can examine is better than one you cannot. But it is still a trust assumption.
 
@@ -77,11 +77,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (B) The claim that "Deutsche Bank, UBS, and Goldman Sachs have all conducted pilots on ZKsync" is asserted without citation; UBS and Goldman Sachs involvement in ZKsync-specific pilots (vs. Project Guardian more broadly) is worth verifying.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch02-the-adopt-framework
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [664, 680]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [664, 682]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 265
 ---
 
@@ -20,7 +20,9 @@ The most comprehensive survey of trusted setup ceremonies, the SoK paper by Wang
 - **P**ersistent: Will the ceremony data survive long-term for auditing?
 - **T**ransparent: Is every step of the ceremony publicly observable?
 
-No existing ceremony satisfies all five properties. The Ethereum KZG ceremony scores well on openness and availability but still relied on a coordinating entity (the Ethereum Foundation). Many older ceremonies fail on persistence -- as of the SoK's investigation, intermediate transcript data for projects including Hermez had already become unrecoverable just a few years after the ceremony ended [Wang, Cohney, Bonneau, 2025].
+No existing ceremony satisfies all five properties. Applying the framework retrospectively to the earlier Zcash ceremonies sharpens the picture. The Sprout ceremony (2016) scores poorly on openness (six invited participants), decentralization (a single coordinating team), and persistence (hardware destroyed, intermediate transcripts not archived). It scores better on availability (the final SRS was published) but fails transparency -- the ceremony pre-dates the norms of public audit trails. The Sapling ceremony (2018) improves on openness (roughly ninety participants) and transparency (the BGM17 protocol was published), but still relied on a central coordinator and saw some intermediate data lost. The Ethereum KZG ceremony (2023) scores well on openness and availability, but still relied on a coordinating entity (the Ethereum Foundation) for decentralization, and time will tell whether its transcripts remain accessible.
+
+Many older ceremonies fail on persistence -- as of the SoK's investigation, intermediate transcript data for projects including Hermez had already become unrecoverable just a few years after the ceremony ended [Wang, Cohney, Bonneau, 2025].
 
 This is not a failure of any specific project. It is a structural limitation of the ceremony model. Ceremonies are social events, and social events are messy. The gap between the abstract "1-of-N honest participant" security model and the operational reality of running a ceremony with hundreds of thousands of participants -- each using different hardware, different software, different randomness sources, across different jurisdictions -- is wide. The protocol can be mathematically perfect. The ceremony is always imperfect.
 
@@ -61,12 +63,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (D) No contradictions found.
-- [P3] (E) The section does not discuss which ADOPT properties Zcash Sprout or Sapling scored on/failed — applying the framework retroactively to those ceremonies would give the reader a richer comparative picture.
 
 ## Links
 

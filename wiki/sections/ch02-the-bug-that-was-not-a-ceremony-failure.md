@@ -4,9 +4,9 @@ slug: ch02-the-bug-that-was-not-a-ceremony-failure
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [598, 610]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [596, 608]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 350
 ---
 
@@ -57,6 +57,8 @@ CVE-2019-7167 in Zcash's BCTV14 construction allowed unlimited token counterfeit
 None flagged by this section.
 
 ## Improvement notes
+
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
 
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 

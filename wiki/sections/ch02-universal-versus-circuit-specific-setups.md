@@ -4,9 +4,9 @@ slug: ch02-universal-versus-circuit-specific-setups
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [611, 621]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [609, 621]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 511
 ---
 
@@ -16,7 +16,9 @@ The BCTV14 bug revealed that the SRS construction must be correct independently 
 
 Groth16 [Groth, "On the Size of Pairing-Based Non-interactive Arguments," *EUROCRYPT 2016*] produces the most compact proofs ever constructed: exactly 192 bytes, three group elements. Verification requires two pairing checks, each involving two pairing evaluations -- three distinct pairing computations in all, with one argument shared across checks (a pairing is a function that takes two curve points and checks algebraic relationships between them without revealing the secrets behind them). No other system comes close for proof size. But Groth16's setup is circuit-specific. The SRS encodes the structure of a particular circuit: the specific polynomial constraints, the wiring, the gates. Change the circuit -- add a feature, fix a bug, upgrade the protocol -- and you need a new ceremony. New coordination. New participants. New toxic waste to destroy. Each new ceremony carries its own coordination cost, unsustainable for any system that evolves.
 
-PLONK [Gabizon, Williamson, Ciobotaru, IACR ePrint 2019/953] and Marlin [Chiesa et al., "Marlin: Preprocessing zkSNARKs with Universal and Updatable SRS," *EUROCRYPT 2020* / IACR ePrint 2019/1047] solved this by making the SRS *universal*. Instead of encoding a specific circuit's structure, the universal SRS encodes the raw mathematical material (powers of a secret on an elliptic curve) that any circuit can use. Any circuit up to a maximum size -- whether it verifies a token transfer, a compliance check, or an entire Ethereum block -- can derive its proving keys from the same SRS. The per-circuit derivation is entirely *deterministic and public*: same source code plus same compiler yields same keys. No new secrets. No new ceremony. No new toxic waste. The ceremony is the capital expenditure. Everything after it is operating expense.
+The first universal SNARK was Sonic [Maller, Bowe, Kohlweiss, Meiklejohn, "Sonic: Zero-Knowledge SNARKs from Linear-Size Universal and Updatable Structured Reference Strings," *ACM CCS 2019* / IACR ePrint 2019/099], published in early 2019. Sonic introduced the key idea: a single SRS that encodes raw mathematical material any circuit can use, with per-circuit derivation that is public and deterministic. PLONK [Gabizon, Williamson, Ciobotaru, IACR ePrint 2019/953] and Marlin [Chiesa et al., "Marlin: Preprocessing zkSNARKs with Universal and Updatable SRS," *EUROCRYPT 2020* / IACR ePrint 2019/1047], published months later, refined the construction and drove most of the subsequent adoption, but Sonic is the ancestor.
+
+Any circuit up to a maximum size -- whether it verifies a token transfer, a compliance check, or an entire Ethereum block -- can derive its proving keys from the same SRS. The per-circuit derivation is entirely *deterministic and public*: same source code plus same compiler yields same keys. No new secrets. No new ceremony. No new toxic waste. The ceremony is the capital expenditure. Everything after it is operating expense.
 
 The universal model transformed the economics of zero-knowledge deployments. Midnight is the production system this chapter uses as its running case study: it adopted the universal model with a PLONK-family proof system (Halo 2 / UltraPlonk) on BLS12-381. The Compact compiler takes each smart contract, compiles it to a circuit intermediate representation called ZKIR, and derives per-circuit proving and verification keys from the shared SRS. One ceremony serves every contract; the per-contract compilation runs in seconds. Midnight's full Layer 1 architecture is analyzed below.
 
@@ -62,12 +64,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (D) No contradictions with other chapters found.
-- [P3] (E) The section could note Sonic (Maller et al., 2019) as the earliest universal SNARK (predating PLONK by months), which would complete the historical picture; Marlin and PLONK are mentioned but Sonic is the first universal updateable reference string construction.
 
 ## Links
 

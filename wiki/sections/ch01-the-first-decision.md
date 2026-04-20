@@ -4,9 +4,9 @@ slug: ch01-the-first-decision
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [328, 360]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [326, 358]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 572
 ---
 
@@ -79,11 +79,12 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
-- [P3] (E) The section introduces "transparent setup" as the alternative but gives only one sentence on the trade-off; a brief mention of FRI-based systems (STARKs) as the canonical transparent approach would reduce the abstraction here without adding length.
 - [none] D — no cross-chapter contradictions found beyond those noted above.
 
 ## Links

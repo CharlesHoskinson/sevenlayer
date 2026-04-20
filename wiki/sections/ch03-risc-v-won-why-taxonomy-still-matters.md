@@ -4,9 +4,9 @@ slug: ch03-risc-v-won-why-taxonomy-still-matters
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [750, 783]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [754, 787]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 375
 ---
 
@@ -40,7 +40,7 @@ The language layer is where the magician writes the choreography for the act. Th
 > +---+---+---+---+
 > ```
 >
-> The program checks: every row contains {1,2,3,4} with no repeats, every column contains {1,2,3,4}, every 2x2 box contains {1,2,3,4}, and every filled cell matches the given clue. The prover knows the solution. The verifier knows only the puzzle. At Layer 2, this is a program. We follow it through every layer to come.
+> The program checks: every row contains {1,2,3,4} with no repeats, every column contains {1,2,3,4}, every 2x2 box contains {1,2,3,4}, and every filled cell matches the given clue. The prover knows the solution. The verifier knows only the puzzle -- this is the public input, visible in the proof. The solution itself -- the completed grid -- is the private witness, known only to the prover and absent from the final proof. At Layer 2, this program expresses that boundary: what hides (solution) versus what reveals (puzzle). We follow it through every layer to come.
 
 ---
 
@@ -77,11 +77,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The Sudoku running-example box describes only the constraint structure; it does not say what the proof *hides* (the solution) versus what it *reveals* (the puzzle), missing an opportunity to introduce the public/private input distinction at Layer 2.
 
 ## Links
 

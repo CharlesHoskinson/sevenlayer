@@ -4,9 +4,9 @@ slug: ch03-under-constrained-circuits-the-dominant-failure-mode
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [1061, 1088]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1069, 1096]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 651
 ---
 
@@ -30,7 +30,7 @@ Third, *constraint-computation discrepancies* -- places where the witness genera
 
 The defensive tooling is evolving. Picus -- also called QED^2 -- uses SMT-based techniques to automatically detect under-constrained circuits in R1CS, reducing the under-constrainedness problem to queries on systems of polynomial equations over finite fields (Pailoor et al., "Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs," PLDI 2023, ePrint 2023/512). ZKAP's Circuit Dependence Graph abstraction -- combining data flow edges (witness computation) with constraint edges (R1CS) -- achieved an F1 score of 0.82, compared to 0.64 for the earlier Circomspect tool. zkFuzz (Takahashi et al., "zkFuzz: Foundation and Framework for Effective Fuzzing of Zero-Knowledge Circuits," IEEE S&P 2026, arXiv 2504.11961), a fuzz-testing framework for ZK circuits, found 66 bugs including 38 zero-days. MTZK (Xiao et al., "MTZK: Testing and Exploring Bugs in Zero-Knowledge (ZK) Compilers," NDSS 2025), a metamorphic testing framework aimed at the compilers themselves rather than individual circuits, discovered 21 bugs across four industrial ZK compilers -- 15 of which were patched by the maintainers.
 
-But these tools share a limitation: they work primarily on Circom circuits (and, in MTZK's case, a handful of industrial compilers). The Rust-based systems that dominate production -- halo2 (used by Scroll and ZK Bridge projects), Plonky3 (used by SP1), and custom constraint systems in RISC Zero and Jolt -- are not covered. Stwo, despite sharing an ecosystem vocabulary with the Plonky family, builds on Circle STARKs over the Mersenne-31 field, not Plonky3. The most common ZK bug class has automated detection for the oldest ZK language but not for most of the systems where new code is being written.
+But these tools work primarily on R1CS (Rank-1 Constraint Systems), used by Circom. Production systems use different schemes: halo2 uses PLONKish; Plonky3 uses AIR; RISC Zero and Jolt use custom trace models. These have fundamentally different constraint semantics from R1CS. R1CS tools cannot transfer directly without rewriting the analysis -- the vulnerability signatures are structurally different. The most common ZK bug class has automated detection for the oldest language but not for most new production systems.
 
 NAVe (Pearce et al., "NAVe: Formal Verification for Noir Programs," 2025), a formal verification tool for Noir programs, begins to close this gap. It formalizes Noir's ACIR intermediate representation and uses the cvc5 SMT solver to verify program properties. But formal verification at scale -- for circuits with millions of constraints -- remains beyond current tools. The combination of compile-time prevention (refinement types, disclosure analysis) and post-hoc verification (static analysis, formal methods) could provide comprehensive coverage, but no system achieves both today.
 
@@ -80,11 +80,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The section correctly notes that automated detection tools cover Circom but not halo2, Plonky3, or Jolt, yet it does not explain *why* — namely that R1CS analysis tools don't generalize to PLONKish or AIR constraint systems. Adding one sentence on the structural reason would strengthen the claim.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch03-midnight-compiler-ir-circuit
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [1143, 1180]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1153, 1204]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 520
 ---
 
@@ -26,6 +26,20 @@ From a single `.compact` source file, the compiler produces three distinct artif
 - *division* (1): `div_mod_power_of_two`
 - *cryptographic* (5): `transient_hash`, `persistent_hash`, `ec_mul_generator`, `ec_mul`, `hash_to_curve`
 - *I/O* (4): `private_input`, `public_input`, `output`, `impact`
+
+A concrete ZKIR excerpt from a witness-disclosure circuit illustrates the structure:
+
+```json
+{
+  "publicTranscript": [
+    {"op": "public_input", "id": "puzzle_grid", "type": "u32[16]"},
+    {"op": "assert", "constraint": "sudoku_valid", "inputs": ["solution_grid", "puzzle_grid"]}
+  ],
+  "privateTranscriptOutputs": [
+    {"op": "private_input", "id": "solution_grid", "type": "u32[16]", "disclosure": "required"}
+  ]
+}
+```
 
 Every ZKIR circuit has two transcript channels. The `publicTranscript` records ledger operations -- reads, writes, comparisons -- visible to the on-chain verifier. The `privateTranscriptOutputs` contains witness-derived values visible only to the prover. The ZKIR checker verifies that the serialized public transcript matches exactly what the circuit computed. Tampering with either transcript causes rejection with specific, diagnostic error messages.
 
@@ -85,11 +99,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The section describes ZKIR at the instruction-category level but never gives an example of a ZKIR JSON fragment. Given that the section is titled "Compiler, IR, Circuit," a small concrete ZKIR excerpt would ground the claim that it is "JSON-formatted" and show the two transcript channels in practice.
 
 ## Links
 

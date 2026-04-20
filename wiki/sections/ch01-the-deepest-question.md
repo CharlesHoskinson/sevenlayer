@@ -4,9 +4,9 @@ slug: ch01-the-deepest-question
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [301, 327]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [299, 325]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1131
 ---
 
@@ -18,7 +18,7 @@ At Layer 1, you trust that the setup ceremony was conducted honestly, or you cho
 
 At Layer 2, you trust that the program was written correctly. Here the field's deepest irony lives: in the most comprehensive audit of real-world ZK vulnerabilities to date, 67% of reported issues at Layer 2 -- the circuit layer -- were under-constrained circuits, programs whose mathematical rules fail to fully pin down the correct answer and leave room for a cheater to slip through [Chaliasos et al., "SoK: What Don't We Know? Understanding Security Vulnerabilities in SNARKs," USENIX Security 2024]. The most sophisticated proof system in the world will faithfully prove a false statement if the circuit asks it to. A single character -- `=` written where `<==` was needed, assignment where constrained assignment was required -- caused a complete soundness break in Tornado Cash. That one-character bug could have allowed an attacker to withdraw funds that were never deposited. At its peak, Tornado Cash held over $200 million in user deposits. Chapter 3 tells that story.
 
-At Layer 3, you trust that the hardware generating the witness does not leak secrets through side channels. The proof is zero-knowledge, but the *process of generating the proof* may not be. Researchers demonstrated that Zcash's Groth16 prover leaked information about transaction amounts through proof-generation timing -- a stopwatch, applied to something that should have been invisible, enabled statistical estimation of what the mathematics had promised to hide. Privacy, it turns out, is partly a luxury good: the architecture that maximizes it (client-side proving) demands hardware most people cannot afford, while the architecture available to everyone (delegated proving) requires trusting someone else with your secrets. The people with the most to hide have the least ability to hide it. Chapter 4 confronts this asymmetry. Midnight, whose compiler enforces privacy boundaries at compile time, offers one response -- though as Chapter 12 will show, compile-time guarantees and runtime privacy are different problems.
+At Layer 3, you trust that the hardware generating the witness does not leak secrets through side channels. The proof is zero-knowledge, but the *process of generating the proof* may not be. Researchers demonstrated that Zcash's Groth16 prover leaked information about transaction amounts through proof-generation timing -- a stopwatch, applied to something that should have been invisible, enabled statistical estimation of what the mathematics had promised to hide. Privacy, it turns out, is partly a luxury good: client-side proving demands roughly 4 GB of RAM and 10+ seconds on a modern phone, maximizing privacy but remaining inaccessible to most users, while delegated proving is available to everyone but requires trusting someone else with your secrets. The people with the most to hide have the least ability to hide it. Chapter 4 confronts this asymmetry. Midnight, whose compiler enforces privacy boundaries at compile time, offers one response -- though as Chapter 12 will show, compile-time guarantees and runtime privacy are different problems.
 
 Layers 4 and 5 are where the abstract becomes visceral -- where you feel the weight of converting human-readable computation into something a polynomial equation can express.
 
@@ -86,11 +86,11 @@ Each of the seven layers introduces a distinct trust assumption that is independ
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The client-side vs. delegated proving asymmetry ("people with the most to hide have the least ability to hide it") is stated as a conclusion but not quantified; a brief hardware-cost data point (e.g., SNARK proving requires ~4 GB RAM and ~10s on a modern phone) would make the claim concrete.
 
 ## Links
 

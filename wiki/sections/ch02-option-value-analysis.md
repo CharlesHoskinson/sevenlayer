@@ -4,9 +4,9 @@ slug: ch02-option-value-analysis
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [698, 722]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [700, 726]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 598
 ---
 
@@ -19,6 +19,8 @@ In finance, an option is the right -- but not the obligation -- to take an actio
 A trusted setup on BLS12-381 buys performance today but forecloses certain futures. When -- not if -- post-quantum migration becomes necessary, every system on BLS12-381 will need a new setup. New ceremony. New coordination. New toxic waste. If the system has accumulated ten years of state and ten million users, the migration cost is not just the ceremony. It is the coordination cost of upgrading every node, every contract, every verifier key, plus wallet migration for every user -- a cost that grows with every year the system has been running.
 
 A transparent setup on hash-based primitives costs more per proof today but preserves the option to migrate without re-ceremony. The hash function can be swapped. The security parameters can be adjusted. No toxic waste needs to be re-destroyed because none was ever created. The transparent setup is the option premium. The post-quantum flexibility is the option value.
+
+One important nuance: this framing applies cleanly to the *outer* wrapper in a hybrid pipeline, which remains ceremony-dependent. The *inner* transparent proof -- the STARK layer -- already avoids the re-ceremony problem. Systems that have adopted the hybrid architecture have, in effect, already partially exercised the option: they can drop the Groth16 outer wrapper when a quantum-resistant on-chain verifier becomes practical, without rebuilding the inner proving system. The option value of choosing a transparent inner proof is therefore already locked in for most major 2026 deployments; the remaining question is the outer wrapper.
 
 What is this option worth? The calculation is sensitive to assumptions, so consider three scenarios. The migration-cost column below is an *illustrative order-of-magnitude* figure -- the aggregate of a new ceremony, node and contract upgrades, wallet migration across a ten-year-old chain, and the forked-state transition period. It is meant to anchor the arithmetic, not to substitute for a project-specific cost model.
 
@@ -76,12 +78,13 @@ A trusted setup on BLS12-381 or BN254 buys performance today but forecloses post
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (D) No structural contradictions found.
-- [P3] (E) The option-value framework does not account for the possibility of SNARK-to-STARK migration without a new ceremony — the hybrid pipeline already uses a transparent inner proof, so a plausible upgrade path exists that the analysis ignores.
 
 ## Links
 

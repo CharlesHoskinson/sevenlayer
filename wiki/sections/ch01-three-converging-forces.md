@@ -4,9 +4,9 @@ slug: ch01-three-converging-forces
 chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
-source_lines: [241, 273]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [241, 271]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1343
 ---
 
@@ -34,11 +34,9 @@ In December 2025, the Ethereum Foundation declared the speed race won and pivote
 
 At $0.04 per proof, the economics shift. At $80, only the most valuable financial settlements justify the expense. At four cents, you can prove *everything*: identity checks, game-state transitions, AI model inferences, supply-chain attestations, compliance audits. Projections for 2027 suggest sub-cent proofs for computations exceeding one billion cycles. The question stops being "can we afford to prove this?" and becomes "why would we *not* prove everything?"
 
-These three forces -- privacy demand, scaling need, and cost collapse -- form a flywheel. Cheaper proofs make more applications viable. More applications create more demand. More demand funds more engineering. More engineering produces cheaper proofs.
+These three forces -- privacy demand, scaling need, and cost collapse -- form a flywheel. Cheaper proofs make more applications viable. More applications create more demand. More demand funds more engineering. More engineering produces cheaper proofs. Ethereum's ZK rollups -- zkSync, Starknet, Scroll -- address the scaling force, compressing thousands of transactions into a single proof verified on the base layer. The eIDAS 2.0 identity wallets address the privacy force, using zero-knowledge proofs to let citizens prove attributes without revealing documents. And systems like Midnight -- a privacy-focused blockchain built on the Cardano ecosystem, where every smart contract executes via zero-knowledge proofs -- sit at the intersection of all three: privacy as the design goal, scaling through proof compression, and cost reduction through a PLONK-family proof system that serves an entire ecosystem from a single trusted setup ceremony.
 
-The flywheel is already visible in specific systems. Ethereum's ZK rollups -- zkSync, Starknet, Scroll -- address the scaling force, compressing thousands of transactions into a single proof verified on the base layer. The eIDAS 2.0 identity wallets address the privacy force, using zero-knowledge proofs to let citizens prove attributes without revealing documents. And systems like Midnight -- a privacy-focused blockchain built on the Cardano ecosystem, where every smart contract executes via zero-knowledge proofs -- sit at the intersection of all three: privacy as the design goal, scaling through proof compression, and cost reduction through a PLONK-family proof system that serves an entire ecosystem from a single trusted setup ceremony. Throughout this book, Midnight serves as a second running example alongside the Sudoku puzzle: where Sudoku lets us trace each layer in miniature, Midnight shows what those layers look like in a production system that made real engineering choices under real constraints.
-
-A disclosure: I am the founder of Input Output Global, the company that built Midnight. I chose it as the primary case study not because it is the best system in every dimension -- it is not -- but because I have access to its internal architecture, documentation, and engineering decisions at a depth that outside analysis rarely provides. Where that proximity creates bias, the analysis in Chapter 12 is designed to be independently verifiable: every claim references public documentation or measured behavior.
+Throughout this book, Midnight serves as a second running example alongside the Sudoku puzzle: where Sudoku lets us trace each layer in miniature, Midnight shows what those layers look like in a production system that made real engineering choices under real constraints. I am the founder of Input Output Global, the company that built Midnight. I chose it as a case study because I have access to its internal architecture, documentation, and engineering decisions at a depth that outside analysis rarely provides. Where that proximity creates bias, the analysis in Chapter 12 is designed to be independently verifiable: every claim references public documentation or measured behavior.
 
 Understanding how the flywheel works requires understanding what a zero-knowledge system actually is -- layer by layer.
 
@@ -88,11 +86,11 @@ None in this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (D) The flywheel paragraph and the Midnight disclosure paragraph duplicate framing found in the chapter hub; consider whether both locations need the full text.
 
 ## Links
 

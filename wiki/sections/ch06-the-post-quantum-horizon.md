@@ -4,9 +4,9 @@ slug: ch06-the-post-quantum-horizon
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2936, 2951]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2970, 2985]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 329
 ---
 
@@ -22,7 +22,7 @@ The STARK family is already partially quantum-resistant: its security rests on c
 
 The lattice folding branch of the genealogy -- LatticeFold, Neo, Symphony -- represents the most direct path to post-quantum proof systems. Neo achieves 127-bit security under plausible lattice hardness assumptions (Module-SIS, Module-LWE), operates over the GPU-friendly Goldilocks field, and supports the full CCS constraint framework via sumcheck-based folding. Symphony extends this to production-grade performance with GPU-optimized NTTs.
 
-The remaining gap is on-chain verification. No post-quantum on-chain verifier exists in production. Lattice-based proofs are larger than elliptic-curve-based proofs (tens of kilobytes vs. hundreds of bytes), and no blockchain has precompiled contracts for lattice operations. Closing this gap -- either through lattice-friendly L1 verification or through novel compression techniques -- is one of the open problems at the frontier of the field.
+The remaining gap is on-chain verification. No post-quantum on-chain verifier exists in production. Lattice-based proofs are larger than elliptic-curve-based proofs (tens of kilobytes vs. hundreds of bytes), and no blockchain has precompiled contracts for lattice operations. For context: NIST's recently standardized post-quantum algorithms -- CRYSTALS-Dilithium (lattice-based signatures) and FALCON (NTRU lattice signatures) -- address digital signature security, not ZK proof verification. Neither provides a ready-made on-chain verifier for ZK proofs; the commitment and polynomial evaluation machinery that ZK systems require has no direct analog in signature schemes. Closing the ZK verification gap -- either through lattice-friendly L1 verification or through novel compression techniques -- is one of the open problems at the frontier of the field.
 
 ---
 
@@ -75,11 +75,11 @@ Shor's algorithm makes all elliptic-curve-based proof systems (Groth16, PLONK, H
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) "No post-quantum on-chain verifier exists in production" — accurate, but the section could briefly mention NIST PQC standardization (CRYSTALS-Dilithium, FALCON) and why none of those directly apply to on-chain ZK verifiers, to help readers understand the gap
 
 ## Links
 

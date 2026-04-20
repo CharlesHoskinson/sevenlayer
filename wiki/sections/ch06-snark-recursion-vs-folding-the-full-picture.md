@@ -4,9 +4,9 @@ slug: ch06-snark-recursion-vs-folding-the-full-picture
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2901, 2935]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2935, 2969]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 557
 ---
 
@@ -19,7 +19,7 @@ Now that we have seen both approaches in action -- Midnight's recursive Halo 2 a
 Recursive proof composition is the right choice when:
 
 - The chain of computation is short (tens of steps, not millions)
-- The proof system already has a cheap verifier circuit (as Halo 2 does for its IPA-based verification)
+- The proof system already has a cheap verifier circuit (as Halo 2 does for its KZG-based verification when deployed with KZG commitments, as in Midnight)
 - The application needs per-step proofs (every transaction gets its own proof, as in Midnight)
 - The infrastructure is mature and the priority is correctness over performance
 
@@ -90,11 +90,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (A) "Halo 2 does for its IPA-based verification" — Midnight's Halo 2 deployment uses KZG not IPA (as correctly noted in ch06-case-study-midnight); saying Halo 2 has a "cheap IPA-based verifier" without qualification is inconsistent with the Midnight case study
 
 ## Links
 

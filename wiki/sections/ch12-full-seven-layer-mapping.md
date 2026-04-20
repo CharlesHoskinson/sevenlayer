@@ -4,9 +4,9 @@ slug: ch12-full-seven-layer-mapping
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4795, 4886]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4826, 4917]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 2897
 ---
 
@@ -38,9 +38,9 @@ Witnesses in Midnight are arbitrary JavaScript functions that run off-chain. The
 
 Every ZKIR circuit has two transcript channels: the `publicTranscript` (ledger operations visible to the verifier) and `privateTranscriptOutputs` (witness values visible only to the prover). Without `disclose()`, witness values remain entirely invisible to the circuit and the chain. The ZKIR checker enforces transcript integrity with specific diagnostic error messages -- tampering with either transcript causes immediate rejection.
 
-What does this boundary feel like to the developer who must work inside it every day? Consider a programmer writing a private voting contract. She writes her witness function in TypeScript -- ordinary, familiar, unexotic code that fetches voter eligibility from a local database and computes a ballot. Every variable in that function is invisible to the chain by default. She could write a hundred lines of witness logic, and none of it would leave her machine. Then she reaches the moment of commitment: she needs the circuit to know which candidate received the vote, without revealing who cast it. She writes `disclose(candidateId)`. That single call is the seam in the curtain, the controlled opening where one piece of information -- and only that piece -- crosses from the private rehearsal room into the public theater. The compiler has already analyzed every path through her code; if she accidentally wrote `disclose(voterId)` three functions earlier, the build would have failed with a traced error showing exactly how the private value reached the public surface. The developer experience is not one of navigating cryptographic abstractions. It is one of writing normal code inside a system that has opinions -- strong, enforced, non-negotiable opinions -- about what leaves the room. Asimov imagined robots governed by laws they could not violate. The Compact developer works inside a compiler governed by disclosure laws it will not bend. The fiction writer's dream of the incorruptible guardian is, in this narrow domain, an engineering reality.
+What does this boundary feel like to the developer who must work inside it every day? Consider a programmer writing a private voting contract. She writes her witness function in TypeScript -- ordinary, familiar, unexotic code that fetches voter eligibility from a local database and computes a ballot. Every variable in that function is invisible to the chain by default. She could write a hundred lines of witness logic, and none of it would leave her machine. Then she reaches the moment of commitment: she needs the circuit to know which candidate received the vote, without revealing who cast it. She writes `disclose(candidateId)`. That single call is the seam in the curtain, the controlled opening where one piece of information -- and only that piece -- crosses from the private rehearsal room into the public theater. The compiler has already analyzed every path through her code; if she accidentally wrote `disclose(voterId)` three functions earlier, the build would have failed with a traced error showing exactly how the private value reached the public surface. The developer experience is not one of navigating cryptographic abstractions. It is one of writing normal code inside a system that has opinions -- strong, enforced, non-negotiable opinions -- about what leaves the room.
 
-The theater analogy sharpens here. In a well-designed theater, the lighting grid is the real enforcer of what the audience sees. A spotlight operator who accidentally swings a beam toward the wings will reveal the stagehands, the props not yet in play, the illusion's scaffolding. Midnight's disclosure analysis is the lighting grid: it does not merely suggest where the light should fall -- it physically prevents the spots from swinging toward the wings. The developer sets the cues. The compiler locks the grid. And when the show runs, only what was meant to be seen is seen.
+The disclosure analysis is the real enforcer. Midnight's checker does not merely suggest where data should flow -- it physically prevents flows that violate the transcript boundary. The developer sets the seams. The compiler locks them. And when the show runs, only what was meant to be seen is seen.
 
 **Side-channel gap**: None of the five reference documents address timing attacks, cache attacks, or metadata leakage through the indexer's GraphQL API. Proof generation dominates transaction time (~18-20 seconds), providing natural but unintentional timing padding. The curtain is thick, but no one has tested whether light leaks through the seams.
 
@@ -166,11 +166,11 @@ This section maps all seven layers of the ZK stack onto Midnight's concrete arch
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) Layer 3 contains an extended Asimov analogy and a theater-lighting metaphor that add length without information gain; the core point (disclosure analysis = compile-time hard error) is made adequately in the first paragraph of that sub-section.
 
 ## Links
 

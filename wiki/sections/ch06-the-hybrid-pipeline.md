@@ -4,9 +4,9 @@ slug: ch06-the-hybrid-pipeline
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2486, 2525]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2518, 2557]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1107
 ---
 
@@ -34,7 +34,7 @@ The hybrid architecture becomes vivid when you trace a specific workload through
 
 **Step 1: Execute and generate the witness.** The operator's sequencer replays all 1,000 transactions against a local copy of the rollup's state. Every storage read, every storage write, every arithmetic operation is recorded in an execution trace -- the giant spreadsheet from Chapter 4. The witness includes all private data: account balances, nonces, intermediate computation values. This step is ordinary software execution, no cryptography involved. On a modern server, it takes 1 to 2 seconds. The output is a trace with millions of rows and dozens of columns.
 
-**Step 2: Generate a STARK proof over a small field.** The prover takes the execution trace and produces a STARK proof using BabyBear (31-bit) or Mersenne-31 arithmetic. This is where the heavy computation happens. The trace is interpolated into polynomials, the polynomials are committed via FRI (Merkle trees of evaluations), and the FRI protocol verifies low-degree proximity. On a cluster of GPUs -- say, four NVIDIA A100s -- this step takes roughly 3 to 5 seconds according to proving benchmarks from SP1 Hypercube [52]. The output is a STARK proof: transparent, hash-based, quantum-resistant, and roughly 200 to 400 kilobytes in size.
+**Step 2: Generate a STARK proof over a small field.** The prover takes the execution trace and produces a STARK proof using BabyBear (31-bit) or Mersenne-31 arithmetic. This is where the heavy computation happens. The trace is interpolated into polynomials, the polynomials are committed via FRI (Merkle trees of evaluations), and the FRI protocol verifies low-degree proximity. On a cluster of GPUs -- say, four NVIDIA A100s -- this step takes roughly 3 to 5 seconds according to proving benchmarks from SP1 Hypercube [52]. (Note: the four-A100 figure reflects the SP1 Hypercube benchmarks cited here; SP1's real-time 12-second milestone used 16 RTX 5090s, a different hardware configuration described in the Real-Time Ethereum Proving section. The two figures reflect different benchmark contexts, not a contradiction.) The output is a STARK proof: transparent, hash-based, quantum-resistant, and roughly 200 to 400 kilobytes in size.
 
 **Step 3: Recursively compress the STARK.** The raw STARK proof is too large to post on-chain economically. So the operator generates a second STARK proof that verifies the first one. This is recursion: a proof about a proof. The verifier circuit for a STARK is much smaller than the original computation circuit, so the recursive proof is faster to generate and produces a smaller output. One or two rounds of recursive compression shrink the proof from hundreds of kilobytes to tens of kilobytes. This step takes 1 to 2 seconds.
 
@@ -42,7 +42,7 @@ The hybrid architecture becomes vivid when you trace a specific workload through
 
 **Step 5: Post the proof to Ethereum.** The operator submits a transaction to the rollup's on-chain verifier contract. The transaction contains the 192-byte Groth16 proof, the new state root, and a commitment to the batch of transactions. The Ethereum verifier contract calls the BN254 pairing precompile (EIP-1108), checks the three pairings, and accepts or rejects. Live cost figures tracked by Ethproofs [44] put on-chain verification at roughly $0.50 to $1.00 at mid-2025 gas prices (Ethproofs tracks live per-proof cost; the figure fluctuates with gas market conditions). The state root is updated. The 1,000 transactions are finalized.
 
-The audience sees only Step 5. A 192-byte proof appears on-chain. A smart contract checks it in a few milliseconds. The state updates. Nobody knows -- or needs to know -- that behind those 192 bytes lie four NVIDIA GPUs, two rounds of recursive compression, a field-crossing circuit, and the execution traces of 1,000 individual transactions. The entire pipeline, from receiving the batch to posting the proof, completes in under 15 seconds and costs under $1.00.
+The audience sees only Step 5. A 192-byte proof appears on-chain. A smart contract checks it in a few milliseconds. The state updates. Nobody knows -- or needs to know -- that behind those 192 bytes lie multiple GPUs, two rounds of recursive compression, a field-crossing circuit, and the execution traces of 1,000 individual transactions. The entire pipeline, from receiving the batch to posting the proof, completes in under 15 seconds and costs under $1.00.
 
 That is the hybrid pipeline in concrete terms. The STARK did the heavy lifting: proving the computation with transparency and quantum resistance. The Groth16 wrapper did the packaging: compressing everything into the smallest possible on-chain footprint. Each proof system contributed what it does best. The audience -- Ethereum's verifier contract -- received the finished product and asked no questions about the manufacturing process.
 
@@ -95,11 +95,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) The pipeline section describes four NVIDIA A100s but ch06-real-time-ethereum-proving describes RTX 5090s for SP1 Hypercube; no note explains the different hardware baselines used in the two sections
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch07-the-quantum-threat-horizon
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3230, 3279]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3262, 3311]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 640
 ---
 
@@ -56,7 +56,7 @@ Any zero-knowledge system deployed today that relies on DLP-based cryptography f
 
 2. **Migrate proactively.** Begin transitioning to post-quantum primitives before a CRQC exists. This is the only option for systems that provide long-term privacy guarantees (e.g., shielded transactions, confidential identity systems).
 
-3. **Ignore the problem.** Hope that quantum computers take longer than expected, or that "crypto-agility" will allow a rapid migration when the time comes. This is the most common approach -- and the most dangerous, because "crypto-agility" in practice means "complete architectural redesign."
+3. **Defer the problem.** Assume quantum computers arrive later than current projections, or that "crypto-agility" will allow a rapid migration when needed. This is the most common approach -- and the most dangerous, because "crypto-agility" in practice means "complete architectural redesign."
 
 ---
 
@@ -104,11 +104,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) The three-option framing (accept/migrate/ignore) uses "hope that…quantum computers take longer than expected" for option 3 — slightly editorializing; functional but could be stated more neutrally.
 
 ## Links
 

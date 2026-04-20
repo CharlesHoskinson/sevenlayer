@@ -4,9 +4,9 @@ slug: ch02-the-structured-reference-string
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [398, 422]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [396, 420]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 998
 ---
 
@@ -26,7 +26,7 @@ What does the SRS let a verifier *do*? A proof arrives. The verifier looks up th
 
 The SRS itself is not a proof. It is shared infrastructure. A KZG opening proof -- a single commitment and a single opening -- is one $\mathbb{G}_1$ point, 48 bytes on BLS12-381. Groth16, a different proof system that also builds on the KZG-style SRS, produces proofs of three group elements (two in $\mathbb{G}_1$, one in $\mathbb{G}_2$), for a total of 192 bytes. PLONK produces proofs in the range of 800 bytes to a few kilobytes, depending on the variant. One stage, many performances. The SRS is the ruler. Each proof system chooses how much to write on it.
 
-A *circuit* is the mathematical representation of the computation being proved -- the blueprint that specifies which arithmetic operations happen in what order. (Not an electrical circuit. A mathematical one. The term is borrowed from hardware design, where logic gates are wired together, because the structure is similar: inputs flow through operations to produce outputs.) The circuit is verified against the SRS. The Ethereum KZG SRS contains roughly 65 million curve points, stored as a file of several gigabytes -- roughly the size of a high-definition movie. That file is the stage. Every ZK rollup, every privacy protocol, every identity proof that uses KZG commitments performs its verification against those 65 million points.
+A *circuit* is the mathematical representation of the computation being proved -- the blueprint that specifies which arithmetic operations happen in what order. (Not an electrical circuit. A mathematical one. The term is borrowed from hardware design, where logic gates are wired together, because the structure is similar: inputs flow through operations to produce outputs.) The circuit is verified against the SRS. The Ethereum KZG SRS contains roughly 65 million curve points, stored as a file of several gigabytes -- roughly the size of a high-definition movie. That file is the stage. The scale -- 65 million points -- reflects the BN254 and BLS12-381 curve choices discussed in the later sections on BN254's eroding security margin. Every ZK rollup, every privacy protocol, every identity proof that uses KZG commitments performs its verification against those 65 million points.
 
 The secret value used to generate the SRS is called the *trapdoor*. In the zero-knowledge community, it has acquired a more evocative name: *toxic waste*. The metaphor is precise. Like radioactive material, the trapdoor is dangerous if it persists and must be destroyed after it has served its purpose. If anyone -- anyone at all -- retains knowledge of the trapdoor, they can forge proofs of false statements. They can prove that $2 + 2 = 5$, that an empty bank account holds a billion dollars, that an invalid transaction is valid. No one would be able to tell the forged proof from a real one.
 
@@ -67,12 +67,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (D) No contradictions with other chapters found.
-- [P3] (E) No discussion of the BN254 vs BLS12-381 choice for the SRS here, even though that choice determines the 65M-point count; a forward reference to the curve discussion sections would help.
 
 ## Links
 

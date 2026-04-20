@@ -4,9 +4,9 @@ slug: ch07-four-families-of-commitment-schemes
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3037, 3141]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3071, 3175]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 3227
 ---
 
@@ -14,7 +14,7 @@ word_count: 3227
 
 The hardness assumptions crystallize into concrete cryptographic tools called *polynomial commitment schemes*. A commitment scheme lets a prover "seal" a polynomial into a short commitment, then later prove that the polynomial evaluates to a specific value at a specific point. This is the mechanism that makes zero-knowledge proofs work -- it is how the prover demonstrates knowledge without revealing the underlying data.
 
-Four families dominate. Each inherits the properties and limitations of its underlying assumption, the way a building inherits the geology of the ground it stands on.
+Four families dominate. Each inherits the properties and limitations of its underlying assumption, the way a building inherits the geology of the ground it stands on. The FRI and IPA sub-sections below go deeper than the others; readers who want only the comparison can skim to the summary table.
 
 Primary references for this section: KZG -- Kate, Zaverucha, and Goldberg, "Constant-Size Commitments to Polynomials and Their Applications," ASIACRYPT 2010; FRI -- Ben-Sasson, Bentov, Horesh, and Riabzev, "Fast Reed-Solomon Interactive Oracle Proofs of Proximity," ICALP 2018; IPA/Bulletproofs -- Bünz, Bootle, Boneh, Poelstra, Wuille, and Maxwell, "Bulletproofs: Short Proofs for Confidential Transactions and More," IEEE S&P 2018.
 
@@ -167,11 +167,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (D) At 3,227 words this is the longest section in ch07 by far. The intuition blocks for FRI (proximity testing) and IPA (recursive halving) are valuable but could be split into dedicated depth-sections rather than buried here, to match the word-count pattern of sibling sections (~300–950 words).
 
 ## Links
 

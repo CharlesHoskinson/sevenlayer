@@ -4,9 +4,9 @@ slug: ch07-three-hardness-assumptions-three-worlds
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [2999, 3036]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3033, 3070]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 945
 ---
 
@@ -42,7 +42,7 @@ The newest and most mathematically demanding assumption. Given a matrix $M$ over
 
 Module-SIS is the foundation of lattice-based cryptography -- the family that the post-quantum community has rallied around. NIST's post-quantum standards (FIPS 203, 204, and 205, published August 2024) are built on lattice problems. The assumption has been studied for over two decades, and no quantum algorithm significantly outperforms classical ones against it.
 
-The lattice world offers a distinctive property: *module homomorphism*. An Ajtai commitment (the lattice analogue of a Pedersen commitment -- a Pedersen commitment is a cryptographic method for "sealing" a number using elliptic curve arithmetic, so the committed value can be verified later but cannot be changed after commitment) satisfies the equation $\rho \cdot \text{Com}(Z) = \text{Com}(\rho \cdot Z)$, where $\rho$ is a ring element. This is the algebraic structure that makes lattice-based folding schemes possible. It is weaker than what pairings provide (no bilinear map to a target group) but stronger than what hash functions provide (which have no algebraic structure at all).
+The lattice world offers a distinctive property: *module homomorphism*. An Ajtai commitment (the lattice analogue of a [[pedersen|Pedersen commitment]]) satisfies the equation $\rho \cdot \text{Com}(Z) = \text{Com}(\rho \cdot Z)$, where $\rho$ is a ring element. This is the algebraic structure that makes lattice-based folding schemes possible. It is weaker than what pairings provide (no bilinear map to a target group) but stronger than what hash functions provide (which have no algebraic structure at all).
 
 The upshot is that lattice-based schemes occupy a useful middle ground: they have enough algebraic structure for folding and efficient composition, plus post-quantum security, plus transparent setup. Whether they can match the succinctness of pairing-based schemes is the open research question -- and the answer is converging toward "close enough."
 
@@ -93,11 +93,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) Parenthetical asides in the Module-SIS paragraph (two nested parentheticals explaining Pedersen commitments) create cluttered prose; the Pedersen aside could link to [[pedersen]] instead.
 
 ## Links
 

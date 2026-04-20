@@ -4,9 +4,9 @@ slug: ch04-witness-constraint-divergence
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1455, 1488]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1477, 1510]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 843
 ---
 
@@ -30,7 +30,7 @@ Multiple valid witnesses can exist for the same statement, and the proof system 
 
 This property -- that multiple valid witnesses exist -- is fundamental, not a bug. The proof system guarantees that the prover knows *some* valid witness. It does not guarantee which one. For most applications, this is exactly right: if you prove you know a valid password, it does not matter whether you know the first password in the hash table or the last.
 
-Non-deterministic hints exploit this deliberately. Instead of computing a square root step by step -- which is expensive inside a circuit -- the prover *guesses* the answer (as a witness value) and the circuit verifies that the square of the guess equals 25. The computation goes from expensive (sequential square root algorithm) to cheap (one multiplication and one comparison). This "guess and check" pattern is a standard programming technique in ZK systems, not a bug. But it requires that the checking constraints are complete. If the check only verifies $x \cdot x = 25$ without constraining that $x$ is in the correct range, a malicious prover might find a field element that satisfies the equation but is not the intended square root.
+Non-deterministic hints exploit this deliberately. Instead of computing a square root step by step -- which is expensive inside a circuit -- the prover *guesses* the answer (as a witness value, supplied outside the constraint system) and the circuit verifies that the square of the guess equals 25. The computation goes from expensive (sequential square root algorithm) to cheap (one multiplication and one comparison). This "guess and check" pattern is a standard programming technique in ZK systems, not a bug -- but the term *non-deterministic hint* will recur in Chapter 5's treatment of arithmetization, where the boundary between what the prover computes freely and what the constraints must enforce becomes the central design question. The pattern requires that the checking constraints are complete. If the check only verifies $x \cdot x = 25$ without constraining that $x$ is in the correct range, a malicious prover might find a field element that satisfies the equation but is not the intended square root.
 
 ### Closing the Correctness Gap
 
@@ -82,11 +82,11 @@ None.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (D) The section introduces "non-deterministic hints" as a relevant concept but this term is not indexed in the Entities list and does not link to a concept page. If it appears again in ch05, it should be a [[concept]] link here.
 
 ## Links
 

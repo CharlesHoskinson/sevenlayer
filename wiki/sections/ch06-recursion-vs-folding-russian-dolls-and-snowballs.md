@@ -4,9 +4,9 @@ slug: ch06-recursion-vs-folding-russian-dolls-and-snowballs
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2526, 2563]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2558, 2597]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1078
 ---
 
@@ -35,6 +35,8 @@ The snowball analogy captures it precisely. Each new step is a handful of snow. 
 Nova's central technical move was *relaxed R1CS*. Standard R1CS says $Az \circ Bz = Cz$ (where $A$, $B$, $C$ are matrices and $z$ is the witness vector). Now suppose you try to combine two standard R1CS instances by taking a random linear combination: $(A(z_1 + r \cdot z_2)) \circ (B(z_1 + r \cdot z_2))$. When you expand this product, cross-terms appear -- terms involving both $z_1$ and $z_2$ multiplied together -- that do not fit the $Az \circ Bz = Cz$ format. The product of two linear combinations is quadratic, but R1CS demands bilinear structure. The cross-terms break the format.
 
 Nova's move was to relax the constraint. Instead of requiring $Az \circ Bz = Cz$ exactly, allow $Az \circ Bz = u \cdot Cz + E$, where $u$ is a scalar and $E$ is an error vector. When $u = 1$ and $E = 0$, you recover standard R1CS. But the relaxed form is closed under random linear combination: when you combine two relaxed instances, the cross-terms that would have destroyed the standard format are absorbed into the error vector E. The format survives. The scalar $u$ tracks the linear combination's coefficient, and $E$ accumulates the algebraic debris that would otherwise break the structure.
+
+One practical consequence: in the basic Nova construction, E grows with each folding step -- it accumulates one cross-term per fold, so after $k$ steps the error vector has $k$ non-zero contributions. The instance representation therefore grows linearly with the chain length. SuperNova and HyperNova address this through improved constructions; the lattice-based schemes (LatticeFold, Neo) revisit the problem with different commitment structures. But in the base Nova paper, unbounded chain length means unbounded E, which the final decider SNARK must handle.
 
 The folding verifier is tiny -- one scalar multiplication plus hashing, roughly 10,000 multiplication gates -- compared to millions for a full SNARK verifier. This is the breakthrough: fold cheaply at every step, prove expensively only once at the end. The per-step overhead of IVC dropped by orders of magnitude.
 
@@ -88,11 +90,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) The "Snowball Does Not Fall Apart" subsection correctly explains that folding alone does not provide soundness, but does not mention that the accumulated error vector E can grow unboundedly in the basic Nova construction — relevant for readers who go on to read about SuperNova/HyperNova improvements
 
 ## Links
 

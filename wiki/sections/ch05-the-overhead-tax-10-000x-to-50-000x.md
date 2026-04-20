@@ -4,9 +4,9 @@ slug: ch05-the-overhead-tax-10-000x-to-50-000x
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2099, 2216]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2122, 2241]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 3325
 ---
 
@@ -126,6 +126,8 @@ For architects comparing systems, the following table normalizes the overhead by
 
 (The earlier draft of this chapter gave Airbender as "~8,000x" overhead; that number was measured against a single-transaction baseline, not the 100 ms block baseline used here. Both interpretations are defensible; we use the block baseline throughout this table so the rows are comparable.)
 
+A note on proving hardware costs: GPU cluster economics matter for deployment decisions. As of 2025, proving an Ethereum block with SP1 Hypercube on 16 A100 GPUs (at roughly $3/GPU/hr on spot instances) costs approximately $0.30 to $0.50 per block, or around $2 to $3 per second of GPU time for the ~7-second proof. Single-GPU designs like Airbender reduce the hardware requirement but extend proof time proportionally; the dollar cost per proof is broadly similar. Application-specific circuits (e.g., a Groth16 proof for a fixed-size Midnight transaction) can be cheaper -- roughly $0.01 to $0.05 per proof when batching -- because the fixed per-proof cost amortizes across smaller, predictable circuits. These figures are illustrative; spot prices and system efficiency vary significantly and will fall as hardware supply grows.
+
 ---
 
 
@@ -189,11 +191,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The section does not discuss proving hardware costs (dollar cost per proof), which is directly relevant to the economic viability argument. A one-paragraph note on approximate USD cost per Ethereum block proof on GPU clusters would ground the overhead discussion in practical deployment terms.
 
 ## Links
 

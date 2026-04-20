@@ -5,8 +5,8 @@ chapter: 1
 chapter_title: "The Promise of Provable and Programmable Secrets"
 heading_level: 2
 source_lines: [204, 240]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1224
 ---
 
@@ -30,7 +30,7 @@ What does such a proof actually look like? Not a page of equations. Not an argum
 
 Three curve points that took a GPU cluster seconds to compute, that a smart contract on Ethereum can verify for roughly 250,000 gas (a few dollars' worth of on-chain computation), and that reveal absolutely nothing about the secret they certify.
 
-A STARK proof is larger -- typically 50 to 200 kilobytes -- but still small compared to the computation it certifies. And unlike Groth16, a STARK requires no trusted setup ceremony: its security rests on hash functions alone. The choice between these two families -- compact proofs with a ceremony, or larger proofs without one -- is the first real decision any system designer faces, and Chapter 2 is where we make it.
+A STARK proof is larger -- typically 50 to 200 kilobytes -- but still small compared to the computation it certifies; proof size scales with the logarithm of computation depth. And unlike Groth16, a STARK requires no trusted setup ceremony: its security rests on hash functions alone. FRI-based systems (exemplified by STARKs) offer the canonical transparent approach, trading off proof size for freedom from ceremony. The choice between compact proofs with a ceremony, or larger proofs without one -- SNARKs or STARKs -- is the first real decision any system designer faces, and Chapter 2 is where we make it.
 
 The bar scenario understates the stakes. The real power emerges when you chain zero-knowledge proofs together.
 
@@ -87,11 +87,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The STARK size range "50 to 200 kilobytes" is mentioned but no explanation is given for what drives the variance; a single sentence noting that proof size scales with log of computation depth would add useful texture without bloating the section.
 
 ## Links
 

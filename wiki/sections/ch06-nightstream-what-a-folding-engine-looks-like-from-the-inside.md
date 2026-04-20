@@ -4,9 +4,9 @@ slug: ch06-nightstream-what-a-folding-engine-looks-like-from-the-inside
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2629, 2715]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2663, 2749]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1973
 ---
 
@@ -73,7 +73,7 @@ Nightstream includes a formal subproject in Lean 4 that closes theorem surfaces 
 
 This is unusual for a research prototype. Most implementations at this stage rely entirely on paper proofs and test suites. Nightstream's formal model provides a higher standard of assurance for the mathematical core: the Lean proofs verify that the mathematical reductions are sound -- that if the folded claim passes the verifier's checks, then the original CCS instance was satisfiable -- and they prove the if-then chain from folded proof back to original computation.
 
-What Lean does *not* prove is that the Rust code in `neo-fold` correctly instantiates those reductions. The proofs live in one world; the code lives in another. An off-by-one index in a matrix multiplication, a transposed loop bound in the commitment computation, a misread parameter from `neo-params` -- any of these could cause the Rust implementation to inhabit a slightly different mathematical world than the one the theorems describe. The residual risk is implementation fidelity, not mathematical unsoundness. SP1's approach -- formal verification of opcode constraints against the RISC-V Sail specification -- attacks the same gap from the opposite direction: proving the code matches the spec rather than proving the spec is sound. Neither project has closed the full loop from spec to code to hardware. That loop is the frontier.
+What Lean does *not* prove is that the Rust code in `neo-fold` correctly instantiates those reductions. The proofs live in one world; the code lives in another. An off-by-one index in a matrix multiplication, a transposed loop bound in the commitment computation, a misread parameter from `neo-params` -- any of these could cause the Rust implementation to inhabit a slightly different mathematical world than the one the theorems describe. The residual risk is implementation fidelity, not mathematical unsoundness. SP1's approach -- formal verification of all 62 RISC-V opcode constraints against the RISC-V Sail specification -- attacks the same gap from the opposite direction: proving the code matches the spec rather than proving the spec is sound. Neither project has closed the full loop from spec to code to hardware. That loop is the frontier.
 
 ### Unfinished Scaffolding
 
@@ -89,7 +89,7 @@ The main lesson from Nightstream is not about any single cryptographic primitive
 
 The hardest engineering in a modern folding system is not inventing a new commitment scheme or designing a new reduction. It is making the witness layout match the fold expectations. Making the reductions agree with the commitment semantics. Making the transcript bind every public input before challenges are sampled. Making the bus columns line up between the builder that writes them and the constraints that read them.
 
-After 2023, the interesting work in proof systems moved from individual algorithmic breakthroughs to pipeline coordination. Nova was a breakthrough. HyperNova was a breakthrough. But getting fifteen crates to agree on column ordering, norm bounds, transcript sequencing, and obligation semantics -- that is not a breakthrough. It is the slow, patient, unglamorous work of making a real system function. And it is where most of the time goes.
+After 2023, the interesting work in proof systems moved from individual algorithmic breakthroughs to pipeline coordination. Nova was a breakthrough. HyperNova was a breakthrough. But getting fifteen crates to agree on column ordering, norm bounds, transcript sequencing, and obligation semantics -- that is the work of making a real system function. And it is where most of the time goes.
 
 That lesson does not appear in any genealogy. It can only come from a codebase.
 
@@ -145,11 +145,11 @@ None in this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) "Not glamorous, but essential" and "slow, patient, unglamorous work" — light AI-style rhetorical framing; could be tightened
 
 ## Links
 

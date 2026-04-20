@@ -4,9 +4,9 @@ slug: ch13-zk-rollups-the-proving-grounds-production
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [4985, 5010]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [5015, 5040]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 745
 ---
 
@@ -16,7 +16,7 @@ Zero-knowledge rollups are where the thesis of this chapter becomes immediately 
 
 But look at the governance. Every major rollup in production today operates at Stage 0 or Stage 1 -- meaning a security council, a multisig, or a governance committee can override the proof system. The audience can check the math, but a committee can still replace the audience. Trust has been minimized at the cryptographic layer and preserved, nearly intact, at the institutional layer. This is not a criticism. It is a fact about where we are, and it should be stated plainly.
 
-The market has consolidated rapidly, and one of its most expensive lessons has already been paid. Polygon zkEVM, once the flagship example of EVM-compatible ZK rollups (Philosophy A in the original taxonomy), was shut down in 2025/2026 after approximately $250 million in investment. The core team, led by co-founder Jordi Baylina, spun off to found ZisK. A quarter-billion dollars bought a lesson: in a field moving this fast, the first-mover advantage is often a first-mover trap.
+The market has consolidated rapidly, and one of its most expensive lessons has already been paid. Polygon zkEVM, once the flagship example of EVM-compatible ZK rollups ([Philosophy A in the original taxonomy](ch03.md#philosophy-a-ledger-style-proofs)), was shut down in 2025/2026 after approximately $250 million in investment. The core team, led by co-founder Jordi Baylina, spun off to found ZisK. A quarter-billion dollars bought a lesson: in a field moving this fast, the first-mover advantage is often a first-mover trap.
 
 The current production leaders tell a more encouraging story -- but the trust question follows them onto every stage:
 
@@ -26,7 +26,7 @@ The current production leaders tell a more encouraging story -- but the trust qu
 
 **Starknet** -- powered by Stwo, the Circle STARK prover that went live on mainnet in November 2025. Starknet stands apart: it uses the Cairo ISA rather than EVM compatibility, and its STARK proofs are verified natively on L1 without Groth16 wrapping (accepting larger proof sizes in exchange for transparency). The only major rollup that performs the entire trick on a glass stage -- no trusted setup, no opaque wrapping. The trust tradeoff is different here: you trust the transparency of the mathematics, and you pay for it in proof size.
 
-**ZKsync Era** -- Matter Labs' zkEVM, powered by the Airbender prover. ZKsync reported 21.8 million cycles per second on a single H100 GPU via the Atlas upgrade. The 2026 roadmap targets formal verification and adoption as a "universal standard" for ZK proving.
+**ZKsync Era** -- Matter Labs' zkEVM, powered by the Airbender prover. ZKsync reported 21.8 million cycles per second on a single H100 GPU following the integration of the Airbender prover (announced in Matter Labs' November 2025 engineering update). The 2026 roadmap targets formal verification and adoption as a "universal standard" for ZK proving.
 
 Midnight, analyzed in Chapter 12, occupies a distinct position in this landscape -- not a rollup optimizing Ethereum throughput, but a privacy-first sidechain where ZK proofs are the execution model. Its Stage 0-1 maturity and ~18-second proof times place it alongside early-stage rollups in production readiness, but its privacy-by-architecture design addresses a different market: applications where transaction confidentiality is the primary requirement, not throughput.
 
@@ -84,12 +84,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (D) "Philosophy A in the original taxonomy" references a ch03 classification not defined here and not wikilinked; a dependency link to the relevant ch03 section is missing.
-- [P3] (A) "Atlas upgrade" for ZKsync Era's Airbender deployment is a specific named event with no citation or wikilink; if the name is wrong or contested it will be unverifiable.
 
 ## Links
 

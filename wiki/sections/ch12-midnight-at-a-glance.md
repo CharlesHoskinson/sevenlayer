@@ -4,9 +4,9 @@ slug: ch12-midnight-at-a-glance
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4780, 4794]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4811, 4825]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 178
 ---
 
@@ -21,7 +21,7 @@ Compact source --> compactc compiler --> ZKIR circuits + TypeScript bindings + p
                                         (localhost:6300)      (browser/node)   (blockchain node)
 ```
 
-The compiler produces three artifacts from a single `.compact` file: ZKIR circuit descriptions in JSON, TypeScript API bindings for the DApp frontend, and cryptographic proving/verifier key pairs. This three-part output reflects the fundamental architecture of privacy-preserving computation: what can be proven (ZKIR), what runs privately (TypeScript witnesses), and what makes proofs possible (keys). The proof server address (`localhost:6300`) is fixed in the MidnightJS SDK Reference (§3.1); the per-UTXO shielded/unshielded distinction is documented in the Wallet SDK Reference (§2.4).
+The compiler produces three artifacts from a single `.compact` file: ZKIR circuit descriptions in JSON, TypeScript API bindings for the DApp frontend, and cryptographic proving/verifier key pairs. The proof server address (`localhost:6300`) is fixed in the MidnightJS SDK Reference (§3.1); the per-UTXO shielded/unshielded distinction is documented in the Wallet SDK Reference (§2.4).
 
 Midnight's token model has three layers. **NIGHT** is the governance and staking token, always unshielded (transparent). **DUST** is the fee token, a public (unshielded) token per the wallet SDK, generated from staking NIGHT over time, with a balance computed from generation parameters. **Custom tokens** can be either shielded (encrypted, spent via ZK proofs and nullifiers) or unshielded (transparent, spent via BIP-340 Schnorr signatures), at the developer's choice per UTXO.
 
@@ -61,11 +61,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) The pipeline ASCII diagram labels are clean, but the prose phrase "This three-part output reflects the fundamental architecture" edges toward boilerplate framing — tighten.
 
 ## Links
 

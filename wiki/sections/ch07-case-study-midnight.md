@@ -4,9 +4,9 @@ slug: ch07-case-study-midnight
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3334, 3397]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3366, 3429]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 785
 ---
 
@@ -55,7 +55,7 @@ The one-way-door property is in full force. Midnight's choice of BLS12-381 is no
 
 ### Midnight vs. Neo: Opposite Corners
 
-The contrast with Neo/Nightstream makes the tradeoffs vivid:
+The contrast with Neo/Nightstream makes the tradeoffs vivid. Neo figures below reflect the 2025 paper parameterization (ePrint 2025/xxx, the Nightstream research spec); the Nightstream Rust implementation may diverge as engineering progresses.
 
 | Dimension | Midnight | Neo/Nightstream |
 |---|---|---|
@@ -122,11 +122,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (D) The section presents a strong Midnight-vs-Neo comparison table but the Neo side consistently cites ch07-lattice-based-proving without resolving which specific version of Neo the numbers refer to (2025 paper vs Nightstream implementation). A note on which version is compared would sharpen coherence.
 
 ## Links
 

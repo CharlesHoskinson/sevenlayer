@@ -4,9 +4,9 @@ slug: ch14-the-three-frontiers
 chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
-source_lines: [5334, 5377]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [5364, 5407]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 729
 ---
 
@@ -28,13 +28,13 @@ The performance frontier asked: can we prove computation fast enough and cheaply
 
 The security frontier asks: can we prove that our proofs are actually sound, with quantifiable security guarantees? The EF's 2026 targets (100-bit by May, 128-bit by December) define this frontier precisely. It includes formal verification of zkVM implementations, provable soundness without conjectured assumptions (proximity gaps), post-quantum readiness, and protection against Fiat-Shamir vulnerabilities.
 
-This frontier is harder than performance because security is a property you prove, not a metric you optimize. You cannot benchmark soundness the way you benchmark throughput. The tools (Picus, ZKAP, ARGUZZ, soundcalc) are emerging but immature. The field's first formal verification efforts (SP1's RISC-V Sail specification verification, Jolt's ACL2 lookup semantics verification) are promising but cover only fragments of the full stack. Proving that the trick works is easy. Proving that it *cannot* be faked is the real challenge.
+This frontier is harder than performance because security is a property you prove, not a metric you optimize. You cannot benchmark soundness the way you benchmark throughput. The tools (Picus, ZKAP, Arguzz, soundcalc) are emerging but immature. The field's first formal verification efforts (SP1's RISC-V Sail specification verification, Jolt's ACL2 lookup semantics verification) are promising but cover only fragments of the full stack. Proving that the trick works is easy. Proving that it *cannot* be faked is the real challenge.
 
 **Evidence this frontier is active:**
 - EF 2026 targets: 100-bit provable security by May, 128-bit by December
 - SP1: formal verification of 62 RISC-V opcodes against Sail specification (Succinct Labs, SP1 formal verification report, 2025)
 - Arguzz (Hochrainer, Wustholz, Christakis, 2025): found 11 bugs across 6 major zkVMs
-- soundcalc: automated soundness margin calculator for proof system parameters
+- soundcalc (Thaler et al., 2025): automated soundness margin calculator for proof system parameters
 - Picus, ZKAP: emerging static analysis tools for constraint under-specification
 
 ### Frontier 3: Privacy (2027+) -- Approaching
@@ -103,12 +103,11 @@ The ZK field moves through three sequential frontiers: Performance (2023-2025, l
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (B) "soundcalc: automated soundness margin calculator" is presented as evidence with no citation anywhere in the section or sources block.
-- [P3] (C) The paper is cited as "Arguzz" in Sources cited and bibliography but as "ARGUZZ" in ch14-the-seven-questions. Standardise capitalisation across both files.
 
 ## Links
 

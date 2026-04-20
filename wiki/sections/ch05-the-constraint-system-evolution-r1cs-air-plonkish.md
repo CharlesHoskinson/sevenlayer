@@ -4,9 +4,9 @@ slug: ch05-the-constraint-system-evolution-r1cs-air-plonkish
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [1663, 1852]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1687, 1876]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 5095
 ---
 
@@ -18,7 +18,7 @@ The genealogy also reveals how rapidly the field moves. R1CS was introduced in 2
 
 ### R1CS: The Assembly Language (2012)
 
-The first practical arithmetization emerged from the work of Gennaro, Gentry, Parno, and Raykova (GGPR) in 2012, who introduced the QAP (Quadratic Arithmetic Program) framework. R1CS -- Rank-1 Constraint System -- is a closely related reformulation that became standard with Parno, Howell, Gentry, and Raykova's Pinocchio system (2013); the two are often treated interchangeably, with R1CS being the matrix-based description of the same bilinear structure. The name "Rank-1 Constraint System" describes the mathematical structure precisely: each constraint has rank 1 (it is the product of two linear functions), and the system is a collection of such constraints. The "rank-1" designation means each constraint captures exactly one multiplication -- a bilinear relationship between variables. Addition is free (it does not require a constraint, because linear combinations can be folded into the matrix entries). Only multiplication generates constraints. This is why the number of R1CS constraints for a circuit equals the number of multiplication gates, not the total number of gates.
+The first practical arithmetization emerged from the work of Gennaro, Gentry, Parno, and Raykova (GGPR) in 2012, who introduced the QAP (Quadratic Arithmetic Program) framework [R-L4-1]. R1CS -- Rank-1 Constraint System -- is a closely related reformulation that became standard with Parno, Howell, Gentry, and Raykova's Pinocchio system (2013); the two are often treated interchangeably, with R1CS being the matrix-based description of the same bilinear structure. The name "Rank-1 Constraint System" describes the mathematical structure precisely: each constraint has rank 1 (it is the product of two linear functions), and the system is a collection of such constraints. The "rank-1" designation means each constraint captures exactly one multiplication -- a bilinear relationship between variables. Addition is free (it does not require a constraint, because linear combinations can be folded into the matrix entries). Only multiplication generates constraints. This is why the number of R1CS constraints for a circuit equals the number of multiplication gates, not the total number of gates.
 
 Before the mathematical notation, ground it in the spreadsheet from the previous section. Imagine your spreadsheet has three special columns -- call them A, B, and C. For each row, column A and column B each contain a combination of the variables, and column C contains the result. The rule for every row is: (what is in column A) multiplied by (what is in column B) must equal (what is in column C). That is all R1CS is: a spreadsheet where every row enforces one multiplication rule. The mathematical notation below says exactly this, just more precisely.
 
@@ -42,7 +42,7 @@ Yet R1CS persists. Groth16 proofs (which require R1CS) remain the gold standard 
 
 ### AIR: The State Machine (2018)
 
-The Algebraic Intermediate Representation arrived alongside STARKs, introduced by Ben-Sasson, Bentov, Horesh, and Riabzev in 2018. The name is precise: "Algebraic" because the constraints are polynomial equations over fields (not boolean circuits or SAT formulas). "Intermediate" because AIR sits between the high-level computation and the low-level proof system -- it is the "compiled" form of the computation, analogous to LLVM IR in a compiler toolchain. "Representation" because it is a way of representing the computation, not the computation itself. AIR solves the structure problem by embracing the spreadsheet metaphor directly.
+The Algebraic Intermediate Representation arrived alongside STARKs, introduced by Ben-Sasson, Bentov, Horesh, and Riabzev in 2018 [R-L4-2]. The name is precise: "Algebraic" because the constraints are polynomial equations over fields (not boolean circuits or SAT formulas). "Intermediate" because AIR sits between the high-level computation and the low-level proof system -- it is the "compiled" form of the computation, analogous to LLVM IR in a compiler toolchain. "Representation" because it is a way of representing the computation, not the computation itself. AIR solves the structure problem by embracing the spreadsheet metaphor directly.
 
 An AIR consists of two things: an execution trace (a 2D matrix where rows are time steps and columns are algebraic registers) and transition constraints (polynomial equations that must hold between consecutive rows). The constraints are *uniform* -- the same polynomial equations apply at every row.
 
@@ -104,7 +104,7 @@ The limitation is equally visible. Suppose you want some rows to add and other r
 
 ### PLONKish: The Custom Workshop (2019)
 
-PLONK, introduced by Gabizon, Williamson, and Ciobotaru in 2019, took a different approach. Instead of uniform constraints, PLONKish arithmetization uses *selector columns* to enable non-uniform gates.
+PLONK, introduced by Gabizon, Williamson, and Ciobotaru in 2019 [R-L4-3], took a different approach. Instead of uniform constraints, PLONKish arithmetization uses *selector columns* to enable non-uniform gates.
 
 The core move separates the constraint system into two components:
 
@@ -114,7 +114,7 @@ The core move separates the constraint system into two components:
 
 PLONKish sits between R1CS and AIR in expressiveness. Like AIR, it uses a structured trace with rows and columns. Unlike AIR, different rows can follow different rules. Like R1CS, it can handle arbitrary circuits. Unlike R1CS, it supports custom gates that capture complex operations in fewer constraints.
 
-PLONKish became the dominant arithmetization in deployed systems. Halo2 (used by Zcash and Scroll), Polygon zkEVM (before its shutdown), and numerous other production systems chose PLONKish because its flexibility handles the diverse instruction sets of real-world computations. The Halo2 library, originally developed by the Electric Coin Company for the Zcash Orchard protocol, became the de facto standard for PLONKish circuit development. Its "region-based" API lets developers define gates, assign cells, and specify copy constraints in a structured way that catches many common errors at compile time. Scroll's zkEVM -- one of the most ambitious ZK projects ever attempted -- encoded the entire Ethereum Virtual Machine instruction set as Halo2 PLONKish circuits, using custom gates for EVM opcodes, lookup arguments for bytecode verification, and copy constraints to wire the data path. The resulting circuit has millions of constraints per block and requires GPU clusters to prove, but it works -- which says something about PLONKish's flexibility.
+PLONKish became the dominant arithmetization in deployed systems. Halo2 (used by Zcash and Scroll), Polygon zkEVM (before its shutdown), and numerous other production systems chose PLONKish because its flexibility handles the diverse instruction sets of real-world computations. The Halo2 library, originally developed by the Electric Coin Company for the Zcash Orchard protocol, became the de facto standard for PLONKish circuit development. Halo2 avoids a trusted setup by using an inner-product argument (IPA) as its polynomial commitment scheme rather than KZG; IPA is based on discrete logarithm hardness and requires no structured reference string, while KZG variants (also supported by Halo2) retain the KZG trusted setup but offer smaller proofs. Its "region-based" API lets developers define gates, assign cells, and specify copy constraints in a structured way that catches many common errors at compile time. Scroll's zkEVM -- one of the most ambitious ZK projects ever attempted -- encoded the entire Ethereum Virtual Machine instruction set as Halo2 PLONKish circuits, using custom gates for EVM opcodes, lookup arguments for bytecode verification, and copy constraints to wire the data path. The resulting circuit has millions of constraints per block and requires GPU clusters to prove, but it works -- which says something about PLONKish's flexibility.
 
 #### A Tiny PLONKish Circuit: Compute 3 + 4, Then Multiply, Then Add Again
 
@@ -247,11 +247,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The PLONKish section does not discuss the Halo2 commitment scheme (IPA/KZG variants) or why Halo2 avoids a trusted setup, which is a key differentiator over vanilla PLONK. A brief note would improve depth given that Halo2 is cited as the production standard.
 
 ## Links
 

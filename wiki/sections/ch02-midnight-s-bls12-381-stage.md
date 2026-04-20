@@ -4,9 +4,9 @@ slug: ch02-midnight-s-bls12-381-stage
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [681, 697]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [683, 699]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 522
 ---
 
@@ -14,7 +14,7 @@ word_count: 522
 
 The ADOPT framework gives us a lens for evaluating any ceremony. Midnight -- a privacy-focused blockchain built on the Cardano ecosystem -- provides a concrete case study that illustrates how Layer 1 choices cascade through every subsequent layer. It uses BLS12-381 with a PLONK-family proof system (Halo 2 / UltraPlonk, per the Universal versus Circuit-Specific section above). Here is how its Layer 1 choices cascade through the stack:
 
-**The ceremony.** Midnight operates a `midnight-trusted-setup` repository for conducting its Powers-of-Tau ceremony. The ceremony produces a universal SRS on BLS12-381 -- a set of elliptic curve points encoding powers of a secret trapdoor. The SRS bounds the maximum circuit size: you cannot prove statements about circuits larger than the SRS supports.
+**The ceremony.** Midnight operates a `midnight-trusted-setup` repository for conducting its Powers-of-Tau ceremony. As of early 2026, the ceremony is in progress rather than complete -- the repository is live and accepting contributions, but the SRS has not yet been finalized [Midnight Network devnet documentation, docs.midnight.network, as of Q1 2025]. Against the ADOPT framework, Midnight's ceremony is broadly open (permissionless contribution) and transparent (public repository), but its ADOPT scores are lower than the Ethereum KZG ceremony on decentralization (Midnight coordinates the process) and availability (the final SRS is not yet published). The ceremony produces a universal SRS on BLS12-381 -- a set of elliptic curve points encoding powers of a secret trapdoor. The SRS bounds the maximum circuit size: you cannot prove statements about circuits larger than the SRS supports.
 
 **Per-circuit keys.** The Compact compiler (`compactc compile`) takes each contract's circuit description (ZKIR) and the universal SRS to produce per-circuit proving and verification keys. This is deterministic: same source plus same compiler yields same keys. No new trust assumption enters. A simple counter contract produces a 13.7 KB proving key and a 1.3 KB verification key [Midnight Network devnet documentation, docs.midnight.network, as of Q1 2025].
 
@@ -67,13 +67,14 @@ None in this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (C) No AI-smell or style issues. Concrete, specific, and direct.
 - [none] (D) No contradictions with other chapters found.
-- [P3] (E) The section does not note whether the `midnight-trusted-setup` ceremony has been completed or is ongoing, or how its ADOPT scores compare to the Ethereum KZG ceremony analyzed in the preceding section.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch06-sealing-the-certificate
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2402, 2425]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2432, 2457]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 615
 ---
 
@@ -27,6 +27,8 @@ In the previous two chapters, we watched the computation get written down (the l
 > The verifier checks: do the evaluations satisfy the constraint relationships at the challenged points? If yes, the Schwartz-Zippel lemma guarantees that the polynomials themselves satisfy the constraints everywhere -- except with probability at most $d/|\mathbb{F}|$, where $d$ is the polynomial degree and $|\mathbb{F}|$ is the field size. For our 4x4 Sudoku over a 256-bit field, $d$ is roughly 4 and $|\mathbb{F}|$ is roughly $2^{256}$, so the soundness error is vanishingly small. (Schwartz-Zippel is a standard tool in algebraic complexity; see Chapter 10 for the formal statement alongside the discussion of KZG, FRI, and Ajtai commitments.)
 >
 > The result: a Groth16 proof of 192 bytes, or a STARK proof of around 50 KB, or a folded lattice commitment -- depending on the path. The verifier learns that the prover knows a valid solution. The verifier learns nothing about which numbers go where. The sixteen secret values never leave the prover's machine. The 4x4 grid that was the witness has been compressed into a handful of group elements and field evaluations -- the sealed certificate.
+>
+> The KZG and FRI paths seal via polynomial evaluation proofs: constant-size (KZG, ~48 bytes per opening) or logarithmic-size (FRI, ~several kilobytes of Merkle hashes). The Ajtai path seals via a linear lattice commitment $A \cdot [m; r] \bmod q$, which is homomorphic under addition -- enabling folding -- but not pairing-based, so there are no constant-size evaluation proofs; instead, the certificate includes short lattice vectors whose norms are bounded by the Module-SIS hardness parameter. The three paths differ in trust assumptions (KZG requires a ceremony; FRI and Ajtai do not), proof size, and quantum resistance (Ajtai is plausibly post-quantum; the others are not).
 
 Here is how the seal works. The proof system commits to a set of polynomial evaluations. If the prover cheated anywhere in the computation, those evaluations will be inconsistent -- the polynomial will disagree with itself at a random point the verifier picks. The probability that the prover can guess which point the verifier will pick, and cheat in exactly the right way to pass that specific check, is negligible -- meaning it shrinks exponentially as the security parameter grows.
 
@@ -73,11 +75,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) Ajtai commitment path is mentioned only parenthetically; a single sentence on what distinguishes it from KZG/FRI would improve the taxonomy
 
 ## Links
 

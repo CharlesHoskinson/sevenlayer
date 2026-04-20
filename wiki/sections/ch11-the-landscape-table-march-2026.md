@@ -4,9 +4,9 @@ slug: ch11-the-landscape-table-march-2026
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4560, 4594]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4591, 4625]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 626
 ---
 
@@ -31,7 +31,7 @@ The numbers tell the story concisely. Eight of ten major zkVMs now target RISC-V
 
 ZisK's ownership deserves a footnote: the project spun out of Polygon's Hermez team after the zkEVM shutdown (Chapter 3); the table names the sponsoring organization, while the project brand is ZisK.
 
-Three systems dropped from the table deserve brief mention. Nexus 3.0 abandoned Nova-based folding for a Stwo backend after a roughly 1000x speed penalty from classical folding -- a telling result for the practical viability of folding in production zkVMs. Valida uses a custom stack-based ISA designed from scratch for ZK proving, with no independent large-scale benchmarks. zkWASM is the only remaining PLONKish/KZG outlier, targeting WebAssembly rather than RISC-V.
+Three systems dropped from the table deserve brief mention. Nexus 3.0 abandoned Nova-based folding for a Stwo backend; classical folding showed practical limitations relative to small-field STARK approaches [60]. Valida uses a custom stack-based ISA designed from scratch for ZK proving, with no independent large-scale benchmarks. zkWASM is the only remaining PLONKish/KZG outlier, targeting WebAssembly rather than RISC-V.
 
 For architects choosing a zkVM, the landscape table describes *what exists*. The rubric below describes *how to choose*:
 
@@ -104,11 +104,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (B) "Nexus 3.0 abandoned Nova-based folding... 1000x speed penalty" — no citation; this is a strong empirical claim about a competitor's technical decision.
 
 ## Links
 

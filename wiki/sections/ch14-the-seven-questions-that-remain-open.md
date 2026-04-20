@@ -4,9 +4,9 @@ slug: ch14-the-seven-questions-that-remain-open
 chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
-source_lines: [5163, 5333]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [5193, 5363]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 6042
 ---
 
@@ -93,7 +93,7 @@ The trust decomposition in Chapter 10 identified seven independent assumptions u
 Today, every deployed system requires trusting all seven simultaneously. The trajectory points toward progressive reduction:
 
 - Under-constrained circuits (Layer 2): formal verification tools (Picus, ZKAP, Coda) are reducing but not eliminating the vulnerability class catalogued in Chapter 3; the tools catch many but not all.
-- Fiat-Shamir bugs (Layer 5): standardization of transcript protocols and automated fuzzing (ARGUZZ found 11 bugs across 6 zkVMs) are addressing the implementation gap.
+- Fiat-Shamir bugs (Layer 5): standardization of transcript protocols and automated fuzzing (Arguzz found 11 bugs across 6 zkVMs) are addressing the implementation gap.
 - Governance override (Layer 7): Stage 2 maturation will eventually remove governance as an attack surface.
 - Quantum vulnerability (Layer 6): lattice-based and hash-based primitives provide migration paths.
 
@@ -256,12 +256,11 @@ Seven concrete research blockers define the field's near-term ceiling: GPU witne
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (B) Wee-Wu citation lists venue as "ASIACRYPT 2023" with ePrint 2024/028 — the ePrint number postdates the conference year by a year. The ePrint number should be verified (likely 2023/xxx for a 2023 proceedings paper).
-- [P3] (C) "ARGUZZ" in Q4 body text is inconsistent with "Arguzz" in the Sources cited block and the title in the bibliography. Use consistent capitalisation throughout.
 
 ## Links
 

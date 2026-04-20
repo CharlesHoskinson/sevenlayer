@@ -4,9 +4,9 @@ slug: ch04-side-channel-attacks-when-the-walls-leak
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1373, 1454]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1397, 1476]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 2220
 ---
 
@@ -84,9 +84,7 @@ For defensive implementation, the standard is clear:
 
 These requirements conflict with performance optimization at almost every turn. Making a prover constant-time means foregoing shortcuts that can halve computation time. The tension between proving speed and implementation privacy is real and ongoing.
 
-The interaction between side channels and GPU proving adds another dimension. GPU architectures use SIMT (Single Instruction, Multiple Threads) execution, where groups of 32 threads (warps on NVIDIA hardware) execute the same instruction simultaneously. Constant-time code requires all threads in a warp to follow the same execution path. When some threads need a conditional reduction and others do not, the warp must execute both paths, with inactive threads masking their results. This "thread divergence" reduces GPU utilization -- the very parallelism that makes GPUs fast for proving works against the constant-time requirement.
-
-The open question is whether witness generation can be made fully constant-time on GPUs without unacceptable performance loss. The answer is not yet clear. What is clear is that any system claiming both GPU-accelerated proving and zero-knowledge must address this tension explicitly. Most do not.
+The interaction between side channels and GPU proving adds another dimension. GPU architectures use SIMT (Single Instruction, Multiple Threads) execution, where groups of 32 threads (warps on NVIDIA hardware) execute the same instruction simultaneously. Constant-time code requires all threads in a warp to follow the same execution path. When some threads need a conditional reduction and others do not, the warp must execute both paths, with inactive threads masking their results. This "thread divergence" reduces GPU utilization -- the very parallelism that makes GPUs fast for proving works against the constant-time requirement. No published work has measured the performance cost of constant-time proving on GPU hardware end-to-end; quantifying this tradeoff is an open problem. What is clear is that any system claiming both GPU-accelerated proving and zero-knowledge must address this tension explicitly. Most do not.
 
 For the reader who wants a single mental model: the backstage walls are made of different materials at different heights. The cryptographic walls (the proof itself) are mathematically perfect -- no information passes through. The implementation walls (the proving process) are made of timing signals, cache patterns, and memory access traces. They leak. Not catastrophically, not in every deployment, but measurably and exploitably in the wrong environment. The system architect's job is not to eliminate all leakage -- that may be impossible -- but to understand where the walls are thin and what information an attacker on the other side could extract.
 
@@ -142,11 +140,11 @@ Zero-knowledge is a property of the proof, not the prover: the process of genera
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The GPU SIMT thread-divergence paragraph is the only place in ch04 that connects side-channel defenses to GPU architecture. It raises an important open problem but does not cite any work that has measured the performance cost of constant-time GPU proving. Noting this gap explicitly would strengthen the open-questions section.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch03-the-four-philosophies
 chapter: 3
 chapter_title: "Choreographing the Act"
 heading_level: 2
-source_lines: [808, 1024]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [814, 1030]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 3720
 ---
 
@@ -54,7 +54,7 @@ Noir's 1.0 release landed in late 2025 as the language's first stable version. I
 
 Noir breaks the three-philosophy taxonomy because it is neither ISA-based nor chain-specific: it is a universal circuit language. Its privacy model is annotation-based -- all inputs are private unless explicitly declared `pub` -- but it lacks the compile-time disclosure analysis that Compact provides. The developer bears responsibility for correctly managing the public/private boundary. In exchange, Noir programs can target any proving backend that accepts ACIR, making them portable across proof systems in a way that no other ZK language achieves.
 
-*Leo* (Aleo) is a privacy-first language for the Aleo blockchain, with syntax borrowing from Rust and TypeScript. Leo targets Aleo's record-based (UTXO-like -- a UTXO, or Unspent Transaction Output, is a model where each digital coin is a discrete object created by one transaction and consumed by another, like physical bills in a wallet) privacy model and includes hooks for formal verification. With over 400,000 CLI downloads, Leo represents the privacy-specialized variant of the application DSL approach.
+*Leo* (Aleo) is a privacy-first language for the Aleo blockchain. Leo targets Aleo's record-based privacy model (a UTXO, or Unspent Transaction Output, where each digital coin is a discrete object created by one transaction and consumed by another). The language includes hooks for formal verification -- Leo programs can be annotated with logical conditions that the Aleo verification toolkit can check. This makes Leo distinct: privacy is structural, correctness is verifiable. With over 400,000 CLI downloads, Leo represents the privacy-specialized variant of the application DSL approach, integrating formal methods into its lifecycle.
 
 To understand why these three languages matter -- why they are not merely syntactic alternatives to writing Rust and compiling to RISC-V -- you need to see what development actually looks like in each one. The differences are not cosmetic. They are structural. Each language imposes a different mental model on the developer, and that mental model determines what classes of bug are possible, what classes of privacy leak are preventable, and what the compiler can guarantee before a single proof is generated.
 
@@ -203,7 +203,7 @@ What unites Philosophies A, B, and C is a shared assumption: the developer does 
 
 What unites the three Philosophy D languages is the opposite conviction: privacy cannot be an afterthought. The language itself knows the difference between public and private. Each takes a different route to that guarantee. Compact runs a disclosure-analysis pass and rejects programs where private values might reach a public surface without explicit consent. Noir puts the privacy boundary in the function signature and enforces what the developer declared -- but does not try to detect what they forgot. Leo encodes privacy structurally, in an encrypted record model where everything is private by default and publicity is the exception.
 
-Philosophy D breaks the shared assumption of A, B, and C. Privacy is not a layer above the language -- it is embedded in the language itself.
+Philosophy D breaks the shared assumption of A, B, and C. Privacy is not a layer above the language -- it is embedded in the language itself. But the strengths differ: Compact prevents accidental leaks through compile-time verification. Noir achieves backend portability at the cost of placing privacy boundaries in the developer's hands. Leo provides a structural model that makes privacy erasure difficult, but only within Aleo's ecosystem.
 
 The following table summarizes the four philosophies:
 
@@ -212,7 +212,7 @@ The following table summarizes the four philosophies:
 | **A: EVM-Compatible** | Scroll, Linea | EVM execution | None (transparent) | Familiar (Solidity) | Proving the EVM is expensive |
 | **B: ZK-Native ISA** | Cairo (Starknet) | Custom CPU trace | None (transparent) | New language required | Locked to one ecosystem |
 | **C: General-Purpose ISA** | SP1, RISC Zero, Airbender | RISC-V execution | None (transparent) | Familiar (Rust, C++) | Arithmetization overhead |
-| **D: Application DSL** | Compact / Noir / Leo | State transitions or circuits | Compact: compiler-enforced (disclosure analysis); Noir: annotation-based (developer responsibility); Leo: structural (record model) | Domain-specific syntax | Locked to one chain (Compact/Leo) or one IR (Noir) |
+| **D: Application DSL** | Compact / Noir / Leo | State transitions or circuits | Compact: compiler-enforced (disclosure analysis); Noir: annotation-based (developer responsibility); Leo: structural (record model, encryption-by-default) | Domain-specific syntax | Locked to one chain (Compact/Leo) or one IR (Noir) |
 
 The taxonomy is not a ranking. Each philosophy serves a different constituency. The following decision guide distills each philosophy's sweet spot:
 
@@ -280,11 +280,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) Leo is described briefly relative to Compact and Noir; its formal verification hooks and the Aleo snarkVM architecture are mentioned but not explained. The section's depth is uneven across the three DSLs.
 
 ## Links
 

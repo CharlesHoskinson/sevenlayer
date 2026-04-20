@@ -4,9 +4,9 @@ slug: ch13-market-sizing
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5119, 5160]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [5149, 5190]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 956
 ---
 
@@ -37,7 +37,7 @@ The Grand View Research figures cover the full ZK ecosystem: proof generation ha
 
 These estimates are the author's approximations -- no authoritative segment breakdown exists, and the percentages should be read as rough indicators rather than cited figures. The boundaries between segments are porous (a rollup's proving costs may be counted as either rollup infrastructure or proving-as-a-service depending on the source). The key observation is that rollup transaction fees dominate the current market, but the fastest-growing segments by percentage are proving-as-a-service and identity, both driven by expanding use cases beyond the original blockchain scaling thesis.
 
-The Grand View Research CAGR of 22.1% assumes continued blockchain adoption plus emerging non-blockchain applications (enterprise compliance, identity wallets, verifiable AI). The Chorus One projections for the proving sub-market assume steeper growth (approximately 55% CAGR from $97M to $1.34B over five years) driven by the transition from self-hosted proving to marketplace-based proving-as-a-service. Both projections assume no major cryptographic break (quantum or otherwise) and continued regulatory tailwinds from eIDAS 2.0 and MiCA.
+The Grand View Research CAGR of 22.1% assumes continued blockchain adoption plus emerging non-blockchain applications (enterprise compliance, identity wallets, verifiable AI). The Chorus One projections for the proving sub-market assume steeper growth (approximately 55% CAGR from $97M to $1.34B over five years) driven by the transition from self-hosted proving to marketplace-based proving-as-a-service. These projections assume no major cryptographic break (quantum or otherwise) and continued regulatory tailwinds from eIDAS 2.0 and MiCA. However, the 55% CAGR should be read with a material caveat: as proving costs continue their deflationary trajectory (Chapter 6), the revenue denominator in the proving-services segment may compress even as proving volume grows. If proving costs drop to near-commodity levels, the revenue upside from the market may not scale linearly with transaction volume growth. The projections assume pricing power in proving services that cost collapse may not preserve.
 
 The cost trajectory suggests that ZK proving is following a classic deflationary technology curve -- the same pattern that drove computing from mainframes to smartphones. As costs approach zero, the binding constraint shifts from "can we afford to prove this?" to "what else can we prove?" This shift is what drives the expansion from rollups (proving transaction execution) into coprocessors (proving data queries), ZKML (proving model inference), and identity (proving personal attributes).
 
@@ -90,11 +90,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) The CAGR projections assume no quantum break and continued regulatory tailwinds but do not discuss the sensitivity of the 55% proving-services CAGR to the rollup proving cost collapse already underway; as proving costs drop to near-zero, the revenue denominator for that segment may shrink even as volume grows.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch13-proving-as-a-service-the-prover-market-production
 chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
-source_lines: [5061, 5088]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [5091, 5118]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1170
 ---
 
@@ -16,7 +16,7 @@ Here the privacy tradeoff from Chapter 4 returns with full force, and it returns
 
 **Succinct** operates the leading prover network. By early 2026, the Succinct Network had generated over 6 million proofs on mainnet, secured over $4 billion in value, and launched the $PROVE token. The network's SP1 Hypercube zkVM powers multiple rollup deployments.
 
-**RISC Zero Boundless** launched its open proof marketplace in September 2025. Boundless processed 542.7 trillion cycles by December 2025 (per RISC Zero's public network metrics), then forced migration from its centralized prover service to the decentralized marketplace. This migration -- shutting down the centralized option to force adoption of the decentralized alternative -- is a notable governance decision. Trust in a centralized prover was replaced by trust in a marketplace mechanism. Whether that is an improvement depends on what you think markets are.
+**RISC Zero Boundless** launched its open proof marketplace in September 2025. Per RISC Zero's public network metrics, Boundless processed 542.7 trillion cycles by December 2025, then underwent forced migration from its centralized prover service to the decentralized marketplace. This migration -- shutting down the centralized option to force adoption of the decentralized alternative -- is a notable governance decision. Trust in a centralized prover was replaced by trust in a marketplace mechanism. Whether that is an improvement depends on what you think markets are.
 
 **ZkCloud** (formerly Gevulot) provides production-ready proving infrastructure with its Firestarter platform.
 
@@ -75,11 +75,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (A) "542.7 trillion cycles by December 2025" is unusually precise for an uncited claim; if this is from a RISC Zero announcement it should be cited directly.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch12-where-midnight-validates-the-model
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4887, 4902]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4918, 4933]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 165
 ---
 
@@ -14,7 +14,7 @@ word_count: 165
 
 The seven-layer decomposition maps cleanly to Midnight's architecture in five places:
 
-**1. Layer 1 maps to `midnight-trusted-setup`.** The ceremony produces the SRS; the compiler derives per-circuit keys. The capex/opex framing applies directly: one-time ceremony cost amortized across all contracts, with per-transaction proof costs of ~18 seconds and ~490 trillion SPECK.
+**1. Layer 1 maps to `midnight-trusted-setup`.** The ceremony produces the SRS; the compiler derives per-circuit keys. The capex/opex framing applies directly: one-time ceremony cost amortized across all contracts, with per-transaction proof costs of approximately 18 seconds and approximately 490 trillion SPECK per circuit call (Wallet SDK Reference §4.2).
 
 **2. Layer 2 maps to Compact.** The language choice determines what developers can express and what mistakes they cannot make. Disclosure analysis validates the argument that language design has security implications beyond expressiveness.
 
@@ -63,11 +63,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (B) "~18 s / ~490 trillion SPECK" is repeated without a source; should inherit the citation from the full-mapping section rather than float uncited here.
 
 ## Links
 

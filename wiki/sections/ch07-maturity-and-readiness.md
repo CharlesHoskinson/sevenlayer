@@ -4,9 +4,9 @@ slug: ch07-maturity-and-readiness
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3471, 3486]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3503, 3518]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 228
 ---
 
@@ -22,7 +22,7 @@ As of early 2026, the picture looks like this:
 
 **Standards in place:** NIST FIPS 203/204/205 (August 2024) standardize lattice-based key encapsulation and signatures. No standard yet exists for lattice-based zero-knowledge proof systems, but the parameter selection methodology (the lattice estimator) is well established.
 
-The adoption trajectory suggests lattice-based proof systems will move from research prototypes to production-ready systems in 2026-2027, with Neo/Nightstream among the first to target production deployment. The specific blockers are concrete: GPU-optimized lattice arithmetic (matrix-vector products and NTTs over cyclotomic rings are parallelizable but no one has written production-grade GPU kernels for them yet), head-to-head benchmarking against Groth16 and Stwo at the same circuit sizes (to quantify the real-world cost of post-quantum security), and audit tooling for lattice parameter selection (the lattice estimator gives security levels, but auditors need standardized methods to validate parameter choices the way they validate elliptic curve parameters today).
+The adoption trajectory suggests lattice-based proof systems will move from research prototypes to production-ready systems in 2026-2027, with Neo/Nightstream among the first to target production deployment. The specific blockers are concrete: GPU-optimized lattice arithmetic (matrix-vector products and NTTs over cyclotomic rings are parallelizable but no one has written production-grade GPU kernels for them yet), head-to-head benchmarking against Groth16 and Stwo at the same circuit sizes (to quantify the real-world cost of post-quantum security), audit tooling for lattice parameter selection (the lattice estimator gives security levels, but auditors need standardized methods to validate parameter choices the way they validate elliptic curve parameters today), and formal verification of the lattice folding reductions themselves -- the soundness proofs for LatticeFold, LatticeFold+, and Neo exist as paper proofs but have not been mechanized in a proof assistant, which matters for security-sensitive deployment where the gap between a paper argument and a verified reduction is a real risk surface.
 
 ---
 
@@ -79,11 +79,11 @@ As of early 2026: pairing-based and FRI/STARK systems are deployed and battle-te
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) The blockers list (GPU kernels, benchmarking, audit tooling) is useful but does not mention formal verification or soundness proofs of the lattice folding reductions as a deployment blocker — an important gap for security-sensitive applications.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch07-algebraic-vs-traditional-hash-functions
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3435, 3452]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3467, 3484]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 374
 ---
 
@@ -22,7 +22,7 @@ The performance difference is 100x or more. This is why every system that does s
 
 But algebraic hashes are newer and less studied than SHA-256 or BLAKE3. Their security rests on assumptions about the difficulty of algebraic attacks (Gröbner basis computations, interpolation attacks) that have not endured decades of cryptanalysis. Poseidon [Grassi, Khovratovich, Rechberger, Roy, and Schofnegger, "Poseidon: A New Hash Function for Zero-Knowledge Proof Systems," USENIX Security 2021; ePrint 2019/458], in particular, has seen parameter revisions in response to improved attacks. Most notably, the Bouvier et al. (2022) Gröbner basis attack demonstrated that certain algebraic structures in Poseidon's round function could be exploited more efficiently than the designers anticipated -- leading to tightened round-count parameters. The function survived -- no practical break was found -- but the episode illustrates a difference in maturity: SHA-256 has withstood two decades of the world's best cryptanalysts. Poseidon has withstood five years.
 
-There is also a side-channel dimension, discussed in Chapter 4. Power-map S-boxes like Poseidon's do their work as straight-line field arithmetic: the sequence of multiplications and additions does not depend on the secret data, and no secret-indexed memory access is required. The cache-timing risk identified by Mukherjee and coauthors does not attach to the algorithm itself but to specific *implementations*. Some algebraic-hash designs -- notably Reinforced Concrete's "Bars" decomposition -- deliberately use lookup tables as an efficiency optimization, and those tables do introduce secret-dependent memory access patterns vulnerable to cache-timing attacks in shared cloud environments. Similar risks can arise in any engineer's implementation of Poseidon if tables are substituted for direct exponentiation. The distinction is algorithm versus implementation: a power-map S-box is table-free by design; tables are an optional optimization that trades security margin for throughput.
+There is also a side-channel dimension, discussed in [[ch04-side-channel-attacks-when-the-walls-leak]]. Power-map S-boxes like Poseidon's do their work as straight-line field arithmetic: the sequence of multiplications and additions does not depend on the secret data, and no secret-indexed memory access is required. The cache-timing risk identified by Mukherjee and coauthors does not attach to the algorithm itself but to specific *implementations*. Some algebraic-hash designs -- notably Reinforced Concrete's "Bars" decomposition -- deliberately use lookup tables as an efficiency optimization, and those tables do introduce secret-dependent memory access patterns vulnerable to cache-timing attacks in shared cloud environments. Similar risks can arise in any engineer's implementation of Poseidon if tables are substituted for direct exponentiation. The distinction is algorithm versus implementation: a power-map S-box is table-free by design; tables are an optional optimization that trades security margin for throughput.
 
 The choice between algebraic and traditional hash functions is itself a Layer 6 decision that cascades upward. Midnight uses Poseidon-family hashes (maximizing in-circuit efficiency at the cost of less mature security analysis). STARK-based systems can use either, but algebraic hashes dramatically reduce the size of the verification circuit when recursion or wrapping is needed.
 
@@ -65,11 +65,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) "There is also a side-channel dimension, discussed in Chapter 4" — this should be a wiki-link `[[ch04-side-channel-attacks-when-the-walls-leak]]` rather than a prose chapter reference.
 
 ## Links
 

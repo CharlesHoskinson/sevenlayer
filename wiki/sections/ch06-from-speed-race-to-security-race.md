@@ -4,9 +4,9 @@ slug: ch06-from-speed-race-to-security-race
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2952, 2965]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2986, 2999]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 285
 ---
 
@@ -20,7 +20,7 @@ The second race is about security. The Ethereum Foundation's December 2025 annou
 
 The random oracle model gap deserves a brief note. Standard proofs of Fiat-Shamir security assume a random oracle -- an idealized hash function that behaves as a truly random function on every input. Real hash functions (SHA-256, Poseidon, Keccak) are not random oracles. They have algebraic structure, and attacks exploiting that structure have been found in other contexts. Whether any current proof system is vulnerable to such attacks in practice is unknown; what is known is that the formal security proofs do not cover it. This gap is one of the unresolved problems that the security race must close.
 
-SP1 Hypercube's formal verification of all 62 RISC-V opcode constraints against the RISC-V Sail specification is a milestone in this second race. It demonstrates that production proof systems can achieve the level of formal rigor that was previously associated only with academic papers. But verifying opcodes is only the beginning. The full stack -- from the Fiat-Shamir transform through the polynomial commitment scheme through the field arithmetic -- must be verified end-to-end. This is a harder problem, and it is the one that will define Layer 5's trajectory over the next several years.
+SP1 Hypercube's formal verification of all 62 RISC-V opcode constraints against the RISC-V Sail specification is a milestone in this second race. It demonstrates that production proof systems can achieve the level of formal rigor that was previously associated only with academic papers. But verifying opcodes is only the beginning. The full stack -- from the Fiat-Shamir transform through the polynomial commitment scheme through the field arithmetic -- must be verified end-to-end. This is a harder problem, and its resolution will set the standard for what "provably secure" means at Layer 5.
 
 ---
 
@@ -59,11 +59,11 @@ None in this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) "This is a harder problem, and it is the one that will define Layer 5's trajectory" — mild forward-prediction AI flourish; could be cut without loss
 
 ## Links
 

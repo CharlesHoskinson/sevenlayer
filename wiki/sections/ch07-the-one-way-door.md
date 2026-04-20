@@ -4,9 +4,9 @@ slug: ch07-the-one-way-door
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3487, 3513]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3519, 3545]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 534
 ---
 
@@ -26,7 +26,7 @@ The Cascade Effect above asks *what to choose*. This section asks *when the choi
 
 The finite field determines the commitment scheme. The commitment scheme determines the proof system family. The hardness assumption determines the security lifespan. These choices are made once, at the beginning, and they propagate upward through every component with the inexorability of mathematical structure.
 
-This is why the quantum threat is not a problem that can be deferred until quantum computers actually exist. A system deployed in 2026 with BN254 foundations will still be running in 2036. If a CRQC arrives in 2035, that system will have spent its final years accumulating a public record of commitments and proofs that can be retroactively broken. The HNDL threat means the privacy guarantees were never real -- they were deferred revelations, secrets written in ink that merely required a light that had not yet been invented.
+This is why the quantum threat is not a problem that can be deferred until quantum computers actually exist. A system deployed in 2026 with BN254 foundations will still be running in 2036. If a CRQC arrives in 2035, that system will have spent its final years accumulating a public record of commitments and proofs that can be retroactively broken. The HNDL threat means the privacy guarantees were never real -- they were deferred revelations, waiting for a reader with the right equipment.
 
 The lattice revolution is a construction project, not an academic exercise. It is building new foundations that can support the same architectural weight as pairing-based cryptography -- folding, recursion, efficient composition -- without the quantum expiration date. The trilemma that seemed permanent is being dissolved not by discovering new mathematics but by engineering better constructions from mathematics that has existed for decades.
 
@@ -80,11 +80,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) "The data is patient" (from ch07-the-quantum-threat-horizon) and the similar "secrets written in ink that merely required a light that had not yet been invented" here are vivid but slightly overwrought; consistency of tone with other closing sections in the chapter varies.
 
 ## Links
 

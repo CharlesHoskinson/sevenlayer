@@ -4,9 +4,9 @@ slug: ch06-real-time-ethereum-proving
 chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
-source_lines: [2779, 2796]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2813, 2830]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 385
 ---
 
@@ -18,7 +18,7 @@ In December 2023, proving a single Ethereum block cost approximately $80.21. By 
 
 But cost is only half the story. Speed matters equally, because Ethereum produces a new block every 12 seconds. If proving takes longer than 12 seconds, the prover cannot keep up with the chain. For years, this was a distant goal. In late 2025, at least two teams crossed the threshold with named, public results:
 
-- **SP1 Hypercube** (Succinct Labs): Proved 99.7% of Ethereum Layer 1 blocks in under 12 seconds, using 16 NVIDIA RTX 5090 GPUs (hardware cost approximately $32,000). SP1 Hypercube uses a multilinear polynomial stack built on the sumcheck protocol, with a "jagged" polynomial commitment scheme that enables pay-per-use proving. (The system also uses a STARK wrapper for intermediate recursion and Groth16 for on-chain posting; "sumcheck-based" refers to the core polynomial arithmetic layer, not to the exclusion of these outer stages.)
+- **SP1 Hypercube** (Succinct Labs): Proved 99.7% of Ethereum Layer 1 blocks in under 12 seconds, using 16 NVIDIA RTX 5090 GPUs (hardware cost approximately $32,000). SP1 Hypercube uses a multilinear polynomial stack built on the sumcheck protocol, with a "jagged" polynomial commitment scheme that enables pay-per-use proving. (The system also uses a STARK wrapper for intermediate recursion and Groth16 for on-chain posting; "sumcheck-based" refers to the core polynomial arithmetic layer, not to the exclusion of these outer stages.) SP1 Hypercube's formal verification covers all 62 RISC-V opcode constraints against the official RISC-V Sail specification -- the concrete milestone anchoring the security discussion that follows.
 
 - **ZKsync Airbender**: Achieved 21.8 million cycles per second on a single H100 GPU, proving Ethereum blocks in approximately 35 seconds. Open-source, moving toward formal verification.
 
@@ -66,11 +66,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) Very short section (385 words); the pivot from speed to security is stated but not developed — that development is delegated entirely to ch06-from-speed-race-to-security-race, but the handoff could name the specific formal-verification milestone (SP1's 62-opcode check) to give readers a concrete anchor before the next section
 
 ## Links
 

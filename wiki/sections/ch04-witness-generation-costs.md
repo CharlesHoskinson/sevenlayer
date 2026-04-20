@@ -4,9 +4,9 @@ slug: ch04-witness-generation-costs
 chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
-source_lines: [1248, 1324]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [1274, 1350]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1966
 ---
 
@@ -28,9 +28,9 @@ To feel the scale: our 4x4 Sudoku produces a witness of roughly 80 field element
 
 ZKPoG -- the same ePrint 2025/765 study that established the 50-70% figure -- demonstrated that moving witness generation to the GPU can yield 3-10x speedups. But this requires different parallelization strategies than proving. Proving parallelizes naturally because polynomial arithmetic is regular and data-independent. Witness generation requires analyzing the circuit's dependency graph, topologically sorting gates to identify independent clusters, and mapping irregular computation patterns onto GPU hardware. The parallelism is there, but extracting it is harder.
 
-BatchZK took a different approach: pipelining. Instead of generating the entire witness first and then proving, BatchZK overlaps witness generation with proof computation. The witness is generated in chunks and fed into the prover as a stream. This significantly improves GPU utilization throughout the pipeline compared to sequential approaches where the GPU sits idle during witness generation.
+BatchZK took a different approach: pipelining. Instead of generating the entire witness first and then proving, BatchZK overlaps witness generation with proof computation. The witness is generated in chunks and fed into the prover as a stream. This significantly improves GPU utilization throughout the pipeline compared to sequential approaches where the GPU sits idle during witness generation. BatchZK's pipelining is not tied to a specific proof system; it operates at the infrastructure layer and can in principle wrap any prover that accepts streamed witness chunks, though current implementations target PLONK-family systems.
 
-The most radical proposal comes from Nair, Thaler, and Zhu (ePrint 2025/611), who showed that the Jolt zkVM can be implemented with *streaming witness generation* -- the prover never materializes the full witness in memory. Instead, it generates witness chunks on the fly, consumes them immediately in the sum-check protocol, and discards them. Checkpoints at regular intervals enable parallel regeneration. The space requirement drops from linear in the trace length $T$ to $O(\sqrt{KT})$, where $K$ is the number of checkpoint segments chosen by the implementer; with $K$ fixed as a small constant, this is $O(\sqrt{T})$. Time overhead is under 2x. For a computation with $2^{35}$ cycles, this means roughly 100 GB of working memory instead of terabytes.
+The most radical proposal comes from Nair, Thaler, and Zhu (ePrint 2025/611), who showed that the Jolt zkVM can be implemented with *streaming witness generation* -- the prover never materializes the full witness in memory. Instead, it generates witness chunks on the fly, consumes them immediately in the sum-check protocol, and discards them. This approach is explicitly tied to the sum-check protocol used by Jolt; it does not straightforwardly transfer to SNARK systems based on polynomial commitment schemes. Checkpoints at regular intervals enable parallel regeneration. The space requirement drops from linear in the trace length $T$ to $O(\sqrt{KT})$, where $K$ is the number of checkpoint segments chosen by the implementer; with $K$ fixed as a small constant, this is $O(\sqrt{T})$. Time overhead is under 2x. For a computation with $2^{35}$ cycles, this means roughly 100 GB of working memory instead of terabytes.
 
 A third approach attacks the problem from the constraint side rather than the computation side. Ozdemir, Laufer, and Boneh (IEEE S&P 2025, ePrint 2024/979) developed new algebraic interactive proofs for RAM consistency checking -- the process of verifying that memory reads and writes in the execution trace are consistent. Memory checking dominates zkVM witness generation cost because the standard approach (Merkle tree commitments) requires approximately $600 \cdot A \cdot \log(N)$ constraints for $A$ accesses to $N$-sized memory. Each Poseidon hash in the Merkle tree costs roughly 300 field multiplications. Their approach reduces this to $3N + 2A + O(1)$ constraints -- up to 51.3x fewer for persistent memory and even more for sparse memory. By shrinking the constraint count for memory operations, this work proportionally shrinks the witness that must be generated, since memory-related witness entries often dominate the total witness size.
 
@@ -134,11 +134,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (E) The section does not mention whether pipelining (BatchZK) requires a specific proof system or is system-agnostic. The streaming approach (Jolt/sum-check) is explicitly tied to the sum-check protocol, but BatchZK's applicability is not bounded.
 
 ## Links
 

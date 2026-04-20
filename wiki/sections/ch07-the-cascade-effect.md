@@ -4,9 +4,9 @@ slug: ch07-the-cascade-effect
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3398, 3434]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3430, 3466]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 886
 ---
 
@@ -43,7 +43,7 @@ To make this concrete, here is the decision tree that every zero-knowledge syste
 
 **If you choose Mersenne-31 ($p = 2^{31} - 1$):** You get the simplest possible modular reduction -- subtraction of the carry bit, because $2^{31} \equiv 1 \pmod{p}$. Your commitment scheme is FRI, adapted via Circle STARKs to work with M31's multiplicative group structure (which lacks large 2-adic subgroups but has a circle group of order $2^{31}$). Your prover is the fastest in existence for STARK-based systems, because M31 arithmetic is cheaper than any other field. Your proofs are transparent and plausibly post-quantum. This is StarkWare's Stwo path -- maximum prover throughput, hash-based security, no algebraic frills.
 
-Each path is internally consistent. Each forecloses the others. You cannot start down the BabyBear path and switch to KZG midstream -- the field does not support pairings. You cannot start with BLS12-381 and add post-quantum security -- the algebraic structure that gives you constant-size proofs is the same structure that Shor's algorithm destroys. The decision tree is not a menu. It is a set of branching tunnels, and once you enter one, the others seal behind you.
+Each path is internally consistent. Each forecloses the others. You cannot start down the BabyBear path and switch to KZG midstream -- the field does not support pairings. You cannot start with BLS12-381 and add post-quantum security -- the algebraic structure that gives you constant-size proofs is the same structure that Shor's algorithm destroys.
 
 ---
 
@@ -98,11 +98,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (C) The closing metaphor "branching tunnels" is vivid but the paragraph repeating "once you enter one, the others seal behind you" immediately after the same idea stated as "once a tunnel is entered, the others seal behind you" is a near-verbatim repetition within four lines.
 
 ## Links
 

@@ -4,9 +4,9 @@ slug: ch09-the-regulatory-intersection
 chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
-source_lines: [4223, 4260]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4255, 4292]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1163
 ---
 
@@ -22,7 +22,7 @@ The EDPB's answer is unambiguous: do not store personal data on-chain. The recom
 
 ZKPs play a natural role in this architecture. Instead of storing "Alice is 25 years old and lives in Berlin" on-chain, store a hash of Alice's credential and allow Alice to generate ZK proofs about properties of that credential: "I am over 18" (for age-gated access), "I am a resident of the EU" (for jurisdictional compliance), "I am not on a sanctions list" (for regulatory compliance). The on-chain system never learns Alice's age, address, or identity. It learns only the truth of the specific claims she chooses to prove. The magician reveals exactly what the audience needs to see. No more.
 
-This pattern is called zKYC (zero-knowledge Know Your Customer), and it is rapidly gaining traction. Galactica Network, zyphe, and hyli implement zKYC systems that enable selective disclosure for regulatory compliance. The promise: compliance without surveillance.
+This pattern is called zKYC (zero-knowledge Know Your Customer), and it is rapidly gaining traction. [Galactica Network](https://galactica.com/), [Zyphe](https://www.zyphe.com/), and [Hyli](https://blog.hyli.org/) implement zKYC systems that enable selective disclosure for regulatory compliance. The promise: compliance without surveillance.
 
 The tension between GDPR's right to erasure and blockchain's immutability is worth dwelling on, because it illustrates a deeper architectural principle. The naive response is to declare that blockchains and GDPR are incompatible -- that you cannot have an append-only ledger and a right to delete. But the off-chain-storage-with-on-chain-hash pattern resolves the tension elegantly, and the resolution is instructive. The hash on-chain is not personal data. It is a commitment -- a mathematical fingerprint that proves a piece of data existed at a particular time, without revealing what the data was. Delete the off-chain data, destroy the linking keys, and the hash is cryptographically orphaned. It sits on the blockchain forever, a meaningless 32-byte string, pointing to nothing. The right to erasure is satisfied not by deleting the blockchain entry but by severing the link between the entry and the person it once referenced. The commitment survives. The secret is gone. The regulation is satisfied. This is not a workaround. It is good architecture -- the kind of architecture that PETs make possible.
 
@@ -88,11 +88,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (B) "Galactica Network, zyphe, and hyli" named as zKYC implementations with no citations; at minimum a website or whitepaper reference should be listed for each.
 
 ## Links
 

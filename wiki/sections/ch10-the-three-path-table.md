@@ -4,9 +4,9 @@ slug: ch10-the-three-path-table
 chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
-source_lines: [4421, 4428]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [4452, 4459]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 108
 ---
 
@@ -15,7 +15,7 @@ word_count: 108
 | Path | Setup | Inner Primitive | Outer Verification | PQ Status | Production Status |
 |------|-------|----------------|-------------------|-----------|-------------------|
 | **Hybrid STARK-to-SNARK** | STARK inner (transparent) + Groth16 outer (trusted) | Hash-based FRI / Merkle | BN254 pairing (~250K gas) | Inner: quantum-safe; Outer: quantum-vulnerable | Dominant production default |
-| **Pure Transparent** | Transparent only | Hash-based FRI, no pairings | Large on-chain proof or alternative verification | Quantum-safe with sufficient hash output | Ethereum L1 mandate; advancing |
+| **Pure Transparent** | Transparent only | Hash-based FRI, no pairings | Hash commitments with FRI or Merkle verification; on-chain cost scales with proof size | Quantum-safe with sufficient hash output | Ethereum L1 mandate; advancing |
 | **Post-Quantum Folding** | Transparent (lattice-based) | Module-SIS commitments | Lattice verification (higher cost) | Quantum-safe by design | Research frontier; 3-5 year horizon |
 
 
@@ -54,11 +54,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] C "Pure Transparent" row: "Large on-chain proof or alternative verification" is vague — no explanation of what "alternative verification" means (recursive aggregation to a non-BN254 verifier? off-chain settlement?). Could be sharpened.
 
 ## Links
 

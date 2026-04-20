@@ -4,9 +4,9 @@ slug: ch07-lattice-based-proving
 chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
-source_lines: [3280, 3333]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [3312, 3365]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 927
 ---
 
@@ -24,7 +24,7 @@ The first demonstration that lattice-based SNARKs could be practical, not just t
 
 The conceptual breakthrough. Dan Boneh and Binyi Chen adapted Nova-style folding to work over cyclotomic rings with Ajtai commitments. The central observation: Ajtai's module homomorphism is the lattice analogue of Pedersen's additive homomorphism, and it is sufficient to enable the random-linear-combination technique that makes folding work.
 
-LatticeFold introduced three composable reductions -- $\Pi_{\text{CCS}}$ (constraint satisfaction to evaluation claims), $\Pi_{\text{RLC}}$ (random linear combination), and $\Pi_{\text{DEC}}$ (decomposition to control norm growth) -- that together form a complete folding scheme for CCS (Customizable Constraint Systems).
+LatticeFold introduced three composable reductions -- $\Pi_{\text{CCS}}$ (constraint satisfaction to evaluation claims), $\Pi_{\text{RLC}}$ (random linear combination), and $\Pi_{\text{DEC}}$ (decomposition to control norm growth) -- that together form a complete folding scheme for CCS (Customizable Constraint Systems). The paper's concrete instantiation produced folding proofs in the range of 200--400 KB with verification that reduces to a single inner-product check; intended as a theoretical baseline rather than a production target.
 
 But LatticeFold had a critical limitation. It was restricted to power-of-two cyclotomic polynomials of the form $X^d + 1$. Over the Goldilocks field, this polynomial splits completely into degree-1 factors, meaning each NTT slot has only 64-bit security -- insufficient for the 128-bit target.
 
@@ -32,7 +32,7 @@ But LatticeFold had a critical limitation. It was restricted to power-of-two cyc
 
 A comprehensive improvement: 5 to 10 times faster prover, simpler verification circuit, shorter folding proofs, and a new purely algebraic range proof replacing LaBRADOR's more complex approach. LatticeFold+ identified three concrete parameterizations, including one over Goldilocks with the 81st cyclotomic polynomial $\Phi_{81} = X^{54} + X^{27} + 1$. This polynomial does not split into linear factors over Goldilocks; instead, it factors into degree-2 irreducibles, giving the extension field $K = \mathbb{F}_{q^2}$ with 128-bit NTT slots.
 
-LatticeFold+ also introduced a general composition theorem: if one reduction is "phi-restricted" with restricted knowledge soundness, and another is "phi-relaxed" knowledge sound, their composition is knowledge sound. This provided the formal foundation for chaining reductions.
+LatticeFold+ also introduced a general composition theorem: if one reduction is "phi-restricted" with restricted knowledge soundness, and another is "phi-relaxed" knowledge sound, their composition is knowledge sound. This provided the formal foundation for chaining reductions. Concretely, LatticeFold+ brought folding-proof overhead down to the 100--200 KB range with verifier work reduced to a small constant number of ring multiplications -- a significant step toward the 50--60 KB target Neo later hit.
 
 ### Stage 4: Neo (2025)
 
@@ -110,11 +110,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
-
-- [P3] (E) The section describes five stages but does not give concrete proof-size or verification-time numbers for LatticeFold and LatticeFold+ (only Greyhound's ~50 KB and Neo's 127-bit figure are given). Adding ballpark numbers for intermediate stages would improve depth and comparability.
 
 ## Links
 

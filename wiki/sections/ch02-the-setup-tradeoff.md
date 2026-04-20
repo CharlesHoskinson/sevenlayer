@@ -4,9 +4,9 @@ slug: ch02-the-setup-tradeoff
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [723, 743]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [727, 747]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 388
 ---
 
@@ -14,7 +14,7 @@ word_count: 388
 
 If you had to build a privacy blockchain today, the analysis in this chapter recommends a specific architecture: a universal trusted setup on BLS12-381 for production deployment (smallest proofs, cheapest verification, broadest tooling), with a transparent STARK inner proof for the actual computation (no additional ceremony, post-quantum security for the data), and a concrete migration plan for the day quantum computers arrive. That architecture describes the dominant production pattern in 2026. The consensus is not accidental. It reflects the tradeoffs in this chapter: ceremony cost amortizes, proof size costs recur, and quantum risk compounds.
 
-But the 1-of-N trust model, for all its elegance, is trust-minimized, not trustless. The BCTV14 bug proves that ceremony integrity alone is insufficient -- the construction must be independently correct. The quantum shelf life means that no pairing-based setup is permanent. And the ADOPT framework reveals that no ceremony conducted to date achieves the ideal of full availability, decentralization, openness, persistence, and transparency.
+But the 1-of-N trust model, for all its elegance, is trust-minimized, not trustless. The BCTV14 bug proves that ceremony integrity alone is insufficient -- the construction must be independently correct. The quantum shelf life means that no pairing-based setup is permanent. And the ADOPT framework reveals that no ceremony conducted to date achieves the ideal of full availability, decentralization, openness, persistence, and transparency. A third path is emerging -- on-chain ceremony verification, pioneered by Nikolaenko et al. [IACR ePrint 2022/1592] -- that could eventually sidestep the sociological-trust problem entirely without paying the proof-size penalty of a fully transparent setup. It remains early-stage, but it represents a direction the field is watching.
 
 The stage is ready. The mathematical parameters are in place. The SRS is published. The toxic waste is (we hope) destroyed. The verifier keys are derived and deployed.
 
@@ -67,12 +67,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (B) No citation issues; the section appropriately references prior sections rather than introducing new sources.
-- [P3] (E) The section summarizes the chapter's recommendations but does not note the emerging alternative of on-chain ceremony verification (Nikolaenko et al. 2022, already cited in ch02-two-ways-to-build-a-stage) as a potential third path that avoids both the sociological-trust problem and the proof-size penalty.
 
 ## Links
 

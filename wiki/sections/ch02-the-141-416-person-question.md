@@ -4,9 +4,9 @@ slug: ch02-the-141-416-person-question
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [550, 597]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [548, 595]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 1146
 ---
 
@@ -47,7 +47,7 @@ Second, *permissionless participation*. The decision to let anyone with an Ether
 
 Third, *diversity of entropy sources*: participants contributed from different hardware, operating systems, locations, and jurisdictions, making simultaneous compromise operationally infeasible. Fourth, *unforgeable cost of participation*: each contributor spent real time waiting, computing, and verifying, and that aggregate investment across 141,416 people signals commitment in a way no amount of on-chain capital can replicate.
 
-The game-theoretic analysis reinforces this intuition. In a ceremony with six participants, the cost of corrupting the ceremony is the maximum of the costs of corrupting each participant -- you need all six. With 141,416 participants, the cost is still the maximum of individual corruption costs (since you need all of them), but the *minimum* of those individual costs is now determined by the most resilient participant in a population of 141,416. Among that many people, there is almost certainly someone whose operational security is excellent, whose hardware is air-gapped, whose randomness source is physical, and whose motivation is ideological rather than financial. The ceremony's security is, in a precise sense, determined by its strongest link rather than its weakest.
+The game-theoretic analysis reinforces this intuition. In a ceremony with six participants, the cost of corrupting the ceremony is the maximum of the costs of corrupting each participant -- you need all six. With 141,416 participants, the cost is still the maximum of individual corruption costs (since you need all of them), but the *minimum* of those individual costs is now determined by the most resilient participant in a population of 141,416. Among that many people, there is almost certainly someone whose operational security is excellent, whose hardware is air-gapped, whose randomness source is physical, and whose motivation is ideological rather than financial. The ceremony's security is, in a precise sense, determined by its strongest link rather than its weakest. Nikolaenko et al. formalize this: their on-chain ceremony model proves security holds as long as one participant acts honestly, regardless of adversarial coordination among all others [Nikolaenko et al., "Powers-of-Tau to the People," IACR ePrint 2022/1592].
 
 This is the inverse of the chain metaphor that dominates security thinking. A chain is only as strong as its weakest link. A ceremony is only as *insecure* as its *strongest* link. This inversion -- this structural optimism built into the mathematics of the 1-of-N model -- is what makes mass-participation ceremonies viable. You do not need to ensure that every participant is careful. You need to ensure that the population is large enough and diverse enough that at least one participant, somewhere, is careful enough.
 
@@ -92,13 +92,14 @@ None in this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (A) No factual errors found.
 - [none] (D) No contradictions with other chapters found.
-- [P3] (E) The section's game-theoretic strongest-link analysis is novel and well-argued but does not engage with the academic literature on ceremony design (e.g., the Nikolaenko et al. 2022 on-chain ceremony paper, which introduces formal security models for permissionless ceremonies).
 
 ## Links
 

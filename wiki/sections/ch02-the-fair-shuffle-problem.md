@@ -4,9 +4,9 @@ slug: ch02-the-fair-shuffle-problem
 chapter: 2
 chapter_title: "Layer 1 -- Building the Stage"
 heading_level: 2
-source_lines: [381, 397]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [379, 395]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 391
 ---
 
@@ -24,7 +24,7 @@ Now consider a second solution: skip the dealer entirely. Design a game where no
 
 These two solutions -- the ceremony and the transparent alternative -- define the fundamental choice at Layer 1. Every zero-knowledge system ever deployed sits on one side of this divide or the other. And increasingly, the most ambitious systems use both: a transparent inner proof (no ceremony, no toxic waste, quantum-resistant) wrapped in a ceremony-derived outer shell (tiny proof, cheap verification, not quantum-resistant). The inner proof does the honest work. The outer proof does the packaging.
 
-This hybrid architecture -- transparent on the inside, compact on the outside -- is the dominant production pattern in 2026, and understanding why it exists requires understanding both sides of the divide. The ceremony side first.
+This hybrid architecture -- transparent on the inside, compact on the outside -- is the dominant production pattern in 2026. StarkWare's Ethereum settlement has used it since 2021; 2026 is when it became ubiquitous. Understanding why it exists requires understanding both sides of the divide. The ceremony side first.
 
 
 
@@ -59,12 +59,13 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
 
 - [none] (D) No issues found.
-- [P3] (E) The section could note that the hybrid pattern is not unique to 2026 — StarkWare's Ethereum settlement has used this pattern since 2021; the "dominant 2026" framing slightly misplaces the timeline.
 
 ## Links
 

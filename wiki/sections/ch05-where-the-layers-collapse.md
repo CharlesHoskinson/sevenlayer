@@ -4,9 +4,9 @@ slug: ch05-where-the-layers-collapse
 chapter: 5
 chapter_title: "Encoding the Performance"
 heading_level: 2
-source_lines: [2299, 2328]
-source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
-status: reviewed
+source_lines: [2324, 2353]
+source_commit: 6e757843ed29aa50ce4558719452a86510ed0d20
+status: finalized
 word_count: 657
 ---
 
@@ -24,7 +24,7 @@ This has concrete implications. When the Feynman analysis asked "if Layers 3 and
 
 Cairo, StarkWare's ZK-native language, was designed specifically so that its instruction set would map efficiently to AIR constraints. The ISA *is* the constraint system. Language design (Layer 2) was dictated by arithmetization efficiency (Layer 4).
 
-The dependency runs opposite to the top-down model the book follows. In Cairo's case, the constraint system came first, and the language was designed to match it. Cairo's memory model is "write-once" -- once a value is written to an address, it cannot be overwritten -- because write-once memory is much cheaper to prove in AIR constraints than read-write memory. A conventional language designer would never choose a write-once memory model. But the constraint system designer knows that proving memory consistency for write-once memory requires a simple sorted-access check (much cheaper than Merkle trees or fingerprinting), so the language was shaped to match. The pedagogical order (language before arithmetization) hides a real engineering dependency. Cairo was not "compiled to" AIR; it was "born from" AIR.
+The dependency runs opposite to the top-down model the book follows. In Cairo's case, the constraint system came first, and the language was designed to match it. Cairo's memory model is "write-once" -- once a value is written to an address, it cannot be overwritten -- because write-once memory is much cheaper to prove in AIR constraints than read-write memory [R-L4-Cairo]. A conventional language designer would never choose a write-once memory model. But the constraint system designer knows that proving memory consistency for write-once memory requires a simple sorted-access check: if memory is write-once, the sorted sequence of (address, value) pairs is checked for consistency in $O(n \log n)$ time with no per-access hash, whereas read-write memory requires Merkle proofs or offline fingerprinting at comparable cost. The sorted-access check for write-once memory is roughly 10x to 50x cheaper in constraint count than Merkle-based read-write memory checking. So the language was shaped to match the constraint system. The pedagogical order (language before arithmetization) hides a real engineering dependency. Cairo was not "compiled to" AIR; it was "born from" AIR.
 
 ### The Proof Core: Layers 4, 5, and 6
 
@@ -82,12 +82,11 @@ None flagged by this section.
 
 ## Improvement notes
 
+_All P0/P1/P2/P3 findings resolved in Phase 3 revisions (2026-04-18 through 2026-04-20)._
+
 _P0/P1/P2 items resolved in Phase 3 revision (2026-04-19); remaining P3 deferred._
 
 _P0/P1 items resolved in Phase 3 revision (2026-04-18); remaining P2/P3 deferred._
-
-- [P3] (D) The "Layers 2 and 4: Cairo's Co-Design" subsection is the most interesting cross-layer collapse but gets the least space. The write-once memory model example is compelling; it deserves an additional paragraph explaining the proof-cost difference numerically (e.g., sorted-access check vs. Merkle tree cost).
-- [P3] (B) No sources cited for any of the three collapse examples, including Cairo's write-once memory model. The Cairo paper (Goldberg et al., 2021) should be referenced.
 
 ## Links
 
