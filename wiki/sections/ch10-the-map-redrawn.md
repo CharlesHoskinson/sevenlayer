@@ -5,14 +5,14 @@ chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4357, 4395]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 402f8a6c81370d3fe1e3caa98dda3cd8f4078e71
+status: reviewed
 word_count: 356
 ---
 
 ## The Map Redrawn
 
-Chapter 1 presented seven layers as a stack -- neat, linear, one resting on the next. Nine chapters of evidence say otherwise. The seven layers are a directed acyclic graph with fourteen causal edges, and we owe you the honest picture before proceeding.
+Chapter 1 presented seven layers as a stack -- neat, linear, one resting on the next. Nine chapters of evidence say otherwise. The seven layers are a directed acyclic graph with fourteen causal edges, and we owe the reader the honest picture before proceeding.
 
 ```
                     ┌──────────────────────────────────┐
@@ -82,6 +82,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] C The ASCII diagram is hard to parse: the visual arrow count does not obviously match the "14 directed edges" claim in the header, and the legend lists only 14 edges split as "6 upward" + "8 downward" without labelling all 8 downward arrows in the figure. A reader cannot verify the edge count from the diagram alone.
 

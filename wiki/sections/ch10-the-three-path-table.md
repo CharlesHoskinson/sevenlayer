@@ -5,8 +5,8 @@ chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4436, 4443]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 402f8a6c81370d3fe1e3caa98dda3cd8f4078e71
+status: reviewed
 word_count: 108
 ---
 
@@ -15,7 +15,7 @@ word_count: 108
 | Path | Setup | Inner Primitive | Outer Verification | PQ Status | Production Status |
 |------|-------|----------------|-------------------|-----------|-------------------|
 | **Hybrid STARK-to-SNARK** | STARK inner (transparent) + Groth16 outer (trusted) | Hash-based FRI / Merkle | BN254 pairing (~250K gas) | Inner: quantum-safe; Outer: quantum-vulnerable | Dominant production default |
-| **Pure Transparent** | Transparent only | Hash-based FRI, no pairings | Large on-chain proof or alternative verification | Quantum-safe (with sufficient hash output) | Ethereum L1 mandate; advancing |
+| **Pure Transparent** | Transparent only | Hash-based FRI, no pairings | Large on-chain proof or alternative verification | Quantum-safe with sufficient hash output | Ethereum L1 mandate; advancing |
 | **Post-Quantum Folding** | Transparent (lattice-based) | Module-SIS commitments | Lattice verification (higher cost) | Quantum-safe by design | Research frontier; 3-5 year horizon |
 
 
@@ -53,6 +53,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P3] C "Pure Transparent" row: "Large on-chain proof or alternative verification" is vague — no explanation of what "alternative verification" means (recursive aggregation to a non-BN254 verifier? off-chain settlement?). Could be sharpened.
 

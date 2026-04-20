@@ -5,8 +5,8 @@ chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4349, 4356]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 402f8a6c81370d3fe1e3caa98dda3cd8f4078e71
+status: reviewed
 word_count: 120
 ---
 
@@ -48,6 +48,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [none] X — no issues found.
 

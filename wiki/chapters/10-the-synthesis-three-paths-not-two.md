@@ -2,7 +2,7 @@
 title: "The Synthesis -- Three Paths, Not Two"
 chapter: 10
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 10: The Synthesis -- Three Paths, Not Two
@@ -19,7 +19,13 @@ status: untouched
 - [[ch10-trust-decomposition-seven-weaker-assumptions]]
 - [[ch10-trustless-versus-trust-minimized]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-19 per `wiki/drafts/ch10-v2.md`. 1 P0 + 5 P1 resolved (plus Layer 4/5 enumeration expansion in the closing section). Draft preserved. P2 (4) and P3 (2) deferred.
+
+**Key corrections:** Frozen Heart count corrected to six implementations across three proof systems (Dusk/Iden3/gnark/ING/SECBIT/Adjoint — consistent with ch08); "via Herodotus" removed (Herodotus is storage-proofs, not a wrapping pipeline); Module-SIS validation tied specifically to FIPS 204 (not 203); EF December 2025 pivot cited to Kadianakis; Brevis Pico Prism sourced inline; DAG "two hops" claim softened; Tornado Cash Layer 2 example replaced with Zcash InternalH (CVE-2019-7167); closing trust-assumption enumeration expanded from 5 to all 7 layers.
+
+## Audit rollup (pre-revision)
 
 | Section | Findings |
 |---------|----------|

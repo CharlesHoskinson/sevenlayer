@@ -5,8 +5,8 @@ chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4548, 4563]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 402f8a6c81370d3fe1e3caa98dda3cd8f4078e71
+status: reviewed
 word_count: 307
 ---
 
@@ -14,11 +14,11 @@ word_count: 307
 
 The analysis concludes with a question that should be printed on the wall of every ZK team's office:
 
-> If zero-knowledge proofs provide "trustless" computation, but the setup requires trusting ceremony participants (Layer 1), the program requires trusting the developer not to make constraint errors (Layer 2), the witness requires trusting the hardware not to leak side channels (Layer 3), the proof system requires trusting that mathematical hardness assumptions hold (Layer 6), and the verifier requires trusting that governance will not override the math (Layer 7) -- then where, exactly, is the "trustless" part?
+> If zero-knowledge proofs provide "trustless" computation, but the setup requires trusting ceremony participants (Layer 1), the program requires trusting the developer not to make constraint errors (Layer 2), the witness requires trusting the hardware not to leak side channels (Layer 3), the arithmetization requires trusting the translation from program to polynomial constraints (Layer 4), the proof system requires trusting Fiat-Shamir soundness and correct implementation (Layer 5), the primitives require trusting that mathematical hardness assumptions hold (Layer 6), and the verifier requires trusting that governance will not override the math (Layer 7) -- then where, exactly, is the "trustless" part?
 
-The answer: nowhere. "Trustless" is a word that flatters the technology and misleads the user. Zero-knowledge proofs do not eliminate trust. They minimize and distribute it. Instead of trusting one bank with your financial data, you trust that: (a) at least one ceremony participant was honest, (b) the circuit was correctly written and audited, (c) the hardware is not leaking, (d) discrete logarithms are hard, and (e) the governance multisig will not go rogue.
+The answer: nowhere. "Trustless" is a word that flatters the technology and misleads the user. Zero-knowledge proofs do not eliminate trust. They minimize and distribute it. Instead of trusting one bank with your financial data, you trust that: (a) at least one ceremony participant was honest; (b) the circuit was correctly written and audited; (c) the hardware is not leaking; (d) the arithmetization faithfully encodes the intended computation; (e) the proof system is sound and its Fiat-Shamir transform is correctly implemented; (f) discrete logarithms (or lattice problems, or hash preimages) are hard; and (g) the governance multisig will not go rogue.
 
-Each of these is a weaker assumption than trusting a single entity. The combination is far more resilient than any single point of trust. But they are assumptions nonetheless, and a responsible guide to zero-knowledge proofs should catalog them explicitly.
+Each is a weaker assumption than trusting a single entity. The combination is far more resilient than any single point of trust. But they are assumptions nonetheless, and a responsible guide to zero-knowledge proofs should catalog them explicitly.
 
 We stated this thesis in the opening pages of Chapter 1: trust decomposition, not trust elimination. Ten chapters later, the decomposition is precise. Seven assumptions instead of one. Fourteen causal edges instead of a monolith. Three architectural paths, each with different failure profiles. The word "trustless" obscures every one of these distinctions. The word "trust-minimized" preserves them.
 
@@ -57,7 +57,7 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] A The body paragraph enumerates only five residual trust assumptions — (a) ceremony participants, (b) circuit correctness, (c) hardware side channels, (d) discrete logs, (e) governance multisig — but the section and Key claims reference "seven assumptions." Two layers are missing from the inline enumeration: Layer 4 (arithmetization faithfully encodes computation) and Layer 5 (proof system soundness / Fiat-Shamir implementation). The closing paragraph should either list all seven or acknowledge the compression explicitly.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 ## Links
 

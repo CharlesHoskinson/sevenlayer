@@ -5,8 +5,8 @@ chapter: 10
 chapter_title: "The Synthesis -- Three Paths, Not Two"
 heading_level: 2
 source_lines: [4424, 4435]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 402f8a6c81370d3fe1e3caa98dda3cd8f4078e71
+status: reviewed
 word_count: 352
 ---
 
@@ -14,13 +14,13 @@ word_count: 352
 
 The third path is the newest and least traveled. It abandons both pairing-based cryptography and hash-based commitments in favor of lattice-based constructions that provide additive homomorphism (enabling folding), post-quantum security, and increasingly competitive proof sizes.
 
-The key systems are LatticeFold (Boneh & Chen, ASIACRYPT 2025), LatticeFold+ (CRYPTO 2025), Neo/SuperNeo (Nguyen & Setty, ePrint 2025/294), and Symphony (Chen, ePrint 2025/1905). These systems use Module-SIS commitments -- lattice-based structures whose hardness NIST has validated through the FIPS 203/204 standardization process -- to achieve folding over polynomial rings without relying on discrete logarithms or pairings.
+The key systems are LatticeFold (Boneh and Chen, ASIACRYPT 2025), LatticeFold+ (CRYPTO 2025), Neo and SuperNeo (Nguyen and Setty, ePrint 2025/294), and Symphony (Chen, ePrint 2025/1905). These systems use Module-SIS commitments -- lattice-based structures whose hardness underpins NIST's FIPS 204 signature standard (ML-DSA) [64]. For context, the broader Module-LWE/SIS family also supports FIPS 203's ML-KEM (encapsulation, Module-LWE) and FIPS 205's SLH-DSA (stateless hash-based signatures) [25]. The folding constructions rely specifically on the Module-SIS hardness that FIPS 204 validates, and they achieve folding over polynomial rings without discrete logarithms or pairings.
 
-The proof sizes are larger than Groth16 but rapidly improving: Greyhound (Nguyen & Seiler, CRYPTO 2024) achieves ~50 KB proofs with lattice-based commitments, and LaBRADOR (CRYPTO 2023) achieves ~58 KB. These are orders of magnitude larger than Groth16's 192 bytes but competitive with raw STARK proofs. The performance trajectory suggests that lattice-based schemes may reach practical production within 3-5 years.
+The proof sizes are larger than Groth16 but rapidly improving: Greyhound (Nguyen and Seiler, CRYPTO 2024) achieves roughly 50 KB proofs with lattice-based commitments, and LaBRADOR (CRYPTO 2023) reports roughly 58 KB. Orders of magnitude larger than Groth16's 192 bytes, but competitive with raw STARK proofs. The trajectory suggests lattice-based schemes may reach practical production within three to five years.
 
-Why does this path matter? Because it is the only path that survives quantum computing without any caveats. The hybrid path (Path One) is quantum-vulnerable at the verification wrapper. The pure transparent path (Path Two) relies on hash functions whose collision resistance degrades under quantum attack (SHA-256 drops from 128-bit classical to ~85-bit quantum collision resistance via the BHT algorithm). The lattice path relies on Module-LWE/SIS, which is believed to be quantum-resistant by design -- the same assumption family that NIST chose for its post-quantum standards. This path does not merely survive the quantum era. It was built for it.
+Why does this path matter? Because it is the only path that survives quantum computing without caveats. The hybrid path (Path One) is quantum-vulnerable at the verification wrapper. The pure transparent path (Path Two) relies on hash functions whose collision resistance degrades under Grover-style and BHT-style quantum attacks -- SHA-256 drops from 128-bit classical collision resistance toward roughly 85-bit quantum collision resistance in the BHT model. The lattice path rests on Module-LWE/SIS, the same assumption family NIST chose for its post-quantum standards. It does not merely survive the quantum era. It was built for it.
 
-The post-quantum folding path has a structural advantage that maps directly onto the Layer 6 analysis from Chapter 7. That chapter presented a trilemma: algebraic functionality, post-quantum security, and succinctness -- pick two. Lattice-based commitments provide additive homomorphism (enabling folding, which is a form of algebraic functionality), post-quantum security, and increasingly competitive succinctness. The trilemma is not being sidestepped; it is being actively compressed. Whether it can be fully dissolved remains an open question -- KZG's $O(1)$ proof size with full homomorphism has no post-quantum match yet. But the gaps are narrowing with each paper.
+The post-quantum folding path maps directly onto the Layer 6 analysis from Chapter 7. That chapter presented a trilemma: algebraic functionality, post-quantum security, and succinctness -- pick two. Lattice-based commitments provide additive homomorphism (enabling folding, a form of algebraic functionality), post-quantum security, and increasingly competitive succinctness. The trilemma is not being sidestepped; it is being actively compressed. Whether it can be fully dissolved remains open -- KZG's $O(1)$ proof size with full homomorphism has no post-quantum match yet. But the gaps narrow with each paper.
 
 
 ## Summary
@@ -73,7 +73,8 @@ The third path abandons both pairing-based and hash-based cryptography in favor 
 
 ## Improvement notes
 
-- [P1] A/B "FIPS 203/204 standardization process" cited as validating Module-SIS is imprecise: FIPS 203 standardizes ML-KEM (Module-LWE based key encapsulation), FIPS 204 standardizes ML-DSA (a signature based on Module-LWE/SIS). Module-SIS specifically underpins FIPS 204 and the relevant hash-based signature in FIPS 205 (SLH-DSA). Citing both 203 and 204 as the Module-SIS validation conflates the KEM and signature standards. Should specify FIPS 204 (and FIPS 205 for context).
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] B Greyhound is cited as "Nguyen & Seiler, CRYPTO 2024" but has no BIBLIOGRAPHY.md entry — only ch07-lattice-based-proving references it by name without a full citation. Needs a bibliography entry.
 - [P2] B "Neo/SuperNeo" — bibliography ref 21 covers Neo (Nguyen & Setty, ePrint 2025/294) but "SuperNeo" is not documented anywhere else in the wiki. Either a distinct paper needing its own citation, or an informal name that should be clarified.
 
