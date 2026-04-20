@@ -5,7 +5,7 @@ chapter: 4
 chapter_title: "The Secret Performance"
 heading_level: 2
 source_lines: [1325, 1372]
-source_commit: 53f41415d307dcd4ed73d852dfd6aa97146e882f
+source_commit: b3ed881318761d3fd0e65ead7ea58e3f6536ccf9
 status: reviewed
 word_count: 1646
 ---
