@@ -4,7 +4,7 @@ slug: ch14-coda
 chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
-source_lines: [5415, 5530]
+source_lines: [5417, 5532]
 source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
 status: drafted
 word_count: 1850

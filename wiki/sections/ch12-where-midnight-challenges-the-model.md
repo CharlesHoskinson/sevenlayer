@@ -4,7 +4,7 @@ slug: ch12-where-midnight-challenges-the-model
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4916, 4936]
+source_lines: [4918, 4938]
 source_commit: 65e82b18c746552064750d4b1ea3c6d13bacbe3a
 status: reviewed
 word_count: 398

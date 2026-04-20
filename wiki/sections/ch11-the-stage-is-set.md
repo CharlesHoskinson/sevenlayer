@@ -4,9 +4,9 @@ slug: ch11-the-stage-is-set
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4765, 4778]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [4767, 4780]
+source_commit: 9abf8bb5a87f0fd353e7aef7559fbaef6e45ba01
+status: reviewed
 word_count: 344
 ---
 
@@ -67,6 +67,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (D) "Philosophy C absorbed Philosophies A and B" — these labels are not defined within the section and are only meaningful with Ch3 in view; a brief inline gloss (e.g., "Philosophy C (general-purpose ISA)") would help the section stand alone or serve as a navigable reference.
 - [P2] (A) "the proof core from Chapter 10" — the proof core triad concept is first introduced in Chapter 6 (ch06-the-proof-core-why-layers-4-5-and-6-are-inseparable) and revisited in Chapter 10; attributing it solely to Ch10 misrepresents its origin in the book.

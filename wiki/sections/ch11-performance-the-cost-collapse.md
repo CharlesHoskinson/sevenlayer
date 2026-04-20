@@ -4,9 +4,9 @@ slug: ch11-performance-the-cost-collapse
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4719, 4747]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [4721, 4749]
+source_commit: 9abf8bb5a87f0fd353e7aef7559fbaef6e45ba01
+status: reviewed
 word_count: 458
 ---
 
@@ -18,20 +18,20 @@ The performance trajectory of zkVMs over the past 24 months is one of the steepe
 
 | System | Hardware | Avg Block Time | % Blocks < 12s |
 |--------|----------|---------------|-----------------|
-| SP1 Hypercube | 16x RTX 5090 | 6.9 s | 99.7% |
+| SP1 Hypercube | 16x RTX 5090 | 6.9 s [52] | 99.7% |
 | ZisK | 24x RTX 5090 | 6.6 s | 99.7% |
 | Pico Prism | 16x RTX 5090 | 6.9 s | 99%+ |
 | OpenVM 2.0 | 16x RTX 5090 | < 12 s (p99) | ~99%+ |
 
-Airbender proves a block in 35 seconds on a *single* H100 GPU -- the fastest single-GPU result, at 21.8 million cycles per second at the base STARK layer.
+Airbender proves a block in 35 seconds on a *single* H100 GPU -- the fastest single-GPU result, at 21.8 million cycles per second at the base STARK layer [53].
 
-**Cost trajectory.** The 2,000-fold cost collapse described in Chapter 6 continued to accelerate: within 2025 alone, a further 45x reduction (from $1.69 to four cents per block). Roughly 10x per year, driven by algorithmic improvements, GPU optimization, and competition. A real-time proving cluster runs $60,000-$100,000: sixteen RTX 5090 GPUs (~$32K), dual-socket server, 512 GB RAM. For less than the price of a suburban house, you can prove every Ethereum block in real time.
+**Cost trajectory.** The 2,000-fold cost collapse described in Chapter 6 continued to accelerate: within 2025 alone, a further 45x reduction (from $1.69 to roughly $0.04 per block) [43, 44]. Roughly 10x per year, driven by algorithmic improvements, GPU optimization, and competition. A real-time proving cluster runs $60,000-$100,000: sixteen RTX 5090 GPUs (~$32K), dual-socket server, 512 GB RAM. For less than the price of a suburban house, you can prove every Ethereum block in real time.
 
 **The Witness Gap grows with acceleration.** As GPU provers drove cryptographic proving time down 10-50x, witness generation -- still CPU-bound -- became the dominant bottleneck. The proportional shift described in Chapter 4 is now the defining structural constraint of zkVM performance: witness generation in a zkVM equals full VM emulation, which resists the parallelism that NTT and MSM exploit so effectively. The magician's backstage preparation now takes longer than sealing the proof.
 
-Active optimization research is attacking this gap from multiple directions. ZKPOG achieved up to 52x speedup by moving witness generation onto GPUs. OpenVM 2.0's SWIRL prover includes an ahead-of-time compiler executing at 3.8 GHz, eliminating JIT overhead. Nexus 3.0 runs the program twice -- first to gather memory statistics, then to produce an optimized trace.
+Active optimization research is attacking this gap from multiple directions. ZKPoG reports substantial GPU speedups for witness generation, moving the CPU-bound stage onto the accelerator. OpenVM 2.0's SWIRL prover pairs with a new ahead-of-time compiler that executes RISC-V at near-native 3.8 GHz, reporting a 7.8x speedup over an optimized interpreter on CoreMark and dropping Ethereum block 24M execution from 1.8s to 0.5s. Nexus 3.0 abandoned the Nova folding pipeline for a Stwo-backed M31 architecture, citing a roughly 1000x practical penalty from classical folding.
 
-**The EF security pivot (December 2025).** The Ethereum Foundation declared the speed race won and shifted focus:
+**The EF security pivot (December 2025) [55].** The Ethereum Foundation declared the speed race won and shifted focus:
 - May 2026 target: 100-bit provable security across all zkEVM teams
 - December 2026 target: 128-bit provable security, sub-300 KB proofs
 - New primary metric: energy per proof (kWh), replacing raw speed
@@ -80,7 +80,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (B) No sources cited for any benchmark numbers in the section — block proving times, GPU configs, cost figures, ZKPOG 52x speedup, OpenVM SWIRL 3.8 GHz, Nexus 3.0 two-pass approach, and EF pivot targets. This is the most data-dense section in the chapter and every quantitative claim is unsourced.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) "a further 45x reduction (from $1.69 to four cents per block)" — $1.69 ÷ $0.04 = 42.25x, not 45x; the stated multiplier is inconsistent with the stated prices.
 - [P3] (A) "the 2,000-fold cost collapse described in Chapter 6" — needs verification that ch6 uses this exact figure; if ch6 says a different number, this is an internal inconsistency.
 

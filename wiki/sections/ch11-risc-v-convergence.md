@@ -4,9 +4,9 @@ slug: ch11-risc-v-convergence
 chapter: 11
 chapter_title: "zkVMs -- The Universal Stage"
 heading_level: 2
-source_lines: [4748, 4764]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [4750, 4766]
+source_commit: 9abf8bb5a87f0fd353e7aef7559fbaef6e45ba01
+status: reviewed
 word_count: 337
 ---
 
@@ -18,7 +18,7 @@ Why RISC-V? Three reasons converge.
 
 First, RISC-V's register-transfer architecture maps cleanly onto tabular execution traces, which are the native input format for AIR and lookup-based arithmetization. A RISC-V instruction reads source registers, performs an operation, and writes a destination register -- exactly one row in a trace table.
 
-Second, RISC-V's compiler ecosystem is decades deep. Any Rust, C, or C++ program can be compiled to RISC-V using standard LLVM toolchains. This means millions of existing programs become provable without modification. The universal stage accepts any act, because any act can be translated into its language.
+Second, RISC-V's compiler ecosystem is decades deep. Any Rust, C, or C++ program can be compiled to RISC-V using standard LLVM toolchains. Millions of existing programs become provable without modification. The universal stage accepts any act, because any act can be translated into its language.
 
 Third, RISC-V is open and royalty-free. Unlike ARM (proprietary) or x86 (legacy-encumbered), RISC-V has no licensing costs and no vendor lock-in. For an open-source ecosystem, this matters.
 
@@ -64,6 +64,8 @@ Eight of ten major zkVMs converged on RISC-V by March 2026, driven by its clean 
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (C) "Its PLONKish/KZG architecture is a generational outlier" — "generational outlier" is imprecise and carries vague evaluative weight; replace with something like "the only production zkVM still using pairing-based KZG commitments rather than hash-based FRI."
 - [P2] (B) "Gassmann et al. (2025)" cited without venue; same gap as in ch11-three-zkvms-through-seven-layers.

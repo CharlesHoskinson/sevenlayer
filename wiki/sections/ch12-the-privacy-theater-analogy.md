@@ -4,7 +4,7 @@ slug: ch12-the-privacy-theater-analogy
 chapter: 12
 chapter_title: "Midnight -- The Privacy Theater"
 heading_level: 2
-source_lines: [4937, 4954]
+source_lines: [4939, 4956]
 source_commit: 65e82b18c746552064750d4b1ea3c6d13bacbe3a
 status: reviewed
 word_count: 742

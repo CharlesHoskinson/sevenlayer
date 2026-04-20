@@ -1141,7 +1141,7 @@
       "heading_level": 2,
       "source_lines": [
         4576,
-        4608
+        4610
       ]
     },
     {
@@ -1151,8 +1151,8 @@
       "slug": "ch11-three-zkvms-through-seven-layers",
       "heading_level": 2,
       "source_lines": [
-        4609,
-        4692
+        4611,
+        4694
       ]
     },
     {
@@ -1162,8 +1162,8 @@
       "slug": "ch11-the-proof-core-triad",
       "heading_level": 2,
       "source_lines": [
-        4693,
-        4718
+        4695,
+        4720
       ]
     },
     {
@@ -1173,8 +1173,8 @@
       "slug": "ch11-performance-the-cost-collapse",
       "heading_level": 2,
       "source_lines": [
-        4719,
-        4747
+        4721,
+        4749
       ]
     },
     {
@@ -1184,8 +1184,8 @@
       "slug": "ch11-risc-v-convergence",
       "heading_level": 2,
       "source_lines": [
-        4748,
-        4764
+        4750,
+        4766
       ]
     },
     {
@@ -1195,8 +1195,8 @@
       "slug": "ch11-the-stage-is-set",
       "heading_level": 2,
       "source_lines": [
-        4765,
-        4778
+        4767,
+        4780
       ]
     },
     {
@@ -1206,8 +1206,8 @@
       "slug": "ch12-midnight-as-test-case",
       "heading_level": 2,
       "source_lines": [
-        4785,
-        4794
+        4787,
+        4796
       ]
     },
     {
@@ -1217,8 +1217,8 @@
       "slug": "ch12-midnight-at-a-glance",
       "heading_level": 2,
       "source_lines": [
-        4795,
-        4809
+        4797,
+        4811
       ]
     },
     {
@@ -1228,8 +1228,8 @@
       "slug": "ch12-full-seven-layer-mapping",
       "heading_level": 2,
       "source_lines": [
-        4810,
-        4901
+        4812,
+        4903
       ]
     },
     {
@@ -1239,8 +1239,8 @@
       "slug": "ch12-where-midnight-validates-the-model",
       "heading_level": 2,
       "source_lines": [
-        4902,
-        4915
+        4904,
+        4917
       ]
     },
     {
@@ -1250,8 +1250,8 @@
       "slug": "ch12-where-midnight-challenges-the-model",
       "heading_level": 2,
       "source_lines": [
-        4916,
-        4936
+        4918,
+        4938
       ]
     },
     {
@@ -1261,8 +1261,8 @@
       "slug": "ch12-the-privacy-theater-analogy",
       "heading_level": 2,
       "source_lines": [
-        4937,
-        4954
+        4939,
+        4956
       ]
     },
     {
@@ -1272,8 +1272,8 @@
       "slug": "ch12-five-lessons-for-zk-system-design",
       "heading_level": 2,
       "source_lines": [
-        4955,
-        4990
+        4957,
+        4992
       ]
     },
     {
@@ -1283,8 +1283,8 @@
       "slug": "ch13-zk-rollups-the-proving-grounds-production",
       "heading_level": 2,
       "source_lines": [
-        4999,
-        5024
+        5001,
+        5026
       ]
     },
     {
@@ -1294,8 +1294,8 @@
       "slug": "ch13-zk-coprocessors-off-chain-computation-on-chain-verification-growth",
       "heading_level": 2,
       "source_lines": [
-        5025,
-        5042
+        5027,
+        5044
       ]
     },
     {
@@ -1305,8 +1305,8 @@
       "slug": "ch13-zkml-provable-machine-learning-research",
       "heading_level": 2,
       "source_lines": [
-        5043,
-        5060
+        5045,
+        5062
       ]
     },
     {
@@ -1316,8 +1316,8 @@
       "slug": "ch13-zk-identity-growth-regulatory-mandate",
       "heading_level": 2,
       "source_lines": [
-        5061,
-        5076
+        5063,
+        5078
       ]
     },
     {
@@ -1327,8 +1327,8 @@
       "slug": "ch13-proving-as-a-service-the-prover-market-production",
       "heading_level": 2,
       "source_lines": [
-        5077,
-        5106
+        5079,
+        5108
       ]
     },
     {
@@ -1338,8 +1338,8 @@
       "slug": "ch13-enterprise-pilots-pilot",
       "heading_level": 2,
       "source_lines": [
-        5107,
-        5136
+        5109,
+        5138
       ]
     },
     {
@@ -1349,8 +1349,8 @@
       "slug": "ch13-market-sizing",
       "heading_level": 2,
       "source_lines": [
-        5137,
-        5179
+        5139,
+        5181
       ]
     },
     {
@@ -1360,8 +1360,8 @@
       "slug": "ch14-the-seven-questions-that-remain-open",
       "heading_level": 2,
       "source_lines": [
-        5182,
-        5352
+        5184,
+        5354
       ]
     },
     {
@@ -1371,8 +1371,8 @@
       "slug": "ch14-the-three-frontiers",
       "heading_level": 2,
       "source_lines": [
-        5353,
-        5396
+        5355,
+        5398
       ]
     },
     {
@@ -1382,8 +1382,8 @@
       "slug": "ch14-convergence",
       "heading_level": 2,
       "source_lines": [
-        5397,
-        5414
+        5399,
+        5416
       ]
     },
     {
@@ -1393,8 +1393,8 @@
       "slug": "ch14-coda",
       "heading_level": 2,
       "source_lines": [
-        5415,
-        5530
+        5417,
+        5532
       ]
     }
   ],

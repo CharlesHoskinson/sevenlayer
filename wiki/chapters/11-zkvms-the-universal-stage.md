@@ -2,7 +2,7 @@
 title: "zkVMs -- The Universal Stage"
 chapter: 11
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 11: zkVMs -- The Universal Stage
@@ -17,7 +17,13 @@ status: untouched
 - [[ch11-risc-v-convergence]]
 - [[ch11-the-stage-is-set]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-19 per `wiki/drafts/ch11-v2.md`. 1 P0 + 3 P1 resolved. Draft preserved. P2 (10) and P3 (5) deferred.
+
+**Key corrections:** Jolt Layer 1 re-labeled **transparent** (Hyrax is no-trusted-setup, classical-security via DLP on BN254); performance section citations added (SP1 Hypercube [52], Airbender [53], ethproofs / Castle Labs [43/44], EF pivot [55]); ZisK org softened to "SilentSig (ZisK, ex-Polygon Hermez team)" with uncertain ownership details dropped (we couldn't independently verify the Baylina/GmbH claims); Stwo 100x (end-to-end pipeline) vs 125x (raw M31 field arithmetic) clarified across Layer 5 and Layer 6 entries.
+
+## Audit rollup (pre-revision)
 
 Audited 2026-04-18. P0=1, P1=2, P2=10, P3=5.
 

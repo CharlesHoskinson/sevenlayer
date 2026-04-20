@@ -3,23 +3,14 @@
 Auto-generated from `## Improvement notes` in every section.
 Regenerate with `python wiki/tools/build_backlog.py`.
 
-**Totals:** 351 open findings — P0: 1, P1: 11, P2: 230, P3: 109
+**Totals:** 347 open findings — P0: 0, P1: 8, P2: 230, P3: 109
 
-## P0 (1)
-
-| Status | Ch | Slug | Dim | Finding |
-|--------|----|------|-----|---------|
-| [ ] | 11 | [[ch11-three-zkvms-through-seven-layers]] | A | Jolt Layer 1 is described as "Trusted (Hyrax/Pedersen commitments)" — Hyrax is a *transparent*, trust-free polynomial commitment scheme based on inner-product arguments over elliptic curves; it requires no trusted setup. Labelling Jolt Layer 1 as "Trusted" is incorrect. |
-
-## P1 (11)
+## P1 (8)
 
 | Status | Ch | Slug | Dim | Finding |
 |--------|----|------|-----|---------|
 | [ ] | 08 | [[ch08-on-chain-verification-in-2026]] | A | "Three Ethereum upgrades in two years… expanded DA capacity by roughly 16×" is inconsistent with the numbers given in ch08-the-price-of-a-verdict: blob target goes from 3 (EIP-4844) to 14 (Fusaka), which is ~4.7×, not 16×. If the 16× is computed against pre-EIP-4844 calldata capacity, that denominator and methodology should be stated explicitly. |
 | [ ] | 08 | [[ch08-the-price-of-a-verdict]] | A | The "8× increase in DA capacity over the original EIP-4844 specification" claim for Fusaka/PeerDAS is incorrect: the blob target rises from 3 to 14, which is roughly 4.7×, not 8×. |
-| [ ] | 11 | [[ch11-performance-the-cost-collapse]] | B | No sources cited for any benchmark numbers in the section — block proving times, GPU configs, cost figures, ZKPOG 52x speedup, OpenVM SWIRL 3.8 GHz, Nexus 3.0 two-pass approach, and EF pivot targets. This is the most data-dense section in the chapter and every quantitative claim is unsourced. |
-| [ ] | 11 | [[ch11-the-landscape-table-march-2026]] | A | ZisK is listed under org "SilentSig" — ZisK (Polygon's ZK prover) is associated with the Polygon team, not a company named SilentSig. Needs verification; if wrong, a factual error in the primary landscape table. |
-| [ ] | 11 | [[ch11-three-zkvms-through-seven-layers]] | A | Speed comparison for Stwo: Layer 5 entry says "approximately 100x faster than its predecessor Stone" but Layer 6 entry says "M31 arithmetic is approximately 125x faster than the 252-bit Stark field used by Stone." These two figures refer to the same system comparison yet differ. One is likely a rounded figure for Stone's overall pipeline; the other for raw field arithmetic — but the distinction is not explained and the juxtaposition will confuse readers. |
 | [ ] | 13 | [[ch13-proving-as-a-service-the-prover-market-production]] | C | Paragraphs 1 and 2 both open with the same idea ("the Chapter 4 privacy tradeoff returns with full force"), nearly verbatim. The second paragraph is redundant with the first and should be merged or cut. |
 | [ ] | 13 | [[ch13-zk-coprocessors-off-chain-computation-on-chain-verification-growth]] | A | "Pico Prism zkVM" merges two distinct Brevis products: Pico (a zkVM) and Prism (a coprocessor framework). The entities list correctly separates them ([[pico]], [[prism]]) but the body text conflates them into a single compound name, which is inaccurate. |
 | [ ] | 13 | [[ch13-zk-identity-growth-regulatory-mandate]] | C | The sentence "The market does not need to be created. It has been mandated." appears verbatim in both the eIDAS paragraph and the closing paragraph. One instance is a copy-paste artifact and should be removed. |
@@ -390,14 +381,13 @@ Regenerate with `python wiki/tools/build_backlog.py`.
 | 08 | 0 | 2 | 7 | 3 | 12 |
 | 09 | 0 | 0 | 11 | 3 | 14 |
 | 10 | 0 | 0 | 5 | 2 | 7 |
-| 11 | 1 | 3 | 13 | 6 | 23 |
+| 11 | 0 | 0 | 13 | 6 | 19 |
 | 12 | 0 | 0 | 9 | 6 | 15 |
 | 13 | 0 | 4 | 13 | 6 | 23 |
 | 14 | 0 | 2 | 5 | 5 | 12 |
 
 ## Revision order (by P0+P1 density, descending)
 
-- Chapter 11: P0+P1 = 4
 - Chapter 13: P0+P1 = 4
 - Chapter 08: P0+P1 = 2
 - Chapter 14: P0+P1 = 2
@@ -410,4 +400,5 @@ Regenerate with `python wiki/tools/build_backlog.py`.
 - Chapter 07: P0+P1 = 0
 - Chapter 09: P0+P1 = 0
 - Chapter 10: P0+P1 = 0
+- Chapter 11: P0+P1 = 0
 - Chapter 12: P0+P1 = 0
