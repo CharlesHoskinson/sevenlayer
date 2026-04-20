@@ -5,8 +5,8 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3019, 3056]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 945
 ---
 
@@ -32,7 +32,7 @@ A completely different kind of assumption. A hash function takes arbitrary input
 
 The CRHF world is simpler and more conservative. Hash functions require no algebraic structure -- no groups, no pairings, no special number theory. This simplicity is both a strength (fewer assumptions to break) and a weakness (fewer mathematical tools to work with). FRI-based commitment schemes and STARKs live in this world. They are transparent (no trusted setup) and plausibly post-quantum, since hash functions are not broken by Shor's algorithm.
 
-But "plausibly post-quantum" deserves scrutiny, and scrutiny reveals cracks. Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, halving the effective security level of hash preimage resistance: a 256-bit hash drops to 128-bit quantum security. More subtly, the BHT algorithm (Brassard-Hoyer-Tapp) can reduce collision resistance by a factor of three: SHA-256's 128-bit classical collision resistance becomes roughly 85-bit quantum collision resistance, though this attack requires impractical amounts of quantum random-access memory. And the FRI protocol's post-quantum security depends on the soundness of the Fiat-Shamir transform in the quantum random oracle model -- a reduction that is known but carries non-tight security bounds.
+But "plausibly post-quantum" deserves scrutiny, and scrutiny reveals cracks. Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, halving the effective security level of hash preimage resistance: a 256-bit hash drops to 128-bit quantum security. More subtly, the BHT algorithm [Brassard, Høyer, Tapp, "Quantum cryptanalysis of hash and claw-free functions," LATIN 1998, LNCS 1380, pp. 163--169; arxiv quant-ph/9705002] can reduce collision resistance by a factor of three: SHA-256's 128-bit classical collision resistance becomes roughly 85-bit quantum collision resistance, though this attack requires impractical amounts of quantum random-access memory. And the FRI protocol's post-quantum security depends on the soundness of the Fiat-Shamir transform in the quantum random oracle model -- a reduction that is known but carries non-tight security bounds.
 
 The honest statement is that hash-based systems *probably* survive quantum computers with appropriate parameter adjustments, but the unqualified claim that they are "post-quantum secure" gives false confidence. Intellectual honesty demands we say: this is not yet fully understood.
 
@@ -93,9 +93,10 @@ None flagged by this section.
 
 ## Improvement notes
 
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) "Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, halving the effective security level" — accurate for preimage resistance; the halving framing is slightly imprecise because Grover applies to search, not all hash security properties equally. The subsequent BHT discussion partially corrects this but the leading sentence could mislead.
 - [P2] (A) BHT "roughly 85-bit quantum collision resistance" for SHA-256 — the BHT exponent is 2n/3; for n=256 that gives ~170-bit quantum security if QRAM is ignored, or the classical 128-bit bound if QRAM cost is folded in. The "85-bit" figure is non-standard and the parenthetical "(though this attack requires impractical amounts of quantum random-access memory)" partially negates the claim; clarify whether 85-bit is a realistic bound or a theoretical worst-case.
-- [P1] (B) BHT citation is attributed only as "Brassard-Hoyer-Tapp" without a full reference (no venue, year, or title) in Sources cited. The actual paper is "Quantum cryptanalysis of hash and claw-free functions," STACS 1998.
 - [P3] (C) Parenthetical asides in the Module-SIS paragraph (two nested parentheticals explaining Pedersen commitments) create cluttered prose; the Pedersen aside could link to [[pedersen]] instead.
 
 ## Links

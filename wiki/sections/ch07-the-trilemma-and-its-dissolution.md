@@ -5,29 +5,29 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3160, 3194]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 643
 ---
 
 ## The Trilemma -- And Its Dissolution
 
-The original paper presented a "cryptographic primitives trilemma": a claim that any commitment scheme can achieve at most two of three desirable properties.
+I call this shape of tradeoffs the *cryptographic primitives trilemma* -- my own framing, not a result from the literature. The claim is that any commitment scheme deployed today achieves at most two of three desirable properties:
 
 1. **Algebraic functionality** -- the homomorphic structure needed for folding, composition, and efficient recursive proving.
 2. **Post-quantum security** -- resilience against quantum computers running Shor's and Grover's algorithms.
 3. **Succinctness** -- small proofs and fast verification.
 
-The trilemma positioned the four families like this:
+The trilemma positions the four families like this:
 
 - **KZG** achieves algebraic functionality and succinctness but lacks post-quantum security.
 - **FRI** achieves post-quantum security but lacks algebraic functionality (no homomorphism, so no folding) and offers only moderate succinctness (large proofs).
 - **IPA** achieves moderate algebraic functionality but lacks both post-quantum security and full succinctness (linear verification).
 - **Lattice** achieves algebraic functionality and post-quantum security. Succinctness is the remaining gap.
 
-This framing was useful as a historical snapshot. As a statement of permanent truth, it is increasingly wrong.
+The framing is useful as a historical snapshot. As a statement of permanent truth, it is increasingly wrong.
 
-The lattice revolution -- Greyhound (2024), LatticeFold (2024), LatticeFold+ (2025), Neo (2025), Symphony (2026) -- has been systematically closing the succinctness gap. Greyhound demonstrated 50-kilobyte proofs with sublinear verification. LaBRADOR achieved 58-kilobyte proofs for large constraint systems. Symphony's high-arity folding can compress a final proof via a compact SNARK that, if instantiated with a pairing-based scheme, produces constant-size output -- and if instantiated with a lattice-based scheme, remains fully post-quantum.
+The lattice revolution -- Greyhound (2024), LatticeFold (Boneh-Chen; ePrint 2024/257, published at ASIACRYPT 2025), LatticeFold+ (2025), Neo (2025), Symphony (2026) -- has been systematically closing the succinctness gap. Greyhound demonstrated 50-kilobyte proofs with sublinear verification. LaBRADOR achieved 58-kilobyte proofs for large constraint systems. Symphony's high-arity folding can compress a final proof via a compact SNARK that, if instantiated with a pairing-based scheme, produces constant-size output -- and if instantiated with a lattice-based scheme, remains fully post-quantum.
 
 The trilemma is better understood as a *spectrum* that is being actively compressed. The engineering challenge is real (lattice proofs are still 1000x larger than KZG), but the trajectory is clear: lattice schemes are approaching practical competitiveness, and the gap shrinks with each generation. What looked like a permanent constraint on the geometry of the design space is turning out to be an artifact of our current engineering, not a law of mathematical nature.
 
@@ -41,7 +41,7 @@ No known scheme achieves all three. KZG achieves the first two but requires a tr
 
 The question that should keep a mathematician awake at night is: *is this trilemma fundamental?* Is there a theorem -- an impossibility result, an information-theoretic lower bound -- proving that no commitment scheme can simultaneously achieve constant-size proofs, constant-time verification, and transparency?
 
-The answer, as of 2026, is no. No one has proven that the ideal PCS is impossible. The barriers are engineering barriers, not mathematical barriers. The bilinear pairing that gives KZG its constant-size miracle is a specific algebraic structure tied to elliptic curves, and elliptic curves require structured reference strings to exploit pairings. But nothing in information theory says that constant-size polynomial commitments *require* pairings. Nothing says that transparency *requires* large proofs. The ideal scheme -- transparent, constant-size, constant-verification, post-quantum -- remains the field's holy grail. It may not exist. But its impossibility has not been proven, and the gap between what lattice schemes achieve today and what that grail demands shrinks with every new construction. The trilemma may be less a law of nature than a confession of our current ignorance.
+The answer, as of 2026, is no. No one has proven that the ideal PCS is impossible. The barriers are engineering barriers, not mathematical barriers. The bilinear pairing that gives KZG its constant-size property is a specific algebraic structure tied to elliptic curves, and elliptic curves require structured reference strings to exploit pairings. But nothing in information theory says that constant-size polynomial commitments *require* pairings. Nothing says that transparency *requires* large proofs. The ideal scheme -- transparent, constant-size, constant-verification, post-quantum -- remains the field's holy grail. It may not exist. But its impossibility has not been proven, and the gap between what lattice schemes achieve today and what that grail demands shrinks with every new construction. The trilemma may be less a law of nature than a confession of our current ignorance.
 
 ---
 
@@ -84,7 +84,8 @@ None in this section.
 
 ## Improvement notes
 
-- [P1] (B) "The original paper presented a 'cryptographic primitives trilemma'" — no citation given for which paper introduced this trilemma framing. If this is an original synthesis rather than a cited result, the language should say so rather than implying a specific source.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) FRI is described as achieving "post-quantum security but lacks algebraic functionality (no homomorphism, so no folding) and offers only moderate succinctness (large proofs)" — the trilemma as stated has three properties, but the text inconsistently uses "moderate succinctness" for FRI in the list and then later says FRI "achieves post-quantum security" and "reasonable verification (polylogarithmic)" — the mapping of FRI to exactly two of three properties is blurred.
 - [P2] (B) Symphony (2026) appears in key claims with "ePrint 2025/1905" but Sources cited lists nothing for this section; the Symphony citation should be in Sources cited.
 - [P3] (C) The closing rhetorical question ("*is this trilemma fundamental?*") is effective but the multi-sentence follow-up "The answer, as of 2026, is no" paragraph has an AI-essay cadence (question → answer → hedged elaboration → conclusion). Could be tightened.

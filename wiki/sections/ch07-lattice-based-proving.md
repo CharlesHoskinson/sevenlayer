@@ -5,8 +5,8 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3298, 3351]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 927
 ---
 
@@ -20,9 +20,9 @@ The progression has been fast, compressing a decade of typical cryptographic dev
 
 The first demonstration that lattice-based SNARKs could be practical, not just theoretical. Greyhound achieved approximately 50-kilobyte proofs with sublinear (square root of N) verification, built entirely on Module-SIS. It was a standalone SNARK, not a folding scheme -- a proof of concept that lattice proofs could fit in the same order of magnitude as STARK proofs.
 
-### Stage 2: LatticeFold (2024)
+### Stage 2: LatticeFold (Boneh-Chen; ePrint 2024/257, published at ASIACRYPT 2025)
 
-The conceptual breakthrough. Dan Boneh and Binyi Chen adapted Nova-style folding to work over cyclotomic rings with Ajtai commitments. The key insight: Ajtai's module homomorphism is the lattice analogue of Pedersen's additive homomorphism, and it is sufficient to enable the random-linear-combination technique that makes folding work.
+The conceptual breakthrough. Dan Boneh and Binyi Chen adapted Nova-style folding to work over cyclotomic rings with Ajtai commitments. The central observation: Ajtai's module homomorphism is the lattice analogue of Pedersen's additive homomorphism, and it is sufficient to enable the random-linear-combination technique that makes folding work.
 
 LatticeFold introduced three composable reductions -- $\Pi_{\text{CCS}}$ (constraint satisfaction to evaluation claims), $\Pi_{\text{RLC}}$ (random linear combination), and $\Pi_{\text{DEC}}$ (decomposition to control norm growth) -- that together form a complete folding scheme for CCS (Customizable Constraint Systems).
 
@@ -46,11 +46,11 @@ The most ambitious design. Symphony pushes folding to high arity -- folding 1,02
 
 Symphony also introduces approximate range proofs (replacing the exact norm proofs of LatticeFold+), reducing verification complexity further. Its concrete instantiation can handle $2^{32}$ R1CS constraints -- over four billion -- in a single batch.
 
-If Symphony's compact SNARK is instantiated with a pairing-based scheme (Groth16), the final proof is constant-size. If instantiated with a lattice-based scheme, the entire pipeline is post-quantum. This modularity is the architectural insight: separate the bulk proving (which must be post-quantum) from the final compression (which can optionally use classical tools for maximum succinctness).
+If Symphony's compact SNARK is instantiated with a pairing-based scheme (Groth16), the final proof is constant-size. If instantiated with a lattice-based scheme, the entire pipeline is post-quantum. This modularity is the architectural payoff: separate the bulk proving (which must be post-quantum) from the final compression (which can optionally use classical tools for maximum succinctness).
 
-### The Key Algebraic Insight
+### The Algebraic Core
 
-The entire lattice folding line rests on a single algebraic fact that deserves to be stated plainly, because it is the kind of fact that sounds narrow but turns out to govern everything.
+The entire lattice folding line rests on a single algebraic fact that deserves to be stated plainly, because it sounds narrow but turns out to govern everything.
 
 An Ajtai commitment over the ring $R_q$ is *module-homomorphic*. This means that for any challenge element $\rho$ drawn from a strong sampling set with small coefficients, the equation $\rho \cdot \text{Com}(Z) = \text{Com}(\rho \cdot Z)$ holds. This is the lattice analogue of the scalar homomorphism that makes Nova-style folding work over elliptic curves.
 
@@ -110,7 +110,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (A) Date inconsistency: section body calls LatticeFold "Stage 2: LatticeFold (2024)" and key claims say "LatticeFold (2024, Boneh and Chen)" but Sources cited lists "Boneh and Chen, LatticeFold — ASIACRYPT 2025." If the ePrint appeared in 2024 and the conference proceedings in 2025, the body should distinguish ePrint date from publication venue to avoid confusion.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) "The progression has been fast, compressing a decade of typical cryptographic development into two years" — LaBRADOR (2023), Greyhound's precursors, and early lattice SNARK work (Lyubashevsky et al. from 2009 onward) predate 2024. "Two years" understates the prior research base; the claim applies more precisely to the folding-capable production-quality line beginning with LatticeFold.
 - [P2] (B) Symphony cited as "ePrint 2025/1905" in Sources cited — consistent with other sections. LatticeFold+ cited as "CRYPTO 2025" without authors or title; should include Boneh, Chen, and co-authors for completeness.
 - [P3] (E) The section describes five stages but does not give concrete proof-size or verification-time numbers for LatticeFold and LatticeFold+ (only Greyhound's ~50 KB and Neo's 127-bit figure are given). Adding ballpark numbers for intermediate stages would improve depth and comparability.

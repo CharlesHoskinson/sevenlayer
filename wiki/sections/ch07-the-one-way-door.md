@@ -5,8 +5,8 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3502, 3529]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 534
 ---
 
@@ -19,7 +19,7 @@ The Cascade Effect above asks *what to choose*. This section asks *when the choi
 | Field | Size | PQ Status | Commitment Options | Sweet Spot |
 |-------|------|-----------|-------------------|------------|
 | BN254 | 254-bit | Quantum-vulnerable | KZG (cheapest EVM verification) | Legacy Ethereum rollups; Groth16 wrapper |
-| BLS12-381 | 253-bit | Quantum-vulnerable | KZG (higher security margin) | Privacy systems needing pairings (Midnight, Zcash) |
+| BLS12-381 | 255-bit scalar / 381-bit base | Quantum-vulnerable | KZG (higher security margin) | Privacy systems needing pairings (Midnight, Zcash) |
 | BabyBear | 31-bit | Hash-PQ; lattice-PQ | FRI, Ajtai | Maximum prover speed; RISC-V zkVMs (SP1, RISC Zero) |
 | Mersenne-31 | 31-bit | Hash-PQ | FRI (Circle STARK) | Fastest arithmetic; Stwo/Starknet ecosystem |
 | Goldilocks | 64-bit | Hash-PQ; lattice-PQ | FRI, Ajtai | Balance of speed and precision; Neo/Nightstream |
@@ -81,7 +81,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P0] (A) The field rubric table lists BLS12-381 as "253-bit" — the scalar field of BLS12-381 is 255 bits. This is the same error as in ch07-small-fields and ch07-case-study-midnight and must be fixed consistently.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (D) The closing transition paragraph ("Layer 7 is where the mathematics meets its audience…") is a book-level bridge to Chapter 8 embedded in this section file. In a wiki structure where sections are independently navigable, this bridge may be misread as part of this section's argument rather than a chapter transition; it could be marked or moved to the chapter hub.
 - [P3] (C) "The data is patient" (from ch07-the-quantum-threat-horizon) and the similar "secrets written in ink that merely required a light that had not yet been invented" here are vivid but slightly overwrought; consistency of tone with other closing sections in the chapter varies.
 

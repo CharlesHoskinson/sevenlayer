@@ -3038,7 +3038,7 @@ A completely different kind of assumption. A hash function takes arbitrary input
 
 The CRHF world is simpler and more conservative. Hash functions require no algebraic structure -- no groups, no pairings, no special number theory. This simplicity is both a strength (fewer assumptions to break) and a weakness (fewer mathematical tools to work with). FRI-based commitment schemes and STARKs live in this world. They are transparent (no trusted setup) and plausibly post-quantum, since hash functions are not broken by Shor's algorithm.
 
-But "plausibly post-quantum" deserves scrutiny, and scrutiny reveals cracks. Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, halving the effective security level of hash preimage resistance: a 256-bit hash drops to 128-bit quantum security. More subtly, the BHT algorithm (Brassard-Hoyer-Tapp) can reduce collision resistance by a factor of three: SHA-256's 128-bit classical collision resistance becomes roughly 85-bit quantum collision resistance, though this attack requires impractical amounts of quantum random-access memory. And the FRI protocol's post-quantum security depends on the soundness of the Fiat-Shamir transform in the quantum random oracle model -- a reduction that is known but carries non-tight security bounds.
+But "plausibly post-quantum" deserves scrutiny, and scrutiny reveals cracks. Grover's algorithm gives a quantum computer a quadratic speedup for brute-force search, halving the effective security level of hash preimage resistance: a 256-bit hash drops to 128-bit quantum security. More subtly, the BHT algorithm [Brassard, Høyer, Tapp, "Quantum cryptanalysis of hash and claw-free functions," LATIN 1998, LNCS 1380, pp. 163--169; arxiv quant-ph/9705002] can reduce collision resistance by a factor of three: SHA-256's 128-bit classical collision resistance becomes roughly 85-bit quantum collision resistance, though this attack requires impractical amounts of quantum random-access memory. And the FRI protocol's post-quantum security depends on the soundness of the Fiat-Shamir transform in the quantum random oracle model -- a reduction that is known but carries non-tight security bounds.
 
 The honest statement is that hash-based systems *probably* survive quantum computers with appropriate parameter adjustments, but the unqualified claim that they are "post-quantum secure" gives false confidence. Intellectual honesty demands we say: this is not yet fully understood.
 
@@ -3072,7 +3072,7 @@ KZG powers Groth16, PLONK, Marlin, and virtually every pairing-based SNARK. It i
 
 To understand what a polynomial commitment *feels like*, consider what it accomplishes. A polynomial of degree $n$ encodes $n + 1$ independent values -- it is, in a precise sense, a compressed representation of an entire dataset. A polynomial of degree one million contains a million pieces of information. KZG seals all of that information into a single elliptic curve point: 48 bytes. One point on a curve, and behind it, a million values, invisible but committed. Later, anyone can ask "what does the polynomial evaluate to at point $z$?" and the prover produces a single additional curve point as proof. Not a proof proportional to the polynomial's size. Not a proof that grows with the complexity of the claim. A single point. Constant size. Whether the polynomial has degree ten or degree ten million, the proof is 48 bytes.
 
-This is, in a precise mathematical sense, miraculous. It is worth pausing to feel the weight of that claim, because no amount of familiarity should make it seem ordinary.
+This is, in a precise mathematical sense, miraculous. No amount of familiarity should make it seem ordinary.
 
 The mechanism rests on the bilinear pairing -- a function $e(P, Q)$ that takes two elliptic curve points and produces an element in a target group, satisfying $e(aP, bQ) = e(P, Q)^{ab}$. This bilinearity allows the verifier to check polynomial relationships without ever seeing the polynomial. The proof that $p(z) = y$ consists of a commitment to the quotient polynomial $q(x) = (p(x) - y) / (x - z)$. The verifier checks one equation: $e(C - yG, H) = e(\pi, H_s - zH)$, where $C$ is the commitment, $\pi$ is the proof, and $H_s$ is a point from the trusted setup encoding the secret $s$. If the equation holds, the polynomial evaluates to $y$ at $z$. If it does not, the prover is lying. One equation. Two pairing evaluations. Done.
 
@@ -3100,19 +3100,19 @@ Now repeat. Another random challenge. Another folding. The domain halves again. 
 
 But if the original function was *not* close to a low-degree polynomial -- if it was a high-degree impostor with hidden bumps -- then folding amplifies the bumps. Each round of folding, guided by the random challenge, mixes pairs of evaluations in a way that smooths genuine structure but destabilizes imposture. The bumps do not cancel; they compound. By the time you have zoomed in far enough, the remaining function is visibly not low-degree. The impostor is caught.
 
-The commitment mechanism is beautifully simple: Merkle trees. The prover commits to each round's evaluation table by hashing it into a Merkle tree and publishing the root. When the verifier wants to spot-check specific points, the prover opens Merkle paths -- logarithmic-sized authentication paths from leaf to root. The security rests entirely on collision resistance of the hash function. No group structure, no pairings, no discrete logs. Just hashing.
+The commitment mechanism is simple: Merkle trees. The prover commits to each round's evaluation table by hashing it into a Merkle tree and publishing the root. When the verifier wants to spot-check specific points, the prover opens Merkle paths -- logarithmic-sized authentication paths from leaf to root. The security rests entirely on collision resistance of the hash function. No group structure, no pairings, no discrete logs. Just hashing.
 
 This is why FRI replaces elliptic curves with hash functions. A Merkle tree commitment to $n$ evaluations costs $O(n)$ hashes to build and $O(\log n)$ hashes to open a single leaf. The total proof consists of Merkle roots (one per FRI round), Merkle paths (for the queried positions), and the final constant polynomial. The result is polylogarithmic: $O(\log^2 n)$ in total size, typically 50 to 200 kilobytes. Enormously larger than KZG's 48 bytes. But transparent. Plausibly post-quantum. And built from the simplest, most conservative cryptographic primitive we have: the hash function.
 
-The tradeoff crystallizes the philosophical divide in zero-knowledge cryptography. KZG achieves its miracle of constant-size proofs by leveraging deep algebraic structure -- bilinear pairings over elliptic curves, with all the trust assumptions and quantum vulnerabilities that entails. FRI achieves transparency and quantum plausibility by abandoning that structure entirely, accepting larger proofs as the price. Neither choice is wrong. Each is a coherent answer to a different question about what you are willing to assume and what you are willing to pay.
+The tradeoff crystallizes the philosophical divide in zero-knowledge cryptography. KZG achieves its constant-size proofs by leveraging deep algebraic structure -- bilinear pairings over elliptic curves, with all the trust assumptions and quantum vulnerabilities that entails. FRI achieves transparency and quantum plausibility by abandoning that structure entirely, accepting larger proofs as the price. Neither choice is wrong. Each is a coherent answer to a different question about what you are willing to assume and what you are willing to pay.
 
 ### IPA / Bulletproofs (Inner Product Argument)
 
-Built on the discrete logarithm problem without pairings. Bulletproofs use Pedersen commitments -- a simpler construction than KZG that does not require bilinear maps. The key insight is an inner product argument: prove that the inner product of two committed vectors equals a claimed value, using a recursive halving protocol that produces $O(\log n)$ group elements.
+Built on the discrete logarithm problem without pairings. Bulletproofs use Pedersen commitments -- a simpler construction than KZG that does not require bilinear maps. The technique is an inner product argument: prove that the inner product of two committed vectors equals a claimed value, using a recursive halving protocol that produces $O(\log n)$ group elements.
 
 IPA proofs are transparent (no trusted setup, just a random group element generator). Proof sizes are logarithmic -- much smaller than FRI, but not constant like KZG. Verification, however, requires $O(n)$ work -- linear in the statement size. This is the main drawback: the verifier is slow.
 
-Halo (2019) proved that IPA-based schemes support recursion without pairings, using a technique called "nested amortization" that defers expensive verification across recursion steps. This was the conceptual breakthrough that opened the door to transparent recursive proving. Halo2 powers Zcash's Orchard protocol and influenced the design of the Pasta curves (Pallas and Vesta).
+Halo (Bowe, Grigg, Hopwood; ePrint 2019/1021) proved that IPA-based schemes support recursion without pairings, using a technique called "nested amortization" that defers expensive verification across recursion steps. This was the conceptual breakthrough that opened the door to transparent recursive proving. Halo2 powers Zcash's Orchard protocol and influenced the design of the Pasta curves (Pallas and Vesta); the same idea was productized in Pickles, the recursion engine of Mina Protocol.
 
 The limitation: IPA is not post-quantum. It still relies on the discrete logarithm assumption. And the linear verification cost makes it impractical for on-chain verification without wrapping in a more succinct outer proof.
 
@@ -3122,9 +3122,9 @@ The technique is recursive halving. Split both vectors into their left and right
 
 Each halving adds exactly two group elements ($L$ and $R$) to the proof. For vectors of length $n = 2^{20}$ -- roughly a million entries -- the protocol runs for 20 rounds, producing 40 group elements. At 32 bytes per element on a 256-bit curve, that is 1,280 bytes. A proof that two million-entry vectors have a specific dot product, in 1.3 kilobytes. Not constant like KZG. But logarithmic, transparent, and no trusted setup.
 
-This is why Halo was a watershed. Before Halo, recursive proof composition required pairings -- you needed the bilinear map to verify a KZG proof inside a circuit, and that meant you needed pairing-friendly curves, which meant you needed a trusted setup. Halo demonstrated that IPA's logarithmic proofs could be verified *incrementally* across recursion steps, deferring the expensive linear-time final check. The key was nested amortization: instead of verifying the IPA proof fully at each recursion step (which would cost linear time and destroy the efficiency), Halo accumulated the verification work and deferred it to the end. This meant each recursion step added only constant overhead, and the full linear verification happened once, at the very end of the recursion chain.
+This is why Halo was a watershed. Before Halo, recursive proof composition required pairings -- you needed the bilinear map to verify a KZG proof inside a circuit, and that meant you needed pairing-friendly curves, which meant you needed a trusted setup. Halo demonstrated that IPA's logarithmic proofs could be verified *incrementally* across recursion steps, deferring the expensive linear-time final check. The mechanism was nested amortization: instead of verifying the IPA proof fully at each recursion step (which would cost linear time and destroy the efficiency), Halo accumulated the verification work and deferred it to the end. Each recursion step added only constant overhead, and the full linear verification happened once, at the very end of the recursion chain.
 
-The result was the first recursive proof system with no trusted setup and no pairings. It required a cycle of curves -- Pallas and Vesta, the "Pasta" curves, each one's scalar field being the other's base field -- but no ceremony, no toxic waste, no trust assumptions beyond the hardness of the discrete logarithm. Zcash adopted Halo2 for its Orchard shielded pool, replacing the Sprout and Sapling ceremonies with transparent recursion. The ceremony was over. The mathematics was enough.
+The result was the first recursive proof system with no trusted setup and no pairings. It required a cycle of curves -- Pallas and Vesta, the "Pasta" curves, each one's scalar field being the other's base field -- but no ceremony, no toxic waste, no trust assumptions beyond the hardness of the discrete logarithm. Zcash adopted Halo2 for its Orchard shielded pool, replacing the Sprout and Sapling ceremonies with transparent recursion. Mina Protocol built its entire chain on the same primitive through its Pickles engine. The ceremony was over. The mathematics was enough.
 
 ### Lattice / Ajtai Commitments
 
@@ -3132,7 +3132,7 @@ Built on Module-SIS. The Ajtai commitment scheme works over a cyclotomic ring $R
 
 Lattice commitments are transparent (the matrix $M$ is generated from public randomness) and post-quantum (Module-SIS resists quantum attacks). Proof sizes are logarithmic -- $O(\log n)$ ring elements, concretely 50 to 60 kilobytes for current parameterizations.
 
-The key algebraic property: Ajtai commitments are *module-homomorphic* over the ring. For a ring element $\rho$ and a commitment $\text{Com}(Z)$, you get $\rho \cdot \text{Com}(Z) = \text{Com}(\rho \cdot Z)$. This is strictly richer than scalar homomorphism and is what enables lattice-based folding. The challenges used in folding are ring elements from a carefully chosen "strong sampling set" with small coefficients, which controls the norm growth of folded witnesses.
+The central algebraic property: Ajtai commitments are *module-homomorphic* over the ring. For a ring element $\rho$ and a commitment $\text{Com}(Z)$, you get $\rho \cdot \text{Com}(Z) = \text{Com}(\rho \cdot Z)$. This is strictly richer than scalar homomorphism and is what enables lattice-based folding. The challenges used in folding are ring elements from a carefully chosen "strong sampling set" with small coefficients, which controls the norm growth of folded witnesses.
 
 Lattice commitments power Greyhound, LaBRADOR, LatticeFold, LatticeFold+, Neo, and Symphony. They are the youngest family and the least battle-tested in production, but they are the only family that simultaneously offers post-quantum security, algebraic structure sufficient for folding, and transparent setup.
 
@@ -3159,22 +3159,22 @@ The Module-SIS formulation adds one more layer. Instead of vectors over a field,
 
 ## The Trilemma -- And Its Dissolution
 
-The original paper presented a "cryptographic primitives trilemma": a claim that any commitment scheme can achieve at most two of three desirable properties.
+I call this shape of tradeoffs the *cryptographic primitives trilemma* -- my own framing, not a result from the literature. The claim is that any commitment scheme deployed today achieves at most two of three desirable properties:
 
 1. **Algebraic functionality** -- the homomorphic structure needed for folding, composition, and efficient recursive proving.
 2. **Post-quantum security** -- resilience against quantum computers running Shor's and Grover's algorithms.
 3. **Succinctness** -- small proofs and fast verification.
 
-The trilemma positioned the four families like this:
+The trilemma positions the four families like this:
 
 - **KZG** achieves algebraic functionality and succinctness but lacks post-quantum security.
 - **FRI** achieves post-quantum security but lacks algebraic functionality (no homomorphism, so no folding) and offers only moderate succinctness (large proofs).
 - **IPA** achieves moderate algebraic functionality but lacks both post-quantum security and full succinctness (linear verification).
 - **Lattice** achieves algebraic functionality and post-quantum security. Succinctness is the remaining gap.
 
-This framing was useful as a historical snapshot. As a statement of permanent truth, it is increasingly wrong.
+The framing is useful as a historical snapshot. As a statement of permanent truth, it is increasingly wrong.
 
-The lattice revolution -- Greyhound (2024), LatticeFold (2024), LatticeFold+ (2025), Neo (2025), Symphony (2026) -- has been systematically closing the succinctness gap. Greyhound demonstrated 50-kilobyte proofs with sublinear verification. LaBRADOR achieved 58-kilobyte proofs for large constraint systems. Symphony's high-arity folding can compress a final proof via a compact SNARK that, if instantiated with a pairing-based scheme, produces constant-size output -- and if instantiated with a lattice-based scheme, remains fully post-quantum.
+The lattice revolution -- Greyhound (2024), LatticeFold (Boneh-Chen; ePrint 2024/257, published at ASIACRYPT 2025), LatticeFold+ (2025), Neo (2025), Symphony (2026) -- has been systematically closing the succinctness gap. Greyhound demonstrated 50-kilobyte proofs with sublinear verification. LaBRADOR achieved 58-kilobyte proofs for large constraint systems. Symphony's high-arity folding can compress a final proof via a compact SNARK that, if instantiated with a pairing-based scheme, produces constant-size output -- and if instantiated with a lattice-based scheme, remains fully post-quantum.
 
 The trilemma is better understood as a *spectrum* that is being actively compressed. The engineering challenge is real (lattice proofs are still 1000x larger than KZG), but the trajectory is clear: lattice schemes are approaching practical competitiveness, and the gap shrinks with each generation. What looked like a permanent constraint on the geometry of the design space is turning out to be an artifact of our current engineering, not a law of mathematical nature.
 
@@ -3188,7 +3188,7 @@ No known scheme achieves all three. KZG achieves the first two but requires a tr
 
 The question that should keep a mathematician awake at night is: *is this trilemma fundamental?* Is there a theorem -- an impossibility result, an information-theoretic lower bound -- proving that no commitment scheme can simultaneously achieve constant-size proofs, constant-time verification, and transparency?
 
-The answer, as of 2026, is no. No one has proven that the ideal PCS is impossible. The barriers are engineering barriers, not mathematical barriers. The bilinear pairing that gives KZG its constant-size miracle is a specific algebraic structure tied to elliptic curves, and elliptic curves require structured reference strings to exploit pairings. But nothing in information theory says that constant-size polynomial commitments *require* pairings. Nothing says that transparency *requires* large proofs. The ideal scheme -- transparent, constant-size, constant-verification, post-quantum -- remains the field's holy grail. It may not exist. But its impossibility has not been proven, and the gap between what lattice schemes achieve today and what that grail demands shrinks with every new construction. The trilemma may be less a law of nature than a confession of our current ignorance.
+The answer, as of 2026, is no. No one has proven that the ideal PCS is impossible. The barriers are engineering barriers, not mathematical barriers. The bilinear pairing that gives KZG its constant-size property is a specific algebraic structure tied to elliptic curves, and elliptic curves require structured reference strings to exploit pairings. But nothing in information theory says that constant-size polynomial commitments *require* pairings. Nothing says that transparency *requires* large proofs. The ideal scheme -- transparent, constant-size, constant-verification, post-quantum -- remains the field's holy grail. It may not exist. But its impossibility has not been proven, and the gap between what lattice schemes achieve today and what that grail demands shrinks with every new construction. The trilemma may be less a law of nature than a confession of our current ignorance.
 
 ---
 
@@ -3204,13 +3204,13 @@ For most of the 2010s, the ZK world standardized on two large primes:
 
 **BN254** (Barreto-Naehrig curve, 254-bit prime). This was the first widely deployed pairing-friendly curve. Ethereum embedded BN254 pairing operations as EVM precompiles in 2017, making it the de facto standard for on-chain Groth16 verification. Every deployed Groth16 verifier on Ethereum -- including those used by the major rollups -- runs over BN254.
 
-**BLS12-381** (Barreto-Lynn-Scott curve, ~253-bit prime). Introduced later with a higher security margin and better pairing efficiency. Used by Zcash, Filecoin, Midnight, and the Ethereum KZG ceremony (EIP-4844).
+**BLS12-381** (Barreto-Lynn-Scott curve, 381-bit base field $p$; ~255-bit scalar field $r \approx 2^{254}$). Introduced later with a higher security margin and better pairing efficiency. Used by Zcash, Filecoin, Midnight, and the Ethereum KZG ceremony (EIP-4844).
 
-Both are enormous primes -- 254 and 253 bits respectively. Arithmetic on 254-bit numbers requires multiple machine words on any existing processor. A single multiplication takes several CPU instructions and cannot exploit the native 32-bit or 64-bit arithmetic units that modern hardware is optimized for.
+Both curves have large primes. BN254's scalar field is 254 bits; BLS12-381's scalar field $r$ has bitlength 255 (with $r$ slightly below $2^{254}$) and its base field is 381 bits. Arithmetic on 254- or 255-bit numbers requires multiple machine words on any existing processor. A single multiplication takes several CPU instructions and cannot exploit the native 32-bit or 64-bit arithmetic units that modern hardware is optimized for.
 
 ### The Security Erosion Problem
 
-BN254 was originally believed to provide 128-bit security -- meaning an attacker would need roughly $2^{128}$ operations to break the discrete logarithm. But advances in the Tower Number Field Sieve (Tower NFS) [Kim and Barbulescu, "Extended Tower Number Field Sieve," Mathematics of Computation, 2016; Guillevic, "Comparing the pairing efficiency over composite-order and prime-order elliptic curves," ACNS 2013] have revised this estimate downward to approximately 100 bits. This does not mean BN254 is broken -- $2^{100}$ operations is still astronomically expensive -- but it means the security margin is significantly thinner than designed.
+BN254 was originally believed to provide 128-bit security -- meaning an attacker would need roughly $2^{128}$ operations to break the discrete logarithm. But advances in the Tower Number Field Sieve (Tower NFS) [Kim and Barbulescu, "Extended Tower Number Field Sieve," *CRYPTO 2016*; Guillevic, "Comparing the pairing efficiency over composite-order and prime-order elliptic curves," *ACNS 2013*] have revised this estimate downward to approximately 100 bits. This does not mean BN254 is broken -- $2^{100}$ operations is still astronomically expensive -- but it means the security margin is significantly thinner than designed.
 
 This matters because BN254 is embedded in Ethereum's EVM precompiles. Changing the precompiled curves requires a hard fork. Every Groth16 verifier on Ethereum depends on BN254. The security erosion is not academic -- it affects the most widely deployed zero-knowledge infrastructure in the world.
 
@@ -3228,7 +3228,7 @@ Starting around 2022, a radical idea took hold: *use much smaller primes*.
 
 The performance impact is not incremental. It is a factor of 100. Arithmetic on 31-bit numbers is roughly 100 times faster than arithmetic on 254-bit numbers [Haboeck, Levit, and Papini, "Circle STARKs," ePrint 2024/278; confirmed by SP1 Hypercube benchmarks, Succinct Labs, 2025]. This is not algorithmic improvement -- it is the raw physics of computer hardware. A 31-bit multiply is one CPU instruction. A 254-bit multiply is an entire subroutine involving carry propagation, multi-limb multiplication, and modular reduction.
 
-This single insight -- that smaller fields make faster provers -- catalyzed the performance explosion in zero-knowledge proving. Circle STARKs over M31 (Stwo) achieve throughputs that were unimaginable with BN254-based systems. Plonky2 over Goldilocks enabled the first practical recursive STARKs.
+This single observation -- that smaller fields make faster provers -- catalyzed the performance explosion in zero-knowledge proving. Circle STARKs over M31 (Stwo) achieve throughputs that were unimaginable with BN254-based systems. Plonky2 over Goldilocks enabled the first practical recursive STARKs.
 
 But smaller fields introduce a subtlety that Penrose would appreciate for its geometric elegance. A single 31-bit field element provides only 31 bits of security against certain attacks. To achieve 128-bit security, systems use *extension fields*. An extension field is built by the same trick as complex numbers: you take a small field and add extra "dimensions" to your arithmetic, and the security grows with the dimension. The cost is slightly more expensive arithmetic per operation -- but each operation now works in a larger, more secure space -- enlarging $\mathbb{F}_p$ to $\mathbb{F}_{p^k}$ for some small $k$. In Stwo, the extension degree is 4, giving effectively 124 bits. In Neo, the extension is $\mathbb{F}_{q^2}$ over Goldilocks, giving 128 bits. The extension adds complexity but the arithmetic is still vastly cheaper than native 254-bit operations.
 
@@ -3305,9 +3305,9 @@ The progression has been fast, compressing a decade of typical cryptographic dev
 
 The first demonstration that lattice-based SNARKs could be practical, not just theoretical. Greyhound achieved approximately 50-kilobyte proofs with sublinear (square root of N) verification, built entirely on Module-SIS. It was a standalone SNARK, not a folding scheme -- a proof of concept that lattice proofs could fit in the same order of magnitude as STARK proofs.
 
-### Stage 2: LatticeFold (2024)
+### Stage 2: LatticeFold (Boneh-Chen; ePrint 2024/257, published at ASIACRYPT 2025)
 
-The conceptual breakthrough. Dan Boneh and Binyi Chen adapted Nova-style folding to work over cyclotomic rings with Ajtai commitments. The key insight: Ajtai's module homomorphism is the lattice analogue of Pedersen's additive homomorphism, and it is sufficient to enable the random-linear-combination technique that makes folding work.
+The conceptual breakthrough. Dan Boneh and Binyi Chen adapted Nova-style folding to work over cyclotomic rings with Ajtai commitments. The central observation: Ajtai's module homomorphism is the lattice analogue of Pedersen's additive homomorphism, and it is sufficient to enable the random-linear-combination technique that makes folding work.
 
 LatticeFold introduced three composable reductions -- $\Pi_{\text{CCS}}$ (constraint satisfaction to evaluation claims), $\Pi_{\text{RLC}}$ (random linear combination), and $\Pi_{\text{DEC}}$ (decomposition to control norm growth) -- that together form a complete folding scheme for CCS (Customizable Constraint Systems).
 
@@ -3331,11 +3331,11 @@ The most ambitious design. Symphony pushes folding to high arity -- folding 1,02
 
 Symphony also introduces approximate range proofs (replacing the exact norm proofs of LatticeFold+), reducing verification complexity further. Its concrete instantiation can handle $2^{32}$ R1CS constraints -- over four billion -- in a single batch.
 
-If Symphony's compact SNARK is instantiated with a pairing-based scheme (Groth16), the final proof is constant-size. If instantiated with a lattice-based scheme, the entire pipeline is post-quantum. This modularity is the architectural insight: separate the bulk proving (which must be post-quantum) from the final compression (which can optionally use classical tools for maximum succinctness).
+If Symphony's compact SNARK is instantiated with a pairing-based scheme (Groth16), the final proof is constant-size. If instantiated with a lattice-based scheme, the entire pipeline is post-quantum. This modularity is the architectural payoff: separate the bulk proving (which must be post-quantum) from the final compression (which can optionally use classical tools for maximum succinctness).
 
-### The Key Algebraic Insight
+### The Algebraic Core
 
-The entire lattice folding line rests on a single algebraic fact that deserves to be stated plainly, because it is the kind of fact that sounds narrow but turns out to govern everything.
+The entire lattice folding line rests on a single algebraic fact that deserves to be stated plainly, because it sounds narrow but turns out to govern everything.
 
 An Ajtai commitment over the ring $R_q$ is *module-homomorphic*. This means that for any challenge element $\rho$ drawn from a strong sampling set with small coefficients, the equation $\rho \cdot \text{Com}(Z) = \text{Com}(\rho \cdot Z)$ holds. This is the lattice analogue of the scalar homomorphism that makes Nova-style folding work over elliptic curves.
 
@@ -3355,7 +3355,7 @@ To see how Layer 6 choices play out in a real system, consider Midnight -- a pri
 
 ### The Stack
 
-**Scalar field:** BLS12-381, with a ~253-bit prime modulus $r$. Every value in Midnight's zero-knowledge circuits -- inputs, outputs, intermediate computations, token balances -- is an element of $\mathbb{F}_r$.
+**Scalar field:** BLS12-381, with a 255-bit prime scalar field $r \approx 2^{254}$ (base field $p$ is 381 bits). Every value in Midnight's zero-knowledge circuits -- inputs, outputs, intermediate computations, token balances -- is an element of $\mathbb{F}_r$.
 
 **Commitment scheme:** KZG, implied by the choice of BLS12-381 (a pairing-friendly curve). The wallet SDK caches BLS parameters locally (a structured reference string from a trusted setup ceremony). Proof size is constant. Verification is a single pairing check.
 
@@ -3396,7 +3396,7 @@ The contrast with Neo/Nightstream makes the tradeoffs vivid:
 
 | Dimension | Midnight | Neo/Nightstream |
 |---|---|---|
-| Field | BLS12-381, ~253 bits | Goldilocks, 64 bits |
+| Field | BLS12-381, 255-bit scalar | Goldilocks, 64 bits |
 | Ring | N/A (field-based) | $\mathbb{F}_q[X]/(\Phi_{81})$, degree 54 |
 | Commitment | KZG (pairing) | Ajtai (lattice) |
 | Hash | Poseidon (algebraic) | Ring-SIS (lattice) |
@@ -3429,7 +3429,7 @@ Field: Goldilocks (q = 2^64 - 2^32 + 1)
 
 Change any parameter and everything downstream shifts. Use a different prime and the cyclotomic factorization changes, which changes the extension field, which changes the security level, which changes the commitment parameters, which changes the folding parameters. This is not optional coupling -- it is algebraic necessity. The parameters are not chosen independently. They are derived from each other, each one a consequence of the ones above it, the way the shape of a crystal is a consequence of the geometry of its atoms.
 
-The same cascade operates in the pairing world. BLS12-381's prime determines the Jubjub embedding. Jubjub determines which in-circuit operations are efficient. The pairing determines which commitment scheme works. The commitment scheme determines the proof system. The proof system determines the arithmetization.
+The same cascade operates in the pairing world. BLS12-381's scalar field determines the Jubjub embedding. Jubjub determines which in-circuit operations are efficient. The pairing determines which commitment scheme works. The commitment scheme determines the proof system. The proof system determines the arithmetization.
 
 And so "crypto-agility" -- the ability to swap cryptographic primitives without redesigning the system -- is largely a fiction for zero-knowledge systems. You cannot change the field without changing everything. The choice at Layer 6 is a one-way door, and once you walk through it, you are committed.
 
@@ -3439,7 +3439,7 @@ To make this concrete, here is the decision tree that every zero-knowledge syste
 
 **If you choose Goldilocks (64-bit prime, $p = 2^{64} - 2^{32} + 1$):** You get native 64-bit arithmetic -- one multiplication per CPU instruction, no multi-limb overhead. Your natural commitment scheme is FRI (exploiting 2-adicity of $2^{32}$ for large NTT domains) or lattice-based Ajtai commitments (using the 81st cyclotomic polynomial for post-quantum security). Your constraint format is CCS or R1CS. Your setup is transparent in either case. If you choose FRI, your proofs are large but your prover leverages GPU-friendly 64-bit arithmetic. If you choose Ajtai, you get post-quantum security and folding capability, with proofs in the 50 to 60 kilobyte range. This is the path chosen by Plonky2 (FRI) and Neo/Nightstream (Ajtai). It balances prover speed, proof size, and -- if lattice-based -- quantum resilience.
 
-**If you choose BLS12-381 (254-bit pairing-friendly curve):** You get the full power of bilinear pairings -- KZG commitments with constant-size proofs (48 bytes), constant-time verification (one pairing check), and the richest algebraic structure available. Your constraint format is PLONKish gates or R1CS. Your setup requires a trusted ceremony (powers-of-tau). Your proofs are the smallest in existence. But your arithmetic is the most expensive: a single 254-bit multiplication costs a multi-limb subroutine that is 100 times slower than BabyBear's native operation. And you inherit an expiration date: Shor's algorithm will break every pairing-based proof when a cryptographically relevant quantum computer arrives. This is the path chosen by Midnight, Zcash (pre-Orchard), every Ethereum rollup's final verification layer, and the EIP-4844 blob scheme. It optimizes for proof succinctness and verifier efficiency at the cost of prover performance and quantum resilience.
+**If you choose BLS12-381 (255-bit scalar field, 381-bit base field, pairing-friendly):** You get the full power of bilinear pairings -- KZG commitments with constant-size proofs (48 bytes), constant-time verification (one pairing check), and the richest algebraic structure available. Your constraint format is PLONKish gates or R1CS. Your setup requires a trusted ceremony (powers-of-tau). Your proofs are the smallest in existence. But your arithmetic is the most expensive: a single multiplication in the 255-bit scalar field costs a multi-limb subroutine that is 100 times slower than BabyBear's native operation. And you inherit an expiration date: Shor's algorithm will break every pairing-based proof when a cryptographically relevant quantum computer arrives. This is the path chosen by Midnight, Zcash (pre-Orchard), every Ethereum rollup's final verification layer, and the EIP-4844 blob scheme. It optimizes for proof succinctness and verifier efficiency at the cost of prover performance and quantum resilience.
 
 **If you choose Mersenne-31 ($p = 2^{31} - 1$):** You get the simplest possible modular reduction -- subtraction of the carry bit, because $2^{31} \equiv 1 \pmod{p}$. Your commitment scheme is FRI, adapted via Circle STARKs to work with M31's multiplicative group structure (which lacks large 2-adic subgroups but has a circle group of order $2^{31}$). Your prover is the fastest in existence for STARK-based systems, because M31 arithmetic is cheaper than any other field. Your proofs are transparent and plausibly post-quantum. This is StarkWare's Stwo path -- maximum prover throughput, hash-based security, no algebraic frills.
 
@@ -3453,13 +3453,13 @@ One more Layer 6 choice deserves attention, because it illustrates how deeply th
 
 **Traditional hash functions** (SHA-256, BLAKE3, Keccak) are designed for speed on general-purpose hardware. Their internal operations -- bitwise rotations, XOR, addition with carry -- are cheap on CPUs but extremely expensive inside zero-knowledge circuits, because the circuit's native operations are field additions and multiplications. Proving a single SHA-256 computation inside a SNARK requires tens of thousands of constraints.
 
-**Algebraic hash functions** (Poseidon, Poseidon2, Rescue, Griffin) are designed for the opposite environment. Their internal operations are field multiplications and exponentiations -- exactly the operations that are native to zero-knowledge circuits. A Poseidon hash inside a circuit costs hundreds of constraints instead of tens of thousands.
+**Algebraic hash functions** (Poseidon, Poseidon2, Rescue, Griffin) are designed for the opposite environment. Their internal operations are field multiplications and exponentiations -- exactly the operations that are native to zero-knowledge circuits. Poseidon, for instance, uses a power-map S-box: each round computes $x \mapsto x^\alpha$ for a small exponent $\alpha$ (typically 5 or 7), directly as field exponentiation. A Poseidon hash inside a circuit costs hundreds of constraints instead of tens of thousands.
 
 The performance difference is 100x or more. This is why every system that does significant hashing inside circuits (Merkle tree verification, Fiat-Shamir challenges, commitment randomness) either uses algebraic hashes or pays an enormous performance penalty.
 
 But algebraic hashes are newer and less studied than SHA-256 or BLAKE3. Their security rests on assumptions about the difficulty of algebraic attacks (Grobner basis computations, interpolation attacks) that have not endured decades of cryptanalysis. Poseidon, in particular, has seen several parameter revisions in response to improved attacks. The original Poseidon parameters, published in 2019, were tightened after cryptanalysts demonstrated that certain algebraic structures in the round function could be exploited more efficiently than the designers anticipated. The function survived -- no practical break was found -- but the episode illustrates a difference in maturity: SHA-256 has withstood two decades of the world's best cryptanalysts. Poseidon has withstood five years.
 
-There is also a side-channel dimension, discussed in Chapter 4: algebraic hash functions like Poseidon often use lookup-table-based S-box computations that create secret-dependent memory access patterns. The very designs that make these hashes algebraically efficient make them more vulnerable to cache-timing attacks in shared cloud environments.
+There is also a side-channel dimension, discussed in Chapter 4. Power-map S-boxes like Poseidon's do their work as straight-line field arithmetic: the sequence of multiplications and additions does not depend on the secret data, and no secret-indexed memory access is required. The cache-timing risk identified by Mukherjee and coauthors does not attach to the algorithm itself but to specific *implementations*. Some algebraic-hash designs -- notably Reinforced Concrete's "Bars" decomposition -- deliberately use lookup tables as an efficiency optimization, and those tables do introduce secret-dependent memory access patterns vulnerable to cache-timing attacks in shared cloud environments. Similar risks can arise in any engineer's implementation of Poseidon if tables are substituted for direct exponentiation. The distinction is algorithm versus implementation: a power-map S-box is table-free by design; tables are an optional optimization that trades security margin for throughput.
 
 The choice between algebraic and traditional hash functions is itself a Layer 6 decision that cascades upward. Midnight uses Poseidon-family hashes (maximizing in-circuit efficiency at the cost of less mature security analysis). STARK-based systems can use either, but algebraic hashes dramatically reduce the size of the verification circuit when recursion or wrapping is needed.
 
@@ -3467,17 +3467,17 @@ The choice between algebraic and traditional hash functions is itself a Layer 6 
 
 ## The Structural Advantage of Lattices
 
-One insight from the lattice revolution deserves emphasis because it is easy to miss amid the parameter details: **lattice-based schemes are architecturally simpler** than their pairing-based predecessors, not just quantum-resistant.
+One observation from the lattice revolution deserves emphasis because it is easy to miss amid the parameter details: **lattice-based schemes are architecturally simpler** than their pairing-based predecessors, not just quantum-resistant.
 
-Pre-quantum recursive proof systems (exemplified by Zexe) require:
+Pre-quantum recursive proof systems (exemplified by Halo and its production descendants -- Halo2 in Zcash, Pickles in Mina Protocol) require:
 
-- **Cycles of elliptic curves.** To verify a proof inside another proof, the verifier's field arithmetic must be efficient in the prover's circuit. This requires two curves whose scalar fields are each other's base fields -- a "cycle," where curve A can efficiently verify proofs about curve B and vice versa. Finding such cycles constrains parameter choices severely (only a handful of suitable curve pairs exist), and arithmetic on the second curve is typically 2x or more expensive than the first.
+- **Cycles of elliptic curves.** To verify a proof inside another proof, the verifier's field arithmetic must be efficient in the prover's circuit. This requires two curves whose scalar fields are each other's base fields -- a "cycle," where curve A can efficiently verify proofs about curve B and vice versa. Finding such cycles constrains parameter choices severely (only a handful of suitable curve pairs exist, such as the Pasta pair Pallas/Vesta used by Halo2), and arithmetic on the second curve is typically 2x or more expensive than the first.
 
 - **Non-native field arithmetic.** When the proof system operates over one field but the verified computation uses a different field, every operation in the mismatched field must be emulated using multi-precision arithmetic inside the circuit -- like doing long division by hand when your calculator only knows multiplication. This emulation is a major source of overhead, sometimes 10x or more per operation.
 
-- **Multiple structured reference strings.** Each curve in the cycle needs its own trusted setup, doubling the ceremony burden.
+- **Multiple structured reference strings (when pairings are used).** Pairing-based recursive designs predating Halo require a trusted setup per curve; even Halo's transparent construction still incurs the parameter complexity of maintaining two curves.
 
-Lattice-based folding eliminates all three requirements. Neo operates over a single ring $R_q$. The rotation matrix encoding makes everything native to one algebraic structure. Recursion via folding requires no curve cycles and no non-native arithmetic. The setup is transparent (public random matrix).
+Lattice-based folding eliminates all three. Neo operates over a single ring $R_q$. The rotation matrix encoding makes everything native to one algebraic structure. Recursion via folding requires no curve cycles and no non-native arithmetic. The setup is transparent (public random matrix).
 
 This simplification is not cosmetic. Fewer moving parts mean fewer places for bugs, fewer parameters to choose and validate, fewer assumptions to audit. The lattice path is not only quantum-resistant -- it is *simpler*. And in cryptographic engineering, simplicity is not a luxury. It is a security property.
 
@@ -3487,9 +3487,9 @@ This simplification is not cosmetic. Fewer moving parts mean fewer places for bu
 
 As of early 2026, the picture looks like this:
 
-**Deployed and battle-tested:** KZG (BN254 and BLS12-381), FRI/STARK (Goldilocks, BabyBear, M31), IPA/Bulletproofs (Pasta curves). These power every production ZK system -- Ethereum rollups, Zcash, Midnight, Starknet.
+**Deployed and battle-tested:** KZG (BN254 and BLS12-381), FRI/STARK (Goldilocks, BabyBear, M31), IPA/Bulletproofs (Pasta curves, Halo2, Pickles/Mina). These power every production ZK system -- Ethereum rollups, Zcash, Midnight, Starknet, Mina.
 
-**Peer-reviewed and prototyped:** LatticeFold (ASIACRYPT 2025, presentation by Boneh and Chen), LatticeFold+ (CRYPTO 2025). Neo has an active implementation in Rust (the Nightstream repository, 15 crates). Concrete benchmarks are emerging but sparse.
+**Peer-reviewed and prototyped:** LatticeFold (Boneh-Chen; ePrint 2024/257, ASIACRYPT 2025), LatticeFold+ (CRYPTO 2025). Neo has an active implementation in Rust (the Nightstream repository, 15 crates). Concrete benchmarks are emerging but sparse.
 
 **Proposed and promising:** Symphony (ePrint 2025/1905, no implementation yet). The high-arity folding concept is validated theoretically but awaits engineering.
 
@@ -3508,7 +3508,7 @@ The Cascade Effect above asks *what to choose*. This section asks *when the choi
 | Field | Size | PQ Status | Commitment Options | Sweet Spot |
 |-------|------|-----------|-------------------|------------|
 | BN254 | 254-bit | Quantum-vulnerable | KZG (cheapest EVM verification) | Legacy Ethereum rollups; Groth16 wrapper |
-| BLS12-381 | 253-bit | Quantum-vulnerable | KZG (higher security margin) | Privacy systems needing pairings (Midnight, Zcash) |
+| BLS12-381 | 255-bit scalar / 381-bit base | Quantum-vulnerable | KZG (higher security margin) | Privacy systems needing pairings (Midnight, Zcash) |
 | BabyBear | 31-bit | Hash-PQ; lattice-PQ | FRI, Ajtai | Maximum prover speed; RISC-V zkVMs (SP1, RISC Zero) |
 | Mersenne-31 | 31-bit | Hash-PQ | FRI (Circle STARK) | Fastest arithmetic; Stwo/Starknet ecosystem |
 | Goldilocks | 64-bit | Hash-PQ; lattice-PQ | FRI, Ajtai | Balance of speed and precision; Neo/Nightstream |

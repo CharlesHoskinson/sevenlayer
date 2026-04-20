@@ -5,8 +5,8 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3486, 3501]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 228
 ---
 
@@ -14,9 +14,9 @@ word_count: 228
 
 As of early 2026, the picture looks like this:
 
-**Deployed and battle-tested:** KZG (BN254 and BLS12-381), FRI/STARK (Goldilocks, BabyBear, M31), IPA/Bulletproofs (Pasta curves). These power every production ZK system -- Ethereum rollups, Zcash, Midnight, Starknet.
+**Deployed and battle-tested:** KZG (BN254 and BLS12-381), FRI/STARK (Goldilocks, BabyBear, M31), IPA/Bulletproofs (Pasta curves, Halo2, Pickles/Mina). These power every production ZK system -- Ethereum rollups, Zcash, Midnight, Starknet, Mina.
 
-**Peer-reviewed and prototyped:** LatticeFold (ASIACRYPT 2025, presentation by Boneh and Chen), LatticeFold+ (CRYPTO 2025). Neo has an active implementation in Rust (the Nightstream repository, 15 crates). Concrete benchmarks are emerging but sparse.
+**Peer-reviewed and prototyped:** LatticeFold (Boneh-Chen; ePrint 2024/257, ASIACRYPT 2025), LatticeFold+ (CRYPTO 2025). Neo has an active implementation in Rust (the Nightstream repository, 15 crates). Concrete benchmarks are emerging but sparse.
 
 **Proposed and promising:** Symphony (ePrint 2025/1905, no implementation yet). The high-arity folding concept is validated theoretically but awaits engineering.
 
@@ -78,6 +78,8 @@ As of early 2026: pairing-based and FRI/STARK systems are deployed and battle-te
 - What standardized audit methodology for lattice parameter validation will emerge equivalent to current elliptic curve tools?
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) "Neo has an active implementation in Rust (the Nightstream repository, 15 crates)" — the crate count (15) is a specific operational claim about a live repository that will become stale; it should either be dated ("as of early 2026") or removed in favor of a link to the repo.
 - [P2] (A) "LatticeFold (ASIACRYPT 2025, presentation by Boneh and Chen)" — the parenthetical "presentation by Boneh and Chen" implies a talk; the source should be cited as the paper (Boneh and Chen, "LatticeFold: A Lattice-based Folding Scheme and its Applications to Succinct Proof Systems," ASIACRYPT 2025) not just the presentation.

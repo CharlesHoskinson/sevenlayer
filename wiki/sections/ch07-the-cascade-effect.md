@@ -5,8 +5,8 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3414, 3449]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 886
 ---
 
@@ -28,7 +28,7 @@ Field: Goldilocks (q = 2^64 - 2^32 + 1)
 
 Change any parameter and everything downstream shifts. Use a different prime and the cyclotomic factorization changes, which changes the extension field, which changes the security level, which changes the commitment parameters, which changes the folding parameters. This is not optional coupling -- it is algebraic necessity. The parameters are not chosen independently. They are derived from each other, each one a consequence of the ones above it, the way the shape of a crystal is a consequence of the geometry of its atoms.
 
-The same cascade operates in the pairing world. BLS12-381's prime determines the Jubjub embedding. Jubjub determines which in-circuit operations are efficient. The pairing determines which commitment scheme works. The commitment scheme determines the proof system. The proof system determines the arithmetization.
+The same cascade operates in the pairing world. BLS12-381's scalar field determines the Jubjub embedding. Jubjub determines which in-circuit operations are efficient. The pairing determines which commitment scheme works. The commitment scheme determines the proof system. The proof system determines the arithmetization.
 
 And so "crypto-agility" -- the ability to swap cryptographic primitives without redesigning the system -- is largely a fiction for zero-knowledge systems. You cannot change the field without changing everything. The choice at Layer 6 is a one-way door, and once you walk through it, you are committed.
 
@@ -38,7 +38,7 @@ To make this concrete, here is the decision tree that every zero-knowledge syste
 
 **If you choose Goldilocks (64-bit prime, $p = 2^{64} - 2^{32} + 1$):** You get native 64-bit arithmetic -- one multiplication per CPU instruction, no multi-limb overhead. Your natural commitment scheme is FRI (exploiting 2-adicity of $2^{32}$ for large NTT domains) or lattice-based Ajtai commitments (using the 81st cyclotomic polynomial for post-quantum security). Your constraint format is CCS or R1CS. Your setup is transparent in either case. If you choose FRI, your proofs are large but your prover leverages GPU-friendly 64-bit arithmetic. If you choose Ajtai, you get post-quantum security and folding capability, with proofs in the 50 to 60 kilobyte range. This is the path chosen by Plonky2 (FRI) and Neo/Nightstream (Ajtai). It balances prover speed, proof size, and -- if lattice-based -- quantum resilience.
 
-**If you choose BLS12-381 (254-bit pairing-friendly curve):** You get the full power of bilinear pairings -- KZG commitments with constant-size proofs (48 bytes), constant-time verification (one pairing check), and the richest algebraic structure available. Your constraint format is PLONKish gates or R1CS. Your setup requires a trusted ceremony (powers-of-tau). Your proofs are the smallest in existence. But your arithmetic is the most expensive: a single 254-bit multiplication costs a multi-limb subroutine that is 100 times slower than BabyBear's native operation. And you inherit an expiration date: Shor's algorithm will break every pairing-based proof when a cryptographically relevant quantum computer arrives. This is the path chosen by Midnight, Zcash (pre-Orchard), every Ethereum rollup's final verification layer, and the EIP-4844 blob scheme. It optimizes for proof succinctness and verifier efficiency at the cost of prover performance and quantum resilience.
+**If you choose BLS12-381 (255-bit scalar field, 381-bit base field, pairing-friendly):** You get the full power of bilinear pairings -- KZG commitments with constant-size proofs (48 bytes), constant-time verification (one pairing check), and the richest algebraic structure available. Your constraint format is PLONKish gates or R1CS. Your setup requires a trusted ceremony (powers-of-tau). Your proofs are the smallest in existence. But your arithmetic is the most expensive: a single multiplication in the 255-bit scalar field costs a multi-limb subroutine that is 100 times slower than BabyBear's native operation. And you inherit an expiration date: Shor's algorithm will break every pairing-based proof when a cryptographically relevant quantum computer arrives. This is the path chosen by Midnight, Zcash (pre-Orchard), every Ethereum rollup's final verification layer, and the EIP-4844 blob scheme. It optimizes for proof succinctness and verifier efficiency at the cost of prover performance and quantum resilience.
 
 **If you choose Mersenne-31 ($p = 2^{31} - 1$):** You get the simplest possible modular reduction -- subtraction of the carry bit, because $2^{31} \equiv 1 \pmod{p}$. Your commitment scheme is FRI, adapted via Circle STARKs to work with M31's multiplicative group structure (which lacks large 2-adic subgroups but has a circle group of order $2^{31}$). Your prover is the fastest in existence for STARK-based systems, because M31 arithmetic is cheaper than any other field. Your proofs are transparent and plausibly post-quantum. This is StarkWare's Stwo path -- maximum prover throughput, hash-based security, no algebraic frills.
 
@@ -96,6 +96,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) BabyBear description says "multiplicative subgroup of order $2^{27}$" — correct (2-adicity 27), consistent with ch07-small-fields. However the text then says extension field gives "~124 bits" via degree-4 extension; the section doesn't explain why degree 4 is needed rather than degree 2 for BabyBear specifically.
 - [P2] (D) The cascade code block for Neo uses a specific guard condition value `(k+1) * T * (b-1) = 2,808` but the parameter k=12 gives (12+1)×216×(2-1)=2,808 — this checks out. However the block mixes prime notation (q = 2^64 − 2^32 + 1) with parameter equations without clarifying units; a reader unfamiliar with the lattice estimator may not understand what "T = 216 (expansion factor)" means in context.

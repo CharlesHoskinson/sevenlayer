@@ -5,8 +5,8 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3003, 3018]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 397
 ---
 
@@ -59,6 +59,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) Section says "this chapter descends to the deepest layer of the zero-knowledge stack" but this is Layer 6; Layer 1 (the setup/ceremony layer) sits beneath it in the stack numbering — phrasing is loose but defensible as "deepest in this book's treatment" rather than "lowest in the stack."
 - [P2] (B) Dependency lists `[[ch06-the-post-quantum-horizon]]` — verify this slug exists and covers the same material claimed; the quantum reckoning topic may be split differently in ch06.

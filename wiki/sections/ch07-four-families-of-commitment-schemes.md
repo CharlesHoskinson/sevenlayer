@@ -5,8 +5,8 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3057, 3159]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 3227
 ---
 
@@ -28,7 +28,7 @@ KZG powers Groth16, PLONK, Marlin, and virtually every pairing-based SNARK. It i
 
 To understand what a polynomial commitment *feels like*, consider what it accomplishes. A polynomial of degree $n$ encodes $n + 1$ independent values -- it is, in a precise sense, a compressed representation of an entire dataset. A polynomial of degree one million contains a million pieces of information. KZG seals all of that information into a single elliptic curve point: 48 bytes. One point on a curve, and behind it, a million values, invisible but committed. Later, anyone can ask "what does the polynomial evaluate to at point $z$?" and the prover produces a single additional curve point as proof. Not a proof proportional to the polynomial's size. Not a proof that grows with the complexity of the claim. A single point. Constant size. Whether the polynomial has degree ten or degree ten million, the proof is 48 bytes.
 
-This is, in a precise mathematical sense, miraculous. It is worth pausing to feel the weight of that claim, because no amount of familiarity should make it seem ordinary.
+This is, in a precise mathematical sense, miraculous. No amount of familiarity should make it seem ordinary.
 
 The mechanism rests on the bilinear pairing -- a function $e(P, Q)$ that takes two elliptic curve points and produces an element in a target group, satisfying $e(aP, bQ) = e(P, Q)^{ab}$. This bilinearity allows the verifier to check polynomial relationships without ever seeing the polynomial. The proof that $p(z) = y$ consists of a commitment to the quotient polynomial $q(x) = (p(x) - y) / (x - z)$. The verifier checks one equation: $e(C - yG, H) = e(\pi, H_s - zH)$, where $C$ is the commitment, $\pi$ is the proof, and $H_s$ is a point from the trusted setup encoding the secret $s$. If the equation holds, the polynomial evaluates to $y$ at $z$. If it does not, the prover is lying. One equation. Two pairing evaluations. Done.
 
@@ -56,19 +56,19 @@ Now repeat. Another random challenge. Another folding. The domain halves again. 
 
 But if the original function was *not* close to a low-degree polynomial -- if it was a high-degree impostor with hidden bumps -- then folding amplifies the bumps. Each round of folding, guided by the random challenge, mixes pairs of evaluations in a way that smooths genuine structure but destabilizes imposture. The bumps do not cancel; they compound. By the time you have zoomed in far enough, the remaining function is visibly not low-degree. The impostor is caught.
 
-The commitment mechanism is beautifully simple: Merkle trees. The prover commits to each round's evaluation table by hashing it into a Merkle tree and publishing the root. When the verifier wants to spot-check specific points, the prover opens Merkle paths -- logarithmic-sized authentication paths from leaf to root. The security rests entirely on collision resistance of the hash function. No group structure, no pairings, no discrete logs. Just hashing.
+The commitment mechanism is simple: Merkle trees. The prover commits to each round's evaluation table by hashing it into a Merkle tree and publishing the root. When the verifier wants to spot-check specific points, the prover opens Merkle paths -- logarithmic-sized authentication paths from leaf to root. The security rests entirely on collision resistance of the hash function. No group structure, no pairings, no discrete logs. Just hashing.
 
 This is why FRI replaces elliptic curves with hash functions. A Merkle tree commitment to $n$ evaluations costs $O(n)$ hashes to build and $O(\log n)$ hashes to open a single leaf. The total proof consists of Merkle roots (one per FRI round), Merkle paths (for the queried positions), and the final constant polynomial. The result is polylogarithmic: $O(\log^2 n)$ in total size, typically 50 to 200 kilobytes. Enormously larger than KZG's 48 bytes. But transparent. Plausibly post-quantum. And built from the simplest, most conservative cryptographic primitive we have: the hash function.
 
-The tradeoff crystallizes the philosophical divide in zero-knowledge cryptography. KZG achieves its miracle of constant-size proofs by leveraging deep algebraic structure -- bilinear pairings over elliptic curves, with all the trust assumptions and quantum vulnerabilities that entails. FRI achieves transparency and quantum plausibility by abandoning that structure entirely, accepting larger proofs as the price. Neither choice is wrong. Each is a coherent answer to a different question about what you are willing to assume and what you are willing to pay.
+The tradeoff crystallizes the philosophical divide in zero-knowledge cryptography. KZG achieves its constant-size proofs by leveraging deep algebraic structure -- bilinear pairings over elliptic curves, with all the trust assumptions and quantum vulnerabilities that entails. FRI achieves transparency and quantum plausibility by abandoning that structure entirely, accepting larger proofs as the price. Neither choice is wrong. Each is a coherent answer to a different question about what you are willing to assume and what you are willing to pay.
 
 ### IPA / Bulletproofs (Inner Product Argument)
 
-Built on the discrete logarithm problem without pairings. Bulletproofs use Pedersen commitments -- a simpler construction than KZG that does not require bilinear maps. The key insight is an inner product argument: prove that the inner product of two committed vectors equals a claimed value, using a recursive halving protocol that produces $O(\log n)$ group elements.
+Built on the discrete logarithm problem without pairings. Bulletproofs use Pedersen commitments -- a simpler construction than KZG that does not require bilinear maps. The technique is an inner product argument: prove that the inner product of two committed vectors equals a claimed value, using a recursive halving protocol that produces $O(\log n)$ group elements.
 
 IPA proofs are transparent (no trusted setup, just a random group element generator). Proof sizes are logarithmic -- much smaller than FRI, but not constant like KZG. Verification, however, requires $O(n)$ work -- linear in the statement size. This is the main drawback: the verifier is slow.
 
-Halo (2019) proved that IPA-based schemes support recursion without pairings, using a technique called "nested amortization" that defers expensive verification across recursion steps. This was the conceptual breakthrough that opened the door to transparent recursive proving. Halo2 powers Zcash's Orchard protocol and influenced the design of the Pasta curves (Pallas and Vesta).
+Halo (Bowe, Grigg, Hopwood; ePrint 2019/1021) proved that IPA-based schemes support recursion without pairings, using a technique called "nested amortization" that defers expensive verification across recursion steps. This was the conceptual breakthrough that opened the door to transparent recursive proving. Halo2 powers Zcash's Orchard protocol and influenced the design of the Pasta curves (Pallas and Vesta); the same idea was productized in Pickles, the recursion engine of Mina Protocol.
 
 The limitation: IPA is not post-quantum. It still relies on the discrete logarithm assumption. And the linear verification cost makes it impractical for on-chain verification without wrapping in a more succinct outer proof.
 
@@ -78,9 +78,9 @@ The technique is recursive halving. Split both vectors into their left and right
 
 Each halving adds exactly two group elements ($L$ and $R$) to the proof. For vectors of length $n = 2^{20}$ -- roughly a million entries -- the protocol runs for 20 rounds, producing 40 group elements. At 32 bytes per element on a 256-bit curve, that is 1,280 bytes. A proof that two million-entry vectors have a specific dot product, in 1.3 kilobytes. Not constant like KZG. But logarithmic, transparent, and no trusted setup.
 
-This is why Halo was a watershed. Before Halo, recursive proof composition required pairings -- you needed the bilinear map to verify a KZG proof inside a circuit, and that meant you needed pairing-friendly curves, which meant you needed a trusted setup. Halo demonstrated that IPA's logarithmic proofs could be verified *incrementally* across recursion steps, deferring the expensive linear-time final check. The key was nested amortization: instead of verifying the IPA proof fully at each recursion step (which would cost linear time and destroy the efficiency), Halo accumulated the verification work and deferred it to the end. This meant each recursion step added only constant overhead, and the full linear verification happened once, at the very end of the recursion chain.
+This is why Halo was a watershed. Before Halo, recursive proof composition required pairings -- you needed the bilinear map to verify a KZG proof inside a circuit, and that meant you needed pairing-friendly curves, which meant you needed a trusted setup. Halo demonstrated that IPA's logarithmic proofs could be verified *incrementally* across recursion steps, deferring the expensive linear-time final check. The mechanism was nested amortization: instead of verifying the IPA proof fully at each recursion step (which would cost linear time and destroy the efficiency), Halo accumulated the verification work and deferred it to the end. Each recursion step added only constant overhead, and the full linear verification happened once, at the very end of the recursion chain.
 
-The result was the first recursive proof system with no trusted setup and no pairings. It required a cycle of curves -- Pallas and Vesta, the "Pasta" curves, each one's scalar field being the other's base field -- but no ceremony, no toxic waste, no trust assumptions beyond the hardness of the discrete logarithm. Zcash adopted Halo2 for its Orchard shielded pool, replacing the Sprout and Sapling ceremonies with transparent recursion. The ceremony was over. The mathematics was enough.
+The result was the first recursive proof system with no trusted setup and no pairings. It required a cycle of curves -- Pallas and Vesta, the "Pasta" curves, each one's scalar field being the other's base field -- but no ceremony, no toxic waste, no trust assumptions beyond the hardness of the discrete logarithm. Zcash adopted Halo2 for its Orchard shielded pool, replacing the Sprout and Sapling ceremonies with transparent recursion. Mina Protocol built its entire chain on the same primitive through its Pickles engine. The ceremony was over. The mathematics was enough.
 
 ### Lattice / Ajtai Commitments
 
@@ -88,7 +88,7 @@ Built on Module-SIS. The Ajtai commitment scheme works over a cyclotomic ring $R
 
 Lattice commitments are transparent (the matrix $M$ is generated from public randomness) and post-quantum (Module-SIS resists quantum attacks). Proof sizes are logarithmic -- $O(\log n)$ ring elements, concretely 50 to 60 kilobytes for current parameterizations.
 
-The key algebraic property: Ajtai commitments are *module-homomorphic* over the ring. For a ring element $\rho$ and a commitment $\text{Com}(Z)$, you get $\rho \cdot \text{Com}(Z) = \text{Com}(\rho \cdot Z)$. This is strictly richer than scalar homomorphism and is what enables lattice-based folding. The challenges used in folding are ring elements from a carefully chosen "strong sampling set" with small coefficients, which controls the norm growth of folded witnesses.
+The central algebraic property: Ajtai commitments are *module-homomorphic* over the ring. For a ring element $\rho$ and a commitment $\text{Com}(Z)$, you get $\rho \cdot \text{Com}(Z) = \text{Com}(\rho \cdot Z)$. This is strictly richer than scalar homomorphism and is what enables lattice-based folding. The challenges used in folding are ring elements from a carefully chosen "strong sampling set" with small coefficients, which controls the norm growth of folded witnesses.
 
 Lattice commitments power Greyhound, LaBRADOR, LatticeFold, LatticeFold+, Neo, and Symphony. They are the youngest family and the least battle-tested in production, but they are the only family that simultaneously offers post-quantum security, algebraic structure sufficient for folding, and transparent setup.
 
@@ -164,6 +164,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) Comparison table lists Lattice/Ajtai verification as `O(√n) or O(log n)` — Greyhound achieves √N but LatticeFold/Neo verification is not generally O(log n) without further compression; the "or O(log n)" entry is optimistic and should cite which specific scheme achieves it.
 - [P2] (A) "One pairing check" for KZG verification — technically two pairing evaluations are computed (e(C − yG, H) and e(π, H_s − zH)) then compared; "one pairing check" elides this. Minor but could confuse readers checking against the equation shown.

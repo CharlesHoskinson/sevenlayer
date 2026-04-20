@@ -2,7 +2,7 @@
 title: "Layer 6 -- The Deep Craft"
 chapter: 7
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 7: Layer 6 -- The Deep Craft
@@ -23,7 +23,13 @@ status: untouched
 - [[ch07-maturity-and-readiness]]
 - [[ch07-the-one-way-door]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-19 per `wiki/drafts/ch07-v2.md`. 3 P0 + 5 P1 resolved. Draft preserved. P2 (21) and P3 (9) deferred.
+
+**Key corrections:** BLS12-381 scalar field set to 255 bits everywhere (three sections previously said 253); Poseidon S-box correctly described as power-map field exponentiation with side-channel risk scoped to Reinforced Concrete / table-substituted implementations; LatticeFold cited as ePrint 2024/257 / ASIACRYPT 2025 consistently with ch06; Zexe curve-cycle attribution replaced with Halo (Bowe-Grigg-Hopwood 2019) + Pickles/Mina; trilemma framing explicitly flagged as authorial synthesis; Brassard-Høyer-Tapp cited with LATIN 1998 LNCS 1380 + arxiv quant-ph/9705002.
+
+## Audit rollup (pre-revision)
 
 **Totals:** P0=3, P1=4, P2=21, P3=9
 

@@ -5,8 +5,8 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3352, 3413]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 785
 ---
 
@@ -16,7 +16,7 @@ To see how Layer 6 choices play out in a real system, consider Midnight -- a pri
 
 ### The Stack
 
-**Scalar field:** BLS12-381, with a ~253-bit prime modulus $r$. Every value in Midnight's zero-knowledge circuits -- inputs, outputs, intermediate computations, token balances -- is an element of $\mathbb{F}_r$.
+**Scalar field:** BLS12-381, with a 255-bit prime scalar field $r \approx 2^{254}$ (base field $p$ is 381 bits). Every value in Midnight's zero-knowledge circuits -- inputs, outputs, intermediate computations, token balances -- is an element of $\mathbb{F}_r$.
 
 **Commitment scheme:** KZG, implied by the choice of BLS12-381 (a pairing-friendly curve). The wallet SDK caches BLS parameters locally (a structured reference string from a trusted setup ceremony). Proof size is constant. Verification is a single pairing check.
 
@@ -57,7 +57,7 @@ The contrast with Neo/Nightstream makes the tradeoffs vivid:
 
 | Dimension | Midnight | Neo/Nightstream |
 |---|---|---|
-| Field | BLS12-381, ~253 bits | Goldilocks, 64 bits |
+| Field | BLS12-381, 255-bit scalar | Goldilocks, 64 bits |
 | Ring | N/A (field-based) | $\mathbb{F}_q[X]/(\Phi_{81})$, degree 54 |
 | Commitment | KZG (pairing) | Ajtai (lattice) |
 | Hash | Poseidon (algebraic) | Ring-SIS (lattice) |
@@ -120,7 +120,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P0] (A) BLS12-381 scalar field is described as a "~253-bit prime modulus r" — the scalar field r of BLS12-381 is a 255-bit prime (r ≈ 2^254). Neither 253 nor 254 bits is correct for the bitlength; it is 255. This error is shared with ch07-small-fields and should be fixed consistently across both sections.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) Vulnerability table lists "q-SDH on BLS12-381" as the assumption for KZG proof verification — KZG soundness rests on the q-Strong Diffie-Hellman assumption (q-SDH), which is correct. But q-SDH is itself implied by the DLP/pairing assumption, not a separate assumption; the table could be clearer that this reduces to the discrete log / pairing assumption.
 - [P2] (B) Sources cited lists "None" despite specific technical claims about Midnight's ZKIR opcode set (24 opcodes), wallet SDK behavior, and Zswap protocol. These deserve a citation to Midnight's technical documentation or whitepaper.
 - [P3] (D) The section presents a strong Midnight-vs-Neo comparison table but the Neo side consistently cites ch07-lattice-based-proving without resolving which specific version of Neo the numbers refer to (2025 paper vs Nightstream implementation). A note on which version is compared would sharpen coherence.

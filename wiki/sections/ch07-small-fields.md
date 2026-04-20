@@ -5,8 +5,8 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3195, 3247]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 961
 ---
 
@@ -22,13 +22,13 @@ For most of the 2010s, the ZK world standardized on two large primes:
 
 **BN254** (Barreto-Naehrig curve, 254-bit prime). This was the first widely deployed pairing-friendly curve. Ethereum embedded BN254 pairing operations as EVM precompiles in 2017, making it the de facto standard for on-chain Groth16 verification. Every deployed Groth16 verifier on Ethereum -- including those used by the major rollups -- runs over BN254.
 
-**BLS12-381** (Barreto-Lynn-Scott curve, ~253-bit prime). Introduced later with a higher security margin and better pairing efficiency. Used by Zcash, Filecoin, Midnight, and the Ethereum KZG ceremony (EIP-4844).
+**BLS12-381** (Barreto-Lynn-Scott curve, 381-bit base field $p$; ~255-bit scalar field $r \approx 2^{254}$). Introduced later with a higher security margin and better pairing efficiency. Used by Zcash, Filecoin, Midnight, and the Ethereum KZG ceremony (EIP-4844).
 
-Both are enormous primes -- 254 and 253 bits respectively. Arithmetic on 254-bit numbers requires multiple machine words on any existing processor. A single multiplication takes several CPU instructions and cannot exploit the native 32-bit or 64-bit arithmetic units that modern hardware is optimized for.
+Both curves have large primes. BN254's scalar field is 254 bits; BLS12-381's scalar field $r$ has bitlength 255 (with $r$ slightly below $2^{254}$) and its base field is 381 bits. Arithmetic on 254- or 255-bit numbers requires multiple machine words on any existing processor. A single multiplication takes several CPU instructions and cannot exploit the native 32-bit or 64-bit arithmetic units that modern hardware is optimized for.
 
 ### The Security Erosion Problem
 
-BN254 was originally believed to provide 128-bit security -- meaning an attacker would need roughly $2^{128}$ operations to break the discrete logarithm. But advances in the Tower Number Field Sieve (Tower NFS) [Kim and Barbulescu, "Extended Tower Number Field Sieve," Mathematics of Computation, 2016; Guillevic, "Comparing the pairing efficiency over composite-order and prime-order elliptic curves," ACNS 2013] have revised this estimate downward to approximately 100 bits. This does not mean BN254 is broken -- $2^{100}$ operations is still astronomically expensive -- but it means the security margin is significantly thinner than designed.
+BN254 was originally believed to provide 128-bit security -- meaning an attacker would need roughly $2^{128}$ operations to break the discrete logarithm. But advances in the Tower Number Field Sieve (Tower NFS) [Kim and Barbulescu, "Extended Tower Number Field Sieve," *CRYPTO 2016*; Guillevic, "Comparing the pairing efficiency over composite-order and prime-order elliptic curves," *ACNS 2013*] have revised this estimate downward to approximately 100 bits. This does not mean BN254 is broken -- $2^{100}$ operations is still astronomically expensive -- but it means the security margin is significantly thinner than designed.
 
 This matters because BN254 is embedded in Ethereum's EVM precompiles. Changing the precompiled curves requires a hard fork. Every Groth16 verifier on Ethereum depends on BN254. The security erosion is not academic -- it affects the most widely deployed zero-knowledge infrastructure in the world.
 
@@ -46,7 +46,7 @@ Starting around 2022, a radical idea took hold: *use much smaller primes*.
 
 The performance impact is not incremental. It is a factor of 100. Arithmetic on 31-bit numbers is roughly 100 times faster than arithmetic on 254-bit numbers [Haboeck, Levit, and Papini, "Circle STARKs," ePrint 2024/278; confirmed by SP1 Hypercube benchmarks, Succinct Labs, 2025]. This is not algorithmic improvement -- it is the raw physics of computer hardware. A 31-bit multiply is one CPU instruction. A 254-bit multiply is an entire subroutine involving carry propagation, multi-limb multiplication, and modular reduction.
 
-This single insight -- that smaller fields make faster provers -- catalyzed the performance explosion in zero-knowledge proving. Circle STARKs over M31 (Stwo) achieve throughputs that were unimaginable with BN254-based systems. Plonky2 over Goldilocks enabled the first practical recursive STARKs.
+This single observation -- that smaller fields make faster provers -- catalyzed the performance explosion in zero-knowledge proving. Circle STARKs over M31 (Stwo) achieve throughputs that were unimaginable with BN254-based systems. Plonky2 over Goldilocks enabled the first practical recursive STARKs.
 
 But smaller fields introduce a subtlety that Penrose would appreciate for its geometric elegance. A single 31-bit field element provides only 31 bits of security against certain attacks. To achieve 128-bit security, systems use *extension fields*. An extension field is built by the same trick as complex numbers: you take a small field and add extra "dimensions" to your arithmetic, and the security grows with the dimension. The cost is slightly more expensive arithmetic per operation -- but each operation now works in a larger, more secure space -- enlarging $\mathbb{F}_p$ to $\mathbb{F}_{p^k}$ for some small $k$. In Stwo, the extension degree is 4, giving effectively 124 bits. In Neo, the extension is $\mathbb{F}_{q^2}$ over Goldilocks, giving 128 bits. The extension adds complexity but the arithmetic is still vastly cheaper than native 254-bit operations.
 
@@ -110,7 +110,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P0] (A) BLS12-381 is described as a "~253-bit prime" throughout this section (and in ch07-case-study-midnight). The scalar field r of BLS12-381 has bitlength 255 (r ≈ 2^254, a 255-bit number). The base field p is 381 bits. Neither is ~253 bits. This factual error propagates to ch07-case-study-midnight and ch07-one-way-door and should be corrected to "~255-bit scalar field."
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) Goldilocks 2-adicity: text says the field "supports efficient radix-2 NTTs…with domain sizes up to $2^{32}$" and "high 2-adicity — meaning $2^{32}$ divides $p-1$." The 2-adicity is 32 (the exponent), not $2^{32}$ (the value). Saying "$2^{32}$ divides $p-1$" is correct but calling it "2-adicity $2^{32}$" in the key claims is a notational conflation that could confuse readers expecting the exponent.
 - [P3] (E) BabyBear's extension field degree is stated as 4 (giving ~124 bits) but the specific extension construction and why degree 4 is required over BabyBear is not explained; a brief note on irreducible polynomial choice would strengthen the depth.
 

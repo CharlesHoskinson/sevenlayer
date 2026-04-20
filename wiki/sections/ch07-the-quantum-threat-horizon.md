@@ -5,8 +5,8 @@ chapter: 7
 chapter_title: "Layer 6 -- The Deep Craft"
 heading_level: 2
 source_lines: [3248, 3297]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: b1af061f6d0ec9177d90a6358d9d31da9edfe0c5
+status: reviewed
 word_count: 640
 ---
 
@@ -103,6 +103,8 @@ A cryptographically relevant quantum computer (CRQC) would simultaneously break 
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) "~2,500 logical qubits for BLS12-381" — Webber et al. (2022, "The impact of hardware specifications on reaching quantum advantage") estimated ~2,330 logical qubits for 256-bit elliptic curve; "~2,500" is a reasonable approximation but no citation is provided. The key claims repeat this figure without source.
 - [P2] (A) "current devices, which have demonstrated only a few thousand physical qubits" — as of late 2024 IBM Condor reached 1,121 qubits and Google Willow 105 qubits; "a few thousand" overstates current state unless referring to planned near-term devices. Should say "low hundreds to low thousands" or cite specific device benchmarks.
