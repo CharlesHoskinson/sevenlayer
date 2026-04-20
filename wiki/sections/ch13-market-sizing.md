@@ -5,7 +5,7 @@ chapter: 13
 chapter_title: "The Market Landscape"
 heading_level: 2
 source_lines: [5135, 5177]
-source_commit: 508c29f21fc4bc0080e1bf4101db484f576f36a4
+source_commit: ed3c6bed074f7c28c5ab5956c9683f747793d6a6
 status: reviewed
 word_count: 956
 ---
