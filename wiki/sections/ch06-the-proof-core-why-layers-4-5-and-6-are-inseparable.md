@@ -5,7 +5,7 @@ chapter: 6
 chapter_title: "Layer 5 -- The Sealed Certificate"
 heading_level: 2
 source_lines: [2818, 2835]
-source_commit: 199f27399ce5c5a87123a37bf3c457a226778185
+source_commit: 29a2a52c78f31eeda0f20283f65d0695245570ae
 status: reviewed
 word_count: 371
 ---
