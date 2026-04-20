@@ -5,8 +5,8 @@ chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4282, 4312]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 4b160057932dbd587dab82f3fc1ddfa36f581a79
+status: reviewed
 word_count: 280
 ---
 
@@ -77,6 +77,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) "TEE: near-native performance (<5% overhead for many workloads)" conflicts with the section's own ch09-three-kinds-of-security, which reports Downfall mitigations causing up to 50% degradation for affected workloads. The figure is accurate only for unaffected workloads; the caveat should be stated.
 - [P2] (B) No sources cited throughout; the entire matrix synthesises claims from prior sections but offers no anchoring references for the performance figures or regulatory mappings.

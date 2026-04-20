@@ -5,8 +5,8 @@ chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4325, 4346]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 4b160057932dbd587dab82f3fc1ddfa36f581a79
+status: reviewed
 word_count: 377
 ---
 
@@ -66,6 +66,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [none] X — no issues found.
 

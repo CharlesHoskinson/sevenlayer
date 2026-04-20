@@ -5,8 +5,8 @@ chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4162, 4201]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 4b160057932dbd587dab82f3fc1ddfa36f581a79
+status: reviewed
 word_count: 806
 ---
 
@@ -28,7 +28,7 @@ This deployment matters because of who is adopting. DTCC is not a startup experi
 
 Toppan Edge and Partisia announced joint development of privacy-preserving digital student IDs in 2025, with a proof-of-concept conducted at the Okinawa Institute of Science and Technology from June to September 2025. The system combines facial recognition for identity verification, decentralized identifiers (DIDs) for credential management, smartphone NFC for physical access, and MPC via Partisia's blockchain for privacy-preserving identity verification.
 
-The key innovation: the student's biometric data is never stored in a single location or revealed to a single party. MPC ensures that identity verification can be performed without any single server holding the student's facial template. The platform is targeted for students enrolling from April 2026. Your face opens the door, but no one holds a copy of your face.
+The architectural move: the student's biometric data is never stored in a single location or revealed to a single party. MPC ensures that identity verification can be performed without any single server holding the student's facial template. The platform is targeted for students enrolling from April 2026. Your face opens the door, but no one holds a copy of your face.
 
 ### 4. Privacy Pools: Pragmatic On-Chain Privacy
 
@@ -94,6 +94,8 @@ Five case studies spanning finance, identity, on-chain privacy, and telemetry il
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) Entities include `[[nova]]` — Nova is a folding scheme unrelated to this section's content; likely a tagging error, should be removed.
 - [P3] (B) Privacy Pools volume figures (">$6 million, >1,500 users by early 2026") are specific claims with no URL or source; a reference to 0xbow's published stats or an Etherscan link should be added.

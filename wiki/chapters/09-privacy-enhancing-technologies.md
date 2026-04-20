@@ -2,7 +2,7 @@
 title: "Privacy-Enhancing Technologies"
 chapter: 9
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 9: Privacy-Enhancing Technologies
@@ -19,7 +19,15 @@ status: untouched
 - [[ch09-open-problems]]
 - [[ch09-the-incomplete-stack]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-19 per `wiki/drafts/ch09-v2.md`. 0 P0 + 6 P1 resolved (the audit rollup listed 4 P1; the final backlog pass caught 2 additional P1s which were also cleared). Draft preserved. P2 (8) and P3 (2) deferred.
+
+**Key corrections:** Ozdemir-Boneh collaborative zk-SNARKs cited to USENIX 2022 / ePrint 2021/1530; Zexe cited as "IEEE S&P 2020, preprint 2018; ePrint 2018/962" (matches ch06); "BLS-12" replaced with specific BLS12-377 + BW6-761 context; Gentry FHE cited to STOC 2009 (matches bibliography); Battering RAM currency unified to €50 with De Meulemeester et al. 2025 attribution; TEE attacks (Foreshadow, AEPIC Leak, Downfall/CVE-2022-40982, SGAxe, Plundervolt, Battering RAM, SGX deprecation) all cited inline.
+
+**Regression fix:** Part III divider + transitional italic block were accidentally dropped from the splice and restored inline post-splice.
+
+## Audit rollup (pre-revision)
 
 Audited 2026-04-18. 9 sections, 14 findings total: P0=0, P1=4, P2=8, P3=2.
 

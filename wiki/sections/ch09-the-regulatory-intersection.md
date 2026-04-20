@@ -5,8 +5,8 @@ chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4244, 4281]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 4b160057932dbd587dab82f3fc1ddfa36f581a79
+status: reviewed
 word_count: 1163
 ---
 
@@ -87,6 +87,8 @@ GDPR Article 17 (right to erasure) conflicts with blockchain immutability; the E
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (A) "eIDAS 2.0, effective from 2024" — the regulation entered force in 2024 but member-state wallet deployment is mandated by 2026. The phrasing may mislead readers into thinking wallets are already required; should clarify "entered force 2024, wallets required by 2026."
 - [P3] (B) "Galactica Network, zyphe, and hyli" named as zKYC implementations with no citations; at minimum a website or whitepaper reference should be listed for each.

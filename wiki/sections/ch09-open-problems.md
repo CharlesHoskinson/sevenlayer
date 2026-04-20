@@ -5,8 +5,8 @@ chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4313, 4324]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 4b160057932dbd587dab82f3fc1ddfa36f581a79
+status: reviewed
 word_count: 252
 ---
 
@@ -16,7 +16,7 @@ Three capabilities sit at the frontier of PET research and will likely shape the
 
 **Verifiable FHE**: Proving in zero knowledge that an FHE computation was performed correctly. This closes the loop in the healthcare scenario: the AI firm not only computes on encrypted data but also proves that it computed *correctly* on the encrypted data. The surgeon not only operates through the glovebox -- she provides a certificate that the operation was performed to specification. The zkFHE project and SherLOCKED prototype (using RISC Zero's Bonsai zkVM) are early implementations.
 
-**Collaborative/threshold proving**: Distributing ZK proof generation across multiple servers using MPC, so that no single server sees the full witness. The work by Ozdemir and Boneh (USENIX Security 2022) and subsequent improvements in 2024 demonstrate that proof generation itself can be privacy-preserving. This creates a fifth proving model -- between client-side (private but expensive) and delegated (cheap but witness-exposing) -- that combines the privacy of the former with the performance of the latter. The magician's backstage preparation is distributed across multiple locked rooms. No single stagehand sees the whole act.
+**Collaborative/threshold proving**: Distributing ZK proof generation across multiple servers using MPC, so that no single server sees the full witness. The work by Ozdemir and Boneh, "Experimenting with Collaborative zk-SNARKs: Zero-Knowledge Proofs for Distributed Secrets," USENIX Security 2022 (ePrint 2021/1530), and subsequent improvements in 2024 demonstrate that proof generation itself can be privacy-preserving. This creates a fifth proving model -- between client-side (private but expensive) and delegated (cheap but witness-exposing) -- that combines the privacy of the former with the performance of the latter. The magician's backstage preparation is distributed across multiple locked rooms. No single stagehand sees the whole act.
 
 **Private Information Retrieval (PIR)**: Querying a database without revealing which record you are accessing. A client-side prover in a private rollup (like Aztec) needs to retrieve encrypted notes from the network without revealing which notes belong to them. Recent advances at EUROCRYPT 2026 achieved information-theoretic PIR with sublinear server time and quasilinear space, moving PIR from theoretical curiosity toward practical deployment for billion-entry databases.
 
@@ -60,7 +60,8 @@ Three frontier capabilities likely to define the next privacy architecture gener
 
 ## Improvement notes
 
-- [P1] (B) "Ozdemir and Boneh (USENIX Security 2022)" is not listed in the master bibliography (refs 34 and 46 are different Ozdemir papers; the collaborative zk-SNARKs paper is absent). Should be added as a numbered bibliography entry.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (B) EUROCRYPT 2026 PIR result is cited by conference name only — "specific paper not named in text" is acknowledged in Open questions. Until the paper is identified, this claim is unverifiable and should be flagged as provisional.
 
 ## Links

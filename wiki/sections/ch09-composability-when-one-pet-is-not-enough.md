@@ -5,8 +5,8 @@ chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4128, 4161]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 4b160057932dbd587dab82f3fc1ddfa36f581a79
+status: reviewed
 word_count: 1219
 ---
 
@@ -81,6 +81,8 @@ None in this section.
 - zkFHE beyond small circuits (a few hundred multiplication gates) is not yet production-ready.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) No sources cited despite specific quantitative claims: "few hundred multiplication gates" for zkFHE prototypes and the MPC-to-FHE share-to-ciphertext conversion as an "active research frontier" — these should cite the relevant papers or prototypes.
 - [P2] (E) The "privacy stack" layer ordering (DP < MPC < FHE < ZKP by cost/strength) is asserted as architectural fact with no supporting reference; a citation to a survey or prior taxonomy would strengthen it.

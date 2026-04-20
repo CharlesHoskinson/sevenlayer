@@ -5,8 +5,8 @@ chapter: 9
 chapter_title: "Privacy-Enhancing Technologies"
 heading_level: 2
 source_lines: [4018, 4099]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 4b160057932dbd587dab82f3fc1ddfa36f581a79
+status: reviewed
 word_count: 3079
 ---
 
@@ -18,7 +18,7 @@ There are four major PET categories that matter for system architects making dec
 
 **Zero-Knowledge Proofs (ZKPs)** answer: *How do I prove a statement about my private data without revealing the data itself?*
 
-Think of ZKPs as the magician's core trick: the audience sees the result but not the method. "My balance exceeds the minimum." "I am over 18." "This computation was performed correctly." The key insight, often missed, is that ZKPs are a tool for *selective disclosure*, not blanket privacy. The proof reveals the *truth of the statement* -- which is itself information. Proving "my balance exceeds $1 million" tells you something about the balance, even though the exact figure stays hidden. The magician chooses which cards to reveal. That choice is itself a disclosure.
+Think of ZKPs as the magician's core trick: the audience sees the result but not the method. "My balance exceeds the minimum." "I am over 18." "This computation was performed correctly." ZKPs are a tool for *selective disclosure*, not blanket privacy. The proof reveals the *truth of the statement* -- which is itself information. Proving "my balance exceeds $1 million" tells you something about the balance, even though the exact figure stays hidden. The magician chooses which cards to reveal. That choice is itself a disclosure.
 
 If ZKPs are the magician's core trick -- proving truth without revealing method -- then the three siblings each perform a different kind of magic.
 
@@ -52,7 +52,7 @@ MPC is the ensemble performance: multiple magicians, each holding one card of a 
 
 **Fully Homomorphic Encryption (FHE)** answers: *How can I outsource computation on my data without the computing party learning anything about the data?*
 
-Craig Gentry, who invented FHE, gave it the perfect image: performing surgery on a patient inside a sealed glovebox. The surgeon's hands are inside the gloves, manipulating the patient, but the glovebox prevents any direct contact. The surgeon can work -- she can cut, stitch, probe -- but she never touches the patient directly, and nothing from the operating field crosses the barrier. It is a vivid image from a different domain -- not our magician's stage but a laboratory -- and we borrow it here because Gentry's metaphor has become inseparable from the concept itself.
+Craig Gentry, who invented FHE (Gentry, "Fully Homomorphic Encryption Using Ideal Lattices," STOC 2009; see also Gentry's PhD thesis, Stanford 2009, for the expanded treatment), gave it the perfect image: performing surgery on a patient inside a sealed glovebox. The surgeon's hands are inside the gloves, manipulating the patient, but the glovebox prevents any direct contact. The surgeon can work -- she can cut, stitch, probe -- but she never touches the patient directly, and nothing from the operating field crosses the barrier. It is a vivid image from a different domain -- not our magician's stage but a laboratory -- and we borrow it here because Gentry's metaphor has become inseparable from the concept itself.
 
 You encrypt your data. You send the ciphertext to a cloud provider. The cloud provider performs operations on the ciphertext. You decrypt the result. The cloud provider learns nothing -- not the data, not the result, not even which operations were meaningful. The gloves never come off.
 
@@ -138,7 +138,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (B) Sources cited lists Gentry as "PhD thesis, Stanford" but the master bibliography (ref 29) cites the STOC 2009 paper — these are distinct publications; the section should cite the STOC paper to match the bibliography, or explicitly cite both.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (B) Yao (1982), Dwork/Rothblum/Vadhan (2010), and Dinur/Nissim (2003) appear in Sources cited but are absent from the chapter bibliography (refs 29–31 cover only Gentry, Kachina, Buterin). They should be added as numbered entries.
 - [P2] (C) "The key insight, often missed, is that ZKPs are a tool for selective disclosure" — "key insight" is an AI-smell phrase; rephrase.
 
