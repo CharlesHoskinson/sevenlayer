@@ -5,7 +5,7 @@ chapter: 8
 chapter_title: "Layer 7 -- The Verdict"
 heading_level: 2
 source_lines: [3881, 3900]
-source_commit: 5128bf4915b60448d50f9712ef2a308ac9d40765
+source_commit: ae218cbb73ddecefb37373fa1c8e789e5b6f8f93
 status: reviewed
 word_count: 429
 ---
