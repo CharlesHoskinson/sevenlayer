@@ -48,7 +48,7 @@
 
 ### Chapters 10-11: Synthesis and zkVMs
 32. Gassmann, Thomas, et al. "Evaluating Compiler Optimization Impacts on zkVM Performance." arXiv 2508.17518, 2026.
-34. Ozdemir, Alex, Fraser Brown, and Riad Wahby. "CirC: Compiler Infrastructure for Proof Systems, Software Verification, and More." *IEEE S&P 2022*. ePrint 2020/1586.
+33. Ozdemir, Alex, Fraser Brown, and Riad Wahby. "CirC: Compiler Infrastructure for Proof Systems, Software Verification, and More." *IEEE S&P 2022*. ePrint 2020/1586.
 35. Liu, Junrui, et al. "Certifying Zero-Knowledge Circuits with Refinement Types (Coda)." *IEEE S&P 2024*. ePrint 2023/547.
 36. Maller, Mary, Sean Bowe, Markulf Kohlweiss, and Sarah Meiklejohn. "Sonic: Zero-Knowledge SNARKs from Linear-Size Universal and Updatable Structured Reference Strings." CCS 2019. ePrint 2019/099.
 37. Groth, Jens, Markulf Kohlweiss, Mary Maller, Sarah Meiklejohn, and Ian Miers. "Updatable and Universal Common Reference Strings with Applications to zk-SNARKs." *CRYPTO 2018*. ePrint 2018/280.

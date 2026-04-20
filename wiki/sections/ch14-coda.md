@@ -4,9 +4,9 @@ slug: ch14-coda
 chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
-source_lines: [5413, 5528]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_lines: [5413, 5525]
+source_commit: 9939a8f91cd80256a66e5c09d42401809ad7b228
+status: reviewed
 word_count: 1850
 ---
 
@@ -37,9 +37,6 @@ This vision is not yet fully realized. The open questions in this chapter -- GPU
 That is what seven layers of mathematics make possible. Not trustlessness -- trust-minimization. Not perfection -- progress. Not magic -- engineering that looks like magic until you understand every layer, at which point it looks like something better: a system where telling the truth is easier than lying, and where proving a fact does not require surrendering the context that makes it private.
 
 The magician performs. The audience verifies. And between them, seven layers of mathematics ensure that the proof reveals nothing but the truth.
-
-
----
 
 # Complete Bibliography {.unnumbered}
 
@@ -91,7 +88,7 @@ The magician performs. The audience verifies. And between them, seven layers of 
 
 ### Chapters 10-11: Synthesis and zkVMs
 32. Gassmann, Thomas, et al. "Evaluating Compiler Optimization Impacts on zkVM Performance." arXiv 2508.17518, 2026.
-34. Ozdemir, Alex, Fraser Brown, and Riad Wahby. "CirC: Compiler Infrastructure for Proof Systems, Software Verification, and More." *IEEE S&P 2022*. ePrint 2020/1586.
+33. Ozdemir, Alex, Fraser Brown, and Riad Wahby. "CirC: Compiler Infrastructure for Proof Systems, Software Verification, and More." *IEEE S&P 2022*. ePrint 2020/1586.
 35. Liu, Junrui, et al. "Certifying Zero-Knowledge Circuits with Refinement Types (Coda)." *IEEE S&P 2024*. ePrint 2023/547.
 36. Maller, Mary, Sean Bowe, Markulf Kohlweiss, and Sarah Meiklejohn. "Sonic: Zero-Knowledge SNARKs from Linear-Size Universal and Updatable Structured Reference Strings." CCS 2019. ePrint 2019/099.
 37. Groth, Jens, Markulf Kohlweiss, Mary Maller, Sarah Meiklejohn, and Ian Miers. "Updatable and Universal Common Reference Strings with Applications to zk-SNARKs." *CRYPTO 2018*. ePrint 2018/280.
@@ -178,7 +175,8 @@ None flagged by this section.
 
 ## Improvement notes
 
-- [P1] (D) The complete bibliography skips reference number 33 — the sequence runs 32, 34, skipping 33 entirely. Either a reference was deleted without renumbering or a citation was omitted. The gap should be resolved.
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
+
 - [P2] (A) The Coda states "3-5 years for the hardest problems," but Q2 in ch14-the-seven-questions sets a "5-10 years for theoretical resolution" timeline and Q6 sets "3-5 years." The Coda's single range flattens the spread and understates Q2's horizon.
 
 ## Links

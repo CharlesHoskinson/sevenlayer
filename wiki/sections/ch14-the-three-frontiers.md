@@ -5,8 +5,8 @@ chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
 source_lines: [5351, 5394]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 9939a8f91cd80256a66e5c09d42401809ad7b228
+status: reviewed
 word_count: 729
 ---
 
@@ -102,6 +102,8 @@ The ZK field moves through three sequential frontiers: Performance (2023-2025, l
 - What is the first production system to meaningfully address the Privacy frontier beyond compiler-level disclosure analysis?
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) "SP1: formal verification of 62 RISC-V opcodes against Sail specification" appears in the Security frontier evidence block with no source listed; the sources section cites only the Kadianakis EF blog post and the Arguzz paper. The "62 opcodes" figure needs a dedicated citation.
 - [P2] (A) SP1 Hypercube performance claim (6.9s, 16 GPUs) is tagged "Dec 2025" in the body but the SP1 Hypercube source is a May 2025 blog post; the EF security pivot post is Dec 2025. The date attribution conflates two separate announcements.

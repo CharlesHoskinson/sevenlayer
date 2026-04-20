@@ -2,7 +2,7 @@
 title: "Open Questions and the Road Ahead"
 chapter: 14
 kind: chapter-hub
-status: untouched
+status: reviewed
 ---
 
 # Chapter 14: Open Questions and the Road Ahead
@@ -14,7 +14,13 @@ status: untouched
 - [[ch14-convergence]]
 - [[ch14-coda]]
 
-## Audit rollup
+## Revision status
+
+Phase 3 revision applied 2026-04-19 per `wiki/drafts/ch14-v2.md`. 0 P0 + 2 P1 resolved. Draft preserved. P2 (5) and P3 (5) deferred.
+
+**Key corrections:** Wee-Wu's work correctly characterized as "lattice-based functional commitments" (ePrint 2024/028, bibliography #62) rather than functional encryption — with a brief gloss distinguishing the two primitives. Bibliography back-matter numbering gap at #33 closed by renumbering CirC from 34 to 33 in both `proving-nothing.md` and `wiki/BIBLIOGRAPHY.md` (no inline `[33]` cross-references exist, so the renumber is clean).
+
+## Audit rollup (pre-revision)
 
 Audited 2026-04-18. P0=0, P1=2, P2=5, P3=5.
 

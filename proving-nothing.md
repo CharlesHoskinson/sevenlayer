@@ -5215,7 +5215,7 @@ Now look at the post-quantum world. The best lattice-based proofs run 50-100 KB.
 
 The reason is structural, not incidental. Pairing-based schemes exploit a specific algebraic trick: the pairing $e(g, h)$ lets you check multiplicative relations between committed values without revealing the values themselves. This trick compresses verification into a constant number of pairing evaluations, regardless of the polynomial's degree. Lattice-based schemes have no analogous trick. Their security rests on the hardness of finding short vectors in high-dimensional lattices -- a problem that is (probably) hard even for quantum computers, but that does not offer the same algebraic leverage. Verification requires checking that a vector is short, and the proof that a vector is short inherently requires transmitting information proportional to the vector's dimension.
 
-The Wee-Wu line of results suggests that this gap may have deep roots. Their work on compact functional encryption and related primitives shows that certain cryptographic tasks require specific algebraic structure (pairings, or their lattice analogues) to achieve compactness, and that this structure is hard to instantiate from lattice assumptions without blowup. The barrier is not a proof of impossibility -- nobody has shown that $O(1)$-size post-quantum proofs *cannot* exist. But the barrier results suggest that if such proofs exist, they will require fundamentally new algebraic ideas, not incremental improvements to existing lattice techniques.
+The Wee-Wu line of results suggests that this gap may have deep roots. Their work on lattice-based *functional commitments* -- a primitive distinct from functional encryption, in which a short commitment to a vector can be opened to the output of a function applied to that vector -- shows both fast verification constructions and cryptanalytic attacks on earlier proposals. Taken together, the positive and negative results sketch the shape of the space: certain cryptographic tasks require specific algebraic structure (pairings, or their lattice analogues) to achieve compactness, and that structure is hard to instantiate from lattice assumptions without blowup or new vulnerabilities. The barrier is not a proof of impossibility -- nobody has shown that $O(1)$-size post-quantum proofs *cannot* exist. But the barrier results suggest that if such proofs exist, they will require fundamentally new algebraic ideas, not incremental improvements to existing lattice techniques.
 
 What would a proof of impossibility mean? It would mean the ZK field permanently bifurcates: fast-and-small proofs (pairing-based, quantum-vulnerable) versus large-and-safe proofs (lattice-based, quantum-resistant), with no bridge between them. Every system would need to choose a lane. The STARK-to-SNARK wrapping strategy described in Chapter 10 -- use hash-based proofs for soundness, then compress the proof with a pairing-based scheme for on-chain verification -- would be the permanent architecture, not a temporary compromise. The three paths would harden into the three permanent roads.
 
@@ -5438,9 +5438,6 @@ That is what seven layers of mathematics make possible. Not trustlessness -- tru
 
 The magician performs. The audience verifies. And between them, seven layers of mathematics ensure that the proof reveals nothing but the truth.
 
-
----
-
 # Complete Bibliography {.unnumbered}
 
 ### Chapter 1: The Promise
@@ -5491,7 +5488,7 @@ The magician performs. The audience verifies. And between them, seven layers of 
 
 ### Chapters 10-11: Synthesis and zkVMs
 32. Gassmann, Thomas, et al. "Evaluating Compiler Optimization Impacts on zkVM Performance." arXiv 2508.17518, 2026.
-34. Ozdemir, Alex, Fraser Brown, and Riad Wahby. "CirC: Compiler Infrastructure for Proof Systems, Software Verification, and More." *IEEE S&P 2022*. ePrint 2020/1586.
+33. Ozdemir, Alex, Fraser Brown, and Riad Wahby. "CirC: Compiler Infrastructure for Proof Systems, Software Verification, and More." *IEEE S&P 2022*. ePrint 2020/1586.
 35. Liu, Junrui, et al. "Certifying Zero-Knowledge Circuits with Refinement Types (Coda)." *IEEE S&P 2024*. ePrint 2023/547.
 36. Maller, Mary, Sean Bowe, Markulf Kohlweiss, and Sarah Meiklejohn. "Sonic: Zero-Knowledge SNARKs from Linear-Size Universal and Updatable Structured Reference Strings." CCS 2019. ePrint 2019/099.
 37. Groth, Jens, Markulf Kohlweiss, Mary Maller, Sarah Meiklejohn, and Ian Miers. "Updatable and Universal Common Reference Strings with Applications to zk-SNARKs." *CRYPTO 2018*. ePrint 2018/280.

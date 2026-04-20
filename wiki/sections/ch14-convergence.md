@@ -5,8 +5,8 @@ chapter: 14
 chapter_title: "Open Questions and the Road Ahead"
 heading_level: 2
 source_lines: [5395, 5412]
-source_commit: e06eabb8221ef210de8c05819f8f7dad94c70483
-status: drafted
+source_commit: 9939a8f91cd80256a66e5c09d42401809ad7b228
+status: reviewed
 word_count: 581
 ---
 
@@ -66,6 +66,8 @@ None in this section.
 None flagged by this section.
 
 ## Improvement notes
+
+_P0/P1 items resolved in Phase 3 revision (2026-04-19); remaining P2/P3 deferred._
 
 - [P2] (B) "Sources cited: None" — all quantitative claims (market size, TVL, zkVM count) rely solely on cross-references with no independent citations. Key figures like "seven production zkVMs" and ">$20B TVL" should have at least one direct source here.
 - [P3] (A) "seven production zkVMs compete on a standardized benchmark" — the exact count of seven is not sourced in this section; it is asserted without a pointer to the ch11 landscape table or an external reference.
