@@ -1,1192 +1,3572 @@
 {
-  "C:\\sevenlayer\\proving-nothing.md": {
-    "mtime": 1781300231.2967281,
-    "ast_hash": "da005032b42ddb31e81f3aa2995c32b4",
-    "semantic_hash": "da005032b42ddb31e81f3aa2995c32b4"
+  ".claude/settings.json": {
+    "mtime": 1788103014.3148947,
+    "seen": 1788104928.3532054,
+    "ast_hash": "f6794ee9e595a8e1e64bc6eea94a6174",
+    "semantic_hash": "f6794ee9e595a8e1e64bc6eea94a6174"
   },
-  "C:\\sevenlayer\\references\\ch01\\ref-01-clarke-profiles-of-the-future.md": {
-    "mtime": 1781305698.5402746,
+  ".claude/skills/llm-wiki/scripts/audit_checks.py": {
+    "mtime": 1788103014.3214545,
+    "seen": 1788104928.3532104,
+    "ast_hash": "4f7a7e6162d6fa7bec5bdb61852707c9",
+    "semantic_hash": "4f7a7e6162d6fa7bec5bdb61852707c9"
+  },
+  ".claude/skills/llm-wiki/scripts/lint.py": {
+    "mtime": 1788103014.321784,
+    "seen": 1788104928.3532119,
+    "ast_hash": "1cd1dba5f953ca8f87afa0653e9d8f8c",
+    "semantic_hash": "1cd1dba5f953ca8f87afa0653e9d8f8c"
+  },
+  ".claude/skills/llm-wiki/scripts/paper_vector.py": {
+    "mtime": 1788103014.321784,
+    "seen": 1788104928.3532126,
+    "ast_hash": "bfed91b795c494775365b2ec8c1c50ec",
+    "semantic_hash": "bfed91b795c494775365b2ec8c1c50ec"
+  },
+  ".claude/skills/llm-wiki/scripts/scrape.py": {
+    "mtime": 1788103014.321784,
+    "seen": 1788104928.353213,
+    "ast_hash": "2485f16f8a4f77bad5efdce0d9c390d9",
+    "semantic_hash": "2485f16f8a4f77bad5efdce0d9c390d9"
+  },
+  ".claude/skills/llm-wiki/scripts/test_lint.py": {
+    "mtime": 1788103014.321784,
+    "seen": 1788104928.353214,
+    "ast_hash": "6a2edf813e7c3fe101c970128d31d04b",
+    "semantic_hash": "6a2edf813e7c3fe101c970128d31d04b"
+  },
+  ".claude/skills/llm-wiki/scripts/test_paper_vector.py": {
+    "mtime": 1788103014.321784,
+    "seen": 1788104928.3532145,
+    "ast_hash": "b8d8f6c16d562f0b0159c9fff892707b",
+    "semantic_hash": "b8d8f6c16d562f0b0159c9fff892707b"
+  },
+  ".claude/skills/llm-wiki/scripts/test_scrape.py": {
+    "mtime": 1788103014.321784,
+    "seen": 1788104928.353215,
+    "ast_hash": "bad24debd01bd1def813b3bd84878c2e",
+    "semantic_hash": "bad24debd01bd1def813b3bd84878c2e"
+  },
+  ".claude/skills/math-explainer/conftest.py": {
+    "mtime": 1788103014.3221211,
+    "seen": 1788104928.3532155,
+    "ast_hash": "4a6ba223104a08a9008129837b27fda2",
+    "semantic_hash": "4a6ba223104a08a9008129837b27fda2"
+  },
+  ".claude/skills/math-explainer/evals/concepts.json": {
+    "mtime": 1788103014.3221211,
+    "seen": 1788104928.3532157,
+    "ast_hash": "91da84e50cad9b5f54656f8a6853ad0a",
+    "semantic_hash": "91da84e50cad9b5f54656f8a6853ad0a"
+  },
+  ".claude/skills/math-explainer/evals/run_eval.py": {
+    "mtime": 1788103014.3223844,
+    "seen": 1788104928.3532162,
+    "ast_hash": "54d278ae3a70a55c00af9dd99d8aa580",
+    "semantic_hash": "54d278ae3a70a55c00af9dd99d8aa580"
+  },
+  ".claude/skills/math-explainer/evals/sample_bundle/bundle.json": {
+    "mtime": 1788103014.3223844,
+    "seen": 1788104928.3532171,
+    "ast_hash": "7f5cbb8bfc2f566bc0b2e3061d5ff512",
+    "semantic_hash": "7f5cbb8bfc2f566bc0b2e3061d5ff512"
+  },
+  ".claude/skills/math-explainer/scripts/__init__.py": {
+    "mtime": 1788103014.3225727,
+    "seen": 1788104928.3532176,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  ".claude/skills/math-explainer/scripts/check_env.py": {
+    "mtime": 1788103014.3227952,
+    "seen": 1788104928.3532183,
+    "ast_hash": "385d2e847083c14cbace9c5ca73a9932",
+    "semantic_hash": "385d2e847083c14cbace9c5ca73a9932"
+  },
+  ".claude/skills/math-explainer/scripts/draft_lint.py": {
+    "mtime": 1788103014.3227952,
+    "seen": 1788104928.3532186,
+    "ast_hash": "726b8bcb2987886d7021b0ce15c056e2",
+    "semantic_hash": "726b8bcb2987886d7021b0ce15c056e2"
+  },
+  ".claude/skills/math-explainer/scripts/manim_render.py": {
+    "mtime": 1788103014.3227952,
+    "seen": 1788104928.353219,
+    "ast_hash": "45f0b3c258c97933f6d57d7275884cc6",
+    "semantic_hash": "45f0b3c258c97933f6d57d7275884cc6"
+  },
+  ".claude/skills/math-explainer/scripts/resolve_deps.py": {
+    "mtime": 1788103014.3229597,
+    "seen": 1788104928.3532195,
+    "ast_hash": "3f8e424840c33d9237e99732a864cfd6",
+    "semantic_hash": "3f8e424840c33d9237e99732a864cfd6"
+  },
+  ".claude/skills/math-explainer/scripts/run_sage.py": {
+    "mtime": 1788103014.3229597,
+    "seen": 1788104928.3532197,
+    "ast_hash": "2cfb78bd1a4cfd2ca44ceeacf15f85f6",
+    "semantic_hash": "2cfb78bd1a4cfd2ca44ceeacf15f85f6"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/bilinear-pairings.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532205,
+    "ast_hash": "46e52c54a5abbe96960f9e7d012bb166",
+    "semantic_hash": "46e52c54a5abbe96960f9e7d012bb166"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/discrete-log.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.353221,
+    "ast_hash": "bfa0da0cf584f20a87a325fb9d6bf538",
+    "semantic_hash": "bfa0da0cf584f20a87a325fb9d6bf538"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/elliptic-curves.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532214,
+    "ast_hash": "88d8e7799009090f8384d77d0e3ec1b9",
+    "semantic_hash": "88d8e7799009090f8384d77d0e3ec1b9"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/finite-fields.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532217,
+    "ast_hash": "2106536fd5bc6cbaa913556833215e72",
+    "semantic_hash": "2106536fd5bc6cbaa913556833215e72"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/freivalds.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532224,
+    "ast_hash": "976403172f6b3b768e46e68f983702cf",
+    "semantic_hash": "976403172f6b3b768e46e68f983702cf"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/fri.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532226,
+    "ast_hash": "4bbd4f6f7c6f02cdb359b043828f92a0",
+    "semantic_hash": "4bbd4f6f7c6f02cdb359b043828f92a0"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/lagrange-interpolation.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.353223,
+    "ast_hash": "c2dcee46844c5b44a1956fba54234641",
+    "semantic_hash": "c2dcee46844c5b44a1956fba54234641"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/merkle-trees.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532233,
+    "ast_hash": "801234498f7af5228a96d3f8c5a72fbf",
+    "semantic_hash": "801234498f7af5228a96d3f8c5a72fbf"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/multilinear-extension.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.353224,
+    "ast_hash": "f5f4dfdb609301722ac5d1cf9344122d",
+    "semantic_hash": "f5f4dfdb609301722ac5d1cf9344122d"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/pedersen-commitment.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532243,
+    "ast_hash": "f751297dd4d54b27f491e10b51e64fd1",
+    "semantic_hash": "f751297dd4d54b27f491e10b51e64fd1"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/r1cs.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532248,
+    "ast_hash": "92d7a61acd78091528033c99eb91ba70",
+    "semantic_hash": "92d7a61acd78091528033c99eb91ba70"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/reed-solomon.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532252,
+    "ast_hash": "7f68cf09f6a6670356df3ebec6e32f6a",
+    "semantic_hash": "7f68cf09f6a6670356df3ebec6e32f6a"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/schwartz_zippel.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532255,
+    "ast_hash": "b30ff9c98acd0cff914c95f5dbf2ed50",
+    "semantic_hash": "b30ff9c98acd0cff914c95f5dbf2ed50"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/sigma-protocols.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.353226,
+    "ast_hash": "f845dc500150979ef43e547a555bd5c2",
+    "semantic_hash": "f845dc500150979ef43e547a555bd5c2"
+  },
+  ".claude/skills/math-explainer/scripts/scenes/sum-check.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532262,
+    "ast_hash": "b9b8e53491c6f4848b891ee7baab4b0f",
+    "semantic_hash": "b9b8e53491c6f4848b891ee7baab4b0f"
+  },
+  ".claude/skills/math-explainer/scripts/schemas.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.3532267,
+    "ast_hash": "ab8a942aa4336af9d09930bbe1a02dbc",
+    "semantic_hash": "ab8a942aa4336af9d09930bbe1a02dbc"
+  },
+  ".claude/skills/math-explainer/scripts/scorecard.py": {
+    "mtime": 1788103014.3233933,
+    "seen": 1788104928.353227,
+    "ast_hash": "757aff74977e2a9be634a78cf2f90145",
+    "semantic_hash": "757aff74977e2a9be634a78cf2f90145"
+  },
+  ".claude/skills/math-explainer/tests/test_check_env.py": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.3532276,
+    "ast_hash": "b8871c115f16969a79d213e7325a0bb9",
+    "semantic_hash": "b8871c115f16969a79d213e7325a0bb9"
+  },
+  ".claude/skills/math-explainer/tests/test_draft_lint.py": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.353228,
+    "ast_hash": "caab02181ba526295c1033578c0f2de3",
+    "semantic_hash": "caab02181ba526295c1033578c0f2de3"
+  },
+  ".claude/skills/math-explainer/tests/test_eval.py": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.3532283,
+    "ast_hash": "ceda27ed34a50f0e3437458f1d8291a5",
+    "semantic_hash": "ceda27ed34a50f0e3437458f1d8291a5"
+  },
+  ".claude/skills/math-explainer/tests/test_manim_render.py": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.3532288,
+    "ast_hash": "62e574a9027205630e8fc854aa5d9306",
+    "semantic_hash": "62e574a9027205630e8fc854aa5d9306"
+  },
+  ".claude/skills/math-explainer/tests/test_resolve_deps.py": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.353229,
+    "ast_hash": "1221873e73a1779c749a1a9e821f9274",
+    "semantic_hash": "1221873e73a1779c749a1a9e821f9274"
+  },
+  ".claude/skills/math-explainer/tests/test_run_sage.py": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.3532295,
+    "ast_hash": "d51abb29d7d29d2d3568f310e456d1a5",
+    "semantic_hash": "d51abb29d7d29d2d3568f310e456d1a5"
+  },
+  ".claude/skills/math-explainer/tests/test_schemas.py": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.35323,
+    "ast_hash": "2e2b4ab5d01081fb0b6651cfe6860d2f",
+    "semantic_hash": "2e2b4ab5d01081fb0b6651cfe6860d2f"
+  },
+  ".claude/skills/math-explainer/tests/test_scorecard.py": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.3532302,
+    "ast_hash": "57e9435c9bd389c81ea1f7751378b696",
+    "semantic_hash": "57e9435c9bd389c81ea1f7751378b696"
+  },
+  ".claude/skills/math-explainer/tests/test_structure.py": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.3532314,
+    "ast_hash": "727c83d017d5d7ae898ff8f323278232",
+    "semantic_hash": "727c83d017d5d7ae898ff8f323278232"
+  },
+  "box-filter.lua": {
+    "mtime": 1788103014.3828948,
+    "seen": 1788104928.3532317,
+    "ast_hash": "1e162481aafa97116eafc45417277917",
+    "semantic_hash": "1e162481aafa97116eafc45417277917"
+  },
+  "build_kindle.py": {
+    "mtime": 1788103014.3828948,
+    "seen": 1788104928.3532321,
+    "ast_hash": "04be7d80a8765ab05a7c4f18cfdc4f32",
+    "semantic_hash": "04be7d80a8765ab05a7c4f18cfdc4f32"
+  },
+  "build_pdf.py": {
+    "mtime": 1788103014.3828948,
+    "seen": 1788104928.3532324,
+    "ast_hash": "56b0bf8649205bbaa6d2c1e063add64f",
+    "semantic_hash": "56b0bf8649205bbaa6d2c1e063add64f"
+  },
+  "generate_cover.py": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.3532329,
+    "ast_hash": "a8965c3c17f39ad09b11419804e17eef",
+    "semantic_hash": "a8965c3c17f39ad09b11419804e17eef"
+  },
+  "kindle-filter.lua": {
+    "mtime": 1788103014.4308946,
+    "seen": 1788104928.3532333,
+    "ast_hash": "ba0c35a9e00aff28554adc8dad7b20c1",
+    "semantic_hash": "ba0c35a9e00aff28554adc8dad7b20c1"
+  },
+  "pyproject.toml": {
+    "mtime": 1788103014.5628946,
+    "seen": 1788104928.3532336,
+    "ast_hash": "76217827600a1b3b1bc5b3c1ad5ac2c2",
+    "semantic_hash": "76217827600a1b3b1bc5b3c1ad5ac2c2"
+  },
+  "scripts/build_book_graph.py": {
+    "mtime": 1788103015.492686,
+    "seen": 1788104928.3532343,
+    "ast_hash": "2aeb6e3ea9725a2784a4cfeb6d97c909",
+    "semantic_hash": "2aeb6e3ea9725a2784a4cfeb6d97c909"
+  },
+  "scripts/build_master_graph.py": {
+    "mtime": 1788103015.497576,
+    "seen": 1788104928.3532345,
+    "ast_hash": "d043fbebaddbb662372d7dcc220d3acf",
+    "semantic_hash": "d043fbebaddbb662372d7dcc220d3acf"
+  },
+  "scripts/build_recursion_graph.py": {
+    "mtime": 1788103015.497576,
+    "seen": 1788104928.353235,
+    "ast_hash": "1158d91a75de6c3cad92af34028e68b8",
+    "semantic_hash": "1158d91a75de6c3cad92af34028e68b8"
+  },
+  "scripts/compare_graphs.py": {
+    "mtime": 1788103015.497576,
+    "seen": 1788104928.3532355,
+    "ast_hash": "60d61b1dbadaaf9c41fcbdabfffb94dc",
+    "semantic_hash": "60d61b1dbadaaf9c41fcbdabfffb94dc"
+  },
+  "scripts/deepen_pdfs.py": {
+    "mtime": 1788103015.497576,
+    "seen": 1788104928.3532357,
+    "ast_hash": "d8f1884c73c91d01f04191cf7b510efa",
+    "semantic_hash": "d8f1884c73c91d01f04191cf7b510efa"
+  },
+  "scripts/fetch_references.py": {
+    "mtime": 1788103015.497576,
+    "seen": 1788104928.3532362,
+    "ast_hash": "b2eedb73ea586a58a382fa2663c3a9bd",
+    "semantic_hash": "b2eedb73ea586a58a382fa2663c3a9bd"
+  },
+  "scripts/ingest_lecture.py": {
+    "mtime": 1788103015.497576,
+    "seen": 1788104928.3532364,
+    "ast_hash": "6d491513d6cf5fe39eed93faf3af7ff5",
+    "semantic_hash": "6d491513d6cf5fe39eed93faf3af7ff5"
+  },
+  "scripts/split_manuscript.py": {
+    "mtime": 1788103015.497576,
+    "seen": 1788104928.353237,
+    "ast_hash": "91aa75476ca26854b798bf6aa068d1ac",
+    "semantic_hash": "91aa75476ca26854b798bf6aa068d1ac"
+  },
+  "scripts/split_recursion_outline.py": {
+    "mtime": 1788103015.497576,
+    "seen": 1788104928.3532379,
+    "ast_hash": "6a3f33c254d0e112679dd5829936bce5",
+    "semantic_hash": "6a3f33c254d0e112679dd5829936bce5"
+  },
+  "src/zkbook_pdf/__init__.py": {
+    "mtime": 1788103015.4982204,
+    "seen": 1788104928.3532383,
+    "ast_hash": "33cb613d3b0abe1857aff1387a997836",
+    "semantic_hash": "33cb613d3b0abe1857aff1387a997836"
+  },
+  "src/zkbook_pdf/buildlog.py": {
+    "mtime": 1788103015.4982767,
+    "seen": 1788104928.3532386,
+    "ast_hash": "2f3b2347cc369de4a0144bf66bce2337",
+    "semantic_hash": "2f3b2347cc369de4a0144bf66bce2337"
+  },
+  "src/zkbook_pdf/cli.py": {
+    "mtime": 1788103015.4982767,
+    "seen": 1788104928.353239,
+    "ast_hash": "79378b46c8d1de89a9c25ea4b54475b6",
+    "semantic_hash": "79378b46c8d1de89a9c25ea4b54475b6"
+  },
+  "src/zkbook_pdf/latex.py": {
+    "mtime": 1788103015.4982767,
+    "seen": 1788104928.3532393,
+    "ast_hash": "f216177b9cc316ae3ffa7d7f6d21c902",
+    "semantic_hash": "f216177b9cc316ae3ffa7d7f6d21c902"
+  },
+  "tests/test_book_graph.py": {
+    "mtime": 1788103015.4982767,
+    "seen": 1788104928.3532395,
+    "ast_hash": "073d7a7ebda633fabd7e4ca73191d6c6",
+    "semantic_hash": "073d7a7ebda633fabd7e4ca73191d6c6"
+  },
+  "tests/test_deepen_pdfs.py": {
+    "mtime": 1788103015.498561,
+    "seen": 1788104928.35324,
+    "ast_hash": "27757251cc4f6a7d68e232cae2bd7642",
+    "semantic_hash": "27757251cc4f6a7d68e232cae2bd7642"
+  },
+  "tests/test_fetch_references.py": {
+    "mtime": 1788103015.498561,
+    "seen": 1788104928.3532403,
+    "ast_hash": "eafbcecf1b256b480e59cc4b305eb97d",
+    "semantic_hash": "eafbcecf1b256b480e59cc4b305eb97d"
+  },
+  "tests/test_ingest_lecture.py": {
+    "mtime": 1788103015.498561,
+    "seen": 1788104928.3532407,
+    "ast_hash": "10078d64d94a8e2d726875401e60f808",
+    "semantic_hash": "10078d64d94a8e2d726875401e60f808"
+  },
+  "tests/test_manifest.py": {
+    "mtime": 1788103015.498561,
+    "seen": 1788104928.3532412,
+    "ast_hash": "20abcd45717c792bf7bf9eaa7672ea6c",
+    "semantic_hash": "20abcd45717c792bf7bf9eaa7672ea6c"
+  },
+  "tests/test_master_graph.py": {
+    "mtime": 1788103015.498561,
+    "seen": 1788104928.3532414,
+    "ast_hash": "404848913acfa5b3ec4383e917e33144",
+    "semantic_hash": "404848913acfa5b3ec4383e917e33144"
+  },
+  "tests/test_recursion_graph.py": {
+    "mtime": 1788103015.498561,
+    "seen": 1788104928.353242,
+    "ast_hash": "ac4e4e5029828b15241728dbeaf0ad37",
+    "semantic_hash": "ac4e4e5029828b15241728dbeaf0ad37"
+  },
+  "tests/test_recursion_manifest.py": {
+    "mtime": 1788103015.498561,
+    "seen": 1788104928.3532422,
+    "ast_hash": "9bba93cbf47bc9e6848146441393b12d",
+    "semantic_hash": "9bba93cbf47bc9e6848146441393b12d"
+  },
+  ".claude/skills/graphify/SKILL.md": {
+    "mtime": 1788103014.320146,
+    "seen": 1788104928.3532426,
+    "ast_hash": "a47238fd081c07ce37230b5924d45b1f",
+    "semantic_hash": "a47238fd081c07ce37230b5924d45b1f"
+  },
+  ".claude/skills/llm-wiki/SKILL.md": {
+    "mtime": 1788103014.320146,
+    "seen": 1788104928.3532429,
+    "ast_hash": "ef32a5211a3fb73b6dfd68cf0519e7f4",
+    "semantic_hash": "ef32a5211a3fb73b6dfd68cf0519e7f4"
+  },
+  ".claude/skills/llm-wiki/assets/category-index-template.md": {
+    "mtime": 1788103014.3208375,
+    "seen": 1788104928.3532434,
+    "ast_hash": "a59df497907188e145dd9b2597e64e19",
+    "semantic_hash": "a59df497907188e145dd9b2597e64e19"
+  },
+  ".claude/skills/llm-wiki/assets/index-template.md": {
+    "mtime": 1788103014.3208733,
+    "seen": 1788104928.3532436,
+    "ast_hash": "bb5502c6b042d2a2d5a2e379519b956c",
+    "semantic_hash": "bb5502c6b042d2a2d5a2e379519b956c"
+  },
+  ".claude/skills/llm-wiki/assets/log-template.md": {
+    "mtime": 1788103014.3208733,
+    "seen": 1788104928.353244,
+    "ast_hash": "16e5ac83f4197b24ba7be6ecc19c5cad",
+    "semantic_hash": "16e5ac83f4197b24ba7be6ecc19c5cad"
+  },
+  ".claude/skills/llm-wiki/assets/page-templates/concept.md": {
+    "mtime": 1788103014.3208733,
+    "seen": 1788104928.3532443,
+    "ast_hash": "4c3ef675c4d379fbe2981e5b96909fea",
+    "semantic_hash": "4c3ef675c4d379fbe2981e5b96909fea"
+  },
+  ".claude/skills/llm-wiki/assets/page-templates/entity.md": {
+    "mtime": 1788103014.3209944,
+    "seen": 1788104928.353245,
+    "ast_hash": "f8533bf73893839880bb153acb76089a",
+    "semantic_hash": "f8533bf73893839880bb153acb76089a"
+  },
+  ".claude/skills/llm-wiki/assets/page-templates/map.md": {
+    "mtime": 1788103014.3209944,
+    "seen": 1788104928.3532455,
+    "ast_hash": "c1cf6df69197ef6c1bdbaad41d2c7a79",
+    "semantic_hash": "c1cf6df69197ef6c1bdbaad41d2c7a79"
+  },
+  ".claude/skills/llm-wiki/assets/page-templates/source.md": {
+    "mtime": 1788103014.3209944,
+    "seen": 1788104928.353246,
+    "ast_hash": "ee8c279c400a1a1c8b5387a8c2624ab8",
+    "semantic_hash": "ee8c279c400a1a1c8b5387a8c2624ab8"
+  },
+  ".claude/skills/llm-wiki/assets/page-templates/synthesis.md": {
+    "mtime": 1788103014.3209944,
+    "seen": 1788104928.3532465,
+    "ast_hash": "76dcd3d026844647d8bd4619c66c301a",
+    "semantic_hash": "76dcd3d026844647d8bd4619c66c301a"
+  },
+  ".claude/skills/llm-wiki/assets/schema-template.md": {
+    "mtime": 1788103014.3209944,
+    "seen": 1788104928.3532467,
+    "ast_hash": "02edf20632e718ff7f3d1adebdbac4b3",
+    "semantic_hash": "02edf20632e718ff7f3d1adebdbac4b3"
+  },
+  ".claude/skills/llm-wiki/references/conventions.md": {
+    "mtime": 1788103014.3209944,
+    "seen": 1788104928.353247,
+    "ast_hash": "06482c6d342a45d28f4434751f6b38a6",
+    "semantic_hash": "06482c6d342a45d28f4434751f6b38a6"
+  },
+  ".claude/skills/llm-wiki/references/evals.md": {
+    "mtime": 1788103014.3212178,
+    "seen": 1788104928.3532474,
+    "ast_hash": "db310944965d4da0d20c8ae2c0ceb1ea",
+    "semantic_hash": "db310944965d4da0d20c8ae2c0ceb1ea"
+  },
+  ".claude/skills/llm-wiki/references/obsidian-setup.md": {
+    "mtime": 1788103014.3212178,
+    "seen": 1788104928.353248,
+    "ast_hash": "53b33f83eb49a2e6268e78d821430271",
+    "semantic_hash": "53b33f83eb49a2e6268e78d821430271"
+  },
+  ".claude/skills/llm-wiki/references/operations/ingest.md": {
+    "mtime": 1788103014.3212178,
+    "seen": 1788104928.3532484,
+    "ast_hash": "26f583fc67aa62ea73e67d7a469cef68",
+    "semantic_hash": "26f583fc67aa62ea73e67d7a469cef68"
+  },
+  ".claude/skills/llm-wiki/references/operations/init.md": {
+    "mtime": 1788103014.3214545,
+    "seen": 1788104928.3532495,
+    "ast_hash": "a8aaa70258b2ba8b3906606268bbf46f",
+    "semantic_hash": "a8aaa70258b2ba8b3906606268bbf46f"
+  },
+  ".claude/skills/llm-wiki/references/operations/lint.md": {
+    "mtime": 1788103014.3214545,
+    "seen": 1788104928.35325,
+    "ast_hash": "1179db35c1f47d1f4e418e4968ff64a2",
+    "semantic_hash": "1179db35c1f47d1f4e418e4968ff64a2"
+  },
+  ".claude/skills/llm-wiki/references/operations/query.md": {
+    "mtime": 1788103014.3214545,
+    "seen": 1788104928.3532505,
+    "ast_hash": "8d7ab36fe7d136a2cc68c821a6fd1613",
+    "semantic_hash": "8d7ab36fe7d136a2cc68c821a6fd1613"
+  },
+  ".claude/skills/llm-wiki/references/operations/scrape.md": {
+    "mtime": 1788103014.3214545,
+    "seen": 1788104928.353251,
+    "ast_hash": "95296ea376e91f98ee24546d7aee2fd0",
+    "semantic_hash": "95296ea376e91f98ee24546d7aee2fd0"
+  },
+  ".claude/skills/math-explainer/SKILL.md": {
+    "mtime": 1788103014.3221211,
+    "seen": 1788104928.353256,
+    "ast_hash": "117c35a8c789e6a1ff532f1e72fcbd03",
+    "semantic_hash": "117c35a8c789e6a1ff532f1e72fcbd03"
+  },
+  ".claude/skills/math-explainer/references/accuracy-protocol.md": {
+    "mtime": 1788103014.3225727,
+    "seen": 1788104928.3532562,
+    "ast_hash": "530ab99d77660a0da443601537476285",
+    "semantic_hash": "530ab99d77660a0da443601537476285"
+  },
+  ".claude/skills/math-explainer/references/dependency-protocol.md": {
+    "mtime": 1788103014.3225727,
+    "seen": 1788104928.3532567,
+    "ast_hash": "c20944aad97298151c389499850f6228",
+    "semantic_hash": "c20944aad97298151c389499850f6228"
+  },
+  ".claude/skills/math-explainer/references/draft-quality.md": {
+    "mtime": 1788103014.3225727,
+    "seen": 1788104928.3532572,
+    "ast_hash": "548724a8effab932b538af2d9c58dad7",
+    "semantic_hash": "548724a8effab932b538af2d9c58dad7"
+  },
+  ".claude/skills/math-explainer/references/pipeline.md": {
+    "mtime": 1788103014.3225727,
+    "seen": 1788104928.3532577,
+    "ast_hash": "98bd926cfbfb1865e98317ca4a5f65b7",
+    "semantic_hash": "98bd926cfbfb1865e98317ca4a5f65b7"
+  },
+  ".claude/skills/math-explainer/references/sanderson-moves.md": {
+    "mtime": 1788103014.3225727,
+    "seen": 1788104928.353258,
+    "ast_hash": "9b4d341f4f910e7bb62f5a80a2007e45",
+    "semantic_hash": "9b4d341f4f910e7bb62f5a80a2007e45"
+  },
+  ".claude/skills/math-explainer/references/tao-staging.md": {
+    "mtime": 1788103014.3225727,
+    "seen": 1788104928.3532586,
+    "ast_hash": "21f481533386a365f7599cacf8080dc3",
+    "semantic_hash": "21f481533386a365f7599cacf8080dc3"
+  },
+  ".claude/skills/math-explainer/tests/fixtures/mini_foundations.md": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.353259,
+    "ast_hash": "8cddad2d033078cb5f13ad56dfea7135",
+    "semantic_hash": "8cddad2d033078cb5f13ad56dfea7135"
+  },
+  "README.md": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.3532596,
+    "ast_hash": "04c4d4721346a3aafe6edc5bd2f9571f",
+    "semantic_hash": "04c4d4721346a3aafe6edc5bd2f9571f"
+  },
+  "RELEASE_NOTES.md": {
+    "mtime": 1788103014.324084,
+    "seen": 1788104928.3532598,
+    "ast_hash": "c4bfd24a26d03ee86e5c887ac1e18340",
+    "semantic_hash": "c4bfd24a26d03ee86e5c887ac1e18340"
+  },
+  "docs/superpowers/plans/2026-04-18-sevenlayer-wiki-mapping.md": {
+    "mtime": 1788103014.386505,
+    "seen": 1788104928.3532603,
+    "ast_hash": "af32a17cc363ffb6f1a35c2efba7d769",
+    "semantic_hash": "af32a17cc363ffb6f1a35c2efba7d769"
+  },
+  "docs/superpowers/plans/2026-06-12-book-graph-comparison.md": {
+    "mtime": 1788103014.3868074,
+    "seen": 1788104928.3532608,
+    "ast_hash": "30bd53704b34f21c64e51bad7f210a1f",
+    "semantic_hash": "30bd53704b34f21c64e51bad7f210a1f"
+  },
+  "docs/superpowers/plans/2026-06-12-deepen-pdf-graph.md": {
+    "mtime": 1788103014.3868074,
+    "seen": 1788104928.3532612,
+    "ast_hash": "a3b85a7946af5c91ef9e5f6fc09e8c29",
+    "semantic_hash": "a3b85a7946af5c91ef9e5f6fc09e8c29"
+  },
+  "docs/superpowers/plans/2026-06-12-eprint-cloudflare-stealth-tier.md": {
+    "mtime": 1788103014.3868074,
+    "seen": 1788104928.3532615,
+    "ast_hash": "e04e8ecb3d29cecf30da3b950b211f2e",
+    "semantic_hash": "e04e8ecb3d29cecf30da3b950b211f2e"
+  },
+  "docs/superpowers/plans/2026-06-12-knowledge-graph-references.md": {
+    "mtime": 1788103014.3868074,
+    "seen": 1788104928.3532622,
+    "ast_hash": "6e61523a7aeb46edd4d8f6684cd6131a",
+    "semantic_hash": "6e61523a7aeb46edd4d8f6684cd6131a"
+  },
+  "docs/superpowers/plans/2026-06-13-master-graph.md": {
+    "mtime": 1788103014.3868074,
+    "seen": 1788104928.3532624,
+    "ast_hash": "0cefe61a166bd0bfff68706efcf2ab91",
+    "semantic_hash": "0cefe61a166bd0bfff68706efcf2ab91"
+  },
+  "docs/superpowers/plans/2026-06-13-recursion-graph.md": {
+    "mtime": 1788103014.3868074,
+    "seen": 1788104928.353263,
+    "ast_hash": "c6e17f42769bc2f6ead9c705d00b511a",
+    "semantic_hash": "c6e17f42769bc2f6ead9c705d00b511a"
+  },
+  "docs/superpowers/plans/2026-06-14-math-explainer-skill.md": {
+    "mtime": 1788103014.3868074,
+    "seen": 1788104928.3532631,
+    "ast_hash": "670e1c3019858c99269fe055ad65dfd6",
+    "semantic_hash": "670e1c3019858c99269fe055ad65dfd6"
+  },
+  "docs/superpowers/plans/2026-06-14-mooc-lecture-ingestion.md": {
+    "mtime": 1788103014.3868074,
+    "seen": 1788104928.3532634,
+    "ast_hash": "491d123fa9e16323b269ce7b6fe66804",
+    "semantic_hash": "491d123fa9e16323b269ce7b6fe66804"
+  },
+  "docs/superpowers/plans/2026-06-15-math-explainer-5-concept-run.md": {
+    "mtime": 1788103014.3868074,
+    "seen": 1788104928.3532639,
+    "ast_hash": "3acb2cb215b6937d7b23887a052cdd62",
+    "semantic_hash": "3acb2cb215b6937d7b23887a052cdd62"
+  },
+  "docs/superpowers/specs/2026-04-18-sevenlayer-wiki-design.md": {
+    "mtime": 1788103014.3868074,
+    "seen": 1788104928.353264,
+    "ast_hash": "00d3696da4466b1a8ecfe5c1807fb50a",
+    "semantic_hash": "00d3696da4466b1a8ecfe5c1807fb50a"
+  },
+  "docs/superpowers/specs/2026-06-12-book-graph-comparison-design.md": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.3532646,
+    "ast_hash": "4c135e6ccba8bf31525cd8b8b52ee16d",
+    "semantic_hash": "4c135e6ccba8bf31525cd8b8b52ee16d"
+  },
+  "docs/superpowers/specs/2026-06-12-deepen-pdf-graph-design.md": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.353265,
+    "ast_hash": "7878e66613bf777403c83794af3f50f6",
+    "semantic_hash": "7878e66613bf777403c83794af3f50f6"
+  },
+  "docs/superpowers/specs/2026-06-12-eprint-cloudflare-stealth-tier-design.md": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.3532658,
+    "ast_hash": "ffad6e3696c34a07e46e68a0b1a8a241",
+    "semantic_hash": "ffad6e3696c34a07e46e68a0b1a8a241"
+  },
+  "docs/superpowers/specs/2026-06-12-knowledge-graph-references-design.md": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.3532662,
+    "ast_hash": "96363acad6d5c6679d4cb4cc4c15a4ae",
+    "semantic_hash": "96363acad6d5c6679d4cb4cc4c15a4ae"
+  },
+  "docs/superpowers/specs/2026-06-13-master-graph-design.md": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.3532665,
+    "ast_hash": "c9ea5e222c38bca03c73cb35482bb529",
+    "semantic_hash": "c9ea5e222c38bca03c73cb35482bb529"
+  },
+  "docs/superpowers/specs/2026-06-13-recursion-graph-design.md": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.353267,
+    "ast_hash": "f57e687a87313ff9a15f53a7a07ea305",
+    "semantic_hash": "f57e687a87313ff9a15f53a7a07ea305"
+  },
+  "docs/superpowers/specs/2026-06-14-book-outline-design.md": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.3532672,
+    "ast_hash": "b0d0ff66e534e24678671814d73bff9b",
+    "semantic_hash": "b0d0ff66e534e24678671814d73bff9b"
+  },
+  "docs/superpowers/specs/2026-06-14-math-explainer-skill-design.md": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.3532677,
+    "ast_hash": "12bdb3af4933b923b1d4a37e06cc5edb",
+    "semantic_hash": "12bdb3af4933b923b1d4a37e06cc5edb"
+  },
+  "docs/superpowers/specs/2026-06-14-mooc-lecture-ingestion-design.md": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.3532681,
+    "ast_hash": "54f7e99df48edc5b52a710c8d57f0e48",
+    "semantic_hash": "54f7e99df48edc5b52a710c8d57f0e48"
+  },
+  "docs/superpowers/specs/2026-06-15-math-explainer-5-concept-run-design.md": {
+    "mtime": 1788103014.3878825,
+    "seen": 1788104928.3532686,
+    "ast_hash": "684a6f2414f027eed47f83eed330e989",
+    "semantic_hash": "684a6f2414f027eed47f83eed330e989"
+  },
+  "proving-nothing.md": {
+    "mtime": 1788103014.5428946,
+    "seen": 1788104928.353269,
+    "ast_hash": "a9220a4ab18914870095f80b52377df2",
+    "semantic_hash": "a9220a4ab18914870095f80b52377df2"
+  },
+  "recursion/recursion-outline.md": {
+    "mtime": 1788103014.5988946,
+    "seen": 1788104928.3532696,
+    "ast_hash": "34947d7461a2055fe1ec7c85bf46340c",
+    "semantic_hash": "34947d7461a2055fe1ec7c85bf46340c"
+  },
+  "references/manifest.json": {
+    "mtime": 1788104486.2308974,
+    "seen": 1788107981.1278803,
+    "ast_hash": "44d1659b76c3095698657259affff091",
+    "semantic_hash": "44d1659b76c3095698657259affff091"
+  },
+  "references/mooc/lecture01/transcript.json": {
+    "mtime": 1788103014.8668947,
+    "seen": 1788107981.127882,
+    "ast_hash": "aac097df5981081eeb283f1cb831a618",
+    "semantic_hash": "aac097df5981081eeb283f1cb831a618"
+  },
+  "references/mooc/lecture02/transcript.json": {
+    "mtime": 1788103014.8868947,
+    "seen": 1788107981.1278827,
+    "ast_hash": "e0d40ff9847fbbd989c637921f4e93f9",
+    "semantic_hash": "e0d40ff9847fbbd989c637921f4e93f9"
+  },
+  "references/mooc/lecture03/transcript.json": {
+    "mtime": 1788103014.8948946,
+    "seen": 1788107981.1278837,
+    "ast_hash": "8cc6fa1a10284aa1fb63f3022fea5104",
+    "semantic_hash": "8cc6fa1a10284aa1fb63f3022fea5104"
+  },
+  "references/mooc/lecture04/transcript.json": {
+    "mtime": 1788103014.9148946,
+    "seen": 1788107981.1278844,
+    "ast_hash": "5953ed601029c6fcc22b1be44d912cae",
+    "semantic_hash": "5953ed601029c6fcc22b1be44d912cae"
+  },
+  "references/mooc/lecture05/transcript.json": {
+    "mtime": 1788103014.9228947,
+    "seen": 1788107981.1278849,
+    "ast_hash": "cdcfc818c70679eadd7fe94f4300dccc",
+    "semantic_hash": "cdcfc818c70679eadd7fe94f4300dccc"
+  },
+  "references/mooc/lecture06/transcript.json": {
+    "mtime": 1788103014.9298463,
+    "seen": 1788107981.1278856,
+    "ast_hash": "c2b1bf1e8770979327720253b69d7a88",
+    "semantic_hash": "c2b1bf1e8770979327720253b69d7a88"
+  },
+  "references/mooc/lecture07/transcript.json": {
+    "mtime": 1788103014.9308946,
+    "seen": 1788107981.127886,
+    "ast_hash": "6c9f2dfd8d8d4e083604528917f718b5",
+    "semantic_hash": "6c9f2dfd8d8d4e083604528917f718b5"
+  },
+  "references/mooc/lecture08/transcript.json": {
+    "mtime": 1788103014.9348948,
+    "seen": 1788107981.1278868,
+    "ast_hash": "fabbb009ba86f58ccc00c7882cb3b2c3",
+    "semantic_hash": "fabbb009ba86f58ccc00c7882cb3b2c3"
+  },
+  "references/mooc/lecture09/transcript.json": {
+    "mtime": 1788103014.9396496,
+    "seen": 1788107981.1278872,
+    "ast_hash": "76d723916463327179c6fd1b021d3980",
+    "semantic_hash": "76d723916463327179c6fd1b021d3980"
+  },
+  "references/mooc/lecture10/transcript.json": {
+    "mtime": 1788103014.9433415,
+    "seen": 1788107981.1278884,
+    "ast_hash": "0e4a988d37a206cf5c8bf48040f7a7a1",
+    "semantic_hash": "0e4a988d37a206cf5c8bf48040f7a7a1"
+  },
+  "references/mooc/lecture11/transcript.json": {
+    "mtime": 1788103014.9471004,
+    "seen": 1788107981.1278892,
+    "ast_hash": "9325eb95a471e90335c5317d72e0f772",
+    "semantic_hash": "9325eb95a471e90335c5317d72e0f772"
+  },
+  "references/mooc/lecture12/transcript.json": {
+    "mtime": 1788103014.956422,
+    "seen": 1788107981.1278899,
+    "ast_hash": "892bac2e38a1f02d009a7a6bc2556c34",
+    "semantic_hash": "892bac2e38a1f02d009a7a6bc2556c34"
+  },
+  "references/mooc/lecture14/transcript.json": {
+    "mtime": 1788103014.9908948,
+    "seen": 1788107981.1278903,
+    "ast_hash": "da3bc2e3e239e097270db2c013a6909b",
+    "semantic_hash": "da3bc2e3e239e097270db2c013a6909b"
+  },
+  "references/mooc/lectures-todo.json": {
+    "mtime": 1788103014.9908948,
+    "seen": 1788107981.1278908,
+    "ast_hash": "5dce25d3b84d9a7d03f4ad2f05839c0a",
+    "semantic_hash": "5dce25d3b84d9a7d03f4ad2f05839c0a"
+  },
+  "references/mooc/manifest.json": {
+    "mtime": 1788103014.9908948,
+    "seen": 1788107981.1278918,
+    "ast_hash": "61b1365f8498ac59bbdddd197f9b909e",
+    "semantic_hash": "61b1365f8498ac59bbdddd197f9b909e"
+  },
+  "references/recursion/manifest.json": {
+    "mtime": 1788103015.1148946,
+    "seen": 1788107981.1278923,
+    "ast_hash": "08403fe566d2a576cd1f6c457c505d06",
+    "semantic_hash": "08403fe566d2a576cd1f6c457c505d06"
+  },
+  "references/snowball/hop2-candidates.json": {
+    "mtime": 1788103479.832311,
+    "seen": 1788107981.127893,
+    "ast_hash": "ebb8967106f39692a5c2a16d89063cb4",
+    "semantic_hash": "ebb8967106f39692a5c2a16d89063cb4"
+  },
+  "references/snowball/hop2-fetchlist.json": {
+    "mtime": 1788103479.8327775,
+    "seen": 1788107981.1278937,
+    "ast_hash": "4193e4c8463a6f591d389b064fa0b2d2",
+    "semantic_hash": "4193e4c8463a6f591d389b064fa0b2d2"
+  },
+  "references/snowball/hop2-still-blocked.json": {
+    "mtime": 1788104224.7075896,
+    "seen": 1788107981.1278946,
+    "ast_hash": "8970e56ab042ca72e9840532eece1e2a",
+    "semantic_hash": "8970e56ab042ca72e9840532eece1e2a"
+  },
+  "references/snowball/hop2-tiles/csrc.nist.gov_publications.png.tiles/tiles.json": {
+    "mtime": 1788104256.3032527,
+    "seen": 1788107981.127895,
+    "ast_hash": "c845834f1a87bd9ea33d0b58bd44342c",
+    "semantic_hash": "c845834f1a87bd9ea33d0b58bd44342c"
+  },
+  "references/snowball/hop2-tiles/o1-labs.github.io_snarky.png.tiles/tiles.json": {
+    "mtime": 1788104255.240706,
+    "seen": 1788107981.1278956,
+    "ast_hash": "092944fbd75aea547fc7999a751b9f85",
+    "semantic_hash": "092944fbd75aea547fc7999a751b9f85"
+  },
+  "scripts/fetch_hop2.py": {
+    "mtime": 1788103509.9308867,
+    "seen": 1788107981.127965,
+    "ast_hash": "406a069d98b0629aa78e564c73facf81",
+    "semantic_hash": "406a069d98b0629aa78e564c73facf81"
+  },
+  "scripts/harvest_hop2.py": {
+    "mtime": 1788103434.950882,
+    "seen": 1788107981.1279788,
+    "ast_hash": "68923ac7d9d0b212f1e11c57aa9cbc3d",
+    "semantic_hash": "68923ac7d9d0b212f1e11c57aa9cbc3d"
+  },
+  "scripts/retry_blocked_hop2.py": {
+    "mtime": 1788103972.918896,
+    "seen": 1788107981.1279924,
+    "ast_hash": "842b51c1ab4f6087eefa7c4114742920",
+    "semantic_hash": "842b51c1ab4f6087eefa7c4114742920"
+  },
+  "references/ch01/ref-01-clarke-profiles-of-the-future.md": {
+    "mtime": 1788103014.6188946,
+    "seen": 1788107981.129005,
     "ast_hash": "b80379ad695c38fbd79af0815ac1d986",
     "semantic_hash": "b80379ad695c38fbd79af0815ac1d986"
   },
-  "C:\\sevenlayer\\references\\ch06\\ref-22-frozen-heart.md": {
-    "mtime": 1781305704.8298244,
+  "references/ch06/ref-22-frozen-heart.md": {
+    "mtime": 1788103014.7428946,
+    "seen": 1788107981.1290061,
     "ast_hash": "3078b4d760434cbd879ea986d29f9e23",
     "semantic_hash": "3078b4d760434cbd879ea986d29f9e23"
   },
-  "C:\\sevenlayer\\references\\ch06\\ref-49-nightstream.md": {
-    "mtime": 1781305612.8130186,
+  "references/ch06/ref-49-nightstream.md": {
+    "mtime": 1788103014.7468946,
+    "seen": 1788107981.1290066,
     "ast_hash": "e923929844164bf36d0bd3cb62b4c5f7",
     "semantic_hash": "e923929844164bf36d0bd3cb62b4c5f7"
   },
-  "C:\\sevenlayer\\references\\ch08\\ref-27-l2beat-stages.md": {
-    "mtime": 1781305707.7701664,
+  "references/ch08/ref-27-l2beat-stages.md": {
+    "mtime": 1788103014.7548947,
+    "seen": 1788107981.1290076,
     "ast_hash": "88313e8673222c0ab139127bd68ee446",
     "semantic_hash": "88313e8673222c0ab139127bd68ee446"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-52-sp1-hypercube.md": {
-    "mtime": 1781305723.0131137,
+  "references/ch10/ref-52-sp1-hypercube.md": {
+    "mtime": 1788103014.7828946,
+    "seen": 1788107981.1290083,
     "ast_hash": "ce9fe9d9d152c5baf75174ce2baaf739",
     "semantic_hash": "ce9fe9d9d152c5baf75174ce2baaf739"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-53-airbender.md": {
-    "mtime": 1781305723.6248455,
+  "references/ch10/ref-53-airbender.md": {
+    "mtime": 1788103014.7828946,
+    "seen": 1788107981.129009,
     "ast_hash": "0f92fd89218c2bc84415b1d5e50b6aeb",
     "semantic_hash": "0f92fd89218c2bc84415b1d5e50b6aeb"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-55-zkevm-security-foundations.md": {
-    "mtime": 1781305723.8618004,
+  "references/ch10/ref-55-zkevm-security-foundations.md": {
+    "mtime": 1788103014.7828946,
+    "seen": 1788107981.1290097,
     "ast_hash": "8b03797d73717e0e7fff2196f3f9d8b6",
     "semantic_hash": "8b03797d73717e0e7fff2196f3f9d8b6"
   },
-  "C:\\sevenlayer\\references\\ch12\\ref-39-compact-language-reference.md": {
-    "mtime": 1781305720.7079942,
+  "references/ch12/ref-39-compact-language-reference.md": {
+    "mtime": 1788103014.7868948,
+    "seen": 1788107981.1290102,
     "ast_hash": "b977710ac0cda5633fc346e3c0dc6b9b",
     "semantic_hash": "b977710ac0cda5633fc346e3c0dc6b9b"
   },
-  "C:\\sevenlayer\\references\\ch12\\ref-40-zkir-reference.md": {
-    "mtime": 1781305720.7099946,
+  "references/ch12/ref-40-zkir-reference.md": {
+    "mtime": 1788103014.7936513,
+    "seen": 1788107981.1290107,
     "ast_hash": "c14fdb928fbd119e8d60681d48fa8bed",
     "semantic_hash": "c14fdb928fbd119e8d60681d48fa8bed"
   },
-  "C:\\sevenlayer\\references\\ch12\\ref-41-midnight-developer-guide.md": {
-    "mtime": 1781305720.8281424,
+  "references/ch12/ref-41-midnight-developer-guide.md": {
+    "mtime": 1788103014.7936513,
+    "seen": 1788107981.1290112,
     "ast_hash": "381c0e8122fd78d1907e63a04a4eac31",
     "semantic_hash": "381c0e8122fd78d1907e63a04a4eac31"
   },
-  "C:\\sevenlayer\\references\\ch13\\ref-42-gvr-zkp-market-report.md": {
-    "mtime": 1781305721.0981753,
+  "references/ch13/ref-42-gvr-zkp-market-report.md": {
+    "mtime": 1788103014.7936513,
+    "seen": 1788107981.1290126,
     "ast_hash": "990247eaeeabcd183cf27c77d5e83e2d",
     "semantic_hash": "990247eaeeabcd183cf27c77d5e83e2d"
   },
-  "C:\\sevenlayer\\references\\ch13\\ref-43-castlelabs-zk-privacy.md": {
-    "mtime": 1781306124.2065518,
+  "references/ch13/ref-43-castlelabs-zk-privacy.md": {
+    "mtime": 1788103014.7940693,
+    "seen": 1788107981.129013,
     "ast_hash": "750436d46e86c91d02ed2a8c55fe5956",
     "semantic_hash": "750436d46e86c91d02ed2a8c55fe5956"
   },
-  "C:\\sevenlayer\\references\\ch13\\ref-44-ethproofs.md": {
-    "mtime": 1781305722.5400136,
+  "references/ch13/ref-44-ethproofs.md": {
+    "mtime": 1788103014.7940693,
+    "seen": 1788107981.1290138,
     "ast_hash": "b96f2923594e0ce8c99ea3d656218b18",
     "semantic_hash": "b96f2923594e0ce8c99ea3d656218b18"
   },
-  "C:\\sevenlayer\\references\\ch13\\ref-57-chorus-one-zk-economics.md": {
-    "mtime": 1781305723.913022,
+  "references/ch13/ref-57-chorus-one-zk-economics.md": {
+    "mtime": 1788103014.7940693,
+    "seen": 1788107981.1290143,
     "ast_hash": "b6f524fda604ee21b6573dc929de951f",
     "semantic_hash": "b6f524fda604ee21b6573dc929de951f"
   },
-  "C:\\sevenlayer\\references\\ch13\\ref-58-dtcc-canton-tokenization.md": {
-    "mtime": 1781306688.7090826,
+  "references/ch13/ref-58-dtcc-canton-tokenization.md": {
+    "mtime": 1788103014.7940693,
+    "seen": 1788107981.129015,
     "ast_hash": "6fdbe02b736df0548050332a8de479de",
     "semantic_hash": "6fdbe02b736df0548050332a8de479de"
   },
-  "C:\\sevenlayer\\wiki\\BIBLIOGRAPHY.md": {
-    "mtime": 1781300231.3132436,
-    "ast_hash": "ae18039cee2f408db5e56da1ca58ea66",
-    "semantic_hash": "ae18039cee2f408db5e56da1ca58ea66"
-  },
-  "C:\\sevenlayer\\wiki\\GLOSSARY.md": {
-    "mtime": 1781300231.3132436,
-    "ast_hash": "f4889f46a68487483ad9bd718eb5f8da",
-    "semantic_hash": "f4889f46a68487483ad9bd718eb5f8da"
-  },
-  "C:\\sevenlayer\\wiki\\IMPROVEMENT_BACKLOG.md": {
-    "mtime": 1781300231.3132436,
-    "ast_hash": "aaccd6c2b29de7063cbdd0718b207096",
-    "semantic_hash": "aaccd6c2b29de7063cbdd0718b207096"
-  },
-  "C:\\sevenlayer\\wiki\\INDEX.md": {
-    "mtime": 1781300231.3132436,
-    "ast_hash": "b4a3953fd2ec57ed48d092a3cb828d26",
-    "semantic_hash": "b4a3953fd2ec57ed48d092a3cb828d26"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\01-the-promise-of-provable-and-programmable-secrets.md": {
-    "mtime": 1781300231.320244,
-    "ast_hash": "17b804b942d572eba3236e3e85a0a58d",
-    "semantic_hash": "17b804b942d572eba3236e3e85a0a58d"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\02-building-the-stage.md": {
-    "mtime": 1781300231.3214695,
-    "ast_hash": "a307454589428b2e5df5969a20c4cb21",
-    "semantic_hash": "a307454589428b2e5df5969a20c4cb21"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\03-choreographing-the-act.md": {
-    "mtime": 1781300231.3214695,
-    "ast_hash": "879414889e4277f742e235c46fff7bed",
-    "semantic_hash": "879414889e4277f742e235c46fff7bed"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\04-the-secret-performance.md": {
-    "mtime": 1781300231.3214695,
-    "ast_hash": "e5136a3e9a60082067ab5b9be53ecc31",
-    "semantic_hash": "e5136a3e9a60082067ab5b9be53ecc31"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\05-encoding-the-performance.md": {
-    "mtime": 1781300231.3214695,
-    "ast_hash": "944f6ff44d37e3d4d9146bedba85a4dd",
-    "semantic_hash": "944f6ff44d37e3d4d9146bedba85a4dd"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\06-the-sealed-certificate.md": {
-    "mtime": 1781300231.3214695,
-    "ast_hash": "9ce4fe3f5d571fd4c2245eb08a50094c",
-    "semantic_hash": "9ce4fe3f5d571fd4c2245eb08a50094c"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\07-the-deep-craft.md": {
-    "mtime": 1781300231.3224692,
-    "ast_hash": "08f7cca5bf9ea2e8cea8d75ae66b40dd",
-    "semantic_hash": "08f7cca5bf9ea2e8cea8d75ae66b40dd"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\08-the-verdict.md": {
-    "mtime": 1781300231.3224692,
-    "ast_hash": "5c41e8ea0515c32c8c6e66a667c76776",
-    "semantic_hash": "5c41e8ea0515c32c8c6e66a667c76776"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\09-privacy-enhancing-technologies.md": {
-    "mtime": 1781300231.3224692,
-    "ast_hash": "8e18665331fe8d807633fe55929d052d",
-    "semantic_hash": "8e18665331fe8d807633fe55929d052d"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\10-the-synthesis-three-paths-not-two.md": {
-    "mtime": 1781300231.3224692,
-    "ast_hash": "5729509d8e0fe7a3ae40754c3bfa0e21",
-    "semantic_hash": "5729509d8e0fe7a3ae40754c3bfa0e21"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\11-zkvms-the-universal-stage.md": {
-    "mtime": 1781300231.3224692,
-    "ast_hash": "2966bb27048d2f88be8814f15361492a",
-    "semantic_hash": "2966bb27048d2f88be8814f15361492a"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\12-midnight-the-privacy-theater.md": {
-    "mtime": 1781300231.3224692,
-    "ast_hash": "9ccc6dd327fe44b58180dcf847c88aa2",
-    "semantic_hash": "9ccc6dd327fe44b58180dcf847c88aa2"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\13-the-market-landscape.md": {
-    "mtime": 1781300231.3234687,
-    "ast_hash": "838a0ed0ffc0954e0213cd7a2834dd5a",
-    "semantic_hash": "838a0ed0ffc0954e0213cd7a2834dd5a"
-  },
-  "C:\\sevenlayer\\wiki\\chapters\\14-open-questions-and-the-road-ahead.md": {
-    "mtime": 1781300231.3234687,
-    "ast_hash": "f9c035267195badc818a1f30acf1cdd5",
-    "semantic_hash": "f9c035267195badc818a1f30acf1cdd5"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\ajtai.md": {
-    "mtime": 1781300231.3234687,
-    "ast_hash": "f46e91b3c888d0487fa24973240066bd",
-    "semantic_hash": "f46e91b3c888d0487fa24973240066bd"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\babybear.md": {
-    "mtime": 1781300231.3234687,
-    "ast_hash": "93e50313fd2eb5fbf55e0e18bfe1b191",
-    "semantic_hash": "93e50313fd2eb5fbf55e0e18bfe1b191"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\beanstalk.md": {
-    "mtime": 1781300231.3234687,
-    "ast_hash": "e40e4bc72d460c5534dfa4442279b1a7",
-    "semantic_hash": "e40e4bc72d460c5534dfa4442279b1a7"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\bls12-381.md": {
-    "mtime": 1781300231.3244689,
-    "ast_hash": "32d49ce562547eb6a05f77727f9abebc",
-    "semantic_hash": "32d49ce562547eb6a05f77727f9abebc"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\bn254.md": {
-    "mtime": 1781300231.3244689,
-    "ast_hash": "23dbf6f82b084bd81ca43d2dcd8e526e",
-    "semantic_hash": "23dbf6f82b084bd81ca43d2dcd8e526e"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\ceremony.md": {
-    "mtime": 1781300231.3244689,
-    "ast_hash": "7136c06a0993b7dc42b860ddd5a6d163",
-    "semantic_hash": "7136c06a0993b7dc42b860ddd5a6d163"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\circle-stark.md": {
-    "mtime": 1781300231.3244689,
-    "ast_hash": "c58ddab089d4b6208562132d2b906705",
-    "semantic_hash": "c58ddab089d4b6208562132d2b906705"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\fiat-shamir.md": {
-    "mtime": 1781300231.3244689,
-    "ast_hash": "ac67ab2250da982afa61e802d682fd9e",
-    "semantic_hash": "ac67ab2250da982afa61e802d682fd9e"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\folding.md": {
-    "mtime": 1781300231.3244689,
-    "ast_hash": "aae5394ddb459d5c149ad9f9ec88ce0b",
-    "semantic_hash": "aae5394ddb459d5c149ad9f9ec88ce0b"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\fri.md": {
-    "mtime": 1781300231.325469,
-    "ast_hash": "6113b14e4123c170a9c0ce8eb00ae130",
-    "semantic_hash": "6113b14e4123c170a9c0ce8eb00ae130"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\goldilocks.md": {
-    "mtime": 1781300231.325469,
-    "ast_hash": "e756ff58e1ced6c43990408571ea5647",
-    "semantic_hash": "e756ff58e1ced6c43990408571ea5647"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\groth16.md": {
-    "mtime": 1781300231.325469,
-    "ast_hash": "3440d8a8e042378b8f6a5c7993453f5a",
-    "semantic_hash": "3440d8a8e042378b8f6a5c7993453f5a"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\halo2.md": {
-    "mtime": 1781300231.325469,
-    "ast_hash": "86293d3119a5ca2a16626d2ec8b62a1e",
-    "semantic_hash": "86293d3119a5ca2a16626d2ec8b62a1e"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\hypernova.md": {
-    "mtime": 1781300231.325469,
-    "ast_hash": "94948cefc4fc98e19de656b6a648546d",
-    "semantic_hash": "94948cefc4fc98e19de656b6a648546d"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\jolt.md": {
-    "mtime": 1781300231.325469,
-    "ast_hash": "3130fced7c496b8855d5b3ca6b0ef7ef",
-    "semantic_hash": "3130fced7c496b8855d5b3ca6b0ef7ef"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\jubjub.md": {
-    "mtime": 1781300231.325469,
-    "ast_hash": "e53eae2fd7dff5e990b9a0906a182caa",
-    "semantic_hash": "e53eae2fd7dff5e990b9a0906a182caa"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\kzg.md": {
-    "mtime": 1781300231.326469,
-    "ast_hash": "c295bda8209736cb80bbcfe23a2d8567",
-    "semantic_hash": "c295bda8209736cb80bbcfe23a2d8567"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\lasso.md": {
-    "mtime": 1781300231.326469,
-    "ast_hash": "ac5d26d93c71ccc0adae505851ccdada",
-    "semantic_hash": "ac5d26d93c71ccc0adae505851ccdada"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\lattice.md": {
-    "mtime": 1781300231.326469,
-    "ast_hash": "c077de5edbc4f3f109177a3777068a25",
-    "semantic_hash": "c077de5edbc4f3f109177a3777068a25"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\logup.md": {
-    "mtime": 1781300231.326469,
-    "ast_hash": "8bc1f4db3df47b63d0e6524fbbba48d0",
-    "semantic_hash": "8bc1f4db3df47b63d0e6524fbbba48d0"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\mersenne.md": {
-    "mtime": 1781300231.326469,
-    "ast_hash": "dd22e6a24d1471713f358249731f1569",
-    "semantic_hash": "dd22e6a24d1471713f358249731f1569"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\midnight.md": {
-    "mtime": 1781300231.326469,
-    "ast_hash": "77e186b1c3dca004eda6677556127602",
-    "semantic_hash": "77e186b1c3dca004eda6677556127602"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\nova.md": {
-    "mtime": 1781300231.3274693,
-    "ast_hash": "1f21063ef6d5063fefe45e496df38ba7",
-    "semantic_hash": "1f21063ef6d5063fefe45e496df38ba7"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\plonk.md": {
-    "mtime": 1781300231.3274693,
-    "ast_hash": "0ca259de159125f20dfed90a02b65123",
-    "semantic_hash": "0ca259de159125f20dfed90a02b65123"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\poseidon.md": {
-    "mtime": 1781300231.3274693,
-    "ast_hash": "20753d4cf752ee8f80ce739bba1bcb05",
-    "semantic_hash": "20753d4cf752ee8f80ce739bba1bcb05"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\small-field.md": {
-    "mtime": 1781300231.3274693,
-    "ast_hash": "ff819dadedf03aaa5d5aef9c90e5488f",
-    "semantic_hash": "ff819dadedf03aaa5d5aef9c90e5488f"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\spartan.md": {
-    "mtime": 1781300231.3274693,
-    "ast_hash": "e127643c1f07a6664182e9a29ba1df64",
-    "semantic_hash": "e127643c1f07a6664182e9a29ba1df64"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\starks.md": {
-    "mtime": 1781300231.3274693,
-    "ast_hash": "61dd1df5c5d56b2b7ddb6486206606dc",
-    "semantic_hash": "61dd1df5c5d56b2b7ddb6486206606dc"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\sudoku.md": {
-    "mtime": 1781300231.3274693,
-    "ast_hash": "e9ae34b4adb054f2ee21b0f0855702fd",
-    "semantic_hash": "e9ae34b4adb054f2ee21b0f0855702fd"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\tornado-cash.md": {
-    "mtime": 1781300231.328469,
-    "ast_hash": "770c36466c58891a064fe6d8f7c076f5",
-    "semantic_hash": "770c36466c58891a064fe6d8f7c076f5"
-  },
-  "C:\\sevenlayer\\wiki\\concepts\\zcash.md": {
-    "mtime": 1781300231.328469,
-    "ast_hash": "f317db1a76fa1d554ee3cd13091650f5",
-    "semantic_hash": "f317db1a76fa1d554ee3cd13091650f5"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch01-how-to-read-this-guide.md": {
-    "mtime": 1781300231.3441055,
-    "ast_hash": "250b7580155bb6783e3cfd78c73b6c44",
-    "semantic_hash": "250b7580155bb6783e3cfd78c73b6c44"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch01-the-deepest-question.md": {
-    "mtime": 1781300231.3451054,
-    "ast_hash": "a28ac34c449be8d68e5e50b34a531b62",
-    "semantic_hash": "a28ac34c449be8d68e5e50b34a531b62"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch01-the-first-decision.md": {
-    "mtime": 1781300231.3451054,
-    "ast_hash": "a63688b55929ee79dc6abcf4275aee0a",
-    "semantic_hash": "a63688b55929ee79dc6abcf4275aee0a"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch01-the-phenomenon.md": {
-    "mtime": 1781300231.3451054,
-    "ast_hash": "4a1ace219052227dc08322e7daa8bd00",
-    "semantic_hash": "4a1ace219052227dc08322e7daa8bd00"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch01-the-proof-at-the-door.md": {
-    "mtime": 1781300231.3461056,
-    "ast_hash": "28541083a12f3fe5c163aaefe12a2a4b",
-    "semantic_hash": "28541083a12f3fe5c163aaefe12a2a4b"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch01-the-seven-layers-at-a-glance.md": {
-    "mtime": 1781300231.3461056,
-    "ast_hash": "8e204923480091e9c6c945ffe0f46d2d",
-    "semantic_hash": "8e204923480091e9c6c945ffe0f46d2d"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch01-the-trick.md": {
-    "mtime": 1781300231.3461056,
-    "ast_hash": "66de66dafd6f138b5a702bed4a18f5c4",
-    "semantic_hash": "66de66dafd6f138b5a702bed4a18f5c4"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch01-three-converging-forces.md": {
-    "mtime": 1781300231.3461056,
-    "ast_hash": "1c35accf9df927a4ede032aaa55bfb45",
-    "semantic_hash": "1c35accf9df927a4ede032aaa55bfb45"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-bn254-s-eroding-security-margin.md": {
-    "mtime": 1781300231.3461056,
-    "ast_hash": "a4a4821de10d06b99f3d29fae903173d",
-    "semantic_hash": "a4a4821de10d06b99f3d29fae903173d"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-midnight-s-bls12-381-stage.md": {
-    "mtime": 1781300231.347108,
-    "ast_hash": "a1153419e2372d54146055d7eb153817",
-    "semantic_hash": "a1153419e2372d54146055d7eb153817"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-option-value-analysis.md": {
-    "mtime": 1781300231.347108,
-    "ast_hash": "9483fefec0201a315ae55696785410e2",
-    "semantic_hash": "9483fefec0201a315ae55696785410e2"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-the-141-416-person-question.md": {
-    "mtime": 1781300231.347108,
-    "ast_hash": "85daf93c25a3a33ddabe9e14220e38fc",
-    "semantic_hash": "85daf93c25a3a33ddabe9e14220e38fc"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-the-adopt-framework.md": {
-    "mtime": 1781300231.347108,
-    "ast_hash": "959c628a0ac79d4a2ca4d2ac2a441a9d",
-    "semantic_hash": "959c628a0ac79d4a2ca4d2ac2a441a9d"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-the-bug-that-was-not-a-ceremony-failure.md": {
-    "mtime": 1781300231.347108,
-    "ast_hash": "64ae016959a4b59f96ffafb32aff706e",
-    "semantic_hash": "64ae016959a4b59f96ffafb32aff706e"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-the-capex-opex-framework.md": {
-    "mtime": 1781300231.3481057,
-    "ast_hash": "62fc4580e06ec1148be91e12fcd04b25",
-    "semantic_hash": "62fc4580e06ec1148be91e12fcd04b25"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-the-fair-shuffle-problem.md": {
-    "mtime": 1781300231.3481057,
-    "ast_hash": "a0fa057cd901693d332fa338583a561f",
-    "semantic_hash": "a0fa057cd901693d332fa338583a561f"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-the-quantum-shelf-life.md": {
-    "mtime": 1781300231.3481057,
-    "ast_hash": "fa9d49908b3db55ce7f51f0dbc7ea6fd",
-    "semantic_hash": "fa9d49908b3db55ce7f51f0dbc7ea6fd"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-the-setup-tradeoff.md": {
-    "mtime": 1781300231.3481057,
-    "ast_hash": "5e9deb8328d9cbfc215a52ea95bb27d3",
-    "semantic_hash": "5e9deb8328d9cbfc215a52ea95bb27d3"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-the-structured-reference-string.md": {
-    "mtime": 1781300231.3491054,
-    "ast_hash": "1b81506b3d16a31b82d4f73b7fde006f",
-    "semantic_hash": "1b81506b3d16a31b82d4f73b7fde006f"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-two-ways-to-build-a-stage.md": {
-    "mtime": 1781300231.3491054,
-    "ast_hash": "647573688fd36a087e4b6cea55aed730",
-    "semantic_hash": "647573688fd36a087e4b6cea55aed730"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch02-universal-versus-circuit-specific-setups.md": {
-    "mtime": 1781300231.3491054,
-    "ast_hash": "8bd8a49e259cc25183e48e6639c7fffa",
-    "semantic_hash": "8bd8a49e259cc25183e48e6639c7fffa"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch03-compact-s-disclosure-analysis.md": {
-    "mtime": 1781300231.3491054,
-    "ast_hash": "64cf89c939dc6251f86e292d389fa0a4",
-    "semantic_hash": "64cf89c939dc6251f86e292d389fa0a4"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch03-from-circuits-to-virtual-machines-a-brief-evolution.md": {
-    "mtime": 1781300231.3491054,
-    "ast_hash": "6df3f998e73f826226aa5ef2789e78e9",
-    "semantic_hash": "6df3f998e73f826226aa5ef2789e78e9"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch03-midnight-compiler-ir-circuit.md": {
-    "mtime": 1781300231.3491054,
-    "ast_hash": "ff2a68f9c065249f6137d0005fc5ecd7",
-    "semantic_hash": "ff2a68f9c065249f6137d0005fc5ecd7"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch03-risc-v-won-why-taxonomy-still-matters.md": {
-    "mtime": 1781300231.3491054,
-    "ast_hash": "15f599cb4a0c3e0583387d9a0e2a28d0",
-    "semantic_hash": "15f599cb4a0c3e0583387d9a0e2a28d0"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch03-the-developer-s-actual-experience.md": {
-    "mtime": 1781300231.3506083,
-    "ast_hash": "3a0fb37d57156672a16add4e67ff0e6f",
-    "semantic_hash": "3a0fb37d57156672a16add4e67ff0e6f"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch03-the-four-philosophies.md": {
-    "mtime": 1781300231.3506083,
-    "ast_hash": "5b213e7bc441f8ab87b676ac14d379f4",
-    "semantic_hash": "5b213e7bc441f8ab87b676ac14d379f4"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch03-under-constrained-circuits-the-dominant-failure-mode.md": {
-    "mtime": 1781300231.3506083,
-    "ast_hash": "361cffca0a4b9e4ee04ea4beedbc2597",
-    "semantic_hash": "361cffca0a4b9e4ee04ea4beedbc2597"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch04-execution-traces.md": {
-    "mtime": 1781300231.3506083,
-    "ast_hash": "820d74bc31b08fa4075a412101d8bd01",
-    "semantic_hash": "820d74bc31b08fa4075a412101d8bd01"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch04-memory-the-binding-constraint.md": {
-    "mtime": 1781300231.3516119,
-    "ast_hash": "9b8cc032b96d4ae439f14337f2c6b23f",
-    "semantic_hash": "9b8cc032b96d4ae439f14337f2c6b23f"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch04-side-channel-attacks-when-the-walls-leak.md": {
-    "mtime": 1781300231.3516119,
-    "ast_hash": "4a26744a665790fc150ab61a6dedbbe0",
-    "semantic_hash": "4a26744a665790fc150ab61a6dedbbe0"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch04-the-disclose-boundary-midnight-s-witness-architecture.md": {
-    "mtime": 1781300231.3516119,
-    "ast_hash": "43f63661a35384d7ba3cb270c376109c",
-    "semantic_hash": "43f63661a35384d7ba3cb270c376109c"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch04-the-hidden-bottleneck.md": {
-    "mtime": 1781300231.3516119,
-    "ast_hash": "c26733a93e5fd47affbc77c7917a5b0c",
-    "semantic_hash": "c26733a93e5fd47affbc77c7917a5b0c"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch04-the-witness-as-a-multi-dimensional-problem.md": {
-    "mtime": 1781300231.3516119,
-    "ast_hash": "6615d810791e3ba2d1be7069592add87",
-    "semantic_hash": "6615d810791e3ba2d1be7069592add87"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch04-witness-constraint-divergence.md": {
-    "mtime": 1781300231.3526125,
-    "ast_hash": "260c10382e24de941d298e43a1fea8f1",
-    "semantic_hash": "260c10382e24de941d298e43a1fea8f1"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch04-witness-generation-costs.md": {
-    "mtime": 1781300231.3526125,
-    "ast_hash": "10bfa8484ab35c010d5880f9e39b11e7",
-    "semantic_hash": "10bfa8484ab35c010d5880f9e39b11e7"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch05-ccs-the-rosetta-stone.md": {
-    "mtime": 1781300231.3526125,
-    "ast_hash": "d729959716f22285bee87196fb03fb4f",
-    "semantic_hash": "d729959716f22285bee87196fb03fb4f"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch05-layer-4-arithmetization.md": {
-    "mtime": 1781300231.3526125,
-    "ast_hash": "3f6a83a157483663b1b96d263836bf40",
-    "semantic_hash": "3f6a83a157483663b1b96d263836bf40"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch05-lookup-arguments.md": {
-    "mtime": 1781300231.353612,
-    "ast_hash": "ccc885fcc43871d766574acf903b75c9",
-    "semantic_hash": "ccc885fcc43871d766574acf903b75c9"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch05-midnight-s-zkir-a-concrete-layer-4.md": {
-    "mtime": 1781300231.353612,
-    "ast_hash": "47381cd8cca71b4f3fbdbb7a07366932",
-    "semantic_hash": "47381cd8cca71b4f3fbdbb7a07366932"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch05-the-constraint-system-evolution-r1cs-air-plonkish.md": {
-    "mtime": 1781300231.353612,
-    "ast_hash": "08002e01036a4160f2eaf0e78a17b02c",
-    "semantic_hash": "08002e01036a4160f2eaf0e78a17b02c"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch05-the-overhead-tax-10-000x-to-50-000x.md": {
-    "mtime": 1781300231.353612,
-    "ast_hash": "245568724add79615a629aad8d1b6fa1",
-    "semantic_hash": "245568724add79615a629aad8d1b6fa1"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch05-the-spreadsheet-metaphor-and-where-it-works.md": {
-    "mtime": 1781300231.3546119,
-    "ast_hash": "f57781a4c193b6c8151cfc0f8dcf3c42",
-    "semantic_hash": "f57781a4c193b6c8151cfc0f8dcf3c42"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch05-the-sumcheck-protocol-the-hidden-foundation.md": {
-    "mtime": 1781300231.3546119,
-    "ast_hash": "afc2eb5c439655fb1c3b85b469359022",
-    "semantic_hash": "afc2eb5c439655fb1c3b85b469359022"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch05-where-the-analogies-break.md": {
-    "mtime": 1781300231.3546119,
-    "ast_hash": "9fc289731ded72f12df36f649e382fca",
-    "semantic_hash": "9fc289731ded72f12df36f649e382fca"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch05-where-the-layers-collapse.md": {
-    "mtime": 1781300231.3546119,
-    "ast_hash": "ff506283409e1bddae7a95fec857a62e",
-    "semantic_hash": "ff506283409e1bddae7a95fec857a62e"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-case-study-midnight-s-sealed-certificate.md": {
-    "mtime": 1781300231.3556116,
-    "ast_hash": "f6fd7e2f17e88a467a557c588c5b8497",
-    "semantic_hash": "f6fd7e2f17e88a467a557c588c5b8497"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-circle-starks-and-stwo-a-generational-leap.md": {
-    "mtime": 1781300231.3556116,
-    "ast_hash": "82ed3627a403c8089e13e1dd0e89ec5d",
-    "semantic_hash": "82ed3627a403c8089e13e1dd0e89ec5d"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-fiat-shamir-vulnerabilities.md": {
-    "mtime": 1781300231.3556116,
-    "ast_hash": "0f8c655c2b8b2157a4b54f6456e8856e",
-    "semantic_hash": "0f8c655c2b8b2157a4b54f6456e8856e"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-from-speed-race-to-security-race.md": {
-    "mtime": 1781300231.3556116,
-    "ast_hash": "d4e5c49c8849410a6565e875c1841d6c",
-    "semantic_hash": "d4e5c49c8849410a6565e875c1841d6c"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-nightstream-what-a-folding-engine-looks-like-from-the-inside.md": {
-    "mtime": 1781300231.3566117,
-    "ast_hash": "689d092e974b8e2a609f0d5fd713bc24",
-    "semantic_hash": "689d092e974b8e2a609f0d5fd713bc24"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-real-time-ethereum-proving.md": {
-    "mtime": 1781300231.3566117,
-    "ast_hash": "b258384ddd5c68757a702d1fe9946605",
-    "semantic_hash": "b258384ddd5c68757a702d1fe9946605"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-recursion-vs-folding-russian-dolls-and-snowballs.md": {
-    "mtime": 1781300231.3566117,
-    "ast_hash": "358a755720f61601521a3d8b3c63d7e3",
-    "semantic_hash": "358a755720f61601521a3d8b3c63d7e3"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-sealing-the-certificate.md": {
-    "mtime": 1781300231.3566117,
-    "ast_hash": "86eced8c421cbf676e48c2aaa44fc866",
-    "semantic_hash": "86eced8c421cbf676e48c2aaa44fc866"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-snark-recursion-vs-folding-the-full-picture.md": {
-    "mtime": 1781300231.3566117,
-    "ast_hash": "d4f2aa3d00ab6eb24ae079e82f267c57",
-    "semantic_hash": "d4f2aa3d00ab6eb24ae079e82f267c57"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-the-folding-genealogy.md": {
-    "mtime": 1781300231.357612,
-    "ast_hash": "652c8e0bad88773d418db59e14deec03",
-    "semantic_hash": "652c8e0bad88773d418db59e14deec03"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-the-hybrid-pipeline.md": {
-    "mtime": 1781300231.357612,
-    "ast_hash": "2d71273908d79870b8b378ccde027b07",
-    "semantic_hash": "2d71273908d79870b8b378ccde027b07"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-the-post-quantum-horizon.md": {
-    "mtime": 1781300231.357612,
-    "ast_hash": "d08f7c7d4ad3b411b9449f50815af616",
-    "semantic_hash": "d08f7c7d4ad3b411b9449f50815af616"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-the-proof-core-why-layers-4-5-and-6-are-inseparable.md": {
-    "mtime": 1781300231.357612,
-    "ast_hash": "9a0a6898bb1edcdac380aa0bc8000a6c",
-    "semantic_hash": "9a0a6898bb1edcdac380aa0bc8000a6c"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-the-sealed-certificate.md": {
-    "mtime": 1781300231.357612,
-    "ast_hash": "8c25eff41faae4b5e6de75cb08f5fa6f",
-    "semantic_hash": "8c25eff41faae4b5e6de75cb08f5fa6f"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch06-the-three-families.md": {
-    "mtime": 1781300231.3586118,
-    "ast_hash": "07d48a5af97c2f02451869062682dd98",
-    "semantic_hash": "07d48a5af97c2f02451869062682dd98"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-algebraic-vs-traditional-hash-functions.md": {
-    "mtime": 1781300231.3586118,
-    "ast_hash": "b7bb67a6a51d28519d23f1eebc6b3aa1",
-    "semantic_hash": "b7bb67a6a51d28519d23f1eebc6b3aa1"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-case-study-midnight.md": {
-    "mtime": 1781300231.3586118,
-    "ast_hash": "835e6efa17cbed2875bc448a5e0df846",
-    "semantic_hash": "835e6efa17cbed2875bc448a5e0df846"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-four-families-of-commitment-schemes.md": {
-    "mtime": 1781300231.3586118,
-    "ast_hash": "e82aa674d2f153736818e92bb8e4f2d8",
-    "semantic_hash": "e82aa674d2f153736818e92bb8e4f2d8"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-lattice-based-proving.md": {
-    "mtime": 1781300231.3596117,
-    "ast_hash": "9031bc9a53f355cb6064c2085fcc7892",
-    "semantic_hash": "9031bc9a53f355cb6064c2085fcc7892"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-maturity-and-readiness.md": {
-    "mtime": 1781300231.3596117,
-    "ast_hash": "0046389d735846c2b0f0ba3e84297442",
-    "semantic_hash": "0046389d735846c2b0f0ba3e84297442"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-small-fields.md": {
-    "mtime": 1781300231.3596117,
-    "ast_hash": "4f29560a7a94f2f67b03d3af783cd746",
-    "semantic_hash": "4f29560a7a94f2f67b03d3af783cd746"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-the-cascade-effect.md": {
-    "mtime": 1781300231.3596117,
-    "ast_hash": "5ab981b812c334399fdddae552b7f588",
-    "semantic_hash": "5ab981b812c334399fdddae552b7f588"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-the-laws-that-break.md": {
-    "mtime": 1781300231.3596117,
-    "ast_hash": "820d59b9317646c366c64227979cb969",
-    "semantic_hash": "820d59b9317646c366c64227979cb969"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-the-one-way-door.md": {
-    "mtime": 1781300231.3606112,
-    "ast_hash": "fe7968d67ae96a81ee66f165bb4416d9",
-    "semantic_hash": "fe7968d67ae96a81ee66f165bb4416d9"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-the-quantum-threat-horizon.md": {
-    "mtime": 1781300231.3606112,
-    "ast_hash": "5773fc3e6d854169f9ed9f960d13e100",
-    "semantic_hash": "5773fc3e6d854169f9ed9f960d13e100"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-the-structural-advantage-of-lattices.md": {
-    "mtime": 1781300231.3606112,
-    "ast_hash": "9348913e9d3b8acbdb4b1f203fba4e2a",
-    "semantic_hash": "9348913e9d3b8acbdb4b1f203fba4e2a"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-the-trilemma-and-its-dissolution.md": {
-    "mtime": 1781300231.3611157,
-    "ast_hash": "754468adb71357c5cac359f8ff7641b7",
-    "semantic_hash": "754468adb71357c5cac359f8ff7641b7"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch07-three-hardness-assumptions-three-worlds.md": {
-    "mtime": 1781300231.3611157,
-    "ast_hash": "617f0bc895b7dd0a07f025d0c8062111",
-    "semantic_hash": "617f0bc895b7dd0a07f025d0c8062111"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch08-case-study-midnight-and-the-three-token-architecture.md": {
-    "mtime": 1781300231.3611157,
-    "ast_hash": "23bd9f4ddbbe26461eca675d4aaee303",
-    "semantic_hash": "23bd9f4ddbbe26461eca675d4aaee303"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch08-governance-the-achilles-heel.md": {
-    "mtime": 1781300231.3611157,
-    "ast_hash": "1a80e0275c4ce6689b65bdfc928cb821",
-    "semantic_hash": "1a80e0275c4ce6689b65bdfc928cb821"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch08-on-chain-verification-in-2026.md": {
-    "mtime": 1781300231.3621175,
-    "ast_hash": "37b10becf4b3b65f60b2e6e94ed71459",
-    "semantic_hash": "37b10becf4b3b65f60b2e6e94ed71459"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch08-pricing-attacks.md": {
-    "mtime": 1781300231.3621175,
-    "ast_hash": "babb2145bb2b9c0acc98077eb83e655d",
-    "semantic_hash": "babb2145bb2b9c0acc98077eb83e655d"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch08-proof-aggregation-the-missing-layer.md": {
-    "mtime": 1781300231.3621175,
-    "ast_hash": "c2b2975a41280838de55172037cbae4e",
-    "semantic_hash": "c2b2975a41280838de55172037cbae4e"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch08-the-deepest-symmetry.md": {
-    "mtime": 1781300231.3621175,
-    "ast_hash": "04d4227eeba97bc3b78b1a3c3420469c",
-    "semantic_hash": "04d4227eeba97bc3b78b1a3c3420469c"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch08-the-price-of-a-verdict.md": {
-    "mtime": 1781300231.3631191,
-    "ast_hash": "2ddf210349f3bc5efa91c8309d2a0cdb",
-    "semantic_hash": "2ddf210349f3bc5efa91c8309d2a0cdb"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch08-the-social-layer.md": {
-    "mtime": 1781300231.3631191,
-    "ast_hash": "ab4787340d17fae026c66c38f9583cd6",
-    "semantic_hash": "ab4787340d17fae026c66c38f9583cd6"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch08-when-the-transcript-lies-fiat-shamir-vulnerabilities.md": {
-    "mtime": 1781300231.3631191,
-    "ast_hash": "7b62e55b7e4942821d963c1e22cfa898",
-    "semantic_hash": "7b62e55b7e4942821d963c1e22cfa898"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch08-who-verifies-the-verifier.md": {
-    "mtime": 1781300231.3631191,
-    "ast_hash": "85df9ec88e8945cf7bdcd0f65d70fb57",
-    "semantic_hash": "85df9ec88e8945cf7bdcd0f65d70fb57"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch09-composability-when-one-pet-is-not-enough.md": {
-    "mtime": 1781300231.3641198,
-    "ast_hash": "92edf82405ecc4c3026301e2f94d4749",
-    "semantic_hash": "92edf82405ecc4c3026301e2f94d4749"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch09-open-problems.md": {
-    "mtime": 1781300231.3641198,
-    "ast_hash": "5eb2f1e4bde099eed98ae8ae7ddfdd60",
-    "semantic_hash": "5eb2f1e4bde099eed98ae8ae7ddfdd60"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch09-privacy-architectures-for-smart-contracts-kachina-and-zexe.md": {
-    "mtime": 1781300231.3641198,
-    "ast_hash": "68a26f53ccb0e6b7effd3c97f845a25d",
-    "semantic_hash": "68a26f53ccb0e6b7effd3c97f845a25d"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch09-real-world-deployments-five-case-studies.md": {
-    "mtime": 1781300231.3641198,
-    "ast_hash": "a544d6b04fcbd3cf020a8e3e14fb5413",
-    "semantic_hash": "a544d6b04fcbd3cf020a8e3e14fb5413"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch09-the-decision-matrix.md": {
-    "mtime": 1781300231.3641198,
-    "ast_hash": "c0794a76f59da644b713756444bb981a",
-    "semantic_hash": "c0794a76f59da644b713756444bb981a"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch09-the-four-pillars.md": {
-    "mtime": 1781300231.3651185,
-    "ast_hash": "e75342d7f5b04efb808e6cfa5844f468",
-    "semantic_hash": "e75342d7f5b04efb808e6cfa5844f468"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch09-the-incomplete-stack.md": {
-    "mtime": 1781300231.3651185,
-    "ast_hash": "580772d42c5aecedcc94bbe855f44b95",
-    "semantic_hash": "580772d42c5aecedcc94bbe855f44b95"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch09-the-regulatory-intersection.md": {
-    "mtime": 1781300231.3651185,
-    "ast_hash": "daeca305a41a35a13ed98b505a5b3e5e",
-    "semantic_hash": "daeca305a41a35a13ed98b505a5b3e5e"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch09-three-kinds-of-security.md": {
-    "mtime": 1781300231.3651185,
-    "ast_hash": "ff64215d8fdd46e69b949121b511144f",
-    "semantic_hash": "ff64215d8fdd46e69b949121b511144f"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch10-path-one-the-hybrid-stark-to-snark-pipeline.md": {
-    "mtime": 1781300231.36612,
-    "ast_hash": "da72c41fdc727e073735942fdb2e0f05",
-    "semantic_hash": "da72c41fdc727e073735942fdb2e0f05"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch10-path-three-post-quantum-folding.md": {
-    "mtime": 1781300231.36612,
-    "ast_hash": "a08fc04786823d163515532d8c117ec7",
-    "semantic_hash": "a08fc04786823d163515532d8c117ec7"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch10-path-two-pure-transparent.md": {
-    "mtime": 1781300231.36612,
-    "ast_hash": "eabac0d9428d19afb63e1469019033ed",
-    "semantic_hash": "eabac0d9428d19afb63e1469019033ed"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch10-the-binary-that-broke.md": {
-    "mtime": 1781300231.36612,
-    "ast_hash": "d66b9b463ee698c6e7064f1204c0eddb",
-    "semantic_hash": "d66b9b463ee698c6e7064f1204c0eddb"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch10-the-causal-web-why-it-is-a-dag-not-a-stack.md": {
-    "mtime": 1781300231.36612,
-    "ast_hash": "6bc6c9418048f707a64cc6290e6529c1",
-    "semantic_hash": "6bc6c9418048f707a64cc6290e6529c1"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch10-the-map-redrawn.md": {
-    "mtime": 1781300231.3671172,
-    "ast_hash": "17e83b3a9ce5af5fdc362b1142e18462",
-    "semantic_hash": "17e83b3a9ce5af5fdc362b1142e18462"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch10-the-three-path-table.md": {
-    "mtime": 1781300231.3671172,
-    "ast_hash": "0176f89731f45e29d2eef39a31ca906f",
-    "semantic_hash": "0176f89731f45e29d2eef39a31ca906f"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch10-trust-decomposition-seven-weaker-assumptions.md": {
-    "mtime": 1781300231.3671172,
-    "ast_hash": "994e5f51fe09ec603e4a23eafead5da8",
-    "semantic_hash": "994e5f51fe09ec603e4a23eafead5da8"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch10-trustless-versus-trust-minimized.md": {
-    "mtime": 1781300231.3671172,
-    "ast_hash": "0d540c39f67b4aa08887847abc03a773",
-    "semantic_hash": "0d540c39f67b4aa08887847abc03a773"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch11-performance-the-cost-collapse.md": {
-    "mtime": 1781300231.3671172,
-    "ast_hash": "f7a68eb24cf6dfc57bacca70d41e5ad5",
-    "semantic_hash": "f7a68eb24cf6dfc57bacca70d41e5ad5"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch11-risc-v-convergence.md": {
-    "mtime": 1781300231.368117,
-    "ast_hash": "c1ce90642dd68d9988bc6a7a087ccb54",
-    "semantic_hash": "c1ce90642dd68d9988bc6a7a087ccb54"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch11-the-landscape-table-march-2026.md": {
-    "mtime": 1781300231.368117,
-    "ast_hash": "17168073ec7df47a38b295d130f8d00e",
-    "semantic_hash": "17168073ec7df47a38b295d130f8d00e"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch11-the-proof-core-triad.md": {
-    "mtime": 1781300231.368117,
-    "ast_hash": "b17103dc579c7717fb93adaeaf4c24e8",
-    "semantic_hash": "b17103dc579c7717fb93adaeaf4c24e8"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch11-the-stage-is-set.md": {
-    "mtime": 1781300231.368117,
-    "ast_hash": "a50125e4804b320fcbba6a2f9e3a5251",
-    "semantic_hash": "a50125e4804b320fcbba6a2f9e3a5251"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch11-three-zkvms-through-seven-layers.md": {
-    "mtime": 1781300231.368117,
-    "ast_hash": "4ace157cec0d7b73e97c836f36bee492",
-    "semantic_hash": "4ace157cec0d7b73e97c836f36bee492"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch11-zkvms-across-the-stack.md": {
-    "mtime": 1781300231.3691173,
-    "ast_hash": "facd65f8851f887da80990a1118f149b",
-    "semantic_hash": "facd65f8851f887da80990a1118f149b"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch12-five-lessons-for-zk-system-design.md": {
-    "mtime": 1781300231.3691173,
-    "ast_hash": "711f50c5c3e7b4336063f443143828e3",
-    "semantic_hash": "711f50c5c3e7b4336063f443143828e3"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch12-full-seven-layer-mapping.md": {
-    "mtime": 1781300231.3691173,
-    "ast_hash": "e2d2ce988eecbb1c6a96ea3fb71b8bb2",
-    "semantic_hash": "e2d2ce988eecbb1c6a96ea3fb71b8bb2"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch12-midnight-as-test-case.md": {
-    "mtime": 1781300231.3691173,
-    "ast_hash": "4466d35a0492de111ea33cd1ceedbe77",
-    "semantic_hash": "4466d35a0492de111ea33cd1ceedbe77"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch12-midnight-at-a-glance.md": {
-    "mtime": 1781300231.3691173,
-    "ast_hash": "0225b12cba538f1cf2bf28a216c0cb62",
-    "semantic_hash": "0225b12cba538f1cf2bf28a216c0cb62"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch12-the-privacy-theater-analogy.md": {
-    "mtime": 1781300231.3691173,
-    "ast_hash": "efe9662fa3053c1124a9489d9eba91d5",
-    "semantic_hash": "efe9662fa3053c1124a9489d9eba91d5"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch12-where-midnight-challenges-the-model.md": {
-    "mtime": 1781300231.3691173,
-    "ast_hash": "503b436cc072779d5dbd2d8623a3e96c",
-    "semantic_hash": "503b436cc072779d5dbd2d8623a3e96c"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch12-where-midnight-validates-the-model.md": {
-    "mtime": 1781300231.3706203,
-    "ast_hash": "3d7b457f3f5bceeb58c1ba6107e32ca9",
-    "semantic_hash": "3d7b457f3f5bceeb58c1ba6107e32ca9"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch13-enterprise-pilots-pilot.md": {
-    "mtime": 1781300231.3706203,
-    "ast_hash": "61577ebefa541992f101fce4a3ac7c52",
-    "semantic_hash": "61577ebefa541992f101fce4a3ac7c52"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch13-market-sizing.md": {
-    "mtime": 1781300231.3706203,
-    "ast_hash": "b374541425cb9fe2b38757e8f688238a",
-    "semantic_hash": "b374541425cb9fe2b38757e8f688238a"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch13-proving-as-a-service-the-prover-market-production.md": {
-    "mtime": 1781300231.3706203,
-    "ast_hash": "547afa03bcf8aa5d40ad86d6d6eee2a7",
-    "semantic_hash": "547afa03bcf8aa5d40ad86d6d6eee2a7"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch13-zk-coprocessors-off-chain-computation-on-chain-verification-growth.md": {
-    "mtime": 1781300231.3706203,
-    "ast_hash": "2b228631adb2c085ebb3ff4e791e49ef",
-    "semantic_hash": "2b228631adb2c085ebb3ff4e791e49ef"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch13-zk-identity-growth-regulatory-mandate.md": {
-    "mtime": 1781300231.3716247,
-    "ast_hash": "250a66cb3eb553c1447f49e1f9db22f7",
-    "semantic_hash": "250a66cb3eb553c1447f49e1f9db22f7"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch13-zk-rollups-the-proving-grounds-production.md": {
-    "mtime": 1781300231.3716247,
-    "ast_hash": "7abad0d68bc048d29953f0ecb1ddefcc",
-    "semantic_hash": "7abad0d68bc048d29953f0ecb1ddefcc"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch13-zkml-provable-machine-learning-research.md": {
-    "mtime": 1781300231.3716247,
-    "ast_hash": "030879ff544325b1d9d28143f859c168",
-    "semantic_hash": "030879ff544325b1d9d28143f859c168"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch14-coda.md": {
-    "mtime": 1781300231.3722444,
-    "ast_hash": "a1f2fe26105374f15fc3d0ea89307d43",
-    "semantic_hash": "a1f2fe26105374f15fc3d0ea89307d43"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch14-convergence.md": {
-    "mtime": 1781300231.3722444,
-    "ast_hash": "a0b80a623c21da8ec887023988b2891c",
-    "semantic_hash": "a0b80a623c21da8ec887023988b2891c"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch14-the-seven-questions-that-remain-open.md": {
-    "mtime": 1781300231.3722444,
-    "ast_hash": "c8e77e5e36b497217e1c23846e3dff40",
-    "semantic_hash": "c8e77e5e36b497217e1c23846e3dff40"
-  },
-  "C:\\sevenlayer\\wiki\\sections\\ch14-the-three-frontiers.md": {
-    "mtime": 1781300231.3722444,
-    "ast_hash": "d0bcfa0f1d5c643bfe6278f6bba3d57b",
-    "semantic_hash": "d0bcfa0f1d5c643bfe6278f6bba3d57b"
-  },
-  "C:\\sevenlayer\\references\\ch01\\ref-02-gmr-knowledge-complexity.pdf": {
-    "mtime": 1781305702.68866,
+  "references/mooc/lecture01/transcript.txt": {
+    "mtime": 1788103014.8668947,
+    "seen": 1788107981.129016,
+    "ast_hash": "d768a585ed768bf6ad93a5e0bb4df4ef",
+    "semantic_hash": "d768a585ed768bf6ad93a5e0bb4df4ef"
+  },
+  "references/mooc/lecture02/transcript.txt": {
+    "mtime": 1788103014.8868947,
+    "seen": 1788107981.1290166,
+    "ast_hash": "1d5797d02c82940d0a0a129a1d5915d1",
+    "semantic_hash": "1d5797d02c82940d0a0a129a1d5915d1"
+  },
+  "references/mooc/lecture03/transcript.txt": {
+    "mtime": 1788103014.8948946,
+    "seen": 1788107981.129017,
+    "ast_hash": "f311e9b713112ff3b46eb5afa3def6f0",
+    "semantic_hash": "f311e9b713112ff3b46eb5afa3def6f0"
+  },
+  "references/mooc/lecture04/transcript.txt": {
+    "mtime": 1788103014.9188948,
+    "seen": 1788107981.1290176,
+    "ast_hash": "0c373907e7a4aa80cdeadb0cf9d43e78",
+    "semantic_hash": "0c373907e7a4aa80cdeadb0cf9d43e78"
+  },
+  "references/mooc/lecture05/transcript.txt": {
+    "mtime": 1788103014.9228947,
+    "seen": 1788107981.1290183,
+    "ast_hash": "032af04fb5cdc417529e19e9634e13dd",
+    "semantic_hash": "032af04fb5cdc417529e19e9634e13dd"
+  },
+  "references/mooc/lecture06/transcript.txt": {
+    "mtime": 1788103014.9298463,
+    "seen": 1788107981.1290188,
+    "ast_hash": "7710dd129eeafe8a82f0369d09b76d6d",
+    "semantic_hash": "7710dd129eeafe8a82f0369d09b76d6d"
+  },
+  "references/mooc/lecture07/transcript.txt": {
+    "mtime": 1788103014.9308946,
+    "seen": 1788107981.1290195,
+    "ast_hash": "ef9717759d8545954162ba61d7d196f5",
+    "semantic_hash": "ef9717759d8545954162ba61d7d196f5"
+  },
+  "references/mooc/lecture08/transcript.txt": {
+    "mtime": 1788103014.9348948,
+    "seen": 1788107981.1290202,
+    "ast_hash": "ce96237d696d0d217b022162b0bed9f6",
+    "semantic_hash": "ce96237d696d0d217b022162b0bed9f6"
+  },
+  "references/mooc/lecture09/transcript.txt": {
+    "mtime": 1788103014.9396496,
+    "seen": 1788107981.1290238,
+    "ast_hash": "f6b3140544ef8611da3136ada59dfbd8",
+    "semantic_hash": "f6b3140544ef8611da3136ada59dfbd8"
+  },
+  "references/mooc/lecture10/transcript.txt": {
+    "mtime": 1788103014.9433415,
+    "seen": 1788107981.1290243,
+    "ast_hash": "54f7f5c5531548d383be27f998511604",
+    "semantic_hash": "54f7f5c5531548d383be27f998511604"
+  },
+  "references/mooc/lecture11/transcript.txt": {
+    "mtime": 1788103014.9471004,
+    "seen": 1788107981.129025,
+    "ast_hash": "7fa1aca2662c183c67dc6ebaa38a675c",
+    "semantic_hash": "7fa1aca2662c183c67dc6ebaa38a675c"
+  },
+  "references/mooc/lecture12/transcript.txt": {
+    "mtime": 1788103014.956422,
+    "seen": 1788107981.1290257,
+    "ast_hash": "4333ede82f9f57f6cdf9be08cf1e3e00",
+    "semantic_hash": "4333ede82f9f57f6cdf9be08cf1e3e00"
+  },
+  "references/mooc/lecture14/transcript.txt": {
+    "mtime": 1788103014.9908948,
+    "seen": 1788107981.1290264,
+    "ast_hash": "31f1b3a4e178b2effeea56b59eab4b16",
+    "semantic_hash": "31f1b3a4e178b2effeea56b59eab4b16"
+  },
+  "references/recursion/ch1/ref-04-chiesa-tromer-pcd-hearsay.md": {
+    "mtime": 1788103014.9953938,
+    "seen": 1788107981.129027,
+    "ast_hash": "85e88e5cbba6073604017c96575b26f7",
+    "semantic_hash": "85e88e5cbba6073604017c96575b26f7"
+  },
+  "references/recursion/ch1/ref-08-sp1-hypercube.md": {
+    "mtime": 1788103014.9988947,
+    "seen": 1788107981.1290274,
+    "ast_hash": "c5f01618652d33a3c2a7e2f7a8d1112c",
+    "semantic_hash": "c5f01618652d33a3c2a7e2f7a8d1112c"
+  },
+  "references/recursion/ch1/ref-17-polygon-zkevm-docs.md": {
+    "mtime": 1788103015.0148947,
+    "seen": 1788107981.1290276,
+    "ast_hash": "a73f6d55f6c0cb6eb8a1c896f1a3535d",
+    "semantic_hash": "a73f6d55f6c0cb6eb8a1c896f1a3535d"
+  },
+  "references/recursion/ch1/ref-18-risc-zero-proof-system-overview.md": {
+    "mtime": 1788103015.0148947,
+    "seen": 1788107981.129028,
+    "ast_hash": "648cb2b40adcda6ff500bac88f40fb0d",
+    "semantic_hash": "648cb2b40adcda6ff500bac88f40fb0d"
+  },
+  "references/recursion/ch1/ref-19-ef-l1-zkevm-realtime-proving.md": {
+    "mtime": 1788103015.0148947,
+    "seen": 1788107981.1290474,
+    "ast_hash": "7b181d3201943593816e1b5cd2ba8df5",
+    "semantic_hash": "7b181d3201943593816e1b5cd2ba8df5"
+  },
+  "references/recursion/ch1/ref-22-nebra-upa.md": {
+    "mtime": 1788103015.0348947,
+    "seen": 1788107981.1290486,
+    "ast_hash": "e33ea97fcadac04d4c0bf268bf1ae722",
+    "semantic_hash": "e33ea97fcadac04d4c0bf268bf1ae722"
+  },
+  "references/recursion/ch1/ref-23-risc-zero-continuations.md": {
+    "mtime": 1788103015.0348947,
+    "seen": 1788107981.1290495,
+    "ast_hash": "2d5d29fb7e149641ddd643113d94da4c",
+    "semantic_hash": "2d5d29fb7e149641ddd643113d94da4c"
+  },
+  "references/recursion/ch1/ref-24-beats-batch-ecdsa.md": {
+    "mtime": 1788103015.0348947,
+    "seen": 1788107981.1290503,
+    "ast_hash": "4db81e9be4cd665f0681bf5c0bfbae3d",
+    "semantic_hash": "4db81e9be4cd665f0681bf5c0bfbae3d"
+  },
+  "references/recursion/ch1/ref-25-mina-hazook.md": {
+    "mtime": 1788103015.0348947,
+    "seen": 1788107981.129051,
+    "ast_hash": "970f383f869dc1199c4491800e3d0d3b",
+    "semantic_hash": "970f383f869dc1199c4491800e3d0d3b"
+  },
+  "references/recursion/ch1/ref-27-succinct-sp1-docs.md": {
+    "mtime": 1788103015.0348947,
+    "seen": 1788107981.129052,
+    "ast_hash": "c315bd4bd7a984f9a0640db5989caa73",
+    "semantic_hash": "c315bd4bd7a984f9a0640db5989caa73"
+  },
+  "references/recursion/ch1/ref-28-risc-zero-technical-docs.md": {
+    "mtime": 1788103015.0348947,
+    "seen": 1788107981.129053,
+    "ast_hash": "1c1a6828633a776bf4a3d65ef15f1e90",
+    "semantic_hash": "1c1a6828633a776bf4a3d65ef15f1e90"
+  },
+  "references/recursion/ch1/ref-29-zkdev-recursive-circuits.md": {
+    "mtime": 1788103015.0348947,
+    "seen": 1788107981.129054,
+    "ast_hash": "060d46c4e5d9bd181428377f606a7cd0",
+    "semantic_hash": "060d46c4e5d9bd181428377f606a7cd0"
+  },
+  "references/recursion/ch1/ref-34-succinct-16-gpus.md": {
+    "mtime": 1788103015.0468948,
+    "seen": 1788107981.1290548,
+    "ast_hash": "2a8526d3e92a5155c0ad34a46446c58c",
+    "semantic_hash": "2a8526d3e92a5155c0ad34a46446c58c"
+  },
+  "references/recursion/ch1/ref-35-aligned-year-of-zkvm-realtime.md": {
+    "mtime": 1788103015.0468948,
+    "seen": 1788107981.1290555,
+    "ast_hash": "7446223b589c5bfb03aa267c145d439e",
+    "semantic_hash": "7446223b589c5bfb03aa267c145d439e"
+  },
+  "references/recursion/ch1/ref-37-ethereum-lean-hash-based-sig-aggregation.md": {
+    "mtime": 1788103015.0468948,
+    "seen": 1788107981.1290562,
+    "ast_hash": "391f92dcd73e8a3d46de1389f98953f8",
+    "semantic_hash": "391f92dcd73e8a3d46de1389f98953f8"
+  },
+  "references/recursion/ch2/ref-39-pedersen-commitments.md": {
+    "mtime": 1788103015.0468948,
+    "seen": 1788107981.129057,
+    "ast_hash": "12d130e5aeff38b4bddce5033c5763a6",
+    "semantic_hash": "12d130e5aeff38b4bddce5033c5763a6"
+  },
+  "references/recursion/ch2/ref-40-fiat-shamir.md": {
+    "mtime": 1788103015.0515294,
+    "seen": 1788107981.129058,
+    "ast_hash": "f78b1fd40e5d671e09a2e6bfc8b6b248",
+    "semantic_hash": "f78b1fd40e5d671e09a2e6bfc8b6b248"
+  },
+  "references/recursion/ch2/ref-42-minroot-vdf.md": {
+    "mtime": 1788103015.0525305,
+    "seen": 1788107981.1290584,
+    "ast_hash": "c4abed05409b8fc4125ecee910036789",
+    "semantic_hash": "c4abed05409b8fc4125ecee910036789"
+  },
+  "references/recursion/ch2/ref-43-nova-implementation.md": {
+    "mtime": 1788103015.0525305,
+    "seen": 1788107981.1290588,
+    "ast_hash": "76d0ffb8e4660b1a739769e20de9f029",
+    "semantic_hash": "76d0ffb8e4660b1a739769e20de9f029"
+  },
+  "references/recursion/ch2/ref-48-sonobe.md": {
+    "mtime": 1788103015.053865,
+    "seen": 1788107981.1290596,
+    "ast_hash": "438373312ba5a72f93fbab49c9de1838",
+    "semantic_hash": "438373312ba5a72f93fbab49c9de1838"
+  },
+  "references/recursion/ch2/ref-49-mina-pickles-docs.md": {
+    "mtime": 1788103015.053865,
+    "seen": 1788107981.12906,
+    "ast_hash": "d126cfd9d81f0c93cc8d0807c936716e",
+    "semantic_hash": "d126cfd9d81f0c93cc8d0807c936716e"
+  },
+  "references/recursion/ch2/ref-50-veridise-nova-series.md": {
+    "mtime": 1788103015.053865,
+    "seen": 1788107981.1290607,
+    "ast_hash": "0ae849dc69893a372aa9c2cffdee88cc",
+    "semantic_hash": "0ae849dc69893a372aa9c2cffdee88cc"
+  },
+  "references/recursion/ch3/ref-53-starkware-recursive-starks.md": {
+    "mtime": 1788103015.0548947,
+    "seen": 1788107981.1290617,
+    "ast_hash": "1379593c6154e6c30c0c003b5de9afb5",
+    "semantic_hash": "1379593c6154e6c30c0c003b5de9afb5"
+  },
+  "references/recursion/ch3/ref-54-ethereum-rollup-centric-roadmap.md": {
+    "mtime": 1788103015.0581787,
+    "seen": 1788107981.1290622,
+    "ast_hash": "f8309523486ae51c37839bd935b4f210",
+    "semantic_hash": "f8309523486ae51c37839bd935b4f210"
+  },
+  "references/recursion/ch3/ref-55-polygon-agglayer-docs.md": {
+    "mtime": 1788103015.0581787,
+    "seen": 1788107981.1290627,
+    "ast_hash": "bbcbd6e9a25569efb2b271414177296b",
+    "semantic_hash": "bbcbd6e9a25569efb2b271414177296b"
+  },
+  "references/recursion/ch3/ref-56-ethereum-org-zkevm-roadmap.md": {
+    "mtime": 1788103015.0581787,
+    "seen": 1788107981.1290631,
+    "ast_hash": "9276d682ea7478d42810e6542e81459b",
+    "semantic_hash": "9276d682ea7478d42810e6542e81459b"
+  },
+  "references/recursion/ch3/ref-57-ethproofs-reporting.md": {
+    "mtime": 1788103015.0581787,
+    "seen": 1788107981.1290638,
+    "ast_hash": "7d91eb708db077b1776180298dd2a445",
+    "semantic_hash": "7d91eb708db077b1776180298dd2a445"
+  },
+  "references/recursion/ch3/ref-60-verifiable-voting-zk-tallies.md": {
+    "mtime": 1788103015.0588946,
+    "seen": 1788107981.1290646,
+    "ast_hash": "e7105632d1428cc50d9ba950ae8cc671",
+    "semantic_hash": "e7105632d1428cc50d9ba950ae8cc671"
+  },
+  "references/recursion/ch3/ref-62-ntia-cisa-sbom-minimum-elements.md": {
+    "mtime": 1788103015.0628948,
+    "seen": 1788107981.1290653,
+    "ast_hash": "4d8cff78e8f3d4994f5c450fd5673ab5",
+    "semantic_hash": "4d8cff78e8f3d4994f5c450fd5673ab5"
+  },
+  "references/recursion/ch3/ref-63-slsa-intoto-frameworks.md": {
+    "mtime": 1788103015.0628948,
+    "seen": 1788107981.1290658,
+    "ast_hash": "5a7484497b86bfb80620cb600a010825",
+    "semantic_hash": "5a7484497b86bfb80620cb600a010825"
+  },
+  "references/recursion/ch3/ref-64-reproducible-builds-literature.md": {
+    "mtime": 1788103015.0628948,
+    "seen": 1788107981.1290665,
+    "ast_hash": "fc79d375374554760f90a98107b32132",
+    "semantic_hash": "fc79d375374554760f90a98107b32132"
+  },
+  "references/recursion/ch3/ref-65-rfc-6962-certificate-transparency.md": {
+    "mtime": 1788103015.0628948,
+    "seen": 1788107981.1290672,
+    "ast_hash": "c1580fef0e9383d774a58e514f399981",
+    "semantic_hash": "c1580fef0e9383d774a58e514f399981"
+  },
+  "references/recursion/ch3/ref-66-snark-backed-transparency-logs.md": {
+    "mtime": 1788103015.0628948,
+    "seen": 1788107981.1290677,
+    "ast_hash": "4d86b9c96fe081b4fa739d0cba7ffaff",
+    "semantic_hash": "4d86b9c96fe081b4fa739d0cba7ffaff"
+  },
+  "references/recursion/ch3/ref-67-ivc-flight-control-benchmark.md": {
+    "mtime": 1788103015.0628948,
+    "seen": 1788107981.1290684,
+    "ast_hash": "fe579662956dba679c98439523a7a40d",
+    "semantic_hash": "fe579662956dba679c98439523a7a40d"
+  },
+  "references/recursion/ch3/ref-68-do-178c-avionics-certification.md": {
+    "mtime": 1788103015.0628948,
+    "seen": 1788107981.1290689,
+    "ast_hash": "9ffabd4bfba38cf974b70e3f9ebac9c3",
+    "semantic_hash": "9ffabd4bfba38cf974b70e3f9ebac9c3"
+  },
+  "references/recursion/ch3/ref-71-nova-zkml-folding.md": {
+    "mtime": 1788103015.07258,
+    "seen": 1788107981.1290696,
+    "ast_hash": "58ccaf301a99b8e2bd09e281de2a3beb",
+    "semantic_hash": "58ccaf301a99b8e2bd09e281de2a3beb"
+  },
+  "references/recursion/ch3/ref-72-ezkl-modulus-docs.md": {
+    "mtime": 1788103015.07258,
+    "seen": 1788107981.12907,
+    "ast_hash": "af95d813034aa896f56f8821d31d33d5",
+    "semantic_hash": "af95d813034aa896f56f8821d31d33d5"
+  },
+  "references/recursion/ch3/ref-74-verifiable-database-zk-analytics.md": {
+    "mtime": 1788103015.0748947,
+    "seen": 1788107981.1290705,
+    "ast_hash": "aa30eb3e29afcde9be57f1e8b6190be7",
+    "semantic_hash": "aa30eb3e29afcde9be57f1e8b6190be7"
+  },
+  "references/recursion/ch3/ref-76-ivc-streaming-literature.md": {
+    "mtime": 1788103015.0788946,
+    "seen": 1788107981.129071,
+    "ast_hash": "e9489c2256eb8d8ef33cfa89f435e799",
+    "semantic_hash": "e9489c2256eb8d8ef33cfa89f435e799"
+  },
+  "references/recursion/ch3/ref-79-c2pa-specification.md": {
+    "mtime": 1788103015.0908947,
+    "seen": 1788107981.1290717,
+    "ast_hash": "21027c986a0a7da6f2dd87107656538f",
+    "semantic_hash": "21027c986a0a7da6f2dd87107656538f"
+  },
+  "references/recursion/ch3/ref-82-chase-lysyanskaya-delegatable-credentials.md": {
+    "mtime": 1788103015.0988946,
+    "seen": 1788107981.1290724,
+    "ast_hash": "8762112ae7299031f40bf51d3e890428",
+    "semantic_hash": "8762112ae7299031f40bf51d3e890428"
+  },
+  "references/recursion/ch3/ref-83-zkpassport-anon-aadhaar.md": {
+    "mtime": 1788103015.0988946,
+    "seen": 1788107981.1290731,
+    "ast_hash": "05f4d227952394acea854b12e926f646",
+    "semantic_hash": "05f4d227952394acea854b12e926f646"
+  },
+  "references/recursion/ch3/ref-84-w3c-verifiable-credentials.md": {
+    "mtime": 1788103015.0988946,
+    "seen": 1788107981.1290736,
+    "ast_hash": "71de498284175cff506776a46f333048",
+    "semantic_hash": "71de498284175cff506776a46f333048"
+  },
+  "references/recursion/ch3/ref-85-zkemail-docs.md": {
+    "mtime": 1788103015.0988946,
+    "seen": 1788107981.129074,
+    "ast_hash": "efc91d7fee16f2470f9b9b6998198356",
+    "semantic_hash": "efc91d7fee16f2470f9b9b6998198356"
+  },
+  "references/recursion/ch3/ref-86-tlsnotary-docs.md": {
+    "mtime": 1788103015.0988946,
+    "seen": 1788107981.1290746,
+    "ast_hash": "f6ed49a33a48335205eab7b572dd1a15",
+    "semantic_hash": "f6ed49a33a48335205eab7b572dd1a15"
+  },
+  "references/recursion/ch3/ref-89-summa-proof-of-solvency.md": {
+    "mtime": 1788103015.1068947,
+    "seen": 1788107981.1290753,
+    "ast_hash": "3a7b7caae7bd7e5c35e5782a5399c725",
+    "semantic_hash": "3a7b7caae7bd7e5c35e5782a5399c725"
+  },
+  "references/recursion/ch3/ref-91-dark-forest-zk-gaming.md": {
+    "mtime": 1788103015.1108947,
+    "seen": 1788107981.1290758,
+    "ast_hash": "433e278d499998200577698251b557bf",
+    "semantic_hash": "433e278d499998200577698251b557bf"
+  },
+  "references/recursion/ch3/ref-92-state-channel-literature.md": {
+    "mtime": 1788103015.1108947,
+    "seen": 1788107981.1290762,
+    "ast_hash": "03968b6d72eea0925ed197362c0617c6",
+    "semantic_hash": "03968b6d72eea0925ed197362c0617c6"
+  },
+  "references/recursion/ch3/ref-93-ezkl-monolithic-benchmarks.md": {
+    "mtime": 1788103015.1108947,
+    "seen": 1788107981.1290767,
+    "ast_hash": "32b5488b559ffdeb6516d0c513d6b5d9",
+    "semantic_hash": "32b5488b559ffdeb6516d0c513d6b5d9"
+  },
+  "references/snowball/book/ref-078-computationally-sound-proofs.md": {
+    "mtime": 1788103015.1548946,
+    "seen": 1788107981.1290772,
+    "ast_hash": "567ba36a3e0d6569b98d2ff607da8779",
+    "semantic_hash": "567ba36a3e0d6569b98d2ff607da8779"
+  },
+  "references/snowball/book/ref-083-cs-proofs.md": {
+    "mtime": 1788103015.1788948,
+    "seen": 1788107981.1290777,
+    "ast_hash": "1ef32eb38d4eb8d543fe0b84d055d97d",
+    "semantic_hash": "1ef32eb38d4eb8d543fe0b84d055d97d"
+  },
+  "references/snowball/book/ref-085-libsnark.md": {
+    "mtime": 1788103015.1828947,
+    "seen": 1788107981.1290786,
+    "ast_hash": "e3b190c55181c0cfa95fadd4459bee1c",
+    "semantic_hash": "e3b190c55181c0cfa95fadd4459bee1c"
+  },
+  "references/snowball/book/ref-094-checking-the-correctness-of-memories.md": {
+    "mtime": 1788103015.2148948,
+    "seen": 1788107981.1290793,
+    "ast_hash": "7a1640979c2d0a9a0f18b0492494333a",
+    "semantic_hash": "7a1640979c2d0a9a0f18b0492494333a"
+  },
+  "references/snowball/book/ref-098-circom-a-circuit-description-language-for-build.md": {
+    "mtime": 1788103015.2308948,
+    "seen": 1788107981.1290805,
+    "ast_hash": "4226a48ac19f46cb0951c961d8d93e1c",
+    "semantic_hash": "4226a48ac19f46cb0951c961d8d93e1c"
+  },
+  "references/snowball/book/ref-102-zokrates-scalable-privacy-preserving-off-chain-c.md": {
+    "mtime": 1788103015.2428946,
+    "seen": 1788107981.1290815,
+    "ast_hash": "023fdb8ff0afeeda36d0a141a5d6394f",
+    "semantic_hash": "023fdb8ff0afeeda36d0a141a5d6394f"
+  },
+  "references/snowball/book/ref-103-a-note-on-efficient-zero-knowledge-proofs-and-ar.md": {
+    "mtime": 1788103015.2428946,
+    "seen": 1788107981.1290827,
+    "ast_hash": "2c7db353a39db4b01b6e8c59c2cb0789",
+    "semantic_hash": "2c7db353a39db4b01b6e8c59c2cb0789"
+  },
+  "references/snowball/book/ref-110-a-digital-signature-based-on-a-conventional-encr.md": {
+    "mtime": 1788103015.2988946,
+    "seen": 1788107981.1290832,
+    "ast_hash": "f04fe17339b4b21518808f4a9ab4598a",
+    "semantic_hash": "f04fe17339b4b21518808f4a9ab4598a"
+  },
+  "references/snowball/book/ref-116-secure-sampling-of-public-parameters-for-succinc.md": {
+    "mtime": 1788103015.3188946,
+    "seen": 1788107981.1290905,
+    "ast_hash": "0007da19df0acb4f495d8c5b6c13a02b",
+    "semantic_hash": "0007da19df0acb4f495d8c5b6c13a02b"
+  },
+  "references/snowball/book/ref-117-simulation-sound-nizk-proofs-for-a-practical-lan.md": {
+    "mtime": 1788103015.3188946,
+    "seen": 1788107981.129091,
+    "ast_hash": "3da5d79b4828c989ce0c2d90688e142d",
+    "semantic_hash": "3da5d79b4828c989ce0c2d90688e142d"
+  },
+  "references/snowball/book/ref-125-efficient-protocols-for-set-membership-and-range.md": {
+    "mtime": 1788103015.3508947,
+    "seen": 1788107981.1290915,
+    "ast_hash": "d319f70d9a7be6fe847bde7ed24bb200",
+    "semantic_hash": "d319f70d9a7be6fe847bde7ed24bb200"
+  },
+  "references/snowball/book/ref-127-generating-hard-instances-of-lattice-problems.md": {
+    "mtime": 1788103015.3508947,
+    "seen": 1788107981.1290925,
+    "ast_hash": "25d70dda1805dbd5ae9d63233bd4dd6d",
+    "semantic_hash": "25d70dda1805dbd5ae9d63233bd4dd6d"
+  },
+  "references/snowball/book/ref-128-groth10-short-pairing-based-non-interactive-zer.md": {
+    "mtime": 1788103015.3508947,
+    "seen": 1788107981.129093,
+    "ast_hash": "40b86716adace6826d43abfcd6c968f4",
+    "semantic_hash": "40b86716adace6826d43abfcd6c968f4"
+  },
+  "references/snowball/book/ref-129-incremental-multiset-hash-functions-and-their-ap.md": {
+    "mtime": 1788103015.3508947,
+    "seen": 1788107981.1290934,
+    "ast_hash": "a4f2a52c0bacc0b0a0340d9ce09c91ed",
+    "semantic_hash": "a4f2a52c0bacc0b0a0340d9ce09c91ed"
+  },
+  "references/snowball/book/ref-130-interactive-proofs-and-the-hardness-of-approxima.md": {
+    "mtime": 1788103015.3508947,
+    "seen": 1788107981.129094,
+    "ast_hash": "72c34ec55d3c81a739bfc2e1c9f7e794",
+    "semantic_hash": "72c34ec55d3c81a739bfc2e1c9f7e794"
+  },
+  "references/snowball/book/ref-131-ip-pspace.md": {
+    "mtime": 1788103015.3508947,
+    "seen": 1788107981.1290944,
+    "ast_hash": "7c628ceea1ceb9c648f658ab11400f33",
+    "semantic_hash": "7c628ceea1ceb9c648f658ab11400f33"
+  },
+  "references/snowball/book/ref-132-non-interactive-zero-knowledge-and-its-applicati.md": {
+    "mtime": 1788103015.3508947,
+    "seen": 1788107981.129095,
+    "ast_hash": "ecdbffe53ff27f74b82aa4520d0a1a55",
+    "semantic_hash": "ecdbffe53ff27f74b82aa4520d0a1a55"
+  },
+  "references/snowball/book/ref-136-roll-up-roll-back-snark-side-chain-17000-tps.md": {
+    "mtime": 1788103015.3548946,
+    "seen": 1788107981.1290958,
+    "ast_hash": "88a967fd6e383d48f5a080d7ad912d70",
+    "semantic_hash": "88a967fd6e383d48f5a080d7ad912d70"
+  },
+  "references/snowball/book/ref-140-zero-knowledge-proofs-for-finite-field-arithmeti.md": {
+    "mtime": 1788103015.3628948,
+    "seen": 1788107981.129096,
+    "ast_hash": "8aae25b2ab55caa83bbb26c235a4acd5",
+    "semantic_hash": "8aae25b2ab55caa83bbb26c235a4acd5"
+  },
+  "references/snowball/book/ref-141-zerocoin-anonymous-distributed-e-cash-from-bitc.md": {
+    "mtime": 1788103015.3628948,
+    "seen": 1788107981.1290965,
+    "ast_hash": "a60b6c524621007ff7dd4ee51f85c564",
+    "semantic_hash": "a60b6c524621007ff7dd4ee51f85c564"
+  },
+  "references/snowball/book/ref-142-zksync-scaling-and-privacy-engine-for-ethereum.md": {
+    "mtime": 1788103015.3628948,
+    "seen": 1788107981.129097,
+    "ast_hash": "388a5e8e42d29f19ccf238d1ec231fdc",
+    "semantic_hash": "388a5e8e42d29f19ccf238d1ec231fdc"
+  },
+  "references/snowball/book/ref-144-a-verifiable-secret-shuffle-and-its-application.md": {
+    "mtime": 1788103015.3668947,
+    "seen": 1788107981.1290975,
+    "ast_hash": "bb7aed88f3f0ef966fefa9a7183358ad",
+    "semantic_hash": "bb7aed88f3f0ef966fefa9a7183358ad"
+  },
+  "references/snowball/book/ref-146-aggregatable-subvector-commitments-for-stateless.md": {
+    "mtime": 1788103015.3668947,
+    "seen": 1788107981.1290982,
+    "ast_hash": "086ba355744d846f63d4f25fc5fc2b9e",
+    "semantic_hash": "086ba355744d846f63d4f25fc5fc2b9e"
+  },
+  "references/snowball/hop2/ref-151-doi-10-1007-978-3-319-96884-1-25.html": {
+    "mtime": 1788104068.0073981,
+    "seen": 1788107981.1290987,
+    "ast_hash": "d201e20e545a7bd7a5fc859b5b783477",
+    "semantic_hash": "d201e20e545a7bd7a5fc859b5b783477"
+  },
+  "references/snowball/hop2/ref-155-doi-10-1007-11681878-8.html": {
+    "mtime": 1788104074.3181417,
+    "seen": 1788107981.1290996,
+    "ast_hash": "ba5753040c32e65348793ec35d47b7ec",
+    "semantic_hash": "ba5753040c32e65348793ec35d47b7ec"
+  },
+  "references/snowball/hop2/ref-156-doi-10-1007-978-3-030-17653-2-4.html": {
+    "mtime": 1788104080.545191,
+    "seen": 1788107981.1291,
+    "ast_hash": "000a897c39ebb5b0c29b5976b6a700ba",
+    "semantic_hash": "000a897c39ebb5b0c29b5976b6a700ba"
+  },
+  "references/snowball/hop2/ref-157-doi-10-1007-978-3-031-38545-2-7.html": {
+    "mtime": 1788104087.4245706,
+    "seen": 1788107981.1291006,
+    "ast_hash": "ee976b1336bfcca6765f1bae813c3486",
+    "semantic_hash": "ee976b1336bfcca6765f1bae813c3486"
+  },
+  "references/snowball/hop2/ref-158-doi-10-1007-978-3-031-38551-3-21.html": {
+    "mtime": 1788104094.558888,
+    "seen": 1788107981.129101,
+    "ast_hash": "30b827e797d31f34d2edc21353d8e78e",
+    "semantic_hash": "30b827e797d31f34d2edc21353d8e78e"
+  },
+  "references/snowball/hop2/ref-159-doi-10-1007-978-3-031-38554-4-17.html": {
+    "mtime": 1788104100.969337,
+    "seen": 1788107981.1291013,
+    "ast_hash": "ddddd99b3d8b9f3797f44d284edb5ad4",
+    "semantic_hash": "ddddd99b3d8b9f3797f44d284edb5ad4"
+  },
+  "references/snowball/hop2/ref-160-doi-10-1007-978-3-031-68403-6-8.html": {
+    "mtime": 1788104110.5668876,
+    "seen": 1788107981.129102,
+    "ast_hash": "a869f80acfed066aaadc803d293c1644",
+    "semantic_hash": "a869f80acfed066aaadc803d293c1644"
+  },
+  "references/snowball/hop2/ref-161-doi-10-1007-978-3-319-78381-9-8.html": {
+    "mtime": 1788104119.0280797,
+    "seen": 1788107981.1291027,
+    "ast_hash": "10bb5e57b4765dedfc981b33fb40cbd6",
+    "semantic_hash": "10bb5e57b4765dedfc981b33fb40cbd6"
+  },
+  "references/snowball/hop2/ref-162-doi-10-1007-s10623-014-9938-4.html": {
+    "mtime": 1788104125.415844,
+    "seen": 1788107981.1291032,
+    "ast_hash": "e47eedf0f1399338af7ceba51bc98f94",
+    "semantic_hash": "e47eedf0f1399338af7ceba51bc98f94"
+  },
+  "references/snowball/hop2/ref-168-eprint-iacr-org-2020.html": {
+    "mtime": 1788103563.0595243,
+    "seen": 1788107981.1291037,
+    "ast_hash": "6d796d98c221c582a4c2686b260dd0ba",
+    "semantic_hash": "6d796d98c221c582a4c2686b260dd0ba"
+  },
+  "references/snowball/hop2/ref-181-doi-10-1007-978-3-030-21568-2-4.html": {
+    "mtime": 1788104133.0366414,
+    "seen": 1788107981.129104,
+    "ast_hash": "18cae9691208f96067561c6b3c6ec827",
+    "semantic_hash": "18cae9691208f96067561c6b3c6ec827"
+  },
+  "references/snowball/hop2/ref-182-doi-10-1007-978-3-030-45721-1-27.html": {
+    "mtime": 1788104139.1829028,
+    "seen": 1788107981.1291046,
+    "ast_hash": "471f772a6b0decc3c9b4f48a5a01f322",
+    "semantic_hash": "471f772a6b0decc3c9b4f48a5a01f322"
+  },
+  "references/snowball/hop2/ref-183-doi-10-1007-978-3-030-56880-1-16.html": {
+    "mtime": 1788104146.4625096,
+    "seen": 1788107981.129105,
+    "ast_hash": "43f98dc36c6341e36ab9a88cf3dd6282",
+    "semantic_hash": "43f98dc36c6341e36ab9a88cf3dd6282"
+  },
+  "references/snowball/hop2/ref-184-doi-10-1007-978-3-030-56880-1-17.html": {
+    "mtime": 1788104152.5905185,
+    "seen": 1788107981.1291053,
+    "ast_hash": "0dbfc1784d5d175193badd7549d44533",
+    "semantic_hash": "0dbfc1784d5d175193badd7549d44533"
+  },
+  "references/snowball/hop2/ref-185-doi-10-1007-978-3-030-84242-0-24.html": {
+    "mtime": 1788104159.7297566,
+    "seen": 1788107981.1291063,
+    "ast_hash": "67698fa5adc1a93533e849880a89e757",
+    "semantic_hash": "67698fa5adc1a93533e849880a89e757"
+  },
+  "references/snowball/hop2/ref-186-doi-10-1007-978-3-030-84245-1-19.html": {
+    "mtime": 1788104170.0455627,
+    "seen": 1788107981.1291068,
+    "ast_hash": "b5064c6aea98d51846cce2ac88d36480",
+    "semantic_hash": "b5064c6aea98d51846cce2ac88d36480"
+  },
+  "references/snowball/hop2/ref-188-doi-10-1007-978-3-031-15979-4-3.html": {
+    "mtime": 1788104177.90023,
+    "seen": 1788107981.1291072,
+    "ast_hash": "eb39750b775c1a731bf04f333f05e379",
+    "semantic_hash": "eb39750b775c1a731bf04f333f05e379"
+  },
+  "references/snowball/hop2/ref-189-doi-10-1007-978-3-031-15985-5-13.html": {
+    "mtime": 1788104184.372334,
+    "seen": 1788107981.1291077,
+    "ast_hash": "839ec1159996e3bc83c104b94cb4f9d8",
+    "semantic_hash": "839ec1159996e3bc83c104b94cb4f9d8"
+  },
+  "references/snowball/hop2/ref-190-doi-10-1007-978-3-319-96881-0-23.html": {
+    "mtime": 1788104192.5508807,
+    "seen": 1788107981.129108,
+    "ast_hash": "e8c72afcd9863b2b47dcf7934f38e8a9",
+    "semantic_hash": "e8c72afcd9863b2b47dcf7934f38e8a9"
+  },
+  "references/snowball/hop2/ref-191-doi-10-1007-978-3-540-78524-8-1.html": {
+    "mtime": 1788104198.736743,
+    "seen": 1788107981.1291084,
+    "ast_hash": "c0ff1c934808f48b8bda85c5c7d9df56",
+    "semantic_hash": "c0ff1c934808f48b8bda85c5c7d9df56"
+  },
+  "references/snowball/hop2/ref-192-doi-10-1007-978-981-96-0935-2-7.html": {
+    "mtime": 1788104205.8215427,
+    "seen": 1788107981.129109,
+    "ast_hash": "ec59a9a89c11cb408f2d79dd220f305f",
+    "semantic_hash": "ec59a9a89c11cb408f2d79dd220f305f"
+  },
+  "references/snowball/hop2/ref-193-doi-10-1007-978-981-99-8724-5-3.html": {
+    "mtime": 1788104214.4616594,
+    "seen": 1788107981.1291096,
+    "ast_hash": "17e3e73fef0898952fda7e6d7fc17764",
+    "semantic_hash": "17e3e73fef0898952fda7e6d7fc17764"
+  },
+  "references/snowball/hop2/ref-197-doi-10-1145-3548606-3560652.html": {
+    "mtime": 1788103624.4503107,
+    "seen": 1788107981.12911,
+    "ast_hash": "50bd718e6803510e71bda3f53cb4cf9e",
+    "semantic_hash": "50bd718e6803510e71bda3f53cb4cf9e"
+  },
+  "references/snowball/hop2/ref-198-doi-10-1145-3627703-3650088.html": {
+    "mtime": 1788103627.9371383,
+    "seen": 1788107981.1291106,
+    "ast_hash": "cef2511ad4b3bbd08b104f1ee9547834",
+    "semantic_hash": "cef2511ad4b3bbd08b104f1ee9547834"
+  },
+  "references/snowball/hop2/ref-209-csrc-nist-gov-publications.html": {
+    "mtime": 1788103654.381346,
+    "seen": 1788107981.129111,
+    "ast_hash": "062794ef7fc3906c49b557add48ae881",
+    "semantic_hash": "062794ef7fc3906c49b557add48ae881"
+  },
+  "references/snowball/hop2/ref-211-o1-labs-github-io-snarky.html": {
+    "mtime": 1788103657.5795755,
+    "seen": 1788107981.1291115,
+    "ast_hash": "3ae87f8a80a8001b83bb53387dbc873a",
+    "semantic_hash": "3ae87f8a80a8001b83bb53387dbc873a"
+  },
+  "references/snowball/hop2/ref-213-zkresear-ch-t-lookup-singularity-65-7.html": {
+    "mtime": 1788103661.6663432,
+    "seen": 1788107981.129112,
+    "ast_hash": "5a851e91eb251dff4fa15136b3e57ab9",
+    "semantic_hash": "5a851e91eb251dff4fa15136b3e57ab9"
+  },
+  "references/snowball/hop2/ref-222-eprint-iacr-org-2015.html": {
+    "mtime": 1788103675.5121088,
+    "seen": 1788107981.1291125,
+    "ast_hash": "6fb1404eaf76e31795520df5d6f7469c",
+    "semantic_hash": "6fb1404eaf76e31795520df5d6f7469c"
+  },
+  "references/snowball/hop2/ref-226-eprint-iacr-org-2017.html": {
+    "mtime": 1788103681.7394042,
+    "seen": 1788107981.1291132,
+    "ast_hash": "dc8f8fea726fd942792680c530b11a7d",
+    "semantic_hash": "dc8f8fea726fd942792680c530b11a7d"
+  },
+  "references/snowball/hop2/ref-231-eprint-iacr-org-2019.html": {
+    "mtime": 1788103689.7469573,
+    "seen": 1788107981.129114,
+    "ast_hash": "dbddf578c9da3fc428ecfae1e9331f48",
+    "semantic_hash": "dbddf578c9da3fc428ecfae1e9331f48"
+  },
+  "references/snowball/hop2/ref-265-eprint-iacr-org-2024.html": {
+    "mtime": 1788103744.836962,
+    "seen": 1788107981.1291144,
+    "ast_hash": "bebe0e8de61f30b88d2839ef8c963a85",
+    "semantic_hash": "bebe0e8de61f30b88d2839ef8c963a85"
+  },
+  "references/snowball/recursion/ref-094-algebraic-methods-for-interactive-proof-systems.md": {
+    "mtime": 1788103015.3748946,
+    "seen": 1788107981.1291149,
+    "ast_hash": "a680fbd7ed9d9d0b0e2d6fe87956181d",
+    "semantic_hash": "a680fbd7ed9d9d0b0e2d6fe87956181d"
+  },
+  "references/snowball/recursion/ref-100-a-note-on-efficient-zero-knowledge-proofs-and-ar.md": {
+    "mtime": 1788103015.3948946,
+    "seen": 1788107981.1291158,
+    "ast_hash": "62ff688c95578eea0db324dcbd3033fd",
+    "semantic_hash": "62ff688c95578eea0db324dcbd3033fd"
+  },
+  "references/snowball/recursion/ref-104-vram-faster-verifiable-ram-with-program-indepen.md": {
+    "mtime": 1788103015.4028947,
+    "seen": 1788107981.1291168,
+    "ast_hash": "52c24eee11d253063627ae4e0cb2bf89",
+    "semantic_hash": "52c24eee11d253063627ae4e0cb2bf89"
+  },
+  "references/snowball/recursion/ref-109-a-hybrid-architecture-for-interactive-verifiable.md": {
+    "mtime": 1788103015.4108946,
+    "seen": 1788107981.1291173,
+    "ast_hash": "533a2b98c184e185b2a5f454a0fa475f",
+    "semantic_hash": "533a2b98c184e185b2a5f454a0fa475f"
+  },
+  "references/snowball/recursion/ref-111-constant-round-interactive-proofs-for-delegating.md": {
+    "mtime": 1788103015.4148948,
+    "seen": 1788107981.1291177,
+    "ast_hash": "01700f8272c2141a73e088adfff6572d",
+    "semantic_hash": "01700f8272c2141a73e088adfff6572d"
+  },
+  "references/snowball/recursion/ref-113-random-oracles-are-practical-a-paradigm-for-des.md": {
+    "mtime": 1788103015.4188948,
+    "seen": 1788107981.1291182,
+    "ast_hash": "7f183fc76c93d888c2c1b2bcd4427133",
+    "semantic_hash": "7f183fc76c93d888c2c1b2bcd4427133"
+  },
+  "references/snowball/recursion/ref-117-checking-computations-in-polylogarithmic-time.md": {
+    "mtime": 1788103015.4228947,
+    "seen": 1788107981.1291187,
+    "ast_hash": "1a1569f0b573c4660c4d1b1dff90a311",
+    "semantic_hash": "1a1569f0b573c4660c4d1b1dff90a311"
+  },
+  "references/snowball/recursion/ref-119-generalized-compact-knapsacks-are-collision-resi.md": {
+    "mtime": 1788103015.4308946,
+    "seen": 1788107981.1291192,
+    "ast_hash": "86358817adbe8ec9306e02aab63ed40b",
+    "semantic_hash": "86358817adbe8ec9306e02aab63ed40b"
+  },
+  "references/snowball/recursion/ref-123-efficient-arguments-without-short-pcps.md": {
+    "mtime": 1788103015.4348948,
+    "seen": 1788107981.1291196,
+    "ast_hash": "24e655fcb137d799d60571337b309e7b",
+    "semantic_hash": "24e655fcb137d799d60571337b309e7b"
+  },
+  "references/snowball/recursion/ref-127-generating-hard-instances-of-lattice-problems-e.md": {
+    "mtime": 1788103015.4348948,
+    "seen": 1788107981.1291203,
+    "ast_hash": "6b555b58cc7e0e9246d797e1efd66ccb",
+    "semantic_hash": "6b555b58cc7e0e9246d797e1efd66ccb"
+  },
+  "references/snowball/recursion/ref-128-making-argument-systems-for-outsourced-computati.md": {
+    "mtime": 1788103015.4348948,
+    "seen": 1788107981.129121,
+    "ast_hash": "af76bccdb4371cd031353a6641e1e727",
+    "semantic_hash": "af76bccdb4371cd031353a6641e1e727"
+  },
+  "references/snowball/recursion/ref-132-using-zk-proofs-to-fight-disinformation.md": {
+    "mtime": 1788103015.4388947,
+    "seen": 1788107981.1291215,
+    "ast_hash": "44c2460bb2e16ce3ba8a7a150eb7a71c",
+    "semantic_hash": "44c2460bb2e16ce3ba8a7a150eb7a71c"
+  },
+  "references/snowball/recursion/ref-134-interactive-proofs-of-proximity-delegating-comp.md": {
+    "mtime": 1788103015.4428947,
+    "seen": 1788107981.129122,
+    "ast_hash": "ee7cbfc098620eb333d77386eb7dbde9",
+    "semantic_hash": "ee7cbfc098620eb333d77386eb7dbde9"
+  },
+  "references/snowball/recursion/ref-141-mina-cryptocurrency.md": {
+    "mtime": 1788103015.4628947,
+    "seen": 1788107981.1291225,
+    "ast_hash": "e5b13f06fee156e30f64f52694bc89c6",
+    "semantic_hash": "e5b13f06fee156e30f64f52694bc89c6"
+  },
+  "references/snowball/recursion/ref-148-zero-knowledge-from-secure-multiparty-computatio.md": {
+    "mtime": 1788103015.4708948,
+    "seen": 1788107981.129123,
+    "ast_hash": "ca2ff099ca739fa8eedf96180d01a43e",
+    "semantic_hash": "ca2ff099ca739fa8eedf96180d01a43e"
+  },
+  "references/snowball/recursion/ref-150-a-digital-signature-scheme-secure-against-adapti.md": {
+    "mtime": 1788103015.4748948,
+    "seen": 1788107981.1291237,
+    "ast_hash": "56edcb01486c6d090c5e16acc85b220f",
+    "semantic_hash": "56edcb01486c6d090c5e16acc85b220f"
+  },
+  "references/snowball/recursion/ref-154-assignment-testers-towards-a-combinatorial-proo.md": {
+    "mtime": 1788103015.4868946,
+    "seen": 1788107981.1291242,
+    "ast_hash": "d59ab0223ba801e40c1d6dfce3f3b494",
+    "semantic_hash": "d59ab0223ba801e40c1d6dfce3f3b494"
+  },
+  "references/snowball/recursion/ref-158-coda-cryptocurrency.md": {
+    "mtime": 1788103015.492686,
+    "seen": 1788107981.1291249,
+    "ast_hash": "6b0083d78c849ed642ec0c1471b72912",
+    "semantic_hash": "6b0083d78c849ed642ec0c1471b72912"
+  },
+  "references/books/proofs-args-zk.pdf": {
+    "mtime": 1788103014.6188946,
+    "seen": 1788107981.1291254,
+    "ast_hash": "d3a237341cbac0775ecacb89ca4e0143",
+    "semantic_hash": "d3a237341cbac0775ecacb89ca4e0143"
+  },
+  "references/ch01/ref-02-gmr-knowledge-complexity.pdf": {
+    "mtime": 1788103014.6948948,
+    "seen": 1788107981.1291258,
     "ast_hash": "800378d4034b51a7f46a4bd5c7942ac5",
     "semantic_hash": "800378d4034b51a7f46a4bd5c7942ac5"
   },
-  "C:\\sevenlayer\\references\\ch01\\ref-03-sok-snark-vulnerabilities.pdf": {
-    "mtime": 1781305702.7749598,
+  "references/ch01/ref-03-sok-snark-vulnerabilities.pdf": {
+    "mtime": 1788103014.6988947,
+    "seen": 1788107981.1291263,
     "ast_hash": "9f0b965a614d2cba75f6ab6dbf7bc953",
     "semantic_hash": "9f0b965a614d2cba75f6ab6dbf7bc953"
   },
-  "C:\\sevenlayer\\references\\ch02\\ref-04-kzg-commitments.pdf": {
-    "mtime": 1781305703.4432335,
+  "references/ch02/ref-04-kzg-commitments.pdf": {
+    "mtime": 1788103014.6988947,
+    "seen": 1788107981.129127,
     "ast_hash": "8fe2159fd052ba5cb2f5421f4a2f0130",
     "semantic_hash": "8fe2159fd052ba5cb2f5421f4a2f0130"
   },
-  "C:\\sevenlayer\\references\\ch02\\ref-05-mpc-random-beacon.pdf": {
-    "mtime": 1781305953.8847258,
+  "references/ch02/ref-05-mpc-random-beacon.pdf": {
+    "mtime": 1788103014.705583,
+    "seen": 1788107981.1291275,
     "ast_hash": "e882004f60e2d26f6ec63c7c9036bc7c",
     "semantic_hash": "e882004f60e2d26f6ec63c7c9036bc7c"
   },
-  "C:\\sevenlayer\\references\\ch02\\ref-06-groth16.pdf": {
-    "mtime": 1781305956.6562362,
+  "references/ch02/ref-06-groth16.pdf": {
+    "mtime": 1788103014.705583,
+    "seen": 1788107981.129128,
     "ast_hash": "61d8bc63ef034ae08aec16e96d0ed54a",
     "semantic_hash": "61d8bc63ef034ae08aec16e96d0ed54a"
   },
-  "C:\\sevenlayer\\references\\ch02\\ref-07-plonk.pdf": {
-    "mtime": 1781305959.3691509,
+  "references/ch02/ref-07-plonk.pdf": {
+    "mtime": 1788103014.7068946,
+    "seen": 1788107981.1291285,
     "ast_hash": "32aab72504ba4fadcaacec229c32d35f",
     "semantic_hash": "32aab72504ba4fadcaacec229c32d35f"
   },
-  "C:\\sevenlayer\\references\\ch02\\ref-08-stark.pdf": {
-    "mtime": 1781305962.10118,
+  "references/ch02/ref-08-stark.pdf": {
+    "mtime": 1788103014.7108946,
+    "seen": 1788107981.129129,
     "ast_hash": "1b45a0ee6a45ef151e80f31262a8d15c",
     "semantic_hash": "1b45a0ee6a45ef151e80f31262a8d15c"
   },
-  "C:\\sevenlayer\\references\\ch02\\ref-09-bulletproofs.pdf": {
-    "mtime": 1781305964.9531748,
+  "references/ch02/ref-09-bulletproofs.pdf": {
+    "mtime": 1788103014.7108946,
+    "seen": 1788107981.1291292,
     "ast_hash": "b13f35c1e4b41439c1ffd33401b0e541",
     "semantic_hash": "b13f35c1e4b41439c1ffd33401b0e541"
   },
-  "C:\\sevenlayer\\references\\ch02\\ref-10-sok-powers-of-tau.pdf": {
-    "mtime": 1781305967.7126272,
+  "references/ch02/ref-10-sok-powers-of-tau.pdf": {
+    "mtime": 1788103014.7148948,
+    "seen": 1788107981.12913,
     "ast_hash": "fa128c077b319fd59bddab5cf2876d78",
     "semantic_hash": "fa128c077b319fd59bddab5cf2876d78"
   },
-  "C:\\sevenlayer\\references\\ch02\\ref-11-latticefold-plus.pdf": {
-    "mtime": 1781305970.4081874,
+  "references/ch02/ref-11-latticefold-plus.pdf": {
+    "mtime": 1788103014.7148948,
+    "seen": 1788107981.1291306,
     "ast_hash": "78c8bb9c9453ff7fbf10fa9c91113482",
     "semantic_hash": "78c8bb9c9453ff7fbf10fa9c91113482"
   },
-  "C:\\sevenlayer\\references\\ch03\\ref-12-underconstrained-circuits.pdf": {
-    "mtime": 1781305973.1823716,
+  "references/ch03/ref-12-underconstrained-circuits.pdf": {
+    "mtime": 1788103014.7188947,
+    "seen": 1788107981.1291313,
     "ast_hash": "defb5284a98b690ebe669ee155393da8",
     "semantic_hash": "defb5284a98b690ebe669ee155393da8"
   },
-  "C:\\sevenlayer\\references\\ch03\\ref-13-practical-security-zk-circuits.pdf": {
-    "mtime": 1781305975.8427217,
+  "references/ch03/ref-13-practical-security-zk-circuits.pdf": {
+    "mtime": 1788103014.7188947,
+    "seen": 1788107981.1291318,
     "ast_hash": "6f3c5bd3a590b9ec8908e7f66e99dc97",
     "semantic_hash": "6f3c5bd3a590b9ec8908e7f66e99dc97"
   },
-  "C:\\sevenlayer\\references\\ch03\\ref-14-ccs-customizable-constraints.pdf": {
-    "mtime": 1781305978.5354233,
+  "references/ch03/ref-14-ccs-customizable-constraints.pdf": {
+    "mtime": 1788103014.7228947,
+    "seen": 1788107981.1291323,
     "ast_hash": "b727746a7d873737ee79eb95e171e002",
     "semantic_hash": "b727746a7d873737ee79eb95e171e002"
   },
-  "C:\\sevenlayer\\references\\ch03\\ref-15-lasso.pdf": {
-    "mtime": 1781305981.3498123,
+  "references/ch03/ref-15-lasso.pdf": {
+    "mtime": 1788103014.7268946,
+    "seen": 1788107981.1291327,
     "ast_hash": "b4c9065be1aba5032a3681d3b838c939",
     "semantic_hash": "b4c9065be1aba5032a3681d3b838c939"
   },
-  "C:\\sevenlayer\\references\\ch03\\ref-16-jolt.pdf": {
-    "mtime": 1781305984.1618946,
+  "references/ch03/ref-16-jolt.pdf": {
+    "mtime": 1788103014.7308948,
+    "seen": 1788107981.1291332,
     "ast_hash": "db6e744a98d2e3fb115ababa9f1fc311",
     "semantic_hash": "db6e744a98d2e3fb115ababa9f1fc311"
   },
-  "C:\\sevenlayer\\references\\ch06\\ref-17-nova.pdf": {
-    "mtime": 1781305986.9835637,
+  "references/ch06/ref-17-nova.pdf": {
+    "mtime": 1788103014.7308948,
+    "seen": 1788107981.1291342,
     "ast_hash": "046797d0520382c59136b61e398d5407",
     "semantic_hash": "046797d0520382c59136b61e398d5407"
   },
-  "C:\\sevenlayer\\references\\ch06\\ref-18-hypernova.pdf": {
-    "mtime": 1781305989.7287803,
+  "references/ch06/ref-18-hypernova.pdf": {
+    "mtime": 1788103014.73653,
+    "seen": 1788107981.1291347,
     "ast_hash": "f5e6bfa927d2797a0268fa8bd61eb4fc",
     "semantic_hash": "f5e6bfa927d2797a0268fa8bd61eb4fc"
   },
-  "C:\\sevenlayer\\references\\ch06\\ref-19-protostar.pdf": {
-    "mtime": 1781305992.5573974,
+  "references/ch06/ref-19-protostar.pdf": {
+    "mtime": 1788103014.7388947,
+    "seen": 1788107981.1291351,
     "ast_hash": "6aa1f1d2bfe3709935b27a6695f11d85",
     "semantic_hash": "6aa1f1d2bfe3709935b27a6695f11d85"
   },
-  "C:\\sevenlayer\\references\\ch06\\ref-20-latticefold.pdf": {
-    "mtime": 1781305995.3445954,
+  "references/ch06/ref-20-latticefold.pdf": {
+    "mtime": 1788103014.7428946,
+    "seen": 1788107981.1291356,
     "ast_hash": "43bb80e47861c077aa1f03a6a6ef6bd7",
     "semantic_hash": "43bb80e47861c077aa1f03a6a6ef6bd7"
   },
-  "C:\\sevenlayer\\references\\ch06\\ref-21-neo.pdf": {
-    "mtime": 1781305998.056463,
+  "references/ch06/ref-21-neo.pdf": {
+    "mtime": 1788103014.7428946,
+    "seen": 1788107981.129136,
     "ast_hash": "c8b74c1c44a52caf3d6fbbfd183538a7",
     "semantic_hash": "c8b74c1c44a52caf3d6fbbfd183538a7"
   },
-  "C:\\sevenlayer\\references\\ch06\\ref-23-circle-starks.pdf": {
-    "mtime": 1781306000.78041,
+  "references/ch06/ref-23-circle-starks.pdf": {
+    "mtime": 1788103014.7468946,
+    "seen": 1788107981.1291366,
     "ast_hash": "7d0193b801def811367c529ea6552ede",
     "semantic_hash": "7d0193b801def811367c529ea6552ede"
   },
-  "C:\\sevenlayer\\references\\ch07\\ref-24-shor.pdf": {
-    "mtime": 1781305704.939946,
+  "references/ch07/ref-24-shor.pdf": {
+    "mtime": 1788103014.7468946,
+    "seen": 1788107981.129137,
     "ast_hash": "1fd111e8fb3c8b92f2473443ad4343e0",
     "semantic_hash": "1fd111e8fb3c8b92f2473443ad4343e0"
   },
-  "C:\\sevenlayer\\references\\ch07\\ref-25-nist-fips-203-204-205.pdf": {
-    "mtime": 1781305705.8559046,
+  "references/ch07/ref-25-nist-fips-203-204-205.pdf": {
+    "mtime": 1788103014.7534554,
+    "seen": 1788107981.1291378,
     "ast_hash": "c530bf4e6337e1a09b7e2a450c556c36",
     "semantic_hash": "c530bf4e6337e1a09b7e2a450c556c36"
   },
-  "C:\\sevenlayer\\references\\ch07\\ref-26-nist-ir-8547.pdf": {
-    "mtime": 1781305706.9510636,
+  "references/ch07/ref-26-nist-ir-8547.pdf": {
+    "mtime": 1788103014.7548947,
+    "seen": 1788107981.1291382,
     "ast_hash": "0868511563e00941aa0085015e881079",
     "semantic_hash": "0868511563e00941aa0085015e881079"
   },
-  "C:\\sevenlayer\\references\\ch08\\ref-28-rollup-pricing-attacks.pdf": {
-    "mtime": 1781305707.8912275,
+  "references/ch08/ref-28-rollup-pricing-attacks.pdf": {
+    "mtime": 1788103014.761081,
+    "seen": 1788107981.1291387,
     "ast_hash": "ae8062856dfe8274653c9073eb41f47f",
     "semantic_hash": "ae8062856dfe8274653c9073eb41f47f"
   },
-  "C:\\sevenlayer\\references\\ch09\\ref-29-gentry-fhe.pdf": {
-    "mtime": 1781305709.0126002,
+  "references/ch09/ref-29-gentry-fhe.pdf": {
+    "mtime": 1788103014.761081,
+    "seen": 1788107981.1291392,
     "ast_hash": "b5e280a51b8957a643109757b158d000",
     "semantic_hash": "b5e280a51b8957a643109757b158d000"
   },
-  "C:\\sevenlayer\\references\\ch09\\ref-30-kachina.pdf": {
-    "mtime": 1781306003.596317,
+  "references/ch09/ref-30-kachina.pdf": {
+    "mtime": 1788103014.7644756,
+    "seen": 1788107981.1291397,
     "ast_hash": "b63b087a25a39b9a5ec1535589c9eaaa",
     "semantic_hash": "b63b087a25a39b9a5ec1535589c9eaaa"
   },
-  "C:\\sevenlayer\\references\\ch09\\ref-31-blockchain-privacy-compliance.pdf": {
-    "mtime": 1781306041.6505632,
+  "references/ch09/ref-31-blockchain-privacy-compliance.pdf": {
+    "mtime": 1788103014.7668946,
+    "seen": 1788107981.1291401,
     "ast_hash": "84113d038ceb5baadffd01db62882b36",
     "semantic_hash": "84113d038ceb5baadffd01db62882b36"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-32-zkvm-compiler-optimization.pdf": {
-    "mtime": 1781305720.2495153,
+  "references/ch10/ref-32-zkvm-compiler-optimization.pdf": {
+    "mtime": 1788103014.7668946,
+    "seen": 1788107981.1291409,
     "ast_hash": "9a2a35dea264874fa035f5ebc7f171b9",
     "semantic_hash": "9a2a35dea264874fa035f5ebc7f171b9"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-33-circ.pdf": {
-    "mtime": 1781306006.3785841,
+  "references/ch10/ref-33-circ.pdf": {
+    "mtime": 1788103014.773333,
+    "seen": 1788107981.1291413,
     "ast_hash": "e8948e566287ec50d09a3b12417aba06",
     "semantic_hash": "e8948e566287ec50d09a3b12417aba06"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-35-coda.pdf": {
-    "mtime": 1781306009.1527326,
+  "references/ch10/ref-35-coda.pdf": {
+    "mtime": 1788103014.7748947,
+    "seen": 1788107981.1291418,
     "ast_hash": "08b54e74076d668362c6778fae9d7dd1",
     "semantic_hash": "08b54e74076d668362c6778fae9d7dd1"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-36-sonic.pdf": {
-    "mtime": 1781306011.9193575,
+  "references/ch10/ref-36-sonic.pdf": {
+    "mtime": 1788103014.7748947,
+    "seen": 1788107981.1291423,
     "ast_hash": "563bf87e92603d79a5e5b55fd9ddb104",
     "semantic_hash": "563bf87e92603d79a5e5b55fd9ddb104"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-37-updatable-universal-crs.pdf": {
-    "mtime": 1781306014.6135478,
+  "references/ch10/ref-37-updatable-universal-crs.pdf": {
+    "mtime": 1788103014.7788947,
+    "seen": 1788107981.1291428,
     "ast_hash": "fafdcce68fc6ca063f0b37a74a9a1377",
     "semantic_hash": "fafdcce68fc6ca063f0b37a74a9a1377"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-38-snarky-ceremonies.pdf": {
-    "mtime": 1781306017.3929737,
+  "references/ch10/ref-38-snarky-ceremonies.pdf": {
+    "mtime": 1788103014.7788947,
+    "seen": 1788107981.1291432,
     "ast_hash": "7250c946c915bd32a7499981ccfa6b10",
     "semantic_hash": "7250c946c915bd32a7499981ccfa6b10"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-50-extended-tower-nfs.pdf": {
-    "mtime": 1781306025.5776832,
+  "references/ch10/ref-50-extended-tower-nfs.pdf": {
+    "mtime": 1788103014.7828946,
+    "seen": 1788107981.1291435,
     "ast_hash": "22429fe95bac88d69c987a05ce74d471",
     "semantic_hash": "22429fe95bac88d69c987a05ce74d471"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-51-pairing-efficiency-curves.pdf": {
-    "mtime": 1781306028.2783277,
+  "references/ch10/ref-51-pairing-efficiency-curves.pdf": {
+    "mtime": 1788103014.7828946,
+    "seen": 1788107981.1291444,
     "ast_hash": "cfa09fcf3775137df6b35c7b227dc99d",
     "semantic_hash": "cfa09fcf3775137df6b35c7b227dc99d"
   },
-  "C:\\sevenlayer\\references\\ch10\\ref-56-symphony.pdf": {
-    "mtime": 1781306031.0423145,
+  "references/ch10/ref-56-symphony.pdf": {
+    "mtime": 1788103014.7868948,
+    "seen": 1788107981.129145,
     "ast_hash": "2a2a3978a385bcd3668586a0b663fb60",
     "semantic_hash": "2a2a3978a385bcd3668586a0b663fb60"
   },
-  "C:\\sevenlayer\\references\\ch13\\ref-59-world-whitepaper.pdf": {
-    "mtime": 1781306833.140956,
+  "references/ch13/ref-59-world-whitepaper.pdf": {
+    "mtime": 1788103014.8148947,
+    "seen": 1788107981.1291454,
     "ast_hash": "2c9e82483688e449db121e957ae431f0",
     "semantic_hash": "2c9e82483688e449db121e957ae431f0"
   },
-  "C:\\sevenlayer\\references\\ch13\\ref-60-eidas-2-regulation.pdf": {
-    "mtime": 1781305725.374561,
+  "references/ch13/ref-60-eidas-2-regulation.pdf": {
+    "mtime": 1788103014.8148947,
+    "seen": 1788107981.1291456,
     "ast_hash": "622934be57cd6796b4320f89ba5c1edf",
     "semantic_hash": "622934be57cd6796b4320f89ba5c1edf"
   },
-  "C:\\sevenlayer\\references\\ch14\\ref-45-small-space-cpu-proofs.pdf": {
-    "mtime": 1781306020.109465,
+  "references/ch14/ref-45-small-space-cpu-proofs.pdf": {
+    "mtime": 1788103014.8188946,
+    "seen": 1788107981.1291463,
     "ast_hash": "f703a9b30dd3a6516e2f3cee9ddb7e1b",
     "semantic_hash": "f703a9b30dd3a6516e2f3cee9ddb7e1b"
   },
-  "C:\\sevenlayer\\references\\ch14\\ref-46-zk-memory-algebraic-proofs.pdf": {
-    "mtime": 1781306022.8752885,
+  "references/ch14/ref-46-zk-memory-algebraic-proofs.pdf": {
+    "mtime": 1788103014.8188946,
+    "seen": 1788107981.1291468,
     "ast_hash": "dd0b446a8c6fd7260bbbfd8a2413fb69",
     "semantic_hash": "dd0b446a8c6fd7260bbbfd8a2413fb69"
   },
-  "C:\\sevenlayer\\references\\ch14\\ref-61-arguzz.pdf": {
-    "mtime": 1781305725.4956846,
+  "references/ch14/ref-61-arguzz.pdf": {
+    "mtime": 1788103014.8228948,
+    "seen": 1788107981.1291473,
     "ast_hash": "5d5019afbf6721f0a0f629f8cb84f634",
     "semantic_hash": "5d5019afbf6721f0a0f629f8cb84f634"
   },
-  "C:\\sevenlayer\\references\\ch14\\ref-62-lattice-functional-commitments.pdf": {
-    "mtime": 1781306033.7371762,
+  "references/ch14/ref-62-lattice-functional-commitments.pdf": {
+    "mtime": 1788103014.8268948,
+    "seen": 1788107981.1291475,
     "ast_hash": "1866114c4cd71c80a698c36388fb9dd0",
     "semantic_hash": "1866114c4cd71c80a698c36388fb9dd0"
   },
-  "C:\\sevenlayer\\references\\ch14\\ref-63-harvest-now-decrypt-later.pdf": {
-    "mtime": 1781305725.7463737,
+  "references/ch14/ref-63-harvest-now-decrypt-later.pdf": {
+    "mtime": 1788103014.8268948,
+    "seen": 1788107981.1291482,
     "ast_hash": "ff6f10800587b962dfa984bbbb45bf02",
     "semantic_hash": "ff6f10800587b962dfa984bbbb45bf02"
   },
-  "C:\\sevenlayer\\references\\ch14\\ref-64-fips-204.pdf": {
-    "mtime": 1781305726.9936092,
+  "references/ch14/ref-64-fips-204.pdf": {
+    "mtime": 1788103014.8348947,
+    "seen": 1788107981.129152,
     "ast_hash": "4c53612c494078b541538c2c92a95348",
     "semantic_hash": "4c53612c494078b541538c2c92a95348"
   },
-  "C:\\sevenlayer\\references\\ch14\\ref-65-greyhound.pdf": {
-    "mtime": 1781306036.5176508,
+  "references/ch14/ref-65-greyhound.pdf": {
+    "mtime": 1788103014.8388946,
+    "seen": 1788107981.1291528,
     "ast_hash": "a8b92a503edf0879e04b7ec38909cb1d",
     "semantic_hash": "a8b92a503edf0879e04b7ec38909cb1d"
+  },
+  "references/mooc/lecture01/slides.pdf": {
+    "mtime": 1788103014.8668947,
+    "seen": 1788107981.1291533,
+    "ast_hash": "f3e20df1618286c79415e4cd1aab7858",
+    "semantic_hash": "f3e20df1618286c79415e4cd1aab7858"
+  },
+  "references/mooc/lecture02/slides.pdf": {
+    "mtime": 1788103014.8868947,
+    "seen": 1788107981.1291535,
+    "ast_hash": "cdf7b5b423f51f0fd320a612df92d7cc",
+    "semantic_hash": "cdf7b5b423f51f0fd320a612df92d7cc"
+  },
+  "references/mooc/lecture03/slides.pdf": {
+    "mtime": 1788103014.8948946,
+    "seen": 1788107981.1291542,
+    "ast_hash": "9fbe008df79c83c948cf545488d61b8d",
+    "semantic_hash": "9fbe008df79c83c948cf545488d61b8d"
+  },
+  "references/mooc/lecture04/slides.pdf": {
+    "mtime": 1788103014.9148946,
+    "seen": 1788107981.129155,
+    "ast_hash": "15093fe19375a4cdf9f767a361904124",
+    "semantic_hash": "15093fe19375a4cdf9f767a361904124"
+  },
+  "references/mooc/lecture05/slides.pdf": {
+    "mtime": 1788103014.9228947,
+    "seen": 1788107981.1291554,
+    "ast_hash": "35e2dff4dcf0c1c2cda4914fbde088a1",
+    "semantic_hash": "35e2dff4dcf0c1c2cda4914fbde088a1"
+  },
+  "references/mooc/lecture06/slides.pdf": {
+    "mtime": 1788103014.9228947,
+    "seen": 1788107981.1291559,
+    "ast_hash": "a688cb990cc192fa33a979bb99320cef",
+    "semantic_hash": "a688cb990cc192fa33a979bb99320cef"
+  },
+  "references/mooc/lecture07/slides.pdf": {
+    "mtime": 1788103014.9308946,
+    "seen": 1788107981.1291564,
+    "ast_hash": "c9c0aac52425c346299d28b28ecefe0e",
+    "semantic_hash": "c9c0aac52425c346299d28b28ecefe0e"
+  },
+  "references/mooc/lecture08/slides.pdf": {
+    "mtime": 1788103014.9348948,
+    "seen": 1788107981.1291568,
+    "ast_hash": "29f431b300fda5a502a22101471f5323",
+    "semantic_hash": "29f431b300fda5a502a22101471f5323"
+  },
+  "references/mooc/lecture09/slides.pdf": {
+    "mtime": 1788103014.9348948,
+    "seen": 1788107981.129157,
+    "ast_hash": "a35b6a4f47d604a7d1e9b09e062cbb44",
+    "semantic_hash": "a35b6a4f47d604a7d1e9b09e062cbb44"
+  },
+  "references/mooc/lecture10/slides.pdf": {
+    "mtime": 1788103014.9396496,
+    "seen": 1788107981.1291575,
+    "ast_hash": "5c468e32b2e20d6ca3c15ba813a26dbd",
+    "semantic_hash": "5c468e32b2e20d6ca3c15ba813a26dbd"
+  },
+  "references/mooc/lecture11/slides.pdf": {
+    "mtime": 1788103014.9433415,
+    "seen": 1788107981.1291583,
+    "ast_hash": "e9caab13daf1e12e30fd6b3f69dd3421",
+    "semantic_hash": "e9caab13daf1e12e30fd6b3f69dd3421"
+  },
+  "references/mooc/lecture12/slides.pdf": {
+    "mtime": 1788103014.956422,
+    "seen": 1788107981.1291587,
+    "ast_hash": "b62b80f8963d7cb4efeaa20e60e0f628",
+    "semantic_hash": "b62b80f8963d7cb4efeaa20e60e0f628"
+  },
+  "references/mooc/lecture14/slides.pdf": {
+    "mtime": 1788103014.9908948,
+    "seen": 1788107981.1291592,
+    "ast_hash": "db12292e81a80a0bdb2e52d83d08350c",
+    "semantic_hash": "db12292e81a80a0bdb2e52d83d08350c"
+  },
+  "references/recursion/ch1/ref-02-bctv-cycles.pdf": {
+    "mtime": 1788103014.9953938,
+    "seen": 1788107981.1291597,
+    "ast_hash": "ce1a867ed17756421da2a171d190a9dd",
+    "semantic_hash": "ce1a867ed17756421da2a171d190a9dd"
+  },
+  "references/recursion/ch1/ref-03-bitansky-recursive-snark-pcd.pdf": {
+    "mtime": 1788103014.9953938,
+    "seen": 1788107981.1291602,
+    "ast_hash": "2e0af3fa7b20a81b841c7b8b665b16fa",
+    "semantic_hash": "2e0af3fa7b20a81b841c7b8b665b16fa"
+  },
+  "references/recursion/ch1/ref-05-halo.pdf": {
+    "mtime": 1788103014.9988947,
+    "seen": 1788107981.1291606,
+    "ast_hash": "c5667cc29446613b21e9f162f011530a",
+    "semantic_hash": "c5667cc29446613b21e9f162f011530a"
+  },
+  "references/recursion/ch1/ref-09-bcms-pcd-accumulation.pdf": {
+    "mtime": 1788103015.0048726,
+    "seen": 1788107981.1291611,
+    "ast_hash": "dbbfd81964357b13b6068a8d06f62551",
+    "semantic_hash": "dbbfd81964357b13b6068a8d06f62551"
+  },
+  "references/recursion/ch1/ref-10-fractal.pdf": {
+    "mtime": 1788103015.0068946,
+    "seen": 1788107981.1291623,
+    "ast_hash": "8bb737d31a653b2a003f436384316efe",
+    "semantic_hash": "8bb737d31a653b2a003f436384316efe"
+  },
+  "references/recursion/ch1/ref-11-khovratovich-fiat-shamir-attacks.pdf": {
+    "mtime": 1788103015.0108948,
+    "seen": 1788107981.1291628,
+    "ast_hash": "2da965676c7ead8f6ddeb052fc0914c0",
+    "semantic_hash": "2da965676c7ead8f6ddeb052fc0914c0"
+  },
+  "references/recursion/ch1/ref-13-chiesa-chua-weidner-cycles.pdf": {
+    "mtime": 1788103015.0108948,
+    "seen": 1788107981.1291633,
+    "ast_hash": "34492b6e7edf383a349a0d688a6fa38a",
+    "semantic_hash": "34492b6e7edf383a349a0d688a6fa38a"
+  },
+  "references/recursion/ch1/ref-14-bclms-pcd-without-succinct.pdf": {
+    "mtime": 1788103015.0148947,
+    "seen": 1788107981.1291637,
+    "ast_hash": "e85c770b48a7ed030c69ec2f8a0741b6",
+    "semantic_hash": "e85c770b48a7ed030c69ec2f8a0741b6"
+  },
+  "references/recursion/ch1/ref-20-thaler-proofs-arguments-zk.pdf": {
+    "mtime": 1788103015.0308948,
+    "seen": 1788107981.1291642,
+    "ast_hash": "d3a237341cbac0775ecacb89ca4e0143",
+    "semantic_hash": "d3a237341cbac0775ecacb89ca4e0143"
+  },
+  "references/recursion/ch1/ref-21-zktree.pdf": {
+    "mtime": 1788103015.0348947,
+    "seen": 1788107981.1291647,
+    "ast_hash": "a7045668d945af3e8e2bb934360b91ec",
+    "semantic_hash": "a7045668d945af3e8e2bb934360b91ec"
+  },
+  "references/recursion/ch1/ref-30-cyclefold.pdf": {
+    "mtime": 1788103015.0388947,
+    "seen": 1788107981.1291654,
+    "ast_hash": "4d59f43a3c603eb213116c42e453b388",
+    "semantic_hash": "4d59f43a3c603eb213116c42e453b388"
+  },
+  "references/recursion/ch1/ref-31-poseidon.pdf": {
+    "mtime": 1788103015.0428946,
+    "seen": 1788107981.1291656,
+    "ast_hash": "efcccf23c2d102b445b064980ebf809d",
+    "semantic_hash": "efcccf23c2d102b445b064980ebf809d"
+  },
+  "references/recursion/ch1/ref-32-nguyen-boneh-setty-nova-cycle.pdf": {
+    "mtime": 1788103015.0428946,
+    "seen": 1788107981.1291664,
+    "ast_hash": "6318a4edd85d95527585be6b6aa2b86a",
+    "semantic_hash": "6318a4edd85d95527585be6b6aa2b86a"
+  },
+  "references/recursion/ch1/ref-33-snarkpack.pdf": {
+    "mtime": 1788103015.0468948,
+    "seen": 1788107981.1291668,
+    "ast_hash": "67005d4502ed4e29d711356913546d62",
+    "semantic_hash": "67005d4502ed4e29d711356913546d62"
+  },
+  "references/recursion/ch2/ref-41-spartan.pdf": {
+    "mtime": 1788103015.0525305,
+    "seen": 1788107981.1291673,
+    "ast_hash": "e66cbf339b77946942159344ecd5ee1c",
+    "semantic_hash": "e66cbf339b77946942159344ecd5ee1c"
+  },
+  "references/recursion/ch2/ref-44-supernova.pdf": {
+    "mtime": 1788103015.053865,
+    "seen": 1788107981.129168,
+    "ast_hash": "09362afe7c8cb89a46e502515f0d3a39",
+    "semantic_hash": "09362afe7c8cb89a46e502515f0d3a39"
+  },
+  "references/recursion/ch2/ref-47-protogalaxy.pdf": {
+    "mtime": 1788103015.053865,
+    "seen": 1788107981.1291687,
+    "ast_hash": "76d1c3ed24f45091bb7defb34d65b66a",
+    "semantic_hash": "76d1c3ed24f45091bb7defb34d65b66a"
+  },
+  "references/recursion/ch2/ref-51-canetti-goldreich-halevi-rom.pdf": {
+    "mtime": 1788103015.053865,
+    "seen": 1788107981.1291695,
+    "ast_hash": "4350f09237933ace20b9f47a69eacbb2",
+    "semantic_hash": "4350f09237933ace20b9f47a69eacbb2"
+  },
+  "references/recursion/ch3/ref-58-coda-mina.pdf": {
+    "mtime": 1788103015.0581787,
+    "seen": 1788107981.12917,
+    "ast_hash": "d0160438508f47682fdc4b879898b629",
+    "semantic_hash": "d0160438508f47682fdc4b879898b629"
+  },
+  "references/recursion/ch3/ref-59-zkbridge.pdf": {
+    "mtime": 1788103015.0588946,
+    "seen": 1788107981.1291704,
+    "ast_hash": "4448c8058fb7d697f2f39389795f7af4",
+    "semantic_hash": "4448c8058fb7d697f2f39389795f7af4"
+  },
+  "references/recursion/ch3/ref-61-verisbom.pdf": {
+    "mtime": 1788103015.0628948,
+    "seen": 1788107981.1291711,
+    "ast_hash": "6234b1035ac332cd5a291b1d16540081",
+    "semantic_hash": "6234b1035ac332cd5a291b1d16540081"
+  },
+  "references/recursion/ch3/ref-69-kang-trustless-dnn-inference.pdf": {
+    "mtime": 1788103015.0628948,
+    "seen": 1788107981.1291716,
+    "ast_hash": "2dabc9c2930292ee6751bb3bd029dec6",
+    "semantic_hash": "2dabc9c2930292ee6751bb3bd029dec6"
+  },
+  "references/recursion/ch3/ref-70-zkcnn.pdf": {
+    "mtime": 1788103015.07258,
+    "seen": 1788107981.1291726,
+    "ast_hash": "f27f828b6f9db3442f3846209d8360e0",
+    "semantic_hash": "f27f828b6f9db3442f3846209d8360e0"
+  },
+  "references/recursion/ch3/ref-73-vsql.pdf": {
+    "mtime": 1788103015.0748947,
+    "seen": 1788107981.129173,
+    "ast_hash": "0b03e8d19c172b666cb1f0f2edc9f3b9",
+    "semantic_hash": "0b03e8d19c172b666cb1f0f2edc9f3b9"
+  },
+  "references/recursion/ch3/ref-75-goldwasser-kalai-rothblum-muggles.pdf": {
+    "mtime": 1788103015.0788946,
+    "seen": 1788107981.1291735,
+    "ast_hash": "aea4c935bf5d49d5d39f8575f792bb18",
+    "semantic_hash": "aea4c935bf5d49d5d39f8575f792bb18"
+  },
+  "references/recursion/ch3/ref-77-photoproof.pdf": {
+    "mtime": 1788103015.0828948,
+    "seen": 1788107981.129174,
+    "ast_hash": "ba6747f75abaf5e273123a28bf87554d",
+    "semantic_hash": "ba6747f75abaf5e273123a28bf87554d"
+  },
+  "references/recursion/ch3/ref-78-veritas.pdf": {
+    "mtime": 1788103015.0908947,
+    "seen": 1788107981.1291745,
+    "ast_hash": "52cce1af7849d905fed9814ffd2167b7",
+    "semantic_hash": "52cce1af7849d905fed9814ffd2167b7"
+  },
+  "references/recursion/ch3/ref-80-boneh-bonneau-bunz-fisch-vdf.pdf": {
+    "mtime": 1788103015.0948946,
+    "seen": 1788107981.129175,
+    "ast_hash": "b6774ca1399d809660a83061cc185453",
+    "semantic_hash": "b6774ca1399d809660a83061cc185453"
+  },
+  "references/recursion/ch3/ref-81-wesolowski-vdf.pdf": {
+    "mtime": 1788103015.0988946,
+    "seen": 1788107981.1291757,
+    "ast_hash": "9d9dba84d002fa50cd402f61dba607f2",
+    "semantic_hash": "9d9dba84d002fa50cd402f61dba607f2"
+  },
+  "references/recursion/ch3/ref-87-deco.pdf": {
+    "mtime": 1788103015.1028948,
+    "seen": 1788107981.1291764,
+    "ast_hash": "633104d6883a9da43122e32b68501124",
+    "semantic_hash": "633104d6883a9da43122e32b68501124"
+  },
+  "references/recursion/ch3/ref-88-provisions.pdf": {
+    "mtime": 1788103015.1068947,
+    "seen": 1788107981.1291769,
+    "ast_hash": "1f102752a8a2b7f80018d1be438c374e",
+    "semantic_hash": "1f102752a8a2b7f80018d1be438c374e"
+  },
+  "references/recursion/ch3/ref-90-zexe.pdf": {
+    "mtime": 1788103015.1108947,
+    "seen": 1788107981.1291773,
+    "ast_hash": "4856a39ae61ab5ab868d39aebba2f2e8",
+    "semantic_hash": "4856a39ae61ab5ab868d39aebba2f2e8"
+  },
+  "references/snowball/book/ref-066-quadratic-span-programs-and-succinct-nizks-witho.pdf": {
+    "mtime": 1788103015.1217701,
+    "seen": 1788107981.129178,
+    "ast_hash": "608443e3d2d592f707fcc940535326af",
+    "semantic_hash": "608443e3d2d592f707fcc940535326af"
+  },
+  "references/snowball/book/ref-067-pinocchio-nearly-practical-verifiable-computati.pdf": {
+    "mtime": 1788103015.123018,
+    "seen": 1788107981.1291785,
+    "ast_hash": "d79d278b819b674f20003a3568dd11de",
+    "semantic_hash": "d79d278b819b674f20003a3568dd11de"
+  },
+  "references/snowball/book/ref-068-marlin-preprocessing-zksnarks-with-universal-an.pdf": {
+    "mtime": 1788103015.123018,
+    "seen": 1788107981.1291792,
+    "ast_hash": "cddd31d416dab2d075ec606f6fc5d19b",
+    "semantic_hash": "cddd31d416dab2d075ec606f6fc5d19b"
+  },
+  "references/snowball/book/ref-069-plonk-permutations-over-lagrange-bases-for-oecu.pdf": {
+    "mtime": 1788103015.123018,
+    "seen": 1788107981.1291797,
+    "ast_hash": "32aab72504ba4fadcaacec229c32d35f",
+    "semantic_hash": "32aab72504ba4fadcaacec229c32d35f"
+  },
+  "references/snowball/book/ref-070-snarks-for-c-verifying-program-executions-succi.pdf": {
+    "mtime": 1788103015.1348946,
+    "seen": 1788107981.12918,
+    "ast_hash": "7bbf596ff9607b35da521f43dabf881b",
+    "semantic_hash": "7bbf596ff9607b35da521f43dabf881b"
+  },
+  "references/snowball/book/ref-071-succinct-non-interactive-zero-knowledge-for-a-vo.pdf": {
+    "mtime": 1788103015.1388948,
+    "seen": 1788107981.1291804,
+    "ast_hash": "27b5af8361f3b664e1e265e869d8274d",
+    "semantic_hash": "27b5af8361f3b664e1e265e869d8274d"
+  },
+  "references/snowball/book/ref-072-zerocash-decentralized-anonymous-payments-from.pdf": {
+    "mtime": 1788103015.1428947,
+    "seen": 1788107981.1291811,
+    "ast_hash": "5e2418aee3dee792885c9f2793ccccfa",
+    "semantic_hash": "5e2418aee3dee792885c9f2793ccccfa"
+  },
+  "references/snowball/book/ref-073-ligero-lightweight-sublinear-arguments-without.pdf": {
+    "mtime": 1788103015.1487093,
+    "seen": 1788107981.1291814,
+    "ast_hash": "8cb0643fc5664399881862ae47844b91",
+    "semantic_hash": "8cb0643fc5664399881862ae47844b91"
+  },
+  "references/snowball/book/ref-074-from-extractable-collision-resistance-to-succinc.pdf": {
+    "mtime": 1788103015.1487093,
+    "seen": 1788107981.1291819,
+    "ast_hash": "78994a1ae6eb1012c8bb64aa56cc025e",
+    "semantic_hash": "78994a1ae6eb1012c8bb64aa56cc025e"
+  },
+  "references/snowball/book/ref-075-efficient-ram-and-control-flow-in-verifiable-out.pdf": {
+    "mtime": 1788103015.1487093,
+    "seen": 1788107981.1291826,
+    "ast_hash": "8e439fd938e180d2a45024d70fa3b8c6",
+    "semantic_hash": "8e439fd938e180d2a45024d70fa3b8c6"
+  },
+  "references/snowball/book/ref-076-efficient-zero-knowledge-arguments-for-arithmeti.pdf": {
+    "mtime": 1788103015.1538546,
+    "seen": 1788107981.129183,
+    "ast_hash": "2d6853a48d5ce8fd4e882d92a40b8081",
+    "semantic_hash": "2d6853a48d5ce8fd4e882d92a40b8081"
+  },
+  "references/snowball/book/ref-077-separating-succinct-non-interactive-arguments-fr.pdf": {
+    "mtime": 1788103015.1548946,
+    "seen": 1788107981.1291835,
+    "ast_hash": "bf17eaf5843339fe44cbb46567c12145",
+    "semantic_hash": "bf17eaf5843339fe44cbb46567c12145"
+  },
+  "references/snowball/book/ref-079-interactive-oracle-proofs.pdf": {
+    "mtime": 1788103015.1708946,
+    "seen": 1788107981.129184,
+    "ast_hash": "6d6313905685840c93cb487ed2cd7bd8",
+    "semantic_hash": "6d6313905685840c93cb487ed2cd7bd8"
+  },
+  "references/snowball/book/ref-080-fast-reed-solomon-interactive-oracle-proofs-of-p.pdf": {
+    "mtime": 1788103015.1748948,
+    "seen": 1788107981.1291847,
+    "ast_hash": "6fbabe789fe35592b49fe54ec0dda4b5",
+    "semantic_hash": "6fbabe789fe35592b49fe54ec0dda4b5"
+  },
+  "references/snowball/book/ref-081-libra-succinct-zero-knowledge-proofs-with-optim.pdf": {
+    "mtime": 1788103015.1748948,
+    "seen": 1788107981.1291852,
+    "ast_hash": "25313e4e402852ebfee76e3d303284e0",
+    "semantic_hash": "25313e4e402852ebfee76e3d303284e0"
+  },
+  "references/snowball/book/ref-082-cairo-a-turing-complete-stark-friendly-cpu-arc.pdf": {
+    "mtime": 1788103015.1788948,
+    "seen": 1788107981.1291857,
+    "ast_hash": "88a2c65a376a49ff915df4f8009eca0d",
+    "semantic_hash": "88a2c65a376a49ff915df4f8009eca0d"
+  },
+  "references/snowball/book/ref-084-hyperplonk-plonk-with-linear-time-prover-and-hi.pdf": {
+    "mtime": 1788103015.1828947,
+    "seen": 1788107981.1291866,
+    "ast_hash": "d1c5da7bffb2bcae537b157d53c87fec",
+    "semantic_hash": "d1c5da7bffb2bcae537b157d53c87fec"
+  },
+  "references/snowball/book/ref-086-succinct-non-interactive-arguments-via-linear-in.pdf": {
+    "mtime": 1788103015.1828947,
+    "seen": 1788107981.1291873,
+    "ast_hash": "0590e088b2821f25aef7c95af72011ad",
+    "semantic_hash": "0590e088b2821f25aef7c95af72011ad"
+  },
+  "references/snowball/book/ref-087-aurora-transparent-succinct-arguments-for-r1cs.pdf": {
+    "mtime": 1788103015.1868947,
+    "seen": 1788107981.1291878,
+    "ast_hash": "3e653cfe75e44ab2d79c5d1e5453a127",
+    "semantic_hash": "3e653cfe75e44ab2d79c5d1e5453a127"
+  },
+  "references/snowball/book/ref-088-gemini-elastic-snarks-for-diverse-environments.pdf": {
+    "mtime": 1788103015.1948948,
+    "seen": 1788107981.1291883,
+    "ast_hash": "5dd0ea5abdd8f23c44764aafbc5a86c1",
+    "semantic_hash": "5dd0ea5abdd8f23c44764aafbc5a86c1"
+  },
+  "references/snowball/book/ref-089-plonk-permutations-over-lagrange-bases-for-oecu.pdf": {
+    "mtime": 1788103193.85608,
+    "seen": 1788107981.1291888,
+    "ast_hash": "32aab72504ba4fadcaacec229c32d35f",
+    "semantic_hash": "32aab72504ba4fadcaacec229c32d35f"
+  },
+  "references/snowball/book/ref-090-short-pairing-based-non-interactive-zero-knowled.pdf": {
+    "mtime": 1788103015.1988947,
+    "seen": 1788107981.1291895,
+    "ast_hash": "d38dfebb1d6401aa12c82c5c1ed3505f",
+    "semantic_hash": "d38dfebb1d6401aa12c82c5c1ed3505f"
+  },
+  "references/snowball/book/ref-091-transparent-snarks-from-dark-compilers.pdf": {
+    "mtime": 1788103015.2092562,
+    "seen": 1788107981.12919,
+    "ast_hash": "499bc89bae25fe79eae2a65c3d8c7832",
+    "semantic_hash": "499bc89bae25fe79eae2a65c3d8c7832"
+  },
+  "references/snowball/book/ref-092-dory-efficient-transparent-arguments-for-gener.pdf": {
+    "mtime": 1788103015.2108948,
+    "seen": 1788107981.1291904,
+    "ast_hash": "1f7b897cff182f09c8fc99b586011125",
+    "semantic_hash": "1f7b897cff182f09c8fc99b586011125"
+  },
+  "references/snowball/book/ref-093-verifying-computations-with-state.pdf": {
+    "mtime": 1788103015.2148948,
+    "seen": 1788107981.129191,
+    "ast_hash": "eeadced19938fc8bbd6ccdbfb780ed5a",
+    "semantic_hash": "eeadced19938fc8bbd6ccdbfb780ed5a"
+  },
+  "references/snowball/book/ref-095-halo-infinite-recursive-zk-snarks-from-any-addi.pdf": {
+    "mtime": 1788103015.2228947,
+    "seen": 1788107981.1291916,
+    "ast_hash": "ec5904c1ee836bb976e486a6be660571",
+    "semantic_hash": "ec5904c1ee836bb976e486a6be660571"
+  },
+  "references/snowball/book/ref-096-orion-zero-knowledge-proof-with-linear-prover-t.pdf": {
+    "mtime": 1788103015.2268946,
+    "seen": 1788107981.1291919,
+    "ast_hash": "445d2a80e700244c7fcfdfd7072e038a",
+    "semantic_hash": "445d2a80e700244c7fcfdfd7072e038a"
+  },
+  "references/snowball/book/ref-097-progression-free-sets-and-sublinear-pairing-base.pdf": {
+    "mtime": 1788103015.2308948,
+    "seen": 1788107981.1291924,
+    "ast_hash": "7de50f8c07bd97304fce1b6ddd725a7a",
+    "semantic_hash": "7de50f8c07bd97304fce1b6ddd725a7a"
+  },
+  "references/snowball/book/ref-099-plookup-a-simplified-polynomial-protocol-for-lo.pdf": {
+    "mtime": 1788103015.2348948,
+    "seen": 1788107981.129193,
+    "ast_hash": "5a5f6a757b0ac0d50919ba82ef06653a",
+    "semantic_hash": "5a5f6a757b0ac0d50919ba82ef06653a"
+  },
+  "references/snowball/book/ref-100-scalable-zero-knowledge-with-no-trusted-setup.pdf": {
+    "mtime": 1788103015.2388947,
+    "seen": 1788107981.1291935,
+    "ast_hash": "1b45a0ee6a45ef151e80f31262a8d15c",
+    "semantic_hash": "1b45a0ee6a45ef151e80f31262a8d15c"
+  },
+  "references/snowball/book/ref-101-signatures-of-correct-computation.pdf": {
+    "mtime": 1788103015.2428946,
+    "seen": 1788107981.129194,
+    "ast_hash": "6e2c3b68fc211e41d5fb35cf45d9c03f",
+    "semantic_hash": "6e2c3b68fc211e41d5fb35cf45d9c03f"
+  },
+  "references/snowball/book/ref-104-cluster-computing-in-zero-knowledge.pdf": {
+    "mtime": 1788103015.2748947,
+    "seen": 1788107981.1291943,
+    "ast_hash": "ef5d3ba86a9fd653511d71d46b5fadbc",
+    "semantic_hash": "ef5d3ba86a9fd653511d71d46b5fadbc"
+  },
+  "references/snowball/book/ref-105-updatable-and-universal-common-reference-strings.pdf": {
+    "mtime": 1788103015.2788947,
+    "seen": 1788107981.1291947,
+    "ast_hash": "fafdcce68fc6ca063f0b37a74a9a1377",
+    "semantic_hash": "fafdcce68fc6ca063f0b37a74a9a1377"
+  },
+  "references/snowball/book/ref-106-a-taxonomy-of-pairing-friendly-elliptic-curves.pdf": {
+    "mtime": 1788103015.2828946,
+    "seen": 1788107981.1291952,
+    "ast_hash": "09ac31189b509177f98f739434dc2001",
+    "semantic_hash": "09ac31189b509177f98f739434dc2001"
+  },
+  "references/snowball/book/ref-107-caulk-lookup-arguments-in-sublinear-time.pdf": {
+    "mtime": 1788103015.2868948,
+    "seen": 1788107981.1291957,
+    "ast_hash": "e25935e9464701b73f63c8f68597b45b",
+    "semantic_hash": "e25935e9464701b73f63c8f68597b45b"
+  },
+  "references/snowball/book/ref-108-dizk-a-distributed-zero-knowledge-proof-system.pdf": {
+    "mtime": 1788103015.2908947,
+    "seen": 1788107981.1291964,
+    "ast_hash": "c3cdc654da56cb58a299c8b6d14450a8",
+    "semantic_hash": "c3cdc654da56cb58a299c8b6d14450a8"
+  },
+  "references/snowball/book/ref-109-hawk-the-blockchain-model-of-cryptography-and-p.pdf": {
+    "mtime": 1788103015.2988946,
+    "seen": 1788107981.129197,
+    "ast_hash": "2ff6285e0797db8e8c13039636af580b",
+    "semantic_hash": "2ff6285e0797db8e8c13039636af580b"
+  },
+  "references/snowball/book/ref-111-a-multi-party-protocol-for-constructing-the-publ.pdf": {
+    "mtime": 1788103015.2988946,
+    "seen": 1788107981.1291974,
+    "ast_hash": "93b95521d26cbf074a3f2e06936d1741",
+    "semantic_hash": "93b95521d26cbf074a3f2e06936d1741"
+  },
+  "references/snowball/book/ref-112-geppetto-versatile-verifiable-computation.pdf": {
+    "mtime": 1788103015.3028948,
+    "seen": 1788107981.1291978,
+    "ast_hash": "2aecae1da9db8a33e670a6fbcb850430",
+    "semantic_hash": "2aecae1da9db8a33e670a6fbcb850430"
+  },
+  "references/snowball/book/ref-113-polynomial-commitments.pdf": {
+    "mtime": 1788103015.3068948,
+    "seen": 1788107981.1291983,
+    "ast_hash": "8fe2159fd052ba5cb2f5421f4a2f0130",
+    "semantic_hash": "8fe2159fd052ba5cb2f5421f4a2f0130"
+  },
+  "references/snowball/book/ref-114-proofs-for-inner-pairing-products-and-applicatio.pdf": {
+    "mtime": 1788103015.3108947,
+    "seen": 1788107981.1291988,
+    "ast_hash": "386bdd2cb74a20cc77fc7bf5abd31b7d",
+    "semantic_hash": "386bdd2cb74a20cc77fc7bf5abd31b7d"
+  },
+  "references/snowball/book/ref-115-scaling-verifiable-computation-using-efficient-s.pdf": {
+    "mtime": 1788103015.3188946,
+    "seen": 1788107981.1291993,
+    "ast_hash": "f115f80c255c645cb7155200dbc81ff8",
+    "semantic_hash": "f115f80c255c645cb7155200dbc81ff8"
+  },
+  "references/snowball/book/ref-118-sonic-zero-knowledge-snarks-from-linear-size-un.pdf": {
+    "mtime": 1788103015.3228948,
+    "seen": 1788107981.1291995,
+    "ast_hash": "563bf87e92603d79a5e5b55fd9ddb104",
+    "semantic_hash": "563bf87e92603d79a5e5b55fd9ddb104"
+  },
+  "references/snowball/book/ref-119-zk-img-attested-images-via-zero-knowledge-proof.pdf": {
+    "mtime": 1788103015.3397617,
+    "seen": 1788107981.1292002,
+    "ast_hash": "c940363e86c7298948586bc22bb6beaf",
+    "semantic_hash": "c940363e86c7298948586bc22bb6beaf"
+  },
+  "references/snowball/book/ref-120-adsnark-nearly-practical-and-privacy-preserving.pdf": {
+    "mtime": 1788103015.3413317,
+    "seen": 1788107981.1292007,
+    "ast_hash": "d4b108857b34c9fe3daa6b443b5c6092",
+    "semantic_hash": "d4b108857b34c9fe3daa6b443b5c6092"
+  },
+  "references/snowball/book/ref-121-basefold-efficient-field-agnostic-polynomial-co.pdf": {
+    "mtime": 1788103015.3428948,
+    "seen": 1788107981.1292012,
+    "ast_hash": "a488533dc5274e82c1bb759099ca3b90",
+    "semantic_hash": "a488533dc5274e82c1bb759099ca3b90"
+  },
+  "references/snowball/book/ref-122-circ-compiler-infrastructure-for-proof-systems.pdf": {
+    "mtime": 1788103015.3468947,
+    "seen": 1788107981.1292017,
+    "ast_hash": "e8948e566287ec50d09a3b12417aba06",
+    "semantic_hash": "e8948e566287ec50d09a3b12417aba06"
+  },
+  "references/snowball/book/ref-123-constructing-elliptic-curves-with-prescribed-emb.pdf": {
+    "mtime": 1788103015.3468947,
+    "seen": 1788107981.1292021,
+    "ast_hash": "eee54bd687db79dec956774c48dc27f6",
+    "semantic_hash": "eee54bd687db79dec956774c48dc27f6"
+  },
+  "references/snowball/book/ref-124-efficient-non-interactive-proof-systems-for-bili.pdf": {
+    "mtime": 1788103015.3508947,
+    "seen": 1788107981.1292026,
+    "ast_hash": "a2af8da24541ba75425d913d2d4636e8",
+    "semantic_hash": "a2af8da24541ba75425d913d2d4636e8"
+  },
+  "references/snowball/book/ref-126-fiat-shamir-transformation-of-multi-round-intera.pdf": {
+    "mtime": 1788103015.3508947,
+    "seen": 1788107981.129203,
+    "ast_hash": "c6a750149145cfd1985fa6fbcb8ed2e2",
+    "semantic_hash": "c6a750149145cfd1985fa6fbcb8ed2e2"
+  },
+  "references/snowball/book/ref-133-pairing-friendly-elliptic-curves-of-prime-order.pdf": {
+    "mtime": 1788103015.3548946,
+    "seen": 1788107981.1292038,
+    "ast_hash": "942f5b3a4a1469c2db3022ba7e11ace6",
+    "semantic_hash": "942f5b3a4a1469c2db3022ba7e11ace6"
+  },
+  "references/snowball/book/ref-134-pairings-for-cryptographers.pdf": {
+    "mtime": 1788103015.3548946,
+    "seen": 1788107981.1292045,
+    "ast_hash": "02aa85be2fb685c60cef16aa731e1669",
+    "semantic_hash": "02aa85be2fb685c60cef16aa731e1669"
+  },
+  "references/snowball/book/ref-135-practical-delegation-of-computation-using-multip.pdf": {
+    "mtime": 1788103015.3548946,
+    "seen": 1788107981.129205,
+    "ast_hash": "3627d6fd9682b64fd1250c82574bf045",
+    "semantic_hash": "3627d6fd9682b64fd1250c82574bf045"
+  },
+  "references/snowball/book/ref-137-scalable-transparent-and-post-quantum-secure-c.pdf": {
+    "mtime": 1788103015.3588948,
+    "seen": 1788107981.1292055,
+    "ast_hash": "1b45a0ee6a45ef151e80f31262a8d15c",
+    "semantic_hash": "1b45a0ee6a45ef151e80f31262a8d15c"
+  },
+  "references/snowball/book/ref-138-square-span-programs-with-applications-to-succin.pdf": {
+    "mtime": 1788103015.3588948,
+    "seen": 1788107981.129206,
+    "ast_hash": "1fbeb672223298c96c64c7b56a177ab4",
+    "semantic_hash": "1fbeb672223298c96c64c7b56a177ab4"
+  },
+  "references/snowball/book/ref-139-the-algebraic-group-model-and-its-applications.pdf": {
+    "mtime": 1788103015.3628948,
+    "seen": 1788107981.1292064,
+    "ast_hash": "94f3e80390024db5e9a795b741639d9d",
+    "semantic_hash": "94f3e80390024db5e9a795b741639d9d"
+  },
+  "references/snowball/book/ref-143-a-hybrid-architecture-for-verifiable-computation.pdf": {
+    "mtime": 1788103015.3668947,
+    "seen": 1788107981.1292071,
+    "ast_hash": "fbc690a0d7693f0b3d4b5f75f919b308",
+    "semantic_hash": "fbc690a0d7693f0b3d4b5f75f919b308"
+  },
+  "references/snowball/book/ref-145-a-zero-knowledge-version-of-vsql.pdf": {
+    "mtime": 1788103015.3668947,
+    "seen": 1788107981.1292076,
+    "ast_hash": "b8ebd8007d10bfd03e577e51636b48ef",
+    "semantic_hash": "b8ebd8007d10bfd03e577e51636b48ef"
+  },
+  "references/snowball/book/ref-147-an-algebraic-framework-for-universal-and-updatab.pdf": {
+    "mtime": 1788103015.3708947,
+    "seen": 1788107981.129208,
+    "ast_hash": "4d2799beb651de134f7c09566d93313e",
+    "semantic_hash": "4d2799beb651de134f7c09566d93313e"
+  },
+  "references/snowball/book/ref-148-arya-nearly-linear-time-zero-knowledge-proofs-f.pdf": {
+    "mtime": 1788103015.3748946,
+    "seen": 1788107981.1292086,
+    "ast_hash": "8d4ce472808174835d09a05bddd276f3",
+    "semantic_hash": "8d4ce472808174835d09a05bddd276f3"
+  },
+  "references/snowball/book/ref-149-bn254-pairing-friendly-elliptic-curves-for-snark.pdf": {
+    "mtime": 1788103015.3748946,
+    "seen": 1788107981.1292088,
+    "ast_hash": "942f5b3a4a1469c2db3022ba7e11ace6",
+    "semantic_hash": "942f5b3a4a1469c2db3022ba7e11ace6"
+  },
+  "references/snowball/hop2/ref-150-eprint-2019-1021.pdf": {
+    "mtime": 1788103516.5294714,
+    "seen": 1788107981.1292093,
+    "ast_hash": "c5667cc29446613b21e9f162f011530a",
+    "semantic_hash": "c5667cc29446613b21e9f162f011530a"
+  },
+  "references/snowball/hop2/ref-153-eprint-2019-762.pdf": {
+    "mtime": 1788103522.193798,
+    "seen": 1788107981.1292098,
+    "ast_hash": "5b5de43bbb91b91298c726232b9bc1ec",
+    "semantic_hash": "5b5de43bbb91b91298c726232b9bc1ec"
+  },
+  "references/snowball/hop2/ref-154-eprint-2022-1576.pdf": {
+    "mtime": 1788103523.8409693,
+    "seen": 1788107981.1292105,
+    "ast_hash": "7562ae4f164a45f40145861f0121200a",
+    "semantic_hash": "7562ae4f164a45f40145861f0121200a"
+  },
+  "references/snowball/hop2/ref-166-doi-10-6028-nist-fips-180-4.pdf": {
+    "mtime": 1788103556.618889,
+    "seen": 1788107981.129211,
+    "ast_hash": "e2726c121bdb725e83cab7c0166438c0",
+    "semantic_hash": "e2726c121bdb725e83cab7c0166438c0"
+  },
+  "references/snowball/hop2/ref-167-doi-10-6028-nist-sp-800-57pt1r5.pdf": {
+    "mtime": 1788103561.5403306,
+    "seen": 1788107981.1292112,
+    "ast_hash": "7ef9de221be3c168cd441bfd0e5a6807",
+    "semantic_hash": "7ef9de221be3c168cd441bfd0e5a6807"
+  },
+  "references/snowball/hop2/ref-169-eprint-2021-582.pdf": {
+    "mtime": 1788103564.6210494,
+    "seen": 1788107981.1292117,
+    "ast_hash": "4a76f0d4970dcf12829ebf0364e3a3dd",
+    "semantic_hash": "4a76f0d4970dcf12829ebf0364e3a3dd"
+  },
+  "references/snowball/hop2/ref-170-eprint-2022-1530.pdf": {
+    "mtime": 1788103566.1648116,
+    "seen": 1788107981.1292121,
+    "ast_hash": "ad6624066d19b8c79ab7d2963dd80582",
+    "semantic_hash": "ad6624066d19b8c79ab7d2963dd80582"
+  },
+  "references/snowball/hop2/ref-171-eprint-2022-1758.pdf": {
+    "mtime": 1788103567.7108889,
+    "seen": 1788107981.1292126,
+    "ast_hash": "09362afe7c8cb89a46e502515f0d3a39",
+    "semantic_hash": "09362afe7c8cb89a46e502515f0d3a39"
+  },
+  "references/snowball/hop2/ref-172-eprint-2023-846.pdf": {
+    "mtime": 1788103569.2992902,
+    "seen": 1788107981.129213,
+    "ast_hash": "98193cfc5bb8ff923f60b41504fd5077",
+    "semantic_hash": "98193cfc5bb8ff923f60b41504fd5077"
+  },
+  "references/snowball/hop2/ref-173-eprint-2023-969.pdf": {
+    "mtime": 1788103570.8830853,
+    "seen": 1788107981.1292133,
+    "ast_hash": "6318a4edd85d95527585be6b6aa2b86a",
+    "semantic_hash": "6318a4edd85d95527585be6b6aa2b86a"
+  },
+  "references/snowball/hop2/ref-174-eprint-2024-1731.pdf": {
+    "mtime": 1788103572.4561644,
+    "seen": 1788107981.129214,
+    "ast_hash": "e0d7d69f247f333a5dd39e4cc77febb3",
+    "semantic_hash": "e0d7d69f247f333a5dd39e4cc77febb3"
+  },
+  "references/snowball/hop2/ref-175-eprint-2024-504.pdf": {
+    "mtime": 1788103574.0294847,
+    "seen": 1788107981.1292145,
+    "ast_hash": "d0f07708b20d07a2ffd986a7953b4f1f",
+    "semantic_hash": "d0f07708b20d07a2ffd986a7953b4f1f"
+  },
+  "references/snowball/hop2/ref-176-arxiv-1711-04422.pdf": {
+    "mtime": 1788103575.5309963,
+    "seen": 1788107981.129215,
+    "ast_hash": "ed3700ea8a65f18e03cc5734ad2aec0e",
+    "semantic_hash": "ed3700ea8a65f18e03cc5734ad2aec0e"
+  },
+  "references/snowball/hop2/ref-177-arxiv-2505-08114.pdf": {
+    "mtime": 1788103577.0304952,
+    "seen": 1788107981.1292155,
+    "ast_hash": "2d568a3425ac5c4eb9b57caa8062e93c",
+    "semantic_hash": "2d568a3425ac5c4eb9b57caa8062e93c"
+  },
+  "references/snowball/hop2/ref-179-www-risczero-com-proof-system-in-detail-pdf.pdf": {
+    "mtime": 1788103581.4852376,
+    "seen": 1788107981.129216,
+    "ast_hash": "5c9f038ff0723fead3e711739cf10a70",
+    "semantic_hash": "5c9f038ff0723fead3e711739cf10a70"
+  },
+  "references/snowball/hop2/ref-199-doi-10-6028-nist-fips-186-5.pdf": {
+    "mtime": 1788103630.5954356,
+    "seen": 1788107981.1292164,
+    "ast_hash": "c74045430f154d8b913ad72b2b1ff474",
+    "semantic_hash": "c74045430f154d8b913ad72b2b1ff474"
+  },
+  "references/snowball/hop2/ref-200-doi-10-6028-nist-fips-202.pdf": {
+    "mtime": 1788103632.756639,
+    "seen": 1788107981.129217,
+    "ast_hash": "e57f5a099c45824f824f623262118b55",
+    "semantic_hash": "e57f5a099c45824f824f623262118b55"
+  },
+  "references/snowball/hop2/ref-201-doi-10-6028-nist-fips-203.pdf": {
+    "mtime": 1788103634.7140543,
+    "seen": 1788107981.1292176,
+    "ast_hash": "c530bf4e6337e1a09b7e2a450c556c36",
+    "semantic_hash": "c530bf4e6337e1a09b7e2a450c556c36"
+  },
+  "references/snowball/hop2/ref-202-doi-10-6028-nist-fips-204.pdf": {
+    "mtime": 1788103637.4296594,
+    "seen": 1788107981.129218,
+    "ast_hash": "4c53612c494078b541538c2c92a95348",
+    "semantic_hash": "4c53612c494078b541538c2c92a95348"
+  },
+  "references/snowball/hop2/ref-203-doi-10-6028-nist-ir-8413-upd1.pdf": {
+    "mtime": 1788103640.1193392,
+    "seen": 1788107981.1292186,
+    "ast_hash": "50150e40ab09bca3d2f5e75c0af9180d",
+    "semantic_hash": "50150e40ab09bca3d2f5e75c0af9180d"
+  },
+  "references/snowball/hop2/ref-204-doi-10-6028-nist-sp-800-185.pdf": {
+    "mtime": 1788103642.5065463,
+    "seen": 1788107981.1292193,
+    "ast_hash": "db708205dc864304a6a8de1917a8c4b3",
+    "semantic_hash": "db708205dc864304a6a8de1917a8c4b3"
+  },
+  "references/snowball/hop2/ref-205-doi-10-6028-nist-sp-800-56ar3.pdf": {
+    "mtime": 1788103645.3396368,
+    "seen": 1788107981.1292198,
+    "ast_hash": "8b004f29361955ffc3c23d994f259edf",
+    "semantic_hash": "8b004f29361955ffc3c23d994f259edf"
+  },
+  "references/snowball/hop2/ref-206-doi-10-6028-nist-sp-800-56br2.pdf": {
+    "mtime": 1788103648.0791924,
+    "seen": 1788107981.1292202,
+    "ast_hash": "f9ffdf55874895ee85e737dc05f21054",
+    "semantic_hash": "f9ffdf55874895ee85e737dc05f21054"
+  },
+  "references/snowball/hop2/ref-207-doi-10-6028-nist-sp-800-90b.pdf": {
+    "mtime": 1788103650.660509,
+    "seen": 1788107981.129221,
+    "ast_hash": "b57f48a9687cb8f65e823cb53f156395",
+    "semantic_hash": "b57f48a9687cb8f65e823cb53f156395"
+  },
+  "references/snowball/hop2/ref-214-eprint-2005-467.pdf": {
+    "mtime": 1788103663.162455,
+    "seen": 1788107981.1292214,
+    "ast_hash": "9c896c4d3c4de2d0cd4d7a3b88d5d76c",
+    "semantic_hash": "9c896c4d3c4de2d0cd4d7a3b88d5d76c"
+  },
+  "references/snowball/hop2/ref-215-eprint-2007-286.pdf": {
+    "mtime": 1788103664.6666312,
+    "seen": 1788107981.129222,
+    "ast_hash": "b93f75f48f7996717dd66b926ca78e5c",
+    "semantic_hash": "b93f75f48f7996717dd66b926ca78e5c"
+  },
+  "references/snowball/hop2/ref-216-eprint-2012-232.pdf": {
+    "mtime": 1788103666.1731544,
+    "seen": 1788107981.1292224,
+    "ast_hash": "b44d3242dc00ff24b4e0d252ce030419",
+    "semantic_hash": "b44d3242dc00ff24b4e0d252ce030419"
+  },
+  "references/snowball/hop2/ref-217-eprint-2012-598.pdf": {
+    "mtime": 1788103667.7491744,
+    "seen": 1788107981.1292226,
+    "ast_hash": "395c003ad732252524fd503e6e4d9e87",
+    "semantic_hash": "395c003ad732252524fd503e6e4d9e87"
+  },
+  "references/snowball/hop2/ref-218-eprint-2013-229.pdf": {
+    "mtime": 1788103669.2855685,
+    "seen": 1788107981.1292233,
+    "ast_hash": "6383111452167dade09db410e5c14697",
+    "semantic_hash": "6383111452167dade09db410e5c14697"
+  },
+  "references/snowball/hop2/ref-219-eprint-2013-407.pdf": {
+    "mtime": 1788103670.8393457,
+    "seen": 1788107981.1292238,
+    "ast_hash": "ef5bb88cc534c96d7070050a5f577800",
+    "semantic_hash": "ef5bb88cc534c96d7070050a5f577800"
+  },
+  "references/snowball/hop2/ref-220-eprint-2014-300.pdf": {
+    "mtime": 1788103672.3809135,
+    "seen": 1788107981.1292245,
+    "ast_hash": "891b48f4f8c1d5a6a65fc7c0c86805dc",
+    "semantic_hash": "891b48f4f8c1d5a6a65fc7c0c86805dc"
+  },
+  "references/snowball/hop2/ref-221-eprint-2014-595.pdf": {
+    "mtime": 1788103674.0189948,
+    "seen": 1788107981.129225,
+    "ast_hash": "ce1a867ed17756421da2a171d190a9dd",
+    "semantic_hash": "ce1a867ed17756421da2a171d190a9dd"
+  },
+  "references/snowball/hop2/ref-223-eprint-2015-046.pdf": {
+    "mtime": 1788103677.111521,
+    "seen": 1788107981.1292257,
+    "ast_hash": "29a8490b6a89e9f592e001a120a7749c",
+    "semantic_hash": "29a8490b6a89e9f592e001a120a7749c"
+  },
+  "references/snowball/hop2/ref-224-eprint-2016-1102.pdf": {
+    "mtime": 1788103678.6702073,
+    "seen": 1788107981.1292262,
+    "ast_hash": "ea1a4ab3ae9689f9fb240e910d939dea",
+    "semantic_hash": "ea1a4ab3ae9689f9fb240e910d939dea"
+  },
+  "references/snowball/hop2/ref-225-eprint-2016-403.pdf": {
+    "mtime": 1788103680.184609,
+    "seen": 1788107981.1292267,
+    "ast_hash": "6cec83e78cb8f73239c2e779ba53072c",
+    "semantic_hash": "6cec83e78cb8f73239c2e779ba53072c"
+  },
+  "references/snowball/hop2/ref-227-eprint-2017-212.pdf": {
+    "mtime": 1788103683.4235406,
+    "seen": 1788107981.1292279,
+    "ast_hash": "341b38fb31009c8bc0f27ab989075bf6",
+    "semantic_hash": "341b38fb31009c8bc0f27ab989075bf6"
+  },
+  "references/snowball/hop2/ref-228-eprint-2017-334.pdf": {
+    "mtime": 1788103685.0516605,
+    "seen": 1788107981.1292284,
+    "ast_hash": "8b28941e55494989bc5a4783881740e3",
+    "semantic_hash": "8b28941e55494989bc5a4783881740e3"
+  },
+  "references/snowball/hop2/ref-229-eprint-2017-587.pdf": {
+    "mtime": 1788103686.6409266,
+    "seen": 1788107981.1292288,
+    "ast_hash": "27eaf1dcfdebf4b758914eff9b0068f6",
+    "semantic_hash": "27eaf1dcfdebf4b758914eff9b0068f6"
+  },
+  "references/snowball/hop2/ref-230-eprint-2017-872.pdf": {
+    "mtime": 1788103688.2174566,
+    "seen": 1788107981.1292293,
+    "ast_hash": "a0c806fc94743bc4bdac11076db79400",
+    "semantic_hash": "a0c806fc94743bc4bdac11076db79400"
+  },
+  "references/snowball/hop2/ref-232-eprint-2019-065.pdf": {
+    "mtime": 1788103691.285895,
+    "seen": 1788107981.1292298,
+    "ast_hash": "80ac70d3247a238f52d9db511479c339",
+    "semantic_hash": "80ac70d3247a238f52d9db511479c339"
+  },
+  "references/snowball/hop2/ref-233-eprint-2019-1076.pdf": {
+    "mtime": 1788103694.212848,
+    "seen": 1788107981.1292303,
+    "ast_hash": "8bb737d31a653b2a003f436384316efe",
+    "semantic_hash": "8bb737d31a653b2a003f436384316efe"
+  },
+  "references/snowball/hop2/ref-234-eprint-2019-119.pdf": {
+    "mtime": 1788103695.758343,
+    "seen": 1788107981.1292307,
+    "ast_hash": "d3f564be649da73fcf024ea6be650fe8",
+    "semantic_hash": "d3f564be649da73fcf024ea6be650fe8"
+  },
+  "references/snowball/hop2/ref-235-eprint-2019-1270.pdf": {
+    "mtime": 1788103697.3563497,
+    "seen": 1788107981.1292315,
+    "ast_hash": "7ee60c3cdd2534911e42cbb037ef5422",
+    "semantic_hash": "7ee60c3cdd2534911e42cbb037ef5422"
+  },
+  "references/snowball/hop2/ref-236-eprint-2019-191.pdf": {
+    "mtime": 1788103698.895932,
+    "seen": 1788107981.129232,
+    "ast_hash": "593abb97aefdf698ca940022ad2ae0de",
+    "semantic_hash": "593abb97aefdf698ca940022ad2ae0de"
+  },
+  "references/snowball/hop2/ref-237-eprint-2019-550.pdf": {
+    "mtime": 1788103700.4781637,
+    "seen": 1788107981.1292324,
+    "ast_hash": "e66cbf339b77946942159344ecd5ee1c",
+    "semantic_hash": "e66cbf339b77946942159344ecd5ee1c"
+  },
+  "references/snowball/hop2/ref-238-eprint-2019-654.pdf": {
+    "mtime": 1788103702.061568,
+    "seen": 1788107981.129233,
+    "ast_hash": "0142d0b3ed87803ff9108f1197d3d957",
+    "semantic_hash": "0142d0b3ed87803ff9108f1197d3d957"
+  },
+  "references/snowball/hop2/ref-239-eprint-2020-1033.pdf": {
+    "mtime": 1788103703.6407194,
+    "seen": 1788107981.1292336,
+    "ast_hash": "ff343c2a99eb05f73aa128a750171ea0",
+    "semantic_hash": "ff343c2a99eb05f73aa128a750171ea0"
+  },
+  "references/snowball/hop2/ref-240-eprint-2020-190.pdf": {
+    "mtime": 1788103705.1664412,
+    "seen": 1788107981.129234,
+    "ast_hash": "5b8f370f34ecbfd5e80d890bf1ff56be",
+    "semantic_hash": "5b8f370f34ecbfd5e80d890bf1ff56be"
+  },
+  "references/snowball/hop2/ref-241-eprint-2020-195.pdf": {
+    "mtime": 1788103706.7209978,
+    "seen": 1788107981.129235,
+    "ast_hash": "f1772b4fbfe40374b8f47ae29ab9282d",
+    "semantic_hash": "f1772b4fbfe40374b8f47ae29ab9282d"
+  },
+  "references/snowball/hop2/ref-242-eprint-2020-300.pdf": {
+    "mtime": 1788103708.418795,
+    "seen": 1788107981.1292353,
+    "ast_hash": "57313bc97b9a68ec0c66fe5c68157ea1",
+    "semantic_hash": "57313bc97b9a68ec0c66fe5c68157ea1"
+  },
+  "references/snowball/hop2/ref-243-eprint-2020-352.pdf": {
+    "mtime": 1788103709.956693,
+    "seen": 1788107981.129236,
+    "ast_hash": "d0160438508f47682fdc4b879898b629",
+    "semantic_hash": "d0160438508f47682fdc4b879898b629"
+  },
+  "references/snowball/hop2/ref-244-eprint-2020-401.pdf": {
+    "mtime": 1788103711.539608,
+    "seen": 1788107981.1292365,
+    "ast_hash": "b6665b825949c24fab2c54b93bcc5126",
+    "semantic_hash": "b6665b825949c24fab2c54b93bcc5126"
+  },
+  "references/snowball/hop2/ref-245-eprint-2020-811.pdf": {
+    "mtime": 1788103713.12544,
+    "seen": 1788107981.129237,
+    "ast_hash": "36c9ab4ef00c7b6a8c8486a99eee9376",
+    "semantic_hash": "36c9ab4ef00c7b6a8c8486a99eee9376"
+  },
+  "references/snowball/hop2/ref-246-eprint-2021-1043.pdf": {
+    "mtime": 1788103714.717201,
+    "seen": 1788107981.1292377,
+    "ast_hash": "146a86697a72f5468aa9560830a26f5e",
+    "semantic_hash": "146a86697a72f5468aa9560830a26f5e"
+  },
+  "references/snowball/hop2/ref-247-eprint-2021-651.pdf": {
+    "mtime": 1788103716.4558651,
+    "seen": 1788107981.1292384,
+    "ast_hash": "ab0d1500198ebc333094883372884a51",
+    "semantic_hash": "ab0d1500198ebc333094883372884a51"
+  },
+  "references/snowball/hop2/ref-248-eprint-2021-930.pdf": {
+    "mtime": 1788103717.9980476,
+    "seen": 1788107981.1292386,
+    "ast_hash": "08c209b730252f2a9f3ce89c0de594fa",
+    "semantic_hash": "08c209b730252f2a9f3ce89c0de594fa"
+  },
+  "references/snowball/hop2/ref-249-eprint-2022-1216.pdf": {
+    "mtime": 1788103719.6018836,
+    "seen": 1788107981.129239,
+    "ast_hash": "6ca4f5205e44c3d9a0315deb3833a7dc",
+    "semantic_hash": "6ca4f5205e44c3d9a0315deb3833a7dc"
+  },
+  "references/snowball/hop2/ref-250-eprint-2022-1447.pdf": {
+    "mtime": 1788103721.1319387,
+    "seen": 1788107981.1292396,
+    "ast_hash": "4d288089816cdd0f0cf4d44434bb870b",
+    "semantic_hash": "4d288089816cdd0f0cf4d44434bb870b"
+  },
+  "references/snowball/hop2/ref-251-eprint-2022-1515.pdf": {
+    "mtime": 1788103722.7153232,
+    "seen": 1788107981.12924,
+    "ast_hash": "2fdf5254a658ff1ae0fa06a6f5ec172e",
+    "semantic_hash": "2fdf5254a658ff1ae0fa06a6f5ec172e"
+  },
+  "references/snowball/hop2/ref-252-eprint-2022-1542.pdf": {
+    "mtime": 1788103724.2924528,
+    "seen": 1788107981.1292405,
+    "ast_hash": "8e000e19bc5b8089f4585cbab9dbdb0f",
+    "semantic_hash": "8e000e19bc5b8089f4585cbab9dbdb0f"
+  },
+  "references/snowball/hop2/ref-253-eprint-2022-1565.pdf": {
+    "mtime": 1788103725.8788118,
+    "seen": 1788107981.129241,
+    "ast_hash": "8a8d30a5d9d29d33765961145fdff50d",
+    "semantic_hash": "8a8d30a5d9d29d33765961145fdff50d"
+  },
+  "references/snowball/hop2/ref-254-eprint-2022-1763.pdf": {
+    "mtime": 1788103727.4569511,
+    "seen": 1788107981.1292417,
+    "ast_hash": "8286201fa33210fc3959ca7d4c4ca7d5",
+    "semantic_hash": "8286201fa33210fc3959ca7d4c4ca7d5"
+  },
+  "references/snowball/hop2/ref-255-eprint-2022-802.pdf": {
+    "mtime": 1788103729.018553,
+    "seen": 1788107981.1292422,
+    "ast_hash": "2195d20b304959be62d19b02b1c86839",
+    "semantic_hash": "2195d20b304959be62d19b02b1c86839"
+  },
+  "references/snowball/hop2/ref-256-eprint-2022-957.pdf": {
+    "mtime": 1788103730.7356675,
+    "seen": 1788107981.1292427,
+    "ast_hash": "174baeb91d260ef7d2d55479d07d97db",
+    "semantic_hash": "174baeb91d260ef7d2d55479d07d97db"
+  },
+  "references/snowball/hop2/ref-257-eprint-2023-1106.pdf": {
+    "mtime": 1788103732.2948797,
+    "seen": 1788107981.1292431,
+    "ast_hash": "76d1c3ed24f45091bb7defb34d65b66a",
+    "semantic_hash": "76d1c3ed24f45091bb7defb34d65b66a"
+  },
+  "references/snowball/hop2/ref-258-eprint-2023-1192.pdf": {
+    "mtime": 1788103733.8951738,
+    "seen": 1788107981.1292436,
+    "ast_hash": "4d59f43a3c603eb213116c42e453b388",
+    "semantic_hash": "4d59f43a3c603eb213116c42e453b388"
+  },
+  "references/snowball/hop2/ref-259-eprint-2023-1284.pdf": {
+    "mtime": 1788103735.4494693,
+    "seen": 1788107981.1292443,
+    "ast_hash": "0d9c9dce62263617201533ed42b3b36d",
+    "semantic_hash": "0d9c9dce62263617201533ed42b3b36d"
+  },
+  "references/snowball/hop2/ref-260-eprint-2023-1469.pdf": {
+    "mtime": 1788103737.0390382,
+    "seen": 1788107981.129245,
+    "ast_hash": "bd3ab9b16e3f961c11ee997dc905f157",
+    "semantic_hash": "bd3ab9b16e3f961c11ee997dc905f157"
+  },
+  "references/snowball/hop2/ref-261-eprint-2023-1799.pdf": {
+    "mtime": 1788103738.5758798,
+    "seen": 1788107981.1292455,
+    "ast_hash": "c569b567b54026d1289422ff0e7430bb",
+    "semantic_hash": "c569b567b54026d1289422ff0e7430bb"
+  },
+  "references/snowball/hop2/ref-262-eprint-2023-273.pdf": {
+    "mtime": 1788103740.148918,
+    "seen": 1788107981.129246,
+    "ast_hash": "40ef275cb42a576d083bb696dbc7848a",
+    "semantic_hash": "40ef275cb42a576d083bb696dbc7848a"
+  },
+  "references/snowball/hop2/ref-263-eprint-2023-691.pdf": {
+    "mtime": 1788103741.7018387,
+    "seen": 1788107981.1292465,
+    "ast_hash": "a1de3f9adfc948c8e4549baece0f7d4e",
+    "semantic_hash": "a1de3f9adfc948c8e4549baece0f7d4e"
+  },
+  "references/snowball/hop2/ref-264-eprint-2023-824.pdf": {
+    "mtime": 1788103743.2377806,
+    "seen": 1788107981.129247,
+    "ast_hash": "bf17b32c2d2624ba494b41e6cfd47170",
+    "semantic_hash": "bf17b32c2d2624ba494b41e6cfd47170"
+  },
+  "references/snowball/hop2/ref-266-eprint-2024-030.pdf": {
+    "mtime": 1788103746.3856347,
+    "seen": 1788107981.1292474,
+    "ast_hash": "568a19978566a457aefa5df31a0e37b7",
+    "semantic_hash": "568a19978566a457aefa5df31a0e37b7"
+  },
+  "references/snowball/hop2/ref-267-eprint-2024-050.pdf": {
+    "mtime": 1788103747.9157796,
+    "seen": 1788107981.1292481,
+    "ast_hash": "2d4c5f78c1d3420c5a19c60cf72a7ce5",
+    "semantic_hash": "2d4c5f78c1d3420c5a19c60cf72a7ce5"
+  },
+  "references/snowball/hop2/ref-268-eprint-2024-1036.pdf": {
+    "mtime": 1788103749.447585,
+    "seen": 1788107981.1292489,
+    "ast_hash": "4080d79b82cc26f070d194ea5047ebfe",
+    "semantic_hash": "4080d79b82cc26f070d194ea5047ebfe"
+  },
+  "references/snowball/hop2/ref-269-eprint-2024-1037.pdf": {
+    "mtime": 1788103751.0051806,
+    "seen": 1788107981.1292493,
+    "ast_hash": "b7655c9b60e2a9d2a0978153e7ad2e8b",
+    "semantic_hash": "b7655c9b60e2a9d2a0978153e7ad2e8b"
+  },
+  "references/snowball/hop2/ref-270-eprint-2024-1531.pdf": {
+    "mtime": 1788103752.5388799,
+    "seen": 1788107981.1292498,
+    "ast_hash": "cf2f04bd6704d58fc2e2fc2ae362669e",
+    "semantic_hash": "cf2f04bd6704d58fc2e2fc2ae362669e"
+  },
+  "references/snowball/hop2/ref-271-eprint-2024-1605.pdf": {
+    "mtime": 1788103754.0977678,
+    "seen": 1788107981.1292503,
+    "ast_hash": "28920ff44768d47c39a1518bdaff0a37",
+    "semantic_hash": "28920ff44768d47c39a1518bdaff0a37"
+  },
+  "references/snowball/hop2/ref-272-eprint-2024-1606.pdf": {
+    "mtime": 1788103755.7853737,
+    "seen": 1788107981.1292508,
+    "ast_hash": "f466d72347fd1cd1a2bcf57980f78b62",
+    "semantic_hash": "f466d72347fd1cd1a2bcf57980f78b62"
+  },
+  "references/snowball/hop2/ref-273-eprint-2024-1970.pdf": {
+    "mtime": 1788103757.3789082,
+    "seen": 1788107981.1292512,
+    "ast_hash": "48100e39dde0caf1a47899e03f30f68d",
+    "semantic_hash": "48100e39dde0caf1a47899e03f30f68d"
+  },
+  "references/snowball/hop2/ref-274-eprint-2024-2099.pdf": {
+    "mtime": 1788103758.9669995,
+    "seen": 1788107981.129252,
+    "ast_hash": "ddfcd0c66d5067ffbd88b2545dd8c64c",
+    "semantic_hash": "ddfcd0c66d5067ffbd88b2545dd8c64c"
+  },
+  "references/snowball/hop2/ref-275-eprint-2024-232.pdf": {
+    "mtime": 1788103760.5287366,
+    "seen": 1788107981.1292524,
+    "ast_hash": "eee40129d7558ab750501e2980dae3f4",
+    "semantic_hash": "eee40129d7558ab750501e2980dae3f4"
+  },
+  "references/snowball/hop2/ref-276-eprint-2024-281.pdf": {
+    "mtime": 1788103762.1149354,
+    "seen": 1788107981.129253,
+    "ast_hash": "0ee2138ff6b7d9ed31529bc82a6334b1",
+    "semantic_hash": "0ee2138ff6b7d9ed31529bc82a6334b1"
+  },
+  "references/snowball/hop2/ref-277-eprint-2024-474.pdf": {
+    "mtime": 1788103763.7568135,
+    "seen": 1788107981.1292531,
+    "ast_hash": "19866eae7f290a94b3d7015191e16dc7",
+    "semantic_hash": "19866eae7f290a94b3d7015191e16dc7"
+  },
+  "references/snowball/hop2/ref-278-eprint-2024-728.pdf": {
+    "mtime": 1788103765.2922792,
+    "seen": 1788107981.1292536,
+    "ast_hash": "c0059469f7582700d2af368044429989",
+    "semantic_hash": "c0059469f7582700d2af368044429989"
+  },
+  "references/snowball/hop2/ref-279-eprint-2024-843.pdf": {
+    "mtime": 1788103766.9029105,
+    "seen": 1788107981.129254,
+    "ast_hash": "80c4b04e42189d71abb2361b54d08f8a",
+    "semantic_hash": "80c4b04e42189d71abb2361b54d08f8a"
+  },
+  "references/snowball/hop2/ref-280-eprint-2025-1220.pdf": {
+    "mtime": 1788103768.5056667,
+    "seen": 1788107981.1292546,
+    "ast_hash": "1645c8f675cf14857740a8db5611e05c",
+    "semantic_hash": "1645c8f675cf14857740a8db5611e05c"
+  },
+  "references/snowball/hop2/ref-281-eprint-2025-1473.pdf": {
+    "mtime": 1788103770.079599,
+    "seen": 1788107981.129255,
+    "ast_hash": "ff5000ee13b8b69a37b30bce0e5e625e",
+    "semantic_hash": "ff5000ee13b8b69a37b30bce0e5e625e"
+  },
+  "references/snowball/hop2/ref-282-eprint-2025-753.pdf": {
+    "mtime": 1788103771.6632605,
+    "seen": 1788107981.1292558,
+    "ast_hash": "d1582dc04ff88c0be4fc08e3a3ab0595",
+    "semantic_hash": "d1582dc04ff88c0be4fc08e3a3ab0595"
+  },
+  "references/snowball/hop2/ref-285-arxiv-1211-0557.pdf": {
+    "mtime": 1788103776.202535,
+    "seen": 1788107981.1292562,
+    "ast_hash": "714151171ccef4b9263f70a39ca881ef",
+    "semantic_hash": "714151171ccef4b9263f70a39ca881ef"
+  },
+  "references/snowball/hop2/ref-286-arxiv-1704-04299.pdf": {
+    "mtime": 1788103777.836009,
+    "seen": 1788107981.1292567,
+    "ast_hash": "bbbb8a8f97c91bf715d2a7b51ad6fe0f",
+    "semantic_hash": "bbbb8a8f97c91bf715d2a7b51ad6fe0f"
+  },
+  "references/snowball/hop2/ref-287-arxiv-1805-04548.pdf": {
+    "mtime": 1788103779.4179037,
+    "seen": 1788107981.1292572,
+    "ast_hash": "897f405aa294f34417081ff76f26b1ab",
+    "semantic_hash": "897f405aa294f34417081ff76f26b1ab"
+  },
+  "references/snowball/hop2/ref-288-arxiv-1904-11281.pdf": {
+    "mtime": 1788103780.932596,
+    "seen": 1788107981.1292577,
+    "ast_hash": "8eb8434615928beaf6cdba274e5eb774",
+    "semantic_hash": "8eb8434615928beaf6cdba274e5eb774"
+  },
+  "references/snowball/hop2/ref-289-arxiv-1906-07221.pdf": {
+    "mtime": 1788103782.3966687,
+    "seen": 1788107981.1292582,
+    "ast_hash": "431ecd78ca178cca429ff762b860b287",
+    "semantic_hash": "431ecd78ca178cca429ff762b860b287"
+  },
+  "references/snowball/hop2/ref-290-arxiv-1908-08605.pdf": {
+    "mtime": 1788103783.9753695,
+    "seen": 1788107981.1292589,
+    "ast_hash": "1ea9745d0929510ab334b06a75f57c74",
+    "semantic_hash": "1ea9745d0929510ab334b06a75f57c74"
+  },
+  "references/snowball/hop2/ref-291-arxiv-2002-11054.pdf": {
+    "mtime": 1788103785.4442897,
+    "seen": 1788107981.1292593,
+    "ast_hash": "9b61777bc223408c73bb99383d6d13c7",
+    "semantic_hash": "9b61777bc223408c73bb99383d6d13c7"
+  },
+  "references/snowball/hop2/ref-292-arxiv-2006-01621.pdf": {
+    "mtime": 1788103786.8629878,
+    "seen": 1788107981.1292598,
+    "ast_hash": "02d5e140a0b76c0cde68f1c4dd322f66",
+    "semantic_hash": "02d5e140a0b76c0cde68f1c4dd322f66"
+  },
+  "references/snowball/hop2/ref-293-arxiv-2007-03531.pdf": {
+    "mtime": 1788103788.670438,
+    "seen": 1788107981.1292603,
+    "ast_hash": "334c6ac0a322b79e008f511b88274a5b",
+    "semantic_hash": "334c6ac0a322b79e008f511b88274a5b"
+  },
+  "references/snowball/hop2/ref-294-arxiv-2201-09035.pdf": {
+    "mtime": 1788103790.9240842,
+    "seen": 1788107981.1292608,
+    "ast_hash": "fa7f842cce85e414f8b7ea5607f0a602",
+    "semantic_hash": "fa7f842cce85e414f8b7ea5607f0a602"
+  },
+  "references/snowball/hop2/ref-295-arxiv-2203-01610.pdf": {
+    "mtime": 1788103792.737619,
+    "seen": 1788107981.1292613,
+    "ast_hash": "6588657f425b229b1705adf1b0058163",
+    "semantic_hash": "6588657f425b229b1705adf1b0058163"
+  },
+  "references/snowball/hop2/ref-296-arxiv-2208-07919.pdf": {
+    "mtime": 1788103794.3240209,
+    "seen": 1788107981.129262,
+    "ast_hash": "565afe503504c5341636711e3690a723",
+    "semantic_hash": "565afe503504c5341636711e3690a723"
+  },
+  "references/snowball/hop2/ref-297-arxiv-2303-08676.pdf": {
+    "mtime": 1788103795.8550875,
+    "seen": 1788107981.1292627,
+    "ast_hash": "d016f605ac1e340ee63ce875a37ded82",
+    "semantic_hash": "d016f605ac1e340ee63ce875a37ded82"
+  },
+  "references/snowball/hop2/ref-299-arxiv-2305-00028.pdf": {
+    "mtime": 1788103799.301561,
+    "seen": 1788107981.129263,
+    "ast_hash": "aa993541dbdf5a74ab1026008a4ba594",
+    "semantic_hash": "aa993541dbdf5a74ab1026008a4ba594"
+  },
+  "references/snowball/hop2/ref-300-arxiv-2606-28344-pixelrag.pdf": {
+    "mtime": 1788104486.2278097,
+    "seen": 1788107981.1292636,
+    "ast_hash": "bd184c6042d64d29e5cbbaf4a0929df4",
+    "semantic_hash": "bd184c6042d64d29e5cbbaf4a0929df4"
+  },
+  "references/snowball/recursion/ref-095-time-optimal-interactive-proofs-for-circuit-eval.pdf": {
+    "mtime": 1788103015.3828948,
+    "seen": 1788107981.129264,
+    "ast_hash": "618b1314bdf68fef629ec963ee72577d",
+    "semantic_hash": "618b1314bdf68fef629ec963ee72577d"
+  },
+  "references/snowball/recursion/ref-096-doubly-efficient-zksnarks-without-trusted-setup.pdf": {
+    "mtime": 1788103015.3868947,
+    "seen": 1788107981.1292646,
+    "ast_hash": "d770697eb2afdbf82de92e68146b5702",
+    "semantic_hash": "d770697eb2afdbf82de92e68146b5702"
+  },
+  "references/snowball/recursion/ref-097-proving-the-correct-execution-of-concurrent-serv.pdf": {
+    "mtime": 1788103015.3931532,
+    "seen": 1788107981.1292653,
+    "ast_hash": "2ab164a64667e1e6a9627292f44c697b",
+    "semantic_hash": "2ab164a64667e1e6a9627292f44c697b"
+  },
+  "references/snowball/recursion/ref-098-practical-verified-computation-with-streaming-in.pdf": {
+    "mtime": 1788103015.3948946,
+    "seen": 1788107981.1292655,
+    "ast_hash": "e502083c676a55ccc6fcf6eccca8e04e",
+    "semantic_hash": "e502083c676a55ccc6fcf6eccca8e04e"
+  },
+  "references/snowball/recursion/ref-099-resolving-the-conflict-between-generality-and-pl.pdf": {
+    "mtime": 1788103015.3948946,
+    "seen": 1788107981.1292663,
+    "ast_hash": "b9ed24c0ae9a052a6675f3f22e9bbada",
+    "semantic_hash": "b9ed24c0ae9a052a6675f3f22e9bbada"
+  },
+  "references/snowball/recursion/ref-101-groth16-on-the-size-of-pairing-based-non-intera.pdf": {
+    "mtime": 1788103015.3988948,
+    "seen": 1788107981.1292667,
+    "ast_hash": "61d8bc63ef034ae08aec16e96d0ed54a",
+    "semantic_hash": "61d8bc63ef034ae08aec16e96d0ed54a"
+  },
+  "references/snowball/recursion/ref-102-quarks-quadruple-efficient-transparent-zksnarks.pdf": {
+    "mtime": 1788103015.3988948,
+    "seen": 1788107981.1292672,
+    "ast_hash": "b102da308f9a19f8b1220437e2117ba5",
+    "semantic_hash": "b102da308f9a19f8b1220437e2117ba5"
+  },
+  "references/snowball/recursion/ref-103-transparent-polynomial-delegation-and-its-applic.pdf": {
+    "mtime": 1788103015.4028947,
+    "seen": 1788107981.1292677,
+    "ast_hash": "3a2e30714332bb5aca177cb677e7ed3a",
+    "semantic_hash": "3a2e30714332bb5aca177cb677e7ed3a"
+  },
+  "references/snowball/recursion/ref-105-brakedown-linear-time-and-field-agnostic-snarks.pdf": {
+    "mtime": 1788103015.4068947,
+    "seen": 1788107981.129268,
+    "ast_hash": "146a86697a72f5468aa9560830a26f5e",
+    "semantic_hash": "146a86697a72f5468aa9560830a26f5e"
+  },
+  "references/snowball/recursion/ref-106-sonic-zero-knowledge-snarks-from-linear-size-un.pdf": {
+    "mtime": 1788103015.4068947,
+    "seen": 1788107981.1292684,
+    "ast_hash": "563bf87e92603d79a5e5b55fd9ddb104",
+    "semantic_hash": "563bf87e92603d79a5e5b55fd9ddb104"
+  },
+  "references/snowball/recursion/ref-107-taking-proof-based-verified-computation-a-few-st.pdf": {
+    "mtime": 1788103015.4108946,
+    "seen": 1788107981.1292694,
+    "ast_hash": "395c003ad732252524fd503e6e4d9e87",
+    "semantic_hash": "395c003ad732252524fd503e6e4d9e87"
+  },
+  "references/snowball/recursion/ref-108-worst-case-to-average-case-reductions-for-module.pdf": {
+    "mtime": 1788103015.4108946,
+    "seen": 1788107981.1292698,
+    "ast_hash": "7019d95415c22c9c1782bd1a6531b6f0",
+    "semantic_hash": "7019d95415c22c9c1782bd1a6531b6f0"
+  },
+  "references/snowball/recursion/ref-110-algebraic-reductions-of-knowledge.pdf": {
+    "mtime": 1788103015.4148948,
+    "seen": 1788107981.12927,
+    "ast_hash": "4851fabb55a1dc3ccca1823c360dc75c",
+    "semantic_hash": "4851fabb55a1dc3ccca1823c360dc75c"
+  },
+  "references/snowball/recursion/ref-112-full-accounting-for-verifiable-outsourcing.pdf": {
+    "mtime": 1788103015.4188948,
+    "seen": 1788107981.129271,
+    "ast_hash": "7d9a10a39838598db7021092e67878b8",
+    "semantic_hash": "7d9a10a39838598db7021092e67878b8"
+  },
+  "references/snowball/recursion/ref-114-sangria-a-folding-scheme-for-plonk.pdf": {
+    "mtime": 1788103015.4188948,
+    "seen": 1788107981.1292715,
+    "ast_hash": "0b690e1314671121764b9d9481be2b55",
+    "semantic_hash": "0b690e1314671121764b9d9481be2b55"
+  },
+  "references/snowball/recursion/ref-115-sumcheck-arguments-and-their-applications.pdf": {
+    "mtime": 1788103015.4228947,
+    "seen": 1788107981.129272,
+    "ast_hash": "9607f066938cdfc22155abccd276e6ea",
+    "semantic_hash": "9607f066938cdfc22155abccd276e6ea"
+  },
+  "references/snowball/recursion/ref-116-a-survey-of-two-verifiable-delay-functions.pdf": {
+    "mtime": 1788103015.4228947,
+    "seen": 1788107981.1292725,
+    "ast_hash": "5fce0ded1beb7e1599f384fbe2a3e0ce",
+    "semantic_hash": "5fce0ded1beb7e1599f384fbe2a3e0ce"
+  },
+  "references/snowball/recursion/ref-118-fast-reductions-from-rams-to-delegatable-succinc.pdf": {
+    "mtime": 1788103015.4308946,
+    "seen": 1788107981.1292732,
+    "ast_hash": "fc096d3549f69367b98fdd6acc0f7583",
+    "semantic_hash": "fc096d3549f69367b98fdd6acc0f7583"
+  },
+  "references/snowball/recursion/ref-120-non-interactive-verifiable-computing-outsourcin.pdf": {
+    "mtime": 1788103015.4308946,
+    "seen": 1788107981.1292737,
+    "ast_hash": "b55c95f29c142b33be0aea17662c054b",
+    "semantic_hash": "b55c95f29c142b33be0aea17662c054b"
+  },
+  "references/snowball/recursion/ref-121-replicated-state-machines-without-replicated-exe.pdf": {
+    "mtime": 1788103015.4348948,
+    "seen": 1788107981.1292741,
+    "ast_hash": "f1772b4fbfe40374b8f47ae29ab9282d",
+    "semantic_hash": "f1772b4fbfe40374b8f47ae29ab9282d"
+  },
+  "references/snowball/recursion/ref-129-mirage-succinct-arguments-for-randomized-algori.pdf": {
+    "mtime": 1788103015.4348948,
+    "seen": 1788107981.1292746,
+    "ast_hash": "ffbb7e0cd0d93a4c5163dde674362e4a",
+    "semantic_hash": "ffbb7e0cd0d93a4c5163dde674362e4a"
+  },
+  "references/snowball/recursion/ref-130-recursive-proof-composition-from-accumulation-sc.pdf": {
+    "mtime": 1788103015.4388947,
+    "seen": 1788107981.129275,
+    "ast_hash": "dbbfd81964357b13b6068a8d06f62551",
+    "semantic_hash": "dbbfd81964357b13b6068a8d06f62551"
+  },
+  "references/snowball/recursion/ref-131-short-invertible-elements-in-partially-splittin.pdf": {
+    "mtime": 1788103015.4388947,
+    "seen": 1788107981.1292756,
+    "ast_hash": "b0c82ca97c3bdb34eee649ea6285caca",
+    "semantic_hash": "b0c82ca97c3bdb34eee649ea6285caca"
+  },
+  "references/snowball/recursion/ref-133-a-non-pcp-approach-to-succinct-quantum-safe-zero.pdf": {
+    "mtime": 1788103015.4428947,
+    "seen": 1788107981.1292763,
+    "ast_hash": "73465aa052f6f5c4ac84da9538f256f4",
+    "semantic_hash": "73465aa052f6f5c4ac84da9538f256f4"
+  },
+  "references/snowball/recursion/ref-135-labrador-compact-proofs-for-r1cs-from-module-si.pdf": {
+    "mtime": 1788103015.4468946,
+    "seen": 1788107981.1292768,
+    "ast_hash": "6742842bb82f0b318484309dbf9400f7",
+    "semantic_hash": "6742842bb82f0b318484309dbf9400f7"
+  },
+  "references/snowball/recursion/ref-136-lattice-based-polynomial-commitments-towards-as.pdf": {
+    "mtime": 1788103015.4508948,
+    "seen": 1788107981.1292772,
+    "ast_hash": "98193cfc5bb8ff923f60b41504fd5077",
+    "semantic_hash": "98193cfc5bb8ff923f60b41504fd5077"
+  },
+  "references/snowball/recursion/ref-137-lattice-based-succinct-arguments-for-np-with-pol.pdf": {
+    "mtime": 1788103015.4571023,
+    "seen": 1788107981.1292777,
+    "ast_hash": "c0760e160ff085eaf9647d9628191601",
+    "semantic_hash": "c0760e160ff085eaf9647d9628191601"
+  },
+  "references/snowball/recursion/ref-138-lattice-based-zero-knowledge-proofs-and-applicat.pdf": {
+    "mtime": 1788103015.4583528,
+    "seen": 1788107981.1292784,
+    "ast_hash": "efe36e338422061bb1cd651acbbd55ac",
+    "semantic_hash": "efe36e338422061bb1cd651acbbd55ac"
+  },
+  "references/snowball/recursion/ref-139-linear-time-zero-knowledge-proofs-for-arithmetic.pdf": {
+    "mtime": 1788103015.4588947,
+    "seen": 1788107981.129279,
+    "ast_hash": "2aec8975b848ade3e0fce34208ba4010",
+    "semantic_hash": "2aec8975b848ade3e0fce34208ba4010"
+  },
+  "references/snowball/recursion/ref-140-mangrove-a-scalable-framework-for-folding-based.pdf": {
+    "mtime": 1788103015.4628947,
+    "seen": 1788107981.1292794,
+    "ast_hash": "7868817be6c4f009f18676a40bb1f600",
+    "semantic_hash": "7868817be6c4f009f18676a40bb1f600"
+  },
+  "references/snowball/recursion/ref-145-practical-product-proofs-for-lattice-commitments.pdf": {
+    "mtime": 1788103015.4668946,
+    "seen": 1788107981.12928,
+    "ast_hash": "b97795ca43b55788ff8cdce648d04e70",
+    "semantic_hash": "b97795ca43b55788ff8cdce648d04e70"
+  },
+  "references/snowball/recursion/ref-146-snarky-signatures-minimal-signatures-of-knowled.pdf": {
+    "mtime": 1788103015.4708948,
+    "seen": 1788107981.1292806,
+    "ast_hash": "c7d9d7fd1e80243682184ce71c31d7b3",
+    "semantic_hash": "c7d9d7fd1e80243682184ce71c31d7b3"
+  },
+  "references/snowball/recursion/ref-149-a-compressed-sigma-protocol-theory-for-lattices.pdf": {
+    "mtime": 1788103015.4748948,
+    "seen": 1788107981.129281,
+    "ast_hash": "c8462b60102cb80e0cc41041027346a4",
+    "semantic_hash": "c8462b60102cb80e0cc41041027346a4"
+  },
+  "references/snowball/recursion/ref-151-a-zero-knowledge-sumcheck-and-its-applications.pdf": {
+    "mtime": 1788103015.4828947,
+    "seen": 1788107981.1292815,
+    "ast_hash": "47ddc94d320e1549586ab9f10c2b3a38",
+    "semantic_hash": "47ddc94d320e1549586ab9f10c2b3a38"
+  },
+  "references/snowball/recursion/ref-153-amicable-pairs-and-aliquot-cycles-for-elliptic-c.pdf": {
+    "mtime": 1788103015.4868946,
+    "seen": 1788107981.129282,
+    "ast_hash": "66227056f22d94996c72016e9bb775da",
+    "semantic_hash": "66227056f22d94996c72016e9bb775da"
+  },
+  "references/snowball/recursion/ref-157-brakedown-linear-time-and-post-quantum-snarks-f.pdf": {
+    "mtime": 1788103015.492686,
+    "seen": 1788107981.1292827,
+    "ast_hash": "146a86697a72f5468aa9560830a26f5e",
+    "semantic_hash": "146a86697a72f5468aa9560830a26f5e"
+  },
+  "references/snowball/hop2-tiles/csrc.nist.gov_publications.png.tiles/tile_0000.jpg": {
+    "mtime": 1788104256.0750256,
+    "seen": 1788107981.1292834,
+    "ast_hash": "0eb4e27b929a3be828c44df232e98d64",
+    "semantic_hash": "0eb4e27b929a3be828c44df232e98d64"
+  },
+  "references/snowball/hop2-tiles/csrc.nist.gov_publications.png.tiles/tile_0001.jpg": {
+    "mtime": 1788104256.154206,
+    "seen": 1788107981.129284,
+    "ast_hash": "052a0826e582b24ff6bb6fdba31f1cfa",
+    "semantic_hash": "052a0826e582b24ff6bb6fdba31f1cfa"
+  },
+  "references/snowball/hop2-tiles/csrc.nist.gov_publications.png.tiles/tile_0002.jpg": {
+    "mtime": 1788104256.2224932,
+    "seen": 1788107981.1292844,
+    "ast_hash": "25cb514145ec8b29ac46439fb0430c93",
+    "semantic_hash": "25cb514145ec8b29ac46439fb0430c93"
+  },
+  "references/snowball/hop2-tiles/csrc.nist.gov_publications.png.tiles/tile_0003.jpg": {
+    "mtime": 1788104256.298879,
+    "seen": 1788107981.1292849,
+    "ast_hash": "62cc2761737f0a5257f1b3c2a31320ab",
+    "semantic_hash": "62cc2761737f0a5257f1b3c2a31320ab"
+  },
+  "references/snowball/hop2-tiles/o1-labs.github.io_snarky.png.tiles/tile_0000.jpg": {
+    "mtime": 1788104255.2405183,
+    "seen": 1788107981.1292856,
+    "ast_hash": "9b2cbd01f7f5029626367c3bb8940a92",
+    "semantic_hash": "9b2cbd01f7f5029626367c3bb8940a92"
   }
 }
