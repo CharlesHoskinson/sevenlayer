@@ -16,6 +16,12 @@ The five-persona review found chapter 1 teaches its thesis well (trust-minimized
 - What this means concretely (from `hemingway.metrics.json`): median sentence ~7 words, ~65% of sentences under 10 words, em dash ≈0.83/1,000 words, parentheticals ≈0.10/1,000 (effectively never), semicolons rare, contractions in narration, `But`-openers a habit not an error. Short is the default; the long sentence is a release, deliberately rare.
 - **Measured, not asserted:** after stages A, B/C, and D, run inkwell's `conformance.py` scoring the chapter against `hemingway.metrics.json`. Target: distribution verdict `close` on the final chapter. Inline math notation will drag the distribution; the scorer's number is reported honestly either way, and prose sentences—not formulas—carry the register.
 
+## 2b. Reading-level contract (binding)
+
+- Target: **college level.** Because Flesch-Kincaid is dominated by sentence length and the Hemingway profile drives sentences short, GL14-by-FK is structurally unreachable without breaking the voice contract; the college target is therefore measured on the vocabulary-weighted education indices: **SMOG and Gunning fog ≥ 13.0, aiming 13–14**, with FK grade reported alongside (expected lower by construction). Baseline v1 ch1: FK 10.2, fog 12.7, SMOG 12.6.
+- Gauge: `python3 v2/.work/ch01/readlevel.py <draft>` (markdown-stripped prose), run at every conformance checkpoint (stages A, C, D) and in the final report.
+- Steering rule for all drafting/revision rounds: never replace a precise technical term with an easier word; conceptual density rises, sentence length does not; the profile's rare long "release" sentences carry the qualifications.
+
 ## 3. Anti-slop contract (binding)
 
 - The five-family tell audit (Content, Language, Style, Communication, Filler-and-hedging tells — taxonomy attributed to blader/humanizer) runs inside every Gottlieb edit round; tell findings are ordinary edit findings.
