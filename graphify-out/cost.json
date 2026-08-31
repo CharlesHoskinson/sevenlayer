@@ -1,40 +1,20 @@
 {
   "runs": [
     {
-      "date": "2026-06-13T00:19:26.424064+00:00",
-      "input_tokens": 693000,
-      "output_tokens": 239400,
-      "files": 238
+      "date": "2026-08-30T15:48:48.355455+00:00",
+      "input_tokens": 1105931,
+      "output_tokens": 0,
+      "files": 123,
+      "note": "stage-1 repo graph (subagent tokens as input)"
     },
     {
-      "date": "2026-06-13T04:36:28.008992+00:00",
-      "input_tokens": 1214594,
+      "date": "2026-08-30T16:39:41.142772+00:00",
+      "input_tokens": 10000000,
       "output_tokens": 0,
-      "files": 10,
-      "note": "deepen_pdfs batch 1 - measured subagent tokens (combined in+out across 10 extraction agents)"
-    },
-    {
-      "date": "2026-06-13T04:56:55.626880+00:00",
-      "input_tokens": 1759273,
-      "output_tokens": 0,
-      "files": 18,
-      "note": "deepen_pdfs batch 2 (dense-crypto subset) - measured subagent tokens (combined in+out across 18 extraction agents)"
-    },
-    {
-      "date": "2026-06-13T05:20:34.447604+00:00",
-      "input_tokens": 1644885,
-      "output_tokens": 0,
-      "files": 18,
-      "note": "deepen_pdfs batch 3 (deferred papers) - measured subagent tokens; 17 of 18 readable"
-    },
-    {
-      "date": "2026-06-13T05:30:07.612645+00:00",
-      "input_tokens": 39069,
-      "output_tokens": 0,
-      "files": 1,
-      "note": "deepen_pdfs GMR (ref-02) - OCR via PyMuPDF page-render + vision read; measured subagent tokens"
+      "files": 598,
+      "note": "master graph: repo + 293 reference papers + hop-2 + tiles (aggregated subagent usage, ~10M)"
     }
   ],
-  "total_input_tokens": 5350821,
-  "total_output_tokens": 239400
+  "total_input_tokens": 11105931,
+  "total_output_tokens": 0
 }
