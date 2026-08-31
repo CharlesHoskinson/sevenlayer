@@ -28,4 +28,10 @@ fourteen are done, the second edition assembles and releases as **v2.0**.
 
 | Chapter | v1 panel score | v2 panel score | Conformance | Words | Landed |
 |---|---|---|---|---|---|
-| 1 — The Promise of Provable and Programmable Secrets | 6.8 | — | — | — | in progress |
+| 1 — The Promise of Provable and Programmable Secrets | 6.8 | **9.7** (9.4/9.8/9.8/9.8/9.9) | 0.390 `off` (rhythm-dominated; length percentiles in band; profile is `status: draft`, uncalibrated) | 14,947 | 2026-08-30 |
+
+Reading level, ch1: FK 7.8 / fog 9.9 / SMOG 10.6 against a college-band
+target of fog/SMOG ≥ 13. The miss is structural, stated plainly: the
+education-index arithmetic rewards long sentences and the Hemingway voice
+contract forbids them; with the vocabulary rule fully applied, this is where
+the two contracts settle. The voice contract won, as specified.
