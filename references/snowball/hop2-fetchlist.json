@@ -1,0 +1,1138 @@
+[
+ {
+  "url": "https://eprint.iacr.org/2019/1021",
+  "cited_by": [
+   "circle-starks",
+   "latticefold",
+   "latticefold-plus",
+   "protostar",
+   "symphony"
+  ],
+  "n_docs": 5
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-319-96884-1_25",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "protostar",
+   "symphony"
+  ],
+  "n_docs": 4
+ },
+ {
+  "url": "https://doi.org/10.1109/SP.2016.23",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "protostar",
+   "symphony"
+  ],
+  "n_docs": 4
+ },
+ {
+  "url": "https://eprint.iacr.org/2019/762",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "neo"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/1576",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1007/11681878_8",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-030-17653-2_4",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-031-38545-2_7",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-031-38551-3_21",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-031-38554-4_17",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-031-68403-6_8",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-319-78381-9_8",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1007/s10623-014-9938-4",
+  "cited_by": [
+   "fips-204",
+   "neo",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1109/SP.2014.36",
+  "cited_by": [
+   "blockchain-privacy-compliance",
+   "underconstrained-circuits",
+   "zkvm-compiler-optimization"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1145/237814.237838",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.1145/3133956.3134104",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.FIPS.180-4",
+  "cited_by": [
+   "fips-204",
+   "nist-fips-203-204-205",
+   "nist-ir-8547"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.SP.800-57pt1r5",
+  "cited_by": [
+   "fips-204",
+   "nist-fips-203-204-205",
+   "nist-ir-8547"
+  ],
+  "n_docs": 3
+ },
+ {
+  "url": "https://eprint.iacr.org/2020/",
+  "cited_by": [
+   "circle-starks",
+   "practical-security-zk-circuits"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://eprint.iacr.org/2021/582",
+  "cited_by": [
+   "ccs-customizable-constraints",
+   "circle-starks"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/1530",
+  "cited_by": [
+   "circle-starks",
+   "zk-memory-algebraic-proofs"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/1758",
+  "cited_by": [
+   "latticefold",
+   "protostar"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://eprint.iacr.org/2023/846",
+  "cited_by": [
+   "greyhound",
+   "latticefold"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://eprint.iacr.org/2023/969",
+  "cited_by": [
+   "latticefold",
+   "sok-snark-vulnerabilities"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/1731",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/504",
+  "cited_by": [
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://arxiv.org/pdf/1711.04422",
+  "cited_by": [
+   "circ",
+   "zkvm-compiler-optimization"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://arxiv.org/pdf/2505.08114",
+  "cited_by": [
+   "rollup-pricing-attacks",
+   "zkvm-compiler-optimization"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://filecoin.io/filecoin.pdf",
+  "cited_by": [
+   "sok-snark-vulnerabilities",
+   "stark"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://www.risczero.com/proof-system-in-detail.pdf",
+  "cited_by": [
+   "ccs-customizable-constraints",
+   "circle-starks"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-",
+  "cited_by": [
+   "latticefold",
+   "protostar"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-030-21568-2_4",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-030-45721-1_27",
+  "cited_by": [
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-030-56880-1_16",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-030-56880-1_17",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-030-84242-0_24",
+  "cited_by": [
+   "protostar",
+   "symphony"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-030-84245-1_19",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-03084245-1_18",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-031-15979-4_3",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-031-15985-5_13",
+  "cited_by": [
+   "latticefold-plus",
+   "zkvm-compiler-optimization"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-319-96881-0_23",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-3-540-78524-8_1",
+  "cited_by": [
+   "latticefold",
+   "symphony"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-981-96-0935-2_7",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/978-981-99-8724-5_3",
+  "cited_by": [
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1007/9783-662-44381-1_16",
+  "cited_by": [
+   "latticefold",
+   "symphony"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1145/1060590.1060603",
+  "cited_by": [
+   "fips-204",
+   "nist-fips-203-204-205"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1145/22145.22178",
+  "cited_by": [
+   "underconstrained-circuits",
+   "zkvm-compiler-optimization"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1145/3548606.3560652",
+  "cited_by": [
+   "latticefold",
+   "latticefold-plus"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.1145/3627703.3650088",
+  "cited_by": [
+   "latticefold-plus",
+   "symphony"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.FIPS.186-5",
+  "cited_by": [
+   "fips-204",
+   "nist-ir-8547"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.FIPS.202",
+  "cited_by": [
+   "fips-204",
+   "nist-ir-8547"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.FIPS.203",
+  "cited_by": [
+   "nist-fips-203-204-205",
+   "nist-ir-8547"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.FIPS.204",
+  "cited_by": [
+   "fips-204",
+   "nist-ir-8547"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.IR.8413-upd1",
+  "cited_by": [
+   "fips-204",
+   "nist-fips-203-204-205"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.SP.800-185",
+  "cited_by": [
+   "fips-204",
+   "nist-ir-8547"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.SP.800-56Ar3",
+  "cited_by": [
+   "nist-fips-203-204-205",
+   "nist-ir-8547"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.SP.800-56Br2",
+  "cited_by": [
+   "nist-fips-203-204-205",
+   "nist-ir-8547"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://doi.org/10.6028/NIST.SP.800-90B",
+  "cited_by": [
+   "fips-204",
+   "nist-fips-203-204-205"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://cointelegraph.com/news/",
+  "cited_by": [
+   "sok-powers-of-tau",
+   "updatable-universal-crs"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://csrc.nist.gov/publications",
+  "cited_by": [
+   "nist-fips-203-204-205",
+   "nist-ir-8547"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://docs.zkproof.org/pages/standards/",
+  "cited_by": [
+   "coda",
+   "practical-security-zk-circuits"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://o1-labs.github.io/snarky/",
+  "cited_by": [
+   "practical-security-zk-circuits",
+   "underconstrained-circuits"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://z.cash/blog/",
+  "cited_by": [
+   "mpc-random-beacon",
+   "sonic"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://zkresear.ch/t/lookup-singularity/65/7",
+  "cited_by": [
+   "jolt",
+   "lasso"
+  ],
+  "n_docs": 2
+ },
+ {
+  "url": "https://eprint.iacr.org/2005/467",
+  "cited_by": [
+   "underconstrained-circuits"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2007/286",
+  "cited_by": [
+   "underconstrained-circuits"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2012/232",
+  "cited_by": [
+   "mpc-random-beacon"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2012/598",
+  "cited_by": [
+   "circ"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2013/229",
+  "cited_by": [
+   "mpc-random-beacon"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2013/407",
+  "cited_by": [
+   "underconstrained-circuits"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2014/300",
+  "cited_by": [
+   "extended-tower-nfs"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2014/595",
+  "cited_by": [
+   "stark"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2015/",
+  "cited_by": [
+   "sok-snark-vulnerabilities"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2015/046",
+  "cited_by": [
+   "symphony"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2016/1102",
+  "cited_by": [
+   "mpc-random-beacon"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2016/403",
+  "cited_by": [
+   "extended-tower-nfs"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2017/",
+  "cited_by": [
+   "sonic"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2017/212",
+  "cited_by": [
+   "underconstrained-circuits"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2017/334",
+  "cited_by": [
+   "mpc-random-beacon"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2017/587",
+  "cited_by": [
+   "mpc-random-beacon"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2017/872",
+  "cited_by": [
+   "bulletproofs"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2019/",
+  "cited_by": [
+   "sok-snark-vulnerabilities"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2019/065",
+  "cited_by": [
+   "kachina"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2019/1076",
+  "cited_by": [
+   "circle-starks"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2019/119",
+  "cited_by": [
+   "snarky-ceremonies"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2019/1270",
+  "cited_by": [
+   "snarky-ceremonies"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2019/191",
+  "cited_by": [
+   "kachina"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2019/550",
+  "cited_by": [
+   "plonk"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2019/654",
+  "cited_by": [
+   "blockchain-privacy-compliance"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2020/1033",
+  "cited_by": [
+   "snarky-ceremonies"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2020/190",
+  "cited_by": [
+   "protostar"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2020/195",
+  "cited_by": [
+   "kachina"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2020/300",
+  "cited_by": [
+   "circ"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2020/352",
+  "cited_by": [
+   "protostar"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2020/401",
+  "cited_by": [
+   "kachina"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2020/811",
+  "cited_by": [
+   "snarky-ceremonies"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2021/1043",
+  "cited_by": [
+   "greyhound"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2021/651",
+  "cited_by": [
+   "circ"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2021/930",
+  "cited_by": [
+   "circle-starks"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/1216",
+  "cited_by": [
+   "circle-starks"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/1447",
+  "cited_by": [
+   "circle-starks"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/1515",
+  "cited_by": [
+   "greyhound"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/1542",
+  "cited_by": [
+   "circle-starks"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/1565",
+  "cited_by": [
+   "zk-memory-algebraic-proofs"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/1763",
+  "cited_by": [
+   "zk-memory-algebraic-proofs"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/802",
+  "cited_by": [
+   "protostar"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2022/957",
+  "cited_by": [
+   "zk-memory-algebraic-proofs"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2023/1106",
+  "cited_by": [
+   "latticefold-plus"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2023/1192",
+  "cited_by": [
+   "neo"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2023/1284",
+  "cited_by": [
+   "circle-starks"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2023/1469",
+  "cited_by": [
+   "greyhound"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2023/1799",
+  "cited_by": [
+   "latticefold"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2023/273",
+  "cited_by": [
+   "blockchain-privacy-compliance"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2023/691",
+  "cited_by": [
+   "sok-snark-vulnerabilities"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2023/824",
+  "cited_by": [
+   "circle-starks"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/",
+  "cited_by": [
+   "sok-snark-vulnerabilities"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/030",
+  "cited_by": [
+   "greyhound"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/050",
+  "cited_by": [
+   "zkvm-compiler-optimization"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/1036",
+  "cited_by": [
+   "circle-starks"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/1037",
+  "cited_by": [
+   "circle-starks"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/1531",
+  "cited_by": [
+   "neo"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/1605",
+  "cited_by": [
+   "latticefold-plus"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/1606",
+  "cited_by": [
+   "latticefold-plus"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/1970",
+  "cited_by": [
+   "symphony"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/2099",
+  "cited_by": [
+   "neo"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/232",
+  "cited_by": [
+   "symphony"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/281",
+  "cited_by": [
+   "latticefold"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/474",
+  "cited_by": [
+   "latticefold"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/728",
+  "cited_by": [
+   "symphony"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2024/843",
+  "cited_by": [
+   "nist-fips-203-204-205"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2025/1220",
+  "cited_by": [
+   "symphony"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2025/1473",
+  "cited_by": [
+   "symphony"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://eprint.iacr.org/2025/753",
+  "cited_by": [
+   "symphony"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/abs/1805",
+  "cited_by": [
+   "snarky-ceremonies"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/abs/2502",
+  "cited_by": [
+   "zkvm-compiler-optimization"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/1211.0557",
+  "cited_by": [
+   "zkvm-compiler-optimization"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/1704.04299",
+  "cited_by": [
+   "blockchain-privacy-compliance"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/1805.04548",
+  "cited_by": [
+   "snarky-ceremonies"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/1904.11281",
+  "cited_by": [
+   "circ"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/1906.07221",
+  "cited_by": [
+   "blockchain-privacy-compliance"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/1908.08605",
+  "cited_by": [
+   "sok-snark-vulnerabilities"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/2002.11054",
+  "cited_by": [
+   "circ"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/2006.01621",
+  "cited_by": [
+   "circ"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/2007.03531",
+  "cited_by": [
+   "sok-powers-of-tau"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/2201.09035",
+  "cited_by": [
+   "blockchain-privacy-compliance"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/2203.01610",
+  "cited_by": [
+   "sok-powers-of-tau"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/2208.07919",
+  "cited_by": [
+   "rollup-pricing-attacks"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/2303.08676",
+  "cited_by": [
+   "sok-powers-of-tau"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/2304.07648",
+  "cited_by": [
+   "sok-snark-vulnerabilities"
+  ],
+  "n_docs": 1
+ },
+ {
+  "url": "https://arxiv.org/pdf/2305.00028",
+  "cited_by": [
+   "sok-snark-vulnerabilities"
+  ],
+  "n_docs": 1
+ }
+]

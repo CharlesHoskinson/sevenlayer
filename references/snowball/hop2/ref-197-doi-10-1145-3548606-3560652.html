@@ -1,0 +1,2291 @@
+
+
+
+
+
+<!DOCTYPE html>
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+<html lang="en"
+      
+        
+      
+      
+        
+
+        
+
+        
+        
+            
+        
+        
+        
+        
+        
+
+      class="pb-page"
+         data-request-id="a334d137ed48cba4-LAX"  
+
+>
+
+    
+        <head data-pb-dropzone="head">
+            
+
+<meta charset="UTF-8">
+
+
+
+
+
+
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+                
+<title>zkBridge | Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security</title>
+
+
+
+
+
+                
+            
+        
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+                
+
+
+
+                
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="/products/acm/releasedAssets/css/build-7651cd42961957a1fbbe.css"/><link rel="stylesheet" href="/products/acm/releasedAssets/css/print-7651cd42961957a1fbbe.css" media="print"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+            
+                
+                
+                
+                    
+                    <link rel="schema.DC" href="https://purl.org/DC/elements/1.0/"></link><meta name="dc.Format" content="text/HTML"></meta><meta name="dc.Identifier" scheme="acm-id" content="3560652"></meta><meta name="dc.Identifier" scheme="doi" content="10.1145/3548606.3560652"></meta><meta name="dc.Language" content="EN"></meta><meta name="dc.Coverage" content="world"></meta>
+
+
+
+
+
+                    
+                
+            
+        
+    
+        
+            
+                
+                
+                
+                    
+                    
+
+<style id="pb-theme">
+.theme {
+
+}
+</style>
+                    
+                
+            
+        
+    
+        
+            
+                
+                
+                
+                
+                
+            
+        
+    
+        
+            
+                
+                
+                
+                
+                
+            
+        
+    
+        
+            
+                
+                
+                
+                    
+                    <meta name="robots" content="noarchive"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+            <meta property="og:title" content="zkBridge | Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security"/>
+        
+        
+    
+
+    
+        
+            <meta property="og:type" content="Chapter"/>
+        
+        
+    
+
+    
+        
+            <meta property="og:url" content="https://dl.acm.org/doi/10.1145/3548606.3560652"/>
+        
+        
+    
+
+    
+        
+            <meta property="og:site_name" content="ACM Conferences"/>
+        
+        
+    
+
+
+
+    
+        <meta property="og:image" content="https://dl.acm.org/cms/asset/28e91e4b-a945-48fd-8d68-e1e1f003bfbc/3548606.cover.jpg"/>
+        
+            <meta property="og:image:width" content="302"/>
+            <meta property="og:image:height" content="391"/>
+        
+    
+    
+
+
+
+    
+    
+
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="citation_fulltext_world_readable" content=""/>
+    <meta name="publication_doi" content="10.1145/3548606.3560652"/>
+<meta name="event_group_key" content="40b66418-d3ed-46a9-98cc-7e60bcbf4a37"/>
+    <meta name="service_name" content="showAbstract"/>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+                    
+                
+            
+        
+    
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="/pb-assets/styles/acm-custom-1785427275263.css">
+<link rel="stylesheet" href="/pb-assets/styles/journals-colors-1781618713767.css">
+<link rel="stylesheet" href="/pb-assets/styles/conferences-colors-1780436891423.css">
+<link rel="stylesheet" href="/pb-assets/styles/magazines-colors-1780436891437.css">
+<link rel="stylesheet" href="/pb-assets/styles/sigs-colors-1780436891860.css">
+<script defer src="https://scholar.google.com/scholar_js/casa.js" async nonce="a334d137ed48cba4-LAX"></script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="d5e9e377-b0f2-49fd-b006-d86d5073d17e" data-blockingmode="auto" type="text/javascript" nonce="a334d137ed48cba4-LAX"></script>
+<link rel="apple-touch-icon" sizes="180x180" href="/pb-assets/head-metadata/apple-touch-icon-1574252172393.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/pb-assets/head-metadata/favicon-32x32-1574252172003.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/pb-assets/head-metadata/favicon-16x16-1574252172937.png">
+<link rel="manifest" href="/pb-assets/head-metadata/site-1574252171130.webmanifest" crossorigin="use-credentials">
+<link rel="mask-icon" href="/pb-assets/head-metadata/safari-pinned-tab-1574252171193.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="theme-color" content="#ffffff">
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e539318ac0a38db","token":"b7f168b3cd354a55a4dd51b513830799","version":"2021.12.0","si":100}' crossorigin="anonymous" nonce="a334d137ed48cba4-LAX"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"7f51c78ba8dacf41","token":"3bb0add5452d43a2b5d4b3d6c628944c","version":"2023.8.0","si":100}' crossorigin="anonymous" nonce="a334d137ed48cba4-LAX"></script>
+<!-- Google Tag Manager -->
+    <script nonce="a334d137ed48cba4-LAX">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NFGCMX');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+
+
+
+<meta name="pbContext" content=";taxonomy:taxonomy:conference-collections;wgroup:string:ACM Publication Websites;groupTopic:topic:acm-pubtype&gt;proceeding;subPage:string:Basic Abstract;ctype:string:Book Content;topic:topic:conference-collections&gt;ccs;page:string:Article/Chapter View;csubtype:string:Conference Proceedings;website:website:dl-site;issue:issue:doi\:10.1145/3548606;article:article:doi\:10.1145/3548606.3560652;journal:journal:acmconferences;pageGroup:string:Publication Pages">
+        </head>
+    
+
+    
+
+
+
+    
+        
+        
+        
+            <body
+                    class="pb-ui website-dl-site">
+            
+
+
+
+
+
+
+    
+    
+        
+
+<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFGCMX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+
+
+
+
+
+
+
+
+<a href="#skip-to-main-content" class="sr-only-focusable">skip to main content</a>
+
+        <div id="pb-page-content" data-ng-non-bindable>
+                
+            <div data-pb-dropzone="main" data-pb-dropzone-name="Main">
+                
+                    
+                        
+
+
+
+        
+        
+
+
+
+        
+        
+
+
+
+
+
+    
+        <!-- Modal Structure -->
+<div id="modalOverlay" class="bp-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+    <div class="bp-modal">
+        <div class="bp-modal-header">
+            <h2 id="modalTitle" class="bp-modal-title">ACM is now Open Access</h2>
+            <button id="closeModalBtn" class="bp-modal-close" aria-label="Close modal">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="bp-modal-body">
+
+<p id="modalDescription">As part of the Digital Library's transition to <a href="/action/clickThrough?id=108180&url=%2Fopenaccess&loc=%2Fdoi%2F10.1145%2F3548606.3560652&pubId=60033439&placeholderId=101025&productId=108179" class="external-link" target="_blank" rel="nofollow noopener" title="Follow link to the ACM DL Open Access information page">Open Access</a>, new features for researchers are available in the <em>Premium Edition</em>. <a href="/action/clickThrough?id=108180&url=%2Fpremium&loc=%2Fdoi%2F10.1145%2F3548606.3560652&pubId=60033439&placeholderId=101025&productId=108179" title="More information about Premium Edition">Click here to learn more</a>.</p>
+
+<p><b>You are currently in the Basic Edition. Features requiring a subscription <font color="#777676">appear in grey.</font></b></p>
+
+<div class="pull-right mb-4">
+<a class="btn big stretched btn--inverse" href="/action/clickThrough?id=108180&url=%2Faction%2FshowLogin%3FredirectUri%3Dhttps%253A%252F%252Fdl.acm.org%252Fdoi%252F10.1145%252F3548606.3560652&loc=%2Fdoi%2F10.1145%2F3548606.3560652&pubId=60033439&placeholderId=101025&productId=108179">Sign In</a>
+<a class="btn big stretched btn--premium-gradient" href="/action/clickThrough?id=108180&url=%2Fabout%2Fupgrade&loc=%2Fdoi%2F10.1145%2F3548606.3560652&pubId=60033439&placeholderId=101025&productId=108179" title="Learn about upgrading to Premium Edition" style="border: 1px solid red; position: relative; top: -1px;">Upgrade</a>
+</div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Styles -->
+<style>
+    /* Modal Overlay - Prevents interaction with page */
+    .bp-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .bp-modal-overlay.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Modal Container */
+    .bp-modal {
+        background: white;
+        border-radius: 8px;
+        max-width: 600px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+        margin: 20px;
+    }
+
+    /* Modal Header */
+    .bp-modal-header {
+        padding: 20px;
+        border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .bp-modal-title {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    /* Close Button */
+    .bp-modal-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        color: #666;
+        transition: background-color 0.2s;
+    }
+
+    .bp-modal-close:hover {
+        background-color: #f0f0f0;
+    }
+
+    .bp-modal-close:focus {
+        outline: 2px solid #0066cc;
+        outline-offset: 2px;
+    }
+
+    /* Modal Body */
+    .bp-modal-body {
+        padding: 4px 20px 24px 20px;
+    }
+
+    .bp-modal-body p a {
+        color: #0077c2;
+    }
+
+    .bp-modal-body p a:hover {
+        text-decoration: underline;
+    }
+
+    /* Hide scrollbar on body when modal is open */
+    body.bp-modal-open {
+        overflow: hidden;
+    }
+</style>
+
+<!-- JavaScript -->
+<script nonce="a334d137ed48cba4-LAX">
+    (function() {
+        const modal = document.getElementById('modalOverlay');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const STORAGE_KEY = 'modalDisplayCount';
+        const MAX_DISPLAYS = 2;
+        
+        let previousActiveElement = null;
+        
+        // Focusable elements selector
+        const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        
+        // Check if modal should be displayed
+        function shouldDisplayModal() {
+            const displayCount = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+            return displayCount < MAX_DISPLAYS;
+        }
+        
+        // Increment display count
+        function incrementDisplayCount() {
+            const displayCount = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10);
+            localStorage.setItem(STORAGE_KEY, (displayCount + 1).toString());
+        }
+        
+        // Open modal
+        function openModal() {
+            previousActiveElement = document.activeElement;
+            modal.classList.add('active');
+            document.body.classList.add('bp-modal-open');
+            
+            // Increment the display count
+            incrementDisplayCount();
+            
+            // Set focus to first focusable element in modal
+            const focusableElements = modal.querySelectorAll(focusableSelectors);
+            if (focusableElements.length > 0) {
+                focusableElements[0].focus();
+            }
+            
+            // Add event listeners
+            document.addEventListener('keydown', handleKeyDown);
+            modal.addEventListener('click', handleOverlayClick);
+        }
+        
+        // Close modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.classList.remove('bp-modal-open');
+            
+            // Return focus to previously focused element
+            if (previousActiveElement) {
+                previousActiveElement.focus();
+            }
+            
+            // Remove event listeners
+            document.removeEventListener('keydown', handleKeyDown);
+            modal.removeEventListener('click', handleOverlayClick);
+        }
+        
+        // Handle keyboard events
+        function handleKeyDown(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+            
+            // Trap focus within modal
+            if (e.key === 'Tab') {
+                trapFocus(e);
+            }
+        }
+        
+        // Focus trap
+        function trapFocus(e) {
+            const focusableElements = Array.from(modal.querySelectorAll(focusableSelectors));
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            
+            if (e.shiftKey && document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement.focus();
+            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement.focus();
+            }
+        }
+        
+        // Close modal when clicking overlay (outside modal content)
+        function handleOverlayClick(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        }
+        
+        // Event listeners for buttons
+        closeBtn.addEventListener('click', closeModal);
+        
+        // Auto-open modal on page load (only if under display limit)
+        window.addEventListener('DOMContentLoaded', function() {
+            if (shouldDisplayModal()) {
+                openModal();
+            }
+        });
+        
+    })();
+</script>
+        
+    
+
+    
+
+
+
+
+
+
+        
+        
+
+
+
+
+
+<div class="smart-layout">
+    
+        
+
+            
+            
+            
+            
+
+            
+                <div class="smart-layout_dropzone-container">
+
+                    
+
+                    
+                    <div data-pb-dropzone="basic-edition-84a9974d-a0dd-495a-9aa8-1bff53d7f39d">
+                        
+
+
+
+        
+        <style>
+.banner,
+.sub-nav,
+.bibliometrics,
+[aria-label="grouping of subject areas"] {
+  filter: grayscale(1);
+}
+
+article [data-core-aside="right-rail"] {
+  background-color: #f0f0f0;
+  padding-top: 30px;
+}
+
+/* 
+.text-center {
+    text-align: center !important;
+}
+.mr-1_5x, .mx-1_5x {
+    margin-right: 1.5rem !important;
+}
+.ml-1x, .mx-1x {
+    margin-left: 1rem !important;
+}
+.align-items-center, .editor, .got-a-tip {
+    align-items: center !important;
+}
+.got-a-tip, .justify-content-center {
+    justify-content: center !important;
+}
+.editor, .flex-column, .got-a-tip {
+    flex-direction: column !important;
+}
+.d-flex, .editor, .got-a-tip {
+    display: flex !important;
+} 
+.position-absolute {
+    position: absolute !important;
+}
+.position-relative {
+    position: relative !important;
+}
+.pb-2x, .py-2x {
+    padding-bottom: 2rem !important;
+}
+.pt-2x, .py-2x {
+    padding-top: 2rem !important;
+}
+.basic-search-ads {
+  background-color: #f0f0f0;
+  padding:
+30px 15px 30px;
+}
+*/
+</style>
+
+                    </div>
+                </div>
+            
+
+        
+
+            
+            
+            
+            
+
+            
+
+        
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <header data-widget-def="ux3-layout-widget" data-widget-id="88f434fd-b4d9-4f0e-b7b6-cde0fadcc9ef" class="header base ccs">
+        
+
+
+
+        
+        <div class="header__fixed-items fixed fixed-element">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="3d7a89c1-dce3-45a5-b19a-954f74b955f2" class="container header--first-row">
+        
+
+
+
+        
+        <nav class="pull-left">
+
+
+
+        
+        <ul class="rlist--inline">
+    <li class="header__logo1">
+        <a href="/" title="">
+            <img alt="ACM Digital Library home" src="/specs/products/acm/releasedAssets/images/acm-dl-logo-white-1ecfb82271e5612e8ca12aa1b1737479.png" loading="eager">
+        </a>
+    </li>
+    <li class="header__logo2 hidden-xs hidden-md">
+        <a href="https://www.acm.org" title="external site link">
+            <img alt="ACM - Association for Computing Machinery" src="/specs/products/acm/releasedAssets/images/acm-logo-1-ad466e729c8e2a97780337b76715e5cf.png" loading="eager">
+        </a>
+    </li>
+</ul> 
+</nav><div class="pull-right">
+
+
+
+        
+        <style>
+.header--first-row .pull-right .login-list {
+    padding-left: 1rem;
+    border-left: 0.0625rem solid rgba(255, 255, 255, 0.34);
+}
+.header--first-row .pull-right {
+    gap: 0;
+}
+.pull-right .edition-badge-wrapper {
+    padding-right: 1rem;
+}
+.header:not(.basic-premium-header) .institution-wrapper {
+    border-right: none;
+}  
+</style>
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3SmartLayout" data-widget-id="7306c37f-71bf-45b5-8470-c381021f30fa" class="hidden-xs">
+        
+
+
+
+        
+        
+
+
+
+
+
+<div class="smart-layout">
+    
+        
+
+            
+            
+            
+            
+
+            
+
+        
+
+            
+            
+            
+            
+
+            
+                <div class="smart-layout_dropzone-container">
+
+                    
+
+                    
+                    <div data-pb-dropzone="default-dropzone-default-dropzone">
+                        
+
+
+
+        
+        <div class="edition-badge-wrapper"><a href="/premium" title="Basic Edition, Upgrade"><img src="/pb-assets/images/basic-edition-1765756198880.png" aria-hidden="true" class="edition-badge__logo"></a></div>
+
+                    </div>
+                </div>
+            
+
+        
+    
+</div>
+
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3SmartLayout" data-widget-id="016de8d7-31d2-4fc8-a828-0cc39dd135a7" class="hidden-sm hidden-xs institution-banner-border">
+        
+
+
+
+        
+        
+
+
+
+
+
+<div class="smart-layout">
+    
+        
+
+            
+            
+            
+            
+
+            
+
+        
+
+            
+            
+            
+            
+
+            
+
+        
+    
+</div>
+
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <nav data-widget-def="ux3-layout-widget" data-widget-id="8b40b17b-36bf-4254-b242-27a4f0dbd586" class="header__quick-menu text-onDark">
+        
+
+
+
+        
+        <div class="login-list">
+
+
+
+        
+        
+
+
+
+
+    
+
+
+
+
+
+
+
+
+    
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="loginBar login-open">
+    
+        
+        
+            <ul class="rlist--inline">
+                <li class="login-link">
+                    
+                        
+                        
+                            <a href="/action/showLogin?redirectUri=%2Fdoi%2F10.1145%2F3548606.3560652">
+                                Sign in
+                            </a>
+                        
+                    
+                </li>
+                
+                    <li class="register-link">
+                        <a href="https://accounts.acm.org?redirectUri=%2Fdoi%2F10.1145%2F3548606.3560652" class="btn" title="Register">
+                            Register
+                        </a>
+                    </li>
+                
+            </ul>
+        
+    
+</div>
+    
+
+
+</div>
+
+        </nav>
+    
+
+</div>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="menuWidget" data-widget-id="13da1316-80a7-4370-a291-8968cd9cb35e" class="container header--second-row">
+        
+
+
+
+        
+        <div class="responsive-menu-container clearfix"><div class="left-section pull-left"></div><div class="menu-section"><div class="main-nav responsive-menu-nav"><a href="#global-menu" data-target="global-menu" data-toggle="nav" title="menu drawer"><span class="drawer__icons-box"><span class="drawer__icons-controls"></span></span></a><nav role="navigation" id="global-menu" data-ctrl-res="screen-sm" aria-label="Main Navigation" class="drawer__nav container gutterless hidden-sm hidden-xs"><div class="menu-login-items hidden-md hidden-lg"></div><ul id="menubar" class="menubar rlist--inline"><li id="menu-item-global-menu-0" class="menu-item mobile-menu-item hide-basic"><a href="/search/advanced"><span>Advanced Search</span></a></li><li id="menu-item-global-menu-1" class="menu-item"><a href="/journals"><span>Journals</span></a></li><li id="menu-item-global-menu-2" class="menu-item"><a href="/magazines"><span>Magazines</span></a></li><li id="menu-item-global-menu-3" class="menu-item"><a href="/proceedings"><span>Proceedings</span></a></li><li id="menu-item-global-menu-4" class="menu-item"><a href="/acmbooks"><span>Books</span></a></li><li id="menu-item-global-menu-5" class="menu-item"><a href="/sigs"><span>SIGs</span></a></li><li id="menu-item-global-menu-6" class="menu-item"><a href="/conferences"><span>Conferences</span></a></li><li id="menu-item-global-menu-7" class="menu-item"><a href="/institutions"><span>Institutions</span></a></li><li id="menu-item-global-menu-8" class="menu-item"><a href="/people"><span>People</span></a></li><li class="hidden-lg hidden-md"><div data-toggle="transplant" data-target-class="hidden-xs hidden-sm" data-target=".header__quick-menu .show-on-mobile" data-direction="from" data-transplant="self"></div></li><li aria-haspopup="true" aria-label="More" class="dropdown-more hidden dropdown menu-parent"><a href="#" title="More" data-toggle="dropdown" class="dropdown__toggle"><span>More</span><i aria-hidden="true" class="icon-section_arrow_d pull-right hidden-sm hidden-xs"></i></a><ul aria-labelledby="main0-1" aria-hidden="true" class="rlist dropdown__menu"></ul></li><li class="menubar__extra-mob-links">
+
+
+
+        
+        <script nonce="a334d137ed48cba4-LAX">
+document.addEventListener('DOMContentLoaded', function() {
+
+    var extraMobLinks = document.querySelector('.menubar__extra-mob-links');
+
+    var menubar = document.getElementById('menubar');
+    
+    if (extraMobLinks && menubar) {
+        menubar.insertBefore(extraMobLinks, menubar.firstChild);
+    }
+});
+</script>
+
+
+
+
+        
+        
+
+
+
+
+
+<div class="smart-layout">
+    
+        
+
+            
+            
+            
+            
+
+            
+
+        
+
+            
+            
+            
+            
+
+            
+                <div class="smart-layout_dropzone-container">
+
+                    
+
+                    
+                    <div data-pb-dropzone="default-dropzone-default-dropzone">
+                        
+
+
+
+        
+        <style>
+.hide-basic {
+    display: none !important;
+}
+</style>
+
+<div class="edition-badge-wrapper"><a href="/premium" title="Basic Edition, Upgrade"><img src="/pb-assets/images/basic-edition-1765756198880.png" aria-hidden="true" class="edition-badge__logo"></a></div>
+
+                    </div>
+                </div>
+            
+
+        
+    
+</div>
+
+
+
+
+
+        
+        <style>
+.menubar__extra-mob-links .quick-search {
+    display: block !important;
+}
+
+.menubar__extra-mob-links .c-hero__form {
+    justify-content: normal;
+}
+
+.menubar__extra-mob-links .c-hero__form .quick-search--input {
+    width: 100%;
+    margin: 0 1rem;
+}
+
+.menubar__extra-mob-links .auto-complete.quick-search__input {
+    border-radius: .5rem;
+    color: black;
+}
+
+.menubar__extra-mob-links .quick-search__button {
+    color: black !important;
+    font-weight: bolder;
+    font-size: 20px !important;
+}
+  
+.menubar__extra-mob-links .autoComplete {
+    display: none !important;
+}
+  
+.menubar__extra-mob-links .quick-search {
+    padding-bottom: 0;
+}
+</style>
+
+
+
+
+        
+        <div class="quickSearchFormContainer"><div class="quick-search"><div aria-live="assertive" class="advanced-search__autocomplete__announcer sr-only"></div><form action="/action/doSearch" name="defaultQuickSearch" method="get" title="Quick Search" class="c-hero__form"><div class="quick-search--input"><div class="input-group option-0"><input aria-label="Search" type="search" autocomplete="off" name="AllField" placeholder="Search" data-auto-complete-max-words="7" data-auto-complete-max-chars="32" data-contributors-conf="3" data-topics-conf="3" data-publication-titles-conf="3" data-history-items-conf="3" data-group-titles-conf="3" value="" class="auto-complete quick-search__input"/><button type="submit" title="Search" aria-label="Search" class="btn quick-search__button icon-Icon_Search"><span class="sr-only">Search</span><span>Search</span></button></div></div></form><div class="pb-dropzone" data-pb-dropzone="quickSearchDropZone" title="quickSearchDropZone"></div></div></div>
+</li></ul></nav><div id="menu-quick-search" data-db-target-of="menu-quick-search" class="hidden-md hidden-lg"><div class="menu-quick-search__wrapper"><div data-toggle="transplant" data-target-class="hidden-xs hidden-sm" data-target=".header--second-row .quick-search--form" data-direction="from" data-transplant="self" class="quick-search-mobile"></div></div></div></div></div><div class="right-section pull-right">
+
+
+
+        
+        <div class="quickSearchFormContainer"><div class="quick-search"><div aria-live="assertive" class="advanced-search__autocomplete__announcer sr-only"></div><div class="clearfix quick-search__clearfix"><form action="/action/doSearch" name="defaultQuickSearch" method="get" title="Quick Search" class="quick-search--form"><div class="quick-search--input"><div class="input-group option-0"><label for="AllFieldf73847c0-d936-48ec-9bf9-139b3828507f" class="sr-only">Search ACM Digital Library</label><input type="search" autocomplete="off" id="AllFieldf73847c0-d936-48ec-9bf9-139b3828507f" name="AllField" placeholder="Search ACM Digital Library" data-auto-complete-max-words="7" data-auto-complete-max-chars="32" data-contributors-conf="3" data-topics-conf="3" data-publication-titles-conf="3" data-history-items-conf="3" data-group-titles-conf="3" value="" class="auto-complete quick-search__input"/></div></div><div class="quick-search--button"><button type="submit" title="Search" aria-label="Search" class="btn quick-search__button icon-Icon_Search"><span class="sr-only">Search</span><span>Search</span></button></div></form></div>
+
+
+
+        
+        <div data-title="To use advanced search, you must have Premium access." data-title-alt="Advanced Search (Premium feature)" data-customClass="simple-tooltip__basic" data-learn-more-link="/about/upgrade" data-learn-more-link-text="Learn more" data-sign-in-link="https://dl.acm.org/action/showLogin?redirectUri=%2Fdoi%2F10.1145%2F3548606.3560652" data-sign-in-link-text="Sign in" tabindex="0" class="simple-tooltip__block--b simple-tooltip__mobile simple-tooltip__basic-wrapper transparent-bg"><span class="sr-only">Advanced Search (Premium feature)</span><div inert><a title="link to Advanced Search form" href="/search/advanced" class="quick-search__advancedHeader">Advanced Search</a></div></div>
+</div></div>
+</div></div><div class="header__dropzone"></div>
+
+        </div>
+    
+
+
+
+
+
+        
+        <span style="display: none;">10.1145/3548606.3560652</span><span style="display: none;">acmconferences</span><span style="display: none;">Article/Chapter View</span><span style="display: none;">Basic Abstract</span><span style="display: none;">Publication Pages</span><span style="display: none;">ccs</span><span style="display: none;">Conference Proceedings</span><span style="display: none;">conference-collections</span><div class="sub-nav fixed-element"><a href="#" data-db-target-for="sub-nav__items" data-more="false" data-lines="1" style="text-transform: uppercase;" class="sub-nav__toggle hidden-lg truncate-text-css">ccs</a><div class="sub-nav__container"><div class="container"><div data-ctrl-res="screen-md" class="responsive-menu-container"><div class="left-section pull-left"></div><div class="menu-section"><div style="display: block" class="responsive-menu-nav"><nav id="sub-nav__items" data-db-target-of="sub-nav__items" class="sub-nav__holder drawer__nav"><ul class="rlist--inline menubar"><li><a href="/conference/ccs" class="sub-nav__item">Conference</a></li><li><a href="/conference/ccs/proceedings" class="sub-nav__item">Proceedings</a></li><li><a href="/conference/ccs/upcoming" class="sub-nav__item">Upcoming Events</a></li><li><a href="/conference/ccs/authors" class="sub-nav__item">Authors</a></li><li><a href="/conference/ccs/affiliations" class="sub-nav__item">Affiliations</a></li><li><a href="/conference/ccs/award-winners" class="sub-nav__item">Award Winners</a></li><li aria-haspopup="true" aria-label="More" class="dropdown-more hidden dropdown menu-parent"><a href="#" title="More" data-toggle="dropdown" class="dropdown__toggle hidden-md hidden-sm hidden-xs"><span>More</span><i aria-hidden="true" class="icon-section_arrow_d"></i></a><ul aria-labelledby="main0-1" aria-hidden="true" class="rlist dropdown__menu visible-md visible-sm visible-xs"></ul></li></ul></nav></div></div><div class="right-section hidden-md hidden-sm hidden-xs"></div></div></div></div><div class="hidden-xs hidden-sm"><div class="progress-bar--wrapper"><div style="width: 0.116818%;" class="progress-bar"></div></div></div></div>
+</div><div></div><div class="banner conference-landing"></div><div class="header-breadcrumb"></div>
+
+        </header>
+    
+
+
+
+
+                    
+                        
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="84fac94e-a290-4bf2-9ff9-7edc8316a494" id="skip-to-main-content">
+        
+
+
+
+        
+        <main class="content ccs loi-page no-margin">
+
+
+
+        
+        <div role="dialog" aria-labelledby="exportCitationsPopup" class="ux-modal-container"><div id="exportCitation" class="modal"><div class="modal__dialog"><div class="modal__header"><button type="button" data-dismiss="modal" class="close"><i aria-hidden="true" aria-label="close popup" class="icon-close_thin"></i></button><h2 id="exportCitationsPopup">Export Citations</h2></div><div class="modal__body"><div class="exportCitation__tabs"><div class="tab"><ul role="tablist" class="rlist tab__nav"></ul></div><div class="csl-wrapper copy__text-wrapper"><form action="/action/exportCiteProcCitation" method="post" target="_blank"><input type="hidden" name="content" value=""/><input type="hidden" name="dois" value=""/><input type="hidden" name="format" value=""/><fieldset class="input-group"><label for="citation-format" class="visibility-hidden">Select Citation format</label><select id="citation-format" data-csl-doi="10.1145/3548606.3560652" aria-label="Select Citation format"><option value="bibtex" data-format="bibTex">BibTeX</option><option value="endNote" data-format="endNote">EndNote</option><option value="acm" data-format="text">ACM Ref</option></select><span class="select-arrow"><i class="icon-bottom-arrow"></i></span></fieldset><ul class="rlist tab__content"><li id="allResultstab" aria-labelledby="allResults" role="tabpanel" class="tab__pane"><div class="all-results-tab-container"><div class="hidden warning-message mb-2">Please download or close your previous search result export first before starting a new bulk export.</div><div class="desc-text"><div class="bold">Preview is not available.</div>By clicking download,<b class="ml-1">a status dialog</b> will open to start the export process. The process may take<b class="ml-1">a few minutes</b> but once it finishes a file will be downloadable from your browser. You may continue to browse the DL while the export process is in progress.</div></div></li><li id="selectedTab" aria-labelledby="selected" role="tabpanel" class="tab__pane active"><div class="csl-wrapper copy__text-wrapper"><pre class="copy__text csl-response"></pre><div id="export-warning"></div><div class="pull-right"><ul role="menu" class="rlist--inline separator"><li><a href="javascript:void(0)" role="menuitem" title="Download citation" class="download__btn disabled"><label class="visibility-hidden">Download citation</label><i aria-hidden="true" class="icon-Icon_Download"></i></a></li><li><input type="hidden" id="doisLimitNumber" value="1000"/><a href="javascript:void(0)" role="menuitem" title="Copy citation" class="copy__btn disabled"><label class="visibility-hidden">Copy citation</label><i aria-hidden="true" class="icon-pages"></i></a></li></ul></div></div></li></ul></form></div></div></div></div></div></div>
+
+
+
+
+        
+        <link id="build-style-article" rel="stylesheet" type="text/css" href="/products/acm/releasedAssets/css/build-article-7651cd42961957a1fbbe.css"/><div xmlns="http://www.w3.org/1999/xhtml" id="get-premium-access" class="sr-only"><div class="core-description">Several features on this page require Premium Access.</div><div class="core-links"><a href="/about/upgrade">Learn more</a><a href="/action/showLogin?redirectUri=%2Fdoi%2F10.1145%2F3548606.3560652" class="signIn">Sign in</a></div></div><article xmlns="http://www.w3.org/1999/xhtml" data-design="basic" data-has="right-rail" data-theme="conference-proceedings" data-type="chapter" vocab="http://schema.org/" typeof="Chapter" lang="en" dir="ltr"><header data-extent="frontmatter"><div class="core-container">
+
+
+
+        
+        <style>
+.article__breadcrumbs {
+    line-height: 1rem;
+    margin-bottom: 1rem;
+}
+  
+.meta-panel {
+  margin-top: 1rem;
+}
+
+.article__breadcrumbs {
+    a:link, a:visited, a:hover, a:active {
+        text-decoration: none;
+        color: inherit!important;
+    }
+}
+</style>
+
+
+
+
+        
+        
+
+
+
+        
+        <nav aria-label="Breadcrumbs" class="article__breadcrumbs separator"><ul><li><a href="https://dl.acm.org/" class="article__tocHeading">Home</a></li><li><a href="/conferences" class="article__tocHeading">Conferences</a></li><li><a href="/conference/ccs" class="article__tocHeading">CCS</a></li><li><a href="/conference/ccs/proceedings" class="article__tocHeading">Proceedings</a></li><li><a href="/doi/proceedings/10.1145/3548606" class="article__tocHeading">CCS '22</a></li><li><a href="/doi/10.1145/3548606.3560652" aria-current="page" class="article__tocHeading">zkBridge: Trustless Cross-chain Bridges Made Practical</a></li></ul></nav>
+
+
+
+
+
+        
+        
+
+
+
+
+
+    
+        <div class="upgrade-banner"><div class="upgrade-banner__icon"><i class="info-icon"></i></div><div class="upgrade-banner__content"><div class="upgrade-banner__title">You are using the Basic Edition. Features requiring a subscription <span style="color: #777676;">appear in grey</span>.</div><div class="upgrade-banner__links"><a href="/action/clickThrough?id=108178&url=%2Faction%2FshowLogin%3FredirectUri%3Dhttps%253A%252F%252Fdl.acm.org%252Fdoi%252F10.1145%252F3548606.3560652&loc=%2Fdoi%2F10.1145%2F3548606.3560652&pubId=60033439&placeholderId=101024&productId=108179" class="upgrade-banner__link">Sign in</a> to your subscription or <a href="/action/clickThrough?id=108178&url=%2Fpremium&loc=%2Fdoi%2F10.1145%2F3548606.3560652&pubId=60033439&placeholderId=101024&productId=108179" class="upgrade-banner__link">learn more</a></div></div><div class="upgrade-banner__actions"><a href="/action/clickThrough?id=108178&url=%2Fabout%2Fupgrade&loc=%2Fdoi%2F10.1145%2F3548606.3560652&pubId=60033439&placeholderId=101024&productId=108179" class="btn btn--premium-gradient">Upgrade</a></div></div>
+        
+    
+
+    
+
+
+<div data-article-access="free" data-article-access-type="open" class="meta-panel"><div class="meta-panel__left-content"><div class="meta-panel__type"><span>research-article</span></div><div class="meta-panel__access meta-panel__access--open"><i aria-hidden="true" class="icon-open_access"></i><span>Open access</span></div></div><div class="meta-panel__right-content"><div class="meta-panel__share">
+
+
+
+        
+        <!-- Go to https://www.addtoany.com/buttons/customize/ to customize your tools --><script type="text/javascript" defer="defer" src="https://static.addtoany.com/menu/page.js"></script><div class="share"><div class="share__block share__inline-links"><div class="pb-dropzone" data-pb-dropzone="shareBlock" title="shareBlock"></div><span class="sr-only">Share on</span><ul class="rlist--inline a2a a2a_kit a2a_kit_size_32"><li class="a2a_listitem_custom"><a role="link" title="share on X" class="a2a_button_x"><i aria-hidden="true" class="at-icon-wrapper icon-x"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="share on LinkedIn" class="a2a_button_linkedin"><i aria-hidden="true" class="at-icon-wrapper icon-linkedin"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="share on Reddit" class="a2a_button_reddit"><i aria-hidden="true" class="at-icon-wrapper icon-riddit-filled"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="share on Facebook" class="a2a_button_facebook"><i aria-hidden="true" class="at-icon-wrapper icon-Icon_Facebook"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="Share on Threads" class="a2a_button_threads"><i aria-hidden="true" class="at-icon-wrapper icon-threads"></i></a></li><li class="a2a_listitem_custom"><a role="link" title="share via email" class="a2a_button_email"><i aria-hidden="true" class="at-icon-wrapper icon-Icon_mail"></i></a></li><div class="pb-dropzone" data-pb-dropzone="share-additional-links" title="share-additional-links"></div></ul></div></div>
+</div></div></div><h1 property="name">zkBridge: <span class="subtitle">Trustless Cross-chain Bridges Made Practical</span></h1><div class="core-relations my-3"></div><div class="contributors"><span class="authors"><span class="heading">Authors</span>: <span role="list"><span property="author" typeof="Person" role="listitem"><a href="#artseq-00001"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><span property="givenName">Tiancheng</span> <span property="familyName">Xie</span></a></span>, <span property="author" typeof="Person" role="listitem"><a href="#artseq-00002"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><span property="givenName">Jiaheng</span> <span property="familyName">Zhang</span></a></span>, <span property="author" typeof="Person" role="listitem"><a href="#artseq-00003"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><span property="givenName">Zerui</span> <span property="familyName">Cheng</span></a></span>, <span property="author" typeof="Person" role="listitem"><a href="#artseq-00004"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><span property="givenName">Fan</span> <span property="familyName">Zhang</span></a></span><span data-displayed-on="sm" aria-hidden="true">, <span><span data-action="reveal">+ 4</span></span></span><span data-hidden-on="sm">, <span property="author" typeof="Person" role="listitem"><a href="#artseq-00005"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><span property="givenName">Yupeng</span> <span property="familyName">Zhang</span></a></span></span><span data-hidden-on="sm">, <span property="author" typeof="Person" role="listitem"><a href="#artseq-00006"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><span property="givenName">Yongzheng</span> <span property="familyName">Jia</span></a></span></span><span data-hidden-on="sm">, <span property="author" typeof="Person" role="listitem"><a href="#artseq-00007"><img src="/cms/asset/6fcd0bd2-48c0-4bc4-80d0-86379c499954/dabo2016.jpg" class="core-profile-image" role="presentation" /><span property="givenName">Dan</span> <span property="familyName">Boneh</span></a></span></span><span data-hidden-on="sm">, <span property="author" typeof="Person" role="listitem"><a href="#artseq-00008"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><span property="givenName">Dawn</span> <span property="familyName">Song</span></a></span></span><span data-displayed-on="none" data-on-display="sm" aria-hidden="true"> <span data-action="hide">(Less)</span></span></span></span><a href="#tab-contributors" class="to-authors-affiliations">Authors Info &amp; Claims</a></div><div class="core-self-citation"><div property="isPartOf" typeof="Book"><a href="/doi/proceedings/10.1145/3548606" property="name">CCS '22: Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security</a></div><div property="pagination">Pages <span property="pageStart">3003</span> - <span property="pageEnd">3017</span></div><div class="doi"><a href="https://doi.org/10.1145/3548606.3560652" property="sameAs">https://doi.org/10.1145/3548606.3560652</a></div></div><div class="core-published"><span class="label">Published</span>: <span class="core-date-published">07 November 2022</span> <a href="#core-history">Publication History</a><a data-target="crossmark" href="#" title="Check for updates on crossmark" data-doi="10.1145/3548606.3560652" data-id="article-info-crossmark" class="crossmark__link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 290 58" height="27px" role="presentation"><path fill="url(#horizontal_crossmark)" stroke="#948F8F" stroke-miterlimit="10" stroke-width=".75" d="M287 1H3a2 2 0 0 0-2 2v52a2 2 0 0 0 2 2h284a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Z"></path><path fill="#535353" d="M80.3 23.58a6.395 6.395 0 0 0-.55-1.43 3.92 3.92 0 0 0-2.19-1.86 5.099 5.099 0 0 0-1.71-.29 5 5 0 0 0-2.46.58 4.831 4.831 0 0 0-1.69 1.54 6.921 6.921 0 0 0-1 2.19 10.16 10.16 0 0 0 0 5 6.921 6.921 0 0 0 1 2.19 4.83 4.83 0 0 0 1.69 1.5 5 5 0 0 0 2.46.58 4.44 4.44 0 0 0 1.85-.36 4.12 4.12 0 0 0 1.38-1c.39-.436.695-.942.9-1.49A7.094 7.094 0 0 0 80.4 29h3a8.46 8.46 0 0 1-.69 2.92 7.179 7.179 0 0 1-1.59 2.29 7 7 0 0 1-2.35 1.49 8.14 8.14 0 0 1-3 .52 8.43 8.43 0 0 1-3.59-.74 7.88 7.88 0 0 1-2.69-2 9.001 9.001 0 0 1-1.69-3 11.41 11.41 0 0 1 0-7.23 9.001 9.001 0 0 1 1.69-3 8.001 8.001 0 0 1 2.69-2 8.3 8.3 0 0 1 3.59-.75 9.44 9.44 0 0 1 2.83.41c.866.242 1.68.642 2.4 1.18A6.229 6.229 0 0 1 82.65 21a6.66 6.66 0 0 1 .78 2.58H80.3ZM85.9 17.9h2.85v6.63h.05a4.15 4.15 0 0 1 1.56-1.46 4.61 4.61 0 0 1 2.31-.59 4.83 4.83 0 0 1 3.33 1.1 4.21 4.21 0 0 1 1.22 3.3v8.88H94.4v-8.13a3.51 3.51 0 0 0-.65-2.21 2.36 2.36 0 0 0-1.87-.69 3.1 3.1 0 0 0-1.3.26 2.821 2.821 0 0 0-1 .73A3.41 3.41 0 0 0 89 26.8a3.88 3.88 0 0 0-.23 1.33v7.63H85.9V17.9ZM102.47 30c-.002.491.069.98.21 1.45.131.448.348.866.64 1.23a3.08 3.08 0 0 0 1.08.84 3.543 3.543 0 0 0 1.55.31 3.431 3.431 0 0 0 2-.54c.541-.402.94-.966 1.14-1.61h2.7A5.349 5.349 0 0 1 109.7 35a5.715 5.715 0 0 1-1.74.85 7 7 0 0 1-2 .29 6.848 6.848 0 0 1-2.7-.5 5.577 5.577 0 0 1-2-1.4A5.953 5.953 0 0 1 100 32a8.748 8.748 0 0 1-.41-2.75 7.768 7.768 0 0 1 .44-2.61 6.67 6.67 0 0 1 1.25-2.17 5.863 5.863 0 0 1 4.56-2 5.79 5.79 0 0 1 2.74.64c.783.41 1.466.986 2 1.69a6.824 6.824 0 0 1 1.16 2.41c.264.905.352 1.852.26 2.79h-9.53Zm6.65-1.87a4.605 4.605 0 0 0-.29-1.3c-.148-.4-.368-.77-.65-1.09a3.22 3.22 0 0 0-1-.75 3 3 0 0 0-1.31-.29 3.431 3.431 0 0 0-1.36.26 3.108 3.108 0 0 0-1 .73 3.594 3.594 0 0 0-.7 1.09 3.798 3.798 0 0 0-.29 1.35h6.65-.05ZM122.88 27.15a2.666 2.666 0 0 0-1-1.81 3.14 3.14 0 0 0-2-.61c-.4.005-.798.07-1.18.19-.435.136-.83.376-1.15.7a3.92 3.92 0 0 0-.87 1.43 6.783 6.783 0 0 0-.35 2.39c.002.539.065 1.076.19 1.6.113.509.316.993.6 1.43.273.41.635.752 1.06 1a3 3 0 0 0 1.58.39 2.872 2.872 0 0 0 2.06-.77 3.596 3.596 0 0 0 1-2.18h2.85a6.26 6.26 0 0 1-1.91 3.86 5.83 5.83 0 0 1-4 1.34 6.61 6.61 0 0 1-2.69-.51 5.695 5.695 0 0 1-2-1.4 6.001 6.001 0 0 1-1.21-2.11 8.279 8.279 0 0 1-.41-2.65 8.987 8.987 0 0 1 .4-2.72 6.237 6.237 0 0 1 1.2-2.21 5.614 5.614 0 0 1 2-1.47 6.7 6.7 0 0 1 2.79-.54 7.801 7.801 0 0 1 2.14.29 5.634 5.634 0 0 1 1.8.86c.529.386.969.88 1.29 1.45a5 5 0 0 1 .6 2.07h-2.85l.06-.02ZM128.13 17.9H131V28l5.15-5.22h3.5l-5 4.75 5.42 8.17h-3.47l-4-6.27-1.6 1.7v4.63h-2.85V17.9h-.02ZM147.15 22.83h2.13v-1.08a5.505 5.505 0 0 1 .3-2c.161-.456.436-.862.8-1.18.33-.273.721-.462 1.14-.55.44-.094.89-.141 1.34-.14a8.158 8.158 0 0 1 2 .18v2.24a4.113 4.113 0 0 0-.59-.11 6.343 6.343 0 0 0-.74 0 1.74 1.74 0 0 0-1 .27 1.204 1.204 0 0 0-.41 1.08v1.33h2.42V25h-2.42v10.8h-2.85V25h-2.12v-2.17ZM162.23 36.1a6.999 6.999 0 0 1-2.76-.51 5.877 5.877 0 0 1-2-1.41 5.998 5.998 0 0 1-1.33-2.18 8.775 8.775 0 0 1 0-5.48 6.008 6.008 0 0 1 1.27-2.15 5.894 5.894 0 0 1 2-1.41A7.71 7.71 0 0 1 165 23a5.894 5.894 0 0 1 2 1.41 6.003 6.003 0 0 1 1.28 2.15c.585 1.78.585 3.7 0 5.48a5.99 5.99 0 0 1-3.28 3.54 7.002 7.002 0 0 1-2.77.52Zm0-2.25a3.268 3.268 0 0 0 1.65-.4c.447-.262.83-.621 1.12-1.05.304-.444.528-.938.66-1.46a6.581 6.581 0 0 0 0-3.31 4.416 4.416 0 0 0-.66-1.46 3.526 3.526 0 0 0-1.15-1 3.6 3.6 0 0 0-3.3 0 3.526 3.526 0 0 0-1.15 1 4.414 4.414 0 0 0-.66 1.46 6.558 6.558 0 0 0 0 3.31c.132.522.356 1.016.66 1.46a3.47 3.47 0 0 0 1.15 1.05 3.26 3.26 0 0 0 1.68.4ZM171.13 22.83h2.67v2.5c.097-.362.264-.701.49-1 .251-.341.547-.647.88-.91a4.404 4.404 0 0 1 1.14-.66 3.41 3.41 0 0 1 1.28-.25c.23-.013.46-.013.69 0h.39v2.79l-.61-.09a5.173 5.173 0 0 0-.61 0 3.278 3.278 0 0 0-1.36.29 3.131 3.131 0 0 0-1.11.85 4.171 4.171 0 0 0-.75 1.39 6 6 0 0 0-.28 1.9v6.15h-2.85V22.83h.03ZM198.22 35.75h-2.8V34a3.907 3.907 0 0 1-1.56 1.56 4.25 4.25 0 0 1-2.11.59 4.742 4.742 0 0 1-3.75-1.31 5.537 5.537 0 0 1-1.12-3.84v-8.2h2.85v7.92a3.503 3.503 0 0 0 .65 2.4 2.38 2.38 0 0 0 1.83.7 3.599 3.599 0 0 0 1.5-.27 2.66 2.66 0 0 0 1-.74c.259-.326.444-.705.54-1.11a5.79 5.79 0 0 0 .16-1.4v-7.5h2.85v12.95h-.04ZM201.3 22.83h2.7v1.75a3.523 3.523 0 0 1 1.72-1.58 5.568 5.568 0 0 1 2.33-.49 6.17 6.17 0 0 1 2.66.54 5.246 5.246 0 0 1 1.89 1.47c.515.65.899 1.394 1.13 2.19.257.87.385 1.773.38 2.68.001.851-.114 1.7-.34 2.52a6.568 6.568 0 0 1-1 2.16 5.002 5.002 0 0 1-4.21 2.06c-.419 0-.837-.036-1.25-.11a5.39 5.39 0 0 1-1.2-.36A4.737 4.737 0 0 1 205 35a3.567 3.567 0 0 1-.81-.91v6.45h-2.89V22.83Zm10 6.47c0-.574-.078-1.146-.23-1.7a4.606 4.606 0 0 0-.67-1.46 3.475 3.475 0 0 0-1.12-1 3.06 3.06 0 0 0-1.55-.39A3.141 3.141 0 0 0 205 26a5.518 5.518 0 0 0-1 3.3c-.004.611.077 1.22.24 1.81.138.523.38 1.012.71 1.44a3.55 3.55 0 0 0 1.14 1 3.242 3.242 0 0 0 1.54.35 3.18 3.18 0 0 0 1.65-.4c.438-.25.817-.59 1.11-1 .299-.44.513-.931.63-1.45a7.38 7.38 0 0 0 .23-1.75h.05ZM228.67 35.75H226V34a3.38 3.38 0 0 1-1.67 1.61 5.668 5.668 0 0 1-2.33.49 6.17 6.17 0 0 1-2.66-.54 5.307 5.307 0 0 1-1.89-1.46 6.254 6.254 0 0 1-1.12-2.19 9.48 9.48 0 0 1-.37-2.71 8.67 8.67 0 0 1 .47-3 6.058 6.058 0 0 1 1.26-2.1 4.89 4.89 0 0 1 1.8-1.21 5.738 5.738 0 0 1 2.06-.39c.412 0 .824.037 1.23.11.413.073.815.194 1.2.36.38.166.736.381 1.06.64.32.255.594.562.81.91V17.9h2.85v17.85h-.03Zm-10-6.33c-.001.55.069 1.098.21 1.63.13.511.35.996.65 1.43.288.414.668.757 1.11 1a3.241 3.241 0 0 0 1.6.38 3.199 3.199 0 0 0 1.64-.4 3.398 3.398 0 0 0 1.13-1.05c.297-.447.517-.94.65-1.46.14-.542.211-1.1.21-1.66a5.227 5.227 0 0 0-1-3.35 3.175 3.175 0 0 0-2.61-1.2 3.23 3.23 0 0 0-1.69.41 3.478 3.478 0 0 0-1.12 1.07 4.494 4.494 0 0 0-.62 1.5 7.871 7.871 0 0 0-.11 1.7h-.05ZM242.6 32.88c-.018.258.03.516.14.75a.577.577 0 0 0 .54.23h.3c.135-.002.269-.019.4-.05v2l-.39.11-.49.08-.5.08h-.42a2.75 2.75 0 0 1-1.45-.35 1.731 1.731 0 0 1-.75-1.23 4.998 4.998 0 0 1-2.09 1.2 8.224 8.224 0 0 1-2.39.38 5.861 5.861 0 0 1-1.67-.24 4.394 4.394 0 0 1-1.41-.7 3.35 3.35 0 0 1-1-1.18 3.624 3.624 0 0 1-.36-1.66 3.84 3.84 0 0 1 .44-2 3.246 3.246 0 0 1 1.15-1.17 5.195 5.195 0 0 1 1.6-.61c.593-.127 1.19-.223 1.79-.29a14.77 14.77 0 0 1 1.47-.21 6.896 6.896 0 0 0 1.24-.21c.318-.077.611-.236.85-.46a1.286 1.286 0 0 0 .31-.94 1.458 1.458 0 0 0-.26-.9A1.759 1.759 0 0 0 239 25a2.807 2.807 0 0 0-.86-.25 6.941 6.941 0 0 0-.9-.06 3.58 3.58 0 0 0-2 .5 2 2 0 0 0-.87 1.55h-2.85c.021-.73.227-1.442.6-2.07.338-.54.797-.996 1.34-1.33a5.475 5.475 0 0 1 1.84-.7c.692-.134 1.395-.2 2.1-.2.632 0 1.262.067 1.88.2a5.337 5.337 0 0 1 1.66.65 3.6 3.6 0 0 1 1.19 1.16c.314.525.47 1.129.45 1.74v6.65l.02.04Zm-2.85-3.6a3.45 3.45 0 0 1-1.6.51c-.667.06-1.3.147-1.9.26a6.137 6.137 0 0 0-.87.21 2.64 2.64 0 0 0-.75.38c-.22.164-.395.38-.51.63a2.129 2.129 0 0 0-.19.94c-.011.29.085.575.27.8.182.215.407.388.66.51.269.128.555.216.85.26.277.05.558.076.84.08a4.63 4.63 0 0 0 1-.12 3.418 3.418 0 0 0 1-.43 2.73 2.73 0 0 0 .81-.76 1.93 1.93 0 0 0 .32-1.14v-2.14l.07.01ZM244.37 22.83h2.15V19h2.85v3.88h2.58V25h-2.58v6.9a7.064 7.064 0 0 0 0 .77c.016.194.074.381.17.55a.84.84 0 0 0 .41.34 2 2 0 0 0 .75.11h.6c.203-.01.404-.04.6-.09v2.2l-.93.1a8.403 8.403 0 0 1-.92 0 6.33 6.33 0 0 1-1.81-.21 2.421 2.421 0 0 1-1.08-.62 2.15 2.15 0 0 1-.52-1 7.791 7.791 0 0 1-.16-1.42V25h-2.15v-2.17h.04ZM256.22 30c-.002.491.069.98.21 1.45.131.448.348.866.64 1.23a3.08 3.08 0 0 0 1.08.84 3.543 3.543 0 0 0 1.55.31 3.431 3.431 0 0 0 2-.54c.541-.402.94-.966 1.14-1.61h2.7a5.352 5.352 0 0 1-2.1 3.26 5.715 5.715 0 0 1-1.74.85 7 7 0 0 1-2 .29 6.848 6.848 0 0 1-2.7-.5 5.577 5.577 0 0 1-2-1.4 5.947 5.947 0 0 1-1.21-2.18 8.754 8.754 0 0 1-.41-2.75 7.758 7.758 0 0 1 .44-2.61 6.67 6.67 0 0 1 1.25-2.17 5.863 5.863 0 0 1 4.56-2 5.79 5.79 0 0 1 2.74.64c.783.41 1.466.986 2 1.69a6.824 6.824 0 0 1 1.16 2.41c.243.916.308 1.87.19 2.81h-9.5V30Zm6.65-1.87a4.605 4.605 0 0 0-.29-1.3c-.148-.4-.368-.77-.65-1.09a3.22 3.22 0 0 0-1-.75 3 3 0 0 0-1.31-.29 3.431 3.431 0 0 0-1.36.26 3.108 3.108 0 0 0-1 .73 3.575 3.575 0 0 0-.7 1.09 3.798 3.798 0 0 0-.29 1.35h6.65-.05ZM270 31.6a2.154 2.154 0 0 0 .95 1.75c.607.35 1.3.524 2 .5.304-.002.608-.022.91-.06a3.943 3.943 0 0 0 1-.24c.286-.105.54-.28.74-.51a1.23 1.23 0 0 0 .26-.89 1.261 1.261 0 0 0-.4-.9 2.779 2.779 0 0 0-1-.56 9.315 9.315 0 0 0-1.34-.36l-1.5-.33a14.219 14.219 0 0 1-1.54-.42 4.937 4.937 0 0 1-1.33-.68 3.12 3.12 0 0 1-.94-1.09 3.472 3.472 0 0 1-.35-1.64 2.94 2.94 0 0 1 .51-1.76 3.913 3.913 0 0 1 1.3-1.15 5.66 5.66 0 0 1 1.75-.61 10.316 10.316 0 0 1 1.84-.17 8.418 8.418 0 0 1 1.91.21 5.19 5.19 0 0 1 1.65.69c.496.318.916.741 1.23 1.24.341.559.55 1.188.61 1.84h-3a1.783 1.783 0 0 0-.94-1.37 3.892 3.892 0 0 0-1.69-.35 6.093 6.093 0 0 0-.71 0 3.327 3.327 0 0 0-.78.19 1.642 1.642 0 0 0-.61.4 1 1 0 0 0-.25.69 1.093 1.093 0 0 0 .36.85c.294.245.634.428 1 .54.437.153.885.274 1.34.36l1.55.33a20.9 20.9 0 0 1 1.53.42c.479.157.931.386 1.34.68.41.277.751.643 1 1.07.255.494.379 1.045.36 1.6a3.48 3.48 0 0 1-.52 2 4.15 4.15 0 0 1-1.36 1.3 6.19 6.19 0 0 1-1.86.73 9.435 9.435 0 0 1-2 .23 8.823 8.823 0 0 1-2.26-.27 5.265 5.265 0 0 1-1.8-.84 4 4 0 0 1-1.2-1.4 4.445 4.445 0 0 1-.46-2h2.7v-.02Z"></path><path fill="#C72914" d="m21.94 38.74 18.12-12.08v-14.5H21.94v26.58Z"></path><path fill="#EF3340" d="M40.06 38.74 21.94 26.66v-14.5h18.12v26.58Z"></path><path fill="#3EB1C8" d="M31 9a20 20 0 1 0 0 40 20 20 0 0 0 0-40Zm0 35.1a15.1 15.1 0 1 1 0-30.2 15.1 15.1 0 0 1 0 30.2Z"></path><path fill="#FFC72C" d="M42.09 39.23A15.09 15.09 0 0 1 17 23.38l-4.2-2.64a20 20 0 0 0 33.49 21.14l-4.2-2.65Z"></path><defs><linearGradient id="horizontal_crossmark" x1="145" x2="145" y1="7.33" y2="56.82" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"></stop><stop offset="1" stop-color="#c4c4c4"></stop></linearGradient></defs></svg></a></div><div class="core-related-do"></div><div class="info-panel"><div class="info-panel__left-content"><div class="info-panel__metrics info-panel__item">
+
+
+
+        
+        <div data-title="To view additional metrics, you must have Premium access." data-title-alt="Additional metrics (Premium feature)" data-customClass="simple-tooltip__basic" data-learn-more-link="/about/upgrade" data-learn-more-link-text="Learn more" data-sign-in-link="https://dl.acm.org/action/showLogin?redirectUri=%2Fdoi%2F10.1145%2F3548606.3560652" data-sign-in-link-text="Sign in" tabindex="0" class="simple-tooltip__block--b simple-tooltip__mobile simple-tooltip__basic-wrapper transparent-bg"><span class="sr-only">Additional metrics (Premium feature)</span><div inert="inert"><div class="pub-metrics"><div class="issue-item__footer-info"><button tabindex="0" aria-haspopup="dialog" aria-expanded="false" aria-controls="metrics-tooltip-body-pgr" title="Click to stay open" class="tooltip metrics-toggle"><span class="citation"><i aria-hidden="true" class="icon-quote"></i><span>161</span><span class="sr-only">citation</span></span><span class="metric"><i aria-hidden="true" class="icon-metric"></i><span>15,109</span><span class="sr-only">Downloads</span></span></button></div></div></div></div>
+</div><div class="info-panel__altmetrics info-panel__item"></div></div><div class="info-panel__right-content"><div class="info-panel__article_tools info-panel__item">
+
+
+
+        
+        <a href="#get-premium-access" role="button" data-title="Get Citation Alerts (Premium feature)" aria-label="Get Citation Alerts (Premium feature)" class="btn btn--icon simple-tooltip__block--b btn--slim citation-alerts"><i aria-hidden="true" class="icon-Icon_Alerts"></i></a><div role="dialog" aria-labelledby="id-hatemile-navigation-6073290063892647-6" class="ux-modal-container"><div id="manageAlert" class="modal"><div class="modal__dialog"><div class="modal__dialog--success hidden"><div class="modal__header"><button type="button" data-dismiss="modal" aria-label="close popup" class="close"><i aria-hidden="true" class="icon-close_thin"></i></button><a id="id-hatemile-navigation-6073290063892647-7" name="id-hatemile-navigation-6073290063892647-7" data-headinganchorfor="id-hatemile-navigation-6073290063892647-6" class="heading-anchor"></a><h2 id="id-hatemile-navigation-6073290063892647-6">New Citation Alert added!</h2></div><div class="modal__body"><p>This alert has been successfully added and will be sent to:<span class="email"></span></p><p>You will be notified whenever a record that you have chosen has been cited.</p></div><div class="modal__footer"><p>To manage your alert preferences, click on the button below.</p><a href="/action/showPreferences?menuTab=Alerts" title="Manage my Alerts" id="id-hatemile-display-1019331959102511-5" class="btn blue big stretched manageAlert__btn"><span data-attributetitleof="id-hatemile-display-1019331959102511-5" class="force-read-before">Manage my Alerts</span></a></div></div><div class="modal__dialog--error hidden"><div class="modal__header"><button type="button" data-dismiss="modal" aria-label="close popup" class="close"><i aria-hidden="true" class="icon-close_thin"></i></button><a id="id-hatemile-navigation-6073290063892647-9" name="id-hatemile-navigation-6073290063892647-9" data-headinganchorfor="id-hatemile-navigation-6073290063892647-8" class="heading-anchor"></a><h2 id="id-hatemile-navigation-6073290063892647-8">Add a Citation Alert</h2></div><div class="modal__body"><p>To add a citation alert, please <a href="/action/showLogin?redirectUri=/doi/10.1145/3548606.3560652" title="Sign In" class="link">log in to your account</a></p></div></div></div></div></div>
+</div><div class="info-panel__binder info-panel__item"><a href="#get-premium-access" class="btn btn--icon simple-tooltip__block--b btn--slim binder" aria-label="Save to Binder (Premium feature)"><i aria-hidden="true" class="icon-add-folder"></i></a></div><div class="info-panel__citations info-panel__item"><button data-target="#exportCitation" data-toggle="modal" aria-label="Export Citation" class="article-actionbar__btn btn btn--icon simple-tooltip__block--b btn--slim citations"><i aria-hidden="true" class="icon-quote"></i><input type="hidden" name="doiVal" value="10.1145/3548606.3560652"/></button></div><div class="info-panel__formats info-panel__item"><a href="/doi/epdf/10.1145/3548606.3560652" class="btn simple-tooltip__block--b btn--eReader red" aria-label="View online with eReader"><i aria-hidden="true" class="icon-eReader"></i><span class="link-text">PDF/eReader</span></a></div></div></div></div></header><div data-core-nav="header" data-extent="frontmatter"><div class="core-nav-wrapper core-container" role="navigation" aria-label="Article navigation"><div><button aria-controls="article_sections_menu" aria-expanded="false" aria-label="Toggle section navigation menu"><i class="icon-burger" aria-hidden="true"></i><span>Contents</span></button><nav id="article_sections_menu" aria-label="Contents" data-core-nav="article"><header><div class="core-self-citation"><div property="isPartOf" typeof="Book"><a href="/doi/proceedings/10.1145/3548606" property="name">CCS '22: Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security</a></div><div class="core-publication-title" property="name">zkBridge: <span class="subtitle">Trustless Cross-chain Bridges Made Practical</span></div><div property="pagination">Pages <span property="pageStart">3003</span> - <span property="pageEnd">3017</span></div></div><div class="content-navigation"><a href="/doi/10.1145/3548606.3559344" aria-label="Previous chapter" aria-disabled="false" class="content-navigation__prev"><div aria-hidden="true" class="content-navigation__hint"><div class="content-navigation__hint__content"><h6>PREVIOUS CHAPTER</h6><div>CETIS</div></div></div><i aria-hidden="true" class="icon-Arrow-Stroke"></i><span>Previous</span></a><a href="/doi/10.1145/3548606.3560588" aria-label="Next chapter" aria-disabled="false" class="content-navigation__next"><div aria-hidden="true" class="content-navigation__hint"><div class="content-navigation__hint__content"><h6>NEXT CHAPTER</h6><div>Automatic Detection of Fake Key Attacks in Secure Messaging</div></div></div><span>Next</span><i aria-hidden="true" class="icon-Arrow-Stroke"></i></a></div></header><ul><li><a href="#core-tabbed-abstracts">Abstract</a><ul><li><a href="#abstract">Abstract</a></li><li><a href="#plain-language-summary">AI Summary</a></li></ul></li><li><a href="#bibliography">References</a></li></ul><footer>
+
+
+
+        
+        <div class="logo">
+    <img alt="ACM Digital Library" src="/specs/products/acm/releasedAssets/images/footer-logo1-45ae33115db81394d8bd25be65853b77.png" height="26" width="110" loading="eager">
+</div>
+</footer></nav></div><nav id="article_collateral_menu"><ul class="collateral-pill" data-core-nav="collateral"><li><a href="#core-collateral-info" aria-controls="core-collateral-info" aria-disabled="true" disabled="true" title="Information & Contributors"><i aria-hidden="true" class="icon-Icon_Information"></i><span class="sr-only">Information & Contributors</span></a></li><li><a href="#core-collateral-metrics" aria-controls="core-collateral-metrics" aria-disabled="true" disabled="true" title="Bibliometrics & Citations"><i aria-hidden="true" class="icon-metric"></i><span class="sr-only">Bibliometrics & Citations</span></a></li><li><a href="#get-premium-access" class="view pill-item simple-tooltip__inline--l inline--l" aria-controls="get-premium-access" aria-disabled="true" disabled="true"><i aria-hidden="true" class="icon-eye"></i><span class="sr-only">Reading Options</span></a></li><li><a href="#get-premium-access" class="references pill-item simple-tooltip__inline--l inline--l" aria-controls="get-premium-access" aria-disabled="true" disabled="true"><i aria-hidden="true" class="icon-Icon_Links-References"></i><span class="sr-only">References</span></a></li><li><a href="#get-premium-access" class="figures pill-item simple-tooltip__inline--l inline--l" aria-controls="get-premium-access" aria-disabled="true" disabled="true"><i aria-hidden="true" class="icon-Icon_Images"></i><span class="sr-only">Figures</span></a></li><li><a href="#get-premium-access" class="tables pill-item simple-tooltip__inline--l inline--l" aria-controls="get-premium-access" aria-disabled="true" disabled="true"><i aria-hidden="true" class="icon-table"></i><span class="sr-only">Tables</span></a></li><li><a href="#get-premium-access" class="media pill-item simple-tooltip__inline--l inline--l" aria-controls="get-premium-access" aria-disabled="true" disabled="true"><i aria-hidden="true" class="icon-play_circle_filled"></i><span class="sr-only">Media</span></a></li><li><a href="#core-collateral-share" aria-controls="core-collateral-share" aria-disabled="true" disabled="true"><i aria-hidden="true" class="icon-share"></i><span class="sr-only">Share</span></a></li></ul></nav></div></div><div data-core-wrapper="content"><div id="abstracts" data-extent="frontmatter"><div class="core-container"><section id="core-tabbed-abstracts" data-core-tabs="core-tabbed-abstracts"><h2 property="name">Abstract</h2><section id="abstract" data-type="main" property="abstract" typeof="Text" role="doc-abstract"><h3 property="name">Abstract</h3><div role="paragraph">Blockchains have seen growing traction with cryptocurrencies reaching a market cap of over 1 trillion dollars, major institution investors taking interests, and global impacts on governments, businesses, and individuals.</div><div role="paragraph">Also growing significantly is the heterogeneity of the ecosystem where a variety of blockchains co-exist. Cross-chain bridge is a necessary building block in this multi-chain ecosystem. Existing solutions, however, either suffer from performance issues or rely on honesty assumptions of committees that significantly lower the security. Recurring attacks against bridges have cost users more than 1.5 billion USD. In this paper, we introduce zkBridge, an efficient cross-chain bridge that guarantees strong security without extra trust assumptions. With succinct proofs, zkBridge not only guarantees correctness, but also significantly reduces on-chain verification cost. We propose novel succinct proof protocols that are orders-of-magnitude faster than existing solutions for workload in zkBridge. With a modular design, zkBridge enables a few useful capabilities, including message passing, token transferring, and other computational logic operating on state changes from different chains. We fully implemented zkBridge between Cosmos and Ethereum and evaluated the end-to-end performance. The experiment shows that zkBridge achieves practical performance: it can generate a block header proof within 2 minutes, while verifying proofs on-chain costs less than 220K gas (the same as Groth16). Relaying a transaction from Cosmos to Ethereum costs 210K gas.</div></section><section id="plain-language-summary" class="plain-language-summary" property="abstract" typeof="Text" role="doc-abstract"><h3 property="name">AI Summary</h3>
+
+
+
+        
+        <div style="background: lightgoldenrodyellow; padding: 1rem; font-style: italic; line-height: 1.5rem;" class="pls-disclaimer"><h3 style="padding: 0; margin: 0; color: #555;">AI-Generated Summary (Experimental)</h3><p>This summary was generated using automated tools and was not authored or reviewed by the article's author(s). It is provided to support discovery, help readers assess relevance, and assist readers from adjacent research areas in understanding the work. It is intended to complement the author-supplied abstract, which remains the primary summary of the paper. The full article remains the authoritative version of record. <a href="/generative-ai/summarizations" title="Learn more about ACM AI summaries">Click here to learn more</a>.</p><p>Click <a style="text-decoration: underline;" onclick="srv.openModal(true,'02b075ed48492ef0e7598ddf9762f5ef668d7320')">here</a> to comment on the accuracy, clarity, and usefulness of this summary. Doing so will help inform refinements and future regenerated versions.</p></div>
+<p>To view this AI-generated plain language summary, you must have Premium access.</p></section></section></div></div><section id="bodymatter" data-extent="bodymatter" property="articleBody" typeof="Text"><div class="core-container"><section aria-labelledby="denial-block-title" class="denial-block "><h2 id="denial-block-title" class="denial-block__title">Formats available</h2><p class="denial-block__text">You can view the full content in the following formats:</p><div class="denial-block__available-formats"><a href="/doi/epdf/10.1145/3548606.3560652" class="btn simple-tooltip__block--b btn--eReader red" title="View online with eReader" aria-label="View online with eReader"><i aria-hidden="true" class="icon-eReader"></i><span class="link-text">PDF/eReader</span></a></div></section></div></section><section id="backmatter" data-extent="backmatter"><div class="core-container">
+
+
+
+        
+        
+<section id="bibliography" role="doc-bibliography"><h2>References</h2><div class="bibliolist"><div class="biblioentry" data-has="label"><div class="label">[1]</div><div id="ref-00001" class="citations"><div class="citation"><div class="citation-content">2014. Filecoin: A Decentralized Storage Network. (2014). https: //filecoin.io/filecoin.pdf</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2014.+Filecoin%3A+A+Decentralized+Storage+Network.+%282014%29.+https%3A+%2F%2Ffilecoin.io%2Ffilecoin.pdf">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[2]</div><div id="ref-00002" class="citations"><div class="citation"><div class="citation-content">2017. Hyperledger Sawtooth. (2017). https://sawtooth.hyperledger.org/</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2017.+Hyperledger+Sawtooth.+%282017%29.+https%3A%2F%2Fsawtooth.hyperledger.org%2F">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[3]</div><div id="ref-00003" class="citations"><div class="citation"><div class="citation-content">2020. Poly Network. https://poly.network/. (2020).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2020.+Poly+Network.+https%3A%2F%2Fpoly.network%2F.+%282020%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[4]</div><div id="ref-00004" class="citations"><div class="citation"><div class="citation-content">2020. Rainbow Bridge. https://near.org/bridge/. (2020).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2020.+Rainbow+Bridge.+https%3A%2F%2Fnear.org%2Fbridge%2F.+%282020%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[5]</div><div id="ref-00005" class="citations"><div class="citation"><div class="citation-content">2020. Wormhole Solana. https://solana.com/wormhole. (2020).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2020.+Wormhole+Solana.+https%3A%2F%2Fsolana.com%2Fwormhole.+%282020%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[6]</div><div id="ref-00006" class="citations"><div class="citation"><div class="citation-content">2021. At least $611 million stolen in massive cross-chain hack. (2021).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2021.+At+least+%24611+million+stolen+in+massive+cross-chain+hack.+%282021%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[7]</div><div id="ref-00007" class="citations"><div class="citation"><div class="citation-content">2021. Nomad Protocol. https://docs.nomad.xyz/the-nomad-protocol/overview. (2021).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2021.+Nomad+Protocol.+https%3A%2F%2Fdocs.nomad.xyz%2Fthe-nomad-protocol%2Foverview.+%282021%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[8]</div><div id="ref-00008" class="citations"><div class="citation"><div class="citation-content">2022. Average Price of Electricity. https://www.eia.gov/electricity/monthly/ epm_table_grapher.php?t=epmt_5_6_a. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Average+Price+of+Electricity.+https%3A%2F%2Fwww.eia.gov%2Felectricity%2Fmonthly%2F+epm_table_grapher.php%3Ft%3Depmt_5_6_a.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[9]</div><div id="ref-00009" class="citations"><div class="citation"><div class="citation-content">2022. Axelar. https://axelar.network/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Axelar.+https%3A%2F%2Faxelar.network%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[10]</div><div id="ref-00010" class="citations"><div class="citation"><div class="citation-content">2022. Blockchain Bridge Wormhole Suffers Possible Exploit Worth Over $326M. (2022). https://www.coindesk.com/tech/2022/02/02/blockchain-bridgewormhole-suffers-possible-exploit-worth-over-250m/</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Blockchain+Bridge+Wormhole+Suffers+Possible+Exploit+Worth+Over+%24326M.+%282022%29.+https%3A%2F%2Fwww.coindesk.com%2Ftech%2F2022%2F02%2F02%2Fblockchain-bridgewormhole-suffers-possible-exploit-worth-over-250m%2F">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[11]</div><div id="ref-00011" class="citations"><div class="citation"><div class="citation-content">2022. Cosmos. https://cosmos.network/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Cosmos.+https%3A%2F%2Fcosmos.network%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[12]</div><div id="ref-00012" class="citations"><div class="citation"><div class="citation-content">2022. Cryptocurrency prices, charts and market capitalizations. (2022). https://coinmarketcap.com/</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Cryptocurrency+prices%2C+charts+and+market+capitalizations.+%282022%29.+https%3A%2F%2Fcoinmarketcap.com%2F">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[13]</div><div id="ref-00013" class="citations"><div class="citation"><div class="citation-content">2022. ed25519-circom. https://github.com/Electron-Labs/ed25519-circom. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+ed25519-circom.+https%3A%2F%2Fgithub.com%2FElectron-Labs%2Fed25519-circom.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[14]</div><div id="ref-00014" class="citations"><div class="citation"><div class="citation-content">2022. ed25519-circom. https://github.com/Electron-Labs/ed25519-circom. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+ed25519-circom.+https%3A%2F%2Fgithub.com%2FElectron-Labs%2Fed25519-circom.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[15]</div><div id="ref-00015" class="citations"><div class="citation"><div class="citation-content">2022. ETH-NEAR Rainbow Bridge -- NEAR Protocol. (2022). https://near.org/blog/eth-near-rainbow-bridge/</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+ETH-NEAR+Rainbow+Bridge+--+NEAR+Protocol.+%282022%29.+https%3A%2F%2Fnear.org%2Fblog%2Feth-near-rainbow-bridge%2F">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[16]</div><div id="ref-00016" class="citations"><div class="citation"><div class="citation-content">2022. gnark. https://docs.gnark.consensys.net/en/latest/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+gnark.+https%3A%2F%2Fdocs.gnark.consensys.net%2Fen%2Flatest%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[17]</div><div id="ref-00017" class="citations"><div class="citation"><div class="citation-content">2022. Hetzner. https://www.hetzner.com/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Hetzner.+https%3A%2F%2Fwww.hetzner.com%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[18]</div><div id="ref-00018" class="citations"><div class="citation"><div class="citation-content">2022. LayerZero. https://layerzero.network/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+LayerZero.+https%3A%2F%2Flayerzero.network%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[19]</div><div id="ref-00019" class="citations"><div class="citation"><div class="citation-content">2022. libSNARK. https://github.com/scipr-lab/libsnark. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+libSNARK.+https%3A%2F%2Fgithub.com%2Fscipr-lab%2Flibsnark.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[20]</div><div id="ref-00020" class="citations"><div class="citation"><div class="citation-content">2022. Multi-chain future likely as Ethereum's DeFi dominance declines | Bloomberg Professional Services. (2022). https://www.bloomberg.com/ professional/blog/multi-chain-future-likely-as-ethereums-defi-dominancedeclines/</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Multi-chain+future+likely+as+Ethereum%27s+DeFi+dominance+declines+%7C+Bloomberg+Professional+Services.+%282022%29.+https%3A%2F%2Fwww.bloomberg.com%2F+professional%2Fblog%2Fmulti-chain-future-likely-as-ethereums-defi-dominancedeclines%2F">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[21]</div><div id="ref-00021" class="citations"><div class="citation"><div class="citation-content">2022. A multichain approach is the future of the blockchain industry. (2022). https://cointelegraph.com/news/a-multichain-approach-is-the-future-of-theblockchain-industry</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+A+multichain+approach+is+the+future+of+the+blockchain+industry.+%282022%29.+https%3A%2F%2Fcointelegraph.com%2Fnews%2Fa-multichain-approach-is-the-future-of-theblockchain-industry">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[22]</div><div id="ref-00022" class="citations"><div class="citation"><div class="citation-content">2022. Nomad crypto bridge loses $200 million in ?chaotic" hack. https://www.theverge.com/2022/8/2/23288785/nomad-bridge-200-millionchaotic-hack-smart-contract-cryptocurrency. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Nomad+crypto+bridge+loses+%24200+million+in+%3Fchaotic%22+hack.+https%3A%2F%2Fwww.theverge.com%2F2022%2F8%2F2%2F23288785%2Fnomad-bridge-200-millionchaotic-hack-smart-contract-cryptocurrency.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[23]</div><div id="ref-00023" class="citations"><div class="citation"><div class="citation-content">2022. Polygon Hermez. https://polygon.technology/solutions/polygon-hermez/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Polygon+Hermez.+https%3A%2F%2Fpolygon.technology%2Fsolutions%2Fpolygon-hermez%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[24]</div><div id="ref-00024" class="citations"><div class="citation"><div class="citation-content">2022. Polygon Miden. https://polygon.technology/solutions/polygon-miden/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Polygon+Miden.+https%3A%2F%2Fpolygon.technology%2Fsolutions%2Fpolygon-miden%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[25]</div><div id="ref-00025" class="citations"><div class="citation"><div class="citation-content">2022. Polygon Zero. https://polygon.technology/solutions/polygon-zero/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Polygon+Zero.+https%3A%2F%2Fpolygon.technology%2Fsolutions%2Fpolygon-zero%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[26]</div><div id="ref-00026" class="citations"><div class="citation"><div class="citation-content">2022. Risc Zero. https://www.risczero.com/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Risc+Zero.+https%3A%2F%2Fwww.risczero.com%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[27]</div><div id="ref-00027" class="citations"><div class="citation"><div class="citation-content">2022. Ronin Attack Shows Cross-Chain Crypto Is a ?Bridge' Too Far. (2022). https://www.coindesk.com/layer2/2022/04/05/ronin-attack-shows-crosschain-crypto-is-a-bridge-too-far/</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Ronin+Attack+Shows+Cross-Chain+Crypto+Is+a+%3FBridge%27+Too+Far.+%282022%29.+https%3A%2F%2Fwww.coindesk.com%2Flayer2%2F2022%2F04%2F05%2Fronin-attack-shows-crosschain-crypto-is-a-bridge-too-far%2F">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[28]</div><div id="ref-00028" class="citations"><div class="citation"><div class="citation-content">2022. Starkware. https://starkware.co/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Starkware.+https%3A%2F%2Fstarkware.co%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[29]</div><div id="ref-00029" class="citations"><div class="citation"><div class="citation-content">2022. Vbuterin comments on [AMA] We are the EF's Research Team (Pt. 7: 07 January, 2022). (2022). https://old.reddit.com/r/ethereum/comments/rwojtk/ ama_we_are_the_efs_research_team_pt_7_07_january/hrngyk8/</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+Vbuterin+comments+on+%5BAMA%5D+We+are+the+EF%27s+Research+Team+%28Pt.+7%3A+07+January%2C+2022%29.+%282022%29.+https%3A%2F%2Fold.reddit.com%2Fr%2Fethereum%2Fcomments%2Frwojtk%2F+ama_we_are_the_efs_research_team_pt_7_07_january%2Fhrngyk8%2F">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[30]</div><div id="ref-00030" class="citations"><div class="citation"><div class="citation-content">2022. YouTube includes NFTs in new creator tools. (2022). https://www.nbcnews. com/pop-culture/viral/youtube-includes-nfts-new-creator-tools-rcna15813</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+YouTube+includes+NFTs+in+new+creator+tools.+%282022%29.+https%3A%2F%2Fwww.nbcnews.+com%2Fpop-culture%2Fviral%2Fyoutube-includes-nfts-new-creator-tools-rcna15813">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[31]</div><div id="ref-00031" class="citations"><div class="citation"><div class="citation-content">2022. ZkSync. https://zksync.io/. (2022).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022.+ZkSync.+https%3A%2F%2Fzksync.io%2F.+%282022%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[32]</div><div id="ref-00032" class="citations"><div class="citation"><div class="citation-content">2022-04--24. Beeple sold an NFT for $69 million - The Verge. (2022-04--24). https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-costeverydays-69-million</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=2022-04--24.+Beeple+sold+an+NFT+for+%2469+million+-+The+Verge.+%282022-04--24%29.+https%3A%2F%2Fwww.theverge.com%2F2021%2F3%2F11%2F22325054%2Fbeeple-christies-nft-sale-costeverydays-69-million">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[33]</div><div id="ref-00033" class="citations"><div class="citation"><div class="citation-content">Martin Albrecht, Lorenzo Grassi, Christian Rechberger, Arnab Roy, and Tyge Tiessen. 2016. MiMC: Efficient encryption and cryptographic hashing with minimal multiplicative complexity. In International Conference on the Theory and Application of Cryptology and Information Security. Springer, 191--219.</div><div class="external-links"><div class="core-xlink-crossref"><a href="https://doi.org/10.1007/978-3-662-53887-6_7">Crossref</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2F978-3-662-53887-6_7">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[34]</div><div id="ref-00034" class="citations"><div class="citation"><div class="citation-content">Scott Ames, Carmit Hazay, Yuval Ishai, and Muthuramakrishnan Venkitasubramaniam. 2017. Ligero: Lightweight sublinear arguments without a trusted setup. In Proceedings of the ACM SIGSAC Conference on Computer and Communications Security.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1145/3133956.3134104">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1145%2F3133956.3134104">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[35]</div><div id="ref-00035" class="citations"><div class="citation"><div class="citation-content">Giuseppe Ateniese, Ilario Bonacina, Antonio Faonio, and Nicola Galesi. 2014. Proofs of space: When space is of the essence. In International Conference on Security and Cryptography for Networks. Springer, 538--557.</div><div class="external-links"><div class="core-xlink-crossref"><a href="https://doi.org/10.1007/978-3-319-10879-7_31">Crossref</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2F978-3-319-10879-7_31">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[36]</div><div id="ref-00036" class="citations"><div class="citation"><div class="citation-content">Eli Ben-Sasson, Iddo Bentov, Yinon Horesh, and Michael Riabzev. 2018. Scalable, transparent, and post-quantum secure computational integrity. Cryptology ePrint (2018).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Eli+Ben-Sasson%2C+Iddo+Bentov%2C+Yinon+Horesh%2C+and+Michael+Riabzev.+2018.+Scalable%2C+transparent%2C+and+post-quantum+secure+computational+integrity.+Cryptology+ePrint+%282018%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[37]</div><div id="ref-00037" class="citations"><div class="citation"><div class="citation-content">Eli Ben-Sasson, Alessandro Chiesa, Michael Riabzev, Nicholas Spooner, Madars Virza, and Nicholas P. Ward. 2019. Aurora: Transparent Succinct Arguments for R1CS. In EUROCRYPT 2019. 103--128.</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Eli+Ben-Sasson%2C+Alessandro+Chiesa%2C+Michael+Riabzev%2C+Nicholas+Spooner%2C+Madars+Virza%2C+and+Nicholas+P.+Ward.+2019.+Aurora%3A+Transparent+Succinct+Arguments+for+R1CS.+In+EUROCRYPT+2019.+103--128.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[38]</div><div id="ref-00038" class="citations"><div class="citation"><div class="citation-content">Iddo Bentov, Charles Lee, Alex Mizrahi, and Meni Rosenfeld. 2014. Proof of activity: Extending bitcoin's proof of work via proof of stake [extended abstract] y. ACM SIGMETRICS Performance Evaluation Review 42, 3 (2014), 34--37.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1145/2695533.2695545">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1145%2F2695533.2695545">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[39]</div><div id="ref-00039" class="citations"><div class="citation"><div class="citation-content">Iddo Bentov, Rafael Pass, and Elaine Shi. 2016. Snow White: Provably Secure Proofs of Stake. IACR Cryptol. ePrint Arch. 2016, 919 (2016).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Iddo+Bentov%2C+Rafael+Pass%2C+and+Elaine+Shi.+2016.+Snow+White%3A+Provably+Secure+Proofs+of+Stake.+IACR+Cryptol.+ePrint+Arch.+2016%2C+919+%282016%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[40]</div><div id="ref-00040" class="citations"><div class="citation"><div class="citation-content">Daniel J Bernstein, Niels Duif, Tanja Lange, Peter Schwabe, and Bo-Yin Yang. 2012. High-speed high-security signatures. Journal of cryptographic engineering 2, 2 (2012), 77--89.</div><div class="external-links"><div class="core-xlink-crossref"><a href="https://doi.org/10.1007/s13389-012-0027-1">Crossref</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2Fs13389-012-0027-1">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[41]</div><div id="ref-00041" class="citations"><div class="citation"><div class="citation-content">B. Bünz, J. Bootle, D. Boneh, A. Poelstra, P. Wuille, and G. Maxwell. Bulletproofs: Short Proofs for Confidential Transactions and More. In Proceedings of the Symposium on Security and Privacy (SP), 2018, Vol. 00. 319--338.</div><div class="external-links"><div class="core-xlink-crossref"><a href="https://doi.org/10.1109/SP.2018.00020">Crossref</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1109%2FSP.2018.00020">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[42]</div><div id="ref-00042" class="citations"><div class="citation"><div class="citation-content">Panagiotis Chatzigiannis, Foteini Baldimtsi, and Konstantinos Chalkias. 2021. SoK: Blockchain Light Clients. Cryptology ePrint Archive (2021).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Panagiotis+Chatzigiannis%2C+Foteini+Baldimtsi%2C+and+Konstantinos+Chalkias.+2021.+SoK%3A+Blockchain+Light+Clients.+Cryptology+ePrint+Archive+%282021%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[43]</div><div id="ref-00043" class="citations"><div class="citation"><div class="citation-content">Alessandro Chiesa, Michael A. Forbes, and Nicholas Spooner. 2017. A Zero Knowledge Sumcheck and its Applications. CoRR abs/1704.02086 (2017). arXiv:1704.02086 http://arxiv.org/abs/1704.02086</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Alessandro+Chiesa%2C+Michael+A.+Forbes%2C+and+Nicholas+Spooner.+2017.+A+Zero+Knowledge+Sumcheck+and+its+Applications.+CoRR+abs%2F1704.02086+%282017%29.+arXiv%3A1704.02086+http%3A%2F%2Farxiv.org%2Fabs%2F1704.02086">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[44]</div><div id="ref-00044" class="citations"><div class="citation"><div class="citation-content">Alessandro Chiesa, Yuncong Hu, Mary Maller, Pratyush Mishra, Noah Vesely, and Nicholas Ward. 2020. Marlin: Preprocessing zkSNARKs with Universal and Updatable SRS. In EUROCRYPT 2020. 738--768.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1007/978-3-030-45721-1_26">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2F978-3-030-45721-1_26">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[45]</div><div id="ref-00045" class="citations"><div class="citation"><div class="citation-content">Alessandro Chiesa, Dev Ojha, and Nicholas Spooner. 2020. Fractal: Post-quantum and Transparent Recursive Proofs from Holography. In EUROCRYPT 2020. 769--793.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1007/978-3-030-45721-1_27">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2F978-3-030-45721-1_27">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[46]</div><div id="ref-00046" class="citations"><div class="citation"><div class="citation-content">Graham Cormode, Michael Mitzenmacher, and Justin Thaler. Practical Verified Computation with Streaming Interactive Proofs. In Proceedings of the 3rd Innovations in Theoretical Computer Science Conference (ITCS '12).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Graham+Cormode%2C+Michael+Mitzenmacher%2C+and+Justin+Thaler.+Practical+Verified+Computation+with+Streaming+Interactive+Proofs.+In+Proceedings+of+the+3rd+Innovations+in+Theoretical+Computer+Science+Conference+%28ITCS+%2712%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[47]</div><div id="ref-00047" class="citations"><div class="citation"><div class="citation-content">Bernardo David, Peter Ga, Aggelos Kiayias, and Alexander Russell. 2017. Ouroboros praos: An adaptively-secure, semi-synchronous proof-of-stake protocol. Cryptology ePrint Archive (2017).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Bernardo+David%2C+Peter+Ga%2C+Aggelos+Kiayias%2C+and+Alexander+Russell.+2017.+Ouroboros+praos%3A+An+adaptively-secure%2C+semi-synchronous+proof-of-stake+protocol.+Cryptology+ePrint+Archive+%282017%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[48]</div><div id="ref-00048" class="citations"><div class="citation"><div class="citation-content">Stefan Dziembowski, Sebastian Faust, Vladimir Kolmogorov, and Krzysztof Pietrzak. 2015. Proofs of space. In Annual Cryptology Conference. Springer, 585--605.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1007/978-3-662-48000-7_29">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2F978-3-662-48000-7_29">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[49]</div><div id="ref-00049" class="citations"><div class="citation"><div class="citation-content">Amos Fiat and Adi Shamir. How to Prove Yourself: Practical Solutions to Identification and Signature Problems. In Crypto 1986.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.5555/36664.36676">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.5555%2F36664.36676">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[50]</div><div id="ref-00050" class="citations"><div class="citation"><div class="citation-content">Dario Fiore and Anca Nitulescu. 2016. On the (in) security of SNARKs in the presence of oracles. In Theory of Cryptography Conference. Springer, 108--138.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1007/978-3-662-53641-4_5">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2F978-3-662-53641-4_5">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[51]</div><div id="ref-00051" class="citations"><div class="citation"><div class="citation-content">Ariel Gabizon, Zachary J Williamson, and Oana Ciobotaru. 2019. Plonk: Permutations over lagrange-bases for oecumenical noninteractive arguments of knowledge. Cryptology ePrint Archive (2019).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Ariel+Gabizon%2C+Zachary+J+Williamson%2C+and+Oana+Ciobotaru.+2019.+Plonk%3A+Permutations+over+lagrange-bases+for+oecumenical+noninteractive+arguments+of+knowledge.+Cryptology+ePrint+Archive+%282019%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[52]</div><div id="ref-00052" class="citations"><div class="citation"><div class="citation-content">Yossi Gilad, Rotem Hemo, Silvio Micali, Georgios Vlachos, and Nickolai Zeldovich. 2017. Algorand: Scaling byzantine agreements for cryptocurrencies. In Proceedings of the 26th symposium on operating systems principles. 51--68.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1145/3132747.3132757">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1145%2F3132747.3132757">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[53]</div><div id="ref-00053" class="citations"><div class="citation"><div class="citation-content">Shafi Goldwasser, Yael Tauman Kalai, and Guy N. Rothblum. 2015. Delegating Computation: Interactive Proofs for Muggles. J. ACM 62, 4, Article 27 (Sept. 2015), 64 pages.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1145/2699436">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1145%2F2699436">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[54]</div><div id="ref-00054" class="citations"><div class="citation"><div class="citation-content">Jens Groth. 2016. On the Size of Pairing-Based Non-interactive Arguments. In EUROCRYPT 2016. 305--326.</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Jens+Groth.+2016.+On+the+Size+of+Pairing-Based+Non-interactive+Arguments.+In+EUROCRYPT+2016.+305--326.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[55]</div><div id="ref-00055" class="citations"><div class="citation"><div class="citation-content">Jessica Hamlin. 2022. Big investors are finally serious about crypto. but experienced talent is still scarce. (Mar 2022). https://www.institutionalinvestor.com/ article/b1x0gr2y3dzzp3/Big-Investors-Are-Finally-Serious-About-Crypto-ButExperienced-Talent-Is-Still-Scarce</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Jessica+Hamlin.+2022.+Big+investors+are+finally+serious+about+crypto.+but+experienced+talent+is+still+scarce.+%28Mar+2022%29.+https%3A%2F%2Fwww.institutionalinvestor.com%2F+article%2Fb1x0gr2y3dzzp3%2FBig-Investors-Are-Finally-Serious-About-Crypto-ButExperienced-Talent-Is-Still-Scarce">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[56]</div><div id="ref-00056" class="citations"><div class="citation"><div class="citation-content">Aggelos Kiayias, Alexander Russell, Bernardo David, and Roman Oliynykov. 2017. Ouroboros: A provably secure proof-of-stake blockchain protocol. In Annual international cryptology conference. Springer, 357--388.</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Aggelos+Kiayias%2C+Alexander+Russell%2C+Bernardo+David%2C+and+Roman+Oliynykov.+2017.+Ouroboros%3A+A+provably+secure+proof-of-stake+blockchain+protocol.+In+Annual+international+cryptology+conference.+Springer%2C+357--388.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[57]</div><div id="ref-00057" class="citations"><div class="citation"><div class="citation-content">Jae Kwon. 2014. Tendermint: Consensus without mining. Draft v. 0.6, fall 1, 11 (2014).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Jae+Kwon.+2014.+Tendermint%3A+Consensus+without+mining.+Draft+v.+0.6%2C+fall+1%2C+11+%282014%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[58]</div><div id="ref-00058" class="citations"><div class="citation"><div class="citation-content">Carsten Lund, Lance Fortnow, Howard Karloff, and Noam Nisan. 1992. Algebraic Methods for Interactive Proof Systems. J. ACM 39, 4 (Oct. 1992), 859--868.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1145/146585.146605">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1145%2F146585.146605">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[59]</div><div id="ref-00059" class="citations"><div class="citation"><div class="citation-content">Ralph C Merkle. 1987. A digital signature based on a conventional encryption function. In Conference on the theory and application of cryptographic techniques.</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Ralph+C+Merkle.+1987.+A+digital+signature+based+on+a+conventional+encryption+function.+In+Conference+on+the+theory+and+application+of+cryptographic+techniques.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[60]</div><div id="ref-00060" class="citations"><div class="citation"><div class="citation-content">Silvio Micali. 2000. Computationally Sound Proofs. SIAM J. Comput. (2000).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Silvio+Micali.+2000.+Computationally+Sound+Proofs.+SIAM+J.+Comput.+%282000%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[61]</div><div id="ref-00061" class="citations"><div class="citation"><div class="citation-content">Satoshi Nakamoto. 2008. Bitcoin: A peer-to-peer electronic cash system. Decentralized Business Review (2008), 21260.</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Satoshi+Nakamoto.+2008.+Bitcoin%3A+A+peer-to-peer+electronic+cash+system.+Decentralized+Business+Review+%282008%29%2C+21260.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[62]</div><div id="ref-00062" class="citations"><div class="citation"><div class="citation-content">Kaihua Qin, Liyi Zhou, Benjamin Livshits, and Arthur Gervais. 2021. Attacking the defi ecosystem with flash loans for fun and profit. In International Conference on Financial Cryptography and Data Security. Springer, 3--32.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1007/978-3-662-64322-8_1">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2F978-3-662-64322-8_1">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[63]</div><div id="ref-00063" class="citations"><div class="citation"><div class="citation-content">Ling Ren and Srinivas Devadas. 2016. Proof of space from stacked expanders. In Theory of Cryptography Conference. Springer, 262--285.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1007/978-3-662-53641-4_11">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2F978-3-662-53641-4_11">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[64]</div><div id="ref-00064" class="citations"><div class="citation"><div class="citation-content">Srinath Setty. 2020. Spartan: Efficient and General-Purpose zkSNARKs Without Trusted Setup. In CRYPTO 2020. Springer International Publishing, 704--737.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1007/978-3-030-56877-1_25">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2F978-3-030-56877-1_25">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[65]</div><div id="ref-00065" class="citations"><div class="citation"><div class="citation-content">Shravan Srinivasan, Alexander Chepurnoy, Charalampos Papamanthou, Alin Tomescu, and Yupeng Zhang. 2021. Hyperproofs: Aggregating and Maintaining Proofs in Vector Commitments. IACR Cryptol. ePrint Arch. (2021), 599.</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Shravan+Srinivasan%2C+Alexander+Chepurnoy%2C+Charalampos+Papamanthou%2C+Alin+Tomescu%2C+and+Yupeng+Zhang.+2021.+Hyperproofs%3A+Aggregating+and+Maintaining+Proofs+in+Vector+Commitments.+IACR+Cryptol.+ePrint+Arch.+%282021%29%2C+599.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[66]</div><div id="ref-00066" class="citations"><div class="citation"><div class="citation-content">Justin Thaler. 2013. Time-Optimal Interactive Proofs for Circuit Evaluation. In Advances in Cryptology -- CRYPTO 2013, Ran Canetti and Juan A. Garay (Eds.).</div><div class="external-links"><div class="core-xlink-crossref"><a href="https://doi.org/10.1007/978-3-642-40084-1_5">Crossref</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1007%2F978-3-642-40084-1_5">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[67]</div><div id="ref-00067" class="citations"><div class="citation"><div class="citation-content">Justin Thaler. 2015. A Note on the GKR Protocol. (2015). Available at http://people.cs.georgetown.edu/jthaler/GKRNote.pdf.</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Justin+Thaler.+2015.+A+Note+on+the+GKR+Protocol.+%282015%29.+Available+at+http%3A%2F%2Fpeople.cs.georgetown.edu%2Fjthaler%2FGKRNote.pdf.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[68]</div><div id="ref-00068" class="citations"><div class="citation"><div class="citation-content">Riad S Wahby, Max Howald, Siddharth Garg, Abhi Shelat, and Michael Walfish. 2016. Verifiable asics. In Security and Privacy (SP), 2016 IEEE Symposium on. IEEE, 759--778.</div><div class="external-links"><div class="core-xlink-crossref"><a href="https://doi.org/10.1109/SP.2016.51">Crossref</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1109%2FSP.2016.51">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[69]</div><div id="ref-00069" class="citations"><div class="citation"><div class="citation-content">Riad S Wahby, Ioanna Tzialla, Abhi Shelat, Justin Thaler, and Michael Walfish. 2018. Doubly-efficient zkSNARKs without trusted setup. In 2018 IEEE Symposium on Security and Privacy (SP). IEEE, 926--943.</div><div class="external-links"><div class="core-xlink-crossref"><a href="https://doi.org/10.1109/SP.2018.00060">Crossref</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1109%2FSP.2018.00060">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[70]</div><div id="ref-00070" class="citations"><div class="citation"><div class="citation-content">Lawrence Wintermeyer. 2021. Institutional money is pouring into the crypto market and its only going to grow. (Aug 2021). https://www.forbes.com/sites/ lawrencewintermeyer/2021/08/12/institutional-money-is-pouring-into-thecrypto-market-and-its-only-going-to-grow/'sh=2660a69d1459</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Lawrence+Wintermeyer.+2021.+Institutional+money+is+pouring+into+the+crypto+market+and+its+only+going+to+grow.+%28Aug+2021%29.+https%3A%2F%2Fwww.forbes.com%2Fsites%2F+lawrencewintermeyer%2F2021%2F08%2F12%2Finstitutional-money-is-pouring-into-thecrypto-market-and-its-only-going-to-grow%2F%27sh%3D2660a69d1459">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[71]</div><div id="ref-00071" class="citations"><div class="citation"><div class="citation-content">Gavin Wood et al. 2014. Ethereum: A secure decentralised generalised transaction ledger. Ethereum project yellow paper 151, 2014 (2014), 1--32.</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Gavin+Wood+et+al.+2014.+Ethereum%3A+A+secure+decentralised+generalised+transaction+ledger.+Ethereum+project+yellow+paper+151%2C+2014+%282014%29%2C+1--32.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[72]</div><div id="ref-00072" class="citations"><div class="citation"><div class="citation-content">Howard Wu, Wenting Zheng, Alessandro Chiesa, Raluca Ada Popa, and Ion Stoica. 2018. DIZK: A Distributed Zero-Knowledge Proof System. (2018).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Howard+Wu%2C+Wenting+Zheng%2C+Alessandro+Chiesa%2C+Raluca+Ada+Popa%2C+and+Ion+Stoica.+2018.+DIZK%3A+A+Distributed+Zero-Knowledge+Proof+System.+%282018%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[73]</div><div id="ref-00073" class="citations"><div class="citation"><div class="citation-content">Tiacheng Xie, Jiaheng Zhang, Yupeng Zhang, Charalampos Papamanthou, and Dawn Song. 2019. Libra: Succinct Zero-Knowledge Proofs with Optimal Prover Computation. In Advances in Cryptology (CRYPTO).</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Tiacheng+Xie%2C+Jiaheng+Zhang%2C+Yupeng+Zhang%2C+Charalampos+Papamanthou%2C+and+Dawn+Song.+2019.+Libra%3A+Succinct+Zero-Knowledge+Proofs+with+Optimal+Prover+Computation.+In+Advances+in+Cryptology+%28CRYPTO%29.">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[74]</div><div id="ref-00074" class="citations"><div class="citation"><div class="citation-content">Jiaheng Zhang, Tianyi Liu, Weijie Wang, Yinuo Zhang, Dawn Song, Xiang Xie, and Yupeng Zhang. 2021. Doubly efficient interactive proofs for general arithmetic circuits with linear prover time. In Proceedings of the 2021 ACM SIGSAC Conference on Computer and Communications Security. 159--177.</div><div class="external-links"><div class="core-xlink-digital-library"><a href="/doi/10.1145/3460120.3484767">Digital Library</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1145%2F3460120.3484767">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[75]</div><div id="ref-00075" class="citations"><div class="citation"><div class="citation-content">Jiaheng Zhang, Tiancheng Xie, Thang Hoang, Elaine Shi, and Yupeng Zhang. 2022. Polynomial Commitment with a {One-to-Many} Prover and Applications. In 31st USENIX Security Symposium (USENIX Security 22). 2965--2982</div><div class="external-links"><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar?q=Jiaheng+Zhang%2C+Tiancheng+Xie%2C+Thang+Hoang%2C+Elaine+Shi%2C+and+Yupeng+Zhang.+2022.+Polynomial+Commitment+with+a+%7BOne-to-Many%7D+Prover+and+Applications.+In+31st+USENIX+Security+Symposium+%28USENIX+Security+22%29.+2965--2982">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[76]</div><div id="ref-00076" class="citations"><div class="citation"><div class="citation-content">Jiaheng Zhang, Tiancheng Xie, Y. Zhang, and D. Song. 2020. Transparent Polynomial Delegation and Its Applications to Zero Knowledge Proof. 2020 IEEE Symposium on Security and Privacy (SP) (2020), 859--876.</div><div class="external-links"><div class="core-xlink-crossref"><a href="https://doi.org/10.1109/SP40000.2020.00052">Crossref</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1109%2FSP40000.2020.00052">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[77]</div><div id="ref-00077" class="citations"><div class="citation"><div class="citation-content">Yupeng Zhang, Daniel Genkin, Jonathan Katz, Dimitrios Papadopoulos, and Charalampos Papamanthou. 2017. vSQL: Verifying Arbitrary SQL Queries over Dynamic Outsourced Databases. In IEEE Symposium on Security and Privacy (S&amp;P) 2017.</div><div class="external-links"><div class="core-xlink-crossref"><a href="https://doi.org/10.1109/SP.2017.43">Crossref</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1109%2FSP.2017.43">Google Scholar</a></div></div></div></div></div><div class="biblioentry" data-has="label"><div class="label">[78]</div><div id="ref-00078" class="citations"><div class="citation"><div class="citation-content">Yupeng Zhang, Daniel Genkin, Jonathan Katz, Dimitrios Papadopoulos, and Charalampos Papamanthou. 2018. vRAM: Faster verifiable RAM with program-independent preprocessing. In Proceeding of IEEE Symposium on Security and Privacy (S&amp;P)</div><div class="external-links"><div class="core-xlink-crossref"><a href="https://doi.org/10.1109/SP.2018.00013">Crossref</a></div><div class="core-xlink-google-scholar"><a href="https://scholar.google.com/scholar_lookup?doi=10.1109%2FSP.2018.00013">Google Scholar</a></div></div></div></div></div></div></section>
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="5eab360b-b0a7-47ce-b05a-6e2d026cb5d0" id="ACM_widgets">
+        
+
+
+
+        
+        <div>
+
+
+
+        
+        <div>
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3CitedByWidget" data-widget-id="fbd0b7aa-930a-4342-a3da-6e5f895c5500" class="cited-by__article-body">
+        
+
+
+
+        
+        <section class="cited-by"><div class="cited-by__wrapper"><div class="flex justify-between mb-2 align-items-c colored-block__title"><h2 class="cited-by__title left-bordered-title">Cited By</h2><a href="/action/ajaxShowCitedBy?doi=10.1145/3548606.3560652" target="_blank" title="View all cited by in new tab" class="downloadAll btn blue">View all<i class="icon-export"></i></a></div><div id="cited-by__content" data-source="/pb/widgets/citedBy?page=1&amp;widgetId=fbd0b7aa-930a-4342-a3da-6e5f895c5500&amp;pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3BsubPage%3Astring%3ABasic+Abstract%3Bctype%3Astring%3ABook+Content%3Btopic%3Atopic%3Aconference-collections%26gt%3Bccs%3Bpage%3Astring%3AArticle%2FChapter+View%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3548606%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3548606.3560652%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" class="cited-by__content"></div><ul data-pageSize="3" data-more="Show More Cited By" data-total='161' class="rlist separator cited-by__list"><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Li J</span><span class="comma-separator">Wu Z</span></span><span class="pub-date dot-after">(2026)</span><span>Arbitrary message passing across blockchains and implications for financial markets</span><span class="seriesTitle">Research Policy</span><span class="doi">10.1016/j.respol.2026.105507</span><span><b class="volume bold">55</b><span class="issue">:7</span></span><span class="page-range">(105507)</span><span class="pub-date">Online publication date: Sep-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.1016/j.respol.2026.105507" target="_blank" class="link">https://doi.org/10.1016/j.respol.2026.105507</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Nair A</span><span class="comma-separator">Achary R</span></span><span class="pub-date dot-after">(2026)</span><span>PEUAP-W3: A Formally Verified Zero-Knowledge Authentication Protocol for Web 3.0 Unifying Conditional Biometric Binding, Threshold-Accountable Anonymity, and Self-Sovereign Identity</span><span class="seriesTitle">Computers</span><span class="doi">10.3390/computers15090563</span><span><b class="volume bold">15</b><span class="issue">:9</span></span><span class="page-range">(563)</span><span class="pub-date">Online publication date: 27-Aug-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.3390/computers15090563" target="_blank" class="link">https://doi.org/10.3390/computers15090563</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Khurana S</span><span class="comma-separator">Padhye S</span><span class="comma-separator">Sahu R</span></span><span class="pub-date dot-after">(2026)</span><span>Zero-Knowledge Extension of PARI</span><span class="seriesTitle">IACR Communications in Cryptology</span><span class="doi">10.62056/ahjb0l2hd</span><span><b class="volume bold">3</b><span class="issue">:2</span></span><span class="pub-date">Online publication date: 3-Aug-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.62056/ahjb0l2hd" target="_blank" class="link">https://doi.org/10.62056/ahjb0l2hd</a></div></li><li class="citedByEntry seeMoreWrapper"><a href="javascript:void(0)" data-source="/pb/widgets/citedBy?page=1&amp;widgetId=fbd0b7aa-930a-4342-a3da-6e5f895c5500&amp;pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3BsubPage%3Astring%3ABasic+Abstract%3Bctype%3Astring%3ABook+Content%3Btopic%3Atopic%3Aconference-collections%26gt%3Bccs%3Bpage%3Astring%3AArticle%2FChapter+View%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3548606%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3548606.3560652%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" class="cited-by__see-more btn btn--inverse">Show More Cited By</a></li></ul></div></section>
+
+        </div>
+    
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <section data-widget-def="ux3-layout-widget" data-widget-id="39967302-8491-456d-8cd5-f2724d18d392" id="sec-terms">
+        
+
+
+
+        
+        <div>
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3TagWidget" data-widget-id="e2ef85cc-92e2-4a74-b049-e0a086481942" class="citation article__section article__index-terms">
+        
+
+
+
+        
+        
+
+
+
+        
+        <h2>Index Terms</h2>
+<div data-title="To interact with this section, you must have Premium access." data-title-alt="Index Terms (Premium feature)" data-customClass="simple-tooltip__basic" data-learn-more-link="/about/upgrade" data-learn-more-link-text="Learn more" data-sign-in-link="https://dl.acm.org/action/showLogin?redirectUri=%2Fdoi%2F10.1145%2F3548606.3560652" data-sign-in-link-text="Sign in" tabindex="0" class="simple-tooltip__block--b simple-tooltip__mobile simple-tooltip__basic-wrapper tooltip-section"><span class="sr-only">Index Terms (Premium feature)</span><div inert="inert"><ol class="rlist organizational-chart"><li><div id="organizational-chart__title">zkBridge: Trustless Cross-chain Bridges Made Practical</div><ol class="rlist level-1  ch-1"><li><div data-background="#737373" style="background-color:#737373;box-shadow:none"><p><a href="/topic/ccs2012/10002978?ContentGroupKey=10.1145%2F3548606&amp;expand=all">Security and privacy</a></p></div><ol class="rlist level-2 ch-1 hasNodes"><li><div data-background="#737373" style="background-color:#737373;box-shadow:none"><p><a href="/topic/ccs2012/10002978.10003022?ContentGroupKey=10.1145%2F3548606&amp;expand=all">Software and application security</a></p></div><ol class="rlist level-3 ch-0"></ol></li></ol></li></ol></li></ol></div></div>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="graphQueryWidget" data-widget-id="a0e1f283-de80-413e-bd95-25e0e7f29726" class="disclaimer">
+        
+
+
+
+        
+        
+
+        </div>
+    
+
+</div>
+
+        </section>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <section data-widget-def="ux3-layout-widget" data-widget-id="05703002-6a13-4f45-bf69-ef3358f44bf6" id="sec-recommendations">
+        
+
+
+
+        
+        <div>
+
+
+
+        
+        <h2>Recommendations</h2> 
+
+
+
+
+        
+        <div class="show-recommended"><div data-title="To interact with this section, you must have Premium access." data-title-alt="Recommendations (Premium feature)" data-customClass="simple-tooltip__basic" data-learn-more-link="/about/upgrade" data-learn-more-link-text="Learn more" data-sign-in-link="https://dl.acm.org/action/showLogin?redirectUri=%2Fdoi%2F10.1145%2F3548606.3560652" data-sign-in-link-text="Sign in" tabindex="0" class="simple-tooltip__block--b simple-tooltip__mobile simple-tooltip__basic-wrapper tooltip-section"><span class="sr-only">Recommendations (Premium feature)</span><div inert="inert"><div data-exp-type="" data-query-id="10.1145/3548606.3560652" class="recommended-articles__content"><ul class="rlist lot"><li class="grid-item"><div class="creative-work"><a href="/doi/10.1016/j.procs.2021.06.055" title="Privacy methods and zero-knowledge poof for corporate blockchain"><h3 data-lines="2" class="creative-work__title truncate-text-css">Privacy methods and zero-knowledge poof for corporate blockchain</h3></a><div class="description"><div class="issue-item__abstract truncate-text-css" data-lines="4">Abstract
+   <p>Nowadays distributed ledger technology or blockchain is widely used in the corporate
+      sector for various industries. Although implementation issues (coding practice, lack
+      of capabilities, etc.) are not among the major barriers for the technology ...</p>
+</div></div><div class="readMore"><a href="/doi/10.1016/j.procs.2021.06.055" title="Read More" aria-hidden="true" tabindex="-1">Read More</a></div></div></li><li class="grid-item"><div class="creative-work"><a href="/doi/10.1145/3555776.3577677" title="Distributed Key Generation with Smart Contracts using zk-SNARKs"><h3 data-lines="2" class="creative-work__title truncate-text-css">Distributed Key Generation with Smart Contracts using zk-SNARKs</h3></a><div class="creative-work__sub-title mb-3 mt-1">SAC '23: Proceedings of the 38th ACM/SIGAPP Symposium on Applied Computing  </div><div class="description"><div class="issue-item__abstract truncate-text-css" data-lines="4"> 
+   <p>Distributed Key Generation (DKG) is an extensively researched topic as it is fundamental
+      to threshold cryptosystems. Emerging technologies such as blockchains benefit massively
+      from applying threshold cryptography in consensus protocols, randomness ...</p>
+</div></div><div class="readMore"><a href="/doi/10.1145/3555776.3577677" title="Read More" aria-hidden="true" tabindex="-1">Read More</a></div></div></li><li class="grid-item"><div class="creative-work"><a href="/doi/10.1007/s00145-010-9072-z" title="Adaptive Zero-Knowledge Proofs and Adaptively Secure Oblivious Transfer"><h3 data-lines="2" class="creative-work__title truncate-text-css">Adaptive Zero-Knowledge Proofs and Adaptively Secure Oblivious Transfer</h3></a><div class="description"><div class="issue-item__abstract truncate-text-css" data-lines="4">
+   		
+   <p>In the setting of secure computation, a set of parties wish to securely compute some
+      function of their inputs, in the presence of an adversary. The adversary in question
+      may be <em>static</em> (meaning that it controls a predetermined subset of the parties) or <em>...</em><p>
+         <ul></ul>
+      </p>
+   </p>
+</div></div><div class="readMore"><a href="/doi/10.1007/s00145-010-9072-z" title="Read More" aria-hidden="true" tabindex="-1">Read More</a></div></div></li></ul></div></div></div></div>
+</div>
+
+        </section>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <section data-widget-def="ux3-layout-widget" data-widget-id="f58d89db-f506-4530-9812-61749ee9f921" id="sec-comments">
+        
+
+
+
+        
+        <div>
+
+
+
+        
+        <h2>Comments</h2>
+
+
+
+
+        
+        <div data-title="To interact with this section, you must have Premium access." data-title-alt="Comments (Premium feature)" data-customClass="simple-tooltip__basic" data-learn-more-link="/about/upgrade" data-learn-more-link-text="Learn more" data-sign-in-link="https://dl.acm.org/action/showLogin?redirectUri=%2Fdoi%2F10.1145%2F3548606.3560652" data-sign-in-link-text="Sign in" tabindex="0" class="simple-tooltip__block--b simple-tooltip__mobile simple-tooltip__basic-wrapper tooltip-section"><span class="sr-only">Comments (Premium feature)</span><div inert="inert"><div id="disqus_thread" data-page-identifier="10.1145/3548606.3560652" data-remote-auth="" data-api-key="MmWj4FlWmXk20FJsmWMXbTJoZT7TVzTsc9Rw0yrJp3L1ZNXZuvmxF3F5rFIF8RqQ" data-forum-shortname="acm-prod"></div><a href="https://dl.acm.org/doi/10.1145/3548606.3560652#disqus_thread" class="disqus-count hidden"></a><noscript>Please enable JavaScript to view the<a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div></div>
+</div>
+
+        </section>
+    
+
+</div>
+
+        </div>
+    
+
+</div></section></div><div class="core-collateral" role="dialog" aria-modal="true"><div id="core-collateral-info" data-active-pane="false"><header><h2><i class="icon-Icon_Information" aria-hidden="true"></i>Information &amp; Contributors</h2></header><section id="tab-information" role="tabpanel"><h3>Information</h3><section class="core-self-citation"><h4>Published In</h4>
+
+
+
+        
+        <div class="cover-image"><div class="cover-image__image"><img src="/specs/products/acm/releasedAssets/images/Default_image_lazy-0687af31f0f1c8d4b7a22b686995ab9b.svg" data-src="/cms/asset/28e91e4b-a945-48fd-8d68-e1e1f003bfbc/3548606.cover.jpg" alt="cover image ACM Conferences" height="391" width="302" class="lazy"/></div><div class="cover-image__details"><div class="book-meta">CCS '22: Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security</div><div class="cover-date">November 2022</div><div class="cover-pages">3598  pages</div><div class="cover-image__details-extra"><div class="flex-container"><span class="bold">ISBN:</span><span class="space">9781450394505</span></div><div class="flex-container"><span class="bold">DOI:</span><span class="space">10.1145/3548606</span></div><div class="flex-container"><div><ul class="rlist--inline loa truncate-list" title="list of authors" data-lines="2"><li class="label"><b>General Chairs: </b></li><li><a href="/profile/99660651496" title="Heng Yin"><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/><span>Heng Yin</span></a><span>,</span></li><li><a href="/profile/81100317151" title="Angelos Stavrou"><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/><span>Angelos Stavrou</span></a><span>,</span></li><li class="label"><b>Program Chairs: </b></li><li><a href="/profile/81350574493" title="Cas Cremers"><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/><span>Cas Cremers</span></a><span>,</span></li><li><a href="/profile/99661008117" title="Elaine Shi"><img class="author-picture" src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" width="24" height="24" alt="Author Picture" aria-hidden="true"/><span>Elaine Shi</span></a></li></ul></div></div></div><div class="pb-dropzone" data-pb-dropzone="metadataDisplayExtra" title="metadataDisplayExtra"></div></div></div>
+<div role="paragraph" class="core-copyright">Copyright © 2022 Owner/Author.</div><div class="core-license">This work is licensed under a Creative Commons Attribution International 4.0 License.</div></section><section class="core-sponsors"><h4>Sponsors</h4><ul><li><a href="/sig/sigsac">SIGSAC: ACM Special Interest Group on Security, Audit, and Control</a></li></ul></section><section class="core-publisher"><h4>Publisher</h4><div class="section__content"><div class="publisher__details"><p class="publisher__name">Association for Computing Machinery</p><p class="publisher__address">New York, NY, United States</p></div></div></section><section id="core-history" class="core-history"><h4>Publication History</h4><div><b class="core-label">Published</b>: 07 November 2022</div></section><section class="core-collateral-crossmark"><h4>Check for updates</h4><a data-target="crossmark" href="#" title="Check for updates on crossmark" data-doi="10.1145/3548606.3560652" data-id="article-info-crossmark" class="crossmark__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" height="36px" role="presentation"><rect x="5" y="5" width="90" height="90" rx="2" ry="2" class="cls-1"></rect><polygon points="35.95 65.11 64.05 46.38 64.05 23.91 35.95 23.91 35.95 65.11" class="cls-2"></polygon><polygon points="64.05 65.11 35.95 46.38 35.95 23.91 64.05 23.91 64.05 65.11" class="cls-3"></polygon><path d="M50,19A31,31,0,1,0,81,50,31,31,0,0,0,50,19Zm0,54.41A23.41,23.41,0,1,1,73.41,50,23.41,23.41,0,0,1,50,73.41Z" class="cls-4"></path><path d="M67.18,65.86a23.38,23.38,0,0,1-38.9-24.57l-6.49-4.1A31,31,0,0,0,73.69,70Z" class="cls-5"></path><defs><style>.cls-1{stroke:#948f8f;stroke-miterlimit:10;stroke-width:0.75px;fill:url(#no_text_crossmark);}
+.cls-2{fill:#c72914;}
+.cls-3{fill:#ef3340;}
+.cls-4{fill:#3eb1c8;}
+.cls-5{fill:#ffc72c;}</style><linearGradient id="no_text_crossmark" x1="50" y1="15.18" x2="50" y2="94.72" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"></stop><stop offset="1" stop-color="#c4c4c4"></stop></linearGradient></defs></svg></a></section><section property="keywords"><h4>Author Tags</h4><ol><li><a href="/keyword/blockchain?expand=all" alt="Search on this keyword" rel="nofollow">blockchain</a></li><li><a href="/keyword/distributed+computing?expand=all" alt="Search on this keyword" rel="nofollow">distributed computing</a></li><li><a href="/keyword/zero-knowledge+proofs?expand=all" alt="Search on this keyword" rel="nofollow">zero-knowledge proofs</a></li></ol></section><section class="core-qualifiers"><h4>Qualifiers</h4><ul><li>Research-article</li></ul></section><section class="core-funding"><h4>Funding Sources</h4><ul><li><a href="https://dx.doi.org/10.13039/100000001">National Science Foundation</a></li><li><a href="https://dx.doi.org/10.13039/100014236">Center for Long-Term Cybersecurity, University of California Berkeley</a></li><li>DARPA</li><li>the Center for Responsible, Decentralized Intelligence at Berkeley</li><li><a href="https://dx.doi.org/10.13039/100000893">Simons Foundation</a></li></ul></section><section class="core-conference"><h4>Conference</h4><div class="core-conference-left"><span class="core-conference-code">CCS '22</span><div class="core-conference-sponsors"><span class="core-conference-sponsors-label">Sponsor:</span><ul class="core-conference-sponsors-list truncate-list" data-lines="2"><li class="core-sponsors-list-item"><a href="/sig/sigsac">SIGSAC</a></li></ul></div></div><div class="core-conference-right"><a href="https://www.sigsac.org/ccs/CCS2022/">CCS '22: 2022 ACM SIGSAC Conference on Computer and Communications Security</a><div class="core-conference-calender"><i class="icon-calender3"></i><span class="core-conference-date">November 7 - 11, 2022</span></div><div class="core-conference-map"><i class="icon-navigator"></i>Los Angeles, CA, USA</div></div></section>
+
+
+
+        
+        <div class="acceptance-rates__section"><h4 aria-expanded="true">Acceptance Rates</h4><div class="accordion-tabbed__content"><div class="acceptance-rates__heading"><div class="acceptance-rates__heading-submissions">CCS '22 Paper Acceptance Rate Not Available</div><div class="acceptance-rates__heading-overall">Overall Acceptance Rate 1,261 of 6,999 submissions, 18%</div></div></div></div>
+
+
+
+
+        
+        
+
+
+
+
+
+
+<div class="upcoming-conf">
+<h4>Upcoming Conference</h4>
+    <div class="section__content">
+        <div class="event event--inline-info row--event active">
+        <input type="hidden" name="Longitude" value="4.283598"/>
+        <input type="hidden" name="Latitude" value="52.093335"/>
+        <input type="hidden" name="StartDate" value="2026-11-15T00:00:00.000+01:00">
+        <input type="hidden" name="EndDate" value="2026-11-19T00:00:00.000+01:00">  
+            <div class="event__header clearfix">
+                <div class="left--block gutterless">
+                    <span class="event__code">
+                        <span class="event__code--text">CCS '26</span>
+                    </span>
+                    
+                        <div class="event__sopnsers">
+                            <ul data-lines="3" class="rlist truncate-list">
+                                <li class="label"><b>Sponsor:</b></li>
+                                
+                                    
+                                        <li style="text-transform: uppercase;">
+                                            <a class="link" href="/sig/sigsac" title="Special Interest Group on Security, Audit and Control"><span class="hlFld-Title">sigsac</span></a>
+										</li>
+											
+								
+                            </ul>
+                        </div>
+                        
+                </div>
+                <div class="right--block">
+                    
+                        
+                            <a class="event__title" href="/conference/ccs" title="ACM SIGSAC Conference on Computer and Communications Security">ACM SIGSAC Conference on Computer and Communications Security</a>                                
+                        
+                    
+                        
+                     
+                    <div class="event__content">
+                        <div class="info calender">
+                            <a href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=ACM SIGSAC Conference on Computer and Communications Security&amp;dates=20261115/20261119&amp;details=ACM SIGSAC Conference on Computer and Communications Security&amp;location=The Hague %2C%20%2C%20Netherlands" target="_blank">
+                                    <i class="icon-add-calendar"></i>
+                            </a>
+                            <span>
+                                November 15 - 19, 2026
+                            <span>
+                        </div>
+                        <div class="info map">
+                            <a href="https://maps.google.com/?q=The Hague ,, Netherlands" target="_blank">
+                                <i class="icon-navigator"></i>
+                            </a>
+                            <span>
+                                
+                                    The Hague  ,
+                                
+                                 
+                                
+                                    Netherlands       
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section><section id="tab-contributors" role="tabpanel"><h3>Contributors</h3>
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="acmPublicationContributorsWidget" data-widget-id="774172a5-8222-4087-8d6e-7a1a17ded31e" class="expandable-accordion">
+        
+
+
+
+        
+        <div class="publication-contribs-contianer"><input id="ContribsAjax" type="hidden" data-ajax="/pb/widgets/getContribs?widgetId=774172a5-8222-4087-8d6e-7a1a17ded31e&amp;pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3BsubPage%3Astring%3ABasic+Abstract%3Bctype%3Astring%3ABook+Content%3Btopic%3Atopic%3Aconference-collections%26gt%3Bccs%3Bpage%3Astring%3AArticle%2FChapter+View%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3548606%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3548606.3560652%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages"/><div class="loader"><img src="/specs/products/acm/releasedAssets/images/loader-7e60691fbe777356dc81ff6d223a82a6.gif"/></div></div>
+
+        </div>
+    
+
+<section><h4 class="left-bordered-title">Other Metrics</h4><div class="otherMetrics__section__content"><a href="#tab-metrics-inner" data-tab="pill-bibliometrics__content" data-label="Bibliometrics &amp; Citations" class="btn btn--inverse tab-link stretched">View Article Metrics</a></div></section></section></div><div id="core-collateral-metrics" data-active-pane="false"><header><h2><i class="icon-metric" aria-hidden="true"></i>Bibliometrics &amp; Citations</h2></header><section id="tab-metrics-inner" role="tabpanel"><h3>Bibliometrics</h3><section>
+
+
+
+        
+            <h4 class="">
+                Article Metrics
+            </h4>
+        
+        <div class="pill-bibliometrics__content"><div class="section__content"><ul class="rlist--inline article-metrics"><li><div class="article-metric citation"><div class="metric-value"><span>161</span></div>Total Citations</div><a href="#tab-citations" class="primary-blue-color tab-link slide-active pill-content">View Citations</a></li><li><div class="article-metric download"><div class="metric-value"><span>15,109</span></div>Total Downloads</div></li></ul><ul class="rlist metrics__list"><li><span class="metric-name">Downloads (Last 12 months)</span><span data-title="To view advanced metrics, you must have Premium access." data-title-alt="Advanced metrics (Premium feature)" data-customClass="simple-tooltip__basic" data-learn-more-link="/about/upgrade" data-learn-more-link-text="Learn more" data-sign-in-link="https://dl.acm.org/action/showLogin?redirectUri=%2Fdoi%2F10.1145%2F3548606.3560652" data-sign-in-link-text="Sign in" tabindex="0" class="simple-tooltip__block--b simple-tooltip__mobile simple-tooltip__basic-wrapper inline transparent-bg"><span class="sr-only">Advanced metrics (Premium feature)</span><span inert="inert">...</span></span></li><li><span class="metric-name">Downloads (Last 6 weeks)   </span><span data-title="To view advanced metrics, you must have Premium access." data-title-alt="Advanced metrics (Premium feature)" data-customClass="simple-tooltip__basic" data-learn-more-link="/about/upgrade" data-learn-more-link-text="Learn more" data-sign-in-link="https://dl.acm.org/action/showLogin?redirectUri=%2Fdoi%2F10.1145%2F3548606.3560652" data-sign-in-link-text="Sign in" tabindex="0" class="simple-tooltip__block--b simple-tooltip__mobile simple-tooltip__basic-wrapper inline transparent-bg"><span class="sr-only">Advanced metrics (Premium feature)</span><span inert="inert">...</span></span></li></ul><div class="metric-update"><span class="metric-update__date">Reflects downloads up to 26 Aug 2026</span></div></div></div>
+
+
+
+
+        
+        
+
+
+
+
+
+<div class="smart-layout">
+    
+        
+
+            
+            
+            
+            
+
+            
+
+        
+
+            
+            
+            
+            
+
+            
+                <div class="smart-layout_dropzone-container">
+
+                    
+
+                    
+                    <div data-pb-dropzone="5f87f1f6-175c-4d4b-9b6c-5ca0ce35c8dc">
+                        
+                    </div>
+                </div>
+            
+
+        
+    
+</div>
+
+</section><section></section><section><h4 class="left-bordered-title">Other Metrics</h4><div class="otherMetrics__section__content"><a href="#tab-contributors" data-tab="pill-authors__content" data-label="Information &amp; Authors" class="btn btn--inverse tab-link stretched">View Author Metrics</a></div></section></section><section id="tab-citations" role="tabpanel"><h3>Citations</h3><section></section><section>
+
+
+
+        
+        <section class="cited-by"><div class="cited-by__wrapper"><div class="flex justify-between mb-2 align-items-c colored-block__title"><h2 class="cited-by__title left-bordered-title">Cited By</h2><a href="/action/ajaxShowCitedBy?doi=10.1145/3548606.3560652" target="_blank" title="View all cited by in new tab" class="downloadAll btn blue">View all<i class="icon-export"></i></a></div><div id="cited-by__content" data-source="/pb/widgets/citedBy?page=1&amp;widgetId=83623649-f215-4b65-8cf7-2e4b2c2aad12&amp;pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3BsubPage%3Astring%3ABasic+Abstract%3Bctype%3Astring%3ABook+Content%3Btopic%3Atopic%3Aconference-collections%26gt%3Bccs%3Bpage%3Astring%3AArticle%2FChapter+View%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3548606%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3548606.3560652%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" class="cited-by__content"></div><ul data-pageSize="10" data-more="Show More Cited By" data-total='161' class="rlist separator cited-by__list"><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Li J</span><span class="comma-separator">Wu Z</span></span><span class="pub-date dot-after">(2026)</span><span>Arbitrary message passing across blockchains and implications for financial markets</span><span class="seriesTitle">Research Policy</span><span class="doi">10.1016/j.respol.2026.105507</span><span><b class="volume bold">55</b><span class="issue">:7</span></span><span class="page-range">(105507)</span><span class="pub-date">Online publication date: Sep-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.1016/j.respol.2026.105507" target="_blank" class="link">https://doi.org/10.1016/j.respol.2026.105507</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Nair A</span><span class="comma-separator">Achary R</span></span><span class="pub-date dot-after">(2026)</span><span>PEUAP-W3: A Formally Verified Zero-Knowledge Authentication Protocol for Web 3.0 Unifying Conditional Biometric Binding, Threshold-Accountable Anonymity, and Self-Sovereign Identity</span><span class="seriesTitle">Computers</span><span class="doi">10.3390/computers15090563</span><span><b class="volume bold">15</b><span class="issue">:9</span></span><span class="page-range">(563)</span><span class="pub-date">Online publication date: 27-Aug-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.3390/computers15090563" target="_blank" class="link">https://doi.org/10.3390/computers15090563</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Khurana S</span><span class="comma-separator">Padhye S</span><span class="comma-separator">Sahu R</span></span><span class="pub-date dot-after">(2026)</span><span>Zero-Knowledge Extension of PARI</span><span class="seriesTitle">IACR Communications in Cryptology</span><span class="doi">10.62056/ahjb0l2hd</span><span><b class="volume bold">3</b><span class="issue">:2</span></span><span class="pub-date">Online publication date: 3-Aug-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.62056/ahjb0l2hd" target="_blank" class="link">https://doi.org/10.62056/ahjb0l2hd</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Ma L</span><span class="comma-separator">Chen S</span><span class="comma-separator">Lv Y</span><span class="comma-separator">Luan B</span><span class="comma-separator">Liu X</span><span class="comma-separator">Li K</span></span><span class="pub-date dot-after">(2026)</span><span>Hybrid Relay Architecture: A Decentralized and Semantically-Agnostic Interoperability Framework for Blockchain</span><span class="seriesTitle">IEEE Transactions on Computers</span><span class="doi">10.1109/TC.2026.3699633</span><span><b class="volume bold">75</b><span class="issue">:8</span></span><span class="page-range">(2943-2955)</span><span class="pub-date">Online publication date: Aug-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.1109/TC.2026.3699633" target="_blank" class="link">https://doi.org/10.1109/TC.2026.3699633</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Wang Y</span><span class="comma-separator">Zhang Y</span><span class="comma-separator">Chen Y</span></span><span class="pub-date dot-after">(2026)</span><span>Efficient Sum-Check for High-Degree Polynomials</span><span class="seriesTitle">Applied Cryptography and Network Security</span><span class="doi">10.1007/978-3-032-32560-0_11</span><span class="page-range">(297-326)</span><span class="pub-date">Online publication date: 22-Jul-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.1007/978-3-032-32560-0_11" target="_blank" class="link">https://doi.org/10.1007/978-3-032-32560-0_11</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Chen C</span><span class="comma-separator">Xiang B</span><span class="comma-separator">Kumari S</span></span><span class="pub-date dot-after">(2026)</span><span>DCAChain: A Decentralized Cross-Domain Access-Control Architecture With Key-Abuse Resistance for the Metaverse</span><span class="seriesTitle">IEEE Internet of Things Journal</span><span class="doi">10.1109/JIOT.2026.3690448</span><span><b class="volume bold">13</b><span class="issue">:14</span></span><span class="page-range">(32225-32239)</span><span class="pub-date">Online publication date: 15-Jul-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.1109/JIOT.2026.3690448" target="_blank" class="link">https://doi.org/10.1109/JIOT.2026.3690448</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Kim S</span><span class="comma-separator">Kang T</span><span class="comma-separator">Shin S</span><span class="comma-separator">Suh T</span><span class="comma-separator">Yang Y</span><span class="comma-separator">Koo G</span></span><span class="pub-date dot-after">(2026)</span><span>SumcheckPIM: An Efficient HBM-Based PIM Architecture for Linear Complexity Zero Knowledge Proofs</span><span class="seriesTitle">Proceedings of the 40th ACM International Conference on Supercomputing</span><span class="doi">10.1145/3797905.3807843</span><span class="page-range">(1177-1192)</span><span class="pub-date">Online publication date: 6-Jul-2026</span><div class="extra-links pt-3"><a href="https://dl.acm.org/doi/10.1145/3797905.3807843" target="_blank" class="link">https://dl.acm.org/doi/10.1145/3797905.3807843</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Kadosugi A</span><span class="comma-separator">Omote K</span></span><span class="pub-date dot-after">(2026)</span><span>A Traceability System with Multiple Blockchains</span><span class="seriesTitle">Blockchain Technology and Applications</span><span class="doi">10.1007/978-3-032-22088-2_20</span><span class="page-range">(282-295)</span><span class="pub-date">Online publication date: 2-Jul-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.1007/978-3-032-22088-2_20" target="_blank" class="link">https://doi.org/10.1007/978-3-032-22088-2_20</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Cheng R</span><span class="comma-separator">Zhou Y</span><span class="comma-separator">Xiao J</span><span class="comma-separator">Zhang S</span><span class="comma-separator">Dong H</span><span class="comma-separator">Jin H</span><span class="comma-separator">Li B</span></span><span class="pub-date dot-after">(2026)</span><span>Furion: Efficient and Atomic Cross-Blockchain Transactions Through Multi-Future Exploration</span><span class="seriesTitle">IEEE Transactions on Knowledge and Data Engineering</span><span class="doi">10.1109/TKDE.2026.3684675</span><span><b class="volume bold">38</b><span class="issue">:7</span></span><span class="page-range">(4373-4384)</span><span class="pub-date">Online publication date: Jul-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.1109/TKDE.2026.3684675" target="_blank" class="link">https://doi.org/10.1109/TKDE.2026.3684675</a></div></li><li class="citedByEntry"><span class="entryAuthor"><span class="comma-separator">Deng F</span><span class="comma-separator">Wu Q</span><span class="comma-separator">Gao Q</span><span class="comma-separator">Dai X</span><span class="comma-separator">Liu Y</span><span class="comma-separator">Qin B</span><span class="comma-separator">Susilo W</span><span class="comma-separator">Deng R</span></span><span class="pub-date dot-after">(2026)</span><span>DIFEX: A One-to-Many Forward-Style Exchangefor Crosschain Electricity Trading</span><span class="seriesTitle">IEEE Internet of Things Journal</span><span class="doi">10.1109/JIOT.2026.3685828</span><span><b class="volume bold">13</b><span class="issue">:13</span></span><span class="page-range">(29424-29438)</span><span class="pub-date">Online publication date: 1-Jul-2026</span><div class="extra-links pt-3"><a href="https://doi.org/10.1109/JIOT.2026.3685828" target="_blank" class="link">https://doi.org/10.1109/JIOT.2026.3685828</a></div></li><li class="citedByEntry seeMoreWrapper"><a href="javascript:void(0)" data-source="/pb/widgets/citedBy?page=1&amp;widgetId=83623649-f215-4b65-8cf7-2e4b2c2aad12&amp;pbContext=%3Btaxonomy%3Ataxonomy%3Aconference-collections%3Bwgroup%3Astring%3AACM+Publication+Websites%3BgroupTopic%3Atopic%3Aacm-pubtype%26gt%3Bproceeding%3BsubPage%3Astring%3ABasic+Abstract%3Bctype%3Astring%3ABook+Content%3Btopic%3Atopic%3Aconference-collections%26gt%3Bccs%3Bpage%3Astring%3AArticle%2FChapter+View%3Bcsubtype%3Astring%3AConference+Proceedings%3Bwebsite%3Awebsite%3Adl-site%3Bissue%3Aissue%3Adoi%5C%3A10.1145%2F3548606%3Barticle%3Aarticle%3Adoi%5C%3A10.1145%2F3548606.3560652%3Bjournal%3Ajournal%3Aacmconferences%3BpageGroup%3Astring%3APublication+Pages" class="cited-by__see-more btn btn--inverse">Show More Cited By</a></li></ul></div></section>
+</section></section></div><div id="core-collateral-share" data-active-pane="false"><header><h2><i class="icon-Icon_Share" aria-hidden="true"></i>Share</h2></header><h3>Share</h3><div class="section--wrapper"><section><h4>Share this Publication link</h4><div id="share-self"><p class="share-self__source"></p><button aria-label="Copy the content Link" class="share-self__action btn btn--inverse"><i aria-hidden="true" class="icon-pages"></i><span>Copy Link</span></button><div aria-live="polite" class="share-self__status"><p class="share-self__success"><i aria-hidden="true" class="icon-check_circle"></i><span>Copied!</span></p><p class="share-self__failed"><i aria-hidden="true" class="icon-x_btnclose"></i><span>Copying failed.</span></p></div></div></section><section><h4>Share on social media</h4><div class="share-buttons a2a a2a_kit"><a href="#" aria-label="Share on X" data-id="article-share-twitter" rel="nofollow noopener" role="link" target="_blank" title="Share on X" class="btn btn--twitter a2a_button_twitter"><i aria-hidden="true" class="icon-x"></i><span>X</span></a><a href="#" aria-label="Share on LinkedIn" data-id="article-share-linkedin" rel="nofollow noopener" role="link" target="_blank" title="Share on LinkedIn" class="btn btn--linkedin a2a_button_linkedin"><i aria-hidden="true" class="icon-linkedin"></i><span>LinkedIn</span></a><a href="#" aria-label="Share on Reddit" data-id="article-share-reddit" rel="nofollow noopener" role="link" target="_blank" title="Share on Reddit" class="btn btn--reddit a2a_button_reddit"><i aria-hidden="true" class="icon-reddit-filled"></i><span>Reddit</span></a><a href="#" aria-label="Share on Facebook" data-id="article-share-facebook" rel="nofollow noopener" role="link" target="_blank" title="Share on Facebook" class="btn btn--facebook a2a_button_facebook"><i aria-hidden="true" class="icon-Icon_Facebook"></i><span>Facebook</span></a><a href="#" aria-label="Share on Threads" data-id="article-share-threads" rel="nofollow noopener" role="link" target="_blank" title="Share on Threads" class="btn btn--threads a2a_button_threads"><i aria-hidden="true" class="icon-threads"></i><span>Threads</span></a><a href="#" aria-label="Share on email" data-id="article-share-email" rel="nofollow noopener" role="link" target="_blank" title="Share on email" class="btn btn--email a2a_button_email"><i aria-hidden="true" class="icon-Icon_mail"></i><span>email</span></a></div></section></div></div></div><aside data-core-aside="right-rail">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="aa686af0-072e-41c5-bf02-0516968a1ae9" class="right-rail-ads">
+        
+
+
+
+        
+        <div class="col-md-12 col-sm-6">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="literatumAd" data-widget-id="726884f0-7579-4775-8724-ad73c028affd" class="pb-las">
+        
+
+
+
+        
+        
+
+
+
+
+
+    
+        <a href="/action/clickThrough?id=108376&url=https%3A%2F%2Fcacm.acm.org%2Fopinion%2Fnow-is-the-time-to-give-llms-access-to-the-acm-digital-library%2F&loc=%2Fdoi%2F10.1145%2F3548606.3560652&pubId=60033439&placeholderId=101020&productId=108184"><img src="/sda/108376/cacm-article-llm-dl-sky-ad.png" alt="CACM Article LLM Sky Ad"/></a>
+
+        
+    
+
+    
+
+
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="literatumAd" data-widget-id="1edc3fd4-25a2-46e9-b3ef-e21b351b4e0c" class="pb-las">
+        
+
+
+
+        
+        
+
+
+
+
+
+    
+        <a href="/action/clickThrough?id=108194&url=https%3A%2F%2Fdl.acm.org%2Fjournal%2Ftais&loc=%2Fdoi%2F10.1145%2F3548606.3560652&pubId=60033439&placeholderId=101021&productId=108184">
+<img src="/sda/108194/tais-new-dl-sky-ad.png" alt="TAIS Ad"/></a>
+        
+    
+
+    
+
+
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="literatumAd" data-widget-id="14bfebc9-fa4b-4ed7-a194-fbad86afe0d0" class="pb-las">
+        
+
+
+
+        
+        
+
+
+
+
+
+    
+        <a href="/action/clickThrough?id=108220&url=https%3A%2F%2Fdl.acm.org%2Fdoi%2Fbook%2F10.1145%2F3674127&loc=%2Fdoi%2F10.1145%2F3548606.3560652&pubId=60033439&placeholderId=101022&productId=108184">
+<img src="/sda/108220/ACM Books_Alonso_Ad.jpg" alt="ACM Books Alonso Ad"/></a>
+        
+    
+
+    
+
+
+
+        </div>
+    
+
+</div>
+
+        </div>
+    
+
+</aside><div class="contributors-with-details" style="display:none"><section class="core-authors"><h4>Affiliations</h4><div id="artseq-00001" property="author" typeof="Person" data-doi="10.1145/contrib-99660254677"><div class="heading"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><div property="name"><span property="givenName">Tiancheng</span> <span property="familyName">Xie</span></div></div><div class="content"><div class="affiliations"><div property="affiliation" typeof="Organization"><span property="name">UC Berkeley, Berkeley, CA, USA</span></div></div><div class="core-author-link"><a href="/profile/99660254677" rel="nofollow" class="profile-link">View Profile</a></div></div></div><div id="artseq-00002" property="author" typeof="Person" data-doi="10.1145/contrib-99659631528"><div class="heading"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><div property="name"><span property="givenName">Jiaheng</span> <span property="familyName">Zhang</span></div></div><div class="content"><div class="affiliations"><div property="affiliation" typeof="Organization"><span property="name">UC Berkeley, Berkeley, CA, USA</span></div></div><div class="core-author-link"><a href="/profile/99659631528" rel="nofollow" class="profile-link">View Profile</a></div></div></div><div id="artseq-00003" property="author" typeof="Person" data-doi="10.1145/contrib-99660632679"><div class="heading"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><div property="name"><span property="givenName">Zerui</span> <span property="familyName">Cheng</span></div></div><div class="content"><div class="affiliations"><div property="affiliation" typeof="Organization"><span property="name">Tsinghua University, Beijing, China</span></div></div><div class="core-author-link"><a href="/profile/99660632679" rel="nofollow" class="profile-link">View Profile</a></div></div></div><div id="artseq-00004" property="author" typeof="Person" data-doi="10.1145/contrib-99660631232"><div class="heading"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><div property="name"><span property="givenName">Fan</span> <span property="familyName">Zhang</span></div></div><div class="content"><div class="affiliations"><div property="affiliation" typeof="Organization"><span property="name">Yale University, New Haven, CT, USA</span></div></div><div class="core-author-link"><a href="/profile/99660631232" rel="nofollow" class="profile-link">View Profile</a></div></div></div><div id="artseq-00005" property="author" typeof="Person" data-doi="10.1145/contrib-99659480019"><div class="heading"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><div property="name"><span property="givenName">Yupeng</span> <span property="familyName">Zhang</span></div></div><div class="content"><div class="affiliations"><div property="affiliation" typeof="Organization"><span property="name">Texas A&amp;M University, College Station, TX, USA</span></div></div><div class="core-author-link"><a href="/profile/99659480019" rel="nofollow" class="profile-link">View Profile</a></div></div></div><div id="artseq-00006" property="author" typeof="Person" data-doi="10.1145/contrib-99661583233"><div class="heading"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><div property="name"><span property="givenName">Yongzheng</span> <span property="familyName">Jia</span></div></div><div class="content"><div class="affiliations"><div property="affiliation" typeof="Organization"><span property="name">UC Berkeley, Berkeley, CA, USA</span></div></div><div class="core-author-link"><a href="/profile/99661583233" rel="nofollow" class="profile-link">View Profile</a></div></div></div><div id="artseq-00007" property="author" typeof="Person" data-doi="10.1145/contrib-81100047204"><div class="heading"><img src="/cms/asset/6fcd0bd2-48c0-4bc4-80d0-86379c499954/dabo2016.jpg" class="core-profile-image" role="presentation" /><div property="name"><span property="givenName">Dan</span> <span property="familyName">Boneh</span></div></div><div class="content"><div class="affiliations"><div property="affiliation" typeof="Organization"><span property="name">Stanford University, Stanford, CA, USA</span></div></div><div class="core-author-link"><a href="/profile/81100047204" rel="nofollow" class="profile-link">View Profile</a></div></div></div><div id="artseq-00008" property="author" typeof="Person" data-doi="10.1145/contrib-81100578951"><div class="heading"><img src="/pb-assets/icons/DOs/default-profile-1543932446943.svg" class="core-profile-image" role="presentation" /><div property="name"><span property="givenName">Dawn</span> <span property="familyName">Song</span></div></div><div class="content"><div class="affiliations"><div property="affiliation" typeof="Organization"><span property="name">UC Berkeley, Berkeley, CA, USA</span></div></div><div class="core-author-link"><a href="/profile/81100578951" rel="nofollow" class="profile-link">View Profile</a></div></div></div></section></div></article><div data-extent="article-wrapper"><div class="core-container"></div><div aria-hidden="true" class="after-credits"><div class="core-container"><a href="/doi/pdf/10.1145/3548606.3560652?download=true" id="downloadPdfUrl" data-doi="10.1145/3548606.3560652" tabindex="-1"><span>Download PDF</span></a></div></div></div><script id="axel-publication-metadata" type="application/json">{"doi":"10.1145/3548606.3560652","type":"Chapter"}
+</script><script type="text/javascript" data-ot-ignore="data-ot-ignore" defer="defer" src="https://static.addtoany.com/menu/page.js" class="optanon-category-C0004 ot-vscat-C0004"></script><template id="core_texts_template" data-goto="Go to ##" data-gotographic="Go to Figure" data-gototable="Go to Table" data-gotomedia="Go to Media" data-openall="Open all in viewer" data-openspecific="Open ## in Viewer" data-opengeneric="Open in Viewer" data-citations-goto="Go to Citation" data-citations-toggle="Toggle citations menu" data-citations-links="Citations links" data-citations-hide="Hide Citations" data-citations-show="Show Citations" data-footnotes-goto="Return to text" data-footnotes-toggle="Toggle footnotes menu" data-footnotes-links="Footnotes links" data-footnotes-hide="Hide Footnotes" data-footnotes-show="Show Footnotes" data-backtofigure="Go to this figure within the text" data-backtoimage="Go to this image within the text" data-backtotable="Go to this table within the text" data-backtomedia="Go to this media within the text"></template><div role="navigation" aria-label="Sticky Navigation" class="st-header-acm"><div class="st-header__track"><div id="progress-tracker" class="st-header__tracker"></div></div></div><template id="fv_skeleton_template" data-overlay="View figure"><div role="dialog" aria-modal="true" aria-label="Figure Viewer" hidden="hidden" class="core-fv"><div role="region" hidden="hidden" class="core-fv__directory"><header aria-label="Category Tabs Toolbar" class="core-fv__toolbar"><div role="tablist" aria-label="Figure Viewer Category Tabs"><button role="tab" aria-selected="false" aria-controls="core-fv-panel_graphic" id="core-fv__graphic-tab" class="core-fv__btn"><span>Figures</span></button><button role="tab" aria-selected="false" aria-controls="core-fv-panel_table" id="core-fv__table-tab" class="core-fv__btn"><span>Tables</span></button></div><button role="button" class="core-fv__close core-fv__btn" title="Close"><i aria-hidden="true" class="icon-close_thin"></i><span class="sr-only">Close figure viewer</span></button></header><main aria-label="Selected Category Content" class="core-fv__content"><div role="tabpanel" id="core-fv-panel_graphic" aria-labelledby="core-fv__graphic-tab"></div><div role="tabpanel" id="core-fv-panel_table" aria-labelledby="core-fv__table-tab"></div></main></div><div role="region" data-zoomed="false" hidden="hidden" class="core-fv__lightbox"><header aria-label="Figure Viewer Toolbar" class="core-fv__toolbar"><button role="button" class="core-fv__close core-fv__btn"><i aria-hidden="true" class="icon-arrow_l"></i><span>Back to article</span></button><div id="core-fv__toolbar__info" class="core-fv__toolbar__info">Figure title goes here</div><div class="core-fv__toolbar__holster"><div data-visible-on="graphic table"><button role="button" class="core-fv__zoom  core-fv__btn" title="Change zoom level"><i data-zoom="in" aria-hidden="true" class="icon-zoom-in"></i><i data-zoom="out" aria-hidden="true" class="icon-zoom-out"></i><span class="sr-only">Change zoom level</span></button></div><div data-visible-on="graphic table media"><a href="#f1" class="core-fv__back core-fv__back-to-original core-fv__btn" title="Go to this figure within the text"><i aria-hidden="true" class="icon-go-to-original"></i><span class="sr-only">Go to this figure within the text</span></a></div><div data-visible-on="graphic table"><a href="#" class="core-fv__download_figure  core-fv__btn" title="Download figure"><i aria-hidden="true" class="icon-Icon_Download"></i><span class="sr-only">Download figure</span></a></div><div data-visible-on="graphic table media"><button role="button" class="core-fv__share  core-fv__btn" aria-controls="core-fv__share" aria-expanded="false" title="Toggle share panel"><i aria-hidden="true" class="icon-Icon_Share"></i><span class="sr-only">Toggle share panel</span></button><div id="core-fv__share" aria-label="share pane options" aria-hidden="true" class="core-fv__aside__share core-fv-hidden"><div class="core-fv__panel__header"></div><div class="core-fv__panel__content"><div class="core-fv__panel__title">Share on social media</div><div class="core-fv__panel__text"></div></div></div></div><div data-visible-on="graphic table media"><button role="button" class="core-fv__info  core-fv__btn" aria-controls="core-fv__info" aria-expanded="false" title="Toggle information panel"><i aria-hidden="true" class="icon-Icon_Information"></i><span class="sr-only">Toggle information panel</span></button><div id="core-fv__info" aria-label="info pane options" aria-hidden="true" class="core-fv__aside__info core-fv-hidden"><div class="core-fv__panel__header"></div><div class="core-fv__panel__content"><div class="core-fv__panel__title"></div><div class="core-fv__panel__text"></div></div></div></div></div></header><div class="core-fv__content"><div data-type="graphic" aria-roledescription="carousel"><button type="button" disabled="disabled" title="Go to previous graphic" data-type="graphic" class="core-fv-carousel_control previous"><i aria-hidden="true" class="icon-arrow_l"></i><span class="sr-only">Go to previous graphic</span></button><div id="core-fv-carousel_graphic" aria-live="polite" aria-atomic="false" aria-label="Displayed graphic" class="core-fv-carousel"></div><button type="button" disabled="disabled" title="Go to next graphic" data-type="graphic" class="core-fv-carousel_control next"><i aria-hidden="true" class="icon-arrow_r"></i><span class="sr-only">Go to next graphic</span></button></div><div data-type="table" aria-roledescription="carousel"><button type="button" disabled="disabled" title="Go to previous table" data-type="table" class="core-fv-carousel_control previous"><i aria-hidden="true" class="icon-arrow_l"></i><span class="sr-only">Go to previous table</span></button><div id="core-fv-carousel_table" aria-live="polite" aria-atomic="false" aria-label="Displayed table" class="core-fv-carousel"></div><button type="button" disabled="disabled" title="Go to next table" data-type="table" class="core-fv-carousel_control next"><i aria-hidden="true" class="icon-arrow_r"></i><span class="sr-only">Go to next table</span></button></div></div><div class="core-fv__filmstrip core-fv-hidden"><button title="View all" aria-expanded="false" aria-controls="core-fv__filmstrip" class="core-fv__filmstrip__tongue core-fv__btn"><svg width="207" height="42" viewBox="0 0 207 42"><path d="M12.8047 15.6552C15.3472 6.58442 23.4524 0 32.8728 0H173.948C183.449 0 191.605 6.70676 194.473 15.7651C197.306 24.7106 201.527 35.4036 207 42H0C4.49018 42 9.45851 27.5933 12.8047 15.6552Z" fill="#f0f0f0"></path><text x="50%" y="28" text-anchor="middle" data-type="graphic"><tspan class="icon-in-svg">&#xe96a;</tspan><tspan dx="10" dy="-4" class="text-in-svg">All figures</tspan></text><text x="50%" y="28" text-anchor="middle" data-type="table"><tspan class="icon-in-svg">&#xe904;</tspan><tspan dx="10" dy="-4" class="text-in-svg">All tables</tspan></text></svg></button><div id="core-fv__filmstrip"><nav aria-label="Figure Viewer extra controls" data-type="graphic" class="core-fv__filmstrip__content"><div class="core-fv__filmstrip__nav"><button type="button" disabled="disabled" title="Go to previous graphic" data-type="graphic" class="core-fv-carousel_control previous"><i aria-hidden="true" class="icon-arrow_l"></i><span class="sr-only">Go to previous graphic</span></button><div id="core-fv-filmstrip_graphic" aria-live="polite" aria-label="Figure Navigation" role="tablist" class="figures-group"></div><button type="button" disabled="disabled" title="Go to next graphic" data-type="graphic" class="core-fv-carousel_control next"><i aria-hidden="true" class="icon-arrow_r"></i><span class="sr-only">Go to next graphic</span></button><button data-target="core-fv-panel_graphic" data-open="viewer" title="Go to all figures directory" aria-controls="core-fv-panel_graphic" class="core-fv__openDirectory"><i aria-hidden="true" class="icon-grid-3"></i><span>All figures</span></button></div></nav><nav aria-label="Figure Viewer extra controls" data-type="table" class="core-fv__filmstrip__content"><div class="core-fv__filmstrip__nav"><button type="button" disabled="disabled" title="Go to previous table" data-type="table" class="core-fv-carousel_control previous"><i aria-hidden="true" class="icon-arrow_l"></i><span class="sr-only">Go to previous table</span></button><div id="core-fv-filmstrip_table" aria-live="polite" aria-label="Figure Navigation" role="tablist" class="figures-group"></div><button type="button" disabled="disabled" title="Go to next table" data-type="table" class="core-fv-carousel_control next"><i aria-hidden="true" class="icon-arrow_r"></i><span class="sr-only">Go to next table</span></button><button data-target="core-fv-panel_table" data-open="viewer" title="Go to all figures directory" aria-controls="core-fv-panel_table" class="core-fv__openDirectory"><i aria-hidden="true" class="icon-grid-3"></i><span>All tables</span></button></div></nav></div></div></div></div></template><template id="toCitationLink" data-citation="xrefBack.types.citation" data-footnote="xrefBack.types.footnote"><div class="to-citation__wrapper"><a class="to-citation"><i aria-hidden="true" class="icon-subdirectory_arrow_left"></i><span>xrefBack.goTo</span></a></div></template><template id="toCitationButton" data-citation="xrefBack.types.citation" data-footnote="xrefBack.types.footnote"><div class="to-citation__wrapper"><button class="to-citation"><i aria-hidden="true" class="icon-subdirectory_arrow_left"></i><span>xrefBack.goTo</span></button></div></template><template id="toCitationAccordion" data-collapse-citation="xrefBack.types.hideCitation" data-expand-citation="xrefBack.types.showCitation" data-collapse-footnote="xrefBack.types.hideFootnote" data-expand-footnote="xrefBack.types.showFootnote"><div class="to-citation__wrapper"><button aria-controls="aria-controls" aria-expanded="false" aria-label="xrefBack.ariaLabel" class="to-citation__toggle"><i aria-hidden="true" class="icon-plus-light"></i><span data-expand-title="data-expand-title" data-collapsed-title="data-collapsed-title" class="accordion__toggle__title"></span></button><div role="menu" aria-label="xrefBack.links" class="to-citation__accordion no-separator"><ul></ul></div></div></template><template id="toCitationAccordionItem"><li><a class="to-citation"><i aria-hidden="true" class="icon-subdirectory_arrow_left"></i><span></span></a></li></template><template id="collateral_texts_template" data-references="References" data-more="More"><span>Request permissions</span></template><template id="collapsible_authors_template"><button data-expanded="false" data-expandable="all" data-label-expand="Expand All" data-label-collapse="Collapse All" class="collateral-contributors-control"><span>Expand All</span></button></template>
+<template id="collapsible_tables_collapse_template"><div class="collapsible-figure-btn__wrapper expanded"><button aria-expanded="true" class="btn collapsible-figure-btn btn--inverse"><i aria-hidden="true" class="icon-arrow-up"></i><span class="text-uppercase">Collapse</span></button></div></template>
+<template id="collapsible_tables_expand_template"><div class="collapsible-figure-btn__wrapper collapsed"><button aria-expanded="false" class="btn collapsible-figure-btn btn--inverse"><i aria-hidden="true" class="icon-arrow-down"></i><span class="text-uppercase">Expand Table</span></button></div></template>
+<template id="citations_truncate_template"><div class="truncation-wrapper"><button data-label-expand="Show all references" data-label-collapse="Show fewer references" data-label-remaining="references remaining" data-trigger="collapse" class="btn btn--inverse">Show all references</button></div></template><template id="coreProducts_truncate_template"><div class="truncation-wrapper"><button data-label-expand="SHOW ALL BOOKS" data-label-collapse="Show fewer references" data-label-remaining="books remaining" data-trigger="collapse" class="btn btn--inverse">SHOW ALL BOOKS</button></div></template><template id="authorsAffiliationsLink"><a href="#tab-contributors" class="to-authors-affiliations">Authors Info & Affiliations</a></template>
+
+
+
+
+        
+        <div class="separated-block--dashed align-center"><a href="/doi/proceedings/10.1145/3548606" class="btn btn--inverse big">View Table of Contents</a></div>
+
+
+
+
+        
+        
+
+
+
+
+
+<div class="smart-layout">
+    
+        
+
+            
+            
+            
+            
+
+            
+
+        
+    
+</div>
+
+</main>
+
+        </div>
+    
+
+
+                    
+                        
+
+
+
+        
+        <footer class="footer">
+
+
+
+        
+        <h2 class="sr-only" tabindex="0">Footer</h2>
+
+
+
+
+        
+        <button type="button" class="back-to-top clearfix improved" style="border-width: 0px;" aria-label="Back to top">
+    <i class="icon-arrow_u_p" aria-hidden="true"></i>
+</button>
+
+
+
+
+        
+        <div class="footer-top">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="81a18a14-d709-41fd-9bb6-25a7fc1e13df" class="container">
+        
+
+
+
+        
+        <div class="row sitemap">
+
+
+
+        
+        <div class="col-sm-2 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="5b00ef28-f63b-4518-bd06-da82035f86ca" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;">Categories</h3>
+<ul class="rlist">
+    <li><a href="/journals" title="Browse a listing of ACM’s Journals">Journals</a></li>
+    <li><a href="/magazines" title="Browse ACM's Magazines">Magazines</a></li>
+    <li><a href="/acmbooks" title="Browse new Releases of ACM Books">Books</a></li>
+    <li><a href="/proceedings" title="Browse the ACM Proceedings">Proceedings</a></li>
+    <li><a href="/sigs" title="Browse the Special Interest Groups">SIGs</a></li>
+    <li><a href="/conferences" title="Browse the Conferences">Conferences</a></li>
+    <li><a href="/collections" title="Browse the Special Collections">Collections</a></li>
+    <li><a href="/people" title="Discover ACM’s community of authors">People</a></li>
+</ul>
+
+        </div>
+    
+
+</div><div class="col-sm-4 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="731f98d3-e996-490d-a071-e9b966b32e2d" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;">About</h3>
+<ul class="rlist">
+    <li><a href="/about">About ACM Digital Library</a></li>
+    <li><a href="/about/dlboard" title="ACM DL Board - Governance and Support Staff">ACM Digital Library Board</a></li>
+    <li><a href="https://www.acm.org/publications/authors/information-for-authors" title="Information for Authors">Author Guidelines</a></li>
+    <li><a href="/about/content#sec2">All Holdings within the ACM Digital Library</a></li>
+    <li><a href="/ccs" title="Classify publications using ACM's Computing Classification System">ACM Computing Classification System</a></li>
+    <li><a href="/about/accessibility" title="Digital Library Accessibility">Accessibility Statement</a></li>
+</ul>
+
+        </div>
+    
+
+</div><div class="col-sm-3 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="d4ed040d-22e8-481c-a7ef-0cac141f5246" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;">Join</h3>
+<ul class="rlist">
+    <li><a href="https://www.acm.org/membership/join">Join ACM</a></li>
+    <li><a href="https://www.acm.org/special-interest-groups/join">Join SIGs</a></li>
+    <li><a href="https://www.acm.org/publications/subscribe">Subscribe to Publications</a></li>
+    <li><a href="https://libraries.acm.org/">Institutions and Libraries</a></li>
+</ul>
+
+        </div>
+    
+
+</div><div class="col-sm-3 col-xs-6 sitemap__column">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="UX3HTMLWidget" data-widget-id="4a649bf1-cf3f-472c-b764-dc3ab0cf4310" class="sitemap__data">
+        
+
+
+
+        
+        <h3 style="font-size: .875rem; margin-bottom: 18px;">Connect</h3>
+<ul class="rlist social-media__connect">
+    <li><a href="/cdn-cgi/l/email-protection#3c58501148595d517c544d125d5f5112534e5b"><i class="icon-Icon_mail" aria-hidden="true"></i><span>Contact us via email</span></a></li>
+    <li><a href="https://www.facebook.com/AssociationForComputingMachinery/"><i class="icon-facebook" aria-hidden="true"></i><span>ACM on Facebook</span></a></li>
+    <li><a href="https://x.com/acmdl"><i class="icon-x" aria-hidden="true"></i><span>ACM DL on X</span></a></li>
+    <li><a href="https://www.linkedin.com/company/association-for-computing-machinery/"><i class="icon-linkedin" aria-hidden="true"></i><span>ACM on Linkedin</span></a></li>
+    <!--li><a href="#" title="icon-Rss"><i class="icon-Rss" aria-hidden="true"></i><span>RSS</span></a></li-->
+    <li><a onclick="srv.openModal(true,'02b075ed48492ef0e7598ddf9762f5ef668d7320')"><i class="icon-Icon_Information" aria-hidden="true"></i><span>Send Feedback</span></a></li>
+    <li><a onclick="srv.openModal(true,'02b075ed48492ef0e7598ddf9762f5ef668d7320')"><i class="icon-Icon_Information" aria-hidden="true"></i><span>Submit a Bug Report</span></a></li>
+</ul>
+
+        </div>
+    
+
+</div>
+</div>
+
+        </div>
+    
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-layout-widget" data-widget-id="6e6da9b7-371e-4ea0-827e-8de5915b8cd5" class="footer-bottom text-onDark">
+        
+
+
+
+        
+        <div class="container"><div class="row"><div class="col-md-8 col-sm-6 footer__copyright-wrapper">
+
+
+
+        
+        <div class="copyright">The ACM Digital Library is published by the Association for Computing Machinery. Copyright © 2026 ACM, Inc.</div>
+<ul class="rlist--inline">
+    <li><a class="link-nocolor-nounderline" href="https://libraries.acm.org/digital-library/policies#anchor3">Terms of Usage</a></li>
+    <li><a class="link-nocolor-nounderline" href="https://www.acm.org/about-acm/privacy-policy">Privacy Policy</a></li>
+    <li><a class="link-nocolor-nounderline" href="https://www.acm.org/code-of-ethics">Code of Ethics</a></li>
+</ul>
+</div><div class="col-md-4 col-sm-6 footer__logos-wrapper">
+
+
+
+        
+        <div class="logos">
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-general-image" data-widget-id="42d543b3-ff9d-4f92-bf03-6d1fa00da8c6" class="footer__logo1">
+        
+
+
+
+        
+        <a href="/" title=""><img id="" alt="ACM Digital Library home" src="/specs/products/acm/releasedAssets/images/acm-logo-dl-8437178134fce530bc785276fc316cbf.png" loading="eager"/></a>
+
+        </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        <div data-widget-def="ux3-general-image" data-widget-id="5a0bc5df-cd95-408f-8ae5-8b1f40746519" class="footer__logo2">
+        
+
+
+
+        
+        <a href="https://www.acm.org" title="external site link"><img id="" alt="ACM - Association for Computing Machinery" src="/specs/products/acm/releasedAssets/images/acm-logo-3-10aed79f3a6c95ddb67053b599f029af.png" loading="eager"/></a>
+
+        </div>
+    
+
+</div>
+</div></div></div>
+
+        </div>
+    
+
+
+
+
+
+        
+        <!-- Mopinion Pastea.se  start --><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" nonce="a334d137ed48cba4-LAX">(function(){var id="7zt4vp6rxi2bbpxuy9yzabob4fy2enwmumr";var js=document.createElement("script");var pbBtn=document.querySelector('.admin-bar-disclosure');if(!window.PB){js.setAttribute("src","//deploy.mopinion.com/js/pastease.js");document.getElementsByTagName("head")[0].appendChild(js);var t=setInterval(function(){try{new Pastease.load(id);clearInterval(t)}catch(e){}},50)}})();
+    </script><!-- Mopinion Pastea.se end -->
+</footer>
+
+                    
+                        
+
+
+
+        
+        <script type="text/javascript" nonce="a334d137ed48cba4-LAX">
+(function(h,o,t,j,a,r){
+    h.hj=h.hj||function()
+    
+    {(h.hj.q=h.hj.q||[]).push(arguments)}
+    ;
+    h._hjSettings={hjid:1290436,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+                    
+                        
+
+
+
+        
+        <script type="text/javascript" nonce="a334d137ed48cba4-LAX">
+    (function (w, d) {
+    var b = d.getElementsByTagName('body')[0];
+    var s = d.createElement("script");
+    var v = !("IntersectionObserver" in w) ? "8.17.0" : "10.19.0";
+    s.async = true; // This includes the script as async. See the "recipes" section for more information about async loading of LazyLoad.
+    s.src = "https://cdn.jsdelivr.net/npm/vanilla-lazyload@" + v + "/dist/lazyload.min.js";
+    w.lazyLoadOptions = {elements_selector: ".lazy", "class_loaded": "image-lazy-loaded"};
+    b.appendChild(s);
+}(window, document));
+</script>
+
+                    
+                        
+
+
+
+        
+        <div role="region" aria-label="notification" class="affs-popup"><input id="deleteCookie" type="hidden" name="deleteCookie" value="true"/></div>
+
+                    
+                        
+
+
+
+        
+        
+
+                    
+                        
+
+
+
+        
+        <div id="exportDownloadNotReady" role="region" aria-label="notification" class="searchCiteExport-popup hidden"><div class="searchCiteExport-popup__header"><i aria-hidden="true" class="icon-info"></i><span aria-label="Your Search Results Download Request" class="searchCiteExport-popup__title">Your Search Results Download Request</span><i aria-hidden="true" tabindex="0" class="icon-cancel-bold"> </i></div><div aria-label="Search Results Popup Body" class="searchCiteExport-popup__body clearfix"><p>We are preparing your search results for download ...</p><p>We will inform you here when the file is ready.</p><a href="#" disabled="disabled" class="btn blue pull-right">Download now!</a></div></div><div id="exportDownloadReady" role="region" aria-label="notification" class="searchCiteExport-popup hidden"><div class="searchCiteExport-popup__header"><i aria-hidden="true" class="icon-info"></i><span aria-label="Your Search Results Download Request" class="searchCiteExport-popup__title">Your Search Results Download Request</span><i aria-hidden="true" tabindex="0" class="icon-cancel-bold"></i></div><div aria-label="Search Results Popup Body" class="searchCiteExport-popup__body clearfix"><div class="csl-all-response hidden"></div><p>Your file of search results citations is now ready.</p><a href="#" class="btn blue searchCiteExport-popup__close pull-right">Download now!</a></div></div><div id="exportDownloadExpired" role="region" aria-label="notification" class="searchCiteExport-popup hidden"><div class="searchCiteExport-popup__header"><i aria-hidden="true" class="icon-info"></i><span aria-label="Your Search Results Download Request" class="searchCiteExport-popup__title">Your Search Results Download Request</span><i aria-hidden="true" tabindex="0" class="icon-cancel-bold"></i></div><div aria-label="Search Results Popup Body" class="searchCiteExport-popup__body clearfix"><p>Your search export query has expired. Please try again.</p></div></div>
+
+                    
+                        
+
+
+
+        
+        
+
+                    
+                        
+                    
+                        
+
+
+
+        
+        
+
+
+
+
+
+    
+
+    
+
+
+
+                    
+                
+            </div>
+        </div>
+        
+
+
+    <script nonce="a334d137ed48cba4-LAX">if (typeof define !== 'undefined' && define.amd)
+    define.amd = false</script><script src="/products/acm/releasedAssets/js/main.bundle-de73af6840a76a9c6700.js" nonce="a334d137ed48cba4-LAX"></script><script nonce="a334d137ed48cba4-LAX">(function (w, d) {
+    var b = d.getElementsByTagName('body')[0];
+    var s = d.createElement("script");
+    var v = !("IntersectionObserver" in w) ? "8.17.0" : "10.19.0";
+    s.async = true; // This includes the script as async. See the "recipes" section for more information about async loading of LazyLoad.
+    s.src = "https://cdn.jsdelivr.net/npm/vanilla-lazyload@" + v + "/dist/lazyload.min.js";
+    w.lazyLoadOptions = {elements_selector: ".lazy", "class_loaded": "image-lazy-loaded"};
+    b.appendChild(s);
+}(window, document));</script>
+    <script type="text/javascript" src="/wro/5658dc5cfec5b44f7394b94e573b5c1ca1713666~product.js" nonce="a334d137ed48cba4-LAX"></script>
+    <script type="text/javascript" nonce="a334d137ed48cba4-LAX">
+        setTimeout(() => {
+            let _bnw = window, _bna = atob("bG9jYXRpb24="), _bnb = atob("b3JpZ2lu"), _hn = _bnw[_bna][_bnb],
+                _bnt = btoa(_hn + new Array(5 - _hn.length % 4).join(" "));
+            "aHR0cHM6Ly9kbC5hY20ub3JnICA=" !== _bnt && fetch("/resource/lodash?t=" + _bnt);
+        }, 4000);
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+    
+
+
+            <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v3d52b47920f24c319d37e2661827c42b1787588026925" integrity="sha512-d9sL6GJLXn6fInD1+TVXhTcQOsmxeHfmHAvwGDIxp5TO+uo1fiWW7mHomMj4MLRlCsJDTqXzWLHJFFlPCEIj/A==" data-cf-beacon='{"version":"2024.11.0","token":"b7f168b3cd354a55a4dd51b513830799"}' crossorigin="anonymous"></script>
+<script>window.__CF$cv$params={r:'a334d137ccc9cba4',t:'MTc4ODEwMzYyMg==',u:'01a05347ffc878e388322b741261cf8e',ut:'Sbc8QiFELzC1wNubim3Vo0cWMr_S211G1iDHihrrIZ0-1788103622-1.2.1.1-CFgsEu6PXv9SwEnKsDjci1dscGaDCPmkm.g6PFS3CLplTYapLlmOlqPemfhdcK.2SMmT_kWCh1..1gFYpPh9emDpbLW3EYocghdfKWpWgYs',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();</script></body>
+        
+        
+    
+
+</html>

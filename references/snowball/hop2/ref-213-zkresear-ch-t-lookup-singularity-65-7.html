@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en" class="desktop-view not-mobile-device text-size-normal anon">
+  <head>
+    <meta charset="utf-8">
+    <title>Lookup Singularity - #7 by barryWhiteHat - General - zk research</title>
+    <meta name="description" content="Thanks CC for review and feedback :slight_smile: 
+
+Intro
+For years the central component of ZKPs was A* B + D == C. This check was applied repeatedly to build our full circuits. Any computation can be represented in this&amp;hellip;">
+    <meta name="discourse_theme_id" content="1">
+    <meta name="discourse_current_homepage" content="latest">
+
+    <link href="/stylesheets/color_definitions_neutral_7_1_2765cdbe62b70044b391fe9ad8c13367a6a5577d.css?__ws=zkresear.ch" rel="preload" as="style"/><link href="/stylesheets/color_definitions_dark_1_1_c4878db5ce0463c61c18e56ab7c0e50e941d26c5.css?__ws=zkresear.ch" rel="preload" as="style"/>
+
+  <link href="/stylesheets/desktop_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" rel="preload" as="style"/>
+
+
+
+  <link href="/stylesheets/discourse-details_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" rel="preload" as="style"/>
+  <link href="/stylesheets/discourse-local-dates_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" rel="preload" as="style"/>
+  <link href="/stylesheets/discourse-math_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" rel="preload" as="style"/>
+  <link href="/stylesheets/discourse-narrative-bot_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" rel="preload" as="style"/>
+  <link href="/stylesheets/discourse-presence_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" rel="preload" as="style"/>
+  <link href="/stylesheets/lazy-yt_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" rel="preload" as="style"/>
+  <link href="/stylesheets/poll_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" rel="preload" as="style"/>
+  <link href="/stylesheets/poll_desktop_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" rel="preload" as="style"/>
+
+  <link href="/stylesheets/desktop_theme_1_b04f520b36dd14334b56d8be2371e0b3cac6dd2a.css?__ws=zkresear.ch" rel="preload" as="style"/>
+
+    <meta name="generator" content="Discourse 2.9.0.beta9 - https://github.com/discourse/discourse version 4c085873e5c4174e876304d8300462fb96a7fd6e">
+<link rel="icon" type="image/png" href="https://zkresear.ch/uploads/default/optimized/1X/_129430568242d1b7f853bb13ebea28b3f6af4e7_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://zkresear.ch/uploads/default/optimized/1X/_129430568242d1b7f853bb13ebea28b3f6af4e7_2_180x180.png">
+<meta name="theme-color" content="#333333">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<link rel="canonical" href="https://zkresear.ch/t/lookup-singularity/65" />
+
+<link rel="search" type="application/opensearchdescription+xml" href="https://zkresear.ch/opensearch.xml" title="zk research Search">
+
+    
+
+      <meta name="fragment" content="!">
+
+
+    
+
+    <link rel="preload" href="/assets/start-discourse-8a5f2ab832e3583911ea1fbd7a280be52ad88e6ec8f743a5ef9b6aa3dc8cf3c7.js" as="script">
+    <link rel="preload" href="/assets/browser-update-f2c17f01941035f2f1b3c90ca6344f86051fefff5b484e5d2629d53c2d3d7d01.js" as="script">
+    <link rel="preload" href="/assets/browser-detect-b59d06ca4adc3540a2f1dfc30fd4aa7cded4ead977ef9a28960311e1e23aff6d.js" as="script">
+<script defer src="/assets/browser-detect-b59d06ca4adc3540a2f1dfc30fd4aa7cded4ead977ef9a28960311e1e23aff6d.js"></script>
+
+
+    <link rel="preload" href="/assets/locales/en-b73a67fd70b78fa065c11735ed2d22514e0e95b4feea64fe72f6aa5d21ed9139.js" as="script">
+<script defer src="/assets/locales/en-b73a67fd70b78fa065c11735ed2d22514e0e95b4feea64fe72f6aa5d21ed9139.js"></script>
+
+    <link rel="preload" href="/assets/vendor-75a84ed8c013186df5db469a412675dd226f86661d084ae9583f0b4d219dec1f.js" as="script">
+<script defer src="/assets/vendor-75a84ed8c013186df5db469a412675dd226f86661d084ae9583f0b4d219dec1f.js"></script>
+
+<link rel="preload" href="/assets/chunk.729.f865ef83639e662ddc63-28f3e4f3d64c16ee1c04f0cc8fe3fce3e8b1ba5a023d00ef080dd97f1a44bc44.js" as="script">
+<script defer src="/assets/chunk.729.f865ef83639e662ddc63-28f3e4f3d64c16ee1c04f0cc8fe3fce3e8b1ba5a023d00ef080dd97f1a44bc44.js"></script>
+
+<link rel="preload" href="/assets/chunk.143.cc330def95e3ff807f48-c7954931b118cbb426f1a88c39b3e3af855352fb44e4dda9691baac84e3d33d0.js" as="script">
+<script defer src="/assets/chunk.143.cc330def95e3ff807f48-c7954931b118cbb426f1a88c39b3e3af855352fb44e4dda9691baac84e3d33d0.js"></script>
+
+    <link rel="preload" href="/assets/discourse-87ab332b08acde3dc9cffba7f23028b3726e1d8ca1c6305f1fae494c6bb3a80e.js" as="script">
+<script defer src="/assets/discourse-87ab332b08acde3dc9cffba7f23028b3726e1d8ca1c6305f1fae494c6bb3a80e.js"></script>
+
+      <link rel="preload" href="/assets/plugins/discourse-details-a1651a34823b6358d64ebffb5390e6cc526ddb0fae18e875abc59dbd71a1b076.js" as="script">
+<script defer src="/assets/plugins/discourse-details-a1651a34823b6358d64ebffb5390e6cc526ddb0fae18e875abc59dbd71a1b076.js"></script>
+
+      <link rel="preload" href="/assets/plugins/discourse-local-dates-c00646ac18caf76221cb746e06b085a8bd3769733e5dc8fca3fc9dfcf860f8cd.js" as="script">
+<script defer src="/assets/plugins/discourse-local-dates-c00646ac18caf76221cb746e06b085a8bd3769733e5dc8fca3fc9dfcf860f8cd.js"></script>
+
+      <link rel="preload" href="/assets/plugins/discourse-math-93273a551c3707baa2b30126a3a08d8943af43ab07547ac1cc6bc313fde2d14a.js" as="script">
+<script defer src="/assets/plugins/discourse-math-93273a551c3707baa2b30126a3a08d8943af43ab07547ac1cc6bc313fde2d14a.js"></script>
+
+      <link rel="preload" href="/assets/plugins/discourse-narrative-bot-9d6e2a212950270a75480c4c8f6f55631e1233b5376fc10245c099a9e29c8ff7.js" as="script">
+<script defer src="/assets/plugins/discourse-narrative-bot-9d6e2a212950270a75480c4c8f6f55631e1233b5376fc10245c099a9e29c8ff7.js"></script>
+
+      <link rel="preload" href="/assets/plugins/discourse-presence-db91b70a8448db81a9cc59300c809c94d6d110ef8f7783bdb56350fd83e2c754.js" as="script">
+<script defer src="/assets/plugins/discourse-presence-db91b70a8448db81a9cc59300c809c94d6d110ef8f7783bdb56350fd83e2c754.js"></script>
+
+      <link rel="preload" href="/assets/plugins/docker_manager-3dc0c7232e9275b477515e8010bda230941c5b254f53f354b7080cb7d34548d1.js" as="script">
+<script defer src="/assets/plugins/docker_manager-3dc0c7232e9275b477515e8010bda230941c5b254f53f354b7080cb7d34548d1.js"></script>
+
+      <link rel="preload" href="/assets/plugins/docker_manager_extra-8c61f0774edf411064481cda97880696ecfe639cc504bad4bdc70539e989baad.js" as="script">
+<script defer src="/assets/plugins/docker_manager_extra-8c61f0774edf411064481cda97880696ecfe639cc504bad4bdc70539e989baad.js"></script>
+
+      <link rel="preload" href="/assets/plugins/lazy-yt-1b98907fb41e4f999963b14c4d9369fa9811edbf259426435e8e1d2ae0994a5f.js" as="script">
+<script defer src="/assets/plugins/lazy-yt-1b98907fb41e4f999963b14c4d9369fa9811edbf259426435e8e1d2ae0994a5f.js"></script>
+
+      <link rel="preload" href="/assets/plugins/poll-a1ac0a6e044ca9145fb9836503950b4b590e31fe8d22b72e919e3a4ec6490216.js" as="script">
+<script defer src="/assets/plugins/poll-a1ac0a6e044ca9145fb9836503950b4b590e31fe8d22b72e919e3a4ec6490216.js"></script>
+
+
+
+
+      
+      
+      
+
+    
+    
+    <link id="manifest-link" rel="manifest" href=/manifest.webmanifest crossorigin="use-credentials">
+
+
+        <link rel="alternate nofollow" type="application/rss+xml" title="RSS feed of &#39;Lookup Singularity&#39;" href="https://zkresear.ch/t/lookup-singularity/65.rss" />
+    <meta property="og:site_name" content="zk research" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png" />
+<meta property="og:image" content="https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png" />
+<meta property="og:url" content="https://zkresear.ch/t/lookup-singularity/65/7" />
+<meta name="twitter:url" content="https://zkresear.ch/t/lookup-singularity/65/7" />
+<meta property="og:title" content="Lookup Singularity" />
+<meta name="twitter:title" content="Lookup Singularity" />
+<meta property="og:description" content="We are definitely a ways away from the lookup singularity. One way to get there is to try and find a lookup argument which is better than linear setup time in the size of the table. Tho there might be an impossibility result here. Something about having to include information about every possible result of the computation.  The other way we can over come this is to think about how the elements of our table are very repeated. So we may be able to take advantage of this to build tables with better..." />
+<meta name="twitter:description" content="We are definitely a ways away from the lookup singularity. One way to get there is to try and find a lookup argument which is better than linear setup time in the size of the table. Tho there might be an impossibility result here. Something about having to include information about every possible result of the computation.  The other way we can over come this is to think about how the elements of our table are very repeated. So we may be able to take advantage of this to build tables with better..." />
+<meta property="article:published_time" content="2022-12-12T17:46:21+00:00" />
+<meta property="og:ignore_canonical" content="true" />
+
+
+
+    
+
+    <meta id="data-discourse-setup" data-base-url="https://zkresear.ch" data-base-uri="" data-environment="production" data-letter-avatar-version="5_684b749d1c1eee86b31a584fa946fc1a" data-markdown-it-url="/assets/markdown-it-bundle-bd2c49cd6cb9b424798ccafb14c65db499aaa8eaf82aebb711e08a7337fa9fa8.js" data-service-worker-url="service-worker.js" data-default-locale="en" data-asset-version="b24a9cde33790f12a98610f7bb82646f" data-disable-custom-css="false" data-highlight-js-path="/highlight-js/zkresear.ch/a5a82d5d9c93ba17b974dbe7408b61e64d7130b7.js" data-svg-sprite-path="/svg-sprite/zkresear.ch/svg-1-ba4f37ecf5e8e4e2289b72c6892bf6a59a4760e0.js" data-enable-js-error-reporting="true" data-color-scheme-is-dark="false" data-user-color-scheme-id="7" data-user-dark-scheme-id="1">
+
+    <meta name="discourse/config/environment" content="%7B%22modulePrefix%22%3A%22discourse%22%2C%22environment%22%3A%22production%22%2C%22rootURL%22%3A%22%22%2C%22locationType%22%3A%22history%22%2C%22historySupportMiddleware%22%3Afalse%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7B%22Date%22%3Afalse%7D%2C%22_APPLICATION_TEMPLATE_WRAPPER%22%3Afalse%2C%22_DEFAULT_ASYNC_OBSERVERS%22%3Atrue%2C%22_JQUERY_INTEGRATION%22%3Atrue%7D%2C%22APP%22%3A%7B%22name%22%3A%22discourse%22%2C%22version%22%3A%222.9.0.beta9%204c085873e5c4174e876304d8300462fb96a7fd6e%22%2C%22exportApplicationGlobal%22%3Atrue%7D%7D" />
+  </head>
+
+  <body class="">
+      <section id="d-splash">
+  <template class="splash-svg-template">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      version="1.1"
+    >
+      <style>
+        :root {
+          --animation-state: paused;
+        }
+
+        /* user picked a theme where the "regular" scheme is dark */
+        /* user picked a theme a light scheme and also enabled a dark scheme */
+
+        /* deal with light scheme first */
+        @media (prefers-color-scheme: light) {
+          :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --tertiary: #51839b;
+            --quaternary: #b85e48;
+            --highlight: #ecec70;
+            --success: #518751;
+          }
+        }
+
+        /* then deal with dark scheme */
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --primary: #dddddd;
+            --secondary: #222222;
+            --tertiary: #0f82af;
+            --quaternary: #c14924;
+            --highlight: #a87137;
+            --success: #1ca551;
+          }
+        }
+
+        /* these styles need to live here because the SVG has a different scope */
+        .dots {
+          animation-name: loader;
+          animation-timing-function: ease-in-out;
+          animation-duration: 3s;
+          animation-iteration-count: infinite;
+          animation-play-state: var(--animation-state);
+          stroke: #fff;
+          stroke-width: 0.5px;
+          transform-origin: center;
+          opacity: 0;
+          r: max(1vw, 11px);
+          cy: 50%;
+          filter: saturate(2) opacity(0.85);
+        }
+
+        .dots:first-child {
+          fill: var(--quaternary);
+        }
+
+        .dots:nth-child(2) {
+          fill: var(--quaternary);
+          animation-delay: 0.15s;
+        }
+
+        .dots:nth-child(3) {
+          fill: var(--highlight);
+          animation-delay: 0.3s;
+        }
+
+        .dots:nth-child(4) {
+          fill: var(--tertiary);
+          animation-delay: 0.45s;
+        }
+
+        .dots:nth-child(5) {
+          fill: var(--tertiary);
+          animation-delay: 0.6s;
+        }
+
+        @keyframes loader {
+          0% {
+            opacity: 0;
+            transform: scale(1);
+          }
+          45% {
+            opacity: 1;
+            transform: scale(0.7);
+          }
+          65% {
+            opacity: 1;
+            transform: scale(0.7);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(1);
+          }
+        }
+      </style>
+
+      <g class="container">
+        <circle class="dots" cx="30vw" />
+        <circle class="dots" cx="40vw" />
+        <circle class="dots" cx="50vw" />
+        <circle class="dots" cx="60vw" />
+        <circle class="dots" cx="70vw" />
+      </g>
+    </svg>
+  </template>
+
+  <style>
+    html {
+      overflow-y: hidden !important;
+    }
+
+    /* user picked a theme where the "regular" scheme is dark */
+    /* user picked a theme a light scheme and also enabled a dark scheme */
+
+    /* deal with light scheme first */
+    @media (prefers-color-scheme: light) {
+      html {
+        background-color: #ffffff;
+      }
+
+      #d-splash .preloader-text-wrapper {
+        color: #000000;
+      }
+    }
+
+    /* then deal with dark scheme */
+    @media (prefers-color-scheme: dark) {
+      html {
+        background-color: #222222;
+      }
+
+      #d-splash .preloader-text-wrapper {
+        color: #dddddd;
+      }
+    }
+
+    #d-splash {
+      display: grid;
+      place-items: center;
+      backface-visibility: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 1001;
+      --animation-state: paused;
+    }
+
+    #d-splash .preloader-image {
+      max-width: 100%;
+      height: 100vh;
+    }
+
+    #d-splash .preloader-text-wrapper {
+      position: absolute;
+      opacity: 0;
+      animation: fade-in 0.5s ease-in-out;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+      animation-play-state: var(--animation-state);
+      margin-bottom: -4em;
+    }
+
+    #d-splash .preloader-text:after {
+      animation: loading-text 3s infinite;
+      content: "";
+      position: absolute;
+      margin: 0 0.1em;
+      left: 100%;
+    }
+
+    .rtl #d-splash .preloader-text:after {
+      left: 0;
+      right: 100%;
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes loading-text {
+      0% {
+        content: "";
+      }
+      25% {
+        content: ".";
+      }
+      50% {
+        content: "..";
+      }
+      75% {
+        content: "...";
+      }
+    }
+  </style>
+
+  <img
+    class="preloader-image"
+    src="data:image/svg;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+    alt="zk research"
+  />
+
+  <div class="preloader-text-wrapper">
+    <div class="preloader-text">Loading</div>
+  </div>
+
+  <noscript>
+    <style>
+      html {
+        overflow-y: revert !important;
+      }
+
+      #d-splash {
+        display: none;
+      }
+    </style>
+  </noscript>
+
+  <script>// This script is inlined in `_discourse_splash.html.erb
+const DELAY_TARGET = 2000;
+const POLLING_INTERVAL = 50;
+const splashSvgTemplate = document.querySelector(".splash-svg-template");
+const splashTemplateClone = splashSvgTemplate.content.cloneNode(true);
+const svgElement = splashTemplateClone.querySelector("svg");
+const svgString = new XMLSerializer().serializeToString(svgElement);
+const encodedSvg = btoa(svgString);
+const splashWrapper = document.querySelector("#d-splash");
+const splashImage = splashWrapper && splashWrapper.querySelector(".preloader-image");
+
+if (splashImage) {
+  splashImage.src = "data:image/svg+xml;base64,".concat(encodedSvg);
+  const connectStart = performance.timing.connectStart || 0;
+  const targetTime = connectStart + DELAY_TARGET;
+  let splashInterval;
+  let discourseReady;
+
+  const swapSplash = () => {
+    splashWrapper && splashWrapper.style.setProperty("--animation-state", "running");
+    svgElement && svgElement.style.setProperty("--animation-state", "running");
+    const newSvgString = new XMLSerializer().serializeToString(svgElement);
+    const newEncodedSvg = btoa(newSvgString);
+    splashImage.src = "data:image/svg+xml;base64,".concat(newEncodedSvg);
+    performance.mark("discourse-splash-visible");
+    clearSplashInterval();
+  };
+
+  const clearSplashInterval = () => {
+    clearInterval(splashInterval);
+    splashInterval = null;
+  };
+
+  (() => {
+    splashInterval = setInterval(() => {
+      if (discourseReady) {
+        clearSplashInterval();
+      }
+
+      if (Date.now() > targetTime) {
+        swapSplash();
+      }
+    }, POLLING_INTERVAL);
+  })();
+
+  document.addEventListener("discourse-ready", () => {
+    discourseReady = true;
+    splashWrapper && splashWrapper.remove();
+    performance.mark("discourse-splash-removed");
+  }, {
+    once: true
+  });
+}
+</script>
+
+</section>
+
+
+    <discourse-assets>
+      <discourse-assets-stylesheets>
+        <link href="/stylesheets/color_definitions_neutral_7_1_2765cdbe62b70044b391fe9ad8c13367a6a5577d.css?__ws=zkresear.ch" media="all" rel="stylesheet" class="light-scheme"/><link href="/stylesheets/color_definitions_dark_1_1_c4878db5ce0463c61c18e56ab7c0e50e941d26c5.css?__ws=zkresear.ch" media="(prefers-color-scheme: dark)" rel="stylesheet" class="dark-scheme"/>
+
+  <link href="/stylesheets/desktop_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" media="all" rel="stylesheet" data-target="desktop"  />
+
+
+
+  <link href="/stylesheets/discourse-details_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" media="all" rel="stylesheet" data-target="discourse-details"  />
+  <link href="/stylesheets/discourse-local-dates_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" media="all" rel="stylesheet" data-target="discourse-local-dates"  />
+  <link href="/stylesheets/discourse-math_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" media="all" rel="stylesheet" data-target="discourse-math"  />
+  <link href="/stylesheets/discourse-narrative-bot_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" media="all" rel="stylesheet" data-target="discourse-narrative-bot"  />
+  <link href="/stylesheets/discourse-presence_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" media="all" rel="stylesheet" data-target="discourse-presence"  />
+  <link href="/stylesheets/lazy-yt_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" media="all" rel="stylesheet" data-target="lazy-yt"  />
+  <link href="/stylesheets/poll_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" media="all" rel="stylesheet" data-target="poll"  />
+  <link href="/stylesheets/poll_desktop_d62152cc5052c6905eea8613e723dbf3d0e59ee1.css?__ws=zkresear.ch" media="all" rel="stylesheet" data-target="poll_desktop"  />
+
+  <link href="/stylesheets/desktop_theme_1_b04f520b36dd14334b56d8be2371e0b3cac6dd2a.css?__ws=zkresear.ch" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="1" data-theme-name="default"/>
+
+      </discourse-assets-stylesheets>
+      <discourse-assets-json>
+        <div class="hidden" id="data-preloaded" data-preloaded="{&quot;site&quot;:&quot;{\&quot;default_archetype\&quot;:\&quot;regular\&quot;,\&quot;notification_types\&quot;:{\&quot;mentioned\&quot;:1,\&quot;replied\&quot;:2,\&quot;quoted\&quot;:3,\&quot;edited\&quot;:4,\&quot;liked\&quot;:5,\&quot;private_message\&quot;:6,\&quot;invited_to_private_message\&quot;:7,\&quot;invitee_accepted\&quot;:8,\&quot;posted\&quot;:9,\&quot;moved_post\&quot;:10,\&quot;linked\&quot;:11,\&quot;granted_badge\&quot;:12,\&quot;invited_to_topic\&quot;:13,\&quot;custom\&quot;:14,\&quot;group_mentioned\&quot;:15,\&quot;group_message_summary\&quot;:16,\&quot;watching_first_post\&quot;:17,\&quot;topic_reminder\&quot;:18,\&quot;liked_consolidated\&quot;:19,\&quot;post_approved\&quot;:20,\&quot;code_review_commit_approved\&quot;:21,\&quot;membership_request_accepted\&quot;:22,\&quot;membership_request_consolidated\&quot;:23,\&quot;bookmark_reminder\&quot;:24,\&quot;reaction\&quot;:25,\&quot;votes_released\&quot;:26,\&quot;event_reminder\&quot;:27,\&quot;event_invitation\&quot;:28,\&quot;chat_mention\&quot;:29,\&quot;chat_message\&quot;:30,\&quot;chat_invitation\&quot;:31,\&quot;chat_group_mention\&quot;:32,\&quot;chat_quoted\&quot;:33,\&quot;assigned\&quot;:34,\&quot;question_answer_user_commented\&quot;:35},\&quot;post_types\&quot;:{\&quot;regular\&quot;:1,\&quot;moderator_action\&quot;:2,\&quot;small_action\&quot;:3,\&quot;whisper\&quot;:4},\&quot;trust_levels\&quot;:{\&quot;newuser\&quot;:0,\&quot;basic\&quot;:1,\&quot;member\&quot;:2,\&quot;regular\&quot;:3,\&quot;leader\&quot;:4},\&quot;groups\&quot;:[],\&quot;filters\&quot;:[\&quot;latest\&quot;,\&quot;unread\&quot;,\&quot;new\&quot;,\&quot;unseen\&quot;,\&quot;top\&quot;,\&quot;read\&quot;,\&quot;posted\&quot;,\&quot;bookmarks\&quot;],\&quot;periods\&quot;:[\&quot;all\&quot;,\&quot;yearly\&quot;,\&quot;quarterly\&quot;,\&quot;monthly\&quot;,\&quot;weekly\&quot;,\&quot;daily\&quot;],\&quot;top_menu_items\&quot;:[\&quot;latest\&quot;,\&quot;unread\&quot;,\&quot;new\&quot;,\&quot;unseen\&quot;,\&quot;top\&quot;,\&quot;read\&quot;,\&quot;posted\&quot;,\&quot;bookmarks\&quot;,\&quot;categories\&quot;],\&quot;anonymous_top_menu_items\&quot;:[\&quot;latest\&quot;,\&quot;top\&quot;,\&quot;categories\&quot;,\&quot;categories\&quot;,\&quot;top\&quot;],\&quot;uncategorized_category_id\&quot;:1,\&quot;user_field_max_length\&quot;:2048,\&quot;post_action_types\&quot;:[{\&quot;id\&quot;:2,\&quot;name_key\&quot;:\&quot;like\&quot;,\&quot;name\&quot;:\&quot;Like\&quot;,\&quot;description\&quot;:\&quot;Like this post\&quot;,\&quot;short_description\&quot;:\&quot;Like this post\&quot;,\&quot;is_flag\&quot;:false,\&quot;is_custom_flag\&quot;:false},{\&quot;id\&quot;:3,\&quot;name_key\&quot;:\&quot;off_topic\&quot;,\&quot;name\&quot;:\&quot;Off-Topic\&quot;,\&quot;description\&quot;:\&quot;This post is not relevant to the current discussion as defined by the title and first post, and should probably be moved elsewhere.\&quot;,\&quot;short_description\&quot;:\&quot;Not relevant to the discussion\&quot;,\&quot;is_flag\&quot;:true,\&quot;is_custom_flag\&quot;:false},{\&quot;id\&quot;:4,\&quot;name_key\&quot;:\&quot;inappropriate\&quot;,\&quot;name\&quot;:\&quot;Inappropriate\&quot;,\&quot;description\&quot;:\&quot;This post contains content that a reasonable person would consider offensive, abusive, or a violation of \\u003ca href=\\\&quot;/guidelines\\\&quot;\\u003eour community guidelines\\u003c/a\\u003e.\&quot;,\&quot;short_description\&quot;:\&quot;A violation of \\u003ca href=\\\&quot;/guidelines\\\&quot;\\u003eour community guidelines\\u003c/a\\u003e\&quot;,\&quot;is_flag\&quot;:true,\&quot;is_custom_flag\&quot;:false},{\&quot;id\&quot;:8,\&quot;name_key\&quot;:\&quot;spam\&quot;,\&quot;name\&quot;:\&quot;Spam\&quot;,\&quot;description\&quot;:\&quot;This post is an advertisement, or vandalism. It is not useful or relevant to the current topic.\&quot;,\&quot;short_description\&quot;:\&quot;This is an advertisement or vandalism\&quot;,\&quot;is_flag\&quot;:true,\&quot;is_custom_flag\&quot;:false},{\&quot;id\&quot;:6,\&quot;name_key\&quot;:\&quot;notify_user\&quot;,\&quot;name\&quot;:\&quot;Send @%{username} a message\&quot;,\&quot;description\&quot;:\&quot;I want to talk to this person directly and personally about their post.\&quot;,\&quot;short_description\&quot;:\&quot;I want to talk to this person directly and personally about their post.\&quot;,\&quot;is_flag\&quot;:true,\&quot;is_custom_flag\&quot;:true},{\&quot;id\&quot;:null,\&quot;name_key\&quot;:null,\&quot;name\&quot;:\&quot;translation missing: en.post_action_types..title\&quot;,\&quot;description\&quot;:\&quot;translation missing: en.post_action_types.description\&quot;,\&quot;short_description\&quot;:\&quot;translation missing: en.post_action_types.short_description\&quot;,\&quot;is_flag\&quot;:false,\&quot;is_custom_flag\&quot;:false},{\&quot;id\&quot;:7,\&quot;name_key\&quot;:\&quot;notify_moderators\&quot;,\&quot;name\&quot;:\&quot;Something Else\&quot;,\&quot;description\&quot;:\&quot;This post requires staff attention for another reason not listed above.\&quot;,\&quot;short_description\&quot;:\&quot;Requires staff attention for another reason\&quot;,\&quot;is_flag\&quot;:true,\&quot;is_custom_flag\&quot;:true}],\&quot;topic_flag_types\&quot;:[{\&quot;id\&quot;:4,\&quot;name_key\&quot;:\&quot;inappropriate\&quot;,\&quot;name\&quot;:\&quot;Inappropriate\&quot;,\&quot;description\&quot;:\&quot;This topic contains content that a reasonable person would consider offensive, abusive, or a violation of \\u003ca href=\\\&quot;/guidelines\\\&quot;\\u003eour community guidelines\\u003c/a\\u003e.\&quot;,\&quot;short_description\&quot;:\&quot;A violation of \\u003ca href=\\\&quot;/guidelines\\\&quot;\\u003eour community guidelines\\u003c/a\\u003e\&quot;,\&quot;is_flag\&quot;:true,\&quot;is_custom_flag\&quot;:false},{\&quot;id\&quot;:8,\&quot;name_key\&quot;:\&quot;spam\&quot;,\&quot;name\&quot;:\&quot;Spam\&quot;,\&quot;description\&quot;:\&quot;This topic is an advertisement. It is not useful or relevant to this site, but promotional in nature.\&quot;,\&quot;short_description\&quot;:\&quot;This is an advertisement\&quot;,\&quot;is_flag\&quot;:true,\&quot;is_custom_flag\&quot;:false},{\&quot;id\&quot;:null,\&quot;name_key\&quot;:null,\&quot;name\&quot;:\&quot;translation missing: en.topic_flag_types..title\&quot;,\&quot;description\&quot;:\&quot;translation missing: en.topic_flag_types.description\&quot;,\&quot;short_description\&quot;:\&quot;translation missing: en.topic_flag_types.short_description\&quot;,\&quot;is_flag\&quot;:false,\&quot;is_custom_flag\&quot;:false},{\&quot;id\&quot;:7,\&quot;name_key\&quot;:\&quot;notify_moderators\&quot;,\&quot;name\&quot;:\&quot;Something Else\&quot;,\&quot;description\&quot;:\&quot;This topic requires general staff attention based on the \\u003ca href=\\\&quot;/guidelines\\\&quot;\\u003eguidelines\\u003c/a\\u003e, \\u003ca href=\\\&quot;/tos\\\&quot;\\u003eTOS\\u003c/a\\u003e, or for another reason not listed above.\&quot;,\&quot;short_description\&quot;:\&quot;Requires staff attention for another reason\&quot;,\&quot;is_flag\&quot;:true,\&quot;is_custom_flag\&quot;:true}],\&quot;can_create_tag\&quot;:false,\&quot;can_tag_topics\&quot;:false,\&quot;can_tag_pms\&quot;:false,\&quot;tags_filter_regexp\&quot;:\&quot;[/\\\\?#\\\\[\\\\]@!\\\\$\\u0026&#39;\\\\(\\\\)\\\\*\\\\+,;=\\\\.%\\\\\\\\`^\\\\s|\\\\{\\\\}\\\&quot;\\u003c\\u003e]+\&quot;,\&quot;top_tags\&quot;:[],\&quot;topic_featured_link_allowed_category_ids\&quot;:[2,4,3,1],\&quot;user_themes\&quot;:[{\&quot;theme_id\&quot;:1,\&quot;name\&quot;:\&quot;Default\&quot;,\&quot;default\&quot;:true,\&quot;color_scheme_id\&quot;:7}],\&quot;user_color_schemes\&quot;:[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Dark\&quot;,\&quot;is_dark\&quot;:true},{\&quot;id\&quot;:4,\&quot;name\&quot;:\&quot;Dracula\&quot;,\&quot;is_dark\&quot;:true},{\&quot;id\&quot;:7,\&quot;name\&quot;:\&quot;Neutral\&quot;,\&quot;is_dark\&quot;:false},{\&quot;id\&quot;:6,\&quot;name\&quot;:\&quot;Solarized Dark\&quot;,\&quot;is_dark\&quot;:true},{\&quot;id\&quot;:5,\&quot;name\&quot;:\&quot;Solarized Light\&quot;,\&quot;is_dark\&quot;:false},{\&quot;id\&quot;:3,\&quot;name\&quot;:\&quot;WCAG Dark\&quot;,\&quot;is_dark\&quot;:true},{\&quot;id\&quot;:2,\&quot;name\&quot;:\&quot;WCAG Light\&quot;,\&quot;is_dark\&quot;:false}],\&quot;default_dark_color_scheme\&quot;:{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Dark\&quot;,\&quot;version\&quot;:1,\&quot;created_at\&quot;:\&quot;2022-09-27T00:46:21.575Z\&quot;,\&quot;updated_at\&quot;:\&quot;2022-09-27T00:46:21.575Z\&quot;,\&quot;via_wizard\&quot;:true,\&quot;base_scheme_id\&quot;:\&quot;Dark\&quot;,\&quot;theme_id\&quot;:null,\&quot;user_selectable\&quot;:true},\&quot;censored_regexp\&quot;:[],\&quot;custom_emoji_translation\&quot;:{},\&quot;watched_words_replace\&quot;:null,\&quot;watched_words_link\&quot;:null,\&quot;categories\&quot;:[{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;Uncategorized\&quot;,\&quot;color\&quot;:\&quot;0088CC\&quot;,\&quot;text_color\&quot;:\&quot;FFFFFF\&quot;,\&quot;slug\&quot;:\&quot;uncategorized\&quot;,\&quot;topic_count\&quot;:0,\&quot;post_count\&quot;:0,\&quot;position\&quot;:0,\&quot;description\&quot;:\&quot;Topics that don&#39;t need a category, or don&#39;t fit into any other existing category.\&quot;,\&quot;description_text\&quot;:\&quot;Topics that don&#39;t need a category, or don&#39;t fit into any other existing category.\&quot;,\&quot;description_excerpt\&quot;:\&quot;Topics that don&#39;t need a category, or don&#39;t fit into any other existing category.\&quot;,\&quot;topic_url\&quot;:\&quot;/t/\&quot;,\&quot;read_restricted\&quot;:false,\&quot;permission\&quot;:null,\&quot;notification_level\&quot;:1,\&quot;topic_template\&quot;:null,\&quot;has_children\&quot;:false,\&quot;sort_order\&quot;:null,\&quot;sort_ascending\&quot;:null,\&quot;show_subcategory_list\&quot;:false,\&quot;num_featured_topics\&quot;:3,\&quot;default_view\&quot;:null,\&quot;subcategory_list_style\&quot;:\&quot;rows_with_featured_topics\&quot;,\&quot;default_top_period\&quot;:\&quot;all\&quot;,\&quot;default_list_filter\&quot;:\&quot;all\&quot;,\&quot;minimum_required_tags\&quot;:0,\&quot;navigate_to_first_post_after_read\&quot;:false,\&quot;allowed_tags\&quot;:[],\&quot;allowed_tag_groups\&quot;:[],\&quot;allow_global_tags\&quot;:false,\&quot;read_only_banner\&quot;:null,\&quot;uploaded_logo\&quot;:null,\&quot;uploaded_background\&quot;:null,\&quot;required_tag_groups\&quot;:[],\&quot;can_edit\&quot;:false},{\&quot;id\&quot;:2,\&quot;name\&quot;:\&quot;Site Feedback\&quot;,\&quot;color\&quot;:\&quot;808281\&quot;,\&quot;text_color\&quot;:\&quot;FFFFFF\&quot;,\&quot;slug\&quot;:\&quot;site-feedback\&quot;,\&quot;topic_count\&quot;:0,\&quot;post_count\&quot;:0,\&quot;position\&quot;:1,\&quot;description\&quot;:\&quot;\\u003cp\\u003eDiscussion about this site, its organization, how it works, and how we can improve it.\\u003c/p\\u003e\&quot;,\&quot;description_text\&quot;:\&quot;Discussion about this site, its organization, how it works, and how we can improve it.\&quot;,\&quot;description_excerpt\&quot;:\&quot;Discussion about this site, its organization, how it works, and how we can improve it.\&quot;,\&quot;topic_url\&quot;:\&quot;/t/about-the-site-feedback-category/1\&quot;,\&quot;read_restricted\&quot;:false,\&quot;permission\&quot;:null,\&quot;notification_level\&quot;:1,\&quot;topic_template\&quot;:null,\&quot;has_children\&quot;:false,\&quot;sort_order\&quot;:null,\&quot;sort_ascending\&quot;:null,\&quot;show_subcategory_list\&quot;:false,\&quot;num_featured_topics\&quot;:3,\&quot;default_view\&quot;:null,\&quot;subcategory_list_style\&quot;:\&quot;rows_with_featured_topics\&quot;,\&quot;default_top_period\&quot;:\&quot;all\&quot;,\&quot;default_list_filter\&quot;:\&quot;all\&quot;,\&quot;minimum_required_tags\&quot;:0,\&quot;navigate_to_first_post_after_read\&quot;:false,\&quot;allowed_tags\&quot;:[],\&quot;allowed_tag_groups\&quot;:[],\&quot;allow_global_tags\&quot;:false,\&quot;read_only_banner\&quot;:null,\&quot;uploaded_logo\&quot;:null,\&quot;uploaded_background\&quot;:null,\&quot;required_tag_groups\&quot;:[],\&quot;can_edit\&quot;:false},{\&quot;id\&quot;:4,\&quot;name\&quot;:\&quot;General\&quot;,\&quot;color\&quot;:\&quot;25AAE2\&quot;,\&quot;text_color\&quot;:\&quot;FFFFFF\&quot;,\&quot;slug\&quot;:\&quot;general\&quot;,\&quot;topic_count\&quot;:25,\&quot;post_count\&quot;:67,\&quot;position\&quot;:3,\&quot;description\&quot;:\&quot;\\u003cp\\u003eCreate topics here that don’t fit into any other existing category.\\u003c/p\\u003e\&quot;,\&quot;description_text\&quot;:\&quot;Create topics here that don’t fit into any other existing category.\&quot;,\&quot;description_excerpt\&quot;:\&quot;Create topics here that don’t fit into any other existing category.\&quot;,\&quot;topic_url\&quot;:\&quot;/t/about-the-general-category/3\&quot;,\&quot;read_restricted\&quot;:false,\&quot;permission\&quot;:null,\&quot;notification_level\&quot;:1,\&quot;topic_template\&quot;:null,\&quot;has_children\&quot;:false,\&quot;sort_order\&quot;:null,\&quot;sort_ascending\&quot;:null,\&quot;show_subcategory_list\&quot;:false,\&quot;num_featured_topics\&quot;:3,\&quot;default_view\&quot;:null,\&quot;subcategory_list_style\&quot;:\&quot;rows_with_featured_topics\&quot;,\&quot;default_top_period\&quot;:\&quot;all\&quot;,\&quot;default_list_filter\&quot;:\&quot;all\&quot;,\&quot;minimum_required_tags\&quot;:0,\&quot;navigate_to_first_post_after_read\&quot;:false,\&quot;allowed_tags\&quot;:[],\&quot;allowed_tag_groups\&quot;:[],\&quot;allow_global_tags\&quot;:false,\&quot;read_only_banner\&quot;:null,\&quot;uploaded_logo\&quot;:null,\&quot;uploaded_background\&quot;:null,\&quot;required_tag_groups\&quot;:[],\&quot;can_edit\&quot;:false}],\&quot;markdown_additional_options\&quot;:{},\&quot;displayed_about_plugin_stat_groups\&quot;:[],\&quot;show_welcome_topic_banner\&quot;:false,\&quot;archetypes\&quot;:[{\&quot;id\&quot;:\&quot;regular\&quot;,\&quot;name\&quot;:\&quot;Regular Topic\&quot;,\&quot;options\&quot;:[]},{\&quot;id\&quot;:\&quot;banner\&quot;,\&quot;name\&quot;:\&quot;Banner Topic\&quot;,\&quot;options\&quot;:[]}],\&quot;user_fields\&quot;:[],\&quot;auth_providers\&quot;:[{\&quot;name\&quot;:\&quot;github\&quot;,\&quot;custom_url\&quot;:null,\&quot;pretty_name_override\&quot;:null,\&quot;title_override\&quot;:null,\&quot;frame_width\&quot;:null,\&quot;frame_height\&quot;:null,\&quot;can_connect\&quot;:true,\&quot;can_revoke\&quot;:true,\&quot;icon\&quot;:\&quot;fab-github\&quot;}]}&quot;,&quot;siteSettings&quot;:&quot;{\&quot;default_locale\&quot;:\&quot;en\&quot;,\&quot;title\&quot;:\&quot;zk research\&quot;,\&quot;short_site_description\&quot;:\&quot;\&quot;,\&quot;exclude_rel_nofollow_domains\&quot;:\&quot;\&quot;,\&quot;logo\&quot;:\&quot;/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png\&quot;,\&quot;logo_small\&quot;:\&quot;\&quot;,\&quot;digest_logo\&quot;:\&quot;\&quot;,\&quot;mobile_logo\&quot;:\&quot;\&quot;,\&quot;logo_dark\&quot;:\&quot;\&quot;,\&quot;logo_small_dark\&quot;:\&quot;\&quot;,\&quot;mobile_logo_dark\&quot;:\&quot;\&quot;,\&quot;large_icon\&quot;:\&quot;\&quot;,\&quot;favicon\&quot;:\&quot;\&quot;,\&quot;apple_touch_icon\&quot;:\&quot;\&quot;,\&quot;display_local_time_in_user_card\&quot;:false,\&quot;allow_user_locale\&quot;:false,\&quot;set_locale_from_accept_language_header\&quot;:false,\&quot;set_locale_from_cookie\&quot;:false,\&quot;support_mixed_text_direction\&quot;:false,\&quot;suggested_topics\&quot;:5,\&quot;ga_universal_tracking_code\&quot;:\&quot;\&quot;,\&quot;ga_universal_domain_name\&quot;:\&quot;auto\&quot;,\&quot;gtm_container_id\&quot;:\&quot;\&quot;,\&quot;top_menu\&quot;:\&quot;latest|new|unread|top|categories\&quot;,\&quot;post_menu\&quot;:\&quot;read|like|share|flag|edit|bookmark|delete|admin|reply\&quot;,\&quot;post_menu_hidden_items\&quot;:\&quot;flag|bookmark|edit|delete|admin\&quot;,\&quot;share_links\&quot;:\&quot;twitter|facebook|email\&quot;,\&quot;allow_username_in_share_links\&quot;:true,\&quot;share_quote_visibility\&quot;:\&quot;anonymous\&quot;,\&quot;share_quote_buttons\&quot;:\&quot;twitter|email\&quot;,\&quot;desktop_category_page_style\&quot;:\&quot;categories_and_latest_topics\&quot;,\&quot;category_colors\&quot;:\&quot;BF1E2E|F1592A|F7941D|9EB83B|3AB54A|12A89D|25AAE2|0E76BD|652D90|92278F|ED207B|8C6238|231F20|808281|B3B5B4|E45735\&quot;,\&quot;category_style\&quot;:\&quot;bullet\&quot;,\&quot;max_category_nesting\&quot;:2,\&quot;enable_mobile_theme\&quot;:true,\&quot;enable_direct_s3_uploads\&quot;:false,\&quot;enable_upload_debug_mode\&quot;:false,\&quot;default_dark_mode_color_scheme_id\&quot;:1,\&quot;relative_date_duration\&quot;:30,\&quot;fixed_category_positions\&quot;:false,\&quot;fixed_category_positions_on_create\&quot;:false,\&quot;enable_badges\&quot;:true,\&quot;enable_badge_sql\&quot;:false,\&quot;max_favorite_badges\&quot;:2,\&quot;enable_whispers\&quot;:false,\&quot;whispers_allowed_groups\&quot;:\&quot;\&quot;,\&quot;enable_bookmarks_with_reminders\&quot;:true,\&quot;push_notifications_prompt\&quot;:true,\&quot;vapid_public_key_bytes\&quot;:\&quot;4|229|108|9|251|44|40|114|198|216|15|211|137|165|184|199|78|251|222|49|133|250|196|155|162|71|202|116|124|249|114|199|34|74|103|7|49|181|8|54|141|136|124|20|158|95|96|15|62|233|175|242|114|169|253|77|84|94|204|251|218|199|80|169|200\&quot;,\&quot;enable_user_status\&quot;:false,\&quot;invite_only\&quot;:false,\&quot;login_required\&quot;:false,\&quot;must_approve_users\&quot;:false,\&quot;enable_local_logins\&quot;:true,\&quot;enable_local_logins_via_email\&quot;:true,\&quot;allow_new_registrations\&quot;:true,\&quot;enable_signup_cta\&quot;:true,\&quot;facebook_app_id\&quot;:\&quot;\&quot;,\&quot;auth_skip_create_confirm\&quot;:false,\&quot;auth_overrides_email\&quot;:false,\&quot;enable_discourse_connect\&quot;:false,\&quot;discourse_connect_overrides_avatar\&quot;:false,\&quot;hide_email_address_taken\&quot;:false,\&quot;min_username_length\&quot;:3,\&quot;max_username_length\&quot;:20,\&quot;unicode_usernames\&quot;:false,\&quot;min_password_length\&quot;:10,\&quot;min_admin_password_length\&quot;:15,\&quot;email_editable\&quot;:true,\&quot;logout_redirect\&quot;:\&quot;\&quot;,\&quot;full_name_required\&quot;:false,\&quot;enable_names\&quot;:true,\&quot;invite_expiry_days\&quot;:90,\&quot;invites_per_page\&quot;:40,\&quot;delete_user_max_post_age\&quot;:60,\&quot;delete_all_posts_max\&quot;:15,\&quot;prioritize_username_in_ux\&quot;:true,\&quot;enable_user_directory\&quot;:true,\&quot;allow_anonymous_posting\&quot;:false,\&quot;anonymous_posting_min_trust_level\&quot;:1,\&quot;allow_users_to_hide_profile\&quot;:true,\&quot;hide_user_profiles_from_public\&quot;:false,\&quot;allow_featured_topic_on_user_profiles\&quot;:true,\&quot;hide_suspension_reasons\&quot;:false,\&quot;ignored_users_count_message_threshold\&quot;:5,\&quot;ignored_users_message_gap_days\&quot;:365,\&quot;user_selected_primary_groups\&quot;:false,\&quot;gravatar_name\&quot;:\&quot;Gravatar\&quot;,\&quot;gravatar_base_url\&quot;:\&quot;www.gravatar.com\&quot;,\&quot;gravatar_login_url\&quot;:\&quot;/emails\&quot;,\&quot;enable_group_directory\&quot;:true,\&quot;enable_category_group_moderation\&quot;:false,\&quot;min_post_length\&quot;:20,\&quot;min_first_post_length\&quot;:20,\&quot;min_personal_message_post_length\&quot;:10,\&quot;max_post_length\&quot;:32000,\&quot;topic_featured_link_enabled\&quot;:true,\&quot;min_topic_views_for_delete_confirm\&quot;:5000,\&quot;min_topic_title_length\&quot;:15,\&quot;max_topic_title_length\&quot;:255,\&quot;enable_filtered_replies_view\&quot;:false,\&quot;min_personal_message_title_length\&quot;:2,\&quot;allow_uncategorized_topics\&quot;:false,\&quot;min_title_similar_length\&quot;:10,\&quot;enable_personal_messages\&quot;:true,\&quot;personal_message_enabled_groups\&quot;:\&quot;11\&quot;,\&quot;edit_history_visible_to_public\&quot;:true,\&quot;delete_removed_posts_after\&quot;:24,\&quot;traditional_markdown_linebreaks\&quot;:false,\&quot;enable_markdown_typographer\&quot;:true,\&quot;enable_markdown_linkify\&quot;:true,\&quot;markdown_linkify_tlds\&quot;:\&quot;com|net|org|io|onion|co|tv|ru|cn|us|uk|me|de|fr|fi|gov\&quot;,\&quot;markdown_typographer_quotation_marks\&quot;:\&quot;“|”|‘|’\&quot;,\&quot;enable_rich_text_paste\&quot;:true,\&quot;suppress_reply_directly_below\&quot;:true,\&quot;suppress_reply_directly_above\&quot;:true,\&quot;max_reply_history\&quot;:1,\&quot;enable_mentions\&quot;:true,\&quot;here_mention\&quot;:\&quot;here\&quot;,\&quot;newuser_max_embedded_media\&quot;:4,\&quot;newuser_max_attachments\&quot;:0,\&quot;show_pinned_excerpt_mobile\&quot;:true,\&quot;show_pinned_excerpt_desktop\&quot;:true,\&quot;display_name_on_posts\&quot;:false,\&quot;show_time_gap_days\&quot;:7,\&quot;short_progress_text_threshold\&quot;:10000,\&quot;default_code_lang\&quot;:\&quot;auto\&quot;,\&quot;autohighlight_all_code\&quot;:false,\&quot;highlighted_languages\&quot;:\&quot;bash|c|cpp|csharp|css|diff|go|graphql|ini|java|javascript|json|kotlin|lua|makefile|markdown|objectivec|perl|php|php-template|plaintext|python|python-repl|r|ruby|rust|scss|shell|sql|swift|typescript|xml|yaml|wasm\&quot;,\&quot;show_copy_button_on_codeblocks\&quot;:false,\&quot;enable_emoji\&quot;:true,\&quot;enable_emoji_shortcuts\&quot;:true,\&quot;emoji_set\&quot;:\&quot;twitter\&quot;,\&quot;emoji_autocomplete_min_chars\&quot;:0,\&quot;enable_inline_emoji_translation\&quot;:false,\&quot;code_formatting_style\&quot;:\&quot;code-fences\&quot;,\&quot;allowed_href_schemes\&quot;:\&quot;\&quot;,\&quot;watched_words_regular_expressions\&quot;:false,\&quot;enable_diffhtml_preview\&quot;:false,\&quot;enable_fast_edit\&quot;:true,\&quot;old_post_notice_days\&quot;:14,\&quot;blur_tl0_flagged_posts_media\&quot;:true,\&quot;email_time_window_mins\&quot;:10,\&quot;disable_digest_emails\&quot;:false,\&quot;email_in\&quot;:false,\&quot;enable_imap\&quot;:false,\&quot;enable_smtp\&quot;:false,\&quot;disable_emails\&quot;:\&quot;no\&quot;,\&quot;bounce_score_threshold\&quot;:4,\&quot;enable_secondary_emails\&quot;:true,\&quot;max_image_size_kb\&quot;:4096,\&quot;max_attachment_size_kb\&quot;:4096,\&quot;authorized_extensions\&quot;:\&quot;jpg|jpeg|png|gif|heic|heif|webp\&quot;,\&quot;authorized_extensions_for_staff\&quot;:\&quot;\&quot;,\&quot;max_image_width\&quot;:690,\&quot;max_image_height\&quot;:500,\&quot;prevent_anons_from_downloading_files\&quot;:false,\&quot;secure_media\&quot;:false,\&quot;enable_s3_uploads\&quot;:false,\&quot;allow_profile_backgrounds\&quot;:true,\&quot;allow_uploaded_avatars\&quot;:\&quot;0\&quot;,\&quot;default_avatars\&quot;:\&quot;\&quot;,\&quot;external_system_avatars_enabled\&quot;:true,\&quot;external_system_avatars_url\&quot;:\&quot;/letter_avatar_proxy/v4/letter/{first_letter}/{color}/{size}.png\&quot;,\&quot;external_emoji_url\&quot;:\&quot;\&quot;,\&quot;selectable_avatars_mode\&quot;:\&quot;disabled\&quot;,\&quot;selectable_avatars\&quot;:\&quot;\&quot;,\&quot;allow_staff_to_upload_any_file_in_pm\&quot;:true,\&quot;simultaneous_uploads\&quot;:5,\&quot;composer_media_optimization_image_enabled\&quot;:true,\&quot;composer_media_optimization_image_bytes_optimization_threshold\&quot;:524288,\&quot;composer_media_optimization_image_resize_dimensions_threshold\&quot;:1920,\&quot;composer_media_optimization_image_resize_width_target\&quot;:1920,\&quot;composer_media_optimization_image_resize_pre_multiply\&quot;:false,\&quot;composer_media_optimization_image_resize_linear_rgb\&quot;:false,\&quot;composer_media_optimization_image_encode_quality\&quot;:75,\&quot;composer_media_optimization_debug_mode\&quot;:false,\&quot;min_trust_level_to_allow_profile_background\&quot;:0,\&quot;min_trust_level_to_allow_user_card_background\&quot;:0,\&quot;min_trust_level_to_allow_ignore\&quot;:2,\&quot;tl1_requires_read_posts\&quot;:30,\&quot;tl3_links_no_follow\&quot;:false,\&quot;enforce_second_factor\&quot;:\&quot;no\&quot;,\&quot;moderators_change_post_ownership\&quot;:false,\&quot;moderators_view_emails\&quot;:false,\&quot;use_admin_ip_allowlist\&quot;:false,\&quot;allowed_iframes\&quot;:\&quot;https://www.google.com/maps/embed?|https://www.openstreetmap.org/export/embed.html?|https://calendar.google.com/calendar/embed?|https://codepen.io/|https://www.instagram.com|https://zkresear.ch/discobot/certificate.svg\&quot;,\&quot;can_permanently_delete\&quot;:false,\&quot;max_oneboxes_per_post\&quot;:50,\&quot;reviewable_claiming\&quot;:\&quot;disabled\&quot;,\&quot;reviewable_default_topics\&quot;:false,\&quot;reviewable_default_visibility\&quot;:\&quot;low\&quot;,\&quot;alert_admins_if_errors_per_minute\&quot;:0,\&quot;alert_admins_if_errors_per_hour\&quot;:0,\&quot;max_prints_per_hour_per_user\&quot;:5,\&quot;invite_link_max_redemptions_limit\&quot;:5000,\&quot;invite_link_max_redemptions_limit_users\&quot;:10,\&quot;enable_chunked_encoding\&quot;:true,\&quot;long_polling_base_url\&quot;:\&quot;/\&quot;,\&quot;background_polling_interval\&quot;:60000,\&quot;polling_interval\&quot;:3000,\&quot;anon_polling_interval\&quot;:25000,\&quot;flush_timings_secs\&quot;:60,\&quot;verbose_localization\&quot;:false,\&quot;max_new_topics\&quot;:500,\&quot;enable_safe_mode\&quot;:true,\&quot;enable_experimental_sidebar_hamburger\&quot;:false,\&quot;enable_sidebar\&quot;:true,\&quot;default_sidebar_categories\&quot;:\&quot;\&quot;,\&quot;default_sidebar_tags\&quot;:\&quot;\&quot;,\&quot;enable_new_user_profile_nav_groups\&quot;:\&quot;\&quot;,\&quot;tos_url\&quot;:\&quot;\&quot;,\&quot;privacy_policy_url\&quot;:\&quot;\&quot;,\&quot;faq_url\&quot;:\&quot;\&quot;,\&quot;enable_backups\&quot;:true,\&quot;backup_location\&quot;:\&quot;local\&quot;,\&quot;maximum_backups\&quot;:5,\&quot;use_pg_headlines_for_excerpt\&quot;:false,\&quot;min_search_term_length\&quot;:3,\&quot;log_search_queries\&quot;:true,\&quot;version_checks\&quot;:true,\&quot;suppress_uncategorized_badge\&quot;:true,\&quot;header_dropdown_category_count\&quot;:8,\&quot;slug_generation_method\&quot;:\&quot;ascii\&quot;,\&quot;summary_timeline_button\&quot;:false,\&quot;topic_views_heat_low\&quot;:2700,\&quot;topic_views_heat_medium\&quot;:4400,\&quot;topic_views_heat_high\&quot;:8000,\&quot;topic_post_like_heat_low\&quot;:0.5,\&quot;topic_post_like_heat_medium\&quot;:1.0,\&quot;topic_post_like_heat_high\&quot;:2.0,\&quot;history_hours_low\&quot;:12,\&quot;history_hours_medium\&quot;:24,\&quot;history_hours_high\&quot;:48,\&quot;cold_age_days_low\&quot;:14,\&quot;cold_age_days_medium\&quot;:90,\&quot;cold_age_days_high\&quot;:180,\&quot;global_notice\&quot;:\&quot;\&quot;,\&quot;show_create_topics_notice\&quot;:true,\&quot;welcome_topic_id\&quot;:7,\&quot;bootstrap_mode_min_users\&quot;:50,\&quot;bootstrap_mode_enabled\&quot;:false,\&quot;automatically_unpin_topics\&quot;:true,\&quot;read_time_word_count\&quot;:500,\&quot;topic_page_title_includes_category\&quot;:true,\&quot;svg_icon_subset\&quot;:\&quot;\&quot;,\&quot;allow_bulk_invite\&quot;:true,\&quot;use_polymorphic_bookmarks\&quot;:true,\&quot;suggest_weekends_in_date_pickers\&quot;:true,\&quot;disable_mailing_list_mode\&quot;:true,\&quot;default_topics_automatic_unpin\&quot;:true,\&quot;mute_all_categories_by_default\&quot;:false,\&quot;tagging_enabled\&quot;:true,\&quot;tag_style\&quot;:\&quot;simple\&quot;,\&quot;max_tags_per_topic\&quot;:5,\&quot;max_tag_length\&quot;:20,\&quot;min_trust_level_to_tag_topics\&quot;:\&quot;0\&quot;,\&quot;max_tag_search_results\&quot;:5,\&quot;max_tags_in_filter_list\&quot;:30,\&quot;tags_sort_alphabetically\&quot;:false,\&quot;tags_listed_by_group\&quot;:false,\&quot;pm_tags_allowed_for_groups\&quot;:\&quot;\&quot;,\&quot;suppress_overlapping_tags_in_list\&quot;:false,\&quot;remove_muted_tags_from_latest\&quot;:\&quot;always\&quot;,\&quot;force_lowercase_tags\&quot;:true,\&quot;dashboard_hidden_reports\&quot;:\&quot;\&quot;,\&quot;dashboard_visible_tabs\&quot;:\&quot;moderation|security|reports\&quot;,\&quot;dashboard_general_tab_activity_metrics\&quot;:\&quot;page_view_total_reqs|visits|time_to_first_response|likes|flags|user_to_user_private_messages_with_replies\&quot;,\&quot;discourse_narrative_bot_enabled\&quot;:true,\&quot;poll_enabled\&quot;:true,\&quot;poll_maximum_options\&quot;:20,\&quot;poll_minimum_trust_level_to_create\&quot;:1,\&quot;poll_groupable_user_fields\&quot;:\&quot;\&quot;,\&quot;poll_export_data_explorer_query_id\&quot;:-16,\&quot;discourse_local_dates_email_format\&quot;:\&quot;YYYY-MM-DDTHH:mm:ss[Z]\&quot;,\&quot;discourse_local_dates_enabled\&quot;:true,\&quot;discourse_local_dates_default_formats\&quot;:\&quot;LLL|LTS|LL|LLLL\&quot;,\&quot;discourse_local_dates_default_timezones\&quot;:\&quot;Europe/Paris|America/Los_Angeles\&quot;,\&quot;presence_enabled\&quot;:true,\&quot;presence_max_users_shown\&quot;:5,\&quot;details_enabled\&quot;:true,\&quot;siwe_infura_id\&quot;:\&quot;6ad0edd480554ae3b1a37b42133e5616\&quot;,\&quot;siwe_json_rpc\&quot;:\&quot;\&quot;,\&quot;siwe_statement\&quot;:\&quot;Sign-in to Discourse via Ethereum\&quot;,\&quot;discourse_math_enabled\&quot;:true,\&quot;discourse_math_provider\&quot;:\&quot;mathjax\&quot;,\&quot;discourse_math_zoom_on_hover\&quot;:false,\&quot;discourse_math_enable_accessibility\&quot;:false,\&quot;discourse_math_enable_asciimath\&quot;:false,\&quot;available_locales\&quot;:\&quot;[{\\\&quot;name\\\&quot;:\\\&quot;اللغة العربية\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;ar\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;беларуская мова\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;be\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;български език\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;bg\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;bosanski jezik\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;bs_BA\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;català\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;ca\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;čeština\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;cs\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;dansk\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;da\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Deutsch\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;de\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;ελληνικά\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;el\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;English (US)\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;en\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;English (UK)\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;en_GB\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Español\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;es\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;eesti\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;et\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;فارسی\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;fa_IR\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;suomi\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;fi\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Français\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;fr\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;galego\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;gl\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;עברית\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;he\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;hrvatski jezik\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;hr\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;magyar\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;hu\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Հայերեն\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;hy\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Indonesian\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;id\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Italiano\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;it\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;日本語\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;ja\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;한국어\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;ko\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;lietuvių kalba\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;lt\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;latviešu valoda\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;lv\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Norsk bokmål\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;nb_NO\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Nederlands\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;nl\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;polski\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;pl_PL\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Português\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;pt\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Português (BR)\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;pt_BR\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;limba română\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;ro\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Русский\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;ru\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;slovenčina\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;sk\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;slovenščina\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;sl\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Shqip\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;sq\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;српски језик\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;sr\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;svenska\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;sv\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Kiswahili\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;sw\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;తెలుగు\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;te\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;ไทย\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;th\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Türkçe\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;tr_TR\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;українська мова\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;uk\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;اردو\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;ur\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;Việt Nam\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;vi\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;简体中文\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;zh_CN\\\&quot;},{\\\&quot;name\\\&quot;:\\\&quot;繁體中文\\\&quot;,\\\&quot;value\\\&quot;:\\\&quot;zh_TW\\\&quot;}]\&quot;,\&quot;require_invite_code\&quot;:false,\&quot;site_logo_url\&quot;:\&quot;https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png\&quot;,\&quot;site_logo_small_url\&quot;:\&quot;\&quot;,\&quot;site_mobile_logo_url\&quot;:\&quot;https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png\&quot;,\&quot;site_favicon_url\&quot;:\&quot;https://zkresear.ch/uploads/default/optimized/1X/_129430568242d1b7f853bb13ebea28b3f6af4e7_2_32x32.png\&quot;,\&quot;site_logo_dark_url\&quot;:\&quot;\&quot;,\&quot;site_logo_small_dark_url\&quot;:\&quot;\&quot;,\&quot;site_mobile_logo_dark_url\&quot;:\&quot;\&quot;}&quot;,&quot;customHTML&quot;:&quot;{\&quot;top\&quot;:\&quot;\&quot;,\&quot;footer\&quot;:\&quot;\&quot;}&quot;,&quot;banner&quot;:&quot;{}&quot;,&quot;customEmoji&quot;:&quot;[]&quot;,&quot;isReadOnly&quot;:&quot;false&quot;,&quot;isStaffWritesOnly&quot;:&quot;false&quot;,&quot;activatedThemes&quot;:&quot;{\&quot;1\&quot;:\&quot;Default\&quot;}&quot;,&quot;topic_65&quot;:&quot;{\&quot;post_stream\&quot;:{\&quot;posts\&quot;:[{\&quot;id\&quot;:91,\&quot;name\&quot;:\&quot;Barry\&quot;,\&quot;username\&quot;:\&quot;barryWhiteHat\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/barrywhitehat/{size}/63_2.png\&quot;,\&quot;created_at\&quot;:\&quot;2022-11-23T22:46:54.867Z\&quot;,\&quot;cooked\&quot;:\&quot;\\u003cp\\u003eThanks \\u003ca href=\\\&quot;https://github.com/ChihChengLiang\\\&quot; rel=\\\&quot;noopener nofollow ugc\\\&quot;\\u003eCC\\u003c/a\\u003e for review and feedback \\u003cimg src=\\\&quot;https://zkresear.ch/images/emoji/twitter/slight_smile.png?v=12\\\&quot; title=\\\&quot;:slight_smile:\\\&quot; class=\\\&quot;emoji\\\&quot; alt=\\\&quot;:slight_smile:\\\&quot; loading=\\\&quot;lazy\\\&quot; width=\\\&quot;20\\\&quot; height=\\\&quot;20\\\&quot;\\u003e\\u003c/p\\u003e\\n\\u003ch2\\u003e\\n\\u003ca name=\\\&quot;intro-1\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#intro-1\\\&quot;\\u003e\\u003c/a\\u003eIntro\\u003c/h2\\u003e\\n\\u003cp\\u003eFor years the central component of ZKPs was \\u003cspan class=\\\&quot;math\\\&quot;\\u003eA* B + D == C\\u003c/span\\u003e. This check was applied repeatedly to build our full circuits. Any computation can be represented in this way. This representation is called R1CS.\\u003c/p\\u003e\\n\\u003cp\\u003eIt turns out R1CS is prohibitively expensive for certain tasks. This led to increased use of lookup arguments. Currently we use lookups and a variant of R1CS called polynomial constraints to build our circuits.\\u003c/p\\u003e\\n\\u003cp\\u003eA lot of things are blocked if we want to build them using only r1cs. So the general flow is that some clever people get together and find efficient ways to arithmetise circuits. They create hand tuned circuits that include both polynomial constraints and lookup arguments. This is circuit specific and is not very scalable.\\u003c/p\\u003e\\n\\u003ch2\\u003e\\n\\u003ca name=\\\&quot;polynomial-constraints-2\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#polynomial-constraints-2\\\&quot;\\u003e\\u003c/a\\u003ePolynomial constraints\\u003c/h2\\u003e\\n\\u003cp\\u003ePolynomial constraints are complicated. The circuit implementer makes many of these polynomial equations. The whole circuit is defined as a system of polynomial equations.\\u003cbr\\u003e\\nA solution to this system of equations makes a valid proof. It’s hard to reason about the results of systems of equations.\\u003cbr\\u003e\\nFormal verification tools cannot , at the moment, solve polynomial equations in a prime field.\\u003c/p\\u003e\\n\\u003ch2\\u003e\\n\\u003ca name=\\\&quot;lookup-arguments-3\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#lookup-arguments-3\\\&quot;\\u003e\\u003c/a\\u003eLookup arguments\\u003c/h2\\u003e\\n\\u003cp\\u003eLookup arguments are set membership checks. They were first used to do efficient big integer arithmetic. Now used for that but also as control flow for VMs and to do operations that are not snark friendly. They are not more efficient for all operations. The cost per lookup introduces some prover cost. We currently try and use lookup arguments rarely because they are expensive in the prover\\u003c/p\\u003e\\n\\u003ch2\\u003e\\n\\u003ca name=\\\&quot;why-lookup-arguments-are-good-4\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#why-lookup-arguments-are-good-4\\\&quot;\\u003e\\u003c/a\\u003eWhy lookup arguments are good\\u003c/h2\\u003e\\n\\u003ch3\\u003e\\n\\u003ca name=\\\&quot;language-5\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#language-5\\\&quot;\\u003e\\u003c/a\\u003eLanguage\\u003c/h3\\u003e\\n\\u003cp\\u003eCurrently snark friendly languages are very difficult for new programmers to learn. They use prime fields and polynomial constraints which are not a paradigm they are used to.  A language that only uses lookup arguments could be much simpler. Current languages are good at doing computation that is specific to snarks but doing traditional computation is much more expensive. A lookup only language would be better on both counts.\\u003c/p\\u003e\\n\\u003ch3\\u003e\\n\\u003ca name=\\\&quot;security-review-6\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#security-review-6\\\&quot;\\u003e\\u003c/a\\u003eSecurity review\\u003c/h3\\u003e\\n\\u003cp\\u003eAuditors are not used to finding solutions to a series of polynomial equations. Lookup arguments are much simpler to reason about.\\u003c/p\\u003e\\n\\u003ch4\\u003e\\n\\u003ca name=\\\&quot;example-7\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#example-7\\\&quot;\\u003e\\u003c/a\\u003eExample:\\u003c/h4\\u003e\\n\\u003cp\\u003eTake a circuit is an AND of two input variables, the output is the result.\\u003c/p\\u003e\\n\\u003ch5\\u003e\\n\\u003ca name=\\\&quot;lookup-approach-8\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#lookup-approach-8\\\&quot;\\u003e\\u003c/a\\u003eLookup approach\\u003c/h5\\u003e\\n\\u003cpre\\u003e\\u003ccode class=\\\&quot;lang-auto\\\&quot;\\u003eout = get x,y from AND table\\nreturn(out)\\n\\u003c/code\\u003e\\u003c/pre\\u003e\\n\\u003cp\\u003eThe above lookup approach is much simpler than the polynomial approach shown next.\\u003c/p\\u003e\\n\\u003ch5\\u003e\\n\\u003ca name=\\\&quot;polynomial-approach-9\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#polynomial-approach-9\\\&quot;\\u003e\\u003c/a\\u003epolynomial approach\\u003c/h5\\u003e\\n\\u003cpre\\u003e\\u003ccode class=\\\&quot;lang-auto\\\&quot;\\u003e(x)(x-1) = 0 \\ny(y-1) = 0 \\nx*y = out\\nreturn(out)\\n\\u003c/code\\u003e\\u003c/pre\\u003e\\n\\u003cp\\u003eIt is likely going to be much simpler to find bugs in lookup only circuits.\\u003c/p\\u003e\\n\\u003ch3\\u003e\\n\\u003ca name=\\\&quot;formal-verification-10\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#formal-verification-10\\\&quot;\\u003e\\u003c/a\\u003eFormal verification\\u003c/h3\\u003e\\n\\u003cp\\u003eFormal verification tools need to solve the series of polynomial equations. Tools that solve these systems do not work well over prime fields. This leads to a lot of extra work being required to make a solver that works over a field. Using only lookup arguments would allow us to use already existing tools. It would also open up other methods for us to explore. Lookup arguments limit the set of valid variables at any point in the circuit. So we go from the set of possible variables being \\u003cspan class=\\\&quot;math\\\&quot;\\u003e2^{254}\\u003c/span\\u003e to being \\u003cspan class=\\\&quot;math\\\&quot;\\u003e2\\u003c/span\\u003e or \\u003cspan class=\\\&quot;math\\\&quot;\\u003e2^{16}\\u003c/span\\u003e. This could even allow us to do things like state space enumeration to confirm our circuit is correct.\\u003c/p\\u003e\\n\\u003ch2\\u003e\\n\\u003ca name=\\\&quot;information-theory-comparison-11\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#information-theory-comparison-11\\\&quot;\\u003e\\u003c/a\\u003eInformation theory comparison\\u003c/h2\\u003e\\n\\u003cp\\u003eIn order to effectively describe our program as a circuit we need to make a circuit that maps an input to the correct output. We can look at circuits as information encoded per second of prover time. This seems like a good way to compare the different ways we have of implementing circuits.\\u003c/p\\u003e\\n\\u003cp\\u003ePolynomial constraints have limited degree. This is because the degree affects the prover time. The degree limits the information you can encode with them. You can make a polynomial that is degree 5 that can map 5 input values to 5 output values. You can’t include more values in the polynomial unless you increase the degree. In many cases this is fine because we use the structure of the polynomial constraint to do calculations. So multiplication is defined by a polynomial operation \\u003cspan class=\\\&quot;math\\\&quot;\\u003eA * B == C\\u003c/span\\u003e but XOR is not and needs to be encoded as keys to values.\\u003c/p\\u003e\\n\\u003cp\\u003eLookup arguments can contain much more information. We have previously been limited in table size of \\u003cspan class=\\\&quot;math\\\&quot;\\u003e2^{28}\\u003c/span\\u003e elements. But recent work makes the limit of circuit size the maximum trusted setup you can feasibly complete.  This limit on the \\u003cspan class=\\\&quot;math\\\&quot;\\u003etable\\\\_size\\u003c/span\\u003e. \\u003ca href=\\\&quot;https://eprint.iacr.org/2022/1565\\\&quot; class=\\\&quot;inline-onebox\\\&quot; rel=\\\&quot;noopener nofollow ugc\\\&quot;\\u003eBaloo: Nearly Optimal Lookup Arguments\\u003c/a\\u003e. A single polynomial constraint can contain ~ \\u003cspan class=\\\&quot;math\\\&quot;\\u003e5 *2^{254}\\u003c/span\\u003e  bits of information. Lookup arguments can contain \\u003cspan class=\\\&quot;math\\\&quot;\\u003e2^{254} * table\\\\_size\\u003c/span\\u003e bits of information.\\u003c/p\\u003e\\n\\u003cp\\u003ePolynomial constraints are very useful where you use the structure of the polynomial constraint. But as tables of bigger size become feasible this advantage will disappear.\\u003c/p\\u003e\\n\\u003ch2\\u003e\\n\\u003ca name=\\\&quot;conclusions-12\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#conclusions-12\\\&quot;\\u003e\\u003c/a\\u003eConclusions\\u003c/h2\\u003e\\n\\u003cp\\u003eIf we can efficiently define circuits using lookup arguments only it will lead to simpler tooling and circuits.\\u003c/p\\u003e\\n\\u003cp\\u003eLookup arguments will become more efficient than polynomial constraints for almost everything with time.\\u003c/p\\u003e\\n\\u003cp\\u003eWe should start building the tooling for a lookup centric zkps\\u003c/p\\u003e\\n\\u003ch2\\u003e\\n\\u003ca name=\\\&quot;future-work-13\\\&quot; class=\\\&quot;anchor\\\&quot; href=\\\&quot;#future-work-13\\\&quot;\\u003e\\u003c/a\\u003eFuture work\\u003c/h2\\u003e\\n\\u003cul\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eCompare efficiency of circuits right now.\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eExample lookup only language\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eDo a comparison of relative efficiency of various lookup arguments. Try and estimate the pace of improvements\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eFind examples where lookup arguments are better and worse than polynomial constraints\\u003c/p\\u003e\\n\\u003cul\\u003e\\n\\u003cli\\u003eFind the worst case examples for both\\u003c/li\\u003e\\n\\u003cli\\u003eBenchmark many circuits using: lookup arguments, lookup + polynomial constraints and compare them for efficiency\\u003c/li\\u003e\\n\\u003c/ul\\u003e\\n\\u003c/li\\u003e\\n\\u003c/ul\\u003e\&quot;,\&quot;post_number\&quot;:1,\&quot;post_type\&quot;:1,\&quot;updated_at\&quot;:\&quot;2022-11-23T22:47:12.335Z\&quot;,\&quot;reply_count\&quot;:0,\&quot;reply_to_post_number\&quot;:null,\&quot;quote_count\&quot;:0,\&quot;incoming_link_count\&quot;:2535,\&quot;reads\&quot;:71,\&quot;readers_count\&quot;:70,\&quot;score\&quot;:12934.2,\&quot;yours\&quot;:false,\&quot;topic_id\&quot;:65,\&quot;topic_slug\&quot;:\&quot;lookup-singularity\&quot;,\&quot;display_username\&quot;:\&quot;Barry\&quot;,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;version\&quot;:1,\&quot;can_edit\&quot;:false,\&quot;can_delete\&quot;:false,\&quot;can_recover\&quot;:false,\&quot;can_wiki\&quot;:false,\&quot;link_counts\&quot;:[{\&quot;url\&quot;:\&quot;https://github.com/ChihChengLiang\&quot;,\&quot;internal\&quot;:false,\&quot;reflection\&quot;:false,\&quot;title\&quot;:\&quot;ChihChengLiang (Chih Cheng Liang) · GitHub\&quot;,\&quot;clicks\&quot;:67},{\&quot;url\&quot;:\&quot;https://eprint.iacr.org/2022/1565\&quot;,\&quot;internal\&quot;:false,\&quot;reflection\&quot;:false,\&quot;title\&quot;:\&quot;Baloo: Nearly Optimal Lookup Arguments\&quot;,\&quot;clicks\&quot;:44}],\&quot;read\&quot;:true,\&quot;user_title\&quot;:null,\&quot;bookmarked\&quot;:false,\&quot;actions_summary\&quot;:[{\&quot;id\&quot;:2,\&quot;count\&quot;:13}],\&quot;moderator\&quot;:false,\&quot;admin\&quot;:false,\&quot;staff\&quot;:false,\&quot;user_id\&quot;:37,\&quot;hidden\&quot;:false,\&quot;trust_level\&quot;:1,\&quot;deleted_at\&quot;:null,\&quot;user_deleted\&quot;:false,\&quot;edit_reason\&quot;:null,\&quot;can_view_edit_history\&quot;:true,\&quot;wiki\&quot;:false},{\&quot;id\&quot;:99,\&quot;name\&quot;:\&quot;\&quot;,\&quot;username\&quot;:\&quot;nibnalin\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/nibnalin/{size}/14_2.png\&quot;,\&quot;created_at\&quot;:\&quot;2022-11-24T12:12:57.652Z\&quot;,\&quot;cooked\&quot;:\&quot;\\u003cp\\u003eGreat post, thanks for sharing! Another interesting idea of similar flavor is to consider recursion protocols as a primitive for cheap structured operations. In particular, with folding scheme based constructions like \\u003ca href=\\\&quot;https://github.com/microsoft/Nova\\\&quot; rel=\\\&quot;noopener nofollow ugc\\\&quot;\\u003eNova\\u003c/a\\u003e (that work directly on the level of constraint IOPs), we could witness repeated operations and prove them within a larger SNARK seperately.\\u003c/p\\u003e\\n\\u003cp\\u003eFor instance, building on your example, suppose we have a large circuit with N AND operations mapping two M bit inputs to one M bit output. Then, we could first extract these N operations from the witness and seperately write a recursive circuit of N steps (verifying one M bit AND op at each step) in Nova, and generate as output a Nova (relaxed R1CS) instance with O(M) constraints + O(1) recursion overhead constraints (~10k or so in case of Nova). Therefore, the prover would do O(N) work outside the main proof (notably the dominating cost is from O(N) MSMs) + O(1) extra checks in their primary circuit, matching the optimal lookup table arguments runtime.\\u003c/p\\u003e\\n\\u003cp\\u003eIn this setup, we don’t exactly get all the described benefits of security/simplicity lookups have, but it’s not bounded on trusted setup size (as yet?) and efficient implementations of folding schemes like Nova already exist. It would be interesting to try comparing these ideas and benchmarking concrete numbers!\\u003c/p\\u003e\\n\\u003cp\\u003e\\u003ca class=\\\&quot;mention\\\&quot; href=\\\&quot;/u/therealyingtong\\\&quot;\\u003e@therealyingtong\\u003c/a\\u003e also noted that similar approaches are used in the ZK EVM circuits (for hashing, for instance)\\u003c/p\\u003e\&quot;,\&quot;post_number\&quot;:2,\&quot;post_type\&quot;:1,\&quot;updated_at\&quot;:\&quot;2022-11-24T12:18:18.931Z\&quot;,\&quot;reply_count\&quot;:0,\&quot;reply_to_post_number\&quot;:null,\&quot;quote_count\&quot;:0,\&quot;incoming_link_count\&quot;:15,\&quot;reads\&quot;:56,\&quot;readers_count\&quot;:55,\&quot;score\&quot;:236.2,\&quot;yours\&quot;:false,\&quot;topic_id\&quot;:65,\&quot;topic_slug\&quot;:\&quot;lookup-singularity\&quot;,\&quot;display_username\&quot;:\&quot;\&quot;,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;version\&quot;:2,\&quot;can_edit\&quot;:false,\&quot;can_delete\&quot;:false,\&quot;can_recover\&quot;:false,\&quot;can_wiki\&quot;:false,\&quot;link_counts\&quot;:[{\&quot;url\&quot;:\&quot;https://github.com/microsoft/Nova\&quot;,\&quot;internal\&quot;:false,\&quot;reflection\&quot;:false,\&quot;title\&quot;:\&quot;GitHub - microsoft/Nova: Nova: Recursive SNARKs without trusted setup\&quot;,\&quot;clicks\&quot;:6}],\&quot;read\&quot;:true,\&quot;user_title\&quot;:null,\&quot;bookmarked\&quot;:false,\&quot;actions_summary\&quot;:[{\&quot;id\&quot;:2,\&quot;count\&quot;:8}],\&quot;moderator\&quot;:false,\&quot;admin\&quot;:true,\&quot;staff\&quot;:true,\&quot;user_id\&quot;:7,\&quot;hidden\&quot;:false,\&quot;trust_level\&quot;:1,\&quot;deleted_at\&quot;:null,\&quot;user_deleted\&quot;:false,\&quot;edit_reason\&quot;:null,\&quot;can_view_edit_history\&quot;:true,\&quot;wiki\&quot;:false},{\&quot;id\&quot;:102,\&quot;name\&quot;:\&quot;Shumo Chu\&quot;,\&quot;username\&quot;:\&quot;shumo\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/shumo/{size}/47_2.png\&quot;,\&quot;created_at\&quot;:\&quot;2022-11-24T19:03:40.848Z\&quot;,\&quot;cooked\&quot;:\&quot;\\u003cp\\u003e\\u003cdiv class=\\\&quot;lightbox-wrapper\\\&quot;\\u003e\\u003ca class=\\\&quot;lightbox\\\&quot; href=\\\&quot;https://zkresear.ch/uploads/default/original/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f.png\\\&quot; data-download-href=\\\&quot;https://zkresear.ch/uploads/default/6c65464f7fa98cdb7008cd05050c4b6be051347f\\\&quot; title=\\\&quot;Screenshot 2022-11-24 at 1.59.55 PM\\\&quot;\\u003e\\u003cimg src=\\\&quot;https://zkresear.ch/uploads/default/optimized/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f_2_690x337.png\\\&quot; alt=\\\&quot;Screenshot 2022-11-24 at 1.59.55 PM\\\&quot; data-base62-sha1=\\\&quot;fsUxTH1AqVUHzyMxc3MxLWRSLBJ\\\&quot; width=\\\&quot;690\\\&quot; height=\\\&quot;337\\\&quot; srcset=\\\&quot;https://zkresear.ch/uploads/default/optimized/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f_2_690x337.png, https://zkresear.ch/uploads/default/optimized/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f_2_1035x505.png 1.5x, https://zkresear.ch/uploads/default/original/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f.png 2x\\\&quot; data-dominant-color=\\\&quot;19191A\\\&quot;\\u003e\\u003cdiv class=\\\&quot;meta\\\&quot;\\u003e\\n\\u003csvg class=\\\&quot;fa d-icon d-icon-far-image svg-icon\\\&quot; aria-hidden=\\\&quot;true\\\&quot;\\u003e\\u003cuse href=\\\&quot;#far-image\\\&quot;\\u003e\\u003c/use\\u003e\\u003c/svg\\u003e\\u003cspan class=\\\&quot;filename\\\&quot;\\u003eScreenshot 2022-11-24 at 1.59.55 PM\\u003c/span\\u003e\\u003cspan class=\\\&quot;informations\\\&quot;\\u003e1186×580 98.7 KB\\u003c/span\\u003e\\u003csvg class=\\\&quot;fa d-icon d-icon-discourse-expand svg-icon\\\&quot; aria-hidden=\\\&quot;true\\\&quot;\\u003e\\u003cuse href=\\\&quot;#discourse-expand\\\&quot;\\u003e\\u003c/use\\u003e\\u003c/svg\\u003e\\n\\u003c/div\\u003e\\u003c/a\\u003e\\u003c/div\\u003e\\u003c/p\\u003e\\n\\u003cp\\u003eAs Ariel nicely articulated above, I think a hybrid approach makes a lot of sense. One of my biggest pain point of writing Circom today is having to using things like this (don’t know how to call this, Groth16 arithmetization?) as a “poor man’s” lookup table:\\u003c/p\\u003e\\n\\u003caside class=\\\&quot;onebox githubblob\\\&quot; data-onebox-src=\\\&quot;https://github.com/iden3/circomlib/blob/master/circuits/mux4.circom\\\&quot;\\u003e\\n  \\u003cheader class=\\\&quot;source\\\&quot;\\u003e\\n\\n      \\u003ca href=\\\&quot;https://github.com/iden3/circomlib/blob/master/circuits/mux4.circom\\\&quot; target=\\\&quot;_blank\\\&quot; rel=\\\&quot;noopener nofollow ugc\\\&quot;\\u003egithub.com\\u003c/a\\u003e\\n  \\u003c/header\\u003e\\n\\n  \\u003carticle class=\\\&quot;onebox-body\\\&quot;\\u003e\\n    \\u003ch4\\u003e\\u003ca href=\\\&quot;https://github.com/iden3/circomlib/blob/master/circuits/mux4.circom\\\&quot; target=\\\&quot;_blank\\\&quot; rel=\\\&quot;noopener nofollow ugc\\\&quot;\\u003eiden3/circomlib/blob/master/circuits/mux4.circom\\u003c/a\\u003e\\u003c/h4\\u003e\\n\\n\\n      \\u003cpre\\u003e\\u003ccode class=\\\&quot;lang-circom\\\&quot;\\u003e/*\\n    Copyright 2018 0KIMS association.\\n\\n    This file is part of circom (Zero Knowledge Circuit Compiler).\\n\\n    circom is a free software: you can redistribute it and/or modify it\\n    under the terms of the GNU General Public License as published by\\n    the Free Software Foundation, either version 3 of the License, or\\n    (at your option) any later version.\\n\\n    circom is distributed in the hope that it will be useful, but WITHOUT\\n    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY\\n    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public\\n    License for more details.\\n\\n    You should have received a copy of the GNU General Public License\\n    along with circom. If not, see \\u0026lt;https://www.gnu.org/licenses/\\u0026gt;.\\n*/\\npragma circom 2.0.0;\\n\\n\\u003c/code\\u003e\\u003c/pre\\u003e\\n\\n\\n\\n  This file has been truncated. \\u003ca href=\\\&quot;https://github.com/iden3/circomlib/blob/master/circuits/mux4.circom\\\&quot; target=\\\&quot;_blank\\\&quot; rel=\\\&quot;noopener nofollow ugc\\\&quot;\\u003eshow original\\u003c/a\\u003e\\n\\n  \\u003c/article\\u003e\\n\\n  \\u003cdiv class=\\\&quot;onebox-metadata\\\&quot;\\u003e\\n    \\n    \\n  \\u003c/div\\u003e\\n\\n  \\u003cdiv style=\\\&quot;clear: both\\\&quot;\\u003e\\u003c/div\\u003e\\n\\u003c/aside\\u003e\\n\&quot;,\&quot;post_number\&quot;:3,\&quot;post_type\&quot;:1,\&quot;updated_at\&quot;:\&quot;2022-11-24T19:03:40.848Z\&quot;,\&quot;reply_count\&quot;:1,\&quot;reply_to_post_number\&quot;:null,\&quot;quote_count\&quot;:0,\&quot;incoming_link_count\&quot;:13,\&quot;reads\&quot;:49,\&quot;readers_count\&quot;:48,\&quot;score\&quot;:139.8,\&quot;yours\&quot;:false,\&quot;topic_id\&quot;:65,\&quot;topic_slug\&quot;:\&quot;lookup-singularity\&quot;,\&quot;display_username\&quot;:\&quot;Shumo Chu\&quot;,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;version\&quot;:1,\&quot;can_edit\&quot;:false,\&quot;can_delete\&quot;:false,\&quot;can_recover\&quot;:false,\&quot;can_wiki\&quot;:false,\&quot;link_counts\&quot;:[{\&quot;url\&quot;:\&quot;https://github.com/iden3/circomlib/blob/master/circuits/mux4.circom\&quot;,\&quot;internal\&quot;:false,\&quot;reflection\&quot;:false,\&quot;title\&quot;:\&quot;circomlib/mux4.circom at master · iden3/circomlib · GitHub\&quot;,\&quot;clicks\&quot;:54},{\&quot;url\&quot;:\&quot;https://zkresear.ch/uploads/default/original/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f.png\&quot;,\&quot;internal\&quot;:true,\&quot;reflection\&quot;:false,\&quot;clicks\&quot;:0}],\&quot;read\&quot;:true,\&quot;user_title\&quot;:null,\&quot;bookmarked\&quot;:false,\&quot;actions_summary\&quot;:[{\&quot;id\&quot;:2,\&quot;count\&quot;:2}],\&quot;moderator\&quot;:false,\&quot;admin\&quot;:false,\&quot;staff\&quot;:false,\&quot;user_id\&quot;:29,\&quot;hidden\&quot;:false,\&quot;trust_level\&quot;:1,\&quot;deleted_at\&quot;:null,\&quot;user_deleted\&quot;:false,\&quot;edit_reason\&quot;:null,\&quot;can_view_edit_history\&quot;:true,\&quot;wiki\&quot;:false},{\&quot;id\&quot;:106,\&quot;name\&quot;:\&quot;Barry\&quot;,\&quot;username\&quot;:\&quot;barryWhiteHat\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/barrywhitehat/{size}/63_2.png\&quot;,\&quot;created_at\&quot;:\&quot;2022-11-25T22:26:43.368Z\&quot;,\&quot;cooked\&quot;:\&quot;\\u003cp\\u003eI think Ariel is assuming you can’t make a table iwth more than 2**128 elements I think if we can do that then we can do better than native adds and muls especially if you are doing wrong field stuff.\\u003c/p\\u003e\\n\\u003cp\\u003eI agree that we need to be able to make very big tables.\\u003c/p\\u003e\&quot;,\&quot;post_number\&quot;:4,\&quot;post_type\&quot;:1,\&quot;updated_at\&quot;:\&quot;2022-11-25T22:26:43.368Z\&quot;,\&quot;reply_count\&quot;:1,\&quot;reply_to_post_number\&quot;:3,\&quot;quote_count\&quot;:0,\&quot;incoming_link_count\&quot;:5,\&quot;reads\&quot;:43,\&quot;readers_count\&quot;:42,\&quot;score\&quot;:128.6,\&quot;yours\&quot;:false,\&quot;topic_id\&quot;:65,\&quot;topic_slug\&quot;:\&quot;lookup-singularity\&quot;,\&quot;display_username\&quot;:\&quot;Barry\&quot;,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;version\&quot;:1,\&quot;can_edit\&quot;:false,\&quot;can_delete\&quot;:false,\&quot;can_recover\&quot;:false,\&quot;can_wiki\&quot;:false,\&quot;read\&quot;:true,\&quot;user_title\&quot;:null,\&quot;reply_to_user\&quot;:{\&quot;username\&quot;:\&quot;shumo\&quot;,\&quot;name\&quot;:\&quot;Shumo Chu\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/shumo/{size}/47_2.png\&quot;},\&quot;bookmarked\&quot;:false,\&quot;actions_summary\&quot;:[{\&quot;id\&quot;:2,\&quot;count\&quot;:4}],\&quot;moderator\&quot;:false,\&quot;admin\&quot;:false,\&quot;staff\&quot;:false,\&quot;user_id\&quot;:37,\&quot;hidden\&quot;:false,\&quot;trust_level\&quot;:1,\&quot;deleted_at\&quot;:null,\&quot;user_deleted\&quot;:false,\&quot;edit_reason\&quot;:null,\&quot;can_view_edit_history\&quot;:true,\&quot;wiki\&quot;:false},{\&quot;id\&quot;:114,\&quot;name\&quot;:\&quot;Shumo Chu\&quot;,\&quot;username\&quot;:\&quot;shumo\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/shumo/{size}/47_2.png\&quot;,\&quot;created_at\&quot;:\&quot;2022-11-28T19:26:53.855Z\&quot;,\&quot;cooked\&quot;:\&quot;\\u003cp\\u003eThe prover work of newer constructions like Baloo is quasi-linear to size\\u003cbr\\u003e\\nof the set to be opened (rather than the entire table), which is very nice. However, these works still require a linear or quasi-linear setup time with regards to the actual size of the lookup table. Do you think this is an inherent limitation? If so, would that imply making a 2^128 sized lookup table would still be quite prohibitive? (I don’t know what is the real practical size to be, but I would guess something like 2^60 ish).\\u003c/p\\u003e\&quot;,\&quot;post_number\&quot;:5,\&quot;post_type\&quot;:1,\&quot;updated_at\&quot;:\&quot;2022-11-28T20:39:38.203Z\&quot;,\&quot;reply_count\&quot;:2,\&quot;reply_to_post_number\&quot;:4,\&quot;quote_count\&quot;:0,\&quot;incoming_link_count\&quot;:9,\&quot;reads\&quot;:41,\&quot;readers_count\&quot;:40,\&quot;score\&quot;:78.2,\&quot;yours\&quot;:false,\&quot;topic_id\&quot;:65,\&quot;topic_slug\&quot;:\&quot;lookup-singularity\&quot;,\&quot;display_username\&quot;:\&quot;Shumo Chu\&quot;,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;version\&quot;:2,\&quot;can_edit\&quot;:false,\&quot;can_delete\&quot;:false,\&quot;can_recover\&quot;:false,\&quot;can_wiki\&quot;:false,\&quot;read\&quot;:true,\&quot;user_title\&quot;:null,\&quot;reply_to_user\&quot;:{\&quot;username\&quot;:\&quot;barryWhiteHat\&quot;,\&quot;name\&quot;:\&quot;Barry\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/barrywhitehat/{size}/63_2.png\&quot;},\&quot;bookmarked\&quot;:false,\&quot;actions_summary\&quot;:[{\&quot;id\&quot;:2,\&quot;count\&quot;:1}],\&quot;moderator\&quot;:false,\&quot;admin\&quot;:false,\&quot;staff\&quot;:false,\&quot;user_id\&quot;:29,\&quot;hidden\&quot;:false,\&quot;trust_level\&quot;:1,\&quot;deleted_at\&quot;:null,\&quot;user_deleted\&quot;:false,\&quot;edit_reason\&quot;:null,\&quot;can_view_edit_history\&quot;:true,\&quot;wiki\&quot;:false},{\&quot;id\&quot;:115,\&quot;name\&quot;:\&quot;Carlos Pérez\&quot;,\&quot;username\&quot;:\&quot;CPerezz\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/cperezz/{size}/71_2.png\&quot;,\&quot;created_at\&quot;:\&quot;2022-11-29T23:05:07.778Z\&quot;,\&quot;cooked\&quot;:\&quot;\\u003cp\\u003eI guess then that with schemes like Baloo, we could get slightly closer the lookup-singularity by increasing the ratio bits/lookup with slightly better pre-processing times and, for sure, much better proving times. But not sure if it gives enough positive expectations for the lookup singularity future. Let me elaborate:\\u003c/p\\u003e\\n\\u003cp\\u003eTheoretically, with 4 columns of 2^64 elements each, we should be able to express any 2^256 element. This means that we need 8 columns to represent 2 2^256-elements and 12 columns to represent any operation between them that gives as a result another 2^256 element.\\u003c/p\\u003e\\n\\u003cp\\u003eThis will look like:\\u003c/p\\u003e\\n\\u003cdiv class=\\\&quot;md-table\\\&quot;\\u003e\\n\\u003ctable\\u003e\\n\\u003cthead\\u003e\\n\\u003ctr\\u003e\\n\\u003cth\\u003eE64\\u003c/th\\u003e\\n\\u003cth\\u003eE128\\u003c/th\\u003e\\n\\u003cth\\u003eE192\\u003c/th\\u003e\\n\\u003cth\\u003eE256\\u003c/th\\u003e\\n\\u003cth\\u003eF64\\u003c/th\\u003e\\n\\u003cth\\u003eF128\\u003c/th\\u003e\\n\\u003cth\\u003eF192\\u003c/th\\u003e\\n\\u003cth\\u003eF256\\u003c/th\\u003e\\n\\u003cth\\u003eR64\\u003c/th\\u003e\\n\\u003cth\\u003eR128\\u003c/th\\u003e\\n\\u003cth\\u003eR192\\u003c/th\\u003e\\n\\u003cth\\u003eR256\\u003c/th\\u003e\\n\\u003c/tr\\u003e\\n\\u003c/thead\\u003e\\n\\u003ctbody\\u003e\\n\\u003ctr\\u003e\\n\\u003ctd\\u003eX1\\u003c/td\\u003e\\n\\u003ctd\\u003eX2\\u003c/td\\u003e\\n\\u003ctd\\u003eX3\\u003c/td\\u003e\\n\\u003ctd\\u003eX4\\u003c/td\\u003e\\n\\u003ctd\\u003eY1\\u003c/td\\u003e\\n\\u003ctd\\u003eY2\\u003c/td\\u003e\\n\\u003ctd\\u003eY3\\u003c/td\\u003e\\n\\u003ctd\\u003eY4\\u003c/td\\u003e\\n\\u003ctd\\u003eZ1\\u003c/td\\u003e\\n\\u003ctd\\u003eZ2\\u003c/td\\u003e\\n\\u003ctd\\u003eZ3\\u003c/td\\u003e\\n\\u003ctd\\u003eZ4\\u003c/td\\u003e\\n\\u003c/tr\\u003e\\n\\u003ctr\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003ctd\\u003e…\\u003c/td\\u003e\\n\\u003c/tr\\u003e\\n\\u003ctr\\u003e\\n\\u003ctd\\u003eXN_1\\u003c/td\\u003e\\n\\u003ctd\\u003eXN_2\\u003c/td\\u003e\\n\\u003ctd\\u003eXN_3\\u003c/td\\u003e\\n\\u003ctd\\u003eXN_4\\u003c/td\\u003e\\n\\u003ctd\\u003eYN_1\\u003c/td\\u003e\\n\\u003ctd\\u003eYN_2\\u003c/td\\u003e\\n\\u003ctd\\u003eYN_3\\u003c/td\\u003e\\n\\u003ctd\\u003eYN_4\\u003c/td\\u003e\\n\\u003ctd\\u003eZN_1\\u003c/td\\u003e\\n\\u003ctd\\u003eZN_2\\u003c/td\\u003e\\n\\u003ctd\\u003eZN_3\\u003c/td\\u003e\\n\\u003ctd\\u003eZN_4\\u003c/td\\u003e\\n\\u003c/tr\\u003e\\n\\u003c/tbody\\u003e\\n\\u003c/table\\u003e\\n\\u003c/div\\u003e\\u003cp\\u003eAssuming this, we see that the ratio with tables of 2^64 bit elements for an addition, mul, XOR or any \\u003ccode\\u003eF(x,y)-\\u0026gt;z\\u003c/code\\u003e is of \\u003cstrong\\u003e12columns/256bit-num operation\\u003c/strong\\u003e. So according to \\u003ca class=\\\&quot;mention\\\&quot; href=\\\&quot;/u/shumo\\\&quot;\\u003e@shumo\\u003c/a\\u003e the best case scenario we have now would be of \\u003cstrong\\u003e12columns/256bit-num operation\\u003c/strong\\u003e with a feasible-to-build SRS size.\\u003c/p\\u003e\\n\\u003cp\\u003eNote that if the lookup can’t be of 2^256 bit elements directly, we’re forced to have some sort of decompositions of the numbers we want to use. This means that we not only need the lookups but also some custom gate or similar thing to perform the decomposition into limbs of base 2^64.\\u003c/p\\u003e\\n\\u003cp\\u003eThere are two parts where this really concerns me:\\u003c/p\\u003e\\n\\u003col\\u003e\\n\\u003cli\\u003eEach new operation we want to support (Assume we have Addition and we want Multiplication for example) \\u003cstrong\\u003ewill require to add 4 more columns\\u003c/strong\\u003e with all of the 2^64 possible results of the limb permutation operations that would form the 2^256 possibilities.\\u003c/li\\u003e\\n\\u003c/ol\\u003e\\n\\u003cp\\u003eThis is quite bad and barely optimal. And not in regards proving time specially. But rather setup time. \\u003cstrong\\u003eWe need to compute 4 new commitments per operation we want to add support for.\\u003c/strong\\u003e That means 4 new MSMs and the argument required by the lookup too. And considering we are managing polynomials of 2^64 elements, this might not me a quick task. Even with GPU or similar stuff.\\u003c/p\\u003e\\n\\u003col start=\\\&quot;2\\\&quot;\\u003e\\n\\u003cli\\u003e\\n\\u003cstrong\\u003eWe still need the permutation argument and all the rest of stuff until we can’t lookup directly 2^256-bit numbers\\u003c/strong\\u003e. Mainly because there’s no way to compose/decompose the elements into 64-bit limbs unless we use custom gates. Which will then add more commitments. Which will already be extended due to the length of the tables and the Degree finally required by the circuit.\\u003c/li\\u003e\\n\\u003c/ol\\u003e\\n\\u003cp\\u003eThings I’d like to see/explore:\\u003c/p\\u003e\\n\\u003cul\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eShouldn’t we be able to express all the possible 8-bit operations we need and then, operate with the byte representations of the Field Elements that we use? I know this sounds a bit crazy. But what if we could define our tables of all of the 8-bit operations and the necessary 16-bit columns that derive into 8-bit limb decomposition when needed?\\u003cbr\\u003e\\nSo for example, imagine we have a multiplication of 2 bytes. We could first define the columns for Inp1, Inp2  and 16-bit Out. Then, define a decomposition op which would give us the resulting 8-bit limb and the remainder which needs to be added to the other limb etc…\\u003cbr\\u003e\\nThis is something that came to my mind some times already, and that might be useless, but might also be another perspective to look at the problem from.\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003e\\u003cstrong\\u003eCould we modelate lookup arguments as Bloom Filters\\u003c/strong\\u003e for example? Given an entry (x,y,z) for example where X,Y are inputs and Z an output, run through a high precision Bloom Filter to check that the relation is indeed one of the accepted ones.\\u003cbr\\u003e\\nThis is also, another idea that sometimes poped on my head. Again, could be completelly useless too. But I think that maybe, lookup singularity might arrive from a change of perspective over the problem, rather than minor optimizations over the previous protocol we had.\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003c/ul\\u003e\&quot;,\&quot;post_number\&quot;:6,\&quot;post_type\&quot;:1,\&quot;updated_at\&quot;:\&quot;2022-11-29T23:05:07.778Z\&quot;,\&quot;reply_count\&quot;:0,\&quot;reply_to_post_number\&quot;:5,\&quot;quote_count\&quot;:0,\&quot;incoming_link_count\&quot;:136,\&quot;reads\&quot;:42,\&quot;readers_count\&quot;:41,\&quot;score\&quot;:728.4,\&quot;yours\&quot;:false,\&quot;topic_id\&quot;:65,\&quot;topic_slug\&quot;:\&quot;lookup-singularity\&quot;,\&quot;display_username\&quot;:\&quot;Carlos Pérez\&quot;,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;version\&quot;:1,\&quot;can_edit\&quot;:false,\&quot;can_delete\&quot;:false,\&quot;can_recover\&quot;:false,\&quot;can_wiki\&quot;:false,\&quot;read\&quot;:true,\&quot;user_title\&quot;:null,\&quot;reply_to_user\&quot;:{\&quot;username\&quot;:\&quot;shumo\&quot;,\&quot;name\&quot;:\&quot;Shumo Chu\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/shumo/{size}/47_2.png\&quot;},\&quot;bookmarked\&quot;:false,\&quot;actions_summary\&quot;:[{\&quot;id\&quot;:2,\&quot;count\&quot;:3}],\&quot;moderator\&quot;:false,\&quot;admin\&quot;:false,\&quot;staff\&quot;:false,\&quot;user_id\&quot;:42,\&quot;hidden\&quot;:false,\&quot;trust_level\&quot;:1,\&quot;deleted_at\&quot;:null,\&quot;user_deleted\&quot;:false,\&quot;edit_reason\&quot;:null,\&quot;can_view_edit_history\&quot;:true,\&quot;wiki\&quot;:false},{\&quot;id\&quot;:122,\&quot;name\&quot;:\&quot;Barry\&quot;,\&quot;username\&quot;:\&quot;barryWhiteHat\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/barrywhitehat/{size}/63_2.png\&quot;,\&quot;created_at\&quot;:\&quot;2022-12-12T17:46:21.306Z\&quot;,\&quot;cooked\&quot;:\&quot;\\u003cp\\u003eWe are definitely a ways away from the lookup singularity. One way to get there is to try and find a lookup argument which is better than linear setup time in the size of the table. Tho there might be an impossibility result here. Something about having to include information about every possible result of the computation.\\u003c/p\\u003e\\n\\u003cp\\u003eThe other way we can over come this is to think about how the elements of our table are very repeated. So we may be able to take advantage of this to build tables with better than linear setup time. For example\\u003c/p\\u003e\\n\\u003cul\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003ewe want to calculate the a xor b\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eassume a and b are 1 bit\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eOur table is\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003c/ul\\u003e\\n\\u003cdiv class=\\\&quot;md-table\\\&quot;\\u003e\\n\\u003ctable\\u003e\\n\\u003cthead\\u003e\\n\\u003ctr\\u003e\\n\\u003cth\\u003eA\\u003c/th\\u003e\\n\\u003cth\\u003eB\\u003c/th\\u003e\\n\\u003cth\\u003eResult\\u003c/th\\u003e\\n\\u003c/tr\\u003e\\n\\u003c/thead\\u003e\\n\\u003ctbody\\u003e\\n\\u003ctr\\u003e\\n\\u003ctd\\u003e0\\u003c/td\\u003e\\n\\u003ctd\\u003e0\\u003c/td\\u003e\\n\\u003ctd\\u003e0\\u003c/td\\u003e\\n\\u003c/tr\\u003e\\n\\u003ctr\\u003e\\n\\u003ctd\\u003e1\\u003c/td\\u003e\\n\\u003ctd\\u003e0\\u003c/td\\u003e\\n\\u003ctd\\u003e1\\u003c/td\\u003e\\n\\u003c/tr\\u003e\\n\\u003ctr\\u003e\\n\\u003ctd\\u003e0\\u003c/td\\u003e\\n\\u003ctd\\u003e1\\u003c/td\\u003e\\n\\u003ctd\\u003e1\\u003c/td\\u003e\\n\\u003c/tr\\u003e\\n\\u003ctr\\u003e\\n\\u003ctd\\u003e1\\u003c/td\\u003e\\n\\u003ctd\\u003e1\\u003c/td\\u003e\\n\\u003ctd\\u003e0\\u003c/td\\u003e\\n\\u003c/tr\\u003e\\n\\u003c/tbody\\u003e\\n\\u003c/table\\u003e\\n\\u003c/div\\u003e\\u003cul\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eNote that the result is commutative. Meaning if you switch A and B the result is the same\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eWe can leverage this if our lookup argument can check for A , B \\u003cem\\u003eAND\\u003c/em\\u003e B , A\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eThis also works for addition , multiplication and any other operation that is commutative\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003cli\\u003e\\n\\u003cp\\u003eThis should reduce our look table size by 1/2\\u003c/p\\u003e\\n\\u003c/li\\u003e\\n\\u003c/ul\\u003e\\n\\u003cp\\u003eSo its definitely possible to have a sub-linear setup time assuming we can make our lookup arguments allow for for this kind of AND behavior.\\u003c/p\\u003e\&quot;,\&quot;post_number\&quot;:7,\&quot;post_type\&quot;:1,\&quot;updated_at\&quot;:\&quot;2022-12-12T17:46:21.306Z\&quot;,\&quot;reply_count\&quot;:0,\&quot;reply_to_post_number\&quot;:5,\&quot;quote_count\&quot;:0,\&quot;incoming_link_count\&quot;:123,\&quot;reads\&quot;:35,\&quot;readers_count\&quot;:34,\&quot;score\&quot;:622.0,\&quot;yours\&quot;:false,\&quot;topic_id\&quot;:65,\&quot;topic_slug\&quot;:\&quot;lookup-singularity\&quot;,\&quot;display_username\&quot;:\&quot;Barry\&quot;,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;version\&quot;:1,\&quot;can_edit\&quot;:false,\&quot;can_delete\&quot;:false,\&quot;can_recover\&quot;:false,\&quot;can_wiki\&quot;:false,\&quot;read\&quot;:true,\&quot;user_title\&quot;:null,\&quot;reply_to_user\&quot;:{\&quot;username\&quot;:\&quot;shumo\&quot;,\&quot;name\&quot;:\&quot;Shumo Chu\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/shumo/{size}/47_2.png\&quot;},\&quot;bookmarked\&quot;:false,\&quot;actions_summary\&quot;:[],\&quot;moderator\&quot;:false,\&quot;admin\&quot;:false,\&quot;staff\&quot;:false,\&quot;user_id\&quot;:37,\&quot;hidden\&quot;:false,\&quot;trust_level\&quot;:1,\&quot;deleted_at\&quot;:null,\&quot;user_deleted\&quot;:false,\&quot;edit_reason\&quot;:null,\&quot;can_view_edit_history\&quot;:true,\&quot;wiki\&quot;:false}],\&quot;stream\&quot;:[91,99,102,106,114,115,122]},\&quot;timeline_lookup\&quot;:[[1,1376],[2,1375],[4,1374],[5,1371],[6,1370],[7,1357]],\&quot;suggested_topics\&quot;:[],\&quot;tags\&quot;:[],\&quot;tags_descriptions\&quot;:{},\&quot;id\&quot;:65,\&quot;title\&quot;:\&quot;Lookup Singularity\&quot;,\&quot;fancy_title\&quot;:\&quot;Lookup Singularity\&quot;,\&quot;posts_count\&quot;:7,\&quot;created_at\&quot;:\&quot;2022-11-23T22:46:54.764Z\&quot;,\&quot;views\&quot;:11140,\&quot;reply_count\&quot;:4,\&quot;like_count\&quot;:31,\&quot;last_posted_at\&quot;:\&quot;2022-12-12T17:46:21.306Z\&quot;,\&quot;visible\&quot;:true,\&quot;closed\&quot;:false,\&quot;archived\&quot;:false,\&quot;has_summary\&quot;:false,\&quot;archetype\&quot;:\&quot;regular\&quot;,\&quot;slug\&quot;:\&quot;lookup-singularity\&quot;,\&quot;category_id\&quot;:4,\&quot;word_count\&quot;:2282,\&quot;deleted_at\&quot;:null,\&quot;user_id\&quot;:37,\&quot;featured_link\&quot;:null,\&quot;pinned_globally\&quot;:false,\&quot;pinned_at\&quot;:null,\&quot;pinned_until\&quot;:null,\&quot;image_url\&quot;:null,\&quot;slow_mode_seconds\&quot;:0,\&quot;draft\&quot;:null,\&quot;draft_key\&quot;:\&quot;topic_65\&quot;,\&quot;draft_sequence\&quot;:null,\&quot;unpinned\&quot;:null,\&quot;pinned\&quot;:false,\&quot;current_post_number\&quot;:7,\&quot;highest_post_number\&quot;:7,\&quot;deleted_by\&quot;:null,\&quot;actions_summary\&quot;:[{\&quot;id\&quot;:4,\&quot;count\&quot;:0,\&quot;hidden\&quot;:false,\&quot;can_act\&quot;:false},{\&quot;id\&quot;:8,\&quot;count\&quot;:0,\&quot;hidden\&quot;:false,\&quot;can_act\&quot;:false},{\&quot;id\&quot;:7,\&quot;count\&quot;:0,\&quot;hidden\&quot;:false,\&quot;can_act\&quot;:false}],\&quot;chunk_size\&quot;:20,\&quot;bookmarked\&quot;:false,\&quot;bookmarks\&quot;:[],\&quot;topic_timer\&quot;:null,\&quot;message_bus_last_id\&quot;:0,\&quot;participant_count\&quot;:4,\&quot;show_read_indicator\&quot;:false,\&quot;thumbnails\&quot;:null,\&quot;slow_mode_enabled_until\&quot;:null,\&quot;details\&quot;:{\&quot;can_edit\&quot;:false,\&quot;notification_level\&quot;:1,\&quot;participants\&quot;:[{\&quot;id\&quot;:37,\&quot;username\&quot;:\&quot;barryWhiteHat\&quot;,\&quot;name\&quot;:\&quot;Barry\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/barrywhitehat/{size}/63_2.png\&quot;,\&quot;post_count\&quot;:3,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;trust_level\&quot;:1},{\&quot;id\&quot;:29,\&quot;username\&quot;:\&quot;shumo\&quot;,\&quot;name\&quot;:\&quot;Shumo Chu\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/shumo/{size}/47_2.png\&quot;,\&quot;post_count\&quot;:2,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;trust_level\&quot;:1},{\&quot;id\&quot;:7,\&quot;username\&quot;:\&quot;nibnalin\&quot;,\&quot;name\&quot;:\&quot;\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/nibnalin/{size}/14_2.png\&quot;,\&quot;post_count\&quot;:1,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;admin\&quot;:true,\&quot;trust_level\&quot;:1},{\&quot;id\&quot;:42,\&quot;username\&quot;:\&quot;CPerezz\&quot;,\&quot;name\&quot;:\&quot;Carlos Pérez\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/cperezz/{size}/71_2.png\&quot;,\&quot;post_count\&quot;:1,\&quot;primary_group_name\&quot;:null,\&quot;flair_name\&quot;:null,\&quot;flair_url\&quot;:null,\&quot;flair_color\&quot;:null,\&quot;flair_bg_color\&quot;:null,\&quot;trust_level\&quot;:1}],\&quot;created_by\&quot;:{\&quot;id\&quot;:37,\&quot;username\&quot;:\&quot;barryWhiteHat\&quot;,\&quot;name\&quot;:\&quot;Barry\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/barrywhitehat/{size}/63_2.png\&quot;},\&quot;last_poster\&quot;:{\&quot;id\&quot;:37,\&quot;username\&quot;:\&quot;barryWhiteHat\&quot;,\&quot;name\&quot;:\&quot;Barry\&quot;,\&quot;avatar_template\&quot;:\&quot;/user_avatar/zkresear.ch/barrywhitehat/{size}/63_2.png\&quot;},\&quot;links\&quot;:[{\&quot;url\&quot;:\&quot;https://github.com/ChihChengLiang\&quot;,\&quot;title\&quot;:\&quot;ChihChengLiang (Chih Cheng Liang) · GitHub\&quot;,\&quot;internal\&quot;:false,\&quot;attachment\&quot;:false,\&quot;reflection\&quot;:false,\&quot;clicks\&quot;:67,\&quot;user_id\&quot;:37,\&quot;domain\&quot;:\&quot;github.com\&quot;,\&quot;root_domain\&quot;:\&quot;github.com\&quot;},{\&quot;url\&quot;:\&quot;https://github.com/iden3/circomlib/blob/master/circuits/mux4.circom\&quot;,\&quot;title\&quot;:\&quot;circomlib/mux4.circom at master · iden3/circomlib · GitHub\&quot;,\&quot;internal\&quot;:false,\&quot;attachment\&quot;:false,\&quot;reflection\&quot;:false,\&quot;clicks\&quot;:54,\&quot;user_id\&quot;:29,\&quot;domain\&quot;:\&quot;github.com\&quot;,\&quot;root_domain\&quot;:\&quot;github.com\&quot;},{\&quot;url\&quot;:\&quot;https://eprint.iacr.org/2022/1565\&quot;,\&quot;title\&quot;:\&quot;Baloo: Nearly Optimal Lookup Arguments\&quot;,\&quot;internal\&quot;:false,\&quot;attachment\&quot;:false,\&quot;reflection\&quot;:false,\&quot;clicks\&quot;:44,\&quot;user_id\&quot;:37,\&quot;domain\&quot;:\&quot;eprint.iacr.org\&quot;,\&quot;root_domain\&quot;:\&quot;iacr.org\&quot;},{\&quot;url\&quot;:\&quot;https://github.com/microsoft/Nova\&quot;,\&quot;title\&quot;:\&quot;GitHub - microsoft/Nova: Nova: Recursive SNARKs without trusted setup\&quot;,\&quot;internal\&quot;:false,\&quot;attachment\&quot;:false,\&quot;reflection\&quot;:false,\&quot;clicks\&quot;:6,\&quot;user_id\&quot;:7,\&quot;domain\&quot;:\&quot;github.com\&quot;,\&quot;root_domain\&quot;:\&quot;github.com\&quot;}]}}&quot;}"></div>
+      </discourse-assets-json>
+      <discourse-assets-icons></discourse-assets-icons>
+    </discourse-assets>
+
+      
+
+    
+    <noscript data-path="/t/lookup-singularity/65/7">
+      <header>
+  <a href="/">
+    zk research
+  </a>
+</header>
+
+
+      <div id="main-outlet" class="wrap" role="main">
+        <!-- preload-content: -->
+          <div id="topic-title">
+    <h1>
+      <a href="/t/lookup-singularity/65">Lookup Singularity</a>
+    </h1>
+
+      <div class="topic-category" itemscope itemtype="http://schema.org/BreadcrumbList">
+          <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="https://zkresear.ch/c/general/4" class="badge-wrapper bullet" itemprop="item">
+              <span class='badge-category-bg' style='background-color: #25AAE2'></span>
+              <span class='badge-category clear-badge'>
+                <span class='category-name' itemprop='name'>General</span>
+              </span>
+            </a>
+            <meta itemprop="position" content="1" />
+          </span>
+      </div>
+
+  </div>
+
+  
+
+
+      <div id='post_1' itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='zk research'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://zkresear.ch/u/barryWhiteHat'><span itemprop='name'>barryWhiteHat</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://zkresear.ch/t/lookup-singularity/65">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2022-11-23T22:46:54Z' class='post-time'>
+                November 23, 2022, 10:46pm
+              </time>
+              <meta itemprop='dateModified' content='2022-11-23T22:46:54Z'>
+          <span itemprop='position'>#1</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Thanks <a href="https://github.com/ChihChengLiang" rel="noopener nofollow ugc">CC</a> for review and feedback <img src="https://zkresear.ch/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<h2>
+<a name="intro-1" class="anchor" href="#intro-1"></a>Intro</h2>
+<p>For years the central component of ZKPs was <span class="math">A* B + D == C</span>. This check was applied repeatedly to build our full circuits. Any computation can be represented in this way. This representation is called R1CS.</p>
+<p>It turns out R1CS is prohibitively expensive for certain tasks. This led to increased use of lookup arguments. Currently we use lookups and a variant of R1CS called polynomial constraints to build our circuits.</p>
+<p>A lot of things are blocked if we want to build them using only r1cs. So the general flow is that some clever people get together and find efficient ways to arithmetise circuits. They create hand tuned circuits that include both polynomial constraints and lookup arguments. This is circuit specific and is not very scalable.</p>
+<h2>
+<a name="polynomial-constraints-2" class="anchor" href="#polynomial-constraints-2"></a>Polynomial constraints</h2>
+<p>Polynomial constraints are complicated. The circuit implementer makes many of these polynomial equations. The whole circuit is defined as a system of polynomial equations.<br>
+A solution to this system of equations makes a valid proof. It’s hard to reason about the results of systems of equations.<br>
+Formal verification tools cannot , at the moment, solve polynomial equations in a prime field.</p>
+<h2>
+<a name="lookup-arguments-3" class="anchor" href="#lookup-arguments-3"></a>Lookup arguments</h2>
+<p>Lookup arguments are set membership checks. They were first used to do efficient big integer arithmetic. Now used for that but also as control flow for VMs and to do operations that are not snark friendly. They are not more efficient for all operations. The cost per lookup introduces some prover cost. We currently try and use lookup arguments rarely because they are expensive in the prover</p>
+<h2>
+<a name="why-lookup-arguments-are-good-4" class="anchor" href="#why-lookup-arguments-are-good-4"></a>Why lookup arguments are good</h2>
+<h3>
+<a name="language-5" class="anchor" href="#language-5"></a>Language</h3>
+<p>Currently snark friendly languages are very difficult for new programmers to learn. They use prime fields and polynomial constraints which are not a paradigm they are used to.  A language that only uses lookup arguments could be much simpler. Current languages are good at doing computation that is specific to snarks but doing traditional computation is much more expensive. A lookup only language would be better on both counts.</p>
+<h3>
+<a name="security-review-6" class="anchor" href="#security-review-6"></a>Security review</h3>
+<p>Auditors are not used to finding solutions to a series of polynomial equations. Lookup arguments are much simpler to reason about.</p>
+<h4>
+<a name="example-7" class="anchor" href="#example-7"></a>Example:</h4>
+<p>Take a circuit is an AND of two input variables, the output is the result.</p>
+<h5>
+<a name="lookup-approach-8" class="anchor" href="#lookup-approach-8"></a>Lookup approach</h5>
+<pre><code class="lang-auto">out = get x,y from AND table
+return(out)
+</code></pre>
+<p>The above lookup approach is much simpler than the polynomial approach shown next.</p>
+<h5>
+<a name="polynomial-approach-9" class="anchor" href="#polynomial-approach-9"></a>polynomial approach</h5>
+<pre><code class="lang-auto">(x)(x-1) = 0 
+y(y-1) = 0 
+x*y = out
+return(out)
+</code></pre>
+<p>It is likely going to be much simpler to find bugs in lookup only circuits.</p>
+<h3>
+<a name="formal-verification-10" class="anchor" href="#formal-verification-10"></a>Formal verification</h3>
+<p>Formal verification tools need to solve the series of polynomial equations. Tools that solve these systems do not work well over prime fields. This leads to a lot of extra work being required to make a solver that works over a field. Using only lookup arguments would allow us to use already existing tools. It would also open up other methods for us to explore. Lookup arguments limit the set of valid variables at any point in the circuit. So we go from the set of possible variables being <span class="math">2^{254}</span> to being <span class="math">2</span> or <span class="math">2^{16}</span>. This could even allow us to do things like state space enumeration to confirm our circuit is correct.</p>
+<h2>
+<a name="information-theory-comparison-11" class="anchor" href="#information-theory-comparison-11"></a>Information theory comparison</h2>
+<p>In order to effectively describe our program as a circuit we need to make a circuit that maps an input to the correct output. We can look at circuits as information encoded per second of prover time. This seems like a good way to compare the different ways we have of implementing circuits.</p>
+<p>Polynomial constraints have limited degree. This is because the degree affects the prover time. The degree limits the information you can encode with them. You can make a polynomial that is degree 5 that can map 5 input values to 5 output values. You can’t include more values in the polynomial unless you increase the degree. In many cases this is fine because we use the structure of the polynomial constraint to do calculations. So multiplication is defined by a polynomial operation <span class="math">A * B == C</span> but XOR is not and needs to be encoded as keys to values.</p>
+<p>Lookup arguments can contain much more information. We have previously been limited in table size of <span class="math">2^{28}</span> elements. But recent work makes the limit of circuit size the maximum trusted setup you can feasibly complete.  This limit on the <span class="math">table\_size</span>. <a href="https://eprint.iacr.org/2022/1565" class="inline-onebox" rel="noopener nofollow ugc">Baloo: Nearly Optimal Lookup Arguments</a>. A single polynomial constraint can contain ~ <span class="math">5 *2^{254}</span>  bits of information. Lookup arguments can contain <span class="math">2^{254} * table\_size</span> bits of information.</p>
+<p>Polynomial constraints are very useful where you use the structure of the polynomial constraint. But as tables of bigger size become feasible this advantage will disappear.</p>
+<h2>
+<a name="conclusions-12" class="anchor" href="#conclusions-12"></a>Conclusions</h2>
+<p>If we can efficiently define circuits using lookup arguments only it will lead to simpler tooling and circuits.</p>
+<p>Lookup arguments will become more efficient than polynomial constraints for almost everything with time.</p>
+<p>We should start building the tooling for a lookup centric zkps</p>
+<h2>
+<a name="future-work-13" class="anchor" href="#future-work-13"></a>Future work</h2>
+<ul>
+<li>
+<p>Compare efficiency of circuits right now.</p>
+</li>
+<li>
+<p>Example lookup only language</p>
+</li>
+<li>
+<p>Do a comparison of relative efficiency of various lookup arguments. Try and estimate the pace of improvements</p>
+</li>
+<li>
+<p>Find examples where lookup arguments are better and worse than polynomial constraints</p>
+<ul>
+<li>Find the worst case examples for both</li>
+<li>Benchmark many circuits using: lookup arguments, lookup + polynomial constraints and compare them for efficiency</li>
+</ul>
+</li>
+</ul>
+        </div>
+
+        <meta itemprop='headline' content='Lookup Singularity'>
+          <meta itemprop='keywords' content=''>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="13" />
+           <span class='post-likes'>13 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div id='post_2' itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='zk research'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://zkresear.ch/u/nibnalin'><span itemprop='name'>nibnalin</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://zkresear.ch/t/lookup-singularity/65">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2022-11-24T12:12:57Z' class='post-time'>
+                November 24, 2022, 12:12pm
+              </time>
+              <meta itemprop='dateModified' content='2022-11-24T12:18:18Z'>
+          <span itemprop='position'>#2</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Great post, thanks for sharing! Another interesting idea of similar flavor is to consider recursion protocols as a primitive for cheap structured operations. In particular, with folding scheme based constructions like <a href="https://github.com/microsoft/Nova" rel="noopener nofollow ugc">Nova</a> (that work directly on the level of constraint IOPs), we could witness repeated operations and prove them within a larger SNARK seperately.</p>
+<p>For instance, building on your example, suppose we have a large circuit with N AND operations mapping two M bit inputs to one M bit output. Then, we could first extract these N operations from the witness and seperately write a recursive circuit of N steps (verifying one M bit AND op at each step) in Nova, and generate as output a Nova (relaxed R1CS) instance with O(M) constraints + O(1) recursion overhead constraints (~10k or so in case of Nova). Therefore, the prover would do O(N) work outside the main proof (notably the dominating cost is from O(N) MSMs) + O(1) extra checks in their primary circuit, matching the optimal lookup table arguments runtime.</p>
+<p>In this setup, we don’t exactly get all the described benefits of security/simplicity lookups have, but it’s not bounded on trusted setup size (as yet?) and efficient implementations of folding schemes like Nova already exist. It would be interesting to try comparing these ideas and benchmarking concrete numbers!</p>
+<p><a class="mention" href="/u/therealyingtong">@therealyingtong</a> also noted that similar approaches are used in the ZK EVM circuits (for hashing, for instance)</p>
+        </div>
+
+        <meta itemprop='headline' content='Lookup Singularity'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="8" />
+           <span class='post-likes'>8 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div id='post_3' itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='zk research'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://zkresear.ch/u/shumo'><span itemprop='name'>shumo</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://zkresear.ch/t/lookup-singularity/65">
+
+            <link itemprop="image" href="https://zkresear.ch/uploads/default/original/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f.png">
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2022-11-24T19:03:40Z' class='post-time'>
+                November 24, 2022,  7:03pm
+              </time>
+              <meta itemprop='dateModified' content='2022-11-24T19:03:40Z'>
+          <span itemprop='position'>#3</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p><div class="lightbox-wrapper"><a class="lightbox" href="https://zkresear.ch/uploads/default/original/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f.png" data-download-href="https://zkresear.ch/uploads/default/6c65464f7fa98cdb7008cd05050c4b6be051347f" title="Screenshot 2022-11-24 at 1.59.55 PM"><img src="https://zkresear.ch/uploads/default/optimized/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f_2_690x337.png" alt="Screenshot 2022-11-24 at 1.59.55 PM" data-base62-sha1="fsUxTH1AqVUHzyMxc3MxLWRSLBJ" width="690" height="337" srcset="https://zkresear.ch/uploads/default/optimized/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f_2_690x337.png, https://zkresear.ch/uploads/default/optimized/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f_2_1035x505.png 1.5x, https://zkresear.ch/uploads/default/original/1X/6c65464f7fa98cdb7008cd05050c4b6be051347f.png 2x" data-dominant-color="19191A"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use href="#far-image"></use></svg><span class="filename">Screenshot 2022-11-24 at 1.59.55 PM</span><span class="informations">1186×580 98.7 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>As Ariel nicely articulated above, I think a hybrid approach makes a lot of sense. One of my biggest pain point of writing Circom today is having to using things like this (don’t know how to call this, Groth16 arithmetization?) as a “poor man’s” lookup table:</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/iden3/circomlib/blob/master/circuits/mux4.circom">
+  <header class="source">
+
+      <a href="https://github.com/iden3/circomlib/blob/master/circuits/mux4.circom" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/iden3/circomlib/blob/master/circuits/mux4.circom" target="_blank" rel="noopener nofollow ugc">iden3/circomlib/blob/master/circuits/mux4.circom</a></h4>
+
+
+      <pre><code class="lang-circom">/*
+    Copyright 2018 0KIMS association.
+
+    This file is part of circom (Zero Knowledge Circuit Compiler).
+
+    circom is a free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    circom is distributed in the hope that it will be useful, but WITHOUT
+    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public
+    License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with circom. If not, see &lt;https://www.gnu.org/licenses/&gt;.
+*/
+pragma circom 2.0.0;
+
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/iden3/circomlib/blob/master/circuits/mux4.circom" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+        </div>
+
+        <meta itemprop='headline' content='Lookup Singularity'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="2" />
+           <span class='post-likes'>2 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+      </div>
+      <div id='post_4' itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='zk research'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://zkresear.ch/u/barryWhiteHat'><span itemprop='name'>barryWhiteHat</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://zkresear.ch/t/lookup-singularity/65">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2022-11-25T22:26:43Z' class='post-time'>
+                November 25, 2022, 10:26pm
+              </time>
+              <meta itemprop='dateModified' content='2022-11-25T22:26:43Z'>
+          <span itemprop='position'>#4</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I think Ariel is assuming you can’t make a table iwth more than 2**128 elements I think if we can do that then we can do better than native adds and muls especially if you are doing wrong field stuff.</p>
+<p>I agree that we need to be able to make very big tables.</p>
+        </div>
+
+        <meta itemprop='headline' content='Lookup Singularity'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="4" />
+           <span class='post-likes'>4 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+      </div>
+      <div id='post_5' itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='zk research'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://zkresear.ch/u/shumo'><span itemprop='name'>shumo</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://zkresear.ch/t/lookup-singularity/65">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2022-11-28T19:26:53Z' class='post-time'>
+                November 28, 2022,  7:26pm
+              </time>
+              <meta itemprop='dateModified' content='2022-11-28T20:39:38Z'>
+          <span itemprop='position'>#5</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>The prover work of newer constructions like Baloo is quasi-linear to size<br>
+of the set to be opened (rather than the entire table), which is very nice. However, these works still require a linear or quasi-linear setup time with regards to the actual size of the lookup table. Do you think this is an inherent limitation? If so, would that imply making a 2^128 sized lookup table would still be quite prohibitive? (I don’t know what is the real practical size to be, but I would guess something like 2^60 ish).</p>
+        </div>
+
+        <meta itemprop='headline' content='Lookup Singularity'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="2" />
+          </div>
+
+      </div>
+      <div id='post_6' itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='zk research'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://zkresear.ch/u/CPerezz'><span itemprop='name'>CPerezz</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://zkresear.ch/t/lookup-singularity/65">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2022-11-29T23:05:07Z' class='post-time'>
+                November 29, 2022, 11:05pm
+              </time>
+              <meta itemprop='dateModified' content='2022-11-29T23:05:07Z'>
+          <span itemprop='position'>#6</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I guess then that with schemes like Baloo, we could get slightly closer the lookup-singularity by increasing the ratio bits/lookup with slightly better pre-processing times and, for sure, much better proving times. But not sure if it gives enough positive expectations for the lookup singularity future. Let me elaborate:</p>
+<p>Theoretically, with 4 columns of 2^64 elements each, we should be able to express any 2^256 element. This means that we need 8 columns to represent 2 2^256-elements and 12 columns to represent any operation between them that gives as a result another 2^256 element.</p>
+<p>This will look like:</p>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>E64</th>
+<th>E128</th>
+<th>E192</th>
+<th>E256</th>
+<th>F64</th>
+<th>F128</th>
+<th>F192</th>
+<th>F256</th>
+<th>R64</th>
+<th>R128</th>
+<th>R192</th>
+<th>R256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X1</td>
+<td>X2</td>
+<td>X3</td>
+<td>X4</td>
+<td>Y1</td>
+<td>Y2</td>
+<td>Y3</td>
+<td>Y4</td>
+<td>Z1</td>
+<td>Z2</td>
+<td>Z3</td>
+<td>Z4</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>XN_1</td>
+<td>XN_2</td>
+<td>XN_3</td>
+<td>XN_4</td>
+<td>YN_1</td>
+<td>YN_2</td>
+<td>YN_3</td>
+<td>YN_4</td>
+<td>ZN_1</td>
+<td>ZN_2</td>
+<td>ZN_3</td>
+<td>ZN_4</td>
+</tr>
+</tbody>
+</table>
+</div><p>Assuming this, we see that the ratio with tables of 2^64 bit elements for an addition, mul, XOR or any <code>F(x,y)-&gt;z</code> is of <strong>12columns/256bit-num operation</strong>. So according to <a class="mention" href="/u/shumo">@shumo</a> the best case scenario we have now would be of <strong>12columns/256bit-num operation</strong> with a feasible-to-build SRS size.</p>
+<p>Note that if the lookup can’t be of 2^256 bit elements directly, we’re forced to have some sort of decompositions of the numbers we want to use. This means that we not only need the lookups but also some custom gate or similar thing to perform the decomposition into limbs of base 2^64.</p>
+<p>There are two parts where this really concerns me:</p>
+<ol>
+<li>Each new operation we want to support (Assume we have Addition and we want Multiplication for example) <strong>will require to add 4 more columns</strong> with all of the 2^64 possible results of the limb permutation operations that would form the 2^256 possibilities.</li>
+</ol>
+<p>This is quite bad and barely optimal. And not in regards proving time specially. But rather setup time. <strong>We need to compute 4 new commitments per operation we want to add support for.</strong> That means 4 new MSMs and the argument required by the lookup too. And considering we are managing polynomials of 2^64 elements, this might not me a quick task. Even with GPU or similar stuff.</p>
+<ol start="2">
+<li>
+<strong>We still need the permutation argument and all the rest of stuff until we can’t lookup directly 2^256-bit numbers</strong>. Mainly because there’s no way to compose/decompose the elements into 64-bit limbs unless we use custom gates. Which will then add more commitments. Which will already be extended due to the length of the tables and the Degree finally required by the circuit.</li>
+</ol>
+<p>Things I’d like to see/explore:</p>
+<ul>
+<li>
+<p>Shouldn’t we be able to express all the possible 8-bit operations we need and then, operate with the byte representations of the Field Elements that we use? I know this sounds a bit crazy. But what if we could define our tables of all of the 8-bit operations and the necessary 16-bit columns that derive into 8-bit limb decomposition when needed?<br>
+So for example, imagine we have a multiplication of 2 bytes. We could first define the columns for Inp1, Inp2  and 16-bit Out. Then, define a decomposition op which would give us the resulting 8-bit limb and the remainder which needs to be added to the other limb etc…<br>
+This is something that came to my mind some times already, and that might be useless, but might also be another perspective to look at the problem from.</p>
+</li>
+<li>
+<p><strong>Could we modelate lookup arguments as Bloom Filters</strong> for example? Given an entry (x,y,z) for example where X,Y are inputs and Z an output, run through a high precision Bloom Filter to check that the relation is indeed one of the accepted ones.<br>
+This is also, another idea that sometimes poped on my head. Again, could be completelly useless too. But I think that maybe, lookup singularity might arrive from a change of perspective over the problem, rather than minor optimizations over the previous protocol we had.</p>
+</li>
+</ul>
+        </div>
+
+        <meta itemprop='headline' content='Lookup Singularity'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="3" />
+           <span class='post-likes'>3 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+      <div id='post_7' itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+            <meta itemprop='name' content='zk research'>
+              <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop='url' content='https://zkresear.ch/uploads/default/original/1X/9378ad55aa514fd61b0b84d4907d4585105cebda.png'>
+              </div>
+          </div>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='https://zkresear.ch/u/barryWhiteHat'><span itemprop='name'>barryWhiteHat</span></a>
+            
+          </span>
+
+          <link itemprop="mainEntityOfPage" href="https://zkresear.ch/t/lookup-singularity/65">
+
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2022-12-12T17:46:21Z' class='post-time'>
+                December 12, 2022,  5:46pm
+              </time>
+              <meta itemprop='dateModified' content='2022-12-12T17:46:21Z'>
+          <span itemprop='position'>#7</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>We are definitely a ways away from the lookup singularity. One way to get there is to try and find a lookup argument which is better than linear setup time in the size of the table. Tho there might be an impossibility result here. Something about having to include information about every possible result of the computation.</p>
+<p>The other way we can over come this is to think about how the elements of our table are very repeated. So we may be able to take advantage of this to build tables with better than linear setup time. For example</p>
+<ul>
+<li>
+<p>we want to calculate the a xor b</p>
+</li>
+<li>
+<p>assume a and b are 1 bit</p>
+</li>
+<li>
+<p>Our table is</p>
+</li>
+</ul>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div><ul>
+<li>
+<p>Note that the result is commutative. Meaning if you switch A and B the result is the same</p>
+</li>
+<li>
+<p>We can leverage this if our lookup argument can check for A , B <em>AND</em> B , A</p>
+</li>
+<li>
+<p>This also works for addition , multiplication and any other operation that is commutative</p>
+</li>
+<li>
+<p>This should reduce our look table size by 1/2</p>
+</li>
+</ul>
+<p>So its definitely possible to have a sub-linear setup time assuming we can make our lookup arguments allow for for this kind of AND behavior.</p>
+        </div>
+
+        <meta itemprop='headline' content='Lookup Singularity'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+      </div>
+
+
+
+
+
+
+        <!-- :preload-content -->
+      </div>
+
+      <footer class="container wrap">
+  <nav class='crawler-nav'>
+    <ul>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/' itemprop="url">Home </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/categories' itemprop="url">Categories </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/guidelines' itemprop="url">FAQ/Guidelines </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/tos' itemprop="url">Terms of Service </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='/privacy' itemprop="url">Privacy Policy </a>
+        </span>
+      </li>
+    </ul>
+  </nav>
+  <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+</footer>
+
+    </noscript>
+
+      
+
+      
+
+    <section id='main'>
+    </section>
+
+      <form id='hidden-login-form' method="post" action="/login" style="display: none;">
+        <input name="username" type="text"     id="signin_username">
+        <input name="password" type="password" id="signin_password">
+        <input name="redirect" type="hidden">
+        <input type="submit" id="signin-button" value="Log In">
+      </form>
+
+    <script defer src="/assets/start-discourse-8a5f2ab832e3583911ea1fbd7a280be52ad88e6ec8f743a5ef9b6aa3dc8cf3c7.js"></script>
+
+    
+
+    <script defer src="/assets/browser-update-f2c17f01941035f2f1b3c90ca6344f86051fefff5b484e5d2629d53c2d3d7d01.js"></script>
+
+      
+
+      
+  </body>
+</html>
